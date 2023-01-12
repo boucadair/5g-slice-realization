@@ -14,7 +14,7 @@ workgroup: "teas"
 keyword:
  - L3VPN
  - L2VPN
- -  Slice Service
+ - Slice Service
 
 author:
 
