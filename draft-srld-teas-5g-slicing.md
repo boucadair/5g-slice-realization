@@ -213,9 +213,9 @@ An extended list of abbreviations used in this document are listed in {{ext-abbr
    Transport Network Slicing:
 
    *  The objective of 5G network slicing is to provide dedicated
-      resources of the whole 5G infrastructure to certain users,
-      application, customers or public land mobile network (PLMN), e.g.,
-      RAN sharing.  These resources are from the Transport Network, RAN
+      resources of the whole 5G infrastructure to some users/customers,
+      applications, or Public Land Mobile Networks (PLMNs) (e.g.,
+      RAN sharing). These resources are from the Transport Network, RAN,
       and CORE Network Functions and the underlying infrastructure.
       {{TS-28.530}} defines 5G network slicing by introducing the concept
       of Network Slice Subnet (NSS) to represent slices within each of
@@ -224,7 +224,7 @@ An extended list of abbreviations used in this document are listed in {{ext-abbr
       dedicated to a single slice.
 
    *  The objective of Transport Network slicing is to isolate,
-      guarantee or prioritize Transport Network resources for slices
+      guarantee, or prioritize Transport Network resources for slices
       such as buffers, link bandwidth or even RIB/FIB (Routing
       Information Base, Forwarding Information Base).  Transport Network
       Slicing has two main flavors: Hard and Soft slicing.  Hard slicing
