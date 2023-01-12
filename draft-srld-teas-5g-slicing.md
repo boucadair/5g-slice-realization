@@ -12,9 +12,9 @@ v: 3
 area: "Routing"
 workgroup: "teas"
 keyword:
- - Slice Service
  - L3VPN
  - L2VPN
+ -  Slice Service
 
 author:
 
