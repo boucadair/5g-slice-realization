@@ -10,7 +10,7 @@ date:
 consensus: true
 v: 3
 area: "Routing"
-workgroup: "teas"
+workgroup: "Traffic Engineering Architecture and Signaling"
 keyword:
  - L3VPN
  - L2VPN
