@@ -4422,10 +4422,8 @@ change at domain boundaries<a href="#section-4.3-2.3" class="pilcrow">¶</a>
    implemented over packet switched transport uses two layers of QoS:<a href="#section-5-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-5-2.1">
-          <span class="break"></span><dl class="dlParallel" id="section-5-2.1.1">
-            <dt id="section-5-2.1.1.1">5G QoS:</dt>
-            <dd style="margin-left: 1.5em" id="section-5-2.1.1.2">
-              <p id="section-5-2.1.1.2.1">At this layer QoS treatment is indicated by the 5QI (5G QoS
+          <p id="section-5-2.1.1">5G QoS:
+At this layer QoS treatment is indicated by the 5QI (5G QoS
 indicator), as defined in <span>[<a href="#TS-23.501" class="cite xref">TS-23.501</a>]</span>.  A 5QI is an ID that is
 used as a reference to 5G QoS characteristics (e.g., scheduling
 weights, admission thresholds, queue management thresholds, link
@@ -4442,19 +4440,14 @@ are documented in <span>[<a href="#I-D.henry-tsvwg-diffserv-to-qci" class="cite 
 might have flows with multiple 5QIs, thus there could be many
 different 5QIs being deployed. 5QIs (or, more precisely,
 corresponding DSCP values) are visible to the TN domain at SDP
-(i.e., at the edge of the TN domain).<a href="#section-5-2.1.1.2.1" class="pilcrow">¶</a></p>
-</dd>
-          <dd class="break"></dd>
-</dl>
+(i.e., at the edge of the TN domain).<a href="#section-5-2.1.1" class="pilcrow">¶</a></p>
 <p id="section-5-2.1.2">
 In this document, this layer of QoS will be referred as '5G QoS
 Class' ('5G QoS' in short), or '5G DSCP'.<a href="#section-5-2.1.2" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-5-2.2">
-          <span class="break"></span><dl class="dlParallel" id="section-5-2.2.1">
-            <dt id="section-5-2.2.1.1">TN QoS:</dt>
-            <dd style="margin-left: 1.5em" id="section-5-2.2.1.2">
-              <p id="section-5-2.2.1.2.1">Control of the TN resources on transit links, as well as traffic
+          <p id="section-5-2.2.1">TN QoS:
+Control of the TN resources on transit links, as well as traffic
 scheduling/prioritization on transit links, is based on a flat
 (non-hierarchical) QoS model in the IETF Network Slice
 realization.  That is, IETF Network Slices are assigned dedicated
@@ -4463,10 +4456,7 @@ SDP), while all IETF Network Slices are sharing resources (sharing
 QoS queues) on the transit links of the TN domain.  Typical router
 hardware can support up to 8 traffic queues per port, therefore
 the architecture assumes 8 traffic queues per port support in
-general.<a href="#section-5-2.2.1.2.1" class="pilcrow">¶</a></p>
-</dd>
-          <dd class="break"></dd>
-</dl>
+general.<a href="#section-5-2.2.1" class="pilcrow">¶</a></p>
 <p id="section-5-2.2.2">
 At this layer, QoS treatment is indicated by QoS indicator
 specific to the encapsulation used in the TN domain, and it could
