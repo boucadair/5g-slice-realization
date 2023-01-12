@@ -36,7 +36,6 @@ author:
 
  -
    fullname: Julian Lucek
-   role: editor
    organization: Juniper Networks
    city: London
    country: United Kingdom
