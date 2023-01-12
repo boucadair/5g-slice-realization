@@ -998,8 +998,7 @@ Orchestration       Orchestration       Orchestration
    implemented over packet switched transport uses two layers of QoS:
 
    *  5G QoS:
-
-      : At this layer QoS treatment is indicated by the 5QI (5G QoS
+      At this layer QoS treatment is indicated by the 5QI (5G QoS
       indicator), as defined in {{TS-23.501}}.  A 5QI is an ID that is
       used as a reference to 5G QoS characteristics (e.g., scheduling
       weights, admission thresholds, queue management thresholds, link
@@ -1022,8 +1021,7 @@ Orchestration       Orchestration       Orchestration
       Class' ('5G QoS' in short), or '5G DSCP'.
 
    *  TN QoS:
-
-      : Control of the TN resources on transit links, as well as traffic
+      Control of the TN resources on transit links, as well as traffic
       scheduling/prioritization on transit links, is based on a flat
       (non-hierarchical) QoS model in the IETF Network Slice
       realization.  That is, IETF Network Slices are assigned dedicated
