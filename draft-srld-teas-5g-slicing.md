@@ -194,7 +194,7 @@ informative:
 This document makes uses of these terms:
 
    Service Management and Orchestration (SMO):
-   :  O-RAN management/orchestration entity
+   : O-RAN management/orchestration entity
 
    Edge Transport Node (ETN):
    : Node, under transport domain orchestration, that stitched the
