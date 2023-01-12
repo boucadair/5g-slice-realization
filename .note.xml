@@ -1,0 +1,7 @@
+<note title="Discussion Venues" removeInRFC="true">
+<t>Discussion of this document takes place on the
+    Traffic Engineering Architecture and Signaling Working Group mailing list (teas@ietf.org),
+    which is archived at <eref target="https://mailarchive.ietf.org/arch/browse/teas/"/>.</t>
+<t>Source for this draft and an issue tracker can be found at
+    <eref target="https://github.com/boucadair/5g-slice-realization"/>.</t>
+</note>
