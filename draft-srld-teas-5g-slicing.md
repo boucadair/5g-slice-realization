@@ -19,7 +19,7 @@ keyword:
 author:
 
  -
-   fullname: Krzysztof G. Szarkowicz
+   fullname: Krzysztof Szarkowicz
    role: editor
    organization: Juniper Networks
    city: Wien
@@ -42,7 +42,7 @@ author:
    email: jlucek@juniper.net
 
  -
-   fullname: John E. Drake
+   fullname: John Drake
    organization: Juniper Networks
    city: Sunnyvale
    country: United States of America
