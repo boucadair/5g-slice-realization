@@ -126,10 +126,10 @@ Table of Contents
      10.1.  Normative References
      10.2.  Informative References
    Appendix A.  Acronyms and Abbreviations
-   Appendix B.  An Overview of 5G Networking {#5g-intro}
+   Appendix B.  An Overview of 5G Networking
      B.1.  Key Building Blocks
      B.2.  Core Network
-     B.3.  RAN
+     B.3.  Radio Access Network (RAN)
      B.4.  Transport Network
    Acknowledgments
    Contributors
@@ -156,7 +156,7 @@ Table of Contents
    The reader may refer to [I-D.ietf-teas-ns-ip-mpls] for more advanced
    realization models.
 
-   A brief 5G overview is provided in {#5g-intro} for readers
+   A brief 5G overview is provided in Appendix B for readers
    convenience.  The reader may refer to [RFC6459] and [TS-23.501] for
    more details about 3GPP network architectures.
 
@@ -2366,7 +2366,7 @@ Appendix A.  Acronyms and Abbreviations
 
    VXLAN: Virtual Extensible Local Area Network
 
-Appendix B.  An Overview of 5G Networking {#5g-intro}
+Appendix B.  An Overview of 5G Networking
 
    This section provides a brief introduction to 5G mobile networking
    with a perspective on the Transport Network.  This section does not
@@ -2512,11 +2512,11 @@ B.2.  Core Network
 
                       Figure 30: 5G Core Network (CN)
 
-B.3.  RAN
+B.3.  Radio Access Network (RAN)
 
-   The radio access network (RAN) connects cellular wireless devices to
-   a mobile Core Network.  The RAN network is made up of 3 components,
-   which form the Radio Base Station:
+   The RAN connects cellular wireless devices to a mobile Core Network.
+   The RAN is made up of three components, which form the Radio Base
+   Station:
 
    *  The Baseband Unit (BBU) provides the interface between the Core
       Network and the Radio Network.  It connects to the Radio Unit and
@@ -2530,7 +2530,7 @@ B.3.  RAN
       radio waves
 
    The 5G RAN Base Station is called a gNodeB (gNB).  It connects to the
-   Core Network via the N3 (user plane) and N2 (control plane)
+   Core Network via the N3 (User Plane) and N2 (Control Plane)
    interfaces.
 
    The 5G RAN architecture supports RAN disaggregation in various ways.
