@@ -1153,7 +1153,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
    ├──────┴───────┤             ╲   ├──────┴───────┤
    │              │              ╲  │              │
    │              │               ╲ │              │
-   │              │                ▏│              │
+   │              │                │|              │
    │   Payload    │               ╱ │   Payload    │
    │(GTP-U/IPsec) │              ╱  │(GTP-U/IPsec) │
    │              │             ╱   │              │
@@ -1180,7 +1180,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
    ├──────┴───────┤             ╲   ├──────┴───────┤
    │              │              ╲  │              │
    │              │               ╲ │              │
-   │              │                ▏│              │
+   │              │                │|              │
    │   Payload    │               ╱ │   Payload    │
    │(GTP-U/IPsec) │              ╱  │(GTP-U/IPsec) │
    │              │             ╱   │              │
@@ -1246,14 +1246,14 @@ Specifically, the actual mapping is a design choice of service operators that ma
    *  2r3c (two-rate three-color) rate limiter
 
       This was initially defined in {{!RFC2698}}, and its improved version
-      in {{!RFC4115}}.  In essence, the traffic is assigned to one of the 3
+      in {{!RFC4115}}.  In essence, the traffic is assigned to one of the these three
       categories:
 
-      -  green, for traffic under CIR
+      -  Green, for traffic under CIR
 
-      -  yellow, for traffic between CIR and PIR
+      -  Yellow, for traffic between CIR and PIR
 
-      -  red, for traffic above PIR
+      -  Red, for traffic above PIR
 
 
       An inbound 2c3r meter implemented with {{!RFC4115}}, compared to
@@ -1277,7 +1277,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
                  ║    │    S │      │
                  ║    │    l │      │
                  ▼    │    i │      │
-   ──────────────◇────┼──▶ c │      │
+   ──────────────◇───────▶c │      │
                       │    e │  A   │
                       │      │  t   │
                       │    1 │  t   │
@@ -1287,7 +1287,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
                       │    S │  m   │
                       │    l │  e   │
                       │    i │  n   │
-   ──────────────◇────┼──▶ c │  t   │
+   ──────────────◇───────▶c │  t   │
                       │    e │      │
                       │      │  C   │
                       │    2 │  i   │
@@ -1297,7 +1297,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
                       │    S │  i   │
                       │    l │  t   │
                       │    i │      │
-   ──────────────◇────┼──▶ c │      │
+   ──────────────◇───────▶c │      │
                       │    e │      │
                       │      │      │
                       │    3 │      │
@@ -1454,15 +1454,15 @@ Specifically, the actual mapping is a design choice of service operators that ma
    constraints per 5G QoS Class within each slice.
 
    5G slice using multiple 5QIs can potentially specify rates in one of
-   the following ways
+   the following ways:
 
-   *  rates per traffic class (CIR, or CIR+PIR), no rate per slice (sum
-      of rates per class gives the rate per slice)
+   *  rates per traffic class (CIR or CIR+PIR), no rate per slice (sum
+      of rates per class gives the rate per slice).
 
    *  rate per slice (CIR, or CIR+PIR), and rates per prioritized
       (premium) traffic classes (CIR only).  Best effort traffic class
       uses the bandwidth (within slice CIR/PIR) not consumed by
-      prioritized classes
+      prioritized classes.
 
    In the first option, the slice admission control is executed with
    traffic class granularity, as outlined in {{figure-20}}.  In this model,
@@ -1526,7 +1526,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
   5Q-QoS-C: CIR-1C ────◇─────────┤─┼──┼──▶ i │     │
                                   │ │  │    c │     │
                                   │ │  │    e │     │
-     BE CIR/PIR-1D ──────────────┤─┼──┼──▶   │  A  │
+     BE CIR/PIR-1D ───────────────┤─┼──┼──▶   │  A  │
                                   │ │  │    1 │  t  │
                                   : ;  │      │  t  │
                                    .   ├──────┤  a  │
@@ -1546,7 +1546,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
   5Q-QoS-C: CIR-3C ────◇─────────┤─┼──┼──▶ i │  t  │
                                   │ │  │    c │     │
                                   │ │  │    e │     │
-     BE CIR/PIR-3D ──────────────┤─┼──┼──▶   │     │
+     BE CIR/PIR-3D ───────────────┤─┼──┼──▶   │     │
                                   │ │  │    3 │     │
                                   : ;  │      │     │
                                    '   └──┬───┘     │
@@ -1570,7 +1570,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
    ───┼─────┼────▶ 5Q-QoS-A: w=5Q-QoS-A-CIR   │  │
       │     │ S  └─┬──────────────────────────┘  │
       │     │ l  ┌─┴──────────────────────────┐  │
-   ───┼─────┼─i──▶ 5Q-QoS-B: w=5Q-QoS-B-CIR   │  │
+   ───┼─────┼─i──▶ 5Q-QoS-B: w=5Q-QoS-B-CIR  │  │
       │     │ c  └─┬──────────────────────────┘  │  weight=Slice-1-CIR
       │     │ e  ┌─┴──────────────────────────┐  │ shaping=Slice-1-PIR
    ───┼─────┼────▶ 5Q-QoS-C: w=5Q-QoS-C-CIR   │  │
@@ -2332,10 +2332,9 @@ User Plane          ╱     │           │         ╲
 ~~~
 {: #figure-29 title="Building Blocks of 5G Architecture (A High-Level Representation)" artwork-align="center"}
 
-##  Core Network
+##  Core Network (CN)
 
-   The 5G Core Network (5GC) is made up of a set of Network Functions
-   (NFs) which fall into two main categories ({{figure-30}}):
+   The 5G Core Network (5GC) is made up of a set of NFs which fall into two main categories ({{figure-30}}):
 
    *  5GC User Plane:
 
@@ -2454,11 +2453,11 @@ User Plane          ╱     │           │         ╲
 ~~~
 {: #figure-31 title="RAN Disaggregation" artwork-align="center"}
 
-##  Transport Network
+##  Transport Network (TN)
 
    The 5G transport architecture defines three main segments for the
    Transport Network, which are commonly referred to as Fronthaul (FH),
-   Midhaul (MH), and Backhaul (BH) ({{TR-GSTR-TN5G}}):
+   Midhaul (MH), and Backhaul (BH) {{TR-GSTR-TN5G}}:
 
    *  Fronthaul happens before the BBU processing.  In 5G, this
       interface is based on eCPRI (Enhanced CPRI) with native Ethernet
