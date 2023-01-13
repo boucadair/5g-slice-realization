@@ -183,7 +183,7 @@ informative:
    The reader may refer to {{?I-D.ietf-teas-ns-ip-mpls}} for more advanced
    realization models.
 
-   Also, the reader may refer to {{?RFC6459}} and {{TS-23.501}} for more
+   A brief 5G overview is provided {#5g-intro} in for readers convenience. The reader may refer to {{?RFC6459}} and {{TS-23.501}} for more
    details about 3GPP network architectures.
 
 # Conventions and Definitions
@@ -358,7 +358,7 @@ Orchestration       Orchestration       Orchestration
 
    Next, the following picture provides examples of different
    realizations of Local and TN segments, as well the Service
-   Demarcation Points:
+   Demarcation Points (SDPs):
 
    *  Layer 2 vs. Layer 3 Local Segment: the Local Segment can interconnect the NF
       and the ETN thanks to a unique VLAN/LAN with no intermediate
@@ -477,7 +477,6 @@ Orchestration       Orchestration       Orchestration
    must be passed between Orchestrators via the Network Slice Interface.
 
 ~~~ aasvg
-
      Datapath network resources (i.e., VLAN ID, IP
     prefixes) exchanged via SMO-NSC interface (NSI)
 
@@ -535,7 +534,6 @@ Orchestration       Orchestration       Orchestration
       approaches with a mix of shared and dedicated associations.
 
 ~~~ aasvg
-
 ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
 
 │                        5G Slice eMBB                          │
@@ -739,8 +737,8 @@ Orchestration       Orchestration       Orchestration
      │     │    │                                      │   │      │
      └──────────┘                                      └──────────┘
            └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
-    ■ - fine-grained QoS (dedicated resources per IETF NS)
-    □ - coarse QoS, with resources shared by all IETF NS
+    ■ fine-grained QoS (dedicated resources per IETF NS)
+    □ coarse QoS, with resources shared by all IETF NS
 ~~~
 {: #figure-8 title="Resource Allocation in with single NRP Slicing Model" artwork-align="center"}
 
@@ -749,10 +747,9 @@ Orchestration       Orchestration       Orchestration
    identification.  The S-NSSAI is not visible to the transport domain,
    so instead 5G functions can expose the 5G slices to the transport
    domain by mapping to explicit L2/L3 identifiers such as VLAN, IP
-   addresses or DSCP, as documented in
-   {{?I-D.gcdrb-teas-5g-network-slice-application}}.
+   addresses or DSCP, as documented in {{?I-D.gcdrb-teas-5g-network-slice-application}}.
 
-##  VLAN Hand-off
+##  VLAN Hand-off {#sec-vlan-handoff}
 
    In this option, the IETF Network Slice, fulfilling connectivity
    requirements between NFs of some 5G slice, is represented at the SDP
@@ -775,7 +772,6 @@ Orchestration       Orchestration       Orchestration
    maintaining mapping tables for each SDP.
 
 ~~~ aasvg
-
    VLANs representing slices           VLANs representing slices
 
               │     ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─      │             │
@@ -788,8 +784,8 @@ Orchestration       Orchestration       Orchestration
                                        │
                     └ ─ ─ ─ ─ ─ ─ ─ ─ ─
 
-     ● – logical interface represented by VLAN on physical interface
-     ■ - Service Demarcation Point
+     ● Logical interfaces represented by VLAN on a physical interface
+     ■ SDPs
 ~~~
 {: #figure-9 title="5G Slice with VLAN Hand-off" artwork-align="center"}
 
@@ -821,8 +817,8 @@ Orchestration       Orchestration       Orchestration
 
                      └ ─ ─ ─ ─ ─ ─ ─ ─ ┘
 
-             ○ – tunnel (IPsec, GTP-U, ...) termination point
-             ■ - Service Demarcation Point
+             ○ Tunnel (IPsec, GTP-U, ...) termination point
+             ■ SDP
 ~~~
 {: #figure-10 title="5G Slice with IP Hand-off" artwork-align="center"}
 
@@ -875,7 +871,6 @@ Orchestration       Orchestration       Orchestration
    {2001:db8::a:300:0, 2001:db8::b:300:0}.
 
 ~~~ aasvg
-
     2001:db8::a:0:0/96 (NF-A)                2001:db8::b:0:0/96 (NF-B)
 
     2001:db8::a:100:0/128  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─   2001:db8::b:100:0/128
@@ -898,39 +893,39 @@ Orchestration       Orchestration       Orchestration
    is MPLS encapsulated outside the TN domain with native MPLS
    encapsulation, or MPLSoUDP encapsulation, depending on the capability
    of the NF or cloud infrastructure, with the service label depicting
-   the slice.  There are three major methods (based on {{!RFC4364}},
-   Section 10) for interconnecting multiple service domains:
+   the slice.
+   
+   There are three major methods (based upon Section 10 of {{!RFC4364}}) for interconnecting multiple service domains:
 
-   *  Option 10A: VRF-to-VRF connections
-   *  Option 10B: redistribution of labeled VPN routes with next-hop
-      change at domain boundaries
-   *  Option 10C: redistribution of labeled VPN routes without next-hop
+   *  Option 10A ({{sec-10a}}): VRF-to-VRF connections.
+   *  Option 10B ({{sec-10b}}): redistribution of labeled VPN routes with next-hop
+      change at domain boundaries.
+   *  Option 10C ({{sec-10c}}): redistribution of labeled VPN routes without next-hop
       change + redistribution of labeled transport routes with next-hop
-      change at domain boundaries
+      change at domain boundaries.
 
-###  Option 10A
+###  Option 10A {#sec-10a}
 
-   In the Option 10A scenario, MPLS is not used in VRF-to-VRF hand-offs,
+   In this option, MPLS is not used in VRF-to-VRF hand-offs,
    since services are terminated at the boundary of each domain, and
    VLAN hand-off is in place between the domains.  Thus, this option is
-   the same as VLAN hand-off, described in Section 3.1.
+   the same as VLAN hand-off, described in {{sec-vlan-handoff}}.
 
-###  Option 10B
+###  Option 10B {#sec-10b}
 
-   In the Option 10B scenario, service instances for different IETF
-   Network Slice services are instantiated outside the TN domain.  They
+   In this option, service instances for different IETF
+   Network Slice Services are instantiated outside the TN domain.  These instances
    could be instantiated either on the compute, hosting mobile network
    functions ({{figure-13}}, left hand side), or within the cloud
-   infrastructure itself, e.g. on the top of the rack or leaf switch
-   within cloud IP fabric ({{figure-13}}, right hand side).  Between TN
+   infrastructure itself (e.g., on the top of the rack or leaf switch
+   within cloud IP fabric ({{figure-13}}, right hand side)). Between the TN
    domain and the (extended) RAN/CN domain, packets are MPLS
    encapsulated (or MPLSoUDP encapsulated, if cloud or compute
-   infrastructure doesn't support native MPLS encapsulation), therefore
-   the PE uses neither a VLAN, nor an IP address for slice
-   identification at SDP, but instead uses the MPLS label.
+   infrastructure doesn't support native MPLS encapsulation). Therefore,
+   the PE uses neither a VLAN nor an IP address for slice
+   identification at the SDP, but instead uses the MPLS label.
 
 ~~~ aasvg
-
         ◁──────        ◁──────        ◁──────
         BGP VPN        BGP VPN        BGP VPN
           COM=1, L=A"    COM=1, L=A'    COM=1, L=A
@@ -986,17 +981,18 @@ Orchestration       Orchestration       Orchestration
    handful of service instances.  In any case, fine-grained per-hop
    behavior at the edge of TN domain is possible.
 
-###  Option 10C
+###  Option 10C {#sec-10c}
 
-   for further study
+   ***for further study***
 
-#  QoS Mapping Models
+#  QoS Mapping Models {#sec-qos-map}
 
    The resources are managed via various QoS policies deployed in the
    network.  QoS mapping models to support 5G slicing connectivity
    implemented over packet switched transport uses two layers of QoS:
 
-   *  5G QoS:
+   (1)  5G QoS
+
       At this layer QoS treatment is indicated by the 5QI (5G QoS
       indicator), as defined in {{TS-23.501}}.  A 5QI is an ID that is
       used as a reference to 5G QoS characteristics (e.g., scheduling
@@ -1019,7 +1015,8 @@ Orchestration       Orchestration       Orchestration
       In this document, this layer of QoS will be referred as '5G QoS
       Class' ('5G QoS' in short), or '5G DSCP'.
 
-   *  TN QoS:
+   (2) TN QoS
+
       Control of the TN resources on transit links, as well as traffic
       scheduling/prioritization on transit links, is based on a flat
       (non-hierarchical) QoS model in the IETF Network Slice
@@ -1045,7 +1042,7 @@ Orchestration       Orchestration       Orchestration
    model.  The O-RAN Alliance, for example, defines a phased approach to
    the slicing, with initial phases utilizing only per slice, but not
    per 5QI, differentiated treatment in the TN domain
-   ({{O-RAN.WG9.XPSAAS}}, Annex F).
+   (Annex F of {{O-RAN.WG9.XPSAAS}}).
 
    Therefore, from QoS perspective, the 5G slicing connectivity
    realization architecture defines two high-level realization models
@@ -1150,13 +1147,10 @@ Orchestration       Orchestration       Orchestration
    │              │         │ ╱     │              │
    │              │         │╱      │              │
    └──────────────┘ ─ ─ ─ ─ ─ ─ ─ ─ └──────────────┘
-
 ~~~
 {: #figure-15 title="QoS with MPLS Encapsulation" artwork-align="center"}
 
 ~~~ aasvg
-
-
                                     ┌──────────────┐
                                     │ IPv6 Header  │
                                     │      ┌───────┤
@@ -1336,7 +1330,6 @@ Orchestration       Orchestration       Orchestration
    lower priority, if such exists, is preempted.
 
 ~~~ aasvg
-
       ┌─────────┐        QoS output queues
       │     ┌───┴──┐─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
       │     │ S    │                            ╲│╱
@@ -1375,7 +1368,6 @@ Orchestration       Orchestration       Orchestration
    equipment, as outlined in {{figure-19}}.
 
 ~~~ aasvg
-
      ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
      ┏━━━━━━━━━━━━━━━━━┓         ETN                              │
      ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃
@@ -1413,7 +1405,6 @@ Orchestration       Orchestration       Orchestration
      Fine-grained QoS enforcement         Coarse QoS enforcement
        (dedicated resources per            (resources shared by
          IETF Network Slice)                multiple IETF NSs)
-
 ~~~
 {: #figure-19 title="Slice 5Q QoS to TN QoS Mapping (5QI-aware Model)" artwork-align="center"}
 
@@ -1466,41 +1457,39 @@ Orchestration       Orchestration       Orchestration
    cannot be reused by non-premium (i.e., Best Effort) class.
 
 ~~~ aasvg
-
                         Class             ┌─────────┐
                        policer         ┌──┴───┐     │
                                        │      │     │
-   5Q-QoS-A: CIR-1A ──────◇────────────┼──▶ S │     │
-   5Q-QoS-B: CIR-1B ──────◇────────────┼──▶ l │     │
-   5Q-QoS-C: CIR-1C ──────◇────────────┼──▶ i │     │
+   5Q-QoS-A: CIR-1A ──────◇───────────┼──▶ S │     │
+   5Q-QoS-B: CIR-1B ──────◇───────────┼──▶ l │     │
+   5Q-QoS-C: CIR-1C ──────◇───────────┼──▶ i │     │
                                        │    c │     │
                                        │    e │     │
-      BE CIR/PIR-1D ──────◇────────────┼──▶   │  A  │
+      BE CIR/PIR-1D ──────◇───────────┼──▶   │  A  │
                                        │    1 │  t  │
                                        │      │  t  │
                                        ├──────┤  a  │
                                        │      │  c  │
-   5Q-QoS-A: CIR-2A ──────◇────────────┼─▶  S │  h  │
-   5Q-QoS-B: CIR-2B ──────◇────────────┼─▶  l │  m  │
-   5Q-QoS-C: CIR-2C ──────◇────────────┼─▶  i │  e  │
+   5Q-QoS-A: CIR-2A ──────◇───────────┼─▶  S │  h  │
+   5Q-QoS-B: CIR-2B ──────◇───────────┼─▶  l │  m  │
+   5Q-QoS-C: CIR-2C ──────◇───────────┼─▶  i │  e  │
                                        │    c │  n  │
                                        │    e │  t  │
-      BE CIR/PIR-2D ──────◇────────────┼─▶    │     │
+      BE CIR/PIR-2D ──────◇───────────┼─▶    │     │
                                        │    2 │  C  │
                                        │      │  i  │
                                        ├──────┤  r  │
                                        │      │  c  │
-   5Q-QoS-A: CIR-3A ──────◇────────────┼─▶  S │  u  │
-   5Q-QoS-B: CIR-3B ──────◇────────────┼─▶  l │  i  │
-   5Q-QoS-C: CIR-3C ──────◇────────────┼─▶  i │  t  │
+   5Q-QoS-A: CIR-3A ──────◇───────────┼─▶  S │  u  │
+   5Q-QoS-B: CIR-3B ──────◇───────────┼─▶  l │  i  │
+   5Q-QoS-C: CIR-3C ──────◇───────────┼─▶  i │  t  │
                                        │    c │     │
                                        │    e │     │
-      BE CIR/PIR-3D───────◇────────────┼─▶    │     │
+      BE CIR/PIR-3D───────◇───────────┼─▶    │     │
                                        │    3 │     │
                                        │      │     │
                                        └──┬───┘     │
                                           └─────────┘
-
 ~~~
 {: #figure-20 title="Ingress Slice Admission Control (5QI-aware Model)" artwork-align="center"}
 
@@ -1519,19 +1508,19 @@ Orchestration       Orchestration       Orchestration
                                 policer   ┌─────────┐
                       Class        .   ┌──┴───┐     │
                      policer      ; :  │      │     │
-   5Q-QoS-A: CIR-1A ────◇─────────┤─┼──┼──▶ S │     │
-   5Q-QoS-B: CIR-1B ────◇─────────┤─┼──┼──▶ l │     │
-   5Q-QoS-C: CIR-1C ────◇─────────┤─┼──┼──▶ i │     │
+  5Q-QoS-A: CIR-1A ────◇─────────┤─┼──┼──▶ S │     │
+  5Q-QoS-B: CIR-1B ────◇─────────┤─┼──┼──▶ l │     │
+  5Q-QoS-C: CIR-1C ────◇─────────┤─┼──┼──▶ i │     │
                                   │ │  │    c │     │
                                   │ │  │    e │     │
-      BE CIR/PIR-1D ──────────────┤─┼──┼──▶   │  A  │
+     BE CIR/PIR-1D ──────────────┤─┼──┼──▶   │  A  │
                                   │ │  │    1 │  t  │
                                   : ;  │      │  t  │
                                    .   ├──────┤  a  │
                                   ; :  │      │  c  │
-   5Q-QoS-A: CIR-2A ────◇─────────┤─┼──┼──▶ S │  h  │
-   5Q-QoS-B: CIR-2B ────◇─────────┤─┼──┼──▶ l │  m  │
-   5Q-QoS-C: CIR-2C ────◇─────────┤─┼──┼──▶ i │  e  │
+  5Q-QoS-A: CIR-2A ────◇─────────┤─┼──┼──▶ S │  h  │
+  5Q-QoS-B: CIR-2B ────◇─────────┤─┼──┼──▶ l │  m  │
+  5Q-QoS-C: CIR-2C ────◇─────────┤─┼──┼──▶ i │  e  │
                                   │ │  │    c │  n  │
                                   │ │  │    e │  t  │
       BE CIR/PIR-2D ──────────────┤─┼──┼──▶   │     │
@@ -1539,12 +1528,12 @@ Orchestration       Orchestration       Orchestration
                                   : ;  │      │  i  │
                                    .   ├──────┤  r  │
                                   ; :  │      │  c  │
-   5Q-QoS-A: CIR-3A ────◇─────────┤─┼──┼──▶ S │  u  │
-   5Q-QoS-B: CIR-3B ────◇─────────┤─┼──┼──▶ l │  i  │
-   5Q-QoS-C: CIR-3C ────◇─────────┤─┼──┼──▶ i │  t  │
+  5Q-QoS-A: CIR-3A ────◇─────────┤─┼──┼──▶ S │  u  │
+  5Q-QoS-B: CIR-3B ────◇─────────┤─┼──┼──▶ l │  i  │
+  5Q-QoS-C: CIR-3C ────◇─────────┤─┼──┼──▶ i │  t  │
                                   │ │  │    c │     │
                                   │ │  │    e │     │
-      BE CIR/PIR-3D ──────────────┤─┼──┼──▶   │     │
+     BE CIR/PIR-3D ──────────────┤─┼──┼──▶   │     │
                                   │ │  │    3 │     │
                                   : ;  │      │     │
                                    '   └──┬───┘     │
@@ -1562,7 +1551,6 @@ Orchestration       Orchestration       Orchestration
    MUST not exceed the physical capacity of the attachment circuit.
 
 ~~~ aasvg
-
       ┌─────────┐        QoS output queues
       │     ┌───┴──┐─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
       │     │    ┌─┴──────────────────────────┐ ╲│╱
@@ -1694,7 +1682,6 @@ Orchestration       Orchestration       Orchestration
    {{figure-24}}.
 
 ~~~ aasvg
-
    ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
    ┏━━━━━━━━━━━━━━━━━┓                        │
    ┃ Attach. Circuit ┃      PE router
@@ -1834,7 +1821,7 @@ Orchestration       Orchestration       Orchestration
                                           └────┘              └──────┘ │
                             └ ─ ─ ─ ─ ─ ─ ─ ─ ┘   └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
 
-     ■ - SDP, with fine-grained QoS (dedicated resources per IETF NS)
+     ■ SDP, with fine-grained QoS (dedicated resources per IETF NS)
 ~~~
 {: #figure-26 title="An Example of Multi-DC Architecture" artwork-align="center"}
 
@@ -1876,7 +1863,6 @@ Orchestration       Orchestration       Orchestration
    principles apply in such cases.
 
 ~~~ aasvg
-
          To┌──────┬──────┬──────┬──────────────┐
    From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
     ┌──────┼──────┼──────┼──────┼──────────────┤
@@ -1898,7 +1884,6 @@ Orchestration       Orchestration       Orchestration
     │ DC 3 │ 2.6  │  3   │ n/a  │     5.1      │
     └──────┴──────┴──────┴──────┴──────────────┘
                        Slice Y
-
 ~~~
 {: #figure-27 title="Inter-DC Traffic Demand Matrix" artwork-align="center"}
 
@@ -1912,7 +1897,7 @@ Orchestration       Orchestration       Orchestration
    controller may apply shapers in the direction from the TN to the DC,
    if otherwise there is the possibility of a link in the DC being
    oversubscribed.  Note that a peer NF endpoint of an AC can be
-   identified using 'peer-sap-id' as defined in {{!I-D.ietf-opsawg-sap}}.
+   identified using 'peer-sap-id' as defined in {{?I-D.ietf-opsawg-sap}}.
 
    Depending on the bandwidth model used in the network (Section 6.1),
    the other values in the matrix, i.e., the DC-to-DC demands, may not
@@ -1930,13 +1915,13 @@ Orchestration       Orchestration       Orchestration
    various types of paths, for example low-latency traffic might be
    mapped onto a different transport path to other traffic (for example
    a particular flex-algo or a particular set of TE LSPs), as discussed
-   in Section 5.  The SMO can use
+   in {{sec-qos-map}}.  The SMO can use
    {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}} to request low-latency
    transport for a given slice if required.  However, {{?RFC8299}} or
    {{!RFC8466}} do not support requesting a particular transport-type,
    e.g., low-latency.  One option is to augment these models to convey
-   this information.  This can be achieved by reusing the underlay-
-   transport construct used in {{!RFC9182}} and {{!RFC9291}}.
+   this information.  This can be achieved by reusing the 'underlay-
+   transport' construct used in {{!RFC9182}} and {{!RFC9291}}.
 
 ##  Bandwidth Models
 
@@ -1991,7 +1976,7 @@ Orchestration       Orchestration       Orchestration
    carry all of the traffic types, or there could be a small handful of
    meshes, for example one mesh for low-latency traffic that follows the
    minimum latency path and another mesh for the other traffic that
-   follows the minimum IGP metric path, as described in Section 5.
+   follows the minimum IGP metric path, as described in {{sec-qos-map}}.
    There would be a many-to-one mapping of slices to LSPs.
 
    The bandwidth requirement from DCi to DCj is the sum of the DCi-DCj
@@ -2034,7 +2019,7 @@ Orchestration       Orchestration       Orchestration
    types, or there could be a small handful of meshes, for example one
    mesh for low-latency traffic that follows the minimum latency path
    and another mesh for the other traffic that follows the minimum IGP
-   metric path, as described in Section 5.  There would be a many-to-one
+   metric path, as described in {{sec-qos-map}}.  There would be a many-to-one
    mapping of slices to LSPs.
 
    The difference between Scheme 2 and Scheme 3 is that Scheme 3 does
@@ -2059,7 +2044,7 @@ Orchestration       Orchestration       Orchestration
 
 # IANA Considerations
 
-   This memo includes no request to IANA.
+   This document does not make any IANA request.
 
 #  Security Considerations
 
@@ -2235,7 +2220,7 @@ Orchestration       Orchestration       Orchestration
 
    VXLAN: Virtual Extensible Local Area Network
 
-#  An Overview of 5G Networking
+#  An Overview of 5G Networking {#5g-intro}
 
    This section provides a brief introduction to 5G mobile networking
    with a perspective on the Transport Network.  This section does not
