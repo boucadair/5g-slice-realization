@@ -2661,7 +2661,7 @@ Authors' Addresses
    Juniper Networks
    Wien
    Austria
-   Email: mohamed.boucadair@orange.com
+   Email: kszarkowicz@juniper.net
 
 
    Richard Roberts (editor)
@@ -2688,7 +2688,7 @@ Authors' Addresses
    Mohamed Boucadair (editor)
    Orange
    France
-   Email: kszarkowicz@juniper.net
+   Email: mohamed.boucadair@orange.com
 
 
    Luis M. Contreras
