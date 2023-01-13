@@ -1560,7 +1560,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
    multiple egress queues.  The sum of queue weights (equal to 5Q QoS
    CIRs within the slice) CIRs MUST NOT exceed the CIR of the slice
    itself.  And, similarly to the 5QI-aware model, the sum of slice CIRs
-   MUST not exceed the physical capacity of the attachment circuit.
+   MUST NOT exceed the physical capacity of the attachment circuit.
 
 ~~~ aasvg
       ┌─────────┐        QoS output queues
