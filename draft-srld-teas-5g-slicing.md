@@ -1336,7 +1336,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
    {{figure-18}} outlines the outbound edge resource control model at the
    transport network layer for 5QI-unaware slices.  Each slice is
    assigned a single egress queue.  The sum of slice CIRs, used as the
-   weight in weighted queueing model, MUST not exceed the physical
+   weight in weighted queueing model, MUST NOT exceed the physical
    capacity of the attachment circuit.  Slice requests above this limit
    MUST be rejected by the NSC, unless an already established slice with
    lower priority, if such exists, is preempted.
@@ -1558,7 +1558,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
    {{figure-22}} outlines the outbound edge resource control model at the
    transport network layer for 5QI-aware slices.  Each slice is assigned
    multiple egress queues.  The sum of queue weights (equal to 5Q QoS
-   CIRs within the slice) CIRs MUST not exceed the CIR of the slice
+   CIRs within the slice) CIRs MUST NOT exceed the CIR of the slice
    itself.  And, similarly to the 5QI-aware model, the sum of slice CIRs
    MUST not exceed the physical capacity of the attachment circuit.
 
