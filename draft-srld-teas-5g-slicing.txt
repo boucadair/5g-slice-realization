@@ -92,7 +92,7 @@ Table of Contents
    2.  Conventions and Definitions
    3.  5G Network Slicing Integration in Transport Networks
      3.1.  5G Network Slicing versus Transport Network Slicing
-     3.2.  NF to NF Datapath vs Transport Network
+     3.2.  NF-to-NF Datapath vs Transport Network
        3.2.1.  Segmentation of NF-to-NF Datapath
        3.2.2.  Orchestration of Local Segment Termination at ETN
      3.3.  5G Slice to IETF Network Slice Mapping
@@ -240,7 +240,7 @@ Table of Contents
       domain of the overall 5G architecture, composed from RAN, TN, and
       CN domains.
 
-3.2.  NF to NF Datapath vs Transport Network
+3.2.  NF-to-NF Datapath vs Transport Network
 
    The 3GPP specifications loosely define the Transport Network and its
    integration in RAN and CN domains: the role of the Transport Network
@@ -331,7 +331,7 @@ Table of Contents
    Local Segment.  In such a case, there is no TN Segment (i.e., no
    Transport Network Node is present in the datapath).
 
-                               SMO / Site
+                                 SMO/Site
                                Orchestration
                                      │
                                      │
@@ -348,7 +348,7 @@ Table of Contents
                   ◀─────────────────────────────────────▶
                       End-to-end datapath between NFs
 
-                Figure 2: NF-NF Datapath within Single Site
+              Figure 2: NF-to-NF Datapath within the Same Site
 
    Figure 3 provides samples to illustrate the different realizations of
    Local and TN Segments, as well the SDPs:
@@ -374,7 +374,7 @@ Table of Contents
       each node/NF can be represented by multiple instances (e.g.,
       multiple containers in a cloud architecture).
 
-                Local segment              Transport Network
+                Local Segment              Transport Network
          ◀───────────────────────────▶◀─────────────────── ─ ─ ─ ─
 
          ┌─────────────────────┐      ┌─────────────────── ─ ─ ─ ┐
@@ -679,7 +679,7 @@ Table of Contents
       functions) providing clean discrimantion between 5G QoS and TN
       QoS, as explained in Section 4
 
-   *  Fine-Grained resource control at the ETN:
+   *  Fine-grained resource control at the ETN:
 
       This is sometimes called 'admission control' or 'traffic
       conditioning'.  The main purpose is the enforcement of the
@@ -739,7 +739,7 @@ Table of Contents
         └──────────┘                                      └──────────┘
               └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
        ■ fine-grained QoS (dedicated resources per IETF NS)
-       □ coarse QoS, with resources shared by all IETF NS
+       □ coarse QoS, with resources shared by all IETF NSes
 
        Figure 8: Resource Allocation in with single NRP Slicing Model
 
@@ -826,18 +826,22 @@ Table of Contents
    to address NFs.  An IPv6 address is a 128-bit long field, while the
    S-NSSAI is a 32-bit field: Slice/Service Type (SST): 8 bits, Slice
    Differentiator (SD): 24 bits. 32 bits, out of 128 bits of the IPv6
-   address, MAY be used to encode the S-NSSAI, which makes an IP to
-   Slice mapping table unnecessary.  This is simply an allocation method
-   to allocate IPv6 addresses to NF loopbacks, without redefining IPv6
-   semantic.  Different IPv6 address allocation schemes following this
-   concept MAY be used, with one example allocation showed in Figure 11.
-   This addressing scheme is local to a node; intermediary nodes are not
-   required to associate any additional semantic with IPv6 address.  One
-   benefit of embedding the S-NSSAI in the IPv6 address is that provides
+   address, may be used to encode the S-NSSAI, which makes an IP to
+   Slice mapping table unnecessary.  This mapping is simply a local an
+   allocation method to allocate IPv6 addresses to NF loopbacks, without
+   redefining IPv6 semantic.  Different IPv6 address allocation schemes
+   following this mapping approach may be used, with one example
+   allocation showed in Figure 11.
+
+   Note that this addressing scheme is local to a node; intermediary
+   nodes are not required to associate any additional semantic with IPv6
+   address.
+
+   One benefit of embedding the S-NSSAI in the IPv6 address is providing
    a very easy way of identifying the packet as belonging to given
-   S-NSSAI at any place in the transport domain.  This might could be
-   used, for example, to slectivelky enable per S-NSSAI monitoring, or
-   any other per S-NSSAI handling, if required.
+   S-NSSAI at any place in the transport domain.  This might be used,
+   for example, to slectivelky enable per S-NSSAI monitoring, or any
+   other per S-NSSAI handling, if required.
 
                             NF specific          reserved
                        (not slice specific)     for S-NSSAI
@@ -850,19 +854,18 @@ Table of Contents
 
             Figure 11: An Example of S-NSSAI embedded into IPv6
 
-   In the example, the most significant 96 bits of the IPv6 address are
-   unique to NF, but do not carry any slice specific information, while
-   the least significant 32 bits are used to embed S-NSSAI information.
-   The 96-bit part of the address could be further divided, based for
-   example on geographical location, or DC identification. 128 bits is
-   wide enough to design an IPv6 addressing scheme, which is most
-   suitable for particular 5G deployment.
+   In the example shown in Figure 11, the most significant 96 bits of
+   the IPv6 address are unique to NF, but do not carry any slice-
+   specific information, while the least significant 32 bits are used to
+   embed the S-NSSAI information.  The 96-bit part of the address may be
+   further divided based, for example, on the geographical location or
+   the DC identification.
 
-   Figure 12 shows an example slicing deployment, where S-NSSAI is
+   Figure 12 shows an example of slicing deployment, where S-NSSAI is
    embedded into IPv6 addresses used by NFs.  NF-A has a set of tunnel
-   termination points, with unique per slice IP addresses allocated from
-   the 2001:db8::a:0:0/96 subnet, while NF-B uses set of tunnel
-   termination points with per slice IP addresses allocated from
+   termination points, with unique per-slice IP addresses allocated from
+   the 2001:db8::a:0:0/96 prefix, while NF-B uses set of tunnel
+   termination points with per-slice IP addresses allocated from
    2001:db8::b:0:0/96.  This example shows two slices: eMBB (SST=1) and
    MIoT (SST=3).  Therefore, for eMBB the tunnel IP addresses are auto-
    derived (without the need for a mapping table) as {2001:db8::a:100:0,
