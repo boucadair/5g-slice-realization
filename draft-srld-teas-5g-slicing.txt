@@ -5,7 +5,7 @@
 Traffic Engineering Architecture and Signaling     K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 16 July 2023                                        J. E. Drake
+Expires: 17 July 2023                                        J. E. Drake
                                                         Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
@@ -23,7 +23,7 @@ Expires: 16 July 2023                                        J. E. Drake
                                                                  Rakuten
                                                                 M. Amani
                                                          British Telecom
-                                                         12 January 2023
+                                                         13 January 2023
 
 
  A Realization of IETF Network Slices for 5G Networks Using Current IP/
@@ -70,7 +70,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 July 2023.
+   This Internet-Draft will expire on 17 July 2023.
 
 Copyright Notice
 
@@ -126,7 +126,7 @@ Table of Contents
      10.1.  Normative References
      10.2.  Informative References
    Appendix A.  Acronyms and Abbreviations
-   Appendix B.  An Overview of 5G Networking
+   Appendix B.  An Overview of 5G Networking {#5g-intro}
      B.1.  Key Building Blocks
      B.2.  Core Network
      B.3.  RAN
@@ -156,8 +156,9 @@ Table of Contents
    The reader may refer to [I-D.ietf-teas-ns-ip-mpls] for more advanced
    realization models.
 
-   Also, the reader may refer to [RFC6459] and [TS-23.501] for more
-   details about 3GPP network architectures.
+   A brief 5G overview is provided {#5g-intro} in for readers
+   convenience.  The reader may refer to [RFC6459] and [TS-23.501] for
+   more details about 3GPP network architectures.
 
 2.  Conventions and Definitions
 
@@ -332,7 +333,7 @@ Table of Contents
 
    Next, the following picture provides examples of different
    realizations of Local and TN segments, as well the Service
-   Demarcation Points:
+   Demarcation Points (SDPs):
 
    *  Layer 2 vs. Layer 3 Local Segment: the Local Segment can
       interconnect the NF and the ETN thanks to a unique VLAN/LAN with
@@ -705,8 +706,8 @@ Table of Contents
         │     │    │                                      │   │      │
         └──────────┘                                      └──────────┘
               └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
-       ■ - fine-grained QoS (dedicated resources per IETF NS)
-       □ - coarse QoS, with resources shared by all IETF NS
+       ■ fine-grained QoS (dedicated resources per IETF NS)
+       □ coarse QoS, with resources shared by all IETF NS
 
        Figure 8: Resource Allocation in with single NRP Slicing Model
 
@@ -752,8 +753,8 @@ Table of Contents
                                         │
                      └ ─ ─ ─ ─ ─ ─ ─ ─ ─
 
-      ● – logical interface represented by VLAN on physical interface
-      ■ - Service Demarcation Point
+      ● Logical interfaces represented by VLAN on a physical interface
+      ■ SDPs
 
                  Figure 9: 5G Slice with VLAN Hand-off
 
@@ -784,8 +785,8 @@ Table of Contents
 
                      └ ─ ─ ─ ─ ─ ─ ─ ─ ┘
 
-             ○ – tunnel (IPsec, GTP-U, ...) termination point
-             ■ - Service Demarcation Point
+             ○ Tunnel (IPsec, GTP-U, ...) termination point
+             ■ SDP
 
                  Figure 10: 5G Slice with IP Hand-off
 
@@ -858,38 +859,40 @@ Table of Contents
    is MPLS encapsulated outside the TN domain with native MPLS
    encapsulation, or MPLSoUDP encapsulation, depending on the capability
    of the NF or cloud infrastructure, with the service label depicting
-   the slice.  There are three major methods (based on [RFC4364],
-   Section 10) for interconnecting multiple service domains:
+   the slice.
 
-   *  Option 10A: VRF-to-VRF connections
+   There are three major methods (based upon Section 10 of [RFC4364])
+   for interconnecting multiple service domains:
 
-   *  Option 10B: redistribution of labeled VPN routes with next-hop
-      change at domain boundaries
+   *  Option 10A (Section 4.3.1): VRF-to-VRF connections.
 
-   *  Option 10C: redistribution of labeled VPN routes without next-hop
-      change + redistribution of labeled transport routes with next-hop
-      change at domain boundaries
+   *  Option 10B (Section 4.3.2): redistribution of labeled VPN routes
+      with next-hop change at domain boundaries.
+
+   *  Option 10C (Section 4.3.3): redistribution of labeled VPN routes
+      without next-hop change + redistribution of labeled transport
+      routes with next-hop change at domain boundaries.
 
 4.3.1.  Option 10A
 
-   In the Option 10A scenario, MPLS is not used in VRF-to-VRF hand-offs,
-   since services are terminated at the boundary of each domain, and
-   VLAN hand-off is in place between the domains.  Thus, this option is
-   the same as VLAN hand-off, described in Section 3.1.
+   In this option, MPLS is not used in VRF-to-VRF hand-offs, since
+   services are terminated at the boundary of each domain, and VLAN
+   hand-off is in place between the domains.  Thus, this option is the
+   same as VLAN hand-off, described in Section 4.1.
 
 4.3.2.  Option 10B
 
-   In the Option 10B scenario, service instances for different IETF
-   Network Slice services are instantiated outside the TN domain.  They
+   In this option, service instances for different IETF Network Slice
+   Services are instantiated outside the TN domain.  These instances
    could be instantiated either on the compute, hosting mobile network
    functions (Figure 13, left hand side), or within the cloud
-   infrastructure itself, e.g. on the top of the rack or leaf switch
-   within cloud IP fabric (Figure 13, right hand side).  Between TN
+   infrastructure itself (e.g., on the top of the rack or leaf switch
+   within cloud IP fabric (Figure 13, right hand side)).  Between the TN
    domain and the (extended) RAN/CN domain, packets are MPLS
    encapsulated (or MPLSoUDP encapsulated, if cloud or compute
-   infrastructure doesn't support native MPLS encapsulation), therefore
-   the PE uses neither a VLAN, nor an IP address for slice
-   identification at SDP, but instead uses the MPLS label.
+   infrastructure doesn't support native MPLS encapsulation).
+   Therefore, the PE uses neither a VLAN nor an IP address for slice
+   identification at the SDP, but instead uses the MPLS label.
 
          ◁──────        ◁──────        ◁──────
          BGP VPN        BGP VPN        BGP VPN
@@ -948,7 +951,7 @@ Table of Contents
 
 4.3.3.  Option 10C
 
-   for further study
+   *_for further study_*
 
 5.  QoS Mapping Models
 
@@ -956,43 +959,47 @@ Table of Contents
    network.  QoS mapping models to support 5G slicing connectivity
    implemented over packet switched transport uses two layers of QoS:
 
-   *  5G QoS: At this layer QoS treatment is indicated by the 5QI (5G
-      QoS indicator), as defined in [TS-23.501].  A 5QI is an ID that is
-      used as a reference to 5G QoS characteristics (e.g., scheduling
-      weights, admission thresholds, queue management thresholds, link
-      layer protocol configuration, etc.) in the RAN domain.  Given the
-      fact that 5QI applies to the RAN domain, it is not visible to the
-      TN domain.  Therefore, if 5QI-aware treatment is desired in the TN
-      domain as well, 5G network functions might set DSCP with a value
-      representing 5QI, to allow differentiated treatment in TN domain
-      as well.  Based on these DSCP values, at SDP of each TN segment
-      used to construct transport for given 5G slice, very granular QoS
-      enforcement might be implemented.  The mapping between 5QI and
-      DSCP is out of scope for this document.  Mapping recommendations
-      are documented in [I-D.henry-tsvwg-diffserv-to-qci].  Each slice
-      might have flows with multiple 5QIs, thus there could be many
-      different 5QIs being deployed. 5QIs (or, more precisely,
-      corresponding DSCP values) are visible to the TN domain at SDP
-      (i.e., at the edge of the TN domain).
+   (1) 5G QoS
 
-      In this document, this layer of QoS will be referred as '5G QoS
-      Class' ('5G QoS' in short), or '5G DSCP'.
+     At this layer QoS treatment is indicated by the 5QI (5G QoS
+     indicator), as defined in {{TS-23.501}}.  A 5QI is an ID that is
+     used as a reference to 5G QoS characteristics (e.g., scheduling
+     weights, admission thresholds, queue management thresholds, link
+     layer protocol configuration, etc.) in the RAN domain.  Given the
+     fact that 5QI applies to the RAN domain, it is not visible to the
+     TN domain.  Therefore, if 5QI-aware treatment is desired in the TN
+     domain as well, 5G network functions might set DSCP with a value
+     representing 5QI, to allow differentiated treatment in TN domain
+     as well.  Based on these DSCP values, at SDP of each TN segment
+     used to construct transport for given 5G slice, very granular QoS
+     enforcement might be implemented.  The mapping between 5QI and
+     DSCP is out of scope for this document.  Mapping recommendations
+     are documented in {{I-D.henry-tsvwg-diffserv-to-qci}}.  Each slice
+     might have flows with multiple 5QIs, thus there could be many
+     different 5QIs being deployed. 5QIs (or, more precisely,
+     corresponding DSCP values) are visible to the TN domain at SDP
+     (i.e., at the edge of the TN domain).
 
-   *  TN QoS: Control of the TN resources on transit links, as well as
-      traffic scheduling/prioritization on transit links, is based on a
-      flat (non-hierarchical) QoS model in the IETF Network Slice
-      realization.  That is, IETF Network Slices are assigned dedicated
-      resources (e.g., QoS queues) at the edge of the TN domain (at
-      SDP), while all IETF Network Slices are sharing resources (sharing
-      QoS queues) on the transit links of the TN domain.  Typical router
-      hardware can support up to 8 traffic queues per port, therefore
-      the architecture assumes 8 traffic queues per port support in
-      general.
+     In this document, this layer of QoS will be referred as '5G QoS
+     Class' ('5G QoS' in short), or '5G DSCP'.
 
-      At this layer, QoS treatment is indicated by QoS indicator
-      specific to the encapsulation used in the TN domain, and it could
-      be DSCP or MPLS TC.  This layer of QoS will be referred as 'TN QoS
-      Class', or 'TN QoS' for short, in this document.
+   (2) TN QoS
+
+     Control of the TN resources on transit links, as well as traffic
+     scheduling/prioritization on transit links, is based on a flat
+     (non-hierarchical) QoS model in the IETF Network Slice
+     realization.  That is, IETF Network Slices are assigned dedicated
+     resources (e.g., QoS queues) at the edge of the TN domain (at
+     SDP), while all IETF Network Slices are sharing resources (sharing
+     QoS queues) on the transit links of the TN domain.  Typical router
+     hardware can support up to 8 traffic queues per port, therefore
+     the architecture assumes 8 traffic queues per port support in
+     general.
+
+     At this layer, QoS treatment is indicated by QoS indicator
+     specific to the encapsulation used in the TN domain, and it could
+     be DSCP or MPLS TC.  This layer of QoS will be referred as 'TN QoS
+     Class', or 'TN QoS' for short, in this document.
 
    While 5QI might be exposed to the TN domain, via the DSCP value
    (corresponding to specific 5QI value) set in the IP packet generated
@@ -1002,8 +1009,8 @@ Table of Contents
    DSCP), or it might simply depend on the overall slicing deployment
    model.  The O-RAN Alliance, for example, defines a phased approach to
    the slicing, with initial phases utilizing only per slice, but not
-   per 5QI, differentiated treatment in the TN domain
-   ([O-RAN.WG9.XPSAAS], Annex F).
+   per 5QI, differentiated treatment in the TN domain (Annex F of
+   [O-RAN.WG9.XPSAAS]).
 
    Therefore, from QoS perspective, the 5G slicing connectivity
    realization architecture defines two high-level realization models
@@ -1413,32 +1420,32 @@ Table of Contents
                                    Class             ┌─────────┐
                                   policer         ┌──┴───┐     │
                                                   │      │     │
-              5Q-QoS-A: CIR-1A ──────◇────────────┼──▶ S │     │
-              5Q-QoS-B: CIR-1B ──────◇────────────┼──▶ l │     │
-              5Q-QoS-C: CIR-1C ──────◇────────────┼──▶ i │     │
+              5Q-QoS-A: CIR-1A ──────◇───────────┼──▶ S │     │
+              5Q-QoS-B: CIR-1B ──────◇───────────┼──▶ l │     │
+              5Q-QoS-C: CIR-1C ──────◇───────────┼──▶ i │     │
                                                   │    c │     │
                                                   │    e │     │
-                 BE CIR/PIR-1D ──────◇────────────┼──▶   │  A  │
+                 BE CIR/PIR-1D ──────◇───────────┼──▶   │  A  │
                                                   │    1 │  t  │
                                                   │      │  t  │
                                                   ├──────┤  a  │
                                                   │      │  c  │
-              5Q-QoS-A: CIR-2A ──────◇────────────┼─▶  S │  h  │
-              5Q-QoS-B: CIR-2B ──────◇────────────┼─▶  l │  m  │
-              5Q-QoS-C: CIR-2C ──────◇────────────┼─▶  i │  e  │
+              5Q-QoS-A: CIR-2A ──────◇───────────┼─▶  S │  h  │
+              5Q-QoS-B: CIR-2B ──────◇───────────┼─▶  l │  m  │
+              5Q-QoS-C: CIR-2C ──────◇───────────┼─▶  i │  e  │
                                                   │    c │  n  │
                                                   │    e │  t  │
-                 BE CIR/PIR-2D ──────◇────────────┼─▶    │     │
+                 BE CIR/PIR-2D ──────◇───────────┼─▶    │     │
                                                   │    2 │  C  │
                                                   │      │  i  │
                                                   ├──────┤  r  │
                                                   │      │  c  │
-              5Q-QoS-A: CIR-3A ──────◇────────────┼─▶  S │  u  │
-              5Q-QoS-B: CIR-3B ──────◇────────────┼─▶  l │  i  │
-              5Q-QoS-C: CIR-3C ──────◇────────────┼─▶  i │  t  │
+              5Q-QoS-A: CIR-3A ──────◇───────────┼─▶  S │  u  │
+              5Q-QoS-B: CIR-3B ──────◇───────────┼─▶  l │  i  │
+              5Q-QoS-C: CIR-3C ──────◇───────────┼─▶  i │  t  │
                                                   │    c │     │
                                                   │    e │     │
-                 BE CIR/PIR-3D───────◇────────────┼─▶    │     │
+                 BE CIR/PIR-3D───────◇───────────┼─▶    │     │
                                                   │    3 │     │
                                                   │      │     │
                                                   └──┬───┘     │
@@ -1460,19 +1467,19 @@ Table of Contents
                                            policer   ┌─────────┐
                                  Class        .   ┌──┴───┐     │
                                 policer      ; :  │      │     │
-              5Q-QoS-A: CIR-1A ────◇─────────┤─┼──┼──▶ S │     │
-              5Q-QoS-B: CIR-1B ────◇─────────┤─┼──┼──▶ l │     │
-              5Q-QoS-C: CIR-1C ────◇─────────┤─┼──┼──▶ i │     │
+             5Q-QoS-A: CIR-1A ────◇─────────┤─┼──┼──▶ S │     │
+             5Q-QoS-B: CIR-1B ────◇─────────┤─┼──┼──▶ l │     │
+             5Q-QoS-C: CIR-1C ────◇─────────┤─┼──┼──▶ i │     │
                                              │ │  │    c │     │
                                              │ │  │    e │     │
-                 BE CIR/PIR-1D ──────────────┤─┼──┼──▶   │  A  │
+                BE CIR/PIR-1D ──────────────┤─┼──┼──▶   │  A  │
                                              │ │  │    1 │  t  │
                                              : ;  │      │  t  │
                                               .   ├──────┤  a  │
                                              ; :  │      │  c  │
-              5Q-QoS-A: CIR-2A ────◇─────────┤─┼──┼──▶ S │  h  │
-              5Q-QoS-B: CIR-2B ────◇─────────┤─┼──┼──▶ l │  m  │
-              5Q-QoS-C: CIR-2C ────◇─────────┤─┼──┼──▶ i │  e  │
+             5Q-QoS-A: CIR-2A ────◇─────────┤─┼──┼──▶ S │  h  │
+             5Q-QoS-B: CIR-2B ────◇─────────┤─┼──┼──▶ l │  m  │
+             5Q-QoS-C: CIR-2C ────◇─────────┤─┼──┼──▶ i │  e  │
                                              │ │  │    c │  n  │
                                              │ │  │    e │  t  │
                  BE CIR/PIR-2D ──────────────┤─┼──┼──▶   │     │
@@ -1480,12 +1487,12 @@ Table of Contents
                                              : ;  │      │  i  │
                                               .   ├──────┤  r  │
                                              ; :  │      │  c  │
-              5Q-QoS-A: CIR-3A ────◇─────────┤─┼──┼──▶ S │  u  │
-              5Q-QoS-B: CIR-3B ────◇─────────┤─┼──┼──▶ l │  i  │
-              5Q-QoS-C: CIR-3C ────◇─────────┤─┼──┼──▶ i │  t  │
+             5Q-QoS-A: CIR-3A ────◇─────────┤─┼──┼──▶ S │  u  │
+             5Q-QoS-B: CIR-3B ────◇─────────┤─┼──┼──▶ l │  i  │
+             5Q-QoS-C: CIR-3C ────◇─────────┤─┼──┼──▶ i │  t  │
                                              │ │  │    c │     │
                                              │ │  │    e │     │
-                 BE CIR/PIR-3D ──────────────┤─┼──┼──▶   │     │
+                BE CIR/PIR-3D ──────────────┤─┼──┼──▶   │     │
                                              │ │  │    3 │     │
                                              : ;  │      │     │
                                               '   └──┬───┘     │
@@ -1767,7 +1774,7 @@ Table of Contents
                                           └────┘              └──────┘ │
                             └ ─ ─ ─ ─ ─ ─ ─ ─ ┘   └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
 
-     ■ - SDP, with fine-grained QoS (dedicated resources per IETF NS)
+     ■ SDP, with fine-grained QoS (dedicated resources per IETF NS)
 
             Figure 26: An Example of Multi-DC Architecture
 
@@ -1865,8 +1872,8 @@ Table of Contents
    transport for a given slice if required.  However, [RFC8299] or
    [RFC8466] do not support requesting a particular transport-type,
    e.g., low-latency.  One option is to augment these models to convey
-   this information.  This can be achieved by reusing the underlay-
-   transport construct used in [RFC9182] and [RFC9291].
+   this information.  This can be achieved by reusing the 'underlay-
+   transport' construct used in [RFC9182] and [RFC9291].
 
 7.1.  Bandwidth Models
 
@@ -1989,7 +1996,7 @@ Table of Contents
 
 8.  IANA Considerations
 
-   This memo includes no request to IANA.
+   This document does not make any IANA request.
 
 9.  Security Considerations
 
@@ -2001,14 +2008,6 @@ Table of Contents
 10.  References
 
 10.1.  Normative References
-
-   [I-D.ietf-opsawg-sap]
-              Boucadair, M., de Dios, O. G., Barguil, S., Wu, Q., and V.
-              Lopez, "A YANG Network Model for Service Attachment Points
-              (SAPs)", Work in Progress, Internet-Draft, draft-ietf-
-              opsawg-sap-13, 9 January 2023,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-
-              sap-13>.
 
    [I-D.ietf-teas-ietf-network-slices]
               Farrel, A., Drake, J., Rokui, R., Homma, S., Makhijani,
@@ -2078,6 +2077,14 @@ Table of Contents
               Internet-Draft, draft-ietf-lsr-flex-algo-26, 17 October
               2022, <https://datatracker.ietf.org/doc/html/draft-ietf-
               lsr-flex-algo-26>.
+
+   [I-D.ietf-opsawg-sap]
+              Boucadair, M., de Dios, O. G., Barguil, S., Wu, Q., and V.
+              Lopez, "A YANG Network Model for Service Attachment Points
+              (SAPs)", Work in Progress, Internet-Draft, draft-ietf-
+              opsawg-sap-13, 9 January 2023,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-
+              sap-13>.
 
    [I-D.ietf-teas-ietf-network-slice-nbi-yang]
               Wu, B., Dhody, D., Rokui, R., Saad, T., Han, L., and J.
@@ -2308,7 +2315,7 @@ Appendix A.  Acronyms and Abbreviations
 
    VXLAN: Virtual Extensible Local Area Network
 
-Appendix B.  An Overview of 5G Networking
+Appendix B.  An Overview of 5G Networking {#5g-intro}
 
    This section provides a brief introduction to 5G mobile networking
    with a perspective on the Transport Network.  This section does not
