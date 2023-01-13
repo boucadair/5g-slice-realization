@@ -256,7 +256,7 @@ An extended list of abbreviations used in this document are listed in {{ext-abbr
       describe the slice in the Transport Network domain of the overall 5G
       architecture, composed from RAN, TN, and CN domains.
 
-##  NF to NF Datapath vs Transport Network
+##  NF-to-NF Datapath vs Transport Network
 
    The 3GPP specifications loosely define the Transport Network and its
    integration in RAN and CN domains: the role of the
@@ -347,7 +347,7 @@ An extended list of abbreviations used in this document are listed in {{ext-abbr
    Transport Network Node is present in the datapath).
 
 ~~~ aasvg
-                    SMO / Site
+                      SMO/Site
                     Orchestration
                           │
                           │
@@ -364,7 +364,7 @@ An extended list of abbreviations used in this document are listed in {{ext-abbr
        ◀─────────────────────────────────────▶
            End-to-end datapath between NFs
 ~~~
-{: #figure-2 title="NF-NF Datapath within Single Site" artwork-align="center"}
+{: #figure-2 title="NF-to-NF Datapath within the Same Site" artwork-align="center"}
 
    {{figure-3}} provides samples to illustrate the  different
    realizations of Local and TN Segments, as well the SDPs:
@@ -390,7 +390,7 @@ An extended list of abbreviations used in this document are listed in {{ext-abbr
       multiple containers in a cloud architecture).
 
 ~~~ aasvg
-       Local segment              Transport Network
+       Local Segment              Transport Network
 ◀───────────────────────────▶◀─────────────────── ─ ─ ─ ─
 
 ┌─────────────────────┐      ┌─────────────────── ─ ─ ─ ┐
@@ -691,7 +691,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
       functions) providing clean discrimantion between 5G QoS and TN
       QoS, as explained in Section 4
 
-   *  Fine-Grained resource control at the ETN:
+   *  Fine-grained resource control at the ETN:
 
       This is sometimes called 'admission control' or 'traffic
       conditioning'.  The main purpose is the enforcement of the
@@ -751,7 +751,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
      └──────────┘                                      └──────────┘
            └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
     ■ fine-grained QoS (dedicated resources per IETF NS)
-    □ coarse QoS, with resources shared by all IETF NS
+    □ coarse QoS, with resources shared by all IETF NSes
 ~~~
 {: #figure-8 title="Resource Allocation in with single NRP Slicing Model" artwork-align="center"}
 
@@ -839,16 +839,19 @@ Specifically, the actual mapping is a design choice of service operators that ma
    to address NFs.  An IPv6 address is a 128-bit long field, while the
    S-NSSAI is a 32-bit field: Slice/Service Type (SST): 8 bits, Slice
    Differentiator (SD): 24 bits. 32 bits, out of 128 bits of the IPv6
-   address, MAY be used to encode the S-NSSAI, which makes an IP to
-   Slice mapping table unnecessary.  This is simply an allocation method
+   address, may be used to encode the S-NSSAI, which makes an IP to
+   Slice mapping table unnecessary. This mapping is simply a local an allocation method
    to allocate IPv6 addresses to NF loopbacks, without redefining IPv6
-   semantic.  Different IPv6 address allocation schemes following this
-   concept MAY be used, with one example allocation showed in {{figure-11}}.
-   This addressing scheme is local to a node; intermediary nodes are not
-   required to associate any additional semantic with IPv6 address.  One
-   benefit of embedding the S-NSSAI in the IPv6 address is that provides
+   semantic. Different IPv6 address allocation schemes following this
+   mapping approach may be used, with one example allocation showed in {{figure-11}}.
+
+   Note that this addressing scheme is local to a node; intermediary nodes are not
+   required to associate any additional semantic with IPv6 address.
+
+   One
+   benefit of embedding the S-NSSAI in the IPv6 address is providing
    a very easy way of identifying the packet as belonging to given
-   S-NSSAI at any place in the transport domain.  This might could be
+   S-NSSAI at any place in the transport domain.  This might be
    used, for example, to slectivelky enable per S-NSSAI monitoring, or
    any other per S-NSSAI handling, if required.
 
@@ -864,19 +867,17 @@ Specifically, the actual mapping is a design choice of service operators that ma
 ~~~
 {: #figure-11 title="An Example of S-NSSAI embedded into IPv6" artwork-align="center"}
 
-   In the example, the most significant 96 bits of the IPv6 address are
-   unique to NF, but do not carry any slice specific information, while
-   the least significant 32 bits are used to embed S-NSSAI information.
-   The 96-bit part of the address could be further divided, based for
-   example on geographical location, or DC identification. 128 bits is
-   wide enough to design an IPv6 addressing scheme, which is most
-   suitable for particular 5G deployment.
+   In the example shown in {{figure-11}}, the most significant 96 bits of the IPv6 address are
+   unique to NF, but do not carry any slice-specific information, while
+   the least significant 32 bits are used to embed the S-NSSAI information.
+   The 96-bit part of the address may be further divided based, for
+   example, on the geographical location or the DC identification.
 
-   {{figure-12}} shows an example slicing deployment, where S-NSSAI is
+   {{figure-12}} shows an example of slicing deployment, where S-NSSAI is
    embedded into IPv6 addresses used by NFs.  NF-A has a set of tunnel
-   termination points, with unique per slice IP addresses allocated from
-   the 2001:db8::a:0:0/96 subnet, while NF-B uses set of tunnel
-   termination points with per slice IP addresses allocated from
+   termination points, with unique per-slice IP addresses allocated from
+   the 2001:db8::a:0:0/96 prefix, while NF-B uses set of tunnel
+   termination points with per-slice IP addresses allocated from
    2001:db8::b:0:0/96.  This example shows two slices: eMBB (SST=1) and
    MIoT (SST=3).  Therefore, for eMBB the tunnel IP addresses are auto-
    derived (without the need for a mapping table) as {2001:db8::a:100:0,
