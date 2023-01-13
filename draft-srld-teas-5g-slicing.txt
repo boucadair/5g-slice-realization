@@ -299,7 +299,7 @@ Table of Contents
    [I-D.ietf-teas-ietf-network-slices] may or may not be enforced on the
    ETN itself.
 
-   Figure 1 is a representation of the end-to- end datapath between NFs
+   Figure 1 is a representation of the end-to-end datapath between NFs
    including Segments and ETNs (in practice PE or a managed CE), where
    applicable.
 
