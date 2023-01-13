@@ -177,27 +177,30 @@ informative:
    Network Slice realization model in IP/MPLS networks, with a focus on
    fulfilling 5G slicing connectivity requirements.  This IETF Network
    Slice realization model reuses many building blocks currently
-   commonly used in communication service provider (CSP) networks.
+   commonly used in communication service provider networks.
 
    The reader may refer to {{?I-D.ietf-teas-ns-ip-mpls}} for more advanced
    realization models.
 
-   A brief 5G overview is provided {#5g-intro} in for readers convenience. The reader may refer to {{?RFC6459}} and {{TS-23.501}} for more
+   A brief 5G overview is provided in {#5g-intro} for readers convenience. The reader may refer to {{?RFC6459}} and {{TS-23.501}} for more
    details about 3GPP network architectures.
 
 # Conventions and Definitions
 
 {::boilerplate bcp14-tagged}
 
-This document makes uses of these terms:
+The document uses the terms defined in {{!I-D.ietf-teas-ietf-network-slices}}.
+
+This document makes use of the following terms:
 
    Service Management and Orchestration (SMO):
-   : O-RAN management/orchestration entity
+
+   O-RAN management/orchestration entity
 
    Edge Transport Node (ETN):
-   : Node, under transport domain orchestration, that stitched the
-      transport domain to other domains.  Could be PE or managed CE
-      node.
+
+   Node, under the transport domain orchestration, that stitches the
+      transport domain to adjacent domains. An ETN can be be a Provider Edge (PE) or a managed Customer Equipment (CE).
 
 An extended list of abbreviations used in this document are listed in {{ext-abbr}}.
 
@@ -205,111 +208,120 @@ An extended list of abbreviations used in this document are listed in {{ext-abbr
 
 ##  5G Network Slicing versus Transport Network Slicing
 
-   Network Slicing has a different meaning in the mobile and transport
-   worlds.  Hence, for the sake of precision, this section provides a
+   Network slicing has a different meaning in the 3GPP mobile and transport
+   worlds.  Hence, for the sake of precision and whithout seeking to be exhaustive, this section provides a
    brief description of the objectives of 5G Network Slicing and
    Transport Network Slicing:
 
-   *  The objective of 5G network slicing is to provide dedicated
+   *  An objective of 5G Network Slicing is to provide dedicated
       resources of the whole 5G infrastructure to some users/customers,
       applications, or Public Land Mobile Networks (PLMNs) (e.g.,
-      RAN sharing). These resources are from the Transport Network, RAN,
+      RAN sharing). These resources are from the Transport Network (TN), RAN,
       and Core Network Functions and the underlying infrastructure.
-      {{TS-28.530}} defines 5G network slicing by introducing the concept
+
+      {{TS-28.530}} defines 5G Network Slicing by introducing the concept
       of Network Slice Subnet (NSS) to represent slices within each of
-      these domains: RAN, CN, and Transport Network (i.e., RAN NSS, CN
-      NSS and TN NSS).  As per 3GPP specifications, NSS can be shared or
+      these domains: RAN, CN, and TN (i.e., RAN NSS, CN
+      NSS and TN NSS).  As per 3GPP specifications, an NSS can be shared or
       dedicated to a single slice.
 
-   *  The objective of Transport Network slicing is to isolate,
-      guarantee, or prioritize Transport Network resources for slices
-      such as buffers, link bandwidth or even RIB/FIB (Routing
-      Information Base, Forwarding Information Base).  Transport Network
-      Slicing has two main flavors: Hard and Soft slicing.  Hard slicing
-      provides dedicated network capacity to slices.  Soft Slicing
+   *  An objective of TN Slicing is to isolate,
+      guarantee, and prioritize Transport Network resources for slices. Examples of such resources are:
+      buffers, link capacity, or even Routing
+      Information Base (RIB) and Forwarding Information Base (FIB).
+
+      TN Slicing has two main flavors: Hard and Soft slicing.  Hard slicing
+      provides dedicated network capacity to slices, while soft slicing
       provides shared network capacity with guarantees for each slice.
-      There are different options to implement TN slices based on
-      tooling such as VRFs (Virtual Routing and Forwarding instances)
-      for logical separation, QoS (Quality of Service) or TE (Traffic
-      Engineering).  Also, TN slice realization for 5G slices might
+
+      There are different options to implement TN slices based upon
+      tools, such as VRFs (Virtual Routing and Forwarding instances)
+      for logical separation, QoS (Quality of Service), or TE (Traffic
+      Engineering).
+
+      TN slice realization for 5G slices may
       combine elements of hard slicing in one part of the transport
       network, with elements of soft slicing in other parts of the
-      transport network.  An optimized 5G network slicing architecture
-      should integrate Transport Network Slicing, however, it is
-      possible to implement 5G network slicing without Transport Network
+      transport network. Such as design is deployment-specific.
+
+      An optimized 5G network slicing architecture
+      should integrate TN Slicing, however, it is
+      possible to implement 5G Network Slicing without TN
       Slicing, as explained in the next section.
 
-      Slicing in the transport network is implemented using IETF
-      technologies, therefore, inline with
-      {{!I-D.ietf-teas-ietf-network-slices}}, in this document the term
-      "IETF Network Slice" (IETF NS, or INS in short) is used to
-      describe the slice in the Transport Network domain of overall 5G
-      architecture, composed from RAN, TN and CN domains.
+      TN Slicing is implemented using IETF technologies, therefore, inline with
+      {{!I-D.ietf-teas-ietf-network-slices}}.
+
+      In this document, the term "IETF Network Slice" (IETF NS, or INS in short) is used to
+      describe the slice in the Transport Network domain of the overall 5G
+      architecture, composed from RAN, TN, and CN domains.
 
 ##  NF to NF Datapath vs Transport Network
 
    The 3GPP specifications loosely define the Transport Network and its
-   integration in RAN and Core Network domains: the role of the
-   Transport Network is to interconnect Network Functions.  In other
-   words, it is the end-to-end datapath between two Network Functions.
-   In practice, this end-to-end datapath is often a non-uniform
-   architecture made up of several segments potentially managed by
-   different organizations.  In this document, we rather define the
-   Transport Network with a service provider scope: the TN extends up to
-   the PE or the CE if it is also managed by the TN Orchestration.
-   Additionally, we assume that the Transport Network is MPLS or SRv6
+   integration in RAN and CN domains: the role of the
+   Transport Network is to interconnect Network Functions (NFs). In other
+   words, it is the end-to-end datapath between two NFs.
+   In practice, this end-to-end datapath results often from a non-uniform
+   architecture made up of several segments managed by the same or
+   distinct organizations.
+
+   This document defines the Transport Network with a service provider scope. That is, the TN extends up to
+   the PE or the CE if it is also managed by the TN Orchestration. Additionally, we assume that the Transport Network is IP, MPLS, or SRv6
    capable.
 
 ###  Segmentation of NF-to-NF Datapath
 
-   This section introduces a decomposition of the datapath between two
-   Network Functions (NFs) into two segments based on the Orchestration
+   The datapath between two NFs may be decomposed into two segments based upon involved Orchestration
    domains:
 
-   *  TN Segment: the realization of this segment is driven by the IETF
-      NSC / Transport Network Orchestrator (TNO).  Generally speaking, a
+   (1)  TN Segment:
+
+      The realization of this segment is driven by the IETF
+      Network Slice Controller (NSC) and the Transport Network Orchestrator (TNO). Generally, a
       TN Segment provides connectivity between two sites.
 
-   *  Local segment: this segments permits either to connect Network
-      Functions within a given site or to connect a Network Function to
-      the Transport Network.  The realization of this segment is
+   (2) Local Segment:
+
+      This segment connects NFs within a given site or connects an NF to 
+      a TN. The realization of this segment is
       directly or indirectly driven by the 5G Orchestration without any
-      involvement of the Transport Network Orchestration.  Generally
-      speaking, the Local Segment is a datapath local to a site.  This
-      site can be either DC (Data Center), POP (Point of Presence), CO
-      (Central Office) or a virtualized infrastructure in a Public
+      involvement of the TNO.  Generally, the Local Segment is a datapath local to a site.  This
+      site can be (but not limited to): a Data Center (DC), a Point of Presence (PoP), a
+      Central Office (CO), or a virtualized infrastructure in a Public
       Cloud.
 
-   Note that more complex scenarios are possible, for example with extra
-   segmentation of TN or Local Segments.  Additionally, sites can be of
-   different types such as Edge, Data Center, or Public Cloud, each with
-   specific network design, hardware dependencies, management interface
+   Note that more complex scenarios may be considered (for example, adding an extra
+   segmentation of TN or Local Segments).  Additionally, sites can be of
+   different types (such as Edge, Data Center, or Public Cloud), each with
+   specific network design, hardware dependencies, management interface, 
    and diverse networking technologies (e.g., MPLS, SRv6, VXLAN, or L2VPN vs.
    L3VPN).  The objective of this section is to clarify the scope
-   of the Transport Network rather than to cover any technology or
+   of the Transport Network rather than to cover random technology or
    design combination.
 
-   The realization of IETF Network Slices (i.e. connectivity with
-   performance commitments) applies therefore to the TN Segments.  We
+   The realization of IETF Network Slices (i.e., connectivity with
+   performance commitments) applies to the TN Segments.  We
    consider Local Segments as an extension of the connectivity of the
    RAN/CN domain without slice-specific performances requirements by
    assuming that the local infrastructure is overprovisioned and
    implements traditional QoS/Scheduling logic.
 
-   In parallel, since the TN domain can extend either to the CE or to
-   the PE, we introduce the term Edge Transport Node (ETN) to define
-   this boundary.  The ETN is therefore a Transport Node that stitches
-   Local segments and TN Segments.  Note that depending on the design,
-   the placement of the SDP (Service Demarcation Point) as defined in
+   Also, since the TN domain can extend either to the CE or to
+   the PE, we introduce the term Edge Transport Node (ETN) to denote
+   this boundary.  The ETN is, therefore, a Transport node that stitches
+   Local Segments and TN Segments.  Note that depending on the design,
+   the placement of the Service Demarcation Point (SDP)
    {{!I-D.ietf-teas-ietf-network-slices}} may or may not be enforced on the
-   ETN itself.  {{figure-1}} is a representation of the end-to-
-   end datapath between Network Functions including Segments and ETN (in
+   ETN itself.
+
+   {{figure-1}} is a representation of the end-to-
+   end datapath between NFs including Segments and ETNs (in
    practice PE or a managed CE), where applicable.
 
 ~~~ aasvg
-
- SMO / Site              TN              SMO / Site
-Orchestration       Orchestration       Orchestration
+      SMO/Site           TN           SMO/Site
+    Orchestration   Orchestration   Orchestration
           │               │               │
           │               │               │
 ┌ ─ ─ ─ ─ ┼ ┐      ┌ ─ ─ ─│─ ─ ─ ┐      ┌ ┼ ─ ─ ─ ─ ┐
@@ -332,7 +344,7 @@ Orchestration       Orchestration       Orchestration
 {: #figure-1 title=" Segmentation of the NF-NF Datapath" artwork-align="center"}
 
    NFs may also be placed in the same site and interconnected via a
-   Local Segment.  In this case, there is no TN segment (i.e. no
+   Local Segment.  In such a case, there is no TN Segment (i.e., no
    Transport Network Node is present in the datapath).
 
 ~~~ aasvg
@@ -355,30 +367,28 @@ Orchestration       Orchestration       Orchestration
 ~~~
 {: #figure-2 title="NF-NF Datapath within Single Site" artwork-align="center"}
 
-   Next, the following picture provides examples of different
-   realizations of Local and TN segments, as well the Service
-   Demarcation Points (SDPs):
+   {{figure-3}} provides samples to illustrate the  different
+   realizations of Local and TN Segments, as well the SDPs:
 
-   *  Layer 2 vs. Layer 3 Local Segment: the Local Segment can interconnect the NF
+   *  Layer 2 vs. Layer 3 Local Segment: The Local Segment can interconnect the NF
       and the ETN thanks to a unique VLAN/LAN with no intermediate
       routing hop (the simplest example is an NF directly connected to a
       PE): A1, A2, A3, and A4.  Alternatively, the NF interfaces may be
-      attached in a different VLAN/LAN than the ETN interface thanks to
-      additional local routing between the ETN and the NF (e.g., CE, IP
-      Fabric): B1, B2, B3 and B4.
+      attached in a different VLAN/LAN than the ETN interface assuming some additional local routing capabilities between the ETN and the NF (e.g., CE, IP
+      Fabric): B1, B2, B3, and B4.
 
-   *  ETN: the ETN can be either the PE (A3, A4, B3, B4) or the CE if it
-      is managed by the TN Orchestration (A1, A2, B1, B2).
+   *  ETN: The ETN can be either the PE (A3, A4, B3, and B4) or the CE if it
+      is managed by the TN Orchestration (A1, A2, B1, and B2).
 
-   *  SDP: the SDP can be located in multiple places as per
+   *  SDP: The SDP can be located in many places as per
       Sectionb 4.2 of {{!I-D.ietf-teas-ietf-network-slices}}: A1/B1 for case
-      (1), A2/B2 for case (2), A3/B3 for case (3) and A4/B4 for case
+      (1), A2/B2 for case (2), A3/B3 for case (3), and A4/B4 for case
       (4))
 
-   *  Redundancy/Scale-out: no example of redundancy/multihoming/scale-
+   *  Redundancy/Scale-out: No example of redundancy/multihoming/scale-
       out is provided for the sake of simplicification.  Nonetheless,
-      each Node/NF can be represented by multiple instances, i.e.,
-      multiple containers in cloud architecture.
+      each node/NF can be represented by multiple instances (e.g.,
+      multiple containers in a cloud architecture).
 
 ~~~ aasvg
        Local segment              Transport Network
@@ -460,23 +470,24 @@ Orchestration       Orchestration       Orchestration
 ~~~
 {: #figure-3 title="Examples of various combinations of Local Segments, ETN, and SDP" artwork-align="center"}
 
-###  Orchestration of Local Segment termination at ETN
+###  Orchestration of Local Segment Termination at ETN
 
-   The interconnection between the 5G site and the Transport Network is
+   The interconnection between a 5G site and the Transport Network is
    made up of shared networking resources.  More precisely, the Local
    Segment terminates to an interface of the ETN, which must be
-   configured with consistent dataplane network information (e.g.  VLAN-
+   configured with consistent dataplane network information (e.g.,  VLAN-
    ID and IP addresses/subnets).  Hence, the realization of this
-   interconnection requires a coordination between the SMO (Service
-   Management and Orchestration) and the Transport Orchestration (IETF
-   NSC).  In this document, we assume that this coordination is based on
+   interconnection requires a coordination between the Service
+   Management and Orchestration (SMO) and the Transport Orchestration (IETF
+   NSC).  In this document, and aligned with {{?RFC8969}}, we assume that this coordination is based upon
    IETF YANG data models and APIs (more details in further sections).
-   The following diagram is a basic example of a L3 CE-PE realization
-   with shared network resource such as VLAN-ID and IP prefixes, which
-   must be passed between Orchestrators via the Network Slice Interface.
+
+   {{figure-4}} is a basic example of a Layer 3 CE-PE link realization
+   with shared network resources, such as VLAN-ID and IP prefixes, which
+   must be passed between Orchestrators via the Network Slice Service Interface ({{?I-D.ietf-teas-ietf-network-slice-nbi-yang}}) or a Attachement Circuit Service Interface ({{?I-D.boro-opsawg-teas-attachment-circuit}}).
 
 ~~~ aasvg
-     Datapath network resources (i.e., VLAN ID, IP
+     Datapath network resources (e.g., VLAN ID, IP
     prefixes) exchanged via SMO-NSC interface (NSI)
 
       ┌ ─ ─ ─ ─ ─ ─ ┐                ┌ ─ ─ ─ ─ ─ ─ ┐
@@ -499,37 +510,43 @@ Orchestration       Orchestration       Orchestration
     └────────────────────────────────────┘
                  Local Segment
 ~~~
-{: #figure-4 title="An Example of XX" artwork-align="center"}
+{: #figure-4 title="An Example of Data Exchange" artwork-align="center"}
 
-   Note that the allocation of these resources (e.g.,  VLAN-ID or IPAM)
+   Note that the allocation of these resources (e.g.,  VLAN-ID or IP resources)
    can be either managed by the SMO or the Transport Network.  In other
    words, the initial SMO request for the creation of a new IETF Network
    Slice on a given 5G site may or may not include all network
    resources.  In the latter case, this information is exchanged in a
    second step.
 
-## 5G slice to IETF Network Slice mapping
+## 5G Slice to IETF Network Slice Mapping
 
-   There are multiple options to map 5G network slices to IETF Network
+   There are multiple options to map a 5G network slice to IETF Network
    Slices:
 
-   *  1 to N: A single 5G Network Slice can map to multiple IETF Network
+   (1)  1 to N:
+
+      A single 5G Network Slice can map to multiple IETF Network
       Slices (1 to N).  One example of such a case is the separation of
       the 5G Control Plane and User Plane: this use case is represented
       in {{figure-5}} where a slice (EMBB) is deployed with a separation of
-      User Plane and Control Plane at Transport Network level.
+      User Plane and Control Plane at the TN.
 
-   *  N to 1: Multiple 5G Network Slices may rely on a same IETF Network
-      Slice (i.e., in {{TS-28.530}} semantic, two RAN/CN NSS rely on a
-      shared TN NSS).  In this case, the SLA differentiation of slices
-      would be entirely controlled at 5G Control Plane, for example with
+   (2) N to 1:
+
+      Multiple 5G Network Slices may rely upon the same IETF Network
+      Slice (i.e., in {{TS-28.530}} semantic, two RAN/CN NSSes uses a
+      shared TN NSS).  In such a case, the Service Level Agreement (SLA) differentiation of slices
+      would be entirely controlled at 5G Control Plane, for example, with
       appropriate placement strategies: this use case is represented in
-      {{figure-6}}, where a UPF network function for the URLLC slice is
-      instantiated at the Edge Cloud close the gNB CU-UP User Plane for
-      better latency/jitter control, while 5G Control Plane and the UPF
-      for slice EMBB are instantiated in the Regional Cloud.
+      {{figure-6}}, where a User Plane Function (UPF) for the URLLC slice is
+      instantiated at the edge cloud close to the gNB CU-UP User Plane for
+      better latency/jitter control, while the 5G Control Plane and the UPF
+      for EMBB slice are instantiated in the regional cloud.
 
-   *  N to M: the 5G to IETF Network Slice mapping combines both
+   (3) N to M:
+
+      The 5G to IETF Network Slice mapping combines both
       approaches with a mix of shared and dedicated associations.
 
 ~~~ aasvg
@@ -583,18 +600,20 @@ Orchestration       Orchestration       Orchestration
 {: #figure-6 title="N (5G Slice) to 1 (IETF Network Slice) Mapping" artwork-align="center"}
 
    Note that the actual realization of the mapping depends on several
-   factors such as the actual business cases, the VNF vendor
-   capabilities, the VNF vendor reference designs, as well as service
+   factors, such as the actual business cases, the NF vendor
+   capabilities, the NF vendor reference designs, as well as service
    provider or even legal requirements.
 
-##  First 5G slice versus subsequent slices
+Specifically, the actual mapping is a design choice of service operators that may a function of, e.g., the number of instantiated slices, requested services, or local engineering capabilities and guidelines. However, operators should carefully consider means to ease slice migration strategies (e.g., move from 1-to-1 mapping to N-to-1).
+
+##  First 5G Slice versus Subsequent Slices
 
    A 5G Network Slice is fully functional with both 5G Control Plane and
    User Plane capabilities (i.e., dedicated NF functions or contexts).
    In this regard, the creation of the "first slice" is subject to a
    specific logic since it must deploy both CP and UP.  This is not the
    case for the deployment of subsequent slices because they can share
-   the CP of the First Slice, while instantiating dedicated UP.  An
+   the same CP of the first slice, while instantiating dedicated UP.  An
    example of an incremental deployment is depicted in {{figure-7}}.
 
    At the time of writing, Section 6.2 of {{NG.113}} specifies that the
@@ -602,8 +621,8 @@ Orchestration       Orchestration       Orchestration
    slice would be the first slice in any 5G deployment.
 
    Note that the actual realization of the mapping depends on several
-   factors such as the actual business cases, the VNF vendor
-   capabilities, the VNF vendor reference designs, as well as service
+   factors such as the actual business cases, the NF vendor
+   capabilities, the NF vendor reference designs, as well as service
    providers or even legal requirements.
 
 ~~~ aasvg
@@ -658,7 +677,7 @@ Orchestration       Orchestration       Orchestration
 
 #  High-Level Overview of the Realization Model
 
-   {{!I-D.ietf-teas-ietf-network-slices}} introduces the concept of a
+   {{!I-D.ietf-teas-ietf-network-slices}} introduces the concept of the
    Network Resource Partition (NRP), which is defined as a collection of
    resources identified in the underlay network.  In the basic
    realization model described in this document, a single NRP is used
@@ -694,15 +713,14 @@ Orchestration       Orchestration       Orchestration
       providing guaranteed rates per slice, as well as guarantees per
       traffic class within the slice.
 
-      In the managed CE use cases (use cases A1, A2, B1, B2 depicted in
+      In the managed CE use cases (use cases A1, A2, B1, and B2 depicted in
       {{figure-7}}) edge admission control could be distributed between CE
       and PE, where one part of the edge admission control is
       implemented on CE, and another part of the edge admission control
       is implemented on PE.
 
    *  Coarse resource control at the TN transit (non-attachment
-      circuits) links of the transport domain, using a single Network
-      Resource Partition (NRP), spanning the entire TN domain
+      circuits) links of the transport domain, using a single NRP, spanning the entire TN domain
       Transit nodes do not maintain any state of individual slices.
       Instead, only a flat (non-hierarchical) QoS model is used on
       transit links with up to 8 traffic classes.  At the transport
@@ -2011,7 +2029,7 @@ Orchestration       Orchestration       Orchestration
    may not know that it now needs to apply bandwidth reservations to
    LSPs from PE1B to PE2A/PE2B.
 
-### Scheme 3: TE LSPs without Bandwidth Reservations
+### Scheme 3: TE LSPs without Bandwidth Reservation
 
    Like Scheme 2, Scheme 3 uses RSVP-TE or SR-TE LSPs.  There could be a
    single mesh of LSPs between endpoints that carry all of the traffic
@@ -2330,7 +2348,7 @@ User Plane          ╱     │           │         ╲
       decapsulating the User Plane Traffic in GTP Tunnels (aka GTP-U or
       Mobile User Plane).
 
-   *  5GC Control Plane: 
+   *  5GC Control Plane:
 
       The 5G Control Plane is made up of a
       comprehensive set of Network Functions.  An exhaustive list and
