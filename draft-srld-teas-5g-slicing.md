@@ -315,8 +315,7 @@ An extended list of abbreviations used in this document are listed in {{ext-abbr
    {{!I-D.ietf-teas-ietf-network-slices}} may or may not be enforced on the
    ETN itself.
 
-   {{figure-1}} is a representation of the end-to-
-   end datapath between NFs including Segments and ETNs (in
+   {{figure-1}} is a representation of the end-to-end datapath between NFs including Segments and ETNs (in
    practice PE or a managed CE), where applicable.
 
 ~~~ aasvg
