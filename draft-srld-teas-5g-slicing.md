@@ -283,7 +283,7 @@ An extended list of abbreviations used in this document are listed in {{ext-abbr
 
    (2) Local Segment:
 
-      This segment connects NFs within a given site or connects an NF to 
+      This segment connects NFs within a given site or connects an NF to
       a TN. The realization of this segment is
       directly or indirectly driven by the 5G Orchestration without any
       involvement of the TNO.  Generally, the Local Segment is a datapath local to a site.  This
@@ -294,7 +294,7 @@ An extended list of abbreviations used in this document are listed in {{ext-abbr
    Note that more complex scenarios may be considered (for example, adding an extra
    segmentation of TN or Local Segments).  Additionally, sites can be of
    different types (such as Edge, Data Center, or Public Cloud), each with
-   specific network design, hardware dependencies, management interface, 
+   specific network design, hardware dependencies, management interface,
    and diverse networking technologies (e.g., MPLS, SRv6, VXLAN, or L2VPN vs.
    L3VPN).  The objective of this section is to clarify the scope
    of the Transport Network rather than to cover random technology or
@@ -466,7 +466,7 @@ An extended list of abbreviations used in this document are listed in {{ext-abbr
                           ├───────────────┤
                                  ETN
 
-             ■ - Service Demarcation Point
+             ■ Service Demarcation Point
 ~~~
 {: #figure-3 title="Examples of various combinations of Local Segments, ETN, and SDP" artwork-align="center"}
 
@@ -963,9 +963,9 @@ Specifically, the actual mapping is a design choice of service operators that ma
                          Network    │            L2/L3
                    └ ─ ─ ─ ─ ─ ─ ─ ─
 
-     ● – logical interface represented by VLAN on physical interface
-     ◙ - service instances (with unique MPLS label)
-     ■ - Service Demarcation Point
+     ● Logical interface represented by VLAN on physical interface
+     ◙ Service instances (with unique MPLS label)
+     ■ Service Demarcation Point
 ~~~
 {: #figure-13 title="MPLS Hand-off: Option B" artwork-align="center"}
 
@@ -1197,16 +1197,16 @@ Specifically, the actual mapping is a design choice of service operators that ma
    From the QoS perspective, both options are similar.  However, there
    is one difference between the two options.  The MPLS TC is only 3
    bits (8 possible combinations), while DSCP is 6 bits (64 possible
-   combinations).  Hence, SRv6 provides more flexibility for TN CoS
+   combinations).  Hence, SRv6 {{?RFC8754}} provides more flexibility for TN CoS
    design, especially in combination with soft policing with in-profile/
-   out-profile, as discussed in Section 4.1.1.
+   out-profile, as discussed in {{sec-inbound-edge-resource-control}}.
 
    Edge resources are controlled in a very granular, fine-grained
    manner, with dedicated resource allocation for each IETF Network
    Slice.  The resource control/enforcement happens at each SDP in two
    directions: inbound and outbound.
 
-###  Inbound Edge Resource Control
+###  Inbound Edge Resource Control {#sec-inbound-edge-resource-control}
 
    The main aspect of inbound edge resource control is per-slice traffic
    capacity enforcement.  This kind of enforcement is often called
@@ -1214,11 +1214,10 @@ Specifically, the actual mapping is a design choice of service operators that ma
    inbound enforcement is to ensure that the traffic above the
    contracted rate is dropped or deprioritized, depending on the
    business rules, right at the edge of TN domain.  This, combined with
-   appropriate network capacity planning/management, as described in
-   Section 6, is required to ensure proper isolation between slices in
+   appropriate network capacity planning/management ({{sec-capacity-planning}}) is required to ensure proper isolation between slices in
    scalable manner.  As a result, traffic of one slice has no influence
    on the traffic of other slices, even if the slice is misbehaving
-   (i.e., DDoS attack, equipment failure, etc.) and generates traffic
+   (e.g., DDoS attack, and equipment failure) and generates traffic
    volumes above the contracted rates.
 
    The slice rates can be characterized with following parameters
@@ -1796,10 +1795,11 @@ Specifically, the actual mapping is a design choice of service operators that ma
 ~~~
 {: #figure-25 title="Slice to Transport Plane mapping (5QI-aware Model)" artwork-align="center"}
 
-#  Capacity Planning/Management
+#  Capacity Planning/Management {#sec-capacity-planning}
 
    This section describes the information conveyed by the SMO to the
    transport controller with respect to slice bandwidth requirements.
+
    {{figure-26}} shows three DCs that contain instances of network
    functions.  Also shown are PEs that have links to the DCs.  The PEs
    belong to the transport network.  Other details of the transport
@@ -1880,27 +1880,27 @@ Specifically, the actual mapping is a design choice of service operators that ma
    principles apply in such cases.
 
 ~~~ aasvg
-         To┌──────┬──────┬──────┬──────────────┐
-   From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
-    ┌──────┼──────┼──────┼──────┼──────────────┤
-    │ DC 1 │ n/a  │  8   │  5   │     11.0     │
-    ├──────┼──────┼──────┼──────┼──────────────┤
-    │ DC 2 │  1   │ n/a  │  2   │      2.5     │
-    ├──────┼──────┼──────┼──────┼──────────────┤
-    │ DC 3 │  4   │  7   │ n/a  │     10.0     │
-    └──────┴──────┴──────┴──────┴──────────────┘
-                       Slice X
+      To┌──────┬──────┬──────┬──────────────┐
+From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
+ ┌──────┼──────┼──────┼──────┼──────────────┤
+ │ DC 1 │ n/a  │  8   │  5   │     11.0     │
+ ├──────┼──────┼──────┼──────┼──────────────┤
+ │ DC 2 │  1   │ n/a  │  2   │      2.5     │
+ ├──────┼──────┼──────┼──────┼──────────────┤
+ │ DC 3 │  4   │  7   │ n/a  │     10.0     │
+ └──────┴──────┴──────┴──────┴──────────────┘
+                    Slice X
 
-         To┌──────┬──────┬──────┬──────────────┐
-   From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
-    ┌──────┼──────┼──────┼──────┼──────────────┤
-    │ DC 1 │ n/a  │  4   │ 2.5  │     6.0      │
-    ├──────┼──────┼──────┼──────┼──────────────┤
-    │ DC 2 │ 0.5  │ n/a  │ 0.8  │     1.0      │
-    ├──────┼──────┼──────┼──────┼──────────────┤
-    │ DC 3 │ 2.6  │  3   │ n/a  │     5.1      │
-    └──────┴──────┴──────┴──────┴──────────────┘
-                       Slice Y
+      To┌──────┬──────┬──────┬──────────────┐
+From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
+ ┌──────┼──────┼──────┼──────┼──────────────┤
+ │ DC 1 │ n/a  │  4   │ 2.5  │     6.0      │
+ ├──────┼──────┼──────┼──────┼──────────────┤
+ │ DC 2 │ 0.5  │ n/a  │ 0.8  │     1.0      │
+ ├──────┼──────┼──────┼──────┼──────────────┤
+ │ DC 3 │ 2.6  │  3   │ n/a  │     5.1      │
+ └──────┴──────┴──────┴──────┴──────────────┘
+                    Slice Y
 ~~~
 {: #figure-27 title="Inter-DC Traffic Demand Matrix" artwork-align="center"}
 
@@ -1945,10 +1945,10 @@ Specifically, the actual mapping is a design choice of service operators that ma
    This section describes three bandwidth management schemes that could
    be employed in the transport network.  Many variations are possible,
    but each example describes the salient points of the corresponding
-   scheme.  Schemes 2 and 3 use TE, other variations on TE are possible
+   scheme.  Schemes 2 and 3 use TE; other variations on TE are possible
    as described in {{?I-D.ietf-teas-rfc3272bis}}.
 
-### Scheme 1: Shortest Path Forwarding
+### Scheme 1: Shortest Path Forwarding (SPF)
 
    Shortest path forwarding is used according to the IGP metric.  Given
    that some slices are likely to have latency SLOs, the IGP metric on
