@@ -148,15 +148,14 @@ informative:
 
 --- abstract
 
-   5G slicing is a new feature that was introduced by the 3rd Generation
-   Partnership Project (3GPP) in mobile networks.  It covers slicing
+   5G slicing is a feature that was introduced by the 3rd Generation
+   Partnership Project (3GPP) in mobile networks. This feature covers slicing
    requirements for all mobile domains, including the Radio Access
    Network (RAN), Core Network (CN), and Transport Network (TN).
 
    This document describes a basic IETF Network Slice realization model
    in IP/MPLS networks with a focus on the Transport Network fulfilling
-   5G slicing connectivity requirements.  This IETF Network Slice
-   realization model reuses many building blocks currently commonly used
+   5G slicing connectivity requirements.  This realization model reuses many building blocks currently commonly used
    in service provider networks.
 
 --- middle
@@ -215,10 +214,10 @@ An extended list of abbreviations used in this document are listed in {{ext-abbr
       resources of the whole 5G infrastructure to some users/customers,
       applications, or Public Land Mobile Networks (PLMNs) (e.g.,
       RAN sharing). These resources are from the Transport Network, RAN,
-      and CORE Network Functions and the underlying infrastructure.
+      and Core Network Functions and the underlying infrastructure.
       {{TS-28.530}} defines 5G network slicing by introducing the concept
       of Network Slice Subnet (NSS) to represent slices within each of
-      these domains: RAN, CORE, and Transport Network (i.e., RAN NSS, CN
+      these domains: RAN, CN, and Transport Network (i.e., RAN NSS, CN
       NSS and TN NSS).  As per 3GPP specifications, NSS can be shared or
       dedicated to a single slice.
 
@@ -293,7 +292,7 @@ An extended list of abbreviations used in this document are listed in {{ext-abbr
    The realization of IETF Network Slices (i.e. connectivity with
    performance commitments) applies therefore to the TN Segments.  We
    consider Local Segments as an extension of the connectivity of the
-   RAN/CORE domain without slice-specific performances requirements by
+   RAN/CN domain without slice-specific performances requirements by
    assuming that the local infrastructure is overprovisioned and
    implements traditional QoS/Scheduling logic.
 
@@ -521,7 +520,7 @@ Orchestration       Orchestration       Orchestration
       User Plane and Control Plane at Transport Network level.
 
    *  N to 1: Multiple 5G Network Slices may rely on a same IETF Network
-      Slice (i.e., in {{TS-28.530}} semantic, two RAN/CORE NSS rely on a
+      Slice (i.e., in {{TS-28.530}} semantic, two RAN/CN NSS rely on a
       shared TN NSS).  In this case, the SLA differentiation of slices
       would be entirely controlled at 5G Control Plane, for example with
       appropriate placement strategies: this use case is represented in
