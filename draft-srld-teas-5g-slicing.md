@@ -894,7 +894,7 @@ Orchestration       Orchestration       Orchestration
    encapsulation, or MPLSoUDP encapsulation, depending on the capability
    of the NF or cloud infrastructure, with the service label depicting
    the slice.
-   
+
    There are three major methods (based upon Section 10 of {{!RFC4364}}) for interconnecting multiple service domains:
 
    *  Option 10A ({{sec-10a}}): VRF-to-VRF connections.
