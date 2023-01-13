@@ -24,7 +24,7 @@ author:
    organization: Juniper Networks
    city: Wien
    country: Austria
-   email: mohamed.boucadair@orange.com
+   email: kszarkowicz@juniper.net
 
  -
    fullname: Richard Roberts
@@ -53,7 +53,7 @@ author:
     role: editor
     organization: Orange
     country: France
-    email: kszarkowicz@juniper.net
+    email: mohamed.boucadair@orange.com
 
  -
    fullname: Luis M. Contreras
