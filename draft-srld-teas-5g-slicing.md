@@ -2257,12 +2257,12 @@ User Plane          ╱     │           │         ╲
 ~~~
 {: #figure-28 title="5GS Architecture and Service-based Interfaces" artwork-align="center"}
 
-   Similar to previous versions {{?RFC6459}}, a 5G mobile network is split
-   into 4 major domains ({{figure-29}}):
+   Similar to previous versions of 3GPP mobile networks {{?RFC6459}}, a 5G mobile network is split
+   into the following four major domains ({{figure-29}}):
 
    *  UE, MS, MN, and Mobile:
 
-      : The terms UE (User Equipment), MS (Mobile Station), MN (Mobile
+      The terms UE (User Equipment), MS (Mobile Station), MN (Mobile
       Node), and mobile refer to the devices that are hosts with the
       ability to obtain Internet connectivity via a 3GPP network.  An MS
       is comprised of the Terminal Equipment (TE) and a Mobile Terminal
@@ -2271,24 +2271,24 @@ User Plane          ╱     │           │         ╲
 
    *  Radio Access Network (RAN):
 
-      : Provides wireless connectivity to the UE devices via radio.  It is
+      Provides wireless connectivity to the UE devices via radio.  It is
       made up of the Antenna that transmits and receives signals to the
       UE and the Base Station that digitizes the signal and converts the
       RF data stream to IP packets.
 
    *  Core Network (CN):
 
-      : Controls the CP of the RAN and provides connectivity to the Data
+      Controls the CP of the RAN and provides connectivity to the Data
       Network (e.g., the Internet or a private VPN).  The Core Network
       hosts dozens of services such as authentication, phone registry,
       charging, access to PSTN and handover.
 
    *  Transport Network (TN):
 
-      : Provides connectivity between sites where 5G Network Functions are
+      Provides connectivity between sites where 5G Network Functions are
       located.  The TN may connect sites from the RAN to the Core
       Network, as well as sites within the RAN or within the CN.  This
-      connectivity is achieved by IP Networking.
+      connectivity is achieved using IP.
 
 ~~~ aasvg
 ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
@@ -2322,18 +2322,21 @@ User Plane          ╱     │           │         ╲
    The 5G Core Network (5GC) is made up of a set of Network Functions
    (NFs) which fall into two main categories ({{figure-30}}):
 
-   *  5GC User Plane: the User Plane Function (UPF) is the interconnect
+   *  5GC User Plane:
+
+      The User Plane Function (UPF) is the interconnect
       point between the mobile infrastructure and the Data Network (DN).
       It interfaces with the RAN via the N3 interface by encapsulating/
       decapsulating the User Plane Traffic in GTP Tunnels (aka GTP-U or
       Mobile User Plane).
 
-   *  5GC Control Plane: the 5G Control Plane is made up of a
+   *  5GC Control Plane: 
+
+      The 5G Control Plane is made up of a
       comprehensive set of Network Functions.  An exhaustive list and
       description of these entities is out of the scope of this
       document.  The following NFs and interfaces are worth mentioning,
       since their connectivity may rely on the Transport Network:
-
 
       -  the AMF (Access and Mobility Function) connects with the RAN
          control plane over the N2 interface
@@ -2361,7 +2364,6 @@ User Plane          ╱     │           │         ╲
                                  └─────┘         `───────'
   │         │    │                         │
    ─ ─ ─ ─ ─      ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
-
 ~~~
 {: #figure-30 title="5G Core Network (CN)" artwork-align="center"}
 
@@ -2397,7 +2399,6 @@ User Plane          ╱     │           │         ╲
 
 
 ~~~ aasvg
-
             ┌─────────────────────────────────┐    ┌ ─ ─ ─ ─ ─ ┐
             │                                 │ N3
 ┌────┐  NR  │                                 ├────┤  5G Core  │
@@ -2440,8 +2441,6 @@ User Plane          ╱     │           │         ╲
 
 ##  Transport Network
 
-   5G TN segments
-
    The 5G transport architecture defines three main segments for the
    Transport Network, which are commonly referred to as Fronthaul (FH),
    Midhaul (MH), and Backhaul (BH) ({{TR-GSTR-TN5G}}):
@@ -2474,7 +2473,6 @@ User Plane          ╱     │           │         ╲
  ┌─┴──┐      ┌─┴─┴┐         ┌─┴─┴┐       ┌──┴──┐     .───.
  │ RU │      │ DU │         │ CU │       │ UPF ├────( DN  )
  └────┘      └────┘         └────┘       └─────┘     `───'
-
 ~~~
 {: #figure-32 title="5G Transport Segments" artwork-align="center"}
 
@@ -2504,7 +2502,6 @@ User Plane          ╱     │           │         ╲
  ┌─┴──┐      ┌─┴─┴┐         ┌─┴─┴┐        ┌─┴───┐     .───.
  │RU-2│      │DU-2│         │CU-2│        │UPF-2├────( DN  )
  └────┘      └────┘         └────┘        └─────┘     `───'
-
 ~~~
 {: #figure-33 title="Concurrent 5G Transport Segments" artwork-align="center"}
 
