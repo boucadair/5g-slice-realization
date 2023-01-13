@@ -1,5 +1,5 @@
 ---
-title: "A  Realization of IETF Network Slices for 5G Networks Using Current IP/MPLS Technologies"
+title: "A  Realization of IETF Network Slices for 5G Networks Using Current IP/ MPLS Technologies"
 abbrev: "5G Transport Slices"
 category: info
 
@@ -24,7 +24,7 @@ author:
    organization: Juniper Networks
    city: Wien
    country: Austria
-   email: kszarkowicz@juniper.net
+   email: kszaekiowicz@gmail.com
 
  -
    fullname: Richard Roberts
