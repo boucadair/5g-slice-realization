@@ -275,13 +275,13 @@ An extended list of abbreviations used in this document are listed in {{ext-abbr
    The datapath between two NFs may be decomposed into two segments based upon involved Orchestration
    domains:
 
-   (1)  TN Segment:
+   *  TN Segment:
 
       The realization of this segment is driven by the IETF
       Network Slice Controller (NSC) and the Transport Network Orchestrator (TNO). Generally, a
       TN Segment provides connectivity between two sites.
 
-   (2) Local Segment:
+   * Local Segment:
 
       This segment connects NFs within a given site or connects an NF to
       a TN. The realization of this segment is
@@ -523,16 +523,14 @@ An extended list of abbreviations used in this document are listed in {{ext-abbr
    There are multiple options to map a 5G network slice to IETF Network
    Slices:
 
-   (1)  1 to N:
-
+   * 1 to N:
       A single 5G Network Slice can map to multiple IETF Network
       Slices (1 to N).  One example of such a case is the separation of
       the 5G Control Plane and User Plane: this use case is represented
       in {{figure-5}} where a slice (EMBB) is deployed with a separation of
       User Plane and Control Plane at the TN.
 
-   (2) N to 1:
-
+   * N to 1:
       Multiple 5G Network Slices may rely upon the same IETF Network
       Slice (i.e., in {{TS-28.530}} semantic, two RAN/CN NSSes uses a
       shared TN NSS).  In such a case, the Service Level Agreement (SLA) differentiation of slices
@@ -543,8 +541,7 @@ An extended list of abbreviations used in this document are listed in {{ext-abbr
       better latency/jitter control, while the 5G Control Plane and the UPF
       for EMBB slice are instantiated in the regional cloud.
 
-   (3) N to M:
-
+   * N to M:
       The 5G to IETF Network Slice mapping combines both
       approaches with a mix of shared and dedicated associations.
 
