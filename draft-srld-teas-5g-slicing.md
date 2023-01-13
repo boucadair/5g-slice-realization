@@ -182,7 +182,7 @@ informative:
    The reader may refer to {{?I-D.ietf-teas-ns-ip-mpls}} for more advanced
    realization models.
 
-   A brief 5G overview is provided in {#5g-intro} for readers convenience. The reader may refer to {{?RFC6459}} and {{TS-23.501}} for more
+   A brief 5G overview is provided in {{sec-5g-intro}} for readers convenience. The reader may refer to {{?RFC6459}} and {{TS-23.501}} for more
    details about 3GPP network architectures.
 
 # Conventions and Definitions
@@ -2233,7 +2233,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
 
    VXLAN: Virtual Extensible Local Area Network
 
-#  An Overview of 5G Networking {#5g-intro}
+#  An Overview of 5G Networking {#sec-5g-intro}
 
    This section provides a brief introduction to 5G mobile networking
    with a perspective on the Transport Network.  This section does not
@@ -2381,10 +2381,10 @@ User Plane          ╱     │           │         ╲
 ~~~
 {: #figure-30 title="5G Core Network (CN)" artwork-align="center"}
 
-##  RAN
+##  Radio Access Network (RAN)
 
-   The radio access network (RAN) connects cellular wireless devices to
-   a mobile Core Network.  The RAN network is made up of 3 components,
+   The RAN connects cellular wireless devices to
+   a mobile Core Network.  The RAN is made up of three components,
    which form the Radio Base Station:
 
    *  The Baseband Unit (BBU) provides the interface between the Core
@@ -2400,7 +2400,7 @@ User Plane          ╱     │           │         ╲
 
 
    The 5G RAN Base Station is called a gNodeB (gNB).  It connects to the
-   Core Network via the N3 (user plane) and N2 (control plane)
+   Core Network via the N3 (User Plane) and N2 (Control Plane)
    interfaces.
 
    The 5G RAN architecture supports RAN disaggregation in various ways.
