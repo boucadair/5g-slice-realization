@@ -238,7 +238,7 @@ An extended list of abbreviations used in this document are listed in {{ext-abbr
       for logical separation, QoS (Quality of Service), or TE (Traffic
       Engineering).
 
-      The TN slice realization of a 5G slices can be non-uniform. For example, it can combine high isolation in one part of the TN, and low isolation in other parts of the TN.
+      The TN slice realization of a 5G slice can be non-uniform. For example, it can combine high isolation in one part of the TN, and low isolation in other parts of the TN.
 
       An optimized 5G network slicing architecture
       should integrate TN Slicing, however, it is
