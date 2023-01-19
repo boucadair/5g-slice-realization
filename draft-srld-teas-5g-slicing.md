@@ -231,17 +231,15 @@ An extended list of abbreviations used in this document are listed in {{ext-abbr
       Information Base (RIB) and Forwarding Information Base (FIB).
 
       TN Slicing has distinct flavors depending on the level of isolation of resources between slices. 
-      For example, the network capacity can be shared by all slices - usually with a guaranteed minimum (low isolation) -, or each individual slice can be allocated with dedicated network capacity (high isolation).
+      For example, the network capacity can be shared by all slices - usually with a guaranteed minimum (low isolation) -, or each individual slice can be allocated with dedicated network capacity (high isolation). The 5G slice realization may rely on a non-uniform allocation of ressources. For example, it can combine high isolation of TN resources in a set of network devices, and low isolation for others.
 
       There are different options to implement TN slices based upon
       tools, such as VRFs (Virtual Routing and Forwarding instances)
       for logical separation, QoS (Quality of Service), or TE (Traffic
       Engineering).
-
-      The 5G slice realization may rely on a non-uniform allocation of TN ressources. For example, it can combine high isolation of TN resources in a set of network devices, and low isolation for others.
-
-      An optimized 5G network slicing architecture
-      should integrate TN Slicing, however, it is
+      
+      A 5G network slicing architecture
+      should integrate TN Slicing for an optimal control of SLAs, however, it is
       possible to implement 5G Network Slicing without TN
       Slicing, as explained in the next section.
 
