@@ -5,7 +5,7 @@
 Traffic Engineering Architecture and Signaling        K. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 17 July 2023                                           J. Drake
+Expires: 24 July 2023                                           J. Drake
                                                         Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
@@ -23,7 +23,7 @@ Expires: 17 July 2023                                           J. Drake
                                                                  Rakuten
                                                                 M. Amani
                                                          British Telecom
-                                                         13 January 2023
+                                                         20 January 2023
 
 
  A Realization of IETF Network Slices for 5G Networks Using Current IP/
@@ -70,7 +70,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 17 July 2023.
+   This Internet-Draft will expire on 24 July 2023.
 
 Copyright Notice
 
@@ -213,24 +213,25 @@ Table of Contents
       such resources are: buffers, link capacity, or even Routing
       Information Base (RIB) and Forwarding Information Base (FIB).
 
-      TN Slicing has two main flavors: Hard and Soft slicing.  Hard
-      slicing provides dedicated network capacity to slices, while soft
-      slicing provides shared network capacity with guarantees for each
-      slice.
+      TN Slicing has distinct flavors depending on the level of
+      isolation of resources between slices.  For example, the network
+      capacity can be shared by all slices - usually with a guaranteed
+      minimum (low isolation) -, or each individual slice can be
+      allocated with dedicated network capacity (high isolation).  The
+      5G slice realization may rely on a non-uniform allocation of
+      ressources.  For example, it can combine high isolation of TN
+      resources in a set of network devices, and low isolation for
+      others.
 
       There are different options to implement TN slices based upon
       tools, such as VRFs (Virtual Routing and Forwarding instances) for
       logical separation, QoS (Quality of Service), or TE (Traffic
       Engineering).
 
-      TN slice realization for 5G slices may combine elements of hard
-      slicing in one part of the transport network, with elements of
-      soft slicing in other parts of the transport network.  Such as
-      design is deployment-specific.
-
-      An optimized 5G network slicing architecture should integrate TN
-      Slicing, however, it is possible to implement 5G Network Slicing
-      without TN Slicing, as explained in the next section.
+      A 5G network slicing architecture should integrate TN Slicing for
+      an optimal control of SLAs, however, it is possible to implement
+      5G Network Slicing without TN Slicing, as explained in the next
+      section.
 
       TN Slicing is implemented using IETF technologies, therefore,
       inline with [I-D.ietf-teas-ietf-network-slices].
@@ -2126,9 +2127,9 @@ Table of Contents
               Boucadair, M., de Dios, O. G., Barguil, S., Wu, Q., and V.
               Lopez, "A YANG Network Model for Service Attachment Points
               (SAPs)", Work in Progress, Internet-Draft, draft-ietf-
-              opsawg-sap-13, 9 January 2023,
+              opsawg-sap-15, 18 January 2023,
               <https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-
-              sap-13>.
+              sap-15>.
 
    [I-D.ietf-teas-ietf-network-slice-nbi-yang]
               Wu, B., Dhody, D., Rokui, R., Saad, T., Han, L., and J.

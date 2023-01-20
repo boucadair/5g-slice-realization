@@ -48,7 +48,7 @@
     requests 2.28.1
     setuptools 65.6.0
     six 1.16.0
-    wcwidth 0.2.5
+    wcwidth 0.2.6
 -->
 <link href="draft-srld-teas-5g-slicing.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -392,7 +392,7 @@ dl {
 dl > dt {
   float: left;
   margin-right: 1em;
-  min-width: 12ch;
+  min-width: 8ch;
 }
 dl.dlNewline > dt {
   float: none;
@@ -1061,7 +1061,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Szarkowicz, et al.</td>
-<td class="center">Expires 17 July 2023</td>
+<td class="center">Expires 24 July 2023</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1074,12 +1074,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-srld-teas-5g-slicing-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-01-13" class="published">13 January 2023</time>
+<time datetime="2023-01-20" class="published">20 January 2023</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2023-07-17">17 July 2023</time></dd>
+<dd class="expires"><time datetime="2023-07-24">24 July 2023</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1178,7 +1178,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 17 July 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 24 July 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1450,31 +1450,25 @@ guarantee, and prioritize Transport Network resources for slices. Examples of su
 buffers, link capacity, or even Routing
 Information Base (RIB) and Forwarding Information Base (FIB).<a href="#section-3.1-2.2.1" class="pilcrow">¶</a></p>
 <p id="section-3.1-2.2.2">
-TN Slicing has two main flavors: Hard and Soft slicing.  Hard slicing
-provides dedicated network capacity to slices, while soft slicing
-provides shared network capacity with guarantees for each slice.<a href="#section-3.1-2.2.2" class="pilcrow">¶</a></p>
+TN Slicing has distinct flavors depending on the level of isolation of resources between slices.
+For example, the network capacity can be shared by all slices - usually with a guaranteed minimum (low isolation) -, or each individual slice can be allocated with dedicated network capacity (high isolation). The 5G slice realization may rely on a non-uniform allocation of ressources. For example, it can combine high isolation of TN resources in a set of network devices, and low isolation for others.<a href="#section-3.1-2.2.2" class="pilcrow">¶</a></p>
 <p id="section-3.1-2.2.3">
 There are different options to implement TN slices based upon
 tools, such as VRFs (Virtual Routing and Forwarding instances)
 for logical separation, QoS (Quality of Service), or TE (Traffic
 Engineering).<a href="#section-3.1-2.2.3" class="pilcrow">¶</a></p>
 <p id="section-3.1-2.2.4">
-TN slice realization for 5G slices may
-combine elements of hard slicing in one part of the transport
-network, with elements of soft slicing in other parts of the
-transport network. Such as design is deployment-specific.<a href="#section-3.1-2.2.4" class="pilcrow">¶</a></p>
-<p id="section-3.1-2.2.5">
-An optimized 5G network slicing architecture
-should integrate TN Slicing, however, it is
+A 5G network slicing architecture
+should integrate TN Slicing for an optimal control of SLAs, however, it is
 possible to implement 5G Network Slicing without TN
-Slicing, as explained in the next section.<a href="#section-3.1-2.2.5" class="pilcrow">¶</a></p>
-<p id="section-3.1-2.2.6">
+Slicing, as explained in the next section.<a href="#section-3.1-2.2.4" class="pilcrow">¶</a></p>
+<p id="section-3.1-2.2.5">
 TN Slicing is implemented using IETF technologies, therefore, inline with
-<span>[<a href="#I-D.ietf-teas-ietf-network-slices" class="cite xref">I-D.ietf-teas-ietf-network-slices</a>]</span>.<a href="#section-3.1-2.2.6" class="pilcrow">¶</a></p>
-<p id="section-3.1-2.2.7">
+<span>[<a href="#I-D.ietf-teas-ietf-network-slices" class="cite xref">I-D.ietf-teas-ietf-network-slices</a>]</span>.<a href="#section-3.1-2.2.5" class="pilcrow">¶</a></p>
+<p id="section-3.1-2.2.6">
 In this document, the term "IETF Network Slice" (IETF NS, or INS in short) is used to
 describe the slice in the Transport Network domain of the overall 5G
-architecture, composed from RAN, TN, and CN domains.<a href="#section-3.1-2.2.7" class="pilcrow">¶</a></p>
+architecture, composed from RAN, TN, and CN domains.<a href="#section-3.1-2.2.6" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -8309,7 +8303,7 @@ prioritized classes.<a href="#section-5.2.1-3.2" class="pilcrow">¶</a>
 <dd class="break"></dd>
 <dt id="I-D.ietf-opsawg-sap">[I-D.ietf-opsawg-sap]</dt>
         <dd>
-<span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, <span class="refAuthor">Wu, Q.</span>, and <span class="refAuthor">V. Lopez</span>, <span class="refTitle">"A YANG Network Model for Service Attachment Points (SAPs)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-opsawg-sap-13</span>, <time datetime="2023-01-09" class="refDate">9 January 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-sap-13">https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-sap-13</a>&gt;</span>. </dd>
+<span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, <span class="refAuthor">Wu, Q.</span>, and <span class="refAuthor">V. Lopez</span>, <span class="refTitle">"A YANG Network Model for Service Attachment Points (SAPs)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-opsawg-sap-15</span>, <time datetime="2023-01-18" class="refDate">18 January 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-sap-15">https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-sap-15</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-teas-ietf-network-slice-nbi-yang">[I-D.ietf-teas-ietf-network-slice-nbi-yang]</dt>
         <dd>
