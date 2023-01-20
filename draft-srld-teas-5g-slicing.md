@@ -230,22 +230,16 @@ An extended list of abbreviations used in this document are listed in {{ext-abbr
       buffers, link capacity, or even Routing
       Information Base (RIB) and Forwarding Information Base (FIB).
 
-      TN Slicing has two main flavors: Hard and Soft slicing.  Hard slicing
-      provides dedicated network capacity to slices, while soft slicing
-      provides shared network capacity with guarantees for each slice.
+      TN Slicing has distinct flavors depending on the level of isolation of resources between slices. 
+      For example, the network capacity can be shared by all slices - usually with a guaranteed minimum (low isolation) -, or each individual slice can be allocated with dedicated network capacity (high isolation). The 5G slice realization may rely on a non-uniform allocation of ressources. For example, it can combine high isolation of TN resources in a set of network devices, and low isolation for others.
 
       There are different options to implement TN slices based upon
       tools, such as VRFs (Virtual Routing and Forwarding instances)
       for logical separation, QoS (Quality of Service), or TE (Traffic
       Engineering).
-
-      TN slice realization for 5G slices may
-      combine elements of hard slicing in one part of the transport
-      network, with elements of soft slicing in other parts of the
-      transport network. Such as design is deployment-specific.
-
-      An optimized 5G network slicing architecture
-      should integrate TN Slicing, however, it is
+      
+      A 5G network slicing architecture
+      should integrate TN Slicing for an optimal control of SLAs, however, it is
       possible to implement 5G Network Slicing without TN
       Slicing, as explained in the next section.
 
