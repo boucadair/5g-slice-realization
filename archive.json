@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-01-19T00:29:37.967764+00:00",
+  "timestamp": "2023-01-22T00:31:17.144794+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -50,5 +50,34 @@
     }
   ],
   "issues": [],
-  "pulls": []
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOIw9g6c5IIgj9",
+      "title": "fix typo",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/1",
+      "state": "MERGED",
+      "author": "robric",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-01-19T14:48:49Z",
+      "updatedAt": "2023-01-20T07:29:59Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "65addc0b130b07309b7b701eea82863759de4695",
+      "headRepository": "robric/5g-slice-realization",
+      "headRefName": "main",
+      "headRefOid": "23aa644e6147102f77a397a63e3b858a54d1bade",
+      "closedAt": "2023-01-20T07:29:59Z",
+      "mergedAt": "2023-01-20T07:29:59Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "9d590449ed8441f573f942c3ab78212c77bf0573"
+      },
+      "comments": [],
+      "reviews": []
+    }
+  ]
 }
