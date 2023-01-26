@@ -10,7 +10,7 @@ date:
 consensus: true
 v: 3
 area: "Routing"
-workgroup: "Traffic Engineering Architecture and Signaling"
+workgroup: "TEAS"
 keyword:
  - L3VPN
  - L2VPN
@@ -163,7 +163,7 @@ informative:
 
 #  Introduction
 
-   {{!I-D.ietf-teas-ietf-network-slices}} introduces the framework for
+   {{!I-D.ietf-teas-ietf-network-slices}} defines a framework for
    network slicing in the context of networks built using IETF
    technologies.  The IETF network slicing framework introduces the
    concept of a Network Resource Partition (NRP), which is simply a
@@ -176,8 +176,8 @@ informative:
    This document describes a basic - using only single NRP - IETF
    Network Slice realization model in IP/MPLS networks, with a focus on
    fulfilling 5G slicing connectivity requirements.  This IETF Network
-   Slice realization model reuses many building blocks currently
-   commonly used in communication service provider networks.
+   Slice realization model leverages many building blocks currently
+   commonly used in service provider networks.
 
    The reader may refer to {{?I-D.ietf-teas-ns-ip-mpls}} for more advanced
    realization models.
@@ -193,14 +193,11 @@ The document uses the terms defined in {{!I-D.ietf-teas-ietf-network-slices}}.
 
 This document makes use of the following terms:
 
-   Service Management and Orchestration (SMO):
+Service Management and Orchestration (SMO):
+: O-RAN management/orchestration entity
 
-   O-RAN management/orchestration entity
-
-   Edge Transport Node (ETN):
-
-   Node, under the transport domain orchestration, that stitches the
-      transport domain to adjacent domains. An ETN can be be a Provider Edge (PE) or a managed Customer Equipment (CE).
+Edge Transport Node (ETN):
+: Node, under the transport domain orchestration, that stitches the transport domain to adjacent domains. An ETN can be be a Provider Edge (PE) or a managed Customer Equipment (CE).
 
 An extended list of abbreviations used in this document are listed in {{ext-abbr}}.
 
@@ -213,40 +210,37 @@ An extended list of abbreviations used in this document are listed in {{ext-abbr
    brief description of the objectives of 5G Network Slicing and
    Transport Network Slicing:
 
-   *  An objective of 5G Network Slicing is to provide dedicated
+   5G Network Slicing:
+   : An objective of 5G Network Slicing is to provide dedicated
       resources of the whole 5G infrastructure to some users/customers,
       applications, or Public Land Mobile Networks (PLMNs) (e.g.,
       RAN sharing). These resources are from the Transport Network (TN), RAN,
       and Core Network Functions and the underlying infrastructure.
 
-      {{TS-28.530}} defines 5G Network Slicing by introducing the concept
+    : {{TS-28.530}} defines 5G Network Slicing by introducing the concept
       of Network Slice Subnet (NSS) to represent slices within each of
       these domains: RAN, CN, and TN (i.e., RAN NSS, CN
       NSS and TN NSS).  As per 3GPP specifications, an NSS can be shared or
       dedicated to a single slice.
 
-   *  An objective of TN Slicing is to isolate,
+   TN Slicing:
+   : An objective of TN Slicing is to isolate,
       guarantee, and prioritize Transport Network resources for slices. Examples of such resources are:
       buffers, link capacity, or even Routing
       Information Base (RIB) and Forwarding Information Base (FIB).
-
-      TN Slicing has distinct flavors depending on the level of isolation of resources between slices.
+    : TN Slicing has distinct flavors depending on the level of isolation of resources between slices.
       For example, the network capacity can be shared by all slices - usually with a guaranteed minimum (low isolation) -, or each individual slice can be allocated with dedicated network capacity (high isolation). The 5G slice realization may rely on a non-uniform allocation of ressources. For example, it can combine high isolation of TN resources in a set of network devices, and low isolation for others.
-
-      There are different options to implement TN slices based upon
+    : There are different options to implement TN slices based upon
       tools, such as VRFs (Virtual Routing and Forwarding instances)
       for logical separation, QoS (Quality of Service), or TE (Traffic
       Engineering).
-
-      A 5G network slicing architecture
+    : A 5G network slicing architecture
       should integrate TN Slicing for an optimal control of SLAs, however, it is
       possible to implement 5G Network Slicing without TN
       Slicing, as explained in the next section.
-
-      TN Slicing is implemented using IETF technologies, therefore, inline with
+    : TN Slicing is implemented using IETF technologies, therefore, inline with
       {{!I-D.ietf-teas-ietf-network-slices}}.
-
-      In this document, the term "IETF Network Slice" (IETF NS, or INS in short) is used to
+    : In this document, the term "IETF Network Slice" (IETF NS, or INS in short) is used to
       describe the slice in the Transport Network domain of the overall 5G
       architecture, composed from RAN, TN, and CN domains.
 
@@ -463,7 +457,7 @@ An extended list of abbreviations used in this document are listed in {{ext-abbr
 ~~~
 {: #figure-3 title="Examples of various combinations of Local Segments, ETN, and SDP" artwork-align="center"}
 
-###  Orchestration of Local Segment Termination at ETN
+###  Orchestration of Local Segment Terminations at ETN
 
    The interconnection between a 5G site and the Transport Network is
    made up of shared networking resources.  More precisely, the Local
@@ -1061,7 +1055,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
    at the same time the TN segment for 5G backhaul (N3 interface) might
    follow the 5QI-aware model.
 
-##  5QI-unaware Mode
+##  5QI-unaware Mode {#sec-5QI-unaware}
 
    In 5QI-unaware mode, the DSCP values in the packets received from NF
    at SDP are ignored.  In the TN domain, there is no QoS
@@ -1504,8 +1498,8 @@ Specifically, the actual mapping is a design choice of service operators that ma
    slice admission control) with the per traffic class admission
    control, as outlined in {{figure-20}}.  Ingress admission control is at
    class granularity for premium classes (CIR only).  Non-premium class
-   (i.e.  Best Effort) has no separate class admission control policy,
-   but is allowed to use entire slice capacity, which is available at
+   (i.e.,  Best Effort) has no separate class admission control policy,
+   but it is allowed to use the entire slice capacity, which is available at
    any given moment.  I.e., slice capacity, which is not consumed by
    premium classes.  It is a hierarchical model, as depicted in
    {{figure-21}}.
@@ -1670,7 +1664,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
 ~~~
 {: #figure-23 title="Transport Planes" artwork-align="center"}
 
-   Similar to the QoS mapping models discussed in Section 4, for mapping
+   Similar to the QoS mapping models discussed in {{sec-qos-map}}, for mapping
    to transport planes at the ingress PE, both 5QI-unaware and 5QI-aware
    modes are defined.  In essence, entire slices can be mapped to
    transport planes without 5G QoS consideration (5QI-unaware mode), or
@@ -1680,7 +1674,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
 
 ##  5QI-unaware Mode
 
-   As discussed in Section 4.1, in the 5QI-unware model, the TN domain
+   As discussed in {{sec-5QI-unaware}}, in the 5QI-unware model, the TN domain
    doesn't take into account 5G QoS during execution of per-hop
    behavior.  The entire slice is mapped to single TN QoS Class,
    therefore the entire slice is subject to the same per-hop behavior.
@@ -1835,10 +1829,10 @@ Specifically, the actual mapping is a design choice of service operators that ma
 
    Let us consider 5G Slice X that uses some of the network functions in
    the three DCs.  If the slice has latency requirements, the SMO will
-   have taken those into account when deciding which network functions
-   in which DC would participate in the slice.  As a result of that
+   have taken those into account when deciding which NF instances
+   in which DC would be invoked for the slice.  As a result of such a
    placement decision, the three DCs shown are involved in 5G Slice X,
-   rather than other DCs.  In order to make this determination, the SMO
+   rather than other DCs.  For its decision-making, the SMO
    needs information from the NSC about the latency between DCs.
    Preferably, the NSC would present the topology in an abstracted form,
    consisting of point-to-point abstracted links between pairs of DCs
