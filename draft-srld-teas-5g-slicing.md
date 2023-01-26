@@ -24,7 +24,7 @@ author:
    organization: Juniper Networks
    city: Wien
    country: Austria
-   email: kszarkowicz@gmail.com
+   email: kszarkowicz@juniper.net
 
  -
    fullname: Richard Roberts
