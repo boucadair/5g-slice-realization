@@ -211,7 +211,7 @@ An extended list of abbreviations used in this document are listed in {{ext-abbr
    Transport Network Slicing:
 
    5G Network Slicing:
-   : An objective of 5G Network Slicing is to provide dedicated
+   : The objective of 5G Network Slicing is to provide dedicated
       resources of the whole 5G infrastructure to some users/customers,
       applications, or Public Land Mobile Networks (PLMNs) (e.g.,
       RAN sharing). These resources are from the Transport Network (TN), RAN,
@@ -224,12 +224,11 @@ An extended list of abbreviations used in this document are listed in {{ext-abbr
       dedicated to a single slice.
 
    TN Slicing:
-   : An objective of TN Slicing is to isolate,
-      guarantee, and prioritize Transport Network resources for slices. Examples of such resources are:
+   : The objective of TN Slicing is to isolate,
+      guarantee, or prioritize Transport Network resources for slices. Examples of such resources are:
       buffers, link capacity, or even Routing
       Information Base (RIB) and Forwarding Information Base (FIB).
-    : TN Slicing has distinct flavors depending on the level of isolation of resources between slices.
-      For example, the network capacity can be shared by all slices - usually with a guaranteed minimum (low isolation) -, or each individual slice can be allocated with dedicated network capacity (high isolation). The 5G slice realization may rely on a non-uniform allocation of ressources. For example, it can combine high isolation of TN resources in a set of network devices, and low isolation for others.
+    : TN Slicing provides various degrees of sharing of resources between slices. For example, the network capacity can be shared by all slices, usually with a guaranteed minimum per slice, or each individual slice can be allocated dedicated network capacity. Parts of a given network may use the former, while others use the latter. For example, shared TN resources could be provided in the backhaul, and dedicated TN resources could be provided in the midhaul.
     : There are different options to implement TN slices based upon
       tools, such as VRFs (Virtual Routing and Forwarding instances)
       for logical separation, QoS (Quality of Service), or TE (Traffic
