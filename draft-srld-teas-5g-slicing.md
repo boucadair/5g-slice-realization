@@ -210,36 +210,43 @@ An extended list of abbreviations used in this document are listed in {{ext-abbr
    brief description of the objectives of 5G Network Slicing and
    Transport Network Slicing:
 
-   5G Network Slicing:
-   : The objective of 5G Network Slicing is to provide dedicated
+   * 5G Network Slicing:
+
+      The objective of 5G Network Slicing is to provide dedicated
       resources of the whole 5G infrastructure to some users/customers,
       applications, or Public Land Mobile Networks (PLMNs) (e.g.,
       RAN sharing). These resources are from the Transport Network (TN), RAN,
       and Core Network Functions and the underlying infrastructure.
 
-    : {{TS-28.530}} defines 5G Network Slicing by introducing the concept
+      {{TS-28.530}} defines 5G Network Slicing by introducing the concept
       of Network Slice Subnet (NSS) to represent slices within each of
       these domains: RAN, CN, and TN (i.e., RAN NSS, CN
       NSS and TN NSS).  As per 3GPP specifications, an NSS can be shared or
       dedicated to a single slice.
 
-   TN Slicing:
-   : The objective of TN Slicing is to isolate,
+   * TN Slicing:
+
+      The objective of TN Slicing is to isolate,
       guarantee, or prioritize Transport Network resources for slices. Examples of such resources are:
       buffers, link capacity, or even Routing
       Information Base (RIB) and Forwarding Information Base (FIB).
-    : TN Slicing provides various degrees of sharing of resources between slices. For example, the network capacity can be shared by all slices, usually with a guaranteed minimum per slice, or each individual slice can be allocated dedicated network capacity. Parts of a given network may use the former, while others use the latter. For example, shared TN resources could be provided in the backhaul, and dedicated TN resources could be provided in the midhaul.
-    : There are different options to implement TN slices based upon
+
+     TN Slicing provides various degrees of sharing of resources between slices. For example, the network capacity can be shared by all slices, usually with a guaranteed minimum per slice, or each individual slice can be allocated dedicated network capacity. Parts of a given network may use the former, while others use the latter. For example, shared TN resources could be provided in the backhaul, and dedicated TN resources could be provided in the midhaul.
+
+      There are different options to implement TN slices based upon
       tools, such as VRFs (Virtual Routing and Forwarding instances)
       for logical separation, QoS (Quality of Service), or TE (Traffic
       Engineering).
-    : A 5G network slicing architecture
+
+      A 5G network slicing architecture
       should integrate TN Slicing for an optimal control of SLAs, however, it is
       possible to implement 5G Network Slicing without TN
       Slicing, as explained in the next section.
-    : TN Slicing is implemented using IETF technologies, therefore, inline with
+
+      TN Slicing is implemented using IETF technologies, therefore, inline with
       {{!I-D.ietf-teas-ietf-network-slices}}.
-    : In this document, the term "IETF Network Slice" (IETF NS, or INS in short) is used to
+      
+      In this document, the term "IETF Network Slice" (IETF NS, or INS in short) is used to
       describe the slice in the Transport Network domain of the overall 5G
       architecture, composed from RAN, TN, and CN domains.
 
