@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-01-29T00:32:36.894054+00:00",
+  "timestamp": "2023-01-31T00:31:21.885996+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -49,7 +49,24 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 2,
+      "id": "I_kwDOIw9g6c5dJmH8",
+      "title": "should we restrict to IETF API for TN orchestration ? ",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/2",
+      "state": "OPEN",
+      "author": "robric",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Section 3.2.2 may be too restrictive since it mandates the use of IETF API.  However, TMF APIs are also very common at this level of abstraction. We may rather focus on data models instead of API and not be restrictive on APIs (we can recommend IETF API though).\r\n\r\nR\r\nquoting:\r\n\"\r\nIn this document, and aligned with {{?RFC8969}}, we assume that this coordination is based upon\r\n   IETF YANG data models and APIs (more details in further sections).\r\n\"",
+      "createdAt": "2023-01-30T16:44:54Z",
+      "updatedAt": "2023-01-30T16:44:54Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
   "pulls": [
     {
       "number": 1,
