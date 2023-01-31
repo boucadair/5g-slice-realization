@@ -467,7 +467,7 @@ An extended list of abbreviations used in this document are listed in {{ext-abbr
    interconnection requires a coordination between the Service
    Management and Orchestration (SMO) and the Transport Orchestration (IETF
    NSC).  In this document, and aligned with {{?RFC8969}}, we assume that this coordination is based upon
-   IETF YANG data models and APIs (more details in further sections).
+   standard YANG data models and APIs (more details in further sections).
 
    {{figure-4}} is a basic example of a Layer 3 CE-PE link realization
    with shared network resources, such as VLAN-ID and IP prefixes, which
