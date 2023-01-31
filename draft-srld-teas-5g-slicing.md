@@ -245,7 +245,7 @@ An extended list of abbreviations used in this document are listed in {{ext-abbr
 
       TN Slicing is implemented using IETF technologies, therefore, inline with
       {{!I-D.ietf-teas-ietf-network-slices}}.
-      
+
       In this document, the term "IETF Network Slice" (IETF NS, or INS in short) is used to
       describe the slice in the Transport Network domain of the overall 5G
       architecture, composed from RAN, TN, and CN domains.
