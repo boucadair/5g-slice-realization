@@ -1223,7 +1223,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-nf-to-nf-datapath-vs-transp" class="internal xref">NF-to-NF Datapath vs Transport Network</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.1">
-                    <p id="section-toc.1-1.3.2.2.2.1.1"><a href="#section-3.2.1" class="auto internal xref">3.2.1</a>.  <a href="#name-segmentation-of-nf-to-nf-da" class="internal xref">Segmentation of NF-to-NF Datapath</a></p>
+                    <p id="section-toc.1-1.3.2.2.2.1.1"><a href="#section-3.2.1" class="auto internal xref">3.2.1</a>.  <a href="#name-segmentation-of-the-nf-to-n" class="internal xref">Segmentation of the NF-to-NF Datapath</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.2">
                     <p id="section-toc.1-1.3.2.2.2.2.1"><a href="#section-3.2.2" class="auto internal xref">3.2.2</a>.  <a href="#name-orchestration-of-local-segm" class="internal xref">Orchestration of Local Segment Terminations at ETN</a></p>
@@ -1498,34 +1498,28 @@ In this document, the term "IETF Network Slice" (IETF NS, or INS in short) is us
 <p id="section-3.2-2">This document defines the Transport Network with a service provider scope. That is, the TN extends up to
    the PE or the CE if it is also managed by the TN Orchestration. Additionally, we assume that the Transport Network is IP, MPLS, or SRv6
    capable.<a href="#section-3.2-2" class="pilcrow">¶</a></p>
-<div id="segmentation-of-nf-to-nf-datapath">
+<div id="segmentation-of-the-nf-to-nf-datapath">
 <section id="section-3.2.1">
-          <h4 id="name-segmentation-of-nf-to-nf-da">
-<a href="#section-3.2.1" class="section-number selfRef">3.2.1. </a><a href="#name-segmentation-of-nf-to-nf-da" class="section-name selfRef">Segmentation of NF-to-NF Datapath</a>
+          <h4 id="name-segmentation-of-the-nf-to-n">
+<a href="#section-3.2.1" class="section-number selfRef">3.2.1. </a><a href="#name-segmentation-of-the-nf-to-n" class="section-name selfRef">Segmentation of the NF-to-NF Datapath</a>
           </h4>
-<p id="section-3.2.1-1">The datapath between NFs may be decomposed into two segments based upon involved Orchestration
+<p id="section-3.2.1-1">The datapath between NFs may be decomposed into two type of segments based on Orchestration
    domains:<a href="#section-3.2.1-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-3.2.1-2.1">
-              <p id="section-3.2.1-2.1.1">TN Segment:<a href="#section-3.2.1-2.1.1" class="pilcrow">¶</a></p>
-<p id="section-3.2.1-2.1.2">
-The realization of this segment is driven by the IETF
-Network Slice Controller (NSC) and the Transport Network Orchestrator (TNO). Generally, a
-TN Segment provides connectivity between two sites that host NFs.<a href="#section-3.2.1-2.1.2" class="pilcrow">¶</a></p>
+<li class="normal" id="section-3.2.1-2.1">TN Segment:
+The TN Segment provides connectivity between two sites that host NFs. The realization of this segment is driven by the IETF
+Network Slice Controller (NSC) and the Transport Network Orchestrator (TNO).<a href="#section-3.2.1-2.1" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="section-3.2.1-2.2">
-              <p id="section-3.2.1-2.2.1">Local Segment:<a href="#section-3.2.1-2.2.1" class="pilcrow">¶</a></p>
-<p id="section-3.2.1-2.2.2">
-This segment connects NFs within a given site or connects an NF to
- a TN. The realization of this segment is
- directly or indirectly driven by the 5G Orchestration without any
- involvement of the TNO.  Generally, the Local Segment is a datapath local to a site.  This
+            <li class="normal" id="section-3.2.1-2.2">Local Segment:
+ The Local segment either connects two NFs within a given site or connects a NF to
+ the TN. In the first case, the realization of the segment is  driven by the 5G Orchestration without any
+ involvement of the Transport Network Orchestration. In the second case, the realization of this segment partially relies on the NSC/TNO for the configuration of the TN-side of the segment (e.g. the configuration of the attachment circuit on a PE interface).  Generally, the Local Segment is a datapath local to a site with a  a potential extension to reach the TN. A
  site can be (but not limited to): a Data Center (DC), a Point of Presence (PoP), a
  Central Office (CO), or a virtualized infrastructure in a Public
- Cloud.<a href="#section-3.2.1-2.2.2" class="pilcrow">¶</a></p>
+ Cloud.<a href="#section-3.2.1-2.2" class="pilcrow">¶</a>
 </li>
           </ul>
-<p id="section-3.2.1-3">Note that more complex scenarios may be considered (for example, adding an extra
+<p id="section-3.2.1-3">Note that more complex scenarios can be considered (for example, adding an extra
    segmentation of TN or Local Segments).  Additionally, sites can be of
    different types (such as Edge, Data Center, or Public Cloud), each with
    specific network design, hardware dependencies, management interface,
