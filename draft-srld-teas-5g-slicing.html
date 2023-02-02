@@ -1057,11 +1057,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">5G Transport Slices</td>
-<td class="right">January 2023</td>
+<td class="right">February 2023</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Szarkowicz, et al.</td>
-<td class="center">Expires 4 August 2023</td>
+<td class="center">Expires 6 August 2023</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1074,12 +1074,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-srld-teas-5g-slicing-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-01-31" class="published">31 January 2023</time>
+<time datetime="2023-02-02" class="published">2 February 2023</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2023-08-04">4 August 2023</time></dd>
+<dd class="expires"><time datetime="2023-08-06">6 August 2023</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1178,7 +1178,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 4 August 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 6 August 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1394,7 +1394,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
    commonly used in service provider networks.<a href="#section-1-2" class="pilcrow">¶</a></p>
 <p id="section-1-3">The reader may refer to <span>[<a href="#I-D.ietf-teas-ns-ip-mpls" class="cite xref">I-D.ietf-teas-ns-ip-mpls</a>]</span> for more advanced
    realization models.<a href="#section-1-3" class="pilcrow">¶</a></p>
-<p id="section-1-4">A brief 5G overview is provided in <a href="#sec-5g-intro" class="auto internal xref">Appendix B</a> for readers convenience. The reader may refer to <span>[<a href="#RFC6459" class="cite xref">RFC6459</a>]</span> and <span>[<a href="#TS-23.501" class="cite xref">TS-23.501</a>]</span> for more
+<p id="section-1-4">A brief 5G overview is provided in <a href="#sec-5g-intro" class="auto internal xref">Appendix B</a> for readers' convenience. The reader may refer to <span>[<a href="#RFC6459" class="cite xref">RFC6459</a>]</span> and <span>[<a href="#TS-23.501" class="cite xref">TS-23.501</a>]</span> for more
    details about 3GPP network architectures.<a href="#section-1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1421,7 +1421,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 </dd>
       <dd class="break"></dd>
 </dl>
-<p id="section-2-5">An extended list of abbreviations used in this document are listed in <a href="#ext-abbr" class="auto internal xref">Appendix A</a>.<a href="#section-2-5" class="pilcrow">¶</a></p>
+<p id="section-2-5">An extended list of abbreviations used in this document is provided in <a href="#ext-abbr" class="auto internal xref">Appendix A</a>.<a href="#section-2-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="g-network-slicing-integration-in-transport-networks">
@@ -1450,7 +1450,7 @@ The objective of 5G Network Slicing is to provide dedicated
 <p id="section-3.1-2.1.3"><span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span> defines 5G Network Slicing by introducing the concept
  of Network Slice Subnet (NSS) to represent slices within each of
  these domains: RAN, CN, and TN (i.e., RAN NSS, CN
- NSS and TN NSS).  As per 3GPP specifications, an NSS can be shared or
+ NSS, and TN NSS).  As per 3GPP specifications, an NSS can be shared or
  dedicated to a single slice.<a href="#section-3.1-2.1.3" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-3.1-2.2">
@@ -1503,7 +1503,7 @@ In this document, the term "IETF Network Slice" (IETF NS, or INS in short) is us
           <h4 id="name-segmentation-of-nf-to-nf-da">
 <a href="#section-3.2.1" class="section-number selfRef">3.2.1. </a><a href="#name-segmentation-of-nf-to-nf-da" class="section-name selfRef">Segmentation of NF-to-NF Datapath</a>
           </h4>
-<p id="section-3.2.1-1">The datapath between two NFs may be decomposed into two segments based upon involved Orchestration
+<p id="section-3.2.1-1">The datapath between NFs may be decomposed into two segments based upon involved Orchestration
    domains:<a href="#section-3.2.1-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-3.2.1-2.1">
@@ -1511,7 +1511,7 @@ In this document, the term "IETF Network Slice" (IETF NS, or INS in short) is us
 <p id="section-3.2.1-2.1.2">
 The realization of this segment is driven by the IETF
 Network Slice Controller (NSC) and the Transport Network Orchestrator (TNO). Generally, a
-TN Segment provides connectivity between two sites.<a href="#section-3.2.1-2.1.2" class="pilcrow">¶</a></p>
+TN Segment provides connectivity between two sites that host NFs.<a href="#section-3.2.1-2.1.2" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-3.2.1-2.2">
               <p id="section-3.2.1-2.2.1">Local Segment:<a href="#section-3.2.1-2.2.1" class="pilcrow">¶</a></p>
@@ -2992,7 +2992,7 @@ multiple containers in a cloud architecture).<a href="#section-3.2.1-11.4" class
    case for the deployment of subsequent slices because they can share
    the same CP of the first slice, while instantiating dedicated UP.  An
    example of an incremental deployment is depicted in <a href="#_figure-7" class="auto internal xref">Figure 7</a>.<a href="#section-3.4-1" class="pilcrow">¶</a></p>
-<p id="section-3.4-2">At the time of writing, Section 6.2 of <span>[<a href="#NG.113" class="cite xref">NG.113</a>]</span> specifies that the
+<p id="section-3.4-2">At the time of writing (2023), Section 6.2 of <span>[<a href="#NG.113" class="cite xref">NG.113</a>]</span> specifies that the
    eMBB slice (SST=1 and no SD) should be supported globally.  This 5G
    slice would be the first slice in any 5G deployment.<a href="#section-3.4-2" class="pilcrow">¶</a></p>
 <p id="section-3.4-3">Note that the actual realization of the mapping depends on several
@@ -5119,9 +5119,9 @@ change at domain boundaries.<a href="#section-4.3-3.3" class="pilcrow">¶</a>
    contracted rate is dropped or deprioritized, depending on the
    business rules, right at the edge of TN domain.  This, combined with
    appropriate network capacity planning/management (<a href="#sec-capacity-planning" class="auto internal xref">Section 7</a>) is required to ensure proper isolation between slices in
-   scalable manner.  As a result, traffic of one slice has no influence
+   a scalable manner.  As a result, traffic of one slice has no influence
    on the traffic of other slices, even if the slice is misbehaving
-   (e.g., DDoS attack, and equipment failure) and generates traffic
+   (e.g., DDoS attacks or node/link failures) and generates traffic
    volumes above the contracted rates.<a href="#section-5.1.1-1" class="pilcrow">¶</a></p>
 <p id="section-5.1.1-2">The slice rates can be characterized with following parameters
    <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="cite xref">I-D.ietf-teas-ietf-network-slice-nbi-yang</a>]</span>:<a href="#section-5.1.1-2" class="pilcrow">¶</a></p>
@@ -5995,7 +5995,7 @@ outbound direction at transport edge links.<a href="#section-5.1.2-2.2" class="p
 <a href="#name-slice-5q-qos-to-tn-qos-mapp" class="selfRef">Slice 5Q QoS to TN QoS Mapping (5QI-aware Model)</a>
           </figcaption></figure>
 </div>
-<p id="section-5.2-3">Given the fact that in large scale deployments (large number of 5G
+<p id="section-5.2-3">Given that in large scale deployments (large number of 5G
    slices), the number of potential 5G QoS Classes is much higher than
    the number of TN QoS Classes, multiple 5G QoS Classes with similar
    characteristics - potentially from different IETF Network Slices -

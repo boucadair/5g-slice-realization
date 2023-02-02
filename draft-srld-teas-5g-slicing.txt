@@ -5,7 +5,7 @@
 TEAS                                                  K. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 4 August 2023                                          J. Drake
+Expires: 6 August 2023                                          J. Drake
                                                         Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
@@ -23,7 +23,7 @@ Expires: 4 August 2023                                          J. Drake
                                                                  Rakuten
                                                                 M. Amani
                                                          British Telecom
-                                                         31 January 2023
+                                                         2 February 2023
 
 
  A Realization of IETF Network Slices for 5G Networks Using Current IP/
@@ -70,7 +70,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 4 August 2023.
+   This Internet-Draft will expire on 6 August 2023.
 
 Copyright Notice
 
@@ -156,7 +156,7 @@ Table of Contents
    The reader may refer to [I-D.ietf-teas-ns-ip-mpls] for more advanced
    realization models.
 
-   A brief 5G overview is provided in Appendix B for readers
+   A brief 5G overview is provided in Appendix B for readers'
    convenience.  The reader may refer to [RFC6459] and [TS-23.501] for
    more details about 3GPP network architectures.
 
@@ -181,8 +181,8 @@ Table of Contents
       domains.  An ETN can be be a Provider Edge (PE) or a managed
       Customer Equipment (CE).
 
-   An extended list of abbreviations used in this document are listed in
-   Appendix A.
+   An extended list of abbreviations used in this document is provided
+   in Appendix A.
 
 3.  5G Network Slicing Integration in Transport Networks
 
@@ -204,9 +204,9 @@ Table of Contents
 
       [TS-28.530] defines 5G Network Slicing by introducing the concept
       of Network Slice Subnet (NSS) to represent slices within each of
-      these domains: RAN, CN, and TN (i.e., RAN NSS, CN NSS and TN NSS).
-      As per 3GPP specifications, an NSS can be shared or dedicated to a
-      single slice.
+      these domains: RAN, CN, and TN (i.e., RAN NSS, CN NSS, and TN
+      NSS).  As per 3GPP specifications, an NSS can be shared or
+      dedicated to a single slice.
 
    *  TN Slicing:
 
@@ -258,15 +258,15 @@ Table of Contents
 
 3.2.1.  Segmentation of NF-to-NF Datapath
 
-   The datapath between two NFs may be decomposed into two segments
-   based upon involved Orchestration domains:
+   The datapath between NFs may be decomposed into two segments based
+   upon involved Orchestration domains:
 
    *  TN Segment:
 
       The realization of this segment is driven by the IETF Network
       Slice Controller (NSC) and the Transport Network Orchestrator
       (TNO).  Generally, a TN Segment provides connectivity between two
-      sites.
+      sites that host NFs.
 
    *  Local Segment:
 
@@ -603,9 +603,9 @@ Table of Contents
    the same CP of the first slice, while instantiating dedicated UP.  An
    example of an incremental deployment is depicted in Figure 7.
 
-   At the time of writing, Section 6.2 of [NG.113] specifies that the
-   eMBB slice (SST=1 and no SD) should be supported globally.  This 5G
-   slice would be the first slice in any 5G deployment.
+   At the time of writing (2023), Section 6.2 of [NG.113] specifies that
+   the eMBB slice (SST=1 and no SD) should be supported globally.  This
+   5G slice would be the first slice in any 5G deployment.
 
    Note that the actual realization of the mapping depends on several
    factors such as the actual business cases, the NF vendor
@@ -1200,10 +1200,10 @@ Table of Contents
    contracted rate is dropped or deprioritized, depending on the
    business rules, right at the edge of TN domain.  This, combined with
    appropriate network capacity planning/management (Section 7) is
-   required to ensure proper isolation between slices in scalable
+   required to ensure proper isolation between slices in a scalable
    manner.  As a result, traffic of one slice has no influence on the
    traffic of other slices, even if the slice is misbehaving (e.g., DDoS
-   attack, and equipment failure) and generates traffic volumes above
+   attacks or node/link failures) and generates traffic volumes above
    the contracted rates.
 
    The slice rates can be characterized with following parameters
@@ -1406,9 +1406,9 @@ Table of Contents
 
         Figure 19: Slice 5Q QoS to TN QoS Mapping (5QI-aware Model)
 
-   Given the fact that in large scale deployments (large number of 5G
-   slices), the number of potential 5G QoS Classes is much higher than
-   the number of TN QoS Classes, multiple 5G QoS Classes with similar
+   Given that in large scale deployments (large number of 5G slices),
+   the number of potential 5G QoS Classes is much higher than the number
+   of TN QoS Classes, multiple 5G QoS Classes with similar
    characteristics - potentially from different IETF Network Slices -
    can be mapped to a same TN QoS Class when transported in the TN
    domain.  That is, common per hop behavior (PHB) is executed on
