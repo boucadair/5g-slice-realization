@@ -182,7 +182,7 @@ informative:
    The reader may refer to {{?I-D.ietf-teas-ns-ip-mpls}} for more advanced
    realization models.
 
-   A brief 5G overview is provided in {{sec-5g-intro}} for readers convenience. The reader may refer to {{?RFC6459}} and {{TS-23.501}} for more
+   A brief 5G overview is provided in {{sec-5g-intro}} for readers' convenience. The reader may refer to {{?RFC6459}} and {{TS-23.501}} for more
    details about 3GPP network architectures.
 
 # Conventions and Definitions
@@ -199,7 +199,7 @@ Service Management and Orchestration (SMO):
 Edge Transport Node (ETN):
 : Node, under the transport domain orchestration, that stitches the transport domain to adjacent domains. An ETN can be be a Provider Edge (PE) or a managed Customer Equipment (CE).
 
-An extended list of abbreviations used in this document are listed in {{ext-abbr}}.
+An extended list of abbreviations used in this document is provided in {{ext-abbr}}.
 
 #  5G Network Slicing Integration in Transport Networks
 
@@ -221,7 +221,7 @@ An extended list of abbreviations used in this document are listed in {{ext-abbr
       {{TS-28.530}} defines 5G Network Slicing by introducing the concept
       of Network Slice Subnet (NSS) to represent slices within each of
       these domains: RAN, CN, and TN (i.e., RAN NSS, CN
-      NSS and TN NSS).  As per 3GPP specifications, an NSS can be shared or
+      NSS, and TN NSS).  As per 3GPP specifications, an NSS can be shared or
       dedicated to a single slice.
 
    * TN Slicing:
@@ -266,14 +266,14 @@ An extended list of abbreviations used in this document are listed in {{ext-abbr
 
 ###  Segmentation of NF-to-NF Datapath
 
-   The datapath between two NFs may be decomposed into two segments based upon involved Orchestration
+   The datapath between NFs may be decomposed into two segments based upon involved Orchestration
    domains:
 
    *  TN Segment:
 
       The realization of this segment is driven by the IETF
       Network Slice Controller (NSC) and the Transport Network Orchestrator (TNO). Generally, a
-      TN Segment provides connectivity between two sites.
+      TN Segment provides connectivity between two sites that host NFs.
 
    * Local Segment:
 
@@ -606,7 +606,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
    the same CP of the first slice, while instantiating dedicated UP.  An
    example of an incremental deployment is depicted in {{figure-7}}.
 
-   At the time of writing, Section 6.2 of {{NG.113}} specifies that the
+   At the time of writing (2023), Section 6.2 of {{NG.113}} specifies that the
    eMBB slice (SST=1 and no SD) should be supported globally.  This 5G
    slice would be the first slice in any 5G deployment.
 
@@ -1206,9 +1206,9 @@ Specifically, the actual mapping is a design choice of service operators that ma
    contracted rate is dropped or deprioritized, depending on the
    business rules, right at the edge of TN domain.  This, combined with
    appropriate network capacity planning/management ({{sec-capacity-planning}}) is required to ensure proper isolation between slices in
-   scalable manner.  As a result, traffic of one slice has no influence
+   a scalable manner.  As a result, traffic of one slice has no influence
    on the traffic of other slices, even if the slice is misbehaving
-   (e.g., DDoS attack, and equipment failure) and generates traffic
+   (e.g., DDoS attacks or node/link failures) and generates traffic
    volumes above the contracted rates.
 
    The slice rates can be characterized with following parameters
@@ -1243,11 +1243,11 @@ Specifically, the actual mapping is a design choice of service operators that ma
       in {{!RFC4115}}.  In essence, the traffic is assigned to one of the these three
       categories:
 
-      -  Green, for traffic under CIR
+        -  Green, for traffic under CIR
 
-      -  Yellow, for traffic between CIR and PIR
+        -  Yellow, for traffic between CIR and PIR
 
-      -  Red, for traffic above PIR
+        -  Red, for traffic above PIR
 
 
       An inbound 2c3r meter implemented with {{!RFC4115}}, compared to
@@ -1415,7 +1415,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
 ~~~
 {: #figure-19 title="Slice 5Q QoS to TN QoS Mapping (5QI-aware Model)" artwork-align="center"}
 
-   Given the fact that in large scale deployments (large number of 5G
+   Given that in large scale deployments (large number of 5G
    slices), the number of potential 5G QoS Classes is much higher than
    the number of TN QoS Classes, multiple 5G QoS Classes with similar
    characteristics - potentially from different IETF Network Slices -
