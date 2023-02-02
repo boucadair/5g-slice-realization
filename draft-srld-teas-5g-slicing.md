@@ -264,18 +264,15 @@ An extended list of abbreviations used in this document is provided in {{ext-abb
    the PE or the CE if it is also managed by the TN Orchestration. Additionally, we assume that the Transport Network is IP, MPLS, or SRv6
    capable.
 
-###  Segmentation of NF-to-NF Datapath
+###  Segmentation of the NF-to-NF Datapath
 
    The datapath between NFs may be decomposed into two type of segments based on Orchestration
    domains:
 
    *  TN Segment:
-
       The TN Segment provides connectivity between two sites that host NFs. The realization of this segment is driven by the IETF
       Network Slice Controller (NSC) and the Transport Network Orchestrator (TNO).
-      
    * Local Segment:
-
       The Local segment either connects two NFs within a given site or connects a NF to
       the TN. In the first case, the realization of the segment is  driven by the 5G Orchestration without any
       involvement of the Transport Network Orchestration. In the second case, the realization of this segment partially relies on the NSC/TNO for the configuration of the TN-side of the segment (e.g. the configuration of the attachment circuit on a PE interface).  Generally, the Local Segment is a datapath local to a site with a  a potential extension to reach the TN. A
