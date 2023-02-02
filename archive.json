@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-01-31T00:31:21.885996+00:00",
+  "timestamp": "2023-02-02T00:30:46.079542+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -62,9 +62,17 @@
       "labels": [],
       "body": "Section 3.2.2 may be too restrictive since it mandates the use of IETF API.  However, TMF APIs are also very common at this level of abstraction. We may rather focus on data models instead of API and not be restrictive on APIs (we can recommend IETF API though).\r\n\r\nR\r\nquoting:\r\n\"\r\nIn this document, and aligned with {{?RFC8969}}, we assume that this coordination is based upon\r\n   IETF YANG data models and APIs (more details in further sections).\r\n\"",
       "createdAt": "2023-01-30T16:44:54Z",
-      "updatedAt": "2023-01-30T16:44:54Z",
+      "updatedAt": "2023-01-31T10:22:09Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "The IETF mention was mainly to reflect the models that are currently called in the draft. The key point is to rely on standard DMs/APIs. Please see [09e8628](https://github.com/boucadair/5g-slice-realization/commit/09e8628132ca44edb74964b9659353f96606a5ed)\r\n",
+          "createdAt": "2023-01-31T10:22:09Z",
+          "updatedAt": "2023-01-31T10:22:09Z"
+        }
+      ]
     }
   ],
   "pulls": [
