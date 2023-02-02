@@ -266,26 +266,24 @@ An extended list of abbreviations used in this document is provided in {{ext-abb
 
 ###  Segmentation of NF-to-NF Datapath
 
-   The datapath between NFs may be decomposed into two segments based upon involved Orchestration
+   The datapath between NFs may be decomposed into two type of segments based on Orchestration
    domains:
 
    *  TN Segment:
 
-      The realization of this segment is driven by the IETF
-      Network Slice Controller (NSC) and the Transport Network Orchestrator (TNO). Generally, a
-      TN Segment provides connectivity between two sites that host NFs.
-
+      The TN Segment provides connectivity between two sites that host NFs. The realization of this segment is driven by the IETF
+      Network Slice Controller (NSC) and the Transport Network Orchestrator (TNO).
+      
    * Local Segment:
 
-      This segment connects NFs within a given site or connects an NF to
-      a TN. The realization of this segment is
-      directly or indirectly driven by the 5G Orchestration without any
-      involvement of the TNO.  Generally, the Local Segment is a datapath local to a site.  This
+      The Local segment either connects two NFs within a given site or connects a NF to
+      the TN. In the first case, the realization of the segment is  driven by the 5G Orchestration without any
+      involvement of the Transport Network Orchestration. In the second case, the realization of this segment partially relies on the NSC/TNO for the configuration of the TN-side of the segment (e.g. the configuration of the attachment circuit on a PE interface).  Generally, the Local Segment is a datapath local to a site with a  a potential extension to reach the TN. A
       site can be (but not limited to): a Data Center (DC), a Point of Presence (PoP), a
       Central Office (CO), or a virtualized infrastructure in a Public
       Cloud.
 
-   Note that more complex scenarios may be considered (for example, adding an extra
+   Note that more complex scenarios can be considered (for example, adding an extra
    segmentation of TN or Local Segments).  Additionally, sites can be of
    different types (such as Edge, Data Center, or Public Cloud), each with
    specific network design, hardware dependencies, management interface,
