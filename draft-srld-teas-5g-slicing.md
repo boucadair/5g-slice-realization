@@ -250,7 +250,7 @@ An extended list of abbreviations used in this document is provided in {{ext-abb
       describe the slice in the Transport Network domain of the overall 5G
       architecture, composed from RAN, TN, and CN domains.
 
-##  NF-to-NF Datapath vs Transport Network
+##  NF-to-NF Datapath vs Transport Network {#sec-nf-nf-datapath}
 
    The 3GPP specifications loosely define the Transport Network and its
    integration in RAN and CN domains: the role of the
