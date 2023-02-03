@@ -6790,7 +6790,7 @@ prioritized classes.<a href="#section-5.2.1-3.2" class="pilcrow">¶</a>
    network congestion events, for example caused by network failures and
    temporary rerouting, premium classes are prioritized, and any drops
    only occur in non-premium (best-effort) classes.  Capacity planning
-   and management, as described in Section 6, ensures that enough
+   and management, as described in <a href="#sec-capacity-planning" class="auto internal xref">Section 7</a>, ensures that enough
    capacity is available to fulfill all approved slice requests.<a href="#section-5.3-2" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -6813,7 +6813,7 @@ prioritized classes.<a href="#section-5.2.1-3.2" class="pilcrow">¶</a>
    planes.  These transport planes might be realized via various IP/MPLS
    techniques, for example Flex-Algo or RSVP/SR traffic engineering
    tunnels with or without PCE, and with or without bandwidth
-   reservations.  Section 6 discusses in detail different bandwidth
+   reservations.  <a href="#sec-capacity-planning" class="auto internal xref">Section 7</a> discusses in detail different bandwidth
    models that can be deployed in the transport network.  However,
    discussion about how to realize or orchestrate transport planes is
    out of scope for this document.<a href="#section-6-1" class="pilcrow">¶</a></p>
@@ -8070,7 +8070,7 @@ prioritized classes.<a href="#section-5.2.1-3.2" class="pilcrow">¶</a>
    if otherwise there is the possibility of a link in the DC being
    oversubscribed.  Note that a peer NF endpoint of an AC can be
    identified using 'peer-sap-id' as defined in <span>[<a href="#I-D.ietf-opsawg-sap" class="cite xref">I-D.ietf-opsawg-sap</a>]</span>.<a href="#section-7-8" class="pilcrow">¶</a></p>
-<p id="section-7-9">Depending on the bandwidth model used in the network (Section 6.1),
+<p id="section-7-9">Depending on the bandwidth model used in the network (<a href="#sec-bw" class="auto internal xref">Section 7.1</a>),
    the other values in the matrix, i.e., the DC-to-DC demands, may not
    be directly applied to the transport network.  Even so, the
    information may be useful to the IETF NSC for capacity planning and
@@ -8092,7 +8092,7 @@ prioritized classes.<a href="#section-5.2.1-3.2" class="pilcrow">¶</a>
    e.g., low-latency.  One option is to augment these models to convey
    this information.  This can be achieved by reusing the 'underlay-
    transport' construct used in <span>[<a href="#RFC9182" class="cite xref">RFC9182</a>]</span> and <span>[<a href="#RFC9291" class="cite xref">RFC9291</a>]</span>.<a href="#section-7-10" class="pilcrow">¶</a></p>
-<div id="bandwidth-models">
+<div id="sec-bw">
 <section id="section-7.1">
         <h3 id="name-bandwidth-models">
 <a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-bandwidth-models" class="section-name selfRef">Bandwidth Models</a>
