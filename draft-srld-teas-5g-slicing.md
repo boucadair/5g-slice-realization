@@ -678,7 +678,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
       service instances results in additional outer header (as packets
       are encapsulated/decapsulated at the nodes performing PE
       functions) providing clean discrimantion between 5G QoS and TN
-      QoS, as explained in Section 4
+      QoS, as explained in {{sec-qos-map}}.
 
    *  Fine-grained resource control at the ETN:
 
@@ -1861,7 +1861,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
    the network functions are likely to be sending at their maximum rate
    simultaneously.  For example, the total traffic from DC1 for Slice X
    is 11 units, which is less than the sum of the DC-to-DC demands in
-   the same row (13 units).  Note, as described in Section 4, a slice
+   the same row (13 units).  Note, as described in {{sec-qos-map}}, a slice
    may have per-QoS class bandwidth requirements, and may have CIR and
    PIR limits.  This is not included in the example, but the same
    principles apply in such cases.
