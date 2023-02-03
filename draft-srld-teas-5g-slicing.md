@@ -19,7 +19,7 @@ keyword:
 author:
 
  -
-   fullname: Krzysztof Szarkowicz
+   fullname: Krzysztof G. Szarkowicz
    role: editor
    organization: Juniper Networks
    city: Wien
@@ -705,7 +705,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
       is implemented on PE.
 
    *  Coarse resource control at the TN transit (non-attachment
-      circuits) links of the transport domain, using a single NRP, spanning the entire TN domain
+      circuits) links of the transport domain, using a single NRP, spanning the entire TN domain.
       Transit nodes do not maintain any state of individual slices.
       Instead, only a flat (non-hierarchical) QoS model is used on
       transit links with up to 8 traffic classes.  At the transport
@@ -971,7 +971,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
    1, and execute appropriate edge per hop behavior.
 
    It is worth noting that slice identification in the BGP control plane
-   is at the prefix granularity.  In extreme case, each prefix can have
+   might be at the prefix granularity.  In extreme case, each prefix can have
    different community representing a different slice.  Depending on the
    business requirements, each slice could be represented by a different
    service instance, as outlined in {{figure-13}}.  In that case, the route
@@ -1052,11 +1052,12 @@ Specifically, the actual mapping is a design choice of service operators that ma
    for slicing in the transport domain: a 5QI-unaware model and a 5QI-
    aware model.  Both slicing models in the transport domain could be
    used concurrently within the same 5G slice.  For example, the TN
-   segment for 5G midhaul (F2-U interface) might be 5QI-unaware, while
+   segment for 5G midhaul (F2-U interface) might be 5QI-aware, while
    at the same time the TN segment for 5G backhaul (N3 interface) might
-   follow the 5QI-aware model.
+   follow the 5QI-unaware model.
 
-##  5QI-unaware Mode {#sec-5QI-unaware}
+
+##  5QI-unaware Model {#sec-5QI-unaware}
 
    In 5QI-unaware mode, the DSCP values in the packets received from NF
    at SDP are ignored.  In the TN domain, there is no QoS
@@ -1131,52 +1132,52 @@ Specifically, the actual mapping is a design choice of service operators that ma
    encapsulation.
 
 ~~~ aasvg
-                                    ┌──────────────┐
-                                    │ MPLS Header  │
-                                    ├─────┬─────┐  │
-                                    │Label│TN TC│  │
-   ┌──────────────┐ ─ ─ ─ ─ ─ ─ ─ ─ ├─────┴─────┴──┤
-   │  IP Header   │         │╲      │  IP Header   │
-   │      ┌───────┤         │ ╲     │      ┌───────┤
-   │      │5G DSCP│ ────────┘  ╲    │      │5G DSCP│
-   ├──────┴───────┤             ╲   ├──────┴───────┤
-   │              │              ╲  │              │
-   │              │               ╲ │              │
-   │              │                │|              │
-   │   Payload    │               ╱ │   Payload    │
-   │(GTP-U/IPsec) │              ╱  │(GTP-U/IPsec) │
-   │              │             ╱   │              │
-   │              │ ────────┐  ╱    │              │
-   │              │         │ ╱     │              │
-   │              │         │╱      │              │
-   └──────────────┘ ─ ─ ─ ─ ─ ─ ─ ─ └──────────────┘
+                                 ┌──────────────┐
+                                 │ MPLS Header  │
+                                 ├─────┬─────┐  │
+                                 │Label│TN TC│  │
+┌──────────────┐ ─ ─ ─ ─ ─ ─ ─ ─ ├─────┴─────┴──┤
+│  IP Header   │         │╲      │  IP Header   │
+│      ┌───────┤         │ ╲     │      ┌───────┤
+│      │5G DSCP│ ────────┘  ╲    │      │5G DSCP│
+├──────┴───────┤             ╲   ├──────┴───────┤
+│              │              ╲  │              │
+│              │               ╲ │              │
+│              │                ▏│              │
+│   Payload    │               ╱ │   Payload    │
+│(GTP-U/IPsec) │              ╱  │(GTP-U/IPsec) │
+│              │             ╱   │              │
+│              │ ────────┐  ╱    │              │
+│              │         │ ╱     │              │
+│              │         │╱      │              │
+└──────────────┘ ─ ─ ─ ─ ─ ─ ─ ─ └──────────────┘
 ~~~
 {: #figure-15 title="QoS with MPLS Encapsulation" artwork-align="center"}
 
 ~~~ aasvg
-                                    ┌──────────────┐
-                                    │ IPv6 Header  │
-                                    │      ┌───────┤
-                                    │      │TN DSCP│
-                                    ├──────┴───────┤
-                                        optional
-                                    │     IPv6     │
-                                         headers
-   ┌──────────────┐ ─ ─ ─ ─ ─ ─ ─ ─ ├──────────────┤
-   │  IP Header   │         │╲      │  IP Header   │
-   │      ┌───────┤         │ ╲     │      ┌───────┤
-   │      │5G DSCP│ ────────┘  ╲    │      │5G DSCP│
-   ├──────┴───────┤             ╲   ├──────┴───────┤
-   │              │              ╲  │              │
-   │              │               ╲ │              │
-   │              │                │|              │
-   │   Payload    │               ╱ │   Payload    │
-   │(GTP-U/IPsec) │              ╱  │(GTP-U/IPsec) │
-   │              │             ╱   │              │
-   │              │ ────────┐  ╱    │              │
-   │              │         │ ╱     │              │
-   │              │         │╱      │              │
-   └──────────────┘ ─ ─ ─ ─ ─ ─ ─ ─ └──────────────┘
+                                 ┌──────────────┐
+                                 │ IPv6 Header  │
+                                 │      ┌───────┤
+                                 │      │TN DSCP│
+                                 ├──────┴───────┤
+                                     optional
+                                 │     IPv6     │
+                                      headers
+┌──────────────┐ ─ ─ ─ ─ ─ ─ ─ ─ ├──────────────┤
+│  IP Header   │         │╲      │  IP Header   │
+│      ┌───────┤         │ ╲     │      ┌───────┤
+│      │5G DSCP│ ────────┘  ╲    │      │5G DSCP│
+├──────┴───────┤             ╲   ├──────┴───────┤
+│              │              ╲  │              │
+│              │               ╲ │              │
+│              │                ▏│              │
+│   Payload    │               ╱ │   Payload    │
+│(GTP-U/IPsec) │              ╱  │(GTP-U/IPsec) │
+│              │             ╱   │              │
+│              │ ────────┐  ╱    │              │
+│              │         │ ╱     │              │
+│              │         │╱      │              │
+└──────────────┘ ─ ─ ─ ─ ─ ─ ─ ─ └──────────────┘
 ~~~
 {: #figure-16 title="QoS with IPv6 Encapsulation" artwork-align="center"}
 
@@ -1229,7 +1230,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
       signify 'this packet should be dropped in the first place, if
       there is a congestion' (soft rate limiting), depending on the
       business policy of the operator.  In the second case, while
-      packets above CIR are forwarded at the SDP, they are subject to be
+      packets above CIR are forwarded at the SDP, they are subject to being
       dropped during any congestion event at any place in the TN domain.
 
    *  2r3c (two-rate three-color) rate limiter
@@ -1253,46 +1254,46 @@ Specifically, the actual mapping is a design choice of service operators that ma
       prioritizing and potentially dropping the traffic during
       congestion (yellow), or hard dropping the traffic (red).
 
-   Inbound edge enforcement mode for 5QI-unaware mode, where all packets
+   Inbound edge enforcement model for 5QI-unaware model, where all packets
    belonging to the slice are treated the same way in the TN domain (no
    5Q QoS Class differentiation in the TN domain) is outlined in
    {{figure-17}}.
 
 ~~~ aasvg
-               Slice
-              policer     ┌─────────┐
-                 ║    ┌───┴──┐      │
-                 ║    │      │      │
-                 ║    │    S │      │
-                 ║    │    l │      │
-                 ▼    │    i │      │
-   ──────────────◇───────▶c │      │
-                      │    e │  A   │
-                      │      │  t   │
-                      │    1 │  t   │
-                      │      │  a   │
-                      ├──────┤  c   │
-                      │      │  h   │
-                      │    S │  m   │
-                      │    l │  e   │
-                      │    i │  n   │
-   ──────────────◇───────▶c │  t   │
-                      │    e │      │
-                      │      │  C   │
-                      │    2 │  i   │
-                      │      │  r   │
-                      ├──────┤  c   │
-                      │      │  u   │
-                      │    S │  i   │
-                      │    l │  t   │
-                      │    i │      │
-   ──────────────◇───────▶c │      │
-                      │    e │      │
-                      │      │      │
-                      │    3 │      │
-                      │      │      │
-                      └───┬──┘      │
-                          └─────────┘
+            Slice
+           policer     ┌─────────┐
+              ║    ┌───┴──┐      │
+              ║    │      │      │
+              ║    │    S │      │
+              ║    │    l │      │
+              ▼    │    i │      │
+──────────────◇────┼──▶ c │      │
+                   │    e │  A   │
+                   │      │  t   │
+                   │    1 │  t   │
+                   │      │  a   │
+                   ├──────┤  c   │
+                   │      │  h   │
+                   │    S │  m   │
+                   │    l │  e   │
+                   │    i │  n   │
+──────────────◇────┼──▶ c │  t   │
+                   │    e │      │
+                   │      │  C   │
+                   │    2 │  i   │
+                   │      │  r   │
+                   ├──────┤  c   │
+                   │      │  u   │
+                   │    S │  i   │
+                   │    l │  t   │
+                   │    i │      │
+──────────────◇────┼──▶ c │      │
+                   │    e │      │
+                   │      │      │
+                   │    3 │      │
+                   │      │      │
+                   └───┬──┘      │
+                       └─────────┘
 ~~~
 {: #figure-17 title="Ingress Slice Admission Control (5QI-unware Model)" artwork-align="center"}
 
@@ -1362,10 +1363,10 @@ Specifically, the actual mapping is a design choice of service operators that ma
 ~~~
 {: #figure-18 title="Ingress Slice Admission control (5QI-unaware Model)" artwork-align="center"}
 
-##  5QI-aware Mode
+##  5QI-aware Model
 
-   In the 5QI-aware model, potentially a large number of 5Q QoS Classes
-   (the architecture scales to thousands of 5Q slices) is mapped
+   In the 5QI-aware model, potentially a large number of 5G QoS Classes
+   (the architecture scales to thousands of 5G slices) is mapped
    (multiplexed) to up to 8 TN QoS Classes used in transport transit
    equipment, as outlined in {{figure-19}}.
 
@@ -1459,39 +1460,39 @@ Specifically, the actual mapping is a design choice of service operators that ma
    cannot be reused by non-premium (i.e., Best Effort) class.
 
 ~~~ aasvg
-                        Class             ┌─────────┐
-                       policer         ┌──┴───┐     │
-                                       │      │     │
-   5Q-QoS-A: CIR-1A ──────◇───────────┼──▶ S │     │
-   5Q-QoS-B: CIR-1B ──────◇───────────┼──▶ l │     │
-   5Q-QoS-C: CIR-1C ──────◇───────────┼──▶ i │     │
-                                       │    c │     │
-                                       │    e │     │
-      BE CIR/PIR-1D ──────◇───────────┼──▶   │  A  │
-                                       │    1 │  t  │
-                                       │      │  t  │
-                                       ├──────┤  a  │
-                                       │      │  c  │
-   5Q-QoS-A: CIR-2A ──────◇───────────┼─▶  S │  h  │
-   5Q-QoS-B: CIR-2B ──────◇───────────┼─▶  l │  m  │
-   5Q-QoS-C: CIR-2C ──────◇───────────┼─▶  i │  e  │
-                                       │    c │  n  │
-                                       │    e │  t  │
-      BE CIR/PIR-2D ──────◇───────────┼─▶    │     │
-                                       │    2 │  C  │
-                                       │      │  i  │
-                                       ├──────┤  r  │
-                                       │      │  c  │
-   5Q-QoS-A: CIR-3A ──────◇───────────┼─▶  S │  u  │
-   5Q-QoS-B: CIR-3B ──────◇───────────┼─▶  l │  i  │
-   5Q-QoS-C: CIR-3C ──────◇───────────┼─▶  i │  t  │
-                                       │    c │     │
-                                       │    e │     │
-      BE CIR/PIR-3D───────◇───────────┼─▶    │     │
-                                       │    3 │     │
-                                       │      │     │
-                                       └──┬───┘     │
-                                          └─────────┘
+                     Class             ┌─────────┐
+                    policer         ┌──┴───┐     │
+                                    │      │     │
+5Q-QoS-A: CIR-1A ──────◇────────────┼──▶ S │     │
+5Q-QoS-B: CIR-1B ──────◇────────────┼──▶ l │     │
+5Q-QoS-C: CIR-1C ──────◇────────────┼──▶ i │     │
+                                    │    c │     │
+                                    │    e │     │
+   BE CIR/PIR-1D ──────◇────────────┼──▶   │  A  │
+                                    │    1 │  t  │
+                                    │      │  t  │
+                                    ├──────┤  a  │
+                                    │      │  c  │
+5Q-QoS-A: CIR-2A ──────◇────────────┼─▶  S │  h  │
+5Q-QoS-B: CIR-2B ──────◇────────────┼─▶  l │  m  │
+5Q-QoS-C: CIR-2C ──────◇────────────┼─▶  i │  e  │
+                                    │    c │  n  │
+                                    │    e │  t  │
+   BE CIR/PIR-2D ──────◇────────────┼─▶    │     │
+                                    │    2 │  C  │
+                                    │      │  i  │
+                                    ├──────┤  r  │
+                                    │      │  c  │
+5Q-QoS-A: CIR-3A ──────◇────────────┼─▶  S │  u  │
+5Q-QoS-B: CIR-3B ──────◇────────────┼─▶  l │  i  │
+5Q-QoS-C: CIR-3C ──────◇────────────┼─▶  i │  t  │
+                                    │    c │     │
+                                    │    e │     │
+   BE CIR/PIR-3D───────◇────────────┼─▶    │     │
+                                    │    3 │     │
+                                    │      │     │
+                                    └──┬───┘     │
+                                       └─────────┘
 ~~~
 {: #figure-20 title="Ingress Slice Admission Control (5QI-aware Model)" artwork-align="center"}
 
@@ -1506,40 +1507,40 @@ Specifically, the actual mapping is a design choice of service operators that ma
    {{figure-21}}.
 
 ~~~ aasvg
-                                 Slice
-                                policer   ┌─────────┐
-                      Class        .   ┌──┴───┐     │
-                     policer      ; :  │      │     │
-  5Q-QoS-A: CIR-1A ────◇─────────┤─┼──┼──▶ S │     │
-  5Q-QoS-B: CIR-1B ────◇─────────┤─┼──┼──▶ l │     │
-  5Q-QoS-C: CIR-1C ────◇─────────┤─┼──┼──▶ i │     │
-                                  │ │  │    c │     │
-                                  │ │  │    e │     │
-     BE CIR/PIR-1D ───────────────┤─┼──┼──▶   │  A  │
-                                  │ │  │    1 │  t  │
-                                  : ;  │      │  t  │
-                                   .   ├──────┤  a  │
-                                  ; :  │      │  c  │
-  5Q-QoS-A: CIR-2A ────◇─────────┤─┼──┼──▶ S │  h  │
-  5Q-QoS-B: CIR-2B ────◇─────────┤─┼──┼──▶ l │  m  │
-  5Q-QoS-C: CIR-2C ────◇─────────┤─┼──┼──▶ i │  e  │
-                                  │ │  │    c │  n  │
-                                  │ │  │    e │  t  │
-      BE CIR/PIR-2D ──────────────┤─┼──┼──▶   │     │
-                                  │ │  │    2 │  C  │
-                                  : ;  │      │  i  │
-                                   .   ├──────┤  r  │
-                                  ; :  │      │  c  │
-  5Q-QoS-A: CIR-3A ────◇─────────┤─┼──┼──▶ S │  u  │
-  5Q-QoS-B: CIR-3B ────◇─────────┤─┼──┼──▶ l │  i  │
-  5Q-QoS-C: CIR-3C ────◇─────────┤─┼──┼──▶ i │  t  │
-                                  │ │  │    c │     │
-                                  │ │  │    e │     │
-     BE CIR/PIR-3D ───────────────┤─┼──┼──▶   │     │
-                                  │ │  │    3 │     │
-                                  : ;  │      │     │
-                                   '   └──┬───┘     │
-                                          └─────────┘
+                              Slice
+                             policer   ┌─────────┐
+                   Class        .   ┌──┴───┐     │
+                  policer      ; :  │      │     │
+5Q-QoS-A: CIR-1A ────◇─────────┤─┼──┼──▶ S │     │
+5Q-QoS-B: CIR-1B ────◇─────────┤─┼──┼──▶ l │     │
+5Q-QoS-C: CIR-1C ────◇─────────┤─┼──┼──▶ i │     │
+                               │ │  │    c │     │
+                               │ │  │    e │     │
+   BE CIR/PIR-1D ──────────────┤─┼──┼──▶   │  A  │
+                               │ │  │    1 │  t  │
+                               : ;  │      │  t  │
+                                .   ├──────┤  a  │
+                               ; :  │      │  c  │
+5Q-QoS-A: CIR-2A ────◇─────────┤─┼──┼──▶ S │  h  │
+5Q-QoS-B: CIR-2B ────◇─────────┤─┼──┼──▶ l │  m  │
+5Q-QoS-C: CIR-2C ────◇─────────┤─┼──┼──▶ i │  e  │
+                               │ │  │    c │  n  │
+                               │ │  │    e │  t  │
+   BE CIR/PIR-2D ──────────────┤─┼──┼──▶   │     │
+                               │ │  │    2 │  C  │
+                               : ;  │      │  i  │
+                                .   ├──────┤  r  │
+                               ; :  │      │  c  │
+5Q-QoS-A: CIR-3A ────◇─────────┤─┼──┼──▶ S │  u  │
+5Q-QoS-B: CIR-3B ────◇─────────┤─┼──┼──▶ l │  i  │
+5Q-QoS-C: CIR-3C ────◇─────────┤─┼──┼──▶ i │  t  │
+                               │ │  │    c │     │
+                               │ │  │    e │     │
+   BE CIR/PIR-3D ──────────────┤─┼──┼──▶   │     │
+                               │ │  │    3 │     │
+                               : ;  │      │     │
+                                '   └──┬───┘     │
+                                       └─────────┘
 ~~~
 {: #figure-21 title="Ingress Slice Admission Control (5QI-aware) - Hierarchical" artwork-align="center"}
 
@@ -1553,48 +1554,48 @@ Specifically, the actual mapping is a design choice of service operators that ma
    MUST NOT exceed the physical capacity of the attachment circuit.
 
 ~~~ aasvg
-      ┌─────────┐        QoS output queues
-      │     ┌───┴──┐─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
-      │     │    ┌─┴──────────────────────────┐ ╲│╱
-   ───┼─────┼────▶ 5Q-QoS-A: w=5Q-QoS-A-CIR   │  │
-      │     │ S  └─┬──────────────────────────┘  │
-      │     │ l  ┌─┴──────────────────────────┐  │
-   ───┼─────┼─i──▶ 5Q-QoS-B: w=5Q-QoS-B-CIR  │  │
-      │     │ c  └─┬──────────────────────────┘  │  weight=Slice-1-CIR
-      │     │ e  ┌─┴──────────────────────────┐  │ shaping=Slice-1-PIR
-   ───┼─────┼────▶ 5Q-QoS-C: w=5Q-QoS-C-CIR   │  │
-      │     │ 1  └─┬──────────────────────────┘  │
-      │     │    ┌─┴──────────────────────────┐  │
-   ───┼─────┼────▶ Best Effort (remainder)    │  │
-      │     │    └─┬──────────────────────────┘ ╱│╲
-      │  A  ├──────┤─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
-      │  t  │    ┌─┴──────────────────────────┐ ╲│╱
-      │  t  │    │                            │  │
-      │  a  │    └─┬──────────────────────────┘  │
-      │  c  │ S  ┌─┴──────────────────────────┐  │
-      │  h  │ l  │                            │  │
-      │  m  │ i  └─┬──────────────────────────┘  │  weight=Slice-2-CIR
-      │  e  │ c  ┌─┴──────────────────────────┐  │ shaping=Slice-2-PIR
-      │  n  │ e  │                            │  │
-      │  t  │    └─┬──────────────────────────┘  │
-      │     │ 2  ┌─┴──────────────────────────┐  │
-      │  C  │    │                            │  │
-      │  i  │    └─┬──────────────────────────┘ ╱│╲
-      │  r  ├──────┤─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
-      │  c  │    ┌─┴──────────────────────────┐ ╲│╱
-      │  u  │    │                            │  │
-      │  i  │ S  └─┬──────────────────────────┘  │
-      │  t  │ l  ┌─┴──────────────────────────┐  │
-      │     │ i  │                            │  │
-      │     │ c  └─┬──────────────────────────┘  │  weight=Slice-3-CIR
-      │     │ e  ┌─┴──────────────────────────┐  │ shaping=Slice-3-PIR
-      │     │    │                            │  │
-      │     │ 3  └─┬──────────────────────────┘  │
-      │     │    ┌─┴──────────────────────────┐  │
-      │     │    │                            │  │
-      │     │    └─┬──────────────────────────┘ ╱│╲
-      │     └───┬──┘─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
-      └─────────┘
+   ┌─────────┐        QoS output queues
+   │     ┌───┴──┐─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+   │     │    ┌─┴──────────────────────────┐ ╲│╱
+───┼─────┼────▶ 5Q-QoS-A: w=5Q-QoS-A-CIR   │  │
+   │     │ S  └─┬──────────────────────────┘  │
+   │     │ l  ┌─┴──────────────────────────┐  │
+───┼─────┼─i──▶ 5Q-QoS-B: w=5Q-QoS-B-CIR   │  │
+   │     │ c  └─┬──────────────────────────┘  │  weight=Slice-1-CIR
+   │     │ e  ┌─┴──────────────────────────┐  │ shaping=Slice-1-PIR
+───┼─────┼────▶ 5Q-QoS-C: w=5Q-QoS-C-CIR   │  │
+   │     │ 1  └─┬──────────────────────────┘  │
+   │     │    ┌─┴──────────────────────────┐  │
+───┼─────┼────▶ Best Effort (remainder)    │  │
+   │     │    └─┬──────────────────────────┘ ╱│╲
+   │  A  ├──────┤─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+   │  t  │    ┌─┴──────────────────────────┐ ╲│╱
+   │  t  │    │                            │  │
+   │  a  │    └─┬──────────────────────────┘  │
+   │  c  │ S  ┌─┴──────────────────────────┐  │
+   │  h  │ l  │                            │  │
+   │  m  │ i  └─┬──────────────────────────┘  │  weight=Slice-2-CIR
+   │  e  │ c  ┌─┴──────────────────────────┐  │ shaping=Slice-2-PIR
+   │  n  │ e  │                            │  │
+   │  t  │    └─┬──────────────────────────┘  │
+   │     │ 2  ┌─┴──────────────────────────┐  │
+   │  C  │    │                            │  │
+   │  i  │    └─┬──────────────────────────┘ ╱│╲
+   │  r  ├──────┤─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+   │  c  │    ┌─┴──────────────────────────┐ ╲│╱
+   │  u  │    │                            │  │
+   │  i  │ S  └─┬──────────────────────────┘  │
+   │  t  │ l  ┌─┴──────────────────────────┐  │
+   │     │ i  │                            │  │
+   │     │ c  └─┬──────────────────────────┘  │  weight=Slice-3-CIR
+   │     │ e  ┌─┴──────────────────────────┐  │ shaping=Slice-3-PIR
+   │     │    │                            │  │
+   │     │ 3  └─┬──────────────────────────┘  │
+   │     │    ┌─┴──────────────────────────┐  │
+   │     │    │                            │  │
+   │     │    └─┬──────────────────────────┘ ╱│╲
+   │     └───┬──┘─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+   └─────────┘
 ~~~
 {: #figure-22 title="Egress Slice Admission Control (5QI-aware)" artwork-align="center"}
 
@@ -1673,13 +1674,13 @@ Specifically, the actual mapping is a design choice of service operators that ma
    slice, might be mapped to different transport planes (5QI-aware
    mode).
 
-##  5QI-unaware Mode
+##  5QI-unaware Model
 
    As discussed in {{sec-5QI-unaware}}, in the 5QI-unware model, the TN domain
    doesn't take into account 5G QoS during execution of per-hop
    behavior.  The entire slice is mapped to single TN QoS Class,
    therefore the entire slice is subject to the same per-hop behavior.
-   Similarly, in 5QI-unaware transport plane mapping mode, the entire
+   Similarly, in 5QI-unaware transport plane mapping model, the entire
    slice is mapped to a single transport plane, as depicted in
    {{figure-24}}.
 
@@ -1725,7 +1726,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
    It is worth noting that there is no strict correlation between TN QoS
    Classes and Transport Planes.  The TN domain can be operated with
    e.g., 8 TN QoS Classes (representing 8 hardware queues in the
-   routers), and 2 Transport Classes (e.g., latency optimized transport
+   routers), and 2 Transport Planes (e.g., latency optimized transport
    plane using link latency metrics for path calculation, and transport
    plane following IGP metrics).  TN QoS Class determines the per-hop
    behavior when the packets are transiting through the TN domain, while
@@ -1734,12 +1735,12 @@ Specifically, the actual mapping is a design choice of service operators that ma
    through the TN domain.
 
 
-##  5QI-aware Mode
+##  5QI-aware Model
 
-   In 5QI-aware mode, the traffic can be mapped to transport planes at
+   In 5QI-aware model, the traffic can be mapped to transport planes at
    the granularity of 5G QoS Class.  Given that the potential number of
    transport planes is limited, packets from multiple 5G QoS Classes
-   with similar characteristics are mapped to a common transport class,
+   with similar characteristics are mapped to a common transport plane,
    as depicted in {{figure-25}}.
 
 ~~~ aasvg
