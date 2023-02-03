@@ -1619,7 +1619,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
    network congestion events, for example caused by network failures and
    temporary rerouting, premium classes are prioritized, and any drops
    only occur in non-premium (best-effort) classes.  Capacity planning
-   and management, as described in Section 6, ensures that enough
+   and management, as described in {{sec-capacity-planning}}, ensures that enough
    capacity is available to fulfill all approved slice requests.
 
 #  Transport Planes Mapping Models
@@ -1636,7 +1636,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
    planes.  These transport planes might be realized via various IP/MPLS
    techniques, for example Flex-Algo or RSVP/SR traffic engineering
    tunnels with or without PCE, and with or without bandwidth
-   reservations.  Section 6 discusses in detail different bandwidth
+   reservations.  {{sec-capacity-planning}} discusses in detail different bandwidth
    models that can be deployed in the transport network.  However,
    discussion about how to realize or orchestrate transport planes is
    out of scope for this document.
@@ -1903,7 +1903,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    oversubscribed.  Note that a peer NF endpoint of an AC can be
    identified using 'peer-sap-id' as defined in {{?I-D.ietf-opsawg-sap}}.
 
-   Depending on the bandwidth model used in the network (Section 6.1),
+   Depending on the bandwidth model used in the network ({{sec-bw}}),
    the other values in the matrix, i.e., the DC-to-DC demands, may not
    be directly applied to the transport network.  Even so, the
    information may be useful to the IETF NSC for capacity planning and
@@ -1927,7 +1927,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    this information.  This can be achieved by reusing the 'underlay-
    transport' construct used in {{!RFC9182}} and {{!RFC9291}}.
 
-##  Bandwidth Models
+##  Bandwidth Models {#sec-bw}
 
    This section describes three bandwidth management schemes that could
    be employed in the transport network.  Many variations are possible,
