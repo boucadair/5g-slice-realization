@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-02-02T00:30:46.079542+00:00",
+  "timestamp": "2023-02-05T00:32:11.049475+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -102,6 +102,42 @@
         "oid": "9d590449ed8441f573f942c3ab78212c77bf0573"
       },
       "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 3,
+      "id": "PR_kwDOIw9g6c5JNuCz",
+      "title": "Krzysztof's nits ",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/3",
+      "state": "MERGED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Krzysztof's nits (small editorial changes in the text and in few pictures)",
+      "createdAt": "2023-02-03T15:55:02Z",
+      "updatedAt": "2023-02-03T16:36:11Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "f398cd8e04bdca8f407c8a665e1f805d7f7ac5f7",
+      "headRepository": "kszarkowicz/5g-slice-realization",
+      "headRefName": "main",
+      "headRefOid": "8975d1734937636e58cb9d9a6e555fcbad531748",
+      "closedAt": "2023-02-03T16:36:10Z",
+      "mergedAt": "2023-02-03T16:36:10Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "ba754b6a45f73b28cda758e8a734794f774f83f6"
+      },
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "Fixed some conflicts as the edits were based on an old version",
+          "createdAt": "2023-02-03T16:36:05Z",
+          "updatedAt": "2023-02-03T16:36:05Z"
+        }
+      ],
       "reviews": []
     }
   ]
