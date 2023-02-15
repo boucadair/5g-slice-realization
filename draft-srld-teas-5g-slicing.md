@@ -1043,9 +1043,9 @@ Specifically, the actual mapping is a design choice of service operators that ma
    domain.  This can be due to an NF limitation (no capability to set
    DSCP), or it might simply depend on the overall slicing deployment
    model.  The O-RAN Alliance, for example, defines a phased approach to
-   the slicing, with initial phases utilizing only per slice, but not
-   per 5QI, differentiated treatment in the TN domain
-   (Annex F of {{O-RAN.WG9.XPSAAS}}).
+   the slicing, with initial phases utilizing common, network-wide set of 
+   5QI parameters with mapping to DSCP, while defining possibility of slices 
+   separation in  per-VLAN, VLAN+IP or IP base (Annex F of {{O-RAN.WG9.XPSAAS}}).
 
    Therefore, from QoS perspective, the 5G slicing connectivity
    realization architecture defines two high-level realization models
@@ -1192,6 +1192,45 @@ Specifically, the actual mapping is a design choice of service operators that ma
    manner, with dedicated resource allocation for each IETF Network
    Slice.  The resource control/enforcement happens at each SDP in two
    directions: inbound and outbound.
+   
+   As mentioned before, more realistically the 5G QoS Classes would be grouped 
+   with common Operator-defined TN logic and mapped into the TN QoS Classes and 
+   Queues (example values are on the following diagram). 
+   
+   ~~~ aasvg
+
+  ┌───────────────────┐  ┌───────────────────────────────┐
+  │3GPP S-NSSAI 100   │  │ETN                            │
+  │┌──────┐ ┌───────┐ │  ├───────┐                       │
+  ││5QI=1 ├─▶DSCP=46├─┼──▶DSCP=46├───┐                   │
+  │└──────┘ └───────┘ │  ├───────┘   │                   │
+  │┌──────┐ ┌───────┐ │  ├───────┐   │                   │
+  ││5QI=65├─▶DSCP=46├─┼──▶DSCP=46├───┤   ┌──────────────┐│
+  │└──────┘ └───────┘ │  ├───────┘   │   │TN QoS Class 5││
+  │┌──────┐ ┌───────┐ │  ├───────┐   ├───▶   Queue 5    ││
+  ││5QI=7 ├─▶DSCP=10├─┼──▶DSCP=10├───┼─┐ └──────────────┘│
+  │└──────┘ └───────┘ │  ├───────┘   │ │                 │
+  └───────────────────┘  │           │ │                 │
+  ┌───────────────────┐  │           │ │                 │
+  │3GPP S-NSSAI 200   │  │           │ │                 │
+  │┌──────┐ ┌───────┐ │  ├───────┐   │ │                 │
+  ││5QI=1 ├─▶DSCP=46├─┼──▶DSCP=46├───┤ │ ┌──────────────┐│
+  │└──────┘ └───────┘ │  ├───────┘   │ │ │TN QoS Class 1││
+  │┌──────┐ ┌───────┐ │  ├───────┐   │ ├─▶   Queue 1    ││
+  ││5QI=65├─▶DSCP=46├─┼──▶DSCP=46├───┘ │ └──────────────┘│
+  │└──────┘ └───────┘ │  ├───────┘     │                 │
+  │┌──────┐ ┌───────┐ │  ├───────┐     │                 │
+  ││5QI=7 ├─▶DSCP=10├─┼──▶DSCP=10├─────┘                 │
+  │└──────┘ └───────┘ │  ├───────┘                       │
+  └───────────────────┘  └───────────────────────────────┘
+
+  ~~~
+{: #figure-34 title="example of 3GPP QoS mapped to TN QoS" artwork-align="center"}
+
+In current SDO progress of 3GPP (Rel.17) and ORAN the mapping of 5QI to 
+DSCP is not expected in per-slice fashion, where 5QI to DSCP mapping may 
+vary from 3GPP slice to 3GPP slice, hence the mapping of 5QoS DSCP values 
+to TN QoS Classes may be rather common. 
 
 ###  Inbound Edge Resource Control {#sec-inbound-edge-resource-control}
 
@@ -1246,7 +1285,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
         -  Red, for traffic above PIR
 
 
-      An inbound 2c3r meter implemented with {{!RFC4115}}, compared to
+      An inbound 2r3c meter implemented with {{!RFC4115}}, compared to
       {{?RFC2698}}, is more 'customer friendly' as it doesn't impose
       outbound peak-rate shaping requirements on customer edge (CE)
       devices. 2r3c meters in general give greater flexibility for edge
@@ -1606,7 +1645,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
    (represented by DSCP related to 5QI set by mobile network functions
    in the packets handed off to the TN) is mapped to the TN QoS Class.
    Based in TN QoS Class, when the packet is encapsulated with outer
-   header (MPLS or IPv6), TN QoS Class marking (MPLS TC or IPv6 DHCP in
+   header (MPLS or IPv6), TN QoS Class marking (MPLS TC or IPv6 DSCP in
    outer header, as depicted in {{figure-15}} and {{figure-16}}) is set in the
    outer header.  PHB on transit is based exclusively on that TN QoS
    Class marking, i.e., original 5G QoS Class DSCP is not taken into
