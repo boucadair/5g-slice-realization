@@ -5,7 +5,7 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 7 August 2023                                          J. Drake
+Expires: 19 August 2023                                         J. Drake
                                                         Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
@@ -23,7 +23,7 @@ Expires: 7 August 2023                                          J. Drake
                                                                  Rakuten
                                                                 M. Amani
                                                          British Telecom
-                                                         3 February 2023
+                                                        15 February 2023
 
 
  A Realization of IETF Network Slices for 5G Networks Using Current IP/
@@ -70,7 +70,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 August 2023.
+   This Internet-Draft will expire on 19 August 2023.
 
 Copyright Notice
 
@@ -2660,7 +2660,7 @@ Acknowledgments
 
 Contributors
 
-   To be added later
+   To be added later one
 
 Authors' Addresses
 
