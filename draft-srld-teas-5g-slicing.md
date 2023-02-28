@@ -880,7 +880,7 @@ VLANs representing slices           VLANs representing slices
    {2001:db8::a:300:0, 2001:db8::b:300:0}.
 
 ~~~ aasvg
- 2001:db8::A:0:0/96 (NF-A)                2001:db8::B:0:0/96 (NF-B) 
+ 2001:db8::A:0:0/96 (NF-A)                2001:db8::B:0:0/96 (NF-B)
 
  2001:db8::A:100:0/128  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─   2001:db8::B:100:0/128
      │                                     │                  │
@@ -893,10 +893,10 @@ VLANs representing slices           VLANs representing slices
  2001:db8::A:300:0/128  └ ─ ─ ─ ─ ─ ─ ─ ─ ─   2001:db8::B:300:0/128
  
      └──────────────────┘└────────────────┘└──────────────────┘
-        Local Segment        TN Segment        Local Segment  
+        Local Segment        TN Segment        Local Segment
 
           ○ – tunnel (IPsec, GTP-U, ...) termination point
-          ■ - Service Demarcation Point                                                                                        
+          ■ - Service Demarcation Point
 ~~~
 {: #figure-12 title="Deployment example with S-NSSAI embedded into IPv6" artwork-align="center"}
 
