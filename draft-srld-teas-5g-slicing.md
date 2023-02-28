@@ -891,7 +891,7 @@ VLANs representing slices           VLANs representing slices
 └────▲─┘ MIoT (SST=3)   │      Network                      └─▲────┘
      │                                     │                  │
  2001:db8::A:300:0/128  └ ─ ─ ─ ─ ─ ─ ─ ─ ─   2001:db8::B:300:0/128
- 
+
      └──────────────────┘└────────────────┘└──────────────────┘
         Local Segment        TN Segment        Local Segment
 
@@ -958,14 +958,14 @@ representing slices              representing slices    slices
 │    ◙ │       │■    │       │    ■│       │ ◙………………●───────●      │
 └──────┘       └┬────┘       └─────┘       └────────┘       └──────┘
                       Network    │            L2/L3
-                └ ─ ─ ─ ─ ─ ─ ─ ─ 
+                └ ─ ─ ─ ─ ─ ─ ─ ─
       └────────┘└──────────────────┘└───────────────────────┘
-         Local            TN                    Local       
+         Local            TN                    Local
         Segment         Segment                Segment
 
   ● – logical interface represented by VLAN on physical interface
   ◙ - service instances (with unique MPLS label)
-  ■ - Service Demarcation Point                                                              
+  ■ - Service Demarcation Point
 ~~~
 {: #figure-13 title="MPLS Hand-off: Option B" artwork-align="center"}
 
@@ -1814,7 +1814,7 @@ representing slices              representing slices    slices
    and the DCs, but is not aware of the individual network functions.
 
 ~~~ aasvg
-┌ ─ ─ ─ ─ DC 1─ ─ ─ ─    ┌ ─ ─ ─ ─ ─ ─ ─ ─ ┐   ┌ ─ ─ ─ ─ DC 2─ ─ ─ ─ 
+┌ ─ ─ ─ ─ DC 1─ ─ ─ ─    ┌ ─ ─ ─ ─ ─ ─ ─ ─ ┐   ┌ ─ ─ ─ ─ DC 2─ ─ ─ ─
   ┌──────┐           │  ┌────┐         ┌────┐              ┌──────┐ │
 │ │ NF1A │           ───■PE1A│         │PE2A■──┤           │ NF2A │
   └──────┘           │  └────┘         └────┘              └──────┘ │
@@ -1824,9 +1824,9 @@ representing slices              representing slices    slices
   ┌──────┐           │  ┌────┐         ┌────┐              ┌──────┐ │
 │ │ NF1C │           ───■PE1B│         │PE2B■──┤           │ NF2C │
   └──────┘           │  └────┘         └────┘              └──────┘ │
-└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─    │    Transport    │   └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ 
+└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─    │    Transport    │   └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
 
-                         │     Network     │   ┌ ─ ─ ─ ─ DC 3─ ─ ─ ─ 
+                         │     Network     │   ┌ ─ ─ ─ ─ DC 3─ ─ ─ ─
                                        ┌────┐              ┌──────┐ │
                          │             │PE3A■──┤           │ NF3A │
                                        └────┘              └──────┘ │
@@ -1836,9 +1836,9 @@ representing slices              representing slices    slices
                                        ┌────┐              ┌──────┐ │
                          │             │PE3B■──┤           │ NF3C │
                                        └────┘              └──────┘ │
-                         └ ─ ─ ─ ─ ─ ─ ─ ─ ┘   └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ 
+                         └ ─ ─ ─ ─ ─ ─ ─ ─ ┘   └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
 
-  ■ - SDP, with fine-grained QoS (dedicated resources per IETF NS)   
+  ■ - SDP, with fine-grained QoS (dedicated resources per IETF NS)
 ~~~
 {: #figure-26 title="An Example of Multi-DC Architecture" artwork-align="center"}
 
