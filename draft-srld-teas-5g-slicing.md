@@ -784,7 +784,7 @@ VLANs representing slices           VLANs representing slices
 │      ●───────●■    │          │    ■●───────●     ●───────●      │
 └──────┘       └─┬───┘  Network └─────┘       └─────┘       └──────┘
                                     │
-                 └ ─ ─ ─ ─ ─ ─ ─ ─ ─ 
+                 └ ─ ─ ─ ─ ─ ─ ─ ─ ─
       └────────┘└────────────────────┘└─────────────────────┘
          Local             TN                   Local
         Segment          Segment               Segment
