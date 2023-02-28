@@ -34,7 +34,7 @@
 <meta content="draft-srld-teas-5g-slicing-latest" name="ietf.draft">
 <!-- Generator version information:
   xml2rfc 3.16.0
-    Python 3.10.9
+    Python 3.10.10
     appdirs 1.4.4
     ConfigArgParse 1.5.3
     google-i18n-address 2.5.2
@@ -379,7 +379,7 @@ ul.empty li, .ulEmpty li {
   margin-top: 0.5em;
 }
 :is(ul, ol).compact, .ulCompact, .olCompact {
-  line-height: 100%;
+  line-height: 1;
   margin: 0 0 0 2em;
 }
 
@@ -389,9 +389,12 @@ dl {
   --indent: 3ch;
   /* --indent: attr(indent ch); not supported in any browser, but we can dream */
 }
+dl.olPercent {
+  --indent: 5ch;
+}
 dl > dt {
   float: left;
-  margin-right: 1em;
+  margin-right: 2ch;
   min-width: 8ch;
 }
 dl.dlNewline > dt {
@@ -401,6 +404,9 @@ dl > dd {
   margin-bottom: .8em;
   margin-left: var(--indent) !important; /* stupid element overrides */
   min-height: 2ex;
+}
+dl.olPercent > dt {
+  min-width: calc(var(--indent) - 2ch);
 }
 :is(dl.compact, .dlCompact) > dd {
   margin-bottom: 0;
@@ -601,10 +607,14 @@ hr {
 .bcp14 {
   font-variant: small-caps;
   font-weight: 600;
-  font-size: 14.5px;
+  font-size: var(--small-font-size);
 }
 .role {
   font-variant: all-small-caps;
+}
+sub, sup {
+  line-height: 1;
+  font-size: 80%;
 }
 
 /* info block */
@@ -1061,7 +1071,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Szarkowicz, et al.</td>
-<td class="center">Expires 19 August 2023</td>
+<td class="center">Expires 1 September 2023</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1074,12 +1084,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-srld-teas-5g-slicing-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-02-15" class="published">15 February 2023</time>
+<time datetime="2023-02-28" class="published">28 February 2023</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2023-08-19">19 August 2023</time></dd>
+<dd class="expires"><time datetime="2023-09-01">1 September 2023</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1178,7 +1188,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 19 August 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 1 September 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1513,7 +1523,7 @@ Network Slice Controller (NSC) and the Transport Network Orchestrator (TNO).<a h
             <li class="normal" id="section-3.2.1-2.2">Local Segment:
  The Local segment either connects two NFs within a given site or connects a NF to
  the TN. In the first case, the realization of the segment is  driven by the 5G Orchestration without any
- involvement of the Transport Network Orchestration. In the second case, the realization of this segment partially relies on the NSC/TNO for the configuration of the TN-side of the segment (e.g. the configuration of the attachment circuit on a PE interface).  Generally, the Local Segment is a datapath local to a site with a  a potential extension to reach the TN. A
+ involvement of the IETF NSC or TNO. In the second case, the realization of this segment partially relies on the IETF NSC/TNO for the configuration of the TN-side of the segment (e.g. the configuration of the attachment circuit on a PE interface).  Generally, the Local Segment is a datapath local to a site with a potential extension to reach the TN. A
  site can be (but not limited to): a Data Center (DC), a Point of Presence (PoP), a
  Central Office (CO), or a virtualized infrastructure in a Public
  Cloud.<a href="#section-3.2.1-2.2" class="pilcrow">¶</a>
@@ -2971,7 +2981,7 @@ multiple containers in a cloud architecture).<a href="#section-3.2.1-11.4" class
    factors, such as the actual business cases, the NF vendor
    capabilities, the NF vendor reference designs, as well as service
    provider or even legal requirements.<a href="#section-3.3-5" class="pilcrow">¶</a></p>
-<p id="section-3.3-6">Specifically, the actual mapping is a design choice of service operators that may a function of, e.g., the number of instantiated slices, requested services, or local engineering capabilities and guidelines. However, operators should carefully consider means to ease slice migration strategies (e.g., move from 1-to-1 mapping to N-to-1).<a href="#section-3.3-6" class="pilcrow">¶</a></p>
+<p id="section-3.3-6">Specifically, the actual mapping is a design choice of service operators that may be a function of, e.g., the number of instantiated slices, requested services, or local engineering capabilities and guidelines. However, operators should carefully consider means to ease slice migration strategies (e.g., move from 1-to-1 mapping to N-to-1).<a href="#section-3.3-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="first-5g-slice-versus-subsequent-slices">
@@ -3731,7 +3741,7 @@ distribution even in non-ECMP friendly network topologies.<a href="#section-4-2.
    identification.  The S-NSSAI is not visible to the transport domain,
    so instead 5G functions can expose the 5G slices to the transport
    domain by mapping to explicit L2/L3 identifiers such as VLAN, IP
-   addresses or DSCP, as documented in <span>[<a href="#I-D.gcdrb-teas-5g-network-slice-application" class="cite xref">I-D.gcdrb-teas-5g-network-slice-application</a>]</span>.<a href="#section-4-4" class="pilcrow">¶</a></p>
+   addresses or Differentiated Services Code Point (DSCP), as documented in <span>[<a href="#I-D.gcdrb-teas-5g-network-slice-application" class="cite xref">I-D.gcdrb-teas-5g-network-slice-application</a>]</span>.<a href="#section-4-4" class="pilcrow">¶</a></p>
 <div id="sec-vlan-handoff">
 <section id="section-4.1">
         <h3 id="name-vlan-hand-off">
@@ -3752,16 +3762,16 @@ distribution even in non-ECMP friendly network topologies.<a href="#section-4-2.
    for all ACs, when possible.  However, SDPs for a same slice at
    different locations may also use different VLAN values.  Therefore, a
    VLAN to IETF Network Slice mapping table <span class="bcp14">MUST</span> be maintained for each
-   AC, and the VLAN allocation <span class="bcp14">MUST</span> be coordinated between TN domain and
-   extended RAN/Core domains.  Thus, while VLAN hand-off is simple from
+   AC, and the VLAN allocation <span class="bcp14">MUST</span> be coordinated between TN orchestration and
+   local segment orchestration.  Thus, while VLAN hand-off is simple from
    the NF point of view, it adds complexity due to the requirement of
    maintaining mapping tables for each SDP.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
 <span id="name-5g-slice-with-vlan-hand-off"></span><div id="_figure-9">
 <figure id="figure-9">
           <div id="section-4.1-2.1">
             <div class="alignCenter art-svg artwork" id="section-4.1-2.1.1">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="272" width="552" viewBox="0 0 552 272" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
-                <circle cx="24" cy="224" r="6" class="closeddot" fill="black"></circle>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="304" width="552" viewBox="0 0 552 304" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
+                <circle cx="16" cy="272" r="6" class="closeddot" fill="black"></circle>
                 <circle cx="64" cy="112" r="6" class="closeddot" fill="black"></circle>
                 <circle cx="64" cy="128" r="6" class="closeddot" fill="black"></circle>
                 <circle cx="64" cy="144" r="6" class="closeddot" fill="black"></circle>
@@ -3855,17 +3865,27 @@ distribution even in non-ECMP friendly network topologies.<a href="#section-4-2.
                   <text x="256" y="196">─</text>
                   <text x="272" y="196">─</text>
                   <text x="288" y="196">─</text>
-                  <text x="64" y="228">Logical</text>
-                  <text x="140" y="228">interfaces</text>
-                  <text x="232" y="228">represented</text>
-                  <text x="292" y="228">by</text>
-                  <text x="324" y="228">VLAN</text>
-                  <text x="356" y="228">on</text>
-                  <text x="376" y="228">a</text>
-                  <text x="420" y="228">physical</text>
-                  <text x="496" y="228">interface</text>
-                  <text x="24" y="244">■</text>
-                  <text x="52" y="244">SDPs</text>
+                  <text x="272" y="212">└────────┘└────────────────────┘└─────────────────────┘</text>
+                  <text x="96" y="228">Local</text>
+                  <text x="228" y="228">TN</text>
+                  <text x="408" y="228">Local</text>
+                  <text x="96" y="244">Segment</text>
+                  <text x="232" y="244">Segment</text>
+                  <text x="408" y="244">Segment</text>
+                  <text x="32" y="276">–</text>
+                  <text x="72" y="276">logical</text>
+                  <text x="144" y="276">interface</text>
+                  <text x="232" y="276">represented</text>
+                  <text x="292" y="276">by</text>
+                  <text x="324" y="276">VLAN</text>
+                  <text x="356" y="276">on</text>
+                  <text x="404" y="276">physical</text>
+                  <text x="480" y="276">interface</text>
+                  <text x="16" y="292">■</text>
+                  <text x="32" y="292">-</text>
+                  <text x="72" y="292">Service</text>
+                  <text x="152" y="292">Demarcation</text>
+                  <text x="224" y="292">Point</text>
                 </g>
               </svg><a href="#section-4.1-2.1.1" class="pilcrow">¶</a>
 </div>
@@ -3897,28 +3917,28 @@ distribution even in non-ECMP friendly network topologies.<a href="#section-4-2.
 <figure id="figure-10">
           <div id="section-4.2-2.1">
             <div class="alignCenter art-svg artwork" id="section-4.2-2.1.1">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="272" width="560" viewBox="0 0 560 272" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
-                <path d="M 56,110 L 120,110" fill="none" stroke="black"></path>
-                <path d="M 56,114 L 120,114" fill="none" stroke="black"></path>
-                <path d="M 136,110 L 304,110" fill="none" stroke="black"></path>
-                <path d="M 136,114 L 304,114" fill="none" stroke="black"></path>
-                <path d="M 320,110 L 496,110" fill="none" stroke="black"></path>
-                <path d="M 320,114 L 496,114" fill="none" stroke="black"></path>
-                <path d="M 56,142 L 120,142" fill="none" stroke="black"></path>
-                <path d="M 56,146 L 120,146" fill="none" stroke="black"></path>
-                <path d="M 136,142 L 304,142" fill="none" stroke="black"></path>
-                <path d="M 136,146 L 304,146" fill="none" stroke="black"></path>
-                <path d="M 320,142 L 496,142" fill="none" stroke="black"></path>
-                <path d="M 320,146 L 496,146" fill="none" stroke="black"></path>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="304" width="552" viewBox="0 0 552 304" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
+                <path d="M 56,110 L 144,110" fill="none" stroke="black"></path>
+                <path d="M 56,114 L 144,114" fill="none" stroke="black"></path>
+                <path d="M 160,110 L 280,110" fill="none" stroke="black"></path>
+                <path d="M 160,114 L 280,114" fill="none" stroke="black"></path>
+                <path d="M 296,110 L 496,110" fill="none" stroke="black"></path>
+                <path d="M 296,114 L 496,114" fill="none" stroke="black"></path>
+                <path d="M 56,142 L 144,142" fill="none" stroke="black"></path>
+                <path d="M 56,146 L 144,146" fill="none" stroke="black"></path>
+                <path d="M 160,142 L 280,142" fill="none" stroke="black"></path>
+                <path d="M 160,146 L 280,146" fill="none" stroke="black"></path>
+                <path d="M 296,142 L 496,142" fill="none" stroke="black"></path>
+                <path d="M 296,146 L 496,146" fill="none" stroke="black"></path>
                 <circle cx="48" cy="112" r="6" class="opendot" fill="white" stroke="black"></circle>
                 <circle cx="48" cy="144" r="6" class="opendot" fill="white" stroke="black"></circle>
-                <circle cx="88" cy="224" r="6" class="opendot" fill="white" stroke="black"></circle>
+                <circle cx="88" cy="272" r="6" class="opendot" fill="white" stroke="black"></circle>
                 <circle cx="504" cy="112" r="6" class="opendot" fill="white" stroke="black"></circle>
                 <circle cx="504" cy="144" r="6" class="opendot" fill="white" stroke="black"></circle>
                 <g class="text">
-                  <text x="368" y="36">Tunnels</text>
-                  <text x="452" y="36">representing</text>
-                  <text x="532" y="36">slices</text>
+                  <text x="352" y="36">Tunnels</text>
+                  <text x="436" y="36">representing</text>
+                  <text x="516" y="36">slices</text>
                   <text x="152" y="68">┌</text>
                   <text x="168" y="68">─</text>
                   <text x="184" y="68">─</text>
@@ -3938,8 +3958,8 @@ distribution even in non-ECMP friendly network topologies.<a href="#section-4-2.
                   <text x="456" y="100">▼</text>
                   <text x="516" y="100">┌──────┐</text>
                   <text x="8" y="116">│</text>
-                  <text x="128" y="116">■</text>
-                  <text x="312" y="116">■</text>
+                  <text x="152" y="116">■</text>
+                  <text x="288" y="116">■</text>
                   <text x="544" y="116">│</text>
                   <text x="8" y="132">│</text>
                   <text x="28" y="132">NF</text>
@@ -3952,8 +3972,8 @@ distribution even in non-ECMP friendly network topologies.<a href="#section-4-2.
                   <text x="524" y="132">NF</text>
                   <text x="544" y="132">│</text>
                   <text x="8" y="148">│</text>
-                  <text x="128" y="148">■</text>
-                  <text x="312" y="148">■</text>
+                  <text x="152" y="148">■</text>
+                  <text x="288" y="148">■</text>
                   <text x="544" y="148">│</text>
                   <text x="36" y="164">└──────┘</text>
                   <text x="152" y="164">└──┬──┘</text>
@@ -3971,14 +3991,25 @@ distribution even in non-ECMP friendly network topologies.<a href="#section-4-2.
                   <text x="264" y="196">─</text>
                   <text x="280" y="196">─</text>
                   <text x="296" y="196">┘</text>
-                  <text x="124" y="228">Tunnel</text>
-                  <text x="184" y="228">(IPsec,</text>
-                  <text x="244" y="228">GTP-U,</text>
-                  <text x="292" y="228">...)</text>
-                  <text x="360" y="228">termination</text>
-                  <text x="432" y="228">point</text>
-                  <text x="88" y="244">■</text>
-                  <text x="112" y="244">SDP</text>
+                  <text x="272" y="212">└────────┘└────────────────────┘└─────────────────────┘</text>
+                  <text x="96" y="228">Local</text>
+                  <text x="228" y="228">TN</text>
+                  <text x="408" y="228">Local</text>
+                  <text x="96" y="244">Segment</text>
+                  <text x="232" y="244">Segment</text>
+                  <text x="408" y="244">Segment</text>
+                  <text x="104" y="276">–</text>
+                  <text x="140" y="276">tunnel</text>
+                  <text x="200" y="276">(IPsec,</text>
+                  <text x="260" y="276">GTP-U,</text>
+                  <text x="308" y="276">...)</text>
+                  <text x="376" y="276">termination</text>
+                  <text x="448" y="276">point</text>
+                  <text x="88" y="292">■</text>
+                  <text x="104" y="292">-</text>
+                  <text x="144" y="292">Service</text>
+                  <text x="224" y="292">Demarcation</text>
+                  <text x="296" y="292">Point</text>
                 </g>
               </svg><a href="#section-4.2-2.1.1" class="pilcrow">¶</a>
 </div>
@@ -3992,7 +4023,7 @@ distribution even in non-ECMP friendly network topologies.<a href="#section-4-2.
    S-NSSAI is a 32-bit field: Slice/Service Type (SST): 8 bits, Slice
    Differentiator (SD): 24 bits. 32 bits, out of 128 bits of the IPv6
    address, may be used to encode the S-NSSAI, which makes an IP to
-   Slice mapping table unnecessary. This mapping is simply a local an allocation method
+   Slice mapping table unnecessary. This mapping is simply a local allocation method
    to allocate IPv6 addresses to NF loopbacks, without redefining IPv6
    semantic. Different IPv6 address allocation schemes following this
    mapping approach may be used, with one example allocation showed in <a href="#_figure-11" class="auto internal xref">Figure 11</a>.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
@@ -4002,7 +4033,7 @@ distribution even in non-ECMP friendly network topologies.<a href="#section-4-2.
    benefit of embedding the S-NSSAI in the IPv6 address is providing
    a very easy way of identifying the packet as belonging to given
    S-NSSAI at any place in the transport domain.  This might be
-   used, for example, to slectivelky enable per S-NSSAI monitoring, or
+   used, for example, to selectively enable per S-NSSAI monitoring, or
    any other per S-NSSAI handling, if required.<a href="#section-4.2-5" class="pilcrow">¶</a></p>
 <span id="name-an-example-of-s-nssai-embed"></span><div id="_figure-11">
 <figure id="figure-11">
@@ -4060,21 +4091,30 @@ distribution even in non-ECMP friendly network topologies.<a href="#section-4-2.
 <figure id="figure-12">
           <div id="section-4.2-9.1">
             <div class="alignCenter art-svg artwork" id="section-4.2-9.1.1">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="224" width="552" viewBox="0 0 552 224" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
-                <path d="M 56,110 L 496,110" fill="none" stroke="black"></path>
-                <path d="M 56,114 L 496,114" fill="none" stroke="black"></path>
-                <path d="M 56,142 L 496,142" fill="none" stroke="black"></path>
-                <path d="M 56,146 L 496,146" fill="none" stroke="black"></path>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="304" width="552" viewBox="0 0 552 304" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
+                <path d="M 56,110 L 200,110" fill="none" stroke="black"></path>
+                <path d="M 56,114 L 200,114" fill="none" stroke="black"></path>
+                <path d="M 216,110 L 336,110" fill="none" stroke="black"></path>
+                <path d="M 216,114 L 336,114" fill="none" stroke="black"></path>
+                <path d="M 352,110 L 496,110" fill="none" stroke="black"></path>
+                <path d="M 352,114 L 496,114" fill="none" stroke="black"></path>
+                <path d="M 56,142 L 200,142" fill="none" stroke="black"></path>
+                <path d="M 56,146 L 200,146" fill="none" stroke="black"></path>
+                <path d="M 216,142 L 336,142" fill="none" stroke="black"></path>
+                <path d="M 216,146 L 336,146" fill="none" stroke="black"></path>
+                <path d="M 352,142 L 496,142" fill="none" stroke="black"></path>
+                <path d="M 352,146 L 496,146" fill="none" stroke="black"></path>
                 <circle cx="48" cy="112" r="6" class="opendot" fill="white" stroke="black"></circle>
                 <circle cx="48" cy="144" r="6" class="opendot" fill="white" stroke="black"></circle>
+                <circle cx="88" cy="272" r="6" class="opendot" fill="white" stroke="black"></circle>
                 <circle cx="504" cy="112" r="6" class="opendot" fill="white" stroke="black"></circle>
                 <circle cx="504" cy="144" r="6" class="opendot" fill="white" stroke="black"></circle>
                 <g class="text">
-                  <text x="84" y="36">2001:db8::a:0:0/96</text>
+                  <text x="84" y="36">2001:db8::A:0:0/96</text>
                   <text x="188" y="36">(NF-A)</text>
-                  <text x="412" y="36">2001:db8::b:0:0/96</text>
+                  <text x="412" y="36">2001:db8::B:0:0/96</text>
                   <text x="516" y="36">(NF-B)</text>
-                  <text x="96" y="68">2001:db8::a:100:0/128</text>
+                  <text x="96" y="68">2001:db8::A:100:0/128</text>
                   <text x="200" y="68">┌</text>
                   <text x="216" y="68">─</text>
                   <text x="232" y="68">─</text>
@@ -4085,7 +4125,7 @@ distribution even in non-ECMP friendly network topologies.<a href="#section-4-2.
                   <text x="312" y="68">─</text>
                   <text x="328" y="68">─</text>
                   <text x="344" y="68">─</text>
-                  <text x="456" y="68">2001:db8::b:100:0/128</text>
+                  <text x="456" y="68">2001:db8::B:100:0/128</text>
                   <text x="48" y="84">│</text>
                   <text x="352" y="84">│</text>
                   <text x="504" y="84">│</text>
@@ -4096,6 +4136,8 @@ distribution even in non-ECMP friendly network topologies.<a href="#section-4-2.
                   <text x="280" y="100">Transport</text>
                   <text x="516" y="100">┌─▼────┐</text>
                   <text x="8" y="116">│</text>
+                  <text x="208" y="116">■</text>
+                  <text x="344" y="116">■</text>
                   <text x="544" y="116">│</text>
                   <text x="8" y="132">│</text>
                   <text x="36" y="132">NF-A</text>
@@ -4106,6 +4148,8 @@ distribution even in non-ECMP friendly network topologies.<a href="#section-4-2.
                   <text x="516" y="132">NF-B</text>
                   <text x="544" y="132">│</text>
                   <text x="8" y="148">│</text>
+                  <text x="208" y="148">■</text>
+                  <text x="344" y="148">■</text>
                   <text x="544" y="148">│</text>
                   <text x="36" y="164">└────▲─┘</text>
                   <text x="92" y="164">MIoT</text>
@@ -4116,7 +4160,7 @@ distribution even in non-ECMP friendly network topologies.<a href="#section-4-2.
                   <text x="48" y="180">│</text>
                   <text x="352" y="180">│</text>
                   <text x="504" y="180">│</text>
-                  <text x="96" y="196">2001:db8::a:300:0/128</text>
+                  <text x="96" y="196">2001:db8::A:300:0/128</text>
                   <text x="200" y="196">└</text>
                   <text x="216" y="196">─</text>
                   <text x="232" y="196">─</text>
@@ -4127,7 +4171,26 @@ distribution even in non-ECMP friendly network topologies.<a href="#section-4-2.
                   <text x="312" y="196">─</text>
                   <text x="328" y="196">─</text>
                   <text x="344" y="196">─</text>
-                  <text x="456" y="196">2001:db8::b:300:0/128</text>
+                  <text x="456" y="196">2001:db8::B:300:0/128</text>
+                  <text x="276" y="228">└──────────────────┘└────────────────┘└──────────────────┘</text>
+                  <text x="88" y="244">Local</text>
+                  <text x="144" y="244">Segment</text>
+                  <text x="244" y="244">TN</text>
+                  <text x="288" y="244">Segment</text>
+                  <text x="400" y="244">Local</text>
+                  <text x="456" y="244">Segment</text>
+                  <text x="104" y="276">–</text>
+                  <text x="140" y="276">tunnel</text>
+                  <text x="200" y="276">(IPsec,</text>
+                  <text x="260" y="276">GTP-U,</text>
+                  <text x="308" y="276">...)</text>
+                  <text x="376" y="276">termination</text>
+                  <text x="448" y="276">point</text>
+                  <text x="88" y="292">■</text>
+                  <text x="104" y="292">-</text>
+                  <text x="144" y="292">Service</text>
+                  <text x="224" y="292">Demarcation</text>
+                  <text x="296" y="292">Point</text>
                 </g>
               </svg><a href="#section-4.2-9.1.1" class="pilcrow">¶</a>
 </div>
@@ -4178,13 +4241,12 @@ change at domain boundaries.<a href="#section-4.3-3.3" class="pilcrow">¶</a>
           <h4 id="name-option-10b">
 <a href="#section-4.3.2" class="section-number selfRef">4.3.2. </a><a href="#name-option-10b" class="section-name selfRef">Option 10B</a>
           </h4>
-<p id="section-4.3.2-1">In this option, service instances for different IETF
-   Network Slice Services are instantiated outside the TN domain.  These instances
+<p id="section-4.3.2-1">In this option, L3VPN service instances for different IETF
+   Network Slice Services are instantiated outside the TN domain.  These L3VPN service instances
    could be instantiated either on the compute, hosting mobile network
    functions (<a href="#_figure-13" class="auto internal xref">Figure 13</a>, left hand side), or within the cloud
    infrastructure itself (e.g., on the top of the rack or leaf switch
-   within cloud IP fabric (<a href="#_figure-13" class="auto internal xref">Figure 13</a>, right hand side)). Between the TN
-   domain and the (extended) RAN/CN domain, packets are MPLS
+   within cloud IP fabric (<a href="#_figure-13" class="auto internal xref">Figure 13</a>, right hand side)). On the local segment connected to ETN packets are already MPLS
    encapsulated (or MPLSoUDP encapsulated, if cloud or compute
    infrastructure doesn't support native MPLS encapsulation). Therefore,
    the PE uses neither a VLAN nor an IP address for slice
@@ -4193,8 +4255,8 @@ change at domain boundaries.<a href="#section-4.3-3.3" class="pilcrow">¶</a>
 <figure id="figure-13">
             <div id="section-4.3.2-2.1">
               <div class="alignCenter art-svg artwork" id="section-4.3.2-2.1.1">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="416" width="552" viewBox="0 0 552 416" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
-                  <circle cx="24" cy="352" r="6" class="closeddot" fill="black"></circle>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="448" width="552" viewBox="0 0 552 448" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
+                  <circle cx="24" cy="400" r="6" class="closeddot" fill="black"></circle>
                   <circle cx="424" cy="240" r="6" class="closeddot" fill="black"></circle>
                   <circle cx="424" cy="256" r="6" class="closeddot" fill="black"></circle>
                   <circle cx="424" cy="272" r="6" class="closeddot" fill="black"></circle>
@@ -4271,10 +4333,10 @@ change at domain boundaries.<a href="#section-4.3-3.3" class="pilcrow">¶</a>
                     <text x="8" y="244">│</text>
                     <text x="48" y="244">◙</text>
                     <text x="64" y="244">│</text>
-                    <text x="128" y="244">│</text>
+                    <text x="132" y="244">│■</text>
                     <text x="176" y="244">│</text>
                     <text x="240" y="244">│</text>
-                    <text x="288" y="244">│</text>
+                    <text x="284" y="244">■│</text>
                     <text x="352" y="244">│</text>
                     <text x="392" y="244">◙………………</text>
                     <text x="456" y="244">───────</text>
@@ -4282,12 +4344,10 @@ change at domain boundaries.<a href="#section-4.3-3.3" class="pilcrow">¶</a>
                     <text x="8" y="260">│</text>
                     <text x="28" y="260">NF</text>
                     <text x="48" y="260">◙</text>
-                    <text x="96" y="260">├───────■</text>
-                    <text x="152" y="260">ETN</text>
-                    <text x="176" y="260">│</text>
-                    <text x="240" y="260">│</text>
-                    <text x="264" y="260">ETN</text>
-                    <text x="320" y="260">■───────┤</text>
+                    <text x="100" y="260">├───────┤■</text>
+                    <text x="164" y="260">ETN│</text>
+                    <text x="252" y="260">│ETN</text>
+                    <text x="316" y="260">■├───────┤</text>
                     <text x="392" y="260">◙………………</text>
                     <text x="456" y="260">───────</text>
                     <text x="524" y="260">NF</text>
@@ -4295,10 +4355,10 @@ change at domain boundaries.<a href="#section-4.3-3.3" class="pilcrow">¶</a>
                     <text x="8" y="276">│</text>
                     <text x="48" y="276">◙</text>
                     <text x="64" y="276">│</text>
-                    <text x="128" y="276">│</text>
+                    <text x="132" y="276">│■</text>
                     <text x="176" y="276">│</text>
                     <text x="240" y="276">│</text>
-                    <text x="288" y="276">│</text>
+                    <text x="284" y="276">■│</text>
                     <text x="352" y="276">│</text>
                     <text x="392" y="276">◙………………</text>
                     <text x="456" y="276">───────</text>
@@ -4320,25 +4380,35 @@ change at domain boundaries.<a href="#section-4.3-3.3" class="pilcrow">¶</a>
                     <text x="232" y="324">─</text>
                     <text x="248" y="324">─</text>
                     <text x="264" y="324">─</text>
-                    <text x="64" y="356">Logical</text>
-                    <text x="136" y="356">interface</text>
-                    <text x="224" y="356">represented</text>
-                    <text x="284" y="356">by</text>
-                    <text x="316" y="356">VLAN</text>
-                    <text x="348" y="356">on</text>
-                    <text x="396" y="356">physical</text>
-                    <text x="472" y="356">interface</text>
-                    <text x="24" y="372">◙</text>
-                    <text x="64" y="372">Service</text>
-                    <text x="136" y="372">instances</text>
-                    <text x="200" y="372">(with</text>
-                    <text x="252" y="372">unique</text>
-                    <text x="300" y="372">MPLS</text>
-                    <text x="348" y="372">label)</text>
-                    <text x="24" y="388">■</text>
-                    <text x="64" y="388">Service</text>
-                    <text x="144" y="388">Demarcation</text>
-                    <text x="216" y="388">Point</text>
+                    <text x="272" y="340">└────────┘└──────────────────┘└───────────────────────┘</text>
+                    <text x="96" y="356">Local</text>
+                    <text x="220" y="356">TN</text>
+                    <text x="408" y="356">Local</text>
+                    <text x="96" y="372">Segment</text>
+                    <text x="224" y="372">Segment</text>
+                    <text x="408" y="372">Segment</text>
+                    <text x="40" y="404">–</text>
+                    <text x="80" y="404">logical</text>
+                    <text x="152" y="404">interface</text>
+                    <text x="240" y="404">represented</text>
+                    <text x="300" y="404">by</text>
+                    <text x="332" y="404">VLAN</text>
+                    <text x="364" y="404">on</text>
+                    <text x="412" y="404">physical</text>
+                    <text x="488" y="404">interface</text>
+                    <text x="24" y="420">◙</text>
+                    <text x="40" y="420">-</text>
+                    <text x="80" y="420">service</text>
+                    <text x="152" y="420">instances</text>
+                    <text x="216" y="420">(with</text>
+                    <text x="268" y="420">unique</text>
+                    <text x="316" y="420">MPLS</text>
+                    <text x="364" y="420">label)</text>
+                    <text x="24" y="436">■</text>
+                    <text x="40" y="436">-</text>
+                    <text x="80" y="436">Service</text>
+                    <text x="160" y="436">Demarcation</text>
+                    <text x="232" y="436">Point</text>
                   </g>
                 </svg><a href="#section-4.3.2-2.1.1" class="pilcrow">¶</a>
 </div>
@@ -4350,11 +4420,10 @@ change at domain boundaries.<a href="#section-4.3-3.3" class="pilcrow">¶</a>
 <p id="section-4.3.2-3">MPLS labels are allocated dynamically, especially in Option 10B
    deployments, where at the domain boundaries service prefixes are
    reflected with next-hop self, and new label is dynamically allocated,
-   as visible in <a href="#_figure-13" class="auto internal xref">Figure 13</a>.  Therefore, for any slice-specific per hop
-   behavior at the TN domain edge, the PE must be able to determine
+   as visible in <a href="#_figure-13" class="auto internal xref">Figure 13</a> (e.g., labels A, A' and A" for the first depicted slice).  Therefore, for any slice-specific per hop
+   behavior at the TN domain edge, the ETN must be able to determine
    which label represents which slice.  In the BGP control plane, when
-   exchanging service prefixes between (extended) RAN/CN domains and TN
-   domain, each slice might be represented by a unique BGP community, so
+   exchanging service prefixes over local segment, each slice might be represented by a unique BGP community, so
    tracking label assignment to the slice is possible.  For example, in
    <a href="#_figure-13" class="auto internal xref">Figure 13</a>, for the slice identified with COM=1, ETN advertises a
    dynamically allocated label A".  Since, based on the community, the
@@ -4427,7 +4496,7 @@ change at domain boundaries.<a href="#section-4.3-3.3" class="pilcrow">¶</a>
 <pre>
   Control of the TN resources on transit links, as well as traffic
   scheduling/prioritization on transit links, is based on a flat
-  (non-hierarchical) QoS model in the IETF Network Slice
+  (non-hierarchical) QoS model in this IETF Network Slice
   realization.  That is, IETF Network Slices are assigned dedicated
   resources (e.g., QoS queues) at the edge of the TN domain (at
   SDP), while all IETF Network Slices are sharing resources (sharing
@@ -4438,7 +4507,7 @@ change at domain boundaries.<a href="#section-4.3-3.3" class="pilcrow">¶</a>
 
   At this layer, QoS treatment is indicated by QoS indicator
   specific to the encapsulation used in the TN domain, and it could
-  be DSCP or MPLS TC.  This layer of QoS will be referred as 'TN QoS
+  be DSCP or MPLS Traffic Class (TC) .  This layer of QoS will be referred as 'TN QoS
   Class', or 'TN QoS' for short, in this document.
 </pre><a href="#section-5-5" class="pilcrow">¶</a>
 </div>
@@ -4457,7 +4526,7 @@ change at domain boundaries.<a href="#section-4.3-3.3" class="pilcrow">¶</a>
    for slicing in the transport domain: a 5QI-unaware model and a 5QI-
    aware model.  Both slicing models in the transport domain could be
    used concurrently within the same 5G slice.  For example, the TN
-   segment for 5G midhaul (F2-U interface) might be 5QI-aware, while
+   segment for 5G midhaul (F1-U interface) might be 5QI-aware, while
    at the same time the TN segment for 5G backhaul (N3 interface) might
    follow the 5QI-unaware model.<a href="#section-5-7" class="pilcrow">¶</a></p>
 <div id="sec-5QI-unaware">
@@ -4830,8 +4899,7 @@ change at domain boundaries.<a href="#section-4.3-3.3" class="pilcrow">¶</a>
 <a href="#name-slice-to-tn-qos-mapping-5qi" class="selfRef">Slice to TN QoS Mapping (5QI-unaware Model)</a>
           </figcaption></figure>
 </div>
-<p id="section-5.1-3">When the IP traffic is handed over at the SDP from the extended RAN
-   or extended Core domains to the TN domain, the PE encapsulates the
+<p id="section-5.1-3">When the IP traffic is handed over at the SDP from the local segment to the TN domain, the PE encapsulates the
    traffic into MPLS (if MPLS transport is used in the TN domain), or
    IPv6 - optionally with some additional headers (if SRv6 transport is
    used in the TN domain), and sends out the packets on the TN transit
@@ -5096,8 +5164,8 @@ change at domain boundaries.<a href="#section-4.3-3.3" class="pilcrow">¶</a>
    bits (8 possible combinations), while DSCP is 6 bits (64 possible
    combinations).  Hence, SRv6 <span>[<a href="#RFC8754" class="cite xref">RFC8754</a>]</span> provides more flexibility for TN CoS
    design, especially in combination with soft policing with in-profile/
-   out-profile, as discussed in <a href="#sec-inbound-edge-resource-control" class="auto internal xref">Section 5.1.1</a>.<a href="#section-5.1-7" class="pilcrow">¶</a></p>
-<p id="section-5.1-8">Edge resources are controlled in a very granular, fine-grained
+   out-profile traffic, as discussed in <a href="#sec-inbound-edge-resource-control" class="auto internal xref">Section 5.1.1</a>.<a href="#section-5.1-7" class="pilcrow">¶</a></p>
+<p id="section-5.1-8">Edge resources are controlled in a granular, fine-grained
    manner, with dedicated resource allocation for each IETF Network
    Slice.  The resource control/enforcement happens at each SDP in two
    directions: inbound and outbound.<a href="#section-5.1-8" class="pilcrow">¶</a></p>
@@ -6008,7 +6076,7 @@ outbound direction at transport edge links.<a href="#section-5.1.2-2.2" class="p
    related decisions.  The original DSCP marking retained in the
    original IP header is used at the PE for fine-grained per slice and
    per 5G QoS Class inbound/outbound enforcement on AC link.<a href="#section-5.2-4" class="pilcrow">¶</a></p>
-<p id="section-5.2-5">In 5QI-aware model edge resources are controlled in an even more
+<p id="section-5.2-5">In 5QI-aware model, compared to 5QI-unware model, edge resources are controlled in an even more
    granular, fine-grained manner, with dedicated resource allocation for
    each IETF Network Slice and dedicated resource allocation for number
    of traffic classes (most commonly up 4 or 8 traffic classes,
@@ -6789,7 +6857,7 @@ prioritized classes.<a href="#section-5.2.1-3.2" class="pilcrow">¶</a>
    The main purpose of transit resource control is to ensure that during
    network congestion events, for example caused by network failures and
    temporary rerouting, premium classes are prioritized, and any drops
-   only occur in non-premium (best-effort) classes.  Capacity planning
+   only occur in traffic that was de-prioritized by ingress admission control <a href="#sec-inbound-edge-resource-control" class="auto internal xref">Section 5.1.1</a> or in non-premium (best-effort) classes.  Capacity planning
    and management, as described in <a href="#sec-capacity-planning" class="auto internal xref">Section 7</a>, ensures that enough
    capacity is available to fulfill all approved slice requests.<a href="#section-5.3-2" class="pilcrow">¶</a></p>
 </section>
@@ -6805,10 +6873,7 @@ prioritized classes.<a href="#section-5.2.1-3.2" class="pilcrow">¶</a>
    tunnel group is created with specific optimization criteria and
    constraints.  This document refers to such tunnel groups as
    'transport planes'.  For example, transport plane A might represent
-   tunnels optimized for latency, transport plane B for high capacity,
-   transport plane C might represent tunnels using only the "upper half"
-   of the transport network, and transport plane D might represent
-   tunnels using only the "lower half" of the transport network.
+   tunnels optimized for latency, and transport plane B tunnels optimized for high capacity.
    <a href="#_figure-23" class="auto internal xref">Figure 23</a> depicts an example of a simple network with two transport
    planes.  These transport planes might be realized via various IP/MPLS
    techniques, for example Flex-Algo or RSVP/SR traffic engineering
@@ -6821,7 +6886,7 @@ prioritized classes.<a href="#section-5.2.1-3.2" class="pilcrow">¶</a>
 <figure id="figure-23">
         <div id="section-6-2.1">
           <div class="alignCenter art-svg artwork" id="section-6-2.1.1">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="384" width="496" viewBox="0 0 496 384" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="368" width="496" viewBox="0 0 496 368" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
               <path d="M 162,272 L 162,288" fill="none" stroke="black"></path>
               <path d="M 158,272 L 158,288" fill="none" stroke="black"></path>
               <path d="M 170,64 L 170,80" fill="none" stroke="black"></path>
@@ -6906,8 +6971,8 @@ prioritized classes.<a href="#section-5.2.1-3.2" class="pilcrow">¶</a>
                 <text x="72" y="36">┌───────────────┐</text>
                 <text x="460" y="36">┌──────┐</text>
                 <text x="8" y="52">│</text>
-                <text x="60" y="52">Head-End</text>
-                <text x="108" y="52">PE</text>
+                <text x="56" y="52">Ingress</text>
+                <text x="100" y="52">PE</text>
                 <text x="136" y="52">│</text>
                 <text x="168" y="52">╔</text>
                 <text x="428" y="52">▶│</text>
@@ -7063,13 +7128,16 @@ prioritized classes.<a href="#section-5.2.1-3.2" class="pilcrow">¶</a>
 <a href="#name-transport-planes" class="selfRef">Transport Planes</a>
         </figcaption></figure>
 </div>
-<p id="section-6-3">Similar to the QoS mapping models discussed in <a href="#sec-qos-map" class="auto internal xref">Section 5</a>, for mapping
+<p id="section-6-3">Note that there could be multiple tunnels within single transport plane
+   between any pair of PEs. For readibility, <a href="#_figure-23" class="auto internal xref">Figure 23</a> shows only single
+   tunnel per transport plane for [ingress PE, egress PE] pair.<a href="#section-6-3" class="pilcrow">¶</a></p>
+<p id="section-6-4">Similar to the QoS mapping models discussed in <a href="#sec-qos-map" class="auto internal xref">Section 5</a>, for mapping
    to transport planes at the ingress PE, both 5QI-unaware and 5QI-aware
    modes are defined.  In essence, entire slices can be mapped to
    transport planes without 5G QoS consideration (5QI-unaware mode), or
    flows with different 5G QoS Classes, even if they are from the same
    slice, might be mapped to different transport planes (5QI-aware
-   mode).<a href="#section-6-3" class="pilcrow">¶</a></p>
+   mode).<a href="#section-6-4" class="pilcrow">¶</a></p>
 <div id="qi-unaware-model">
 <section id="section-6.1">
         <h3 id="name-5qi-unaware-model-2">
@@ -7691,7 +7759,7 @@ prioritized classes.<a href="#section-5.2.1-3.2" class="pilcrow">¶</a>
 <figure id="figure-26">
         <div id="section-7-4.1">
           <div class="alignCenter art-svg artwork" id="section-7-4.1.1">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="448" width="560" viewBox="0 0 560 448" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="432" width="560" viewBox="0 0 560 432" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
               <g class="text">
                 <text x="8" y="36">┌</text>
                 <text x="24" y="36">─</text>
@@ -7733,8 +7801,8 @@ prioritized classes.<a href="#section-5.2.1-3.2" class="pilcrow">¶</a>
                 <text x="24" y="68">│</text>
                 <text x="52" y="68">NF1A</text>
                 <text x="80" y="68">│</text>
-                <text x="208" y="68">■──┤PE1A│</text>
-                <text x="352" y="68">│PE2A├──■</text>
+                <text x="208" y="68">───■PE1A│</text>
+                <text x="352" y="68">│PE2A■──┤</text>
                 <text x="480" y="68">│</text>
                 <text x="508" y="68">NF2A</text>
                 <text x="536" y="68">│</text>
@@ -7774,8 +7842,8 @@ prioritized classes.<a href="#section-5.2.1-3.2" class="pilcrow">¶</a>
                 <text x="24" y="164">│</text>
                 <text x="52" y="164">NF1C</text>
                 <text x="80" y="164">│</text>
-                <text x="208" y="164">■──┤PE1B│</text>
-                <text x="352" y="164">│PE2B├──■</text>
+                <text x="208" y="164">───■PE1B│</text>
+                <text x="352" y="164">│PE2B■──┤</text>
                 <text x="480" y="164">│</text>
                 <text x="508" y="164">NF2C</text>
                 <text x="536" y="164">│</text>
@@ -7827,7 +7895,7 @@ prioritized classes.<a href="#section-5.2.1-3.2" class="pilcrow">¶</a>
                 <text x="508" y="244">┌──────┐</text>
                 <text x="552" y="244">│</text>
                 <text x="208" y="260">│</text>
-                <text x="352" y="260">│PE3A├──■</text>
+                <text x="352" y="260">│PE3A■──┤</text>
                 <text x="480" y="260">│</text>
                 <text x="508" y="260">NF3A</text>
                 <text x="536" y="260">│</text>
@@ -7850,7 +7918,7 @@ prioritized classes.<a href="#section-5.2.1-3.2" class="pilcrow">¶</a>
                 <text x="508" y="340">┌──────┐</text>
                 <text x="552" y="340">│</text>
                 <text x="208" y="356">│</text>
-                <text x="352" y="356">│PE3B├──■</text>
+                <text x="352" y="356">│PE3B■──┤</text>
                 <text x="480" y="356">│</text>
                 <text x="508" y="356">NF3C</text>
                 <text x="536" y="356">│</text>
@@ -7879,15 +7947,16 @@ prioritized classes.<a href="#section-5.2.1-3.2" class="pilcrow">¶</a>
                 <text x="528" y="388">─</text>
                 <text x="544" y="388">─</text>
                 <text x="24" y="420">■</text>
-                <text x="52" y="420">SDP,</text>
-                <text x="92" y="420">with</text>
-                <text x="164" y="420">fine-grained</text>
-                <text x="232" y="420">QoS</text>
-                <text x="292" y="420">(dedicated</text>
-                <text x="376" y="420">resources</text>
-                <text x="432" y="420">per</text>
-                <text x="468" y="420">IETF</text>
-                <text x="504" y="420">NS)</text>
+                <text x="40" y="420">-</text>
+                <text x="68" y="420">SDP,</text>
+                <text x="108" y="420">with</text>
+                <text x="180" y="420">fine-grained</text>
+                <text x="248" y="420">QoS</text>
+                <text x="308" y="420">(dedicated</text>
+                <text x="392" y="420">resources</text>
+                <text x="448" y="420">per</text>
+                <text x="484" y="420">IETF</text>
+                <text x="520" y="420">NS)</text>
               </g>
             </svg><a href="#section-7-4.1.1" class="pilcrow">¶</a>
 </div>
@@ -8294,7 +8363,7 @@ prioritized classes.<a href="#section-5.2.1-3.2" class="pilcrow">¶</a>
 <dl class="references">
 <dt id="I-D.boro-opsawg-teas-attachment-circuit">[I-D.boro-opsawg-teas-attachment-circuit]</dt>
         <dd>
-<span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Roberts, R.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, and <span class="refAuthor">B. Wu</span>, <span class="refTitle">"YANG Service Data Models for Attachment Circuits"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-boro-opsawg-teas-attachment-circuit-01</span>, <time datetime="2023-01-20" class="refDate">20 January 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-boro-opsawg-teas-attachment-circuit-01">https://datatracker.ietf.org/doc/html/draft-boro-opsawg-teas-attachment-circuit-01</a>&gt;</span>. </dd>
+<span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Roberts, R.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, and <span class="refAuthor">B. Wu</span>, <span class="refTitle">"YANG Data Models for 'Attachment Circuits'-as-a-Service (ACaaS)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-boro-opsawg-teas-attachment-circuit-02</span>, <time datetime="2023-02-22" class="refDate">22 February 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-boro-opsawg-teas-attachment-circuit-02">https://datatracker.ietf.org/doc/html/draft-boro-opsawg-teas-attachment-circuit-02</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.gcdrb-teas-5g-network-slice-application">[I-D.gcdrb-teas-5g-network-slice-application]</dt>
         <dd>

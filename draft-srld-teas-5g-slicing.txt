@@ -5,7 +5,7 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 19 August 2023                                         J. Drake
+Expires: 1 September 2023                                       J. Drake
                                                         Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
@@ -23,7 +23,7 @@ Expires: 19 August 2023                                         J. Drake
                                                                  Rakuten
                                                                 M. Amani
                                                          British Telecom
-                                                        15 February 2023
+                                                        28 February 2023
 
 
  A Realization of IETF Network Slices for 5G Networks Using Current IP/
@@ -70,7 +70,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 August 2023.
+   This Internet-Draft will expire on 1 September 2023.
 
 Copyright Notice
 
@@ -269,15 +269,15 @@ Table of Contents
    *  Local Segment: The Local segment either connects two NFs within a
       given site or connects a NF to the TN.  In the first case, the
       realization of the segment is driven by the 5G Orchestration
-      without any involvement of the Transport Network Orchestration.
-      In the second case, the realization of this segment partially
-      relies on the NSC/TNO for the configuration of the TN-side of the
-      segment (e.g. the configuration of the attachment circuit on a PE
-      interface).  Generally, the Local Segment is a datapath local to a
-      site with a a potential extension to reach the TN.  A site can be
-      (but not limited to): a Data Center (DC), a Point of Presence
-      (PoP), a Central Office (CO), or a virtualized infrastructure in a
-      Public Cloud.
+      without any involvement of the IETF NSC or TNO.  In the second
+      case, the realization of this segment partially relies on the IETF
+      NSC/TNO for the configuration of the TN-side of the segment (e.g.
+      the configuration of the attachment circuit on a PE interface).
+      Generally, the Local Segment is a datapath local to a site with a
+      potential extension to reach the TN.  A site can be (but not
+      limited to): a Data Center (DC), a Point of Presence (PoP), a
+      Central Office (CO), or a virtualized infrastructure in a Public
+      Cloud.
 
    Note that more complex scenarios can be considered (for example,
    adding an extra segmentation of TN or Local Segments).  Additionally,
@@ -588,7 +588,7 @@ Table of Contents
    provider or even legal requirements.
 
    Specifically, the actual mapping is a design choice of service
-   operators that may a function of, e.g., the number of instantiated
+   operators that may be a function of, e.g., the number of instantiated
    slices, requested services, or local engineering capabilities and
    guidelines.  However, operators should carefully consider means to
    ease slice migration strategies (e.g., move from 1-to-1 mapping to N-
@@ -751,8 +751,8 @@ Table of Contents
    identification.  The S-NSSAI is not visible to the transport domain,
    so instead 5G functions can expose the 5G slices to the transport
    domain by mapping to explicit L2/L3 identifiers such as VLAN, IP
-   addresses or DSCP, as documented in
-   [I-D.gcdrb-teas-5g-network-slice-application].
+   addresses or Differentiated Services Code Point (DSCP), as documented
+   in [I-D.gcdrb-teas-5g-network-slice-application].
 
 4.1.  VLAN Hand-off
 
@@ -771,27 +771,30 @@ Table of Contents
    for all ACs, when possible.  However, SDPs for a same slice at
    different locations may also use different VLAN values.  Therefore, a
    VLAN to IETF Network Slice mapping table MUST be maintained for each
-   AC, and the VLAN allocation MUST be coordinated between TN domain and
-   extended RAN/Core domains.  Thus, while VLAN hand-off is simple from
-   the NF point of view, it adds complexity due to the requirement of
-   maintaining mapping tables for each SDP.
+   AC, and the VLAN allocation MUST be coordinated between TN
+   orchestration and local segment orchestration.  Thus, while VLAN
+   hand-off is simple from the NF point of view, it adds complexity due
+   to the requirement of maintaining mapping tables for each SDP.
 
-    VLANs representing slices           VLANs representing slices
+   VLANs representing slices           VLANs representing slices
 
-               │     ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─      │             │
-               │                        │     │             │
-    ┌──────┐   ▼   ┌─┴───┐ Transport┌─────┐   ▼   ┌─────┐   ▼   ┌──────┐
-    │      ●───────●■    │          │    ■●───────●     ●───────●      │
-    │ NF   ●───────●■ ETN│          │ETN ■●───────●L2/L3●───────●   NF │
-    │      ●───────●■    │          │    ■●───────●     ●───────●      │
-    └──────┘       └─┬───┘  Network └─────┘       └─────┘       └──────┘
-                                        │
-                     └ ─ ─ ─ ─ ─ ─ ─ ─ ─
+              │     ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─      │             │
+              │                        │     │             │
+   ┌──────┐   ▼   ┌─┴───┐ Transport┌─────┐   ▼   ┌─────┐   ▼   ┌──────┐
+   │      ●───────●■    │          │    ■●───────●     ●───────●      │
+   │ NF   ●───────●■ ETN│          │ETN ■●───────●L2/L3●───────●   NF │
+   │      ●───────●■    │          │    ■●───────●     ●───────●      │
+   └──────┘       └─┬───┘  Network └─────┘       └─────┘       └──────┘
+                                       │
+                    └ ─ ─ ─ ─ ─ ─ ─ ─ ─
+         └────────┘└────────────────────┘└─────────────────────┘
+            Local             TN                   Local
+           Segment          Segment               Segment
 
-      ● Logical interfaces represented by VLAN on a physical interface
-      ■ SDPs
+    ● – logical interface represented by VLAN on physical interface
+    ■ - Service Demarcation Point
 
-                 Figure 9: 5G Slice with VLAN Hand-off
+                   Figure 9: 5G Slice with VLAN Hand-off
 
 4.2.  IP Hand-off
 
@@ -808,29 +811,32 @@ Table of Contents
    to the VLAN hand-off case, a mapping table tracking IP to IETF
    Network Slice mapping is required.
 
-                                             Tunnels representing slices
+                                           Tunnels representing slices
 
                      ┌ ─ ─ ─ ─ ─ ─ ─ ─ ┐                   │
                                                            │
    ┌──────┐       ┌──┴──┐ Transport┌───┴─┐       ┌─────┐   ▼   ┌──────┐
-   │    ○═════════■══════════════════════■═══════════════════════○    │
+   │    ○════════════■════════════════■══════════════════════════○    │
    │ NF   ├───────┤ ETN │          │ ETN ├───────┤L2/L3├───────┤   NF │
-   │    ○═════════■══════════════════════■═══════════════════════○    │
+   │    ○════════════■════════════════■══════════════════════════○    │
    └──────┘       └──┬──┘  Network └───┬─┘       └─────┘       └──────┘
 
                      └ ─ ─ ─ ─ ─ ─ ─ ─ ┘
+         └────────┘└────────────────────┘└─────────────────────┘
+            Local             TN                   Local
+           Segment          Segment               Segment
 
-             ○ Tunnel (IPsec, GTP-U, ...) termination point
-             ■ SDP
+             ○ – tunnel (IPsec, GTP-U, ...) termination point
+             ■ - Service Demarcation Point
 
-                 Figure 10: 5G Slice with IP Hand-off
+                    Figure 10: 5G Slice with IP Hand-off
 
    The mapping table can be simplified if, e.g., IPv6 addressing is used
    to address NFs.  An IPv6 address is a 128-bit long field, while the
    S-NSSAI is a 32-bit field: Slice/Service Type (SST): 8 bits, Slice
    Differentiator (SD): 24 bits. 32 bits, out of 128 bits of the IPv6
    address, may be used to encode the S-NSSAI, which makes an IP to
-   Slice mapping table unnecessary.  This mapping is simply a local an
+   Slice mapping table unnecessary.  This mapping is simply a local
    allocation method to allocate IPv6 addresses to NF loopbacks, without
    redefining IPv6 semantic.  Different IPv6 address allocation schemes
    following this mapping approach may be used, with one example
@@ -843,7 +849,7 @@ Table of Contents
    One benefit of embedding the S-NSSAI in the IPv6 address is providing
    a very easy way of identifying the packet as belonging to given
    S-NSSAI at any place in the transport domain.  This might be used,
-   for example, to slectivelky enable per S-NSSAI monitoring, or any
+   for example, to selectively enable per S-NSSAI monitoring, or any
    other per S-NSSAI handling, if required.
 
                             NF specific          reserved
@@ -875,19 +881,25 @@ Table of Contents
    2001:db8::b:100:0}, while for MIoT (SST=3) tunnel uses
    {2001:db8::a:300:0, 2001:db8::b:300:0}.
 
-     2001:db8::a:0:0/96 (NF-A)                2001:db8::b:0:0/96 (NF-B)
+    2001:db8::A:0:0/96 (NF-A)                2001:db8::B:0:0/96 (NF-B)
 
-     2001:db8::a:100:0/128  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─   2001:db8::b:100:0/128
-         │                                     │                  │
-    ┌────▼─┐ eMBB (SST=1)   │     Transport                     ┌─▼────┐
-    │    ○════════════════════════════════════════════════════════○    │
-    │ NF-A │                │                  │                │ NF-B │
-    │    ○════════════════════════════════════════════════════════○    │
-    └────▲─┘ MIoT (SST=3)   │      Network                      └─▲────┘
-         │                                     │                  │
-     2001:db8::a:300:0/128  └ ─ ─ ─ ─ ─ ─ ─ ─ ─   2001:db8::b:300:0/128
+    2001:db8::A:100:0/128  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─   2001:db8::B:100:0/128
+        │                                     │                  │
+   ┌────▼─┐ eMBB (SST=1)   │     Transport                     ┌─▼────┐
+   │    ○═══════════════════■════════════════■═══════════════════○    │
+   │ NF-A │                │                  │                │ NF-B │
+   │    ○═══════════════════■════════════════■═══════════════════○    │
+   └────▲─┘ MIoT (SST=3)   │      Network                      └─▲────┘
+        │                                     │                  │
+    2001:db8::A:300:0/128  └ ─ ─ ─ ─ ─ ─ ─ ─ ─   2001:db8::B:300:0/128
 
-     Figure 12: Deployment example with S-NSSAI embedded into IPv6
+        └──────────────────┘└────────────────┘└──────────────────┘
+           Local Segment        TN Segment        Local Segment
+
+             ○ – tunnel (IPsec, GTP-U, ...) termination point
+             ■ - Service Demarcation Point
+
+       Figure 12: Deployment example with S-NSSAI embedded into IPv6
 
 4.3.  MPLS Label Hand-off
 
@@ -920,58 +932,62 @@ Table of Contents
 
 4.3.2.  Option 10B
 
-   In this option, service instances for different IETF Network Slice
-   Services are instantiated outside the TN domain.  These instances
-   could be instantiated either on the compute, hosting mobile network
-   functions (Figure 13, left hand side), or within the cloud
-   infrastructure itself (e.g., on the top of the rack or leaf switch
-   within cloud IP fabric (Figure 13, right hand side)).  Between the TN
-   domain and the (extended) RAN/CN domain, packets are MPLS
+   In this option, L3VPN service instances for different IETF Network
+   Slice Services are instantiated outside the TN domain.  These L3VPN
+   service instances could be instantiated either on the compute,
+   hosting mobile network functions (Figure 13, left hand side), or
+   within the cloud infrastructure itself (e.g., on the top of the rack
+   or leaf switch within cloud IP fabric (Figure 13, right hand side)).
+   On the local segment connected to ETN packets are already MPLS
    encapsulated (or MPLSoUDP encapsulated, if cloud or compute
    infrastructure doesn't support native MPLS encapsulation).
    Therefore, the PE uses neither a VLAN nor an IP address for slice
    identification at the SDP, but instead uses the MPLS label.
 
-         ◁──────        ◁──────        ◁──────
-         BGP VPN        BGP VPN        BGP VPN
-           COM=1, L=A"    COM=1, L=A'    COM=1, L=A
-           COM=2, L=B"    COM=2, L=B'    COM=2, L=B
-           COM=3, L=C"    COM=3, L=C'    COM=3, L=C
-        ◁─────────────▷◁────────────▷◁─────────────▷
-                   nhs  nhs      nhs  nhs
-                                                            VLANs
-     service instances                service instances  representing
-    representing slices              representing slices    slices
-         │          ┌ ─ ─ ─ ─ ─ ─ ─ ─            │           │
-         │               Transport   │           │           │
-    ┌────▼─┐       ┌┴────┐       ┌─────┐       ┌─▼──────┐    ▼  ┌──────┐
-    │    ◙ │       │     │       │     │       │ ◙………………●───────●      │
-    │ NF ◙ ├───────■ ETN │       │ ETN ■───────┤ ◙………………●───────●   NF │
-    │    ◙ │       │     │       │     │       │ ◙………………●───────●      │
-    └──────┘       └┬────┘       └─────┘       └────────┘       └──────┘
-                          Network    │            L2/L3
-                    └ ─ ─ ─ ─ ─ ─ ─ ─
+        ◁──────        ◁──────        ◁──────
+        BGP VPN        BGP VPN        BGP VPN
+          COM=1, L=A"    COM=1, L=A'    COM=1, L=A
+          COM=2, L=B"    COM=2, L=B'    COM=2, L=B
+          COM=3, L=C"    COM=3, L=C'    COM=3, L=C
+       ◁─────────────▷◁────────────▷◁─────────────▷
+                  nhs  nhs      nhs  nhs
+                                                           VLANs
+    service instances                service instances  representing
+   representing slices              representing slices    slices
+        │          ┌ ─ ─ ─ ─ ─ ─ ─ ─            │           │
+        │               Transport   │           │           │
+   ┌────▼─┐       ┌┴────┐       ┌─────┐       ┌─▼──────┐    ▼  ┌──────┐
+   │    ◙ │       │■    │       │    ■│       │ ◙………………●───────●      │
+   │ NF ◙ ├───────┤■ ETN│       │ETN ■├───────┤ ◙………………●───────●   NF │
+   │    ◙ │       │■    │       │    ■│       │ ◙………………●───────●      │
+   └──────┘       └┬────┘       └─────┘       └────────┘       └──────┘
+                         Network    │            L2/L3
+                   └ ─ ─ ─ ─ ─ ─ ─ ─
+         └────────┘└──────────────────┘└───────────────────────┘
+            Local            TN                    Local
+           Segment         Segment                Segment
 
-      ● Logical interface represented by VLAN on physical interface
-      ◙ Service instances (with unique MPLS label)
-      ■ Service Demarcation Point
+     ● – logical interface represented by VLAN on physical interface
+     ◙ - service instances (with unique MPLS label)
+     ■ - Service Demarcation Point
 
-                   Figure 13: MPLS Hand-off: Option B
+                     Figure 13: MPLS Hand-off: Option B
 
    MPLS labels are allocated dynamically, especially in Option 10B
    deployments, where at the domain boundaries service prefixes are
    reflected with next-hop self, and new label is dynamically allocated,
-   as visible in Figure 13.  Therefore, for any slice-specific per hop
-   behavior at the TN domain edge, the PE must be able to determine
-   which label represents which slice.  In the BGP control plane, when
-   exchanging service prefixes between (extended) RAN/CN domains and TN
-   domain, each slice might be represented by a unique BGP community, so
-   tracking label assignment to the slice is possible.  For example, in
-   Figure 13, for the slice identified with COM=1, ETN advertises a
-   dynamically allocated label A".  Since, based on the community, the
-   label to slice association is known, ETN can use this dynamically
-   allocated label A" to identify incoming packets as belonging to slice
-   1, and execute appropriate edge per hop behavior.
+   as visible in Figure 13 (e.g., labels A, A' and A" for the first
+   depicted slice).  Therefore, for any slice-specific per hop behavior
+   at the TN domain edge, the ETN must be able to determine which label
+   represents which slice.  In the BGP control plane, when exchanging
+   service prefixes over local segment, each slice might be represented
+   by a unique BGP community, so tracking label assignment to the slice
+   is possible.  For example, in Figure 13, for the slice identified
+   with COM=1, ETN advertises a dynamically allocated label A".  Since,
+   based on the community, the label to slice association is known, ETN
+   can use this dynamically allocated label A" to identify incoming
+   packets as belonging to slice 1, and execute appropriate edge per hop
+   behavior.
 
    It is worth noting that slice identification in the BGP control plane
    might be at the prefix granularity.  In extreme case, each prefix can
@@ -1023,21 +1039,21 @@ Table of Contents
 
    (2) TN QoS
 
-     Control of the TN resources on transit links, as well as traffic
-     scheduling/prioritization on transit links, is based on a flat
-     (non-hierarchical) QoS model in the IETF Network Slice
-     realization.  That is, IETF Network Slices are assigned dedicated
-     resources (e.g., QoS queues) at the edge of the TN domain (at
-     SDP), while all IETF Network Slices are sharing resources (sharing
-     QoS queues) on the transit links of the TN domain.  Typical router
-     hardware can support up to 8 traffic queues per port, therefore
-     the architecture assumes 8 traffic queues per port support in
-     general.
+  Control of the TN resources on transit links, as well as traffic
+  scheduling/prioritization on transit links, is based on a flat
+  (non-hierarchical) QoS model in this IETF Network Slice
+  realization.  That is, IETF Network Slices are assigned dedicated
+  resources (e.g., QoS queues) at the edge of the TN domain (at
+  SDP), while all IETF Network Slices are sharing resources (sharing
+  QoS queues) on the transit links of the TN domain.  Typical router
+  hardware can support up to 8 traffic queues per port, therefore
+  the architecture assumes 8 traffic queues per port support in
+  general.
 
-     At this layer, QoS treatment is indicated by QoS indicator
-     specific to the encapsulation used in the TN domain, and it could
-     be DSCP or MPLS TC.  This layer of QoS will be referred as 'TN QoS
-     Class', or 'TN QoS' for short, in this document.
+  At this layer, QoS treatment is indicated by QoS indicator
+  specific to the encapsulation used in the TN domain, and it could
+  be DSCP or MPLS Traffic Class (TC) .  This layer of QoS will be referred as 'TN QoS
+  Class', or 'TN QoS' for short, in this document.
 
    While 5QI might be exposed to the TN domain, via the DSCP value
    (corresponding to specific 5QI value) set in the IP packet generated
@@ -1055,7 +1071,7 @@ Table of Contents
    for slicing in the transport domain: a 5QI-unaware model and a 5QI-
    aware model.  Both slicing models in the transport domain could be
    used concurrently within the same 5G slice.  For example, the TN
-   segment for 5G midhaul (F2-U interface) might be 5QI-aware, while at
+   segment for 5G midhaul (F1-U interface) might be 5QI-aware, while at
    the same time the TN segment for 5G backhaul (N3 interface) might
    follow the 5QI-unaware model.
 
@@ -1115,12 +1131,11 @@ Table of Contents
 
            Figure 14: Slice to TN QoS Mapping (5QI-unaware Model)
 
-   When the IP traffic is handed over at the SDP from the extended RAN
-   or extended Core domains to the TN domain, the PE encapsulates the
-   traffic into MPLS (if MPLS transport is used in the TN domain), or
-   IPv6 - optionally with some additional headers (if SRv6 transport is
-   used in the TN domain), and sends out the packets on the TN transit
-   link.
+   When the IP traffic is handed over at the SDP from the local segment
+   to the TN domain, the PE encapsulates the traffic into MPLS (if MPLS
+   transport is used in the TN domain), or IPv6 - optionally with some
+   additional headers (if SRv6 transport is used in the TN domain), and
+   sends out the packets on the TN transit link.
 
    The original IP header retains the DCSP marking (which is ignored in
    5QI-unaware mode), while the new header (MPLS or IPv6) carries QoS
@@ -1185,12 +1200,12 @@ Table of Contents
    bits (8 possible combinations), while DSCP is 6 bits (64 possible
    combinations).  Hence, SRv6 [RFC8754] provides more flexibility for
    TN CoS design, especially in combination with soft policing with in-
-   profile/ out-profile, as discussed in Section 5.1.1.
+   profile/ out-profile traffic, as discussed in Section 5.1.1.
 
-   Edge resources are controlled in a very granular, fine-grained
-   manner, with dedicated resource allocation for each IETF Network
-   Slice.  The resource control/enforcement happens at each SDP in two
-   directions: inbound and outbound.
+   Edge resources are controlled in a granular, fine-grained manner,
+   with dedicated resource allocation for each IETF Network Slice.  The
+   resource control/enforcement happens at each SDP in two directions:
+   inbound and outbound.
 
 5.1.1.  Inbound Edge Resource Control
 
@@ -1426,12 +1441,12 @@ Table of Contents
    original IP header is used at the PE for fine-grained per slice and
    per 5G QoS Class inbound/outbound enforcement on AC link.
 
-   In 5QI-aware model edge resources are controlled in an even more
-   granular, fine-grained manner, with dedicated resource allocation for
-   each IETF Network Slice and dedicated resource allocation for number
-   of traffic classes (most commonly up 4 or 8 traffic classes,
-   depending on the HW capability of the equipment) within each IETF
-   Network Slice.
+   In 5QI-aware model, compared to 5QI-unware model, edge resources are
+   controlled in an even more granular, fine-grained manner, with
+   dedicated resource allocation for each IETF Network Slice and
+   dedicated resource allocation for number of traffic classes (most
+   commonly up 4 or 8 traffic classes, depending on the HW capability of
+   the equipment) within each IETF Network Slice.
 
 5.2.1.  Inbound Edge Resource Control
 
@@ -1612,9 +1627,11 @@ Table of Contents
    The main purpose of transit resource control is to ensure that during
    network congestion events, for example caused by network failures and
    temporary rerouting, premium classes are prioritized, and any drops
-   only occur in non-premium (best-effort) classes.  Capacity planning
-   and management, as described in Section 7, ensures that enough
-   capacity is available to fulfill all approved slice requests.
+   only occur in traffic that was de-prioritized by ingress admission
+   control Section 5.1.1 or in non-premium (best-effort) classes.
+   Capacity planning and management, as described in Section 7, ensures
+   that enough capacity is available to fulfill all approved slice
+   requests.
 
 6.  Transport Planes Mapping Models
 
@@ -1622,42 +1639,43 @@ Table of Contents
    tunnel group is created with specific optimization criteria and
    constraints.  This document refers to such tunnel groups as
    'transport planes'.  For example, transport plane A might represent
-   tunnels optimized for latency, transport plane B for high capacity,
-   transport plane C might represent tunnels using only the "upper half"
-   of the transport network, and transport plane D might represent
-   tunnels using only the "lower half" of the transport network.
-   Figure 23 depicts an example of a simple network with two transport
-   planes.  These transport planes might be realized via various IP/MPLS
-   techniques, for example Flex-Algo or RSVP/SR traffic engineering
-   tunnels with or without PCE, and with or without bandwidth
-   reservations.  Section 7 discusses in detail different bandwidth
-   models that can be deployed in the transport network.  However,
-   discussion about how to realize or orchestrate transport planes is
-   out of scope for this document.
+   tunnels optimized for latency, and transport plane B tunnels
+   optimized for high capacity.  Figure 23 depicts an example of a
+   simple network with two transport planes.  These transport planes
+   might be realized via various IP/MPLS techniques, for example Flex-
+   Algo or RSVP/SR traffic engineering tunnels with or without PCE, and
+   with or without bandwidth reservations.  Section 7 discusses in
+   detail different bandwidth models that can be deployed in the
+   transport network.  However, discussion about how to realize or
+   orchestrate transport planes is out of scope for this document.
 
-        ┌───────────────┐                                    ┌──────┐
-        │  Head-End PE  │   ╔═══════════════════════════════▶│ PE-A │
-        │               │   ║   ╔═══════════════════════════▷│      │
-        │  ┌ ─ ─ ─ ─ ┐  │   ║   ╚═════════════════════╗      └──────┘
-        │            ●══════╝   ╔═════════════════════╝
-        │  │Transport●════════════════════════════════╗      ┌──────┐
-        │    Plane A ●═════════════╗                  ╚═════▶│ PE-B │
-        │  │         ●═══════╗  ║  ║  ╔═══╗   ╔═══╗   ╔═════▷│      │
-        │   ─ ─ ─ ─ ─   │    ║  ║  ║  ║   ║   ║   ║   ║      └──────┘
-        │               │    ║  ║  ║  ║   ╚═══╝   ╚═══╝
-        │  ┌ ─ ─ ─ ─ ┐  │    ║  ║  ║  ║                      ┌──────┐
-        │            ○═══════║══╝  ╚════════════════════════▶│ PE-C │
-        │  │Transport○═══════║════════╝               ╔═════▷│      │
-        │    Plane B ○═══════║═════════════════╗      ║      └──────┘
-        │  │         ○═════╗ ╚═══════════════╗ ║      ║
-        │   ─ ─ ─ ─ ─   │  ║ ╔═╗ ╔═╗ ╔═╗ ╔═╗ ║ ╚══════╝      ┌──────┐
-        │               │  ║ ║ ║ ║ ║ ║ ║ ║ ║ ╚══════════════▶│ PE-D │
-        └───────────────┘  ╚═╝ ╚═╝ ╚═╝ ╚═╝ ╚════════════════▷│      │
-                                                             └──────┘
-                 ●════════▶  Tunnels of Transport Plane A
-                 ○════════▷  Tunnels of Transport Plane B
+       ┌───────────────┐                                    ┌──────┐
+       │  Ingress PE   │   ╔═══════════════════════════════▶│ PE-A │
+       │               │   ║   ╔═══════════════════════════▷│      │
+       │  ┌ ─ ─ ─ ─ ┐  │   ║   ╚═════════════════════╗      └──────┘
+       │            ●══════╝   ╔═════════════════════╝
+       │  │Transport●════════════════════════════════╗      ┌──────┐
+       │    Plane A ●═════════════╗                  ╚═════▶│ PE-B │
+       │  │         ●═══════╗  ║  ║  ╔═══╗   ╔═══╗   ╔═════▷│      │
+       │   ─ ─ ─ ─ ─   │    ║  ║  ║  ║   ║   ║   ║   ║      └──────┘
+       │               │    ║  ║  ║  ║   ╚═══╝   ╚═══╝
+       │  ┌ ─ ─ ─ ─ ┐  │    ║  ║  ║  ║                      ┌──────┐
+       │            ○═══════║══╝  ╚════════════════════════▶│ PE-C │
+       │  │Transport○═══════║════════╝               ╔═════▷│      │
+       │    Plane B ○═══════║═════════════════╗      ║      └──────┘
+       │  │         ○═════╗ ╚═══════════════╗ ║      ║
+       │   ─ ─ ─ ─ ─   │  ║ ╔═╗ ╔═╗ ╔═╗ ╔═╗ ║ ╚══════╝      ┌──────┐
+       │               │  ║ ║ ║ ║ ║ ║ ║ ║ ║ ╚══════════════▶│ PE-D │
+       └───────────────┘  ╚═╝ ╚═╝ ╚═╝ ╚═╝ ╚════════════════▷│      │
+                                                            └──────┘
+                ●════════▶  Tunnels of Transport Plane A
+                ○════════▷  Tunnels of Transport Plane B
 
                         Figure 23: Transport Planes
+
+   Note that there could be multiple tunnels within single transport
+   plane between any pair of PEs.  For readibility, Figure 23 shows only
+   single tunnel per transport plane for [ingress PE, egress PE] pair.
 
    Similar to the QoS mapping models discussed in Section 5, for mapping
    to transport planes at the ingress PE, both 5QI-unaware and 5QI-aware
@@ -1792,31 +1810,31 @@ Table of Contents
 
    ┌ ─ ─ ─ ─ DC 1─ ─ ─ ─    ┌ ─ ─ ─ ─ ─ ─ ─ ─ ┐   ┌ ─ ─ ─ ─ DC 2─ ─ ─ ─
      ┌──────┐           │  ┌────┐         ┌────┐              ┌──────┐ │
-   │ │ NF1A │           ■──┤PE1A│         │PE2A├──■           │ NF2A │
+   │ │ NF1A │           ───■PE1A│         │PE2A■──┤           │ NF2A │
      └──────┘           │  └────┘         └────┘              └──────┘ │
    │ ┌──────┐               │                 │   │           ┌──────┐
      │ NF1B │           │                                     │ NF2B │ │
    │ └──────┘               │                 │   │           └──────┘
      ┌──────┐           │  ┌────┐         ┌────┐              ┌──────┐ │
-   │ │ NF1C │           ■──┤PE1B│         │PE2B├──■           │ NF2C │
+   │ │ NF1C │           ───■PE1B│         │PE2B■──┤           │ NF2C │
      └──────┘           │  └────┘         └────┘              └──────┘ │
    └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─    │    Transport    │   └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
 
                             │     Network     │   ┌ ─ ─ ─ ─ DC 3─ ─ ─ ─
                                           ┌────┐              ┌──────┐ │
-                            │             │PE3A├──■           │ NF3A │
+                            │             │PE3A■──┤           │ NF3A │
                                           └────┘              └──────┘ │
                             │                 │   │           ┌──────┐
                                                               │ NF3B │ │
                             │                 │   │           └──────┘
                                           ┌────┐              ┌──────┐ │
-                            │             │PE3B├──■           │ NF3C │
+                            │             │PE3B■──┤           │ NF3C │
                                           └────┘              └──────┘ │
                             └ ─ ─ ─ ─ ─ ─ ─ ─ ┘   └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
 
-     ■ SDP, with fine-grained QoS (dedicated resources per IETF NS)
+     ■ - SDP, with fine-grained QoS (dedicated resources per IETF NS)
 
-            Figure 26: An Example of Multi-DC Architecture
+               Figure 26: An Example of Multi-DC Architecture
 
    Let us consider 5G Slice X that uses some of the network functions in
    the three DCs.  If the slice has latency requirements, the SMO will
@@ -2098,11 +2116,11 @@ Table of Contents
 
    [I-D.boro-opsawg-teas-attachment-circuit]
               Boucadair, M., Roberts, R., de Dios, O. G., Barguil, S.,
-              and B. Wu, "YANG Service Data Models for Attachment
-              Circuits", Work in Progress, Internet-Draft, draft-boro-
-              opsawg-teas-attachment-circuit-01, 20 January 2023,
-              <https://datatracker.ietf.org/doc/html/draft-boro-opsawg-
-              teas-attachment-circuit-01>.
+              and B. Wu, "YANG Data Models for 'Attachment Circuits'-as-
+              a-Service (ACaaS)", Work in Progress, Internet-Draft,
+              draft-boro-opsawg-teas-attachment-circuit-02, 22 February
+              2023, <https://datatracker.ietf.org/doc/html/draft-boro-
+              opsawg-teas-attachment-circuit-02>.
 
    [I-D.gcdrb-teas-5g-network-slice-application]
               Geng, X., Contreras, L. M., Rokui, R., Dong, J., and I.
