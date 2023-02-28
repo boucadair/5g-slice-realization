@@ -811,22 +811,22 @@ VLANs representing slices           VLANs representing slices
 
 ~~~ aasvg
                                         Tunnels representing slices 
-                                                                    
-                  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ┐                   │           
-                                                        │           
+
+                  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ┐                   │
+                                                        │
 ┌──────┐       ┌──┴──┐ Transport┌───┴─┐       ┌─────┐   ▼   ┌──────┐
 │    ○════════════■════════════════■══════════════════════════○    │
 │ NF   ├───────┤ ETN │          │ ETN ├───────┤L2/L3├───────┤   NF │
 │    ○════════════■════════════════■══════════════════════════○    │
 └──────┘       └──┬──┘  Network └───┬─┘       └─────┘       └──────┘
-                                                                    
-                  └ ─ ─ ─ ─ ─ ─ ─ ─ ┘                               
-      └────────┘└────────────────────┘└─────────────────────┘       
-         Local             TN                   Local               
-        Segment          Segment               Segment              
-                                                                    
-          ○ – tunnel (IPsec, GTP-U, ...) termination point          
-          ■ - Service Demarcation Point                                                     
+
+                  └ ─ ─ ─ ─ ─ ─ ─ ─ ┘
+      └────────┘└────────────────────┘└─────────────────────┘
+         Local             TN                   Local       
+        Segment          Segment               Segment
+
+          ○ – tunnel (IPsec, GTP-U, ...) termination point
+          ■ - Service Demarcation Point                                  
 ~~~
 {: #figure-10 title="5G Slice with IP Hand-off" artwork-align="center"}
 
@@ -881,22 +881,22 @@ VLANs representing slices           VLANs representing slices
 
 ~~~ aasvg
  2001:db8::A:0:0/96 (NF-A)                2001:db8::B:0:0/96 (NF-B) 
-                                                                    
- 2001:db8::A:100:0/128  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─   2001:db8::B:100:0/128 
-     │                                     │                  │     
+
+ 2001:db8::A:100:0/128  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─   2001:db8::B:100:0/128
+     │                                     │                  │
 ┌────▼─┐ eMBB (SST=1)   │     Transport                     ┌─▼────┐
 │    ○═══════════════════■════════════════■═══════════════════○    │
 │ NF-A │                │                  │                │ NF-B │
 │    ○═══════════════════■════════════════■═══════════════════○    │
 └────▲─┘ MIoT (SST=3)   │      Network                      └─▲────┘
-     │                                     │                  │     
- 2001:db8::A:300:0/128  └ ─ ─ ─ ─ ─ ─ ─ ─ ─   2001:db8::B:300:0/128 
-                                                                    
-     └──────────────────┘└────────────────┘└──────────────────┘     
-        Local Segment        TN Segment        Local Segment        
-                                                                    
-          ○ – tunnel (IPsec, GTP-U, ...) termination point          
-          ■ - Service Demarcation Point                                                                                                           
+     │                                     │                  │
+ 2001:db8::A:300:0/128  └ ─ ─ ─ ─ ─ ─ ─ ─ ─   2001:db8::B:300:0/128
+ 
+     └──────────────────┘└────────────────┘└──────────────────┘
+        Local Segment        TN Segment        Local Segment  
+
+          ○ – tunnel (IPsec, GTP-U, ...) termination point
+          ■ - Service Demarcation Point                                                                                        
 ~~~
 {: #figure-12 title="Deployment example with S-NSSAI embedded into IPv6" artwork-align="center"}
 
@@ -940,32 +940,32 @@ VLANs representing slices           VLANs representing slices
    identification at the SDP, but instead uses the MPLS label.
 
 ~~~ aasvg
-     ◁──────        ◁──────        ◁──────                          
-     BGP VPN        BGP VPN        BGP VPN                          
-       COM=1, L=A"    COM=1, L=A'    COM=1, L=A                     
-       COM=2, L=B"    COM=2, L=B'    COM=2, L=B                     
-       COM=3, L=C"    COM=3, L=C'    COM=3, L=C                     
-    ◁─────────────▷◁────────────▷◁─────────────▷                    
-               nhs  nhs      nhs  nhs                               
-                                                        VLANs       
- service instances                service instances  representing   
-representing slices              representing slices    slices      
-     │          ┌ ─ ─ ─ ─ ─ ─ ─ ─            │           │          
-     │               Transport   │           │           │          
+     ◁──────        ◁──────        ◁──────
+     BGP VPN        BGP VPN        BGP VPN
+       COM=1, L=A"    COM=1, L=A'    COM=1, L=A
+       COM=2, L=B"    COM=2, L=B'    COM=2, L=B
+       COM=3, L=C"    COM=3, L=C'    COM=3, L=C
+    ◁─────────────▷◁────────────▷◁─────────────▷
+               nhs  nhs      nhs  nhs
+                                                        VLANs
+ service instances                service instances  representing
+representing slices              representing slices    slices
+     │          ┌ ─ ─ ─ ─ ─ ─ ─ ─            │           │
+     │               Transport   │           │           │
 ┌────▼─┐       ┌┴────┐       ┌─────┐       ┌─▼──────┐    ▼  ┌──────┐
 │    ◙ │       │■    │       │    ■│       │ ◙………………●───────●      │
 │ NF ◙ ├───────┤■ ETN│       │ETN ■├───────┤ ◙………………●───────●   NF │
 │    ◙ │       │■    │       │    ■│       │ ◙………………●───────●      │
 └──────┘       └┬────┘       └─────┘       └────────┘       └──────┘
-                      Network    │            L2/L3                 
-                └ ─ ─ ─ ─ ─ ─ ─ ─                                   
-      └────────┘└──────────────────┘└───────────────────────┘       
-         Local            TN                    Local               
-        Segment         Segment                Segment              
-                                                                    
-  ● – logical interface represented by VLAN on physical interface   
-  ◙ - service instances (with unique MPLS label)                    
-  ■ - Service Demarcation Point                                                                                                          
+                      Network    │            L2/L3
+                └ ─ ─ ─ ─ ─ ─ ─ ─ 
+      └────────┘└──────────────────┘└───────────────────────┘
+         Local            TN                    Local       
+        Segment         Segment                Segment
+
+  ● – logical interface represented by VLAN on physical interface
+  ◙ - service instances (with unique MPLS label)
+  ■ - Service Demarcation Point                                                              
 ~~~
 {: #figure-13 title="MPLS Hand-off: Option B" artwork-align="center"}
 
@@ -1655,23 +1655,23 @@ representing slices              representing slices    slices
 │  Ingress PE   │   ╔═══════════════════════════════▶│ PE-A │
 │               │   ║   ╔═══════════════════════════▷│      │
 │  ┌ ─ ─ ─ ─ ┐  │   ║   ╚═════════════════════╗      └──────┘
-│            ●══════╝   ╔═════════════════════╝              
+│            ●══════╝   ╔═════════════════════╝
 │  │Transport●════════════════════════════════╗      ┌──────┐
 │    Plane A ●═════════════╗                  ╚═════▶│ PE-B │
 │  │         ●═══════╗  ║  ║  ╔═══╗   ╔═══╗   ╔═════▷│      │
 │   ─ ─ ─ ─ ─   │    ║  ║  ║  ║   ║   ║   ║   ║      └──────┘
-│               │    ║  ║  ║  ║   ╚═══╝   ╚═══╝              
+│               │    ║  ║  ║  ║   ╚═══╝   ╚═══╝
 │  ┌ ─ ─ ─ ─ ┐  │    ║  ║  ║  ║                      ┌──────┐
 │            ○═══════║══╝  ╚════════════════════════▶│ PE-C │
 │  │Transport○═══════║════════╝               ╔═════▷│      │
 │    Plane B ○═══════║═════════════════╗      ║      └──────┘
-│  │         ○═════╗ ╚═══════════════╗ ║      ║              
+│  │         ○═════╗ ╚═══════════════╗ ║      ║
 │   ─ ─ ─ ─ ─   │  ║ ╔═╗ ╔═╗ ╔═╗ ╔═╗ ║ ╚══════╝      ┌──────┐
 │               │  ║ ║ ║ ║ ║ ║ ║ ║ ║ ╚══════════════▶│ PE-D │
 └───────────────┘  ╚═╝ ╚═╝ ╚═╝ ╚═╝ ╚════════════════▷│      │
                                                      └──────┘
-         ●════════▶  Tunnels of Transport Plane A            
-         ○════════▷  Tunnels of Transport Plane B            
+         ●════════▶  Tunnels of Transport Plane A
+         ○════════▷  Tunnels of Transport Plane B
 ~~~
 {: #figure-23 title="Transport Planes" artwork-align="center"}
 
