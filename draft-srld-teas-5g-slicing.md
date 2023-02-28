@@ -775,7 +775,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
 
 ~~~ aasvg
 VLANs representing slices           VLANs representing slices
-       
+
            │     ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─      │             │
            │                        │     │             │
 ┌──────┐   ▼   ┌─┴───┐ Transport┌─────┐   ▼   ┌─────┐   ▼   ┌──────┐
@@ -786,11 +786,11 @@ VLANs representing slices           VLANs representing slices
                                     │
                  └ ─ ─ ─ ─ ─ ─ ─ ─ ─ 
       └────────┘└────────────────────┘└─────────────────────┘
-         Local             TN                   Local       
+         Local             TN                   Local
         Segment          Segment               Segment
 
  ● – logical interface represented by VLAN on physical interface
- ■ - Service Demarcation Point    
+ ■ - Service Demarcation Point
 ~~~
 {: #figure-9 title="5G Slice with VLAN Hand-off" artwork-align="center"}
 
