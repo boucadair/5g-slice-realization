@@ -810,7 +810,7 @@ VLANs representing slices           VLANs representing slices
    Network Slice mapping is required.
 
 ~~~ aasvg
-                                        Tunnels representing slices 
+                                        Tunnels representing slices
 
                   ┌ ─ ─ ─ ─ ─ ─ ─ ─ ┐                   │
                                                         │
@@ -822,11 +822,11 @@ VLANs representing slices           VLANs representing slices
 
                   └ ─ ─ ─ ─ ─ ─ ─ ─ ┘
       └────────┘└────────────────────┘└─────────────────────┘
-         Local             TN                   Local       
+         Local             TN                   Local
         Segment          Segment               Segment
 
           ○ – tunnel (IPsec, GTP-U, ...) termination point
-          ■ - Service Demarcation Point                                  
+          ■ - Service Demarcation Point
 ~~~
 {: #figure-10 title="5G Slice with IP Hand-off" artwork-align="center"}
 
