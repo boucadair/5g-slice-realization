@@ -1046,7 +1046,7 @@ representing slices              representing slices    slices
 
       At this layer, QoS treatment is indicated by QoS indicator
       specific to the encapsulation used in the TN domain, and it could
-      be DSCP or MPLS Traffic Class (TC) .  This layer of QoS will be referred as 'TN QoS
+      be DSCP or MPLS Traffic Class (TC).  This layer of QoS will be referred as 'TN QoS
       Class', or 'TN QoS' for short, in this document.
 
    While 5QI might be exposed to the TN domain, via the DSCP value
