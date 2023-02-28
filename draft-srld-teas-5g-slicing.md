@@ -1825,7 +1825,7 @@ representing slices              representing slices    slices
 │ │ NF1C │           ───■PE1B│         │PE2B■──┤           │ NF2C │  
   └──────┘           │  └────┘         └────┘              └──────┘ │
 └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─    │    Transport    │   └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ 
-                                                                     
+
                          │     Network     │   ┌ ─ ─ ─ ─ DC 3─ ─ ─ ─ 
                                        ┌────┐              ┌──────┐ │
                          │             │PE3A■──┤           │ NF3A │  
@@ -1837,7 +1837,7 @@ representing slices              representing slices    slices
                          │             │PE3B■──┤           │ NF3C │  
                                        └────┘              └──────┘ │
                          └ ─ ─ ─ ─ ─ ─ ─ ─ ┘   └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ 
-                                                                     
+
   ■ - SDP, with fine-grained QoS (dedicated resources per IETF NS)   
 ~~~
 {: #figure-26 title="An Example of Multi-DC Architecture" artwork-align="center"}
