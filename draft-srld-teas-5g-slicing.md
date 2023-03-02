@@ -1043,9 +1043,9 @@ Specifically, the actual mapping is a design choice of service operators that ma
    domain.  This can be due to an NF limitation (no capability to set
    DSCP), or it might simply depend on the overall slicing deployment
    model.  The O-RAN Alliance, for example, defines a phased approach to
-   the slicing, with initial phases utilizing common, network-wide set of 
-   5QI parameters with mapping to DSCP, while defining possibility of slices 
-   separation in  per-VLAN, VLAN+IP or IP base (Annex F of {{O-RAN.WG9.XPSAAS}}).
+   the slicing, with initial phases utilizing only per slice, but not
+   per 5QI, differentiated treatment in the TN domain
+   (Annex F of {{O-RAN.WG9.XPSAAS}}).
 
    Therefore, from QoS perspective, the 5G slicing connectivity
    realization architecture defines two high-level realization models
