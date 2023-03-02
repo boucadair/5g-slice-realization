@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-02-16T00:29:53.883338+00:00",
+  "timestamp": "2023-03-02T00:33:43.912477+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -89,7 +89,7 @@
       "id": "I_kwDOIw9g6c5eh51d",
       "title": "agreed on ORAN F2F change - remove from Chapter 5: remove transport planes C and D as they are not defined or mentioned on the text and figure",
       "url": "https://github.com/boucadair/5g-slice-realization/issues/4",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "Ivan-Bykov-RBBN",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -100,8 +100,8 @@
       ],
       "body": "",
       "createdAt": "2023-02-15T14:21:05Z",
-      "updatedAt": "2023-02-15T15:33:23Z",
-      "closedAt": null,
+      "updatedAt": "2023-02-28T12:28:31Z",
+      "closedAt": "2023-02-28T12:28:31Z",
       "comments": []
     },
     {
@@ -109,7 +109,7 @@
       "id": "I_kwDOIw9g6c5eh6VN",
       "title": "agreed on ORAN F2F change - add Figure before Fig.19 with multiple tunnels on single pair of PE-PE",
       "url": "https://github.com/boucadair/5g-slice-realization/issues/5",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "Ivan-Bykov-RBBN",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -120,9 +120,17 @@
       ],
       "body": "",
       "createdAt": "2023-02-15T14:22:21Z",
-      "updatedAt": "2023-02-15T15:33:08Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2023-02-28T12:30:11Z",
+      "closedAt": "2023-02-28T12:30:11Z",
+      "comments": [
+        {
+          "author": "kszarkowicz",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Adding note under figure with more explabation about multipole tunnels",
+          "createdAt": "2023-02-28T12:29:45Z",
+          "updatedAt": "2023-02-28T12:29:45Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -202,7 +210,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2023-02-15T17:39:34Z",
-      "updatedAt": "2023-02-15T17:39:35Z",
+      "updatedAt": "2023-02-28T18:30:20Z",
       "baseRepository": "boucadair/5g-slice-realization",
       "baseRefName": "main",
       "baseRefOid": "6478b5f32734799575bbc614432bec0ffbfa9d94",
