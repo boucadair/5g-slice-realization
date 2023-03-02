@@ -1205,6 +1205,46 @@ representing slices              representing slices    slices
    Slice.  The resource control/enforcement happens at each SDP in two
    directions: inbound and outbound.
 
+Note: DOUBLE CHECK 
+   As mentioned before, more realistically the 5G QoS Classes would be grouped 
+   with common Operator-defined TN logic and mapped into the TN QoS Classes and 
+   Queues (example values are on the following diagram).
+
+   ~~~ aasvg
+
+  ┌───────────────────┐  ┌───────────────────────────────┐
+  │3GPP S-NSSAI 100   │  │ETN                            │
+  │┌──────┐ ┌───────┐ │  ├───────┐                       │
+  ││5QI=1 ├─▶DSCP=46├─┼──▶DSCP=46├───┐                   │
+  │└──────┘ └───────┘ │  ├───────┘   │                   │
+  │┌──────┐ ┌───────┐ │  ├───────┐   │                   │
+  ││5QI=65├─▶DSCP=46├─┼──▶DSCP=46├───┤   ┌──────────────┐│
+  │└──────┘ └───────┘ │  ├───────┘   │   │TN QoS Class 5││
+  │┌──────┐ ┌───────┐ │  ├───────┐   ├───▶   Queue 5    ││
+  ││5QI=7 ├─▶DSCP=10├─┼──▶DSCP=10├───┼─┐ └──────────────┘│
+  │└──────┘ └───────┘ │  ├───────┘   │ │                 │
+  └───────────────────┘  │           │ │                 │
+  ┌───────────────────┐  │           │ │                 │
+  │3GPP S-NSSAI 200   │  │           │ │                 │
+  │┌──────┐ ┌───────┐ │  ├───────┐   │ │                 │
+  ││5QI=1 ├─▶DSCP=46├─┼──▶DSCP=46├───┤ │ ┌──────────────┐│
+  │└──────┘ └───────┘ │  ├───────┘   │ │ │TN QoS Class 1││
+  │┌──────┐ ┌───────┐ │  ├───────┐   │ ├─▶   Queue 1    ││
+  ││5QI=65├─▶DSCP=46├─┼──▶DSCP=46├───┘ │ └──────────────┘│
+  │└──────┘ └───────┘ │  ├───────┘     │                 │
+  │┌──────┐ ┌───────┐ │  ├───────┐     │                 │
+  ││5QI=7 ├─▶DSCP=10├─┼──▶DSCP=10├─────┘                 │
+  │└──────┘ └───────┘ │  ├───────┘                       │
+  └───────────────────┘  └───────────────────────────────┘
+
+  ~~~
+{: #figure-34 title="example of 3GPP QoS mapped to TN QoS" artwork-align="center"}
+
+In current SDO progress of 3GPP (Rel.17) and ORAN the mapping of 5QI to
+DSCP is not expected in per-slice fashion, where 5QI to DSCP mapping may
+vary from 3GPP slice to 3GPP slice, hence the mapping of 5QoS DSCP values
+to TN QoS Classes may be rather common.
+
 ###  Inbound Edge Resource Control {#sec-inbound-edge-resource-control}
 
    The main aspect of inbound edge resource control is per-slice traffic
@@ -1258,7 +1298,7 @@ representing slices              representing slices    slices
         -  Red, for traffic above PIR
 
 
-      An inbound 2c3r meter implemented with {{!RFC4115}}, compared to
+      An inbound 2r3c meter implemented with {{!RFC4115}}, compared to
       {{?RFC2698}}, is more 'customer friendly' as it doesn't impose
       outbound peak-rate shaping requirements on customer edge (CE)
       devices. 2r3c meters in general give greater flexibility for edge
@@ -1618,7 +1658,7 @@ representing slices              representing slices    slices
    (represented by DSCP related to 5QI set by mobile network functions
    in the packets handed off to the TN) is mapped to the TN QoS Class.
    Based in TN QoS Class, when the packet is encapsulated with outer
-   header (MPLS or IPv6), TN QoS Class marking (MPLS TC or IPv6 DHCP in
+   header (MPLS or IPv6), TN QoS Class marking (MPLS TC or IPv6 DSCP in
    outer header, as depicted in {{figure-15}} and {{figure-16}}) is set in the
    outer header.  PHB on transit is based exclusively on that TN QoS
    Class marking, i.e., original 5G QoS Class DSCP is not taken into
