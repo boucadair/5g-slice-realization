@@ -1192,11 +1192,12 @@ Specifically, the actual mapping is a design choice of service operators that ma
    manner, with dedicated resource allocation for each IETF Network
    Slice.  The resource control/enforcement happens at each SDP in two
    directions: inbound and outbound.
-   
+
+Note: DOUBLE CHECK 
    As mentioned before, more realistically the 5G QoS Classes would be grouped 
    with common Operator-defined TN logic and mapped into the TN QoS Classes and 
-   Queues (example values are on the following diagram). 
-   
+   Queues (example values are on the following diagram).
+
    ~~~ aasvg
 
   ┌───────────────────┐  ┌───────────────────────────────┐
@@ -1227,10 +1228,10 @@ Specifically, the actual mapping is a design choice of service operators that ma
   ~~~
 {: #figure-34 title="example of 3GPP QoS mapped to TN QoS" artwork-align="center"}
 
-In current SDO progress of 3GPP (Rel.17) and ORAN the mapping of 5QI to 
-DSCP is not expected in per-slice fashion, where 5QI to DSCP mapping may 
-vary from 3GPP slice to 3GPP slice, hence the mapping of 5QoS DSCP values 
-to TN QoS Classes may be rather common. 
+In current SDO progress of 3GPP (Rel.17) and ORAN the mapping of 5QI to
+DSCP is not expected in per-slice fashion, where 5QI to DSCP mapping may
+vary from 3GPP slice to 3GPP slice, hence the mapping of 5QoS DSCP values
+to TN QoS Classes may be rather common.
 
 ###  Inbound Edge Resource Control {#sec-inbound-edge-resource-control}
 
