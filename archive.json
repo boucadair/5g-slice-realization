@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-03-02T00:33:43.912477+00:00",
+  "timestamp": "2023-03-05T00:34:03.343987+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -65,15 +65,15 @@
       "id": "I_kwDOIw9g6c5dJmH8",
       "title": "should we restrict to IETF API for TN orchestration ? ",
       "url": "https://github.com/boucadair/5g-slice-realization/issues/2",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "robric",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Section 3.2.2 may be too restrictive since it mandates the use of IETF API.  However, TMF APIs are also very common at this level of abstraction. We may rather focus on data models instead of API and not be restrictive on APIs (we can recommend IETF API though).\r\n\r\nR\r\nquoting:\r\n\"\r\nIn this document, and aligned with {{?RFC8969}}, we assume that this coordination is based upon\r\n   IETF YANG data models and APIs (more details in further sections).\r\n\"",
       "createdAt": "2023-01-30T16:44:54Z",
-      "updatedAt": "2023-01-31T10:22:09Z",
-      "closedAt": null,
+      "updatedAt": "2023-03-02T15:33:05Z",
+      "closedAt": "2023-03-02T15:33:05Z",
       "comments": [
         {
           "author": "boucadair",
@@ -203,25 +203,35 @@
       "id": "PR_kwDOIw9g6c5KDnIU",
       "title": "changed QoS section and some editorial changes",
       "url": "https://github.com/boucadair/5g-slice-realization/pull/6",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "Ivan-Bykov-RBBN",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2023-02-15T17:39:34Z",
-      "updatedAt": "2023-02-28T18:30:20Z",
+      "updatedAt": "2023-03-02T15:25:05Z",
       "baseRepository": "boucadair/5g-slice-realization",
       "baseRefName": "main",
       "baseRefOid": "6478b5f32734799575bbc614432bec0ffbfa9d94",
       "headRepository": "boucadair/5g-slice-realization",
       "headRefName": "Enhancements-of-QoS-section",
-      "headRefOid": "b9711056151a18eceb7c4d3d805bb7bb31d97e9e",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
+      "headRefOid": "746e32e47772e1c8f472b0881928807c2a30bfe8",
+      "closedAt": "2023-03-02T15:25:03Z",
+      "mergedAt": "2023-03-02T15:25:03Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "7455212f8bf08a76140ae33a6b1df0cf86c24e8e"
+      },
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "Accept the PR, but we need to double check the text and align with the spirit of the document + references to the functions",
+          "createdAt": "2023-03-02T15:24:57Z",
+          "updatedAt": "2023-03-02T15:24:57Z"
+        }
+      ],
       "reviews": []
     }
   ]
