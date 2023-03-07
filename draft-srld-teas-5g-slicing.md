@@ -1384,7 +1384,7 @@ representing slices              representing slices    slices
    equipment, as outlined in {{figure-19}}.
 
 ~~~ aasvg
-  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ 
+  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
   ┏━━━━━━━━━━━━━━━━━┓         ETN                              │
   ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃
   ┃   SDP           ┃              ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
@@ -1424,7 +1424,7 @@ S ┃   └──────────┘  ┃  │           ┃┌───
 ~~~
 {: #figure-19 title="Slice 5Q QoS to TN QoS Mapping (5QI-aware Model)" artwork-align="center"}
 
-Note: DOUBLE CHECK 
+Note: DOUBLE CHECK
 
    Given that in large scale deployments (large number of 5G
    slices), the number of potential 5G QoS Classes is much higher than
@@ -1432,7 +1432,7 @@ Note: DOUBLE CHECK
    characteristics - potentially from different slices -
    would be grouped with common operator-defined TN logic and mapped to a same TN QoS Class when transported in the TN
    domain.  That is, common per hop behavior (PHB) is executed on
-   transit TN routers for all packets grouped together. An exampole of this 
+   transit TN routers for all packets grouped together. An example of this
    approach is outlined in {{figure-34}}. Please note, numbers specified in the figure
    (S-NSSAI, 5QI, DSCP, queue, ...) are for illustration purposes only and do not provide deployment guidance.
 
