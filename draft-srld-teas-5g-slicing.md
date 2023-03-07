@@ -1006,47 +1006,51 @@ representing slices              representing slices    slices
    network.  QoS mapping models to support 5G slicing connectivity
    implemented over packet switched transport uses two layers of QoS that are discussed in the following subsections.
 
-## 5G QoS
+## 5G QoS Layer
 
-      At this layer QoS treatment is indicated by the 5QI (5G QoS
-      indicator), as defined in {{TS-23.501}}.  A 5QI is an ID that is
-      used as a reference to 5G QoS characteristics (e.g., scheduling
-      weights, admission thresholds, queue management thresholds, link
-      layer protocol configuration, etc.) in the RAN domain.  Given the
-      fact that 5QI applies to the RAN domain, it is not visible to the
-      TN domain.  Therefore, if 5QI-aware treatment is desired in the TN
-      domain as well, 5G network functions might set DSCP with a value
-      representing 5QI, to allow differentiated treatment in TN domain
-      as well.  Based on these DSCP values, at SDP of each TN segment
-      used to construct transport for given 5G slice, very granular QoS
-      enforcement might be implemented.  The mapping between 5QI and
-      DSCP is out of scope for this document.  Mapping recommendations
-      are documented in {{?I-D.henry-tsvwg-diffserv-to-qci}}.  Each slice
-      might have flows with multiple 5QIs, thus there could be many
-      different 5QIs being deployed. 5QIs (or, more precisely,
-      corresponding DSCP values) are visible to the TN domain at SDP
-      (i.e., at the edge of the TN domain).
+   QoS treatment is indicated in the 5G QoS layer by the 5QI (5G QoS
+   indicator), as defined in {{TS-23.501}}. A 5QI is an identifier (ID) that is
+   used as a reference to 5G QoS characteristics (e.g., scheduling
+   weights, admission thresholds, queue management thresholds, and link
+   layer protocol configuration) in the RAN domain.  Given that
+   5QI applies to the RAN domain, it is not visible to the
+   TN domain.  Therefore, if 5QI-aware treatment is desired in the TN
+   domain as well, 5G network functions might set DSCP with a value
+   representing 5QI so that differentiated treatment can implemented in TN domain
+   as well.  Based on these DSCP values, at SDP of each TN segment
+   used to construct transport for given 5G slice, very granular QoS
+   enforcement might be implemented.
 
-      In this document, this layer of QoS will be referred as '5G QoS
-      Class' ('5G QoS' in short), or '5G DSCP'.
+   The mapping between 5QI and
+   DSCP is out of scope for this document.  Mapping recommendations
+   are documented, e.g., in {{?I-D.henry-tsvwg-diffserv-to-qci}}.
+   
+   Each slice
+   might have flows with multiple 5QIs, thus there could be many
+   different 5QIs being deployed. 5QIs (or, more precisely,
+   corresponding DSCP values) are visible to the TN domain at SDP
+   (i.e., at the edge of the TN domain).
 
-## TN QoS
+   In this document, this layer of QoS will be referred as '5G QoS
+   Class' ('5G QoS' in short), or '5G DSCP'.
 
-      Control of the TN resources on transit links, as well as traffic
-      scheduling/prioritization on transit links, is based on a flat
-      (non-hierarchical) QoS model in this IETF Network Slice
-      realization.  That is, IETF Network Slices are assigned dedicated
-      resources (e.g., QoS queues) at the edge of the TN domain (at
-      SDP), while all IETF Network Slices are sharing resources (sharing
-      QoS queues) on the transit links of the TN domain.  Typical router
-      hardware can support up to 8 traffic queues per port, therefore
-      the architecture assumes 8 traffic queues per port support in
-      general.
+## TN QoS Layer
 
-      At this layer, QoS treatment is indicated by QoS indicator
-      specific to the encapsulation used in the TN domain, and it could
-      be DSCP or MPLS Traffic Class (TC).  This layer of QoS will be referred as 'TN QoS
-      Class', or 'TN QoS' for short, in this document.
+   Control of the TN resources on transit links, as well as traffic
+   scheduling/prioritization on transit links, is based on a flat
+   (non-hierarchical) QoS model in this IETF Network Slice
+   realization.  That is, IETF Network Slices are assigned dedicated
+   resources (e.g., QoS queues) at the edge of the TN domain (at
+   SDPs), while all IETF Network Slices are sharing resources (sharing
+   QoS queues) on the transit links of the TN domain.  Typical router
+   hardware can support up to 8 traffic queues per port, therefore
+   the architecture assumes 8 traffic queues per port support in
+   general.
+
+   At this layer, QoS treatment is indicated by QoS indicator
+   specific to the encapsulation used in the TN domain, and it could
+   be DSCP or MPLS Traffic Class (TC).  This layer of QoS will be referred as 'TN QoS
+   Class', or 'TN QoS' for short, in this document.
 
 ## QoS Realization Models
 
