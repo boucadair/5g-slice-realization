@@ -24,7 +24,7 @@
    Network (RAN), Core Network (CN), and Transport Network (TN). 
        This document describes a basic IETF Network Slice realization model
    in IP/MPLS networks with a focus on the Transport Network fulfilling
-   5G slicing connectivity requirements.  This realization model reuses many building blocks currently commonly used
+   5G slicing connectivity requirements. This realization model reuses many building blocks currently commonly used
    in service provider networks. 
     " name="description">
 <meta content="xml2rfc 3.16.0" name="generator">
@@ -1066,7 +1066,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <table class="ears">
 <thead><tr>
 <td class="left">Internet-Draft</td>
-<td class="center">5G Transport Slices</td>
+<td class="center">Implmementing 5G Transport Slices</td>
 <td class="right">March 2023</td>
 </tr></thead>
 <tfoot><tr>
@@ -1155,7 +1155,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
    Network (RAN), Core Network (CN), and Transport Network (TN).<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 <p id="section-abstract-2">This document describes a basic IETF Network Slice realization model
    in IP/MPLS networks with a focus on the Transport Network fulfilling
-   5G slicing connectivity requirements.  This realization model reuses many building blocks currently commonly used
+   5G slicing connectivity requirements. This realization model reuses many building blocks currently commonly used
    in service provider networks.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
@@ -1230,13 +1230,13 @@ svg :is([fill="white"], [fill^="#fff"]) {
                 <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-5g-network-slicing-versus-t" class="internal xref">5G Network Slicing versus Transport Network Slicing</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
-                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-nf-to-nf-datapath-vs-transp" class="internal xref">NF-to-NF Datapath vs Transport Network</a></p>
+                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-nf-to-nf-datapath-vs-transp" class="internal xref">NF-to-NF Datapath vs. Transport Network</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.1">
                     <p id="section-toc.1-1.3.2.2.2.1.1"><a href="#section-3.2.1" class="auto internal xref">3.2.1</a>.  <a href="#name-segmentation-of-the-nf-to-n" class="internal xref">Segmentation of the NF-to-NF Datapath</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2.2.2">
-                    <p id="section-toc.1-1.3.2.2.2.2.1"><a href="#section-3.2.2" class="auto internal xref">3.2.2</a>.  <a href="#name-orchestration-of-local-segm" class="internal xref">Orchestration of Local Segment Terminations at ETN</a></p>
+                    <p id="section-toc.1-1.3.2.2.2.2.1"><a href="#section-3.2.2" class="auto internal xref">3.2.2</a>.  <a href="#name-orchestration-of-local-segm" class="internal xref">Orchestration of Local Segment Terminations at ETNs</a></p>
 </li>
                 </ul>
 </li>
@@ -1277,29 +1277,38 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-qos-mapping-models" class="internal xref">QoS Mapping Models</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
-                <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-5qi-unaware-model" class="internal xref">5QI-unaware Model</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.1">
-                    <p id="section-toc.1-1.5.2.1.2.1.1"><a href="#section-5.1.1" class="auto internal xref">5.1.1</a>.  <a href="#name-inbound-edge-resource-contr" class="internal xref">Inbound Edge Resource Control</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.2">
-                    <p id="section-toc.1-1.5.2.1.2.2.1"><a href="#section-5.1.2" class="auto internal xref">5.1.2</a>.  <a href="#name-outbound-edge-resource-cont" class="internal xref">Outbound Edge Resource Control</a></p>
-</li>
-                </ul>
+                <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-5g-qos" class="internal xref">5G QoS</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
-                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-5qi-aware-model" class="internal xref">5QI-aware Model</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2.2.1">
-                    <p id="section-toc.1-1.5.2.2.2.1.1"><a href="#section-5.2.1" class="auto internal xref">5.2.1</a>.  <a href="#name-inbound-edge-resource-contro" class="internal xref">Inbound Edge Resource Control</a></p>
+                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-tn-qos" class="internal xref">TN QoS</a></p>
 </li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2.2.2">
-                    <p id="section-toc.1-1.5.2.2.2.2.1"><a href="#section-5.2.2" class="auto internal xref">5.2.2</a>.  <a href="#name-outbound-edge-resource-contr" class="internal xref">Outbound Edge Resource Control</a></p>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3">
+                <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-qos-realization-models" class="internal xref">QoS Realization Models</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4">
+                <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="auto internal xref">5.4</a>.  <a href="#name-5qi-unaware-model" class="internal xref">5QI-unaware Model</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4.2.1">
+                    <p id="section-toc.1-1.5.2.4.2.1.1"><a href="#section-5.4.1" class="auto internal xref">5.4.1</a>.  <a href="#name-inbound-edge-resource-contr" class="internal xref">Inbound Edge Resource Control</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4.2.2">
+                    <p id="section-toc.1-1.5.2.4.2.2.1"><a href="#section-5.4.2" class="auto internal xref">5.4.2</a>.  <a href="#name-outbound-edge-resource-cont" class="internal xref">Outbound Edge Resource Control</a></p>
 </li>
                 </ul>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3">
-                <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-transit-resource-control" class="internal xref">Transit Resource Control</a></p>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.5">
+                <p id="section-toc.1-1.5.2.5.1"><a href="#section-5.5" class="auto internal xref">5.5</a>.  <a href="#name-5qi-aware-model" class="internal xref">5QI-aware Model</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.5.2.1">
+                    <p id="section-toc.1-1.5.2.5.2.1.1"><a href="#section-5.5.1" class="auto internal xref">5.5.1</a>.  <a href="#name-inbound-edge-resource-contro" class="internal xref">Inbound Edge Resource Control</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.5.2.2">
+                    <p id="section-toc.1-1.5.2.5.2.2.1"><a href="#section-5.5.2" class="auto internal xref">5.5.2</a>.  <a href="#name-outbound-edge-resource-contr" class="internal xref">Outbound Edge Resource Control</a></p>
+</li>
+                </ul>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.6">
+                <p id="section-toc.1-1.5.2.6.1"><a href="#section-5.6" class="auto internal xref">5.6</a>.  <a href="#name-transit-resource-control" class="internal xref">Transit Resource Control</a></p>
 </li>
             </ul>
 </li>
@@ -1427,7 +1436,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
         <dd class="break"></dd>
 <dt id="section-2-4.3">Edge Transport Node (ETN):</dt>
         <dd style="margin-left: 1.5em" id="section-2-4.4">
-          <p id="section-2-4.4.1">Node, under the transport domain orchestration, that stitches the transport domain to adjacent domains. An ETN can be be a Provider Edge (PE) or a managed Customer Equipment (CE).<a href="#section-2-4.4.1" class="pilcrow">¶</a></p>
+          <p id="section-2-4.4.1">Node, under the transport domain orchestration, that stitches the transport domain to an adjacent domain (e.g., enterprise network, data center, peer provider network). An ETN can be be a Provider Edge (PE) or a managed Customer Equipment (CE).<a href="#section-2-4.4.1" class="pilcrow">¶</a></p>
 </dd>
       <dd class="break"></dd>
 </dl>
@@ -1496,7 +1505,7 @@ In this document, the term "IETF Network Slice" (IETF NS, or INS in short) is us
 <div id="sec-nf-nf-datapath">
 <section id="section-3.2">
         <h3 id="name-nf-to-nf-datapath-vs-transp">
-<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-nf-to-nf-datapath-vs-transp" class="section-name selfRef">NF-to-NF Datapath vs Transport Network</a>
+<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-nf-to-nf-datapath-vs-transp" class="section-name selfRef">NF-to-NF Datapath vs. Transport Network</a>
         </h3>
 <p id="section-3.2-1">The 3GPP specifications loosely define the Transport Network and its
    integration in RAN and CN domains: the role of the
@@ -1773,13 +1782,13 @@ PE): A1, A2, A3, and A4.  Alternatively, the NF interfaces may be
 attached in a different VLAN/LAN than the ETN interface assuming some additional local routing capabilities between the ETN and the NF (e.g., CE, IP
 Fabric): B1, B2, B3, and B4.<a href="#section-3.2.1-11.1" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="section-3.2.1-11.2">ETN: The ETN can be either the PE (A3, A4, B3, and B4) or the CE if it
+            <li class="normal" id="section-3.2.1-11.2">ETN: It can be either a PE (A3, A4, B3, and B4) or a CE if it
 is managed by the TN Orchestration (A1, A2, B1, and B2).<a href="#section-3.2.1-11.2" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="section-3.2.1-11.3">SDP: The SDP can be located in many places as per
-Sectionb 4.2 of <span>[<a href="#I-D.ietf-teas-ietf-network-slices" class="cite xref">I-D.ietf-teas-ietf-network-slices</a>]</span>: A1/B1 for case
+            <li class="normal" id="section-3.2.1-11.3">SDP: It can be located in many places as per
+Section b 4.2 of <span>[<a href="#I-D.ietf-teas-ietf-network-slices" class="cite xref">I-D.ietf-teas-ietf-network-slices</a>]</span>: A1/B1 for case
 (1), A2/B2 for case (2), A3/B3 for case (3), and A4/B4 for case
-(4))<a href="#section-3.2.1-11.3" class="pilcrow">¶</a>
+(4).<a href="#section-3.2.1-11.3" class="pilcrow">¶</a>
 </li>
             <li class="normal" id="section-3.2.1-11.4">Redundancy/Scale-out: No example of redundancy/multihoming/scale-
 out is provided for the sake of simplicification.  Nonetheless,
@@ -2336,10 +2345,10 @@ multiple containers in a cloud architecture).<a href="#section-3.2.1-11.4" class
 </div>
 </section>
 </div>
-<div id="orchestration-of-local-segment-terminations-at-etn">
+<div id="orchestration-of-local-segment-terminations-at-etns">
 <section id="section-3.2.2">
           <h4 id="name-orchestration-of-local-segm">
-<a href="#section-3.2.2" class="section-number selfRef">3.2.2. </a><a href="#name-orchestration-of-local-segm" class="section-name selfRef">Orchestration of Local Segment Terminations at ETN</a>
+<a href="#section-3.2.2" class="section-number selfRef">3.2.2. </a><a href="#name-orchestration-of-local-segm" class="section-name selfRef">Orchestration of Local Segment Terminations at ETNs</a>
           </h4>
 <p id="section-3.2.2-1">The interconnection between a 5G site and the Transport Network is
    made up of shared networking resources.  More precisely, the Local
@@ -4463,9 +4472,13 @@ change at domain boundaries.<a href="#section-4.3-3.3" class="pilcrow">¶</a>
       </h2>
 <p id="section-5-1">The resources are managed via various QoS policies deployed in the
    network.  QoS mapping models to support 5G slicing connectivity
-   implemented over packet switched transport uses two layers of QoS:<a href="#section-5-1" class="pilcrow">¶</a></p>
-<p id="section-5-2">(1)  5G QoS<a href="#section-5-2" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-5-3">
+   implemented over packet switched transport uses two layers of QoS that are discussed in the following subsections.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<div id="g-qos">
+<section id="section-5.1">
+        <h3 id="name-5g-qos">
+<a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-5g-qos" class="section-name selfRef">5G QoS</a>
+        </h3>
+<div class="alignLeft art-text artwork" id="section-5.1-1">
 <pre>
   At this layer QoS treatment is indicated by the 5QI (5G QoS
   indicator), as defined in {{TS-23.501}}.  A 5QI is an ID that is
@@ -4488,10 +4501,16 @@ change at domain boundaries.<a href="#section-4.3-3.3" class="pilcrow">¶</a>
 
   In this document, this layer of QoS will be referred as '5G QoS
   Class' ('5G QoS' in short), or '5G DSCP'.
-</pre><a href="#section-5-3" class="pilcrow">¶</a>
+</pre><a href="#section-5.1-1" class="pilcrow">¶</a>
 </div>
-<p id="section-5-4">(2) TN QoS<a href="#section-5-4" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-5-5">
+</section>
+</div>
+<div id="tn-qos">
+<section id="section-5.2">
+        <h3 id="name-tn-qos">
+<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-tn-qos" class="section-name selfRef">TN QoS</a>
+        </h3>
+<div class="alignLeft art-text artwork" id="section-5.2-1">
 <pre>
   Control of the TN resources on transit links, as well as traffic
   scheduling/prioritization on transit links, is based on a flat
@@ -4508,32 +4527,42 @@ change at domain boundaries.<a href="#section-4.3-3.3" class="pilcrow">¶</a>
   specific to the encapsulation used in the TN domain, and it could
   be DSCP or MPLS Traffic Class (TC).  This layer of QoS will be referred as 'TN QoS
   Class', or 'TN QoS' for short, in this document.
-</pre><a href="#section-5-5" class="pilcrow">¶</a>
+</pre><a href="#section-5.2-1" class="pilcrow">¶</a>
 </div>
-<p id="section-5-6">While 5QI might be exposed to the TN domain, via the DSCP value
+</section>
+</div>
+<div id="qos-realization-models">
+<section id="section-5.3">
+        <h3 id="name-qos-realization-models">
+<a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-qos-realization-models" class="section-name selfRef">QoS Realization Models</a>
+        </h3>
+<p id="section-5.3-1">While 5QI might be exposed to the TN domain, via the DSCP value
    (corresponding to specific 5QI value) set in the IP packet generated
    by NFs, some 5G deployments might use 5QI in the RAN domain only,
    without requesting per 5QI differentiated treatment from the TN
-   domain.  This can be due to an NF limitation (no capability to set
+   domain.  This can be due to an NF limitation (e.g., no capability to set
    DSCP), or it might simply depend on the overall slicing deployment
    model.  The O-RAN Alliance, for example, defines a phased approach to
    the slicing, with initial phases utilizing only per slice, but not
    per 5QI, differentiated treatment in the TN domain
-   (Annex F of <span>[<a href="#O-RAN.WG9.XPSAAS" class="cite xref">O-RAN.WG9.XPSAAS</a>]</span>).<a href="#section-5-6" class="pilcrow">¶</a></p>
-<p id="section-5-7">Therefore, from QoS perspective, the 5G slicing connectivity
+   (Annex F of <span>[<a href="#O-RAN.WG9.XPSAAS" class="cite xref">O-RAN.WG9.XPSAAS</a>]</span>).<a href="#section-5.3-1" class="pilcrow">¶</a></p>
+<p id="section-5.3-2">Therefore, from a QoS perspective, the 5G slicing connectivity
    realization architecture defines two high-level realization models
    for slicing in the transport domain: a 5QI-unaware model and a 5QI-
    aware model.  Both slicing models in the transport domain could be
    used concurrently within the same 5G slice.  For example, the TN
    segment for 5G midhaul (F1-U interface) might be 5QI-aware, while
    at the same time the TN segment for 5G backhaul (N3 interface) might
-   follow the 5QI-unaware model.<a href="#section-5-7" class="pilcrow">¶</a></p>
+   follow the 5QI-unaware model.<a href="#section-5.3-2" class="pilcrow">¶</a></p>
+<p id="section-5.3-3">These models are further elaborated in the following two subsections.<a href="#section-5.3-3" class="pilcrow">¶</a></p>
+</section>
+</div>
 <div id="sec-5QI-unaware">
-<section id="section-5.1">
+<section id="section-5.4">
         <h3 id="name-5qi-unaware-model">
-<a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-5qi-unaware-model" class="section-name selfRef">5QI-unaware Model</a>
+<a href="#section-5.4" class="section-number selfRef">5.4. </a><a href="#name-5qi-unaware-model" class="section-name selfRef">5QI-unaware Model</a>
         </h3>
-<p id="section-5.1-1">In 5QI-unaware mode, the DSCP values in the packets received from NF
+<p id="section-5.4-1">In 5QI-unaware mode, the DSCP values in the packets received from NF
    at SDP are ignored.  In the TN domain, there is no QoS
    differentiation at the 5G QoS Class level.  The entire IETF Network
    Slice is mapped to single TN QoS Class, and, therefore, to a single
@@ -4545,11 +4574,11 @@ change at domain boundaries.<a href="#section-4.3-3.3" class="pilcrow">¶</a>
    Network Slices) increases, a single QoS queue on transit links serves
    multiple slices with similar characteristics.  QoS enforcement on
    transit links is fully coarse (single NRP, sharing resources among
-   all IETF Network Slices), as displayed in <a href="#_figure-14" class="auto internal xref">Figure 14</a>.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+   all IETF Network Slices), as displayed in <a href="#_figure-14" class="auto internal xref">Figure 14</a>.<a href="#section-5.4-1" class="pilcrow">¶</a></p>
 <span id="name-slice-to-tn-qos-mapping-5qi"></span><div id="_figure-14">
 <figure id="figure-14">
-          <div id="section-5.1-2.1">
-            <div class="alignCenter art-svg artwork" id="section-5.1-2.1.1">
+          <div id="section-5.4-2.1">
+            <div class="alignCenter art-svg artwork" id="section-5.4-2.1.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="640" width="504" viewBox="0 0 504 640" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
                 <path d="M 8,64 L 8,528" fill="none" stroke="black"></path>
                 <path d="M 152,64 L 152,96" fill="none" stroke="black"></path>
@@ -4891,19 +4920,19 @@ change at domain boundaries.<a href="#section-4.3-3.3" class="pilcrow">¶</a>
                   <text x="404" y="612">IETF</text>
                   <text x="444" y="612">NSs)</text>
                 </g>
-              </svg><a href="#section-5.1-2.1.1" class="pilcrow">¶</a>
+              </svg><a href="#section-5.4-2.1.1" class="pilcrow">¶</a>
 </div>
 </div>
 <figcaption><a href="#figure-14" class="selfRef">Figure 14</a>:
 <a href="#name-slice-to-tn-qos-mapping-5qi" class="selfRef">Slice to TN QoS Mapping (5QI-unaware Model)</a>
           </figcaption></figure>
 </div>
-<p id="section-5.1-3">When the IP traffic is handed over at the SDP from the local segment to the TN domain, the PE encapsulates the
+<p id="section-5.4-3">When the IP traffic is handed over at the SDP from the local segment to the TN domain, the PE encapsulates the
    traffic into MPLS (if MPLS transport is used in the TN domain), or
    IPv6 - optionally with some additional headers (if SRv6 transport is
    used in the TN domain), and sends out the packets on the TN transit
-   link.<a href="#section-5.1-3" class="pilcrow">¶</a></p>
-<p id="section-5.1-4">The original IP header retains the DCSP marking (which is ignored in
+   link.<a href="#section-5.4-3" class="pilcrow">¶</a></p>
+<p id="section-5.4-4">The original IP header retains the DCSP marking (which is ignored in
    5QI-unaware mode), while the new header (MPLS or IPv6) carries QoS
    marking (MPLS Traffic Class bits for MPLS encapsulation, or DSCP for
    SRv6/IPv6 encapsulation) related to TN CoS.  Based on TN QoS Class
@@ -4911,11 +4940,11 @@ change at domain boundaries.<a href="#section-4.3-3.3" class="pilcrow">¶</a>
    TN links.  TN domain transit routers do not evaluate the original IP
    header for QoS-related decisions.  This model is outlined in
    <a href="#_figure-15" class="auto internal xref">Figure 15</a> for MPLS encapsulation, and in <a href="#_figure-16" class="auto internal xref">Figure 16</a> for SRv6
-   encapsulation.<a href="#section-5.1-4" class="pilcrow">¶</a></p>
+   encapsulation.<a href="#section-5.4-4" class="pilcrow">¶</a></p>
 <span id="name-qos-with-mpls-encapsulation"></span><div id="_figure-15">
 <figure id="figure-15">
-          <div id="section-5.1-5.1">
-            <div class="alignCenter art-svg artwork" id="section-5.1-5.1.1">
+          <div id="section-5.4-5.1">
+            <div class="alignCenter art-svg artwork" id="section-5.4-5.1.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="336" width="400" viewBox="0 0 400 336" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
                 <path d="M 212,104 L 220,120" fill="none" stroke="black"></path>
                 <path d="M 212,312 L 220,296" fill="none" stroke="black"></path>
@@ -5025,7 +5054,7 @@ change at domain boundaries.<a href="#section-4.3-3.3" class="pilcrow">¶</a>
                   <text x="256" y="324">─</text>
                   <text x="332" y="324">└──────────────┘</text>
                 </g>
-              </svg><a href="#section-5.1-5.1.1" class="pilcrow">¶</a>
+              </svg><a href="#section-5.4-5.1.1" class="pilcrow">¶</a>
 </div>
 </div>
 <figcaption><a href="#figure-15" class="selfRef">Figure 15</a>:
@@ -5034,8 +5063,8 @@ change at domain boundaries.<a href="#section-4.3-3.3" class="pilcrow">¶</a>
 </div>
 <span id="name-qos-with-ipv6-encapsulation"></span><div id="_figure-16">
 <figure id="figure-16">
-          <div id="section-5.1-6.1">
-            <div class="alignCenter art-svg artwork" id="section-5.1-6.1.1">
+          <div id="section-5.4-6.1">
+            <div class="alignCenter art-svg artwork" id="section-5.4-6.1.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="400" width="400" viewBox="0 0 400 400" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
                 <path d="M 212,168 L 220,184" fill="none" stroke="black"></path>
                 <path d="M 212,376 L 220,360" fill="none" stroke="black"></path>
@@ -5151,29 +5180,29 @@ change at domain boundaries.<a href="#section-4.3-3.3" class="pilcrow">¶</a>
                   <text x="256" y="388">─</text>
                   <text x="332" y="388">└──────────────┘</text>
                 </g>
-              </svg><a href="#section-5.1-6.1.1" class="pilcrow">¶</a>
+              </svg><a href="#section-5.4-6.1.1" class="pilcrow">¶</a>
 </div>
 </div>
 <figcaption><a href="#figure-16" class="selfRef">Figure 16</a>:
 <a href="#name-qos-with-ipv6-encapsulation" class="selfRef">QoS with IPv6 Encapsulation</a>
           </figcaption></figure>
 </div>
-<p id="section-5.1-7">From the QoS perspective, both options are similar.  However, there
+<p id="section-5.4-7">From the QoS perspective, both options are similar.  However, there
    is one difference between the two options.  The MPLS TC is only 3
    bits (8 possible combinations), while DSCP is 6 bits (64 possible
    combinations).  Hence, SRv6 <span>[<a href="#RFC8754" class="cite xref">RFC8754</a>]</span> provides more flexibility for TN CoS
    design, especially in combination with soft policing with in-profile/
-   out-profile traffic, as discussed in <a href="#sec-inbound-edge-resource-control" class="auto internal xref">Section 5.1.1</a>.<a href="#section-5.1-7" class="pilcrow">¶</a></p>
-<p id="section-5.1-8">Edge resources are controlled in a granular, fine-grained
+   out-profile traffic, as discussed in <a href="#sec-inbound-edge-resource-control" class="auto internal xref">Section 5.4.1</a>.<a href="#section-5.4-7" class="pilcrow">¶</a></p>
+<p id="section-5.4-8">Edge resources are controlled in a granular, fine-grained
    manner, with dedicated resource allocation for each IETF Network
    Slice.  The resource control/enforcement happens at each SDP in two
-   directions: inbound and outbound.<a href="#section-5.1-8" class="pilcrow">¶</a></p>
+   directions: inbound and outbound.<a href="#section-5.4-8" class="pilcrow">¶</a></p>
 <div id="sec-inbound-edge-resource-control">
-<section id="section-5.1.1">
+<section id="section-5.4.1">
           <h4 id="name-inbound-edge-resource-contr">
-<a href="#section-5.1.1" class="section-number selfRef">5.1.1. </a><a href="#name-inbound-edge-resource-contr" class="section-name selfRef">Inbound Edge Resource Control</a>
+<a href="#section-5.4.1" class="section-number selfRef">5.4.1. </a><a href="#name-inbound-edge-resource-contr" class="section-name selfRef">Inbound Edge Resource Control</a>
           </h4>
-<p id="section-5.1.1-1">The main aspect of inbound edge resource control is per-slice traffic
+<p id="section-5.4.1-1">The main aspect of inbound edge resource control is per-slice traffic
    capacity enforcement.  This kind of enforcement is often called
    'admission control' or 'traffic conditioning'.  The goal of this
    inbound enforcement is to ensure that the traffic above the
@@ -5183,23 +5212,23 @@ change at domain boundaries.<a href="#section-4.3-3.3" class="pilcrow">¶</a>
    a scalable manner.  As a result, traffic of one slice has no influence
    on the traffic of other slices, even if the slice is misbehaving
    (e.g., DDoS attacks or node/link failures) and generates traffic
-   volumes above the contracted rates.<a href="#section-5.1.1-1" class="pilcrow">¶</a></p>
-<p id="section-5.1.1-2">The slice rates can be characterized with following parameters
-   <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="cite xref">I-D.ietf-teas-ietf-network-slice-nbi-yang</a>]</span>:<a href="#section-5.1.1-2" class="pilcrow">¶</a></p>
+   volumes above the contracted rates.<a href="#section-5.4.1-1" class="pilcrow">¶</a></p>
+<p id="section-5.4.1-2">The slice rates can be characterized with following parameters
+   <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="cite xref">I-D.ietf-teas-ietf-network-slice-nbi-yang</a>]</span>:<a href="#section-5.4.1-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-5.1.1-3.1">CIR: Committed Information Rate (i.e., guaranteed bandwidth)<a href="#section-5.1.1-3.1" class="pilcrow">¶</a>
+<li class="normal" id="section-5.4.1-3.1">CIR: Committed Information Rate (i.e., guaranteed bandwidth)<a href="#section-5.4.1-3.1" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="section-5.1.1-3.2">PIR: Peak Information Rate (i.e., maximum bandwidth)<a href="#section-5.1.1-3.2" class="pilcrow">¶</a>
+            <li class="normal" id="section-5.4.1-3.2">PIR: Peak Information Rate (i.e., maximum bandwidth)<a href="#section-5.4.1-3.2" class="pilcrow">¶</a>
 </li>
           </ul>
-<p id="section-5.1.1-4">These parameters define the traffic characteristics of the slice and
+<p id="section-5.4.1-4">These parameters define the traffic characteristics of the slice and
    are part of SLO parameter set provided by the SMO to IETF NSC.  Based
    on these parameters the inbound policy can be implemented using one
-   of following options:<a href="#section-5.1.1-4" class="pilcrow">¶</a></p>
+   of following options:<a href="#section-5.4.1-4" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-5.1.1-5.1">
-              <p id="section-5.1.1-5.1.1">1r2c (single-rate two-color) rate limiter<a href="#section-5.1.1-5.1.1" class="pilcrow">¶</a></p>
-<p id="section-5.1.1-5.1.2">
+<li class="normal" id="section-5.4.1-5.1">
+              <p id="section-5.4.1-5.1.1">1r2c (single-rate two-color) rate limiter<a href="#section-5.4.1-5.1.1" class="pilcrow">¶</a></p>
+<p id="section-5.4.1-5.1.2">
 This is the most basic rate limiter, which meters at the SDP a
 traffic stream of given slice and marks its packets as in-contract
 (below contracted CIR) or out-of-contract (above contracted CIR).
@@ -5210,40 +5239,40 @@ signify 'this packet should be dropped in the first place, if
 there is a congestion' (soft rate limiting), depending on the
 business policy of the operator.  In the second case, while
 packets above CIR are forwarded at the SDP, they are subject to being
-dropped during any congestion event at any place in the TN domain.<a href="#section-5.1.1-5.1.2" class="pilcrow">¶</a></p>
+dropped during any congestion event at any place in the TN domain.<a href="#section-5.4.1-5.1.2" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-5.1.1-5.2">
-              <p id="section-5.1.1-5.2.1">2r3c (two-rate three-color) rate limiter<a href="#section-5.1.1-5.2.1" class="pilcrow">¶</a></p>
-<p id="section-5.1.1-5.2.2">
+            <li class="normal" id="section-5.4.1-5.2">
+              <p id="section-5.4.1-5.2.1">2r3c (two-rate three-color) rate limiter<a href="#section-5.4.1-5.2.1" class="pilcrow">¶</a></p>
+<p id="section-5.4.1-5.2.2">
 This was initially defined in <span>[<a href="#RFC2698" class="cite xref">RFC2698</a>]</span>, and its improved version
 in <span>[<a href="#RFC4115" class="cite xref">RFC4115</a>]</span>.  In essence, the traffic is assigned to one of the these three
-categories:<a href="#section-5.1.1-5.2.2" class="pilcrow">¶</a></p>
+categories:<a href="#section-5.4.1-5.2.2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-5.1.1-5.2.3.1">Green, for traffic under CIR<a href="#section-5.1.1-5.2.3.1" class="pilcrow">¶</a>
+<li class="normal" id="section-5.4.1-5.2.3.1">Green, for traffic under CIR<a href="#section-5.4.1-5.2.3.1" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-5.1.1-5.2.3.2">Yellow, for traffic between CIR and PIR<a href="#section-5.1.1-5.2.3.2" class="pilcrow">¶</a>
+                <li class="normal" id="section-5.4.1-5.2.3.2">Yellow, for traffic between CIR and PIR<a href="#section-5.4.1-5.2.3.2" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-5.1.1-5.2.3.3">Red, for traffic above PIR<a href="#section-5.1.1-5.2.3.3" class="pilcrow">¶</a>
+                <li class="normal" id="section-5.4.1-5.2.3.3">Red, for traffic above PIR<a href="#section-5.4.1-5.2.3.3" class="pilcrow">¶</a>
 </li>
               </ul>
-<p id="section-5.1.1-5.2.4">
+<p id="section-5.4.1-5.2.4">
 An inbound 2r3c meter implemented with <span>[<a href="#RFC4115" class="cite xref">RFC4115</a>]</span>, compared to
 <span>[<a href="#RFC2698" class="cite xref">RFC2698</a>]</span>, is more 'customer friendly' as it doesn't impose
 outbound peak-rate shaping requirements on customer edge (CE)
 devices. 2r3c meters in general give greater flexibility for edge
 enforcement regarding accepting the traffic (green), de-
 prioritizing and potentially dropping the traffic during
-congestion (yellow), or hard dropping the traffic (red).<a href="#section-5.1.1-5.2.4" class="pilcrow">¶</a></p>
+congestion (yellow), or hard dropping the traffic (red).<a href="#section-5.4.1-5.2.4" class="pilcrow">¶</a></p>
 </li>
           </ul>
-<p id="section-5.1.1-6">Inbound edge enforcement model for 5QI-unaware model, where all packets
+<p id="section-5.4.1-6">Inbound edge enforcement model for 5QI-unaware model, where all packets
    belonging to the slice are treated the same way in the TN domain (no
    5Q QoS Class differentiation in the TN domain) is outlined in
-   <a href="#_figure-17" class="auto internal xref">Figure 17</a>.<a href="#section-5.1.1-6" class="pilcrow">¶</a></p>
+   <a href="#_figure-17" class="auto internal xref">Figure 17</a>.<a href="#section-5.4.1-6" class="pilcrow">¶</a></p>
 <span id="name-ingress-slice-admission-con"></span><div id="_figure-17">
 <figure id="figure-17">
-            <div id="section-5.1.1-7.1">
-              <div class="alignCenter art-svg artwork" id="section-5.1.1-7.1.1">
+            <div id="section-5.4.1-7.1">
+              <div class="alignCenter art-svg artwork" id="section-5.4.1-7.1.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="576" width="280" viewBox="0 0 280 576" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
                   <path d="M 122,64 L 122,112" fill="none" stroke="black"></path>
                   <path d="M 118,64 L 118,112" fill="none" stroke="black"></path>
@@ -5378,7 +5407,7 @@ congestion (yellow), or hard dropping the traffic (red).<a href="#section-5.1.1-
                     <text x="272" y="548">│</text>
                     <text x="232" y="564">└─────────┘</text>
                   </g>
-                </svg><a href="#section-5.1.1-7.1.1" class="pilcrow">¶</a>
+                </svg><a href="#section-5.4.1-7.1.1" class="pilcrow">¶</a>
 </div>
 </div>
 <figcaption><a href="#figure-17" class="selfRef">Figure 17</a>:
@@ -5388,46 +5417,46 @@ congestion (yellow), or hard dropping the traffic (red).<a href="#section-5.1.1-
 </section>
 </div>
 <div id="outbound-edge-resource-control">
-<section id="section-5.1.2">
+<section id="section-5.4.2">
           <h4 id="name-outbound-edge-resource-cont">
-<a href="#section-5.1.2" class="section-number selfRef">5.1.2. </a><a href="#name-outbound-edge-resource-cont" class="section-name selfRef">Outbound Edge Resource Control</a>
+<a href="#section-5.4.2" class="section-number selfRef">5.4.2. </a><a href="#name-outbound-edge-resource-cont" class="section-name selfRef">Outbound Edge Resource Control</a>
           </h4>
-<p id="section-5.1.2-1">While inbound slice admission control at the transport edge is
+<p id="section-5.4.2-1">While inbound slice admission control at the transport edge is
    mandatory in the model, outbound edge resource control might not be
    required in all use cases.  Use cases that specifically call for
-   outbound edge resource control are:<a href="#section-5.1.2-1" class="pilcrow">¶</a></p>
+   outbound edge resource control are:<a href="#section-5.4.2-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-5.1.2-2.1">Slices use both CIR and PIR parameters, and transport edge links
+<li class="normal" id="section-5.4.2-2.1">Slices use both CIR and PIR parameters, and transport edge links
 (attachment circuits) are dimensioned to fulfil the aggregate of
 slice CIRs.  If at any given time, some slices send the traffic
 above CIR, congestion in outbound direction on the transport edge
 link might happen.  Therefore, fine-grained resource control to
-guarantee at least CIR for each slice is required.<a href="#section-5.1.2-2.1" class="pilcrow">¶</a>
+guarantee at least CIR for each slice is required.<a href="#section-5.4.2-2.1" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="section-5.1.2-2.2">Any-to-Any (A2A) connectivity constructs are deployed, again
+            <li class="normal" id="section-5.4.2-2.2">Any-to-Any (A2A) connectivity constructs are deployed, again
 resulting in potential congestion in outbound direction on the
 transport edge links, even if only slice CIR parameters are used.
 This again requires fine-grained resource control per slice in
-outbound direction at transport edge links.<a href="#section-5.1.2-2.2" class="pilcrow">¶</a>
+outbound direction at transport edge links.<a href="#section-5.4.2-2.2" class="pilcrow">¶</a>
 </li>
           </ul>
-<p id="section-5.1.2-3">As opposed to inbound edge resource control, typically implemented
+<p id="section-5.4.2-3">As opposed to inbound edge resource control, typically implemented
    with rate-limiters/policers, outbound resource control is typically
    implemented with a weighted/priority queuing, potentially combined
    with optional shapers (per slice).  A detailed analysis of different
    queuing mechanisms is out of scope for this document, but is provided
-   in <span>[<a href="#RFC7806" class="cite xref">RFC7806</a>]</span>.<a href="#section-5.1.2-3" class="pilcrow">¶</a></p>
-<p id="section-5.1.2-4"><a href="#_figure-18" class="auto internal xref">Figure 18</a> outlines the outbound edge resource control model at the
+   in <span>[<a href="#RFC7806" class="cite xref">RFC7806</a>]</span>.<a href="#section-5.4.2-3" class="pilcrow">¶</a></p>
+<p id="section-5.4.2-4"><a href="#_figure-18" class="auto internal xref">Figure 18</a> outlines the outbound edge resource control model at the
    transport network layer for 5QI-unaware slices.  Each slice is
    assigned a single egress queue.  The sum of slice CIRs, used as the
    weight in weighted queueing model, <span class="bcp14">MUST NOT</span> exceed the physical
    capacity of the attachment circuit.  Slice requests above this limit
    <span class="bcp14">MUST</span> be rejected by the NSC, unless an already established slice with
-   lower priority, if such exists, is preempted.<a href="#section-5.1.2-4" class="pilcrow">¶</a></p>
+   lower priority, if such exists, is preempted.<a href="#section-5.4.2-4" class="pilcrow">¶</a></p>
 <span id="name-ingress-slice-admission-cont"></span><div id="_figure-18">
 <figure id="figure-18">
-            <div id="section-5.1.2-5.1">
-              <div class="alignCenter art-svg artwork" id="section-5.1.2-5.1.1">
+            <div id="section-5.4.2-5.1">
+              <div class="alignCenter art-svg artwork" id="section-5.4.2-5.1.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="480" width="552" viewBox="0 0 552 480" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
                   <path d="M 364,56 L 372,72" fill="none" stroke="black"></path>
                   <path d="M 364,168 L 372,152" fill="none" stroke="black"></path>
@@ -5677,7 +5706,7 @@ outbound direction at transport edge links.<a href="#section-5.1.2-2.2" class="p
                     <text x="544" y="436">─</text>
                     <text x="72" y="452">└─────────┘</text>
                   </g>
-                </svg><a href="#section-5.1.2-5.1.1" class="pilcrow">¶</a>
+                </svg><a href="#section-5.4.2-5.1.1" class="pilcrow">¶</a>
 </div>
 </div>
 <figcaption><a href="#figure-18" class="selfRef">Figure 18</a>:
@@ -5689,18 +5718,18 @@ outbound direction at transport edge links.<a href="#section-5.1.2-2.2" class="p
 </section>
 </div>
 <div id="qi-aware-model">
-<section id="section-5.2">
+<section id="section-5.5">
         <h3 id="name-5qi-aware-model">
-<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-5qi-aware-model" class="section-name selfRef">5QI-aware Model</a>
+<a href="#section-5.5" class="section-number selfRef">5.5. </a><a href="#name-5qi-aware-model" class="section-name selfRef">5QI-aware Model</a>
         </h3>
-<p id="section-5.2-1">In the 5QI-aware model, potentially a large number of 5G QoS Classes, represented via DSCP set by NFs
+<p id="section-5.5-1">In the 5QI-aware model, potentially a large number of 5G QoS Classes, represented via DSCP set by NFs
    (the architecture scales to thousands of 5G slices) is mapped
    (multiplexed) to up to 8 TN QoS Classes used in transport transit
-   equipment, as outlined in <a href="#_figure-19" class="auto internal xref">Figure 19</a>.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+   equipment, as outlined in <a href="#_figure-19" class="auto internal xref">Figure 19</a>.<a href="#section-5.5-1" class="pilcrow">¶</a></p>
 <span id="name-slice-5q-qos-to-tn-qos-mapp"></span><div id="_figure-19">
 <figure id="figure-19">
-          <div id="section-5.2-2.1">
-            <div class="alignCenter art-svg artwork" id="section-5.2-2.1.1">
+          <div id="section-5.5-2.1">
+            <div class="alignCenter art-svg artwork" id="section-5.5-2.1.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="624" width="520" viewBox="0 0 520 624" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
                 <path d="M 24,64 L 24,528" fill="none" stroke="black"></path>
                 <path d="M 168,64 L 168,96" fill="none" stroke="black"></path>
@@ -6044,14 +6073,14 @@ outbound direction at transport edge links.<a href="#section-5.1.2-2.2" class="p
                   <text x="420" y="612">IETF</text>
                   <text x="460" y="612">NSs)</text>
                 </g>
-              </svg><a href="#section-5.2-2.1.1" class="pilcrow">¶</a>
+              </svg><a href="#section-5.5-2.1.1" class="pilcrow">¶</a>
 </div>
 </div>
 <figcaption><a href="#figure-19" class="selfRef">Figure 19</a>:
 <a href="#name-slice-5q-qos-to-tn-qos-mapp" class="selfRef">Slice 5Q QoS to TN QoS Mapping (5QI-aware Model)</a>
           </figcaption></figure>
 </div>
-<p id="section-5.2-3">Given that in large scale deployments (large number of 5G
+<p id="section-5.5-3">Given that in large scale deployments (large number of 5G
    slices), the number of potential 5G QoS Classes is much higher than
    the number of TN QoS Classes, multiple 5G QoS Classes with similar
    characteristics - potentially from different slices -
@@ -6059,11 +6088,11 @@ outbound direction at transport edge links.<a href="#section-5.1.2-2.2" class="p
    domain.  That is, common per hop behavior (PHB) is executed on
    transit TN routers for all packets grouped together. An example of this
    approach is outlined in <a href="#_figure-34" class="auto internal xref">Figure 20</a>. Please note, numbers specified in the figure
-   (S-NSSAI, 5QI, DSCP, queue, ...) are for illustration purposes only and do not provide deployment guidance.<a href="#section-5.2-3" class="pilcrow">¶</a></p>
+   (S-NSSAI, 5QI, DSCP, queue, ...) are for illustration purposes only and do not provide deployment guidance.<a href="#section-5.5-3" class="pilcrow">¶</a></p>
 <span id="name-example-of-3gpp-qos-mapped-"></span><div id="_figure-34">
 <figure id="figure-20">
-          <div id="section-5.2-4.1">
-            <div class="alignCenter art-svg artwork" id="section-5.2-4.1.1">
+          <div id="section-5.5-4.1">
+            <div class="alignCenter art-svg artwork" id="section-5.5-4.1.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="496" width="488" viewBox="0 0 488 496" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
                 <g class="text">
                   <text x="236" y="36">┌─────────────</text>
@@ -6254,18 +6283,18 @@ outbound direction at transport edge links.<a href="#section-5.1.2-2.2" class="p
                   <text x="480" y="468">│</text>
                   <text x="332" y="484">└────────────────────────────────────┘</text>
                 </g>
-              </svg><a href="#section-5.2-4.1.1" class="pilcrow">¶</a>
+              </svg><a href="#section-5.5-4.1.1" class="pilcrow">¶</a>
 </div>
 </div>
 <figcaption><a href="#figure-20" class="selfRef">Figure 20</a>:
 <a href="#name-example-of-3gpp-qos-mapped-" class="selfRef">example of 3GPP QoS mapped to TN QoS</a>
           </figcaption></figure>
 </div>
-<p id="section-5.2-5">In current SDO progress of 3GPP (Rel.17) and O-RAN the mapping of 5QI to
+<p id="section-5.5-5">In current SDO progress of 3GPP (Rel.17) and O-RAN the mapping of 5QI to
 DSCP is not expected in per-slice fashion, where 5QI to DSCP mapping may
 vary from 3GPP slice to 3GPP slice, hence the mapping of 5G QoS DSCP values
-to TN QoS Classes may be rather common.<a href="#section-5.2-5" class="pilcrow">¶</a></p>
-<p id="section-5.2-6">Like in 5QI-unaware model, the original IP header retains the DCSP
+to TN QoS Classes may be rather common.<a href="#section-5.5-5" class="pilcrow">¶</a></p>
+<p id="section-5.5-6">Like in 5QI-unaware model, the original IP header retains the DCSP
    marking corresponding to 5QI (5G QoS Class), while the new header
    (MPLS or IPv6) carries QoS marking related to TN QoS Class.  Based on
    TN QoS Class marking, per hop behavior for all aggregated 5G QoS
@@ -6273,42 +6302,42 @@ to TN QoS Classes may be rather common.<a href="#section-5.2-5" class="pilcrow">
    domain transit routers do not evaluate original IP header for QoS
    related decisions.  The original DSCP marking retained in the
    original IP header is used at the PE for fine-grained per slice and
-   per 5G QoS Class inbound/outbound enforcement on AC link.<a href="#section-5.2-6" class="pilcrow">¶</a></p>
-<p id="section-5.2-7">In 5QI-aware model, compared to 5QI-unware model, edge resources are controlled in an even more
+   per 5G QoS Class inbound/outbound enforcement on AC link.<a href="#section-5.5-6" class="pilcrow">¶</a></p>
+<p id="section-5.5-7">In 5QI-aware model, compared to 5QI-unware model, edge resources are controlled in an even more
    granular, fine-grained manner, with dedicated resource allocation for
    each IETF Network Slice and dedicated resource allocation for number
    of traffic classes (most commonly up 4 or 8 traffic classes,
    depending on the HW capability of the equipment) within each IETF
-   Network Slice.<a href="#section-5.2-7" class="pilcrow">¶</a></p>
+   Network Slice.<a href="#section-5.5-7" class="pilcrow">¶</a></p>
 <div id="inbound-edge-resource-control">
-<section id="section-5.2.1">
+<section id="section-5.5.1">
           <h4 id="name-inbound-edge-resource-contro">
-<a href="#section-5.2.1" class="section-number selfRef">5.2.1. </a><a href="#name-inbound-edge-resource-contro" class="section-name selfRef">Inbound Edge Resource Control</a>
+<a href="#section-5.5.1" class="section-number selfRef">5.5.1. </a><a href="#name-inbound-edge-resource-contro" class="section-name selfRef">Inbound Edge Resource Control</a>
           </h4>
-<p id="section-5.2.1-1">Compared to the 5QI-unware model, admission control (traffic
+<p id="section-5.5.1-1">Compared to the 5QI-unware model, admission control (traffic
    conditioning) in the 5QI-aware model is more granular, as it enforces
    not only per slice capacity constraints, but may as well enforce the
-   constraints per 5G QoS Class within each slice.<a href="#section-5.2.1-1" class="pilcrow">¶</a></p>
-<p id="section-5.2.1-2">5G slice using multiple 5QIs can potentially specify rates in one of
-   the following ways:<a href="#section-5.2.1-2" class="pilcrow">¶</a></p>
+   constraints per 5G QoS Class within each slice.<a href="#section-5.5.1-1" class="pilcrow">¶</a></p>
+<p id="section-5.5.1-2">5G slice using multiple 5QIs can potentially specify rates in one of
+   the following ways:<a href="#section-5.5.1-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-5.2.1-3.1">rates per traffic class (CIR or CIR+PIR), no rate per slice (sum
-of rates per class gives the rate per slice).<a href="#section-5.2.1-3.1" class="pilcrow">¶</a>
+<li class="normal" id="section-5.5.1-3.1">rates per traffic class (CIR or CIR+PIR), no rate per slice (sum
+of rates per class gives the rate per slice).<a href="#section-5.5.1-3.1" class="pilcrow">¶</a>
 </li>
-            <li class="normal" id="section-5.2.1-3.2">rate per slice (CIR, or CIR+PIR), and rates per prioritized
+            <li class="normal" id="section-5.5.1-3.2">rate per slice (CIR, or CIR+PIR), and rates per prioritized
 (premium) traffic classes (CIR only).  Best effort traffic class
 uses the bandwidth (within slice CIR/PIR) not consumed by
-prioritized classes.<a href="#section-5.2.1-3.2" class="pilcrow">¶</a>
+prioritized classes.<a href="#section-5.5.1-3.2" class="pilcrow">¶</a>
 </li>
           </ul>
-<p id="section-5.2.1-4">In the first option, the slice admission control is executed with
+<p id="section-5.5.1-4">In the first option, the slice admission control is executed with
    traffic class granularity, as outlined in <a href="#_figure-20" class="auto internal xref">Figure 21</a>.  In this model,
    if a premium class doesn't consume all available class capacity, it
-   cannot be reused by non-premium (i.e., Best Effort) class.<a href="#section-5.2.1-4" class="pilcrow">¶</a></p>
+   cannot be reused by non-premium (i.e., Best Effort) class.<a href="#section-5.5.1-4" class="pilcrow">¶</a></p>
 <span id="name-ingress-slice-admission-contr"></span><div id="_figure-20">
 <figure id="figure-21">
-            <div id="section-5.2.1-5.1">
-              <div class="alignCenter art-svg artwork" id="section-5.2.1-5.1.1">
+            <div id="section-5.5.1-5.1">
+              <div class="alignCenter art-svg artwork" id="section-5.5.1-5.1.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="560" width="408" viewBox="0 0 408 560" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
                   <g class="text">
                     <text x="192" y="36">Class</text>
@@ -6463,14 +6492,14 @@ prioritized classes.<a href="#section-5.2.1-3.2" class="pilcrow">¶</a>
                     <text x="400" y="532">│</text>
                     <text x="360" y="548">└─────────┘</text>
                   </g>
-                </svg><a href="#section-5.2.1-5.1.1" class="pilcrow">¶</a>
+                </svg><a href="#section-5.5.1-5.1.1" class="pilcrow">¶</a>
 </div>
 </div>
 <figcaption><a href="#figure-21" class="selfRef">Figure 21</a>:
 <a href="#name-ingress-slice-admission-contr" class="selfRef">Ingress Slice Admission Control (5QI-aware Model)</a>
             </figcaption></figure>
 </div>
-<p id="section-5.2.1-6">The second model combines the advantages of 5QI-unaware model (per
+<p id="section-5.5.1-6">The second model combines the advantages of 5QI-unaware model (per
    slice admission control) with the per traffic class admission
    control, as outlined in <a href="#_figure-20" class="auto internal xref">Figure 21</a>.  Ingress admission control is at
    class granularity for premium classes (CIR only).  Non-premium class
@@ -6478,11 +6507,11 @@ prioritized classes.<a href="#section-5.2.1-3.2" class="pilcrow">¶</a>
    but it is allowed to use the entire slice capacity, which is available at
    any given moment.  I.e., slice capacity, which is not consumed by
    premium classes.  It is a hierarchical model, as depicted in
-   <a href="#_figure-21" class="auto internal xref">Figure 22</a>.<a href="#section-5.2.1-6" class="pilcrow">¶</a></p>
+   <a href="#_figure-21" class="auto internal xref">Figure 22</a>.<a href="#section-5.5.1-6" class="pilcrow">¶</a></p>
 <span id="name-ingress-slice-admission-contro"></span><div id="_figure-21">
 <figure id="figure-22">
-            <div id="section-5.2.1-7.1">
-              <div class="alignCenter art-svg artwork" id="section-5.2.1-7.1.1">
+            <div id="section-5.5.1-7.1">
+              <div class="alignCenter art-svg artwork" id="section-5.5.1-7.1.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="576" width="408" viewBox="0 0 408 576" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
                   <g class="text">
                     <text x="264" y="36">Slice</text>
@@ -6674,7 +6703,7 @@ prioritized classes.<a href="#section-5.2.1-3.2" class="pilcrow">¶</a>
                     <text x="400" y="548">│</text>
                     <text x="360" y="564">└─────────┘</text>
                   </g>
-                </svg><a href="#section-5.2.1-7.1.1" class="pilcrow">¶</a>
+                </svg><a href="#section-5.5.1-7.1.1" class="pilcrow">¶</a>
 </div>
 </div>
 <figcaption><a href="#figure-22" class="selfRef">Figure 22</a>:
@@ -6684,20 +6713,20 @@ prioritized classes.<a href="#section-5.2.1-3.2" class="pilcrow">¶</a>
 </section>
 </div>
 <div id="outbound-edge-resource-control-1">
-<section id="section-5.2.2">
+<section id="section-5.5.2">
           <h4 id="name-outbound-edge-resource-contr">
-<a href="#section-5.2.2" class="section-number selfRef">5.2.2. </a><a href="#name-outbound-edge-resource-contr" class="section-name selfRef">Outbound Edge Resource Control</a>
+<a href="#section-5.5.2" class="section-number selfRef">5.5.2. </a><a href="#name-outbound-edge-resource-contr" class="section-name selfRef">Outbound Edge Resource Control</a>
           </h4>
-<p id="section-5.2.2-1"><a href="#_figure-22" class="auto internal xref">Figure 23</a> outlines the outbound edge resource control model at the
+<p id="section-5.5.2-1"><a href="#_figure-22" class="auto internal xref">Figure 23</a> outlines the outbound edge resource control model at the
    transport network layer for 5QI-aware slices.  Each slice is assigned
    multiple egress queues.  The sum of queue weights (equal to 5Q QoS
    CIRs within the slice) CIRs <span class="bcp14">MUST NOT</span> exceed the CIR of the slice
    itself.  And, similarly to the 5QI-aware model, the sum of slice CIRs
-   <span class="bcp14">MUST NOT</span> exceed the physical capacity of the attachment circuit.<a href="#section-5.2.2-1" class="pilcrow">¶</a></p>
+   <span class="bcp14">MUST NOT</span> exceed the physical capacity of the attachment circuit.<a href="#section-5.5.2-1" class="pilcrow">¶</a></p>
 <span id="name-egress-slice-admission-cont"></span><div id="_figure-22">
 <figure id="figure-23">
-            <div id="section-5.2.2-2.1">
-              <div class="alignCenter art-svg artwork" id="section-5.2.2-2.1.1">
+            <div id="section-5.5.2-2.1">
+              <div class="alignCenter art-svg artwork" id="section-5.5.2-2.1.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="704" width="552" viewBox="0 0 552 704" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
                   <path d="M 364,56 L 372,72" fill="none" stroke="black"></path>
                   <path d="M 364,248 L 372,232" fill="none" stroke="black"></path>
@@ -7023,7 +7052,7 @@ prioritized classes.<a href="#section-5.2.1-3.2" class="pilcrow">¶</a>
                     <text x="544" y="676">─</text>
                     <text x="72" y="692">└─────────┘</text>
                   </g>
-                </svg><a href="#section-5.2.2-2.1.1" class="pilcrow">¶</a>
+                </svg><a href="#section-5.5.2-2.1.1" class="pilcrow">¶</a>
 </div>
 </div>
 <figcaption><a href="#figure-23" class="selfRef">Figure 23</a>:
@@ -7035,11 +7064,11 @@ prioritized classes.<a href="#section-5.2.1-3.2" class="pilcrow">¶</a>
 </section>
 </div>
 <div id="transit-resource-control">
-<section id="section-5.3">
+<section id="section-5.6">
         <h3 id="name-transit-resource-control">
-<a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-transit-resource-control" class="section-name selfRef">Transit Resource Control</a>
+<a href="#section-5.6" class="section-number selfRef">5.6. </a><a href="#name-transit-resource-control" class="section-name selfRef">Transit Resource Control</a>
         </h3>
-<p id="section-5.3-1">Transit resource control is much simpler than Edge resource control.
+<p id="section-5.6-1">Transit resource control is much simpler than Edge resource control.
    As outlined in <a href="#_figure-19" class="auto internal xref">Figure 19</a>, at the edge, 5Q QoS Class marking
    (represented by DSCP related to 5QI set by mobile network functions
    in the packets handed off to the TN) is mapped to the TN QoS Class.
@@ -7048,16 +7077,16 @@ prioritized classes.<a href="#section-5.2.1-3.2" class="pilcrow">¶</a>
    outer header, as depicted in <a href="#_figure-15" class="auto internal xref">Figure 15</a> and <a href="#_figure-16" class="auto internal xref">Figure 16</a>) is set in the
    outer header.  PHB on transit is based exclusively on that TN QoS
    Class marking, i.e., original 5G QoS Class DSCP is not taken into
-   consideration on transit.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
-<p id="section-5.3-2">Transit resource control does not use any inbound interface policy,
+   consideration on transit.<a href="#section-5.6-1" class="pilcrow">¶</a></p>
+<p id="section-5.6-2">Transit resource control does not use any inbound interface policy,
    but only outbound interface policy, which is based on priority queue
    combined with weighted or deficit queuing model, without any shaper.
    The main purpose of transit resource control is to ensure that during
    network congestion events, for example caused by network failures and
    temporary rerouting, premium classes are prioritized, and any drops
-   only occur in traffic that was de-prioritized by ingress admission control <a href="#sec-inbound-edge-resource-control" class="auto internal xref">Section 5.1.1</a> or in non-premium (best-effort) classes.  Capacity planning
+   only occur in traffic that was de-prioritized by ingress admission control <a href="#sec-inbound-edge-resource-control" class="auto internal xref">Section 5.4.1</a> or in non-premium (best-effort) classes.  Capacity planning
    and management, as described in <a href="#sec-capacity-planning" class="auto internal xref">Section 7</a>, ensures that enough
-   capacity is available to fulfill all approved slice requests.<a href="#section-5.3-2" class="pilcrow">¶</a></p>
+   capacity is available to fulfill all approved slice requests.<a href="#section-5.6-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -7341,7 +7370,7 @@ prioritized classes.<a href="#section-5.2.1-3.2" class="pilcrow">¶</a>
         <h3 id="name-5qi-unaware-model-2">
 <a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-5qi-unaware-model-2" class="section-name selfRef">5QI-unaware Model</a>
         </h3>
-<p id="section-6.1-1">As discussed in <a href="#sec-5QI-unaware" class="auto internal xref">Section 5.1</a>, in the 5QI-unware model, the TN domain
+<p id="section-6.1-1">As discussed in <a href="#sec-5QI-unaware" class="auto internal xref">Section 5.4</a>, in the 5QI-unware model, the TN domain
    doesn't take into account 5G QoS during execution of per-hop
    behavior.  The entire slice is mapped to single TN QoS Class,
    therefore the entire slice is subject to the same per-hop behavior.

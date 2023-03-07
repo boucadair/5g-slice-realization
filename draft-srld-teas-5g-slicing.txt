@@ -92,9 +92,9 @@ Table of Contents
    2.  Conventions and Definitions
    3.  5G Network Slicing Integration in Transport Networks
      3.1.  5G Network Slicing versus Transport Network Slicing
-     3.2.  NF-to-NF Datapath vs Transport Network
+     3.2.  NF-to-NF Datapath vs. Transport Network
        3.2.1.  Segmentation of the NF-to-NF Datapath
-       3.2.2.  Orchestration of Local Segment Terminations at ETN
+       3.2.2.  Orchestration of Local Segment Terminations at ETNs
      3.3.  5G Slice to IETF Network Slice Mapping
      3.4.  First 5G Slice versus Subsequent Slices
    4.  High-Level Overview of the Realization Model
@@ -105,13 +105,16 @@ Table of Contents
        4.3.2.  Option 10B
        4.3.3.  Option 10C
    5.  QoS Mapping Models
-     5.1.  5QI-unaware Model
-       5.1.1.  Inbound Edge Resource Control
-       5.1.2.  Outbound Edge Resource Control
-     5.2.  5QI-aware Model
-       5.2.1.  Inbound Edge Resource Control
-       5.2.2.  Outbound Edge Resource Control
-     5.3.  Transit Resource Control
+     5.1.  5G QoS
+     5.2.  TN QoS
+     5.3.  QoS Realization Models
+     5.4.  5QI-unaware Model
+       5.4.1.  Inbound Edge Resource Control
+       5.4.2.  Outbound Edge Resource Control
+     5.5.  5QI-aware Model
+       5.5.1.  Inbound Edge Resource Control
+       5.5.2.  Outbound Edge Resource Control
+     5.6.  Transit Resource Control
    6.  Transport Planes Mapping Models
      6.1.  5QI-unaware Model
      6.2.  5QI-aware Model
@@ -177,8 +180,9 @@ Table of Contents
       orchestration entity
 
    Edge Transport Node (ETN):  Node, under the transport domain
-      orchestration, that stitches the transport domain to adjacent
-      domains.  An ETN can be be a Provider Edge (PE) or a managed
+      orchestration, that stitches the transport domain to an adjacent
+      domain (e.g., enterprise network, data center, peer provider
+      network).  An ETN can be be a Provider Edge (PE) or a managed
       Customer Equipment (CE).
 
    An extended list of abbreviations used in this document is provided
@@ -242,7 +246,7 @@ Table of Contents
       domain of the overall 5G architecture, composed from RAN, TN, and
       CN domains.
 
-3.2.  NF-to-NF Datapath vs Transport Network
+3.2.  NF-to-NF Datapath vs. Transport Network
 
    The 3GPP specifications loosely define the Transport Network and its
    integration in RAN and CN domains: the role of the Transport Network
@@ -365,12 +369,12 @@ Table of Contents
       between the ETN and the NF (e.g., CE, IP Fabric): B1, B2, B3, and
       B4.
 
-   *  ETN: The ETN can be either the PE (A3, A4, B3, and B4) or the CE
-      if it is managed by the TN Orchestration (A1, A2, B1, and B2).
+   *  ETN: It can be either a PE (A3, A4, B3, and B4) or a CE if it is
+      managed by the TN Orchestration (A1, A2, B1, and B2).
 
-   *  SDP: The SDP can be located in many places as per Sectionb 4.2 of
+   *  SDP: It can be located in many places as per Section b 4.2 of
       [I-D.ietf-teas-ietf-network-slices]: A1/B1 for case (1), A2/B2 for
-      case (2), A3/B3 for case (3), and A4/B4 for case (4))
+      case (2), A3/B3 for case (3), and A4/B4 for case (4).
 
    *  Redundancy/Scale-out: No example of redundancy/multihoming/scale-
       out is provided for the sake of simplicification.  Nonetheless,
@@ -457,7 +461,7 @@ Table of Contents
        Figure 3: Examples of various combinations of Local Segments,
                                 ETN, and SDP
 
-3.2.2.  Orchestration of Local Segment Terminations at ETN
+3.2.2.  Orchestration of Local Segment Terminations at ETNs
 
    The interconnection between a 5G site and the Transport Network is
    made up of shared networking resources.  More precisely, the Local
@@ -1011,9 +1015,10 @@ Table of Contents
 
    The resources are managed via various QoS policies deployed in the
    network.  QoS mapping models to support 5G slicing connectivity
-   implemented over packet switched transport uses two layers of QoS:
+   implemented over packet switched transport uses two layers of QoS
+   that are discussed in the following subsections.
 
-   (1) 5G QoS
+5.1.  5G QoS
 
      At this layer QoS treatment is indicated by the 5QI (5G QoS
      indicator), as defined in {{TS-23.501}}.  A 5QI is an ID that is
@@ -1037,7 +1042,7 @@ Table of Contents
      In this document, this layer of QoS will be referred as '5G QoS
      Class' ('5G QoS' in short), or '5G DSCP'.
 
-   (2) TN QoS
+5.2.  TN QoS
 
   Control of the TN resources on transit links, as well as traffic
   scheduling/prioritization on transit links, is based on a flat
@@ -1055,18 +1060,20 @@ Table of Contents
   be DSCP or MPLS Traffic Class (TC).  This layer of QoS will be referred as 'TN QoS
   Class', or 'TN QoS' for short, in this document.
 
+5.3.  QoS Realization Models
+
    While 5QI might be exposed to the TN domain, via the DSCP value
    (corresponding to specific 5QI value) set in the IP packet generated
    by NFs, some 5G deployments might use 5QI in the RAN domain only,
    without requesting per 5QI differentiated treatment from the TN
-   domain.  This can be due to an NF limitation (no capability to set
-   DSCP), or it might simply depend on the overall slicing deployment
-   model.  The O-RAN Alliance, for example, defines a phased approach to
-   the slicing, with initial phases utilizing only per slice, but not
-   per 5QI, differentiated treatment in the TN domain (Annex F of
-   [O-RAN.WG9.XPSAAS]).
+   domain.  This can be due to an NF limitation (e.g., no capability to
+   set DSCP), or it might simply depend on the overall slicing
+   deployment model.  The O-RAN Alliance, for example, defines a phased
+   approach to the slicing, with initial phases utilizing only per
+   slice, but not per 5QI, differentiated treatment in the TN domain
+   (Annex F of [O-RAN.WG9.XPSAAS]).
 
-   Therefore, from QoS perspective, the 5G slicing connectivity
+   Therefore, from a QoS perspective, the 5G slicing connectivity
    realization architecture defines two high-level realization models
    for slicing in the transport domain: a 5QI-unaware model and a 5QI-
    aware model.  Both slicing models in the transport domain could be
@@ -1075,7 +1082,9 @@ Table of Contents
    the same time the TN segment for 5G backhaul (N3 interface) might
    follow the 5QI-unaware model.
 
-5.1.  5QI-unaware Model
+   These models are further elaborated in the following two subsections.
+
+5.4.  5QI-unaware Model
 
    In 5QI-unaware mode, the DSCP values in the packets received from NF
    at SDP are ignored.  In the TN domain, there is no QoS
@@ -1200,14 +1209,14 @@ Table of Contents
    bits (8 possible combinations), while DSCP is 6 bits (64 possible
    combinations).  Hence, SRv6 [RFC8754] provides more flexibility for
    TN CoS design, especially in combination with soft policing with in-
-   profile/ out-profile traffic, as discussed in Section 5.1.1.
+   profile/ out-profile traffic, as discussed in Section 5.4.1.
 
    Edge resources are controlled in a granular, fine-grained manner,
    with dedicated resource allocation for each IETF Network Slice.  The
    resource control/enforcement happens at each SDP in two directions:
    inbound and outbound.
 
-5.1.1.  Inbound Edge Resource Control
+5.4.1.  Inbound Edge Resource Control
 
    The main aspect of inbound edge resource control is per-slice traffic
    capacity enforcement.  This kind of enforcement is often called
@@ -1311,7 +1320,7 @@ Table of Contents
 
        Figure 17: Ingress Slice Admission Control (5QI-unware Model)
 
-5.1.2.  Outbound Edge Resource Control
+5.4.2.  Outbound Edge Resource Control
 
    While inbound slice admission control at the transport edge is
    mandatory in the model, outbound edge resource control might not be
@@ -1376,7 +1385,7 @@ Table of Contents
 
      Figure 18: Ingress Slice Admission control (5QI-unaware Model)
 
-5.2.  5QI-aware Model
+5.5.  5QI-aware Model
 
    In the 5QI-aware model, potentially a large number of 5G QoS Classes,
    represented via DSCP set by NFs (the architecture scales to thousands
@@ -1489,7 +1498,7 @@ Table of Contents
    commonly up 4 or 8 traffic classes, depending on the HW capability of
    the equipment) within each IETF Network Slice.
 
-5.2.1.  Inbound Edge Resource Control
+5.5.1.  Inbound Edge Resource Control
 
    Compared to the 5QI-unware model, admission control (traffic
    conditioning) in the 5QI-aware model is more granular, as it enforces
@@ -1595,7 +1604,7 @@ Table of Contents
 
    Figure 22: Ingress Slice Admission Control (5QI-aware) - Hierarchical
 
-5.2.2.  Outbound Edge Resource Control
+5.5.2.  Outbound Edge Resource Control
 
    Figure 23 outlines the outbound edge resource control model at the
    transport network layer for 5QI-aware slices.  Each slice is assigned
@@ -1649,7 +1658,7 @@ Table of Contents
 
            Figure 23: Egress Slice Admission Control (5QI-aware)
 
-5.3.  Transit Resource Control
+5.6.  Transit Resource Control
 
    Transit resource control is much simpler than Edge resource control.
    As outlined in Figure 19, at the edge, 5Q QoS Class marking
@@ -1669,7 +1678,7 @@ Table of Contents
    network congestion events, for example caused by network failures and
    temporary rerouting, premium classes are prioritized, and any drops
    only occur in traffic that was de-prioritized by ingress admission
-   control Section 5.1.1 or in non-premium (best-effort) classes.
+   control Section 5.4.1 or in non-premium (best-effort) classes.
    Capacity planning and management, as described in Section 7, ensures
    that enough capacity is available to fulfill all approved slice
    requests.
@@ -1728,7 +1737,7 @@ Table of Contents
 
 6.1.  5QI-unaware Model
 
-   As discussed in Section 5.1, in the 5QI-unware model, the TN domain
+   As discussed in Section 5.4, in the 5QI-unware model, the TN domain
    doesn't take into account 5G QoS during execution of per-hop
    behavior.  The entire slice is mapped to single TN QoS Class,
    therefore the entire slice is subject to the same per-hop behavior.
