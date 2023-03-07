@@ -133,10 +133,10 @@ informative:
               target: https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3273
 
    O-RAN.WG9.XPSAAS:
-              title: "O-RAN.WG9.XPSAAS: O-RAN WG9 Xhaul Packet Switched Architectures and Solutions Version 02.00"
+              title: "O-RAN.WG9.XPSAAS: O-RAN WG9 Xhaul Packet Switched Architectures and Solutions Version 03.00"
               author:
                org: O-RAN Alliance
-              date: 1 July 2021
+              date: 27 February 2022
               target: https://www.o-ran.org/specifications
 
    NG.113:
@@ -1205,45 +1205,6 @@ representing slices              representing slices    slices
    Slice.  The resource control/enforcement happens at each SDP in two
    directions: inbound and outbound.
 
-Note: DOUBLE CHECK 
-   As mentioned before, more realistically the 5G QoS Classes would be grouped 
-   with common Operator-defined TN logic and mapped into the TN QoS Classes and 
-   Queues (example values are on the following diagram).
-
-   ~~~ aasvg
-
-  ┌───────────────────┐  ┌───────────────────────────────┐
-  │3GPP S-NSSAI 100   │  │ETN                            │
-  │┌──────┐ ┌───────┐ │  ├───────┐                       │
-  ││5QI=1 ├─▶DSCP=46├─┼──▶DSCP=46├───┐                   │
-  │└──────┘ └───────┘ │  ├───────┘   │                   │
-  │┌──────┐ ┌───────┐ │  ├───────┐   │                   │
-  ││5QI=65├─▶DSCP=46├─┼──▶DSCP=46├───┤   ┌──────────────┐│
-  │└──────┘ └───────┘ │  ├───────┘   │   │TN QoS Class 5││
-  │┌──────┐ ┌───────┐ │  ├───────┐   ├───▶   Queue 5    ││
-  ││5QI=7 ├─▶DSCP=10├─┼──▶DSCP=10├───┼─┐ └──────────────┘│
-  │└──────┘ └───────┘ │  ├───────┘   │ │                 │
-  └───────────────────┘  │           │ │                 │
-  ┌───────────────────┐  │           │ │                 │
-  │3GPP S-NSSAI 200   │  │           │ │                 │
-  │┌──────┐ ┌───────┐ │  ├───────┐   │ │                 │
-  ││5QI=1 ├─▶DSCP=46├─┼──▶DSCP=46├───┤ │ ┌──────────────┐│
-  │└──────┘ └───────┘ │  ├───────┘   │ │ │TN QoS Class 1││
-  │┌──────┐ ┌───────┐ │  ├───────┐   │ ├─▶   Queue 1    ││
-  ││5QI=65├─▶DSCP=46├─┼──▶DSCP=46├───┘ │ └──────────────┘│
-  │└──────┘ └───────┘ │  ├───────┘     │                 │
-  │┌──────┐ ┌───────┐ │  ├───────┐     │                 │
-  ││5QI=7 ├─▶DSCP=10├─┼──▶DSCP=10├─────┘                 │
-  │└──────┘ └───────┘ │  ├───────┘                       │
-  └───────────────────┘  └───────────────────────────────┘
-
-  ~~~
-{: #figure-34 title="example of 3GPP QoS mapped to TN QoS" artwork-align="center"}
-
-In current SDO progress of 3GPP (Rel.17) and ORAN the mapping of 5QI to
-DSCP is not expected in per-slice fashion, where 5QI to DSCP mapping may
-vary from 3GPP slice to 3GPP slice, hence the mapping of 5QoS DSCP values
-to TN QoS Classes may be rather common.
 
 ###  Inbound Edge Resource Control {#sec-inbound-edge-resource-control}
 
@@ -1417,59 +1378,101 @@ to TN QoS Classes may be rather common.
 
 ##  5QI-aware Model
 
-   In the 5QI-aware model, potentially a large number of 5G QoS Classes
+   In the 5QI-aware model, potentially a large number of 5G QoS Classes, represented via DSCP set by NF
    (the architecture scales to thousands of 5G slices) is mapped
    (multiplexed) to up to 8 TN QoS Classes used in transport transit
    equipment, as outlined in {{figure-19}}.
 
 ~~~ aasvg
-     ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
-     ┏━━━━━━━━━━━━━━━━━┓         ETN                              │
-     ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃
-     ┃   SDP           ┃              ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
-     ┃│  ┌──────────┐ │┃              ┃       Transit link        ┃
-     ┃   │ 5G QoS A ├───────────────┐ ┃┌────────────────────────┐ ┃
-   I ┃│  └──────────┘ │┃            ├──▶     TN QoS Class 1     │ ┃
-   E ┃   ┌──────────┐  ┃            │ ┃└────────────────────────┘ ┃
-   T ┃│  │ 5G QoS B ├───────────┐   │ ┃┌────────────────────────┐ ┃
-   F ┃   └──────────┘  ┃        │   │ ┃│     TN QoS Class 2     │ ┃
-     ┃│  ┌──────────┐ │┃        │   │ ┃└────────────────────────┘ ┃
-   N ┃   │ 5G QoS C ├──╋─────┐  │   │ ┃┌────────────────────────┐ ┃
-   S ┃│  └──────────┘ │┃     │  │   │ ┃│     TN QoS Class 3     │ ┃
-     ┃   ┌──────────┐  ┃     │  │   │ ┃└────────────────────────┘ ┃
-   1 ┃│  │ 5G QoS D ├─────┐  │  │   │ ┃┌────────────────────────┐ ┃
-     ┃   └──────────┘  ┃  │  │  ├──────▶     TN QoS Class 4     │ ┃
-     ┃└ ─ ─ ─ ─ ─ ─ ─ ┘┃  │  │  │   │ ┃└────────────────────────┘ ┃
-     ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃  │  │  │   │ ┃┌────────────────────────┐ ┃
-     ┃   ┌──────────┐  ┃  │  ├─────────▶     TN QoS Class 5     │ ┃
-     ┃│  │ 5G QoS A ├─────│──│──│───┘ ┃└────────────────────────┘ ┃
-   I ┃   └──────────┘  ┃  │  │  │     ┃┌────────────────────────┐ ┃
-   E ┃│  ┌──────────┐ │┃  │  │  │     ┃│     TN QoS Class 6     │ ┃
-   T ┃   │ 5G QoS E ├─────│──│──┘     ┃└────────────────────────┘ ┃
-   F ┃│  └──────────┘ │┃  │  │        ┃┌────────────────────────┐ ┃
-     ┃   ┌──────────┐  ┃  │  │        ┃│     TN QoS Class 7     │ ┃
-   N ┃│  │ 5G QoS F ├─────│──┘        ┃└────────────────────────┘ ┃
-   S ┃   └──────────┘  ┃  │           ┃┌────────────────────────┐ ┃
-     ┃│  ┌──────────┐ │┃  ├────────────▶     TN QoS Class 8     │ ┃
-   2 ┃   │ 5G QoS G ├─────┘           ┃└────────────────────────┘ ┃
-     ┃│  └──────────┘ │┃              ┃     Max 8 TN Classes      ┃
-     ┃   SDP           ┃              ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-     ┃└ ─ ─ ─ ─ ─ ─ ─ ┘┃                                          │
-     ┣━━━━━━━━━━━━━━━━━┛
-      ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
-     Fine-grained QoS enforcement         Coarse QoS enforcement
-       (dedicated resources per            (resources shared by
-         IETF Network Slice)                multiple IETF NSs)
+  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ 
+  ┏━━━━━━━━━━━━━━━━━┓         ETN                              │
+  ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃
+  ┃   SDP           ┃              ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+  ┃│  ┌──────────┐ │┃              ┃       Transit link        ┃
+  ┃   │5G DSCP A ├───────────────┐ ┃┌────────────────────────┐ ┃
+I ┃│  └──────────┘ │┃            ├──▶     TN QoS Class 1     │ ┃
+E ┃   ┌──────────┐  ┃            │ ┃└────────────────────────┘ ┃
+T ┃│  │5G DSCP B ├───────────┐   │ ┃┌────────────────────────┐ ┃
+F ┃   └──────────┘  ┃        │   │ ┃│     TN QoS Class 2     │ ┃
+  ┃│  ┌──────────┐ │┃        │   │ ┃└────────────────────────┘ ┃
+N ┃   │5G DSCP C ├──╋─────┐  │   │ ┃┌────────────────────────┐ ┃
+S ┃│  └──────────┘ │┃     │  │   │ ┃│     TN QoS Class 3     │ ┃
+  ┃   ┌──────────┐  ┃     │  │   │ ┃└────────────────────────┘ ┃
+1 ┃│  │5G DSCP D ├─────┐  │  │   │ ┃┌────────────────────────┐ ┃
+  ┃   └──────────┘  ┃  │  │  ├──────▶     TN QoS Class 4     │ ┃
+  ┃└ ─ ─ ─ ─ ─ ─ ─ ┘┃  │  │  │   │ ┃└────────────────────────┘ ┃
+  ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃  │  │  │   │ ┃┌────────────────────────┐ ┃
+  ┃   ┌──────────┐  ┃  │  ├─────────▶     TN QoS Class 5     │ ┃
+  ┃│  │5G DSCP A ├─────│──│──│───┘ ┃└────────────────────────┘ ┃
+I ┃   └──────────┘  ┃  │  │  │     ┃┌────────────────────────┐ ┃
+E ┃│  ┌──────────┐ │┃  │  │  │     ┃│     TN QoS Class 6     │ ┃
+T ┃   │5G DSCP E ├─────│──│──┘     ┃└────────────────────────┘ ┃
+F ┃│  └──────────┘ │┃  │  │        ┃┌────────────────────────┐ ┃
+  ┃   ┌──────────┐  ┃  │  │        ┃│     TN QoS Class 7     │ ┃
+N ┃│  │5G DSCP F ├─────│──┘        ┃└────────────────────────┘ ┃
+S ┃   └──────────┘  ┃  │           ┃┌────────────────────────┐ ┃
+  ┃│  ┌──────────┐ │┃  ├────────────▶     TN QoS Class 8     │ ┃
+2 ┃   │5G DSCP G ├─────┘           ┃└────────────────────────┘ ┃
+  ┃│  └──────────┘ │┃              ┃     Max 8 TN Classes      ┃
+  ┃   SDP           ┃              ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+  ┃└ ─ ─ ─ ─ ─ ─ ─ ┘┃                                          │
+  ┣━━━━━━━━━━━━━━━━━┛
+   ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
+  Fine-grained QoS enforcement         Coarse QoS enforcement
+    (dedicated resources per            (resources shared by
+      IETF Network Slice)                multiple IETF NSs)
 ~~~
 {: #figure-19 title="Slice 5Q QoS to TN QoS Mapping (5QI-aware Model)" artwork-align="center"}
+
+Note: DOUBLE CHECK 
 
    Given that in large scale deployments (large number of 5G
    slices), the number of potential 5G QoS Classes is much higher than
    the number of TN QoS Classes, multiple 5G QoS Classes with similar
-   characteristics - potentially from different IETF Network Slices -
-   can be mapped to a same TN QoS Class when transported in the TN
+   characteristics - potentially from different slices -
+   would be grouped with common operator-defined TN logic and mapped to a same TN QoS Class when transported in the TN
    domain.  That is, common per hop behavior (PHB) is executed on
-   transit TN routers for all packets grouped together.
+   transit TN routers for all packets grouped together. An exampole of this 
+   approach is outlined in {{figure-34}}. Please note, numbers specified in the figure
+   (S-NSSAI, 5QI, DSCP, queue, ...) are for illustration purposes only and do not provide deployment guidance.
+
+   ~~~ aasvg
+                      ┌───────────── ETN  ─────────────────┐
+┌────── NF-A ──────┐  │                                    │
+│                  │  │ ┌ ─ ─ ─ ─ ┐                        │
+│ 3GPP S-NSSAI 100 │  │     SDP                            │
+│┌──────┐ ┌───────┐│  │ │┌───────┐│                        │
+││5QI=1 ├─▶DSCP=46├──────▶DSCP=46├───┐                     │
+│└──────┘ └───────┘│  │ │└───────┘│  │                     │
+│┌──────┐ ┌───────┐│  │  ┌───────┐   │                     │
+││5QI=65├─▶DSCP=46├──────▶DSCP=46├┼──┤                     │
+│└──────┘ └───────┘│  │  └───────┘   │                     │
+│┌──────┐ ┌───────┐│  │ │┌───────┐│  │                     │
+││5QI=7 ├─▶DSCP=10├──────▶DSCP=10──────┐  ┌──────────────┐ │
+│└──────┘ └───────┘│  │ │└───────┘│  │ │  │TN QoS Class 5│ │
+└──────────────────┘  │  ─ ─ ─ ─ ─   ├─│──▶   Queue 5    │ │
+                      │              │ │  └──────────────┘ │
+┌────── NF-B ──────┐  │              │ │                   │
+│                  │  │ ┌ ─ ─ ─ ─ ┐  │ │                   │
+│ 3GPP S-NSSAI 200 │  │     SDP      │ │                   │
+│┌──────┐ ┌───────┐│  │ │┌───────┐│  │ │                   │
+││5QI=1 ├─▶DSCP=46├──────▶DSCP=46├───┤ │  ┌──────────────┐ │
+│└──────┘ └───────┘│  │ │└───────┘│  │ │  │TN QoS Class 1│ │
+│┌──────┐ ┌───────┐│  │  ┌───────┐   │ ├──▶   Queue 1    │ │
+││5QI=65├─▶DSCP=46├──────▶DSCP=46├┼──┘ │  └──────────────┘ │
+│└──────┘ └───────┘│  │  └───────┘     │                   │
+│┌──────┐ ┌───────┐│  │ │┌───────┐│    │                   │
+││5QI=7 ├─▶DSCP=10├──────▶DSCP=10├─────┘                   │
+│└──────┘ └───────┘│  │ │└───────┘│                        │
+└──────────────────┘  │  ─ ─ ─ ─ ─                         │
+                      └────────────────────────────────────┘
+  ~~~
+{: #figure-34 title="example of 3GPP QoS mapped to TN QoS" artwork-align="center"}
+
+In current SDO progress of 3GPP (Rel.17) and O-RAN the mapping of 5QI to
+DSCP is not expected in per-slice fashion, where 5QI to DSCP mapping may
+vary from 3GPP slice to 3GPP slice, hence the mapping of 5G QoS DSCP values
+to TN QoS Classes may be rather common.
 
    Like in 5QI-unaware model, the original IP header retains the DCSP
    marking corresponding to 5QI (5G QoS Class), while the new header
