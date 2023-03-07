@@ -5,7 +5,7 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 1 September 2023                                       J. Drake
+Expires: 8 September 2023                                       J. Drake
                                                         Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
@@ -23,7 +23,7 @@ Expires: 1 September 2023                                       J. Drake
                                                                  Rakuten
                                                                 M. Amani
                                                          British Telecom
-                                                        28 February 2023
+                                                            7 March 2023
 
 
  A Realization of IETF Network Slices for 5G Networks Using Current IP/
@@ -70,7 +70,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 1 September 2023.
+   This Internet-Draft will expire on 8 September 2023.
 
 Copyright Notice
 
@@ -271,7 +271,7 @@ Table of Contents
       realization of the segment is driven by the 5G Orchestration
       without any involvement of the IETF NSC or TNO.  In the second
       case, the realization of this segment partially relies on the IETF
-      NSC/TNO for the configuration of the TN-side of the segment (e.g.
+      NSC/TNO for the configuration of the TN-side of the segment (e.g.,
       the configuration of the attachment circuit on a PE interface).
       Generally, the Local Segment is a datapath local to a site with a
       potential extension to reach the TN.  A site can be (but not
@@ -473,7 +473,7 @@ Table of Contents
    Figure 4 is a basic example of a Layer 3 CE-PE link realization with
    shared network resources, such as VLAN-ID and IP prefixes, which must
    be passed between Orchestrators via the Network Slice Service
-   Interface ([I-D.ietf-teas-ietf-network-slice-nbi-yang]) or a
+   Interface ([I-D.ietf-teas-ietf-network-slice-nbi-yang]) or an
    Attachement Circuit Service Interface
    ([I-D.boro-opsawg-teas-attachment-circuit]).
 
@@ -881,9 +881,9 @@ Table of Contents
    2001:db8::b:100:0}, while for MIoT (SST=3) tunnel uses
    {2001:db8::a:300:0, 2001:db8::b:300:0}.
 
-    2001:db8::A:0:0/96 (NF-A)                2001:db8::B:0:0/96 (NF-B)
+    2001:db8::a:0:0/96 (NF-A)                2001:db8::b:0:0/96 (NF-B)
 
-    2001:db8::A:100:0/128  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─   2001:db8::B:100:0/128
+    2001:db8::a:100:0/128  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─   2001:db8::b:100:0/128
         │                                     │                  │
    ┌────▼─┐ eMBB (SST=1)   │     Transport                     ┌─▼────┐
    │    ○═══════════════════■════════════════■═══════════════════○    │
@@ -891,7 +891,7 @@ Table of Contents
    │    ○═══════════════════■════════════════■═══════════════════○    │
    └────▲─┘ MIoT (SST=3)   │      Network                      └─▲────┘
         │                                     │                  │
-    2001:db8::A:300:0/128  └ ─ ─ ─ ─ ─ ─ ─ ─ ─   2001:db8::B:300:0/128
+    2001:db8::a:300:0/128  └ ─ ─ ─ ─ ─ ─ ─ ─ ─   2001:db8::b:300:0/128
 
         └──────────────────┘└────────────────┘└──────────────────┘
            Local Segment        TN Segment        Local Segment
@@ -1261,7 +1261,7 @@ Table of Contents
 
       -  Red, for traffic above PIR
 
-      An inbound 2c3r meter implemented with [RFC4115], compared to
+      An inbound 2r3c meter implemented with [RFC4115], compared to
       [RFC2698], is more 'customer friendly' as it doesn't impose
       outbound peak-rate shaping requirements on customer edge (CE)
       devices. 2r3c meters in general give greater flexibility for edge
@@ -1378,58 +1378,99 @@ Table of Contents
 
 5.2.  5QI-aware Model
 
-   In the 5QI-aware model, potentially a large number of 5G QoS Classes
-   (the architecture scales to thousands of 5G slices) is mapped
-   (multiplexed) to up to 8 TN QoS Classes used in transport transit
-   equipment, as outlined in Figure 19.
+   In the 5QI-aware model, potentially a large number of 5G QoS Classes,
+   represented via DSCP set by NFs (the architecture scales to thousands
+   of 5G slices) is mapped (multiplexed) to up to 8 TN QoS Classes used
+   in transport transit equipment, as outlined in Figure 19.
 
-         ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
-         ┏━━━━━━━━━━━━━━━━━┓         ETN                              │
-         ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃
-         ┃   SDP           ┃              ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
-         ┃│  ┌──────────┐ │┃              ┃       Transit link        ┃
-         ┃   │ 5G QoS A ├───────────────┐ ┃┌────────────────────────┐ ┃
-       I ┃│  └──────────┘ │┃            ├──▶     TN QoS Class 1     │ ┃
-       E ┃   ┌──────────┐  ┃            │ ┃└────────────────────────┘ ┃
-       T ┃│  │ 5G QoS B ├───────────┐   │ ┃┌────────────────────────┐ ┃
-       F ┃   └──────────┘  ┃        │   │ ┃│     TN QoS Class 2     │ ┃
-         ┃│  ┌──────────┐ │┃        │   │ ┃└────────────────────────┘ ┃
-       N ┃   │ 5G QoS C ├──╋─────┐  │   │ ┃┌────────────────────────┐ ┃
-       S ┃│  └──────────┘ │┃     │  │   │ ┃│     TN QoS Class 3     │ ┃
-         ┃   ┌──────────┐  ┃     │  │   │ ┃└────────────────────────┘ ┃
-       1 ┃│  │ 5G QoS D ├─────┐  │  │   │ ┃┌────────────────────────┐ ┃
-         ┃   └──────────┘  ┃  │  │  ├──────▶     TN QoS Class 4     │ ┃
-         ┃└ ─ ─ ─ ─ ─ ─ ─ ┘┃  │  │  │   │ ┃└────────────────────────┘ ┃
-         ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃  │  │  │   │ ┃┌────────────────────────┐ ┃
-         ┃   ┌──────────┐  ┃  │  ├─────────▶     TN QoS Class 5     │ ┃
-         ┃│  │ 5G QoS A ├─────│──│──│───┘ ┃└────────────────────────┘ ┃
-       I ┃   └──────────┘  ┃  │  │  │     ┃┌────────────────────────┐ ┃
-       E ┃│  ┌──────────┐ │┃  │  │  │     ┃│     TN QoS Class 6     │ ┃
-       T ┃   │ 5G QoS E ├─────│──│──┘     ┃└────────────────────────┘ ┃
-       F ┃│  └──────────┘ │┃  │  │        ┃┌────────────────────────┐ ┃
-         ┃   ┌──────────┐  ┃  │  │        ┃│     TN QoS Class 7     │ ┃
-       N ┃│  │ 5G QoS F ├─────│──┘        ┃└────────────────────────┘ ┃
-       S ┃   └──────────┘  ┃  │           ┃┌────────────────────────┐ ┃
-         ┃│  ┌──────────┐ │┃  ├────────────▶     TN QoS Class 8     │ ┃
-       2 ┃   │ 5G QoS G ├─────┘           ┃└────────────────────────┘ ┃
-         ┃│  └──────────┘ │┃              ┃     Max 8 TN Classes      ┃
-         ┃   SDP           ┃              ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-         ┃└ ─ ─ ─ ─ ─ ─ ─ ┘┃                                          │
-         ┣━━━━━━━━━━━━━━━━━┛
-          ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
-         Fine-grained QoS enforcement         Coarse QoS enforcement
-           (dedicated resources per            (resources shared by
-             IETF Network Slice)                multiple IETF NSs)
+       ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+       ┏━━━━━━━━━━━━━━━━━┓         ETN                              │
+       ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃
+       ┃   SDP           ┃              ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+       ┃│  ┌──────────┐ │┃              ┃       Transit link        ┃
+       ┃   │5G DSCP A ├───────────────┐ ┃┌────────────────────────┐ ┃
+     I ┃│  └──────────┘ │┃            ├──▶     TN QoS Class 1     │ ┃
+     E ┃   ┌──────────┐  ┃            │ ┃└────────────────────────┘ ┃
+     T ┃│  │5G DSCP B ├───────────┐   │ ┃┌────────────────────────┐ ┃
+     F ┃   └──────────┘  ┃        │   │ ┃│     TN QoS Class 2     │ ┃
+       ┃│  ┌──────────┐ │┃        │   │ ┃└────────────────────────┘ ┃
+     N ┃   │5G DSCP C ├──╋─────┐  │   │ ┃┌────────────────────────┐ ┃
+     S ┃│  └──────────┘ │┃     │  │   │ ┃│     TN QoS Class 3     │ ┃
+       ┃   ┌──────────┐  ┃     │  │   │ ┃└────────────────────────┘ ┃
+     1 ┃│  │5G DSCP D ├─────┐  │  │   │ ┃┌────────────────────────┐ ┃
+       ┃   └──────────┘  ┃  │  │  ├──────▶     TN QoS Class 4     │ ┃
+       ┃└ ─ ─ ─ ─ ─ ─ ─ ┘┃  │  │  │   │ ┃└────────────────────────┘ ┃
+       ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃  │  │  │   │ ┃┌────────────────────────┐ ┃
+       ┃   ┌──────────┐  ┃  │  ├─────────▶     TN QoS Class 5     │ ┃
+       ┃│  │5G DSCP A ├─────│──│──│───┘ ┃└────────────────────────┘ ┃
+     I ┃   └──────────┘  ┃  │  │  │     ┃┌────────────────────────┐ ┃
+     E ┃│  ┌──────────┐ │┃  │  │  │     ┃│     TN QoS Class 6     │ ┃
+     T ┃   │5G DSCP E ├─────│──│──┘     ┃└────────────────────────┘ ┃
+     F ┃│  └──────────┘ │┃  │  │        ┃┌────────────────────────┐ ┃
+       ┃   ┌──────────┐  ┃  │  │        ┃│     TN QoS Class 7     │ ┃
+     N ┃│  │5G DSCP F ├─────│──┘        ┃└────────────────────────┘ ┃
+     S ┃   └──────────┘  ┃  │           ┃┌────────────────────────┐ ┃
+       ┃│  ┌──────────┐ │┃  ├────────────▶     TN QoS Class 8     │ ┃
+     2 ┃   │5G DSCP G ├─────┘           ┃└────────────────────────┘ ┃
+       ┃│  └──────────┘ │┃              ┃     Max 8 TN Classes      ┃
+       ┃   SDP           ┃              ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+       ┃└ ─ ─ ─ ─ ─ ─ ─ ┘┃                                          │
+       ┣━━━━━━━━━━━━━━━━━┛
+        ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
+       Fine-grained QoS enforcement         Coarse QoS enforcement
+         (dedicated resources per            (resources shared by
+           IETF Network Slice)                multiple IETF NSs)
 
         Figure 19: Slice 5Q QoS to TN QoS Mapping (5QI-aware Model)
 
    Given that in large scale deployments (large number of 5G slices),
    the number of potential 5G QoS Classes is much higher than the number
    of TN QoS Classes, multiple 5G QoS Classes with similar
-   characteristics - potentially from different IETF Network Slices -
-   can be mapped to a same TN QoS Class when transported in the TN
-   domain.  That is, common per hop behavior (PHB) is executed on
-   transit TN routers for all packets grouped together.
+   characteristics - potentially from different slices - would be
+   grouped with common operator-defined TN logic and mapped to a same TN
+   QoS Class when transported in the TN domain.  That is, common per hop
+   behavior (PHB) is executed on transit TN routers for all packets
+   grouped together.  An example of this approach is outlined in
+   Figure 20.  Please note, numbers specified in the figure (S-NSSAI,
+   5QI, DSCP, queue, ...) are for illustration purposes only and do not
+   provide deployment guidance.
+
+                             ┌───────────── ETN  ─────────────────┐
+       ┌────── NF-A ──────┐  │                                    │
+       │                  │  │ ┌ ─ ─ ─ ─ ┐                        │
+       │ 3GPP S-NSSAI 100 │  │     SDP                            │
+       │┌──────┐ ┌───────┐│  │ │┌───────┐│                        │
+       ││5QI=1 ├─▶DSCP=46├──────▶DSCP=46├───┐                     │
+       │└──────┘ └───────┘│  │ │└───────┘│  │                     │
+       │┌──────┐ ┌───────┐│  │  ┌───────┐   │                     │
+       ││5QI=65├─▶DSCP=46├──────▶DSCP=46├┼──┤                     │
+       │└──────┘ └───────┘│  │  └───────┘   │                     │
+       │┌──────┐ ┌───────┐│  │ │┌───────┐│  │                     │
+       ││5QI=7 ├─▶DSCP=10├──────▶DSCP=10──────┐  ┌──────────────┐ │
+       │└──────┘ └───────┘│  │ │└───────┘│  │ │  │TN QoS Class 5│ │
+       └──────────────────┘  │  ─ ─ ─ ─ ─   ├─│──▶   Queue 5    │ │
+                             │              │ │  └──────────────┘ │
+       ┌────── NF-B ──────┐  │              │ │                   │
+       │                  │  │ ┌ ─ ─ ─ ─ ┐  │ │                   │
+       │ 3GPP S-NSSAI 200 │  │     SDP      │ │                   │
+       │┌──────┐ ┌───────┐│  │ │┌───────┐│  │ │                   │
+       ││5QI=1 ├─▶DSCP=46├──────▶DSCP=46├───┤ │  ┌──────────────┐ │
+       │└──────┘ └───────┘│  │ │└───────┘│  │ │  │TN QoS Class 1│ │
+       │┌──────┐ ┌───────┐│  │  ┌───────┐   │ ├──▶   Queue 1    │ │
+       ││5QI=65├─▶DSCP=46├──────▶DSCP=46├┼──┘ │  └──────────────┘ │
+       │└──────┘ └───────┘│  │  └───────┘     │                   │
+       │┌──────┐ ┌───────┐│  │ │┌───────┐│    │                   │
+       ││5QI=7 ├─▶DSCP=10├──────▶DSCP=10├─────┘                   │
+       │└──────┘ └───────┘│  │ │└───────┘│                        │
+       └──────────────────┘  │  ─ ─ ─ ─ ─                         │
+                             └────────────────────────────────────┘
+
+              Figure 20: example of 3GPP QoS mapped to TN QoS
+
+   In current SDO progress of 3GPP (Rel.17) and O-RAN the mapping of 5QI
+   to DSCP is not expected in per-slice fashion, where 5QI to DSCP
+   mapping may vary from 3GPP slice to 3GPP slice, hence the mapping of
+   5G QoS DSCP values to TN QoS Classes may be rather common.
 
    Like in 5QI-unaware model, the original IP header retains the DCSP
    marking corresponding to 5QI (5G QoS Class), while the new header
@@ -1467,7 +1508,7 @@ Table of Contents
       prioritized classes.
 
    In the first option, the slice admission control is executed with
-   traffic class granularity, as outlined in Figure 20.  In this model,
+   traffic class granularity, as outlined in Figure 21.  In this model,
    if a premium class doesn't consume all available class capacity, it
    cannot be reused by non-premium (i.e., Best Effort) class.
 
@@ -1505,17 +1546,17 @@ Table of Contents
                                                 └──┬───┘     │
                                                    └─────────┘
 
-        Figure 20: Ingress Slice Admission Control (5QI-aware Model)
+        Figure 21: Ingress Slice Admission Control (5QI-aware Model)
 
    The second model combines the advantages of 5QI-unaware model (per
    slice admission control) with the per traffic class admission
-   control, as outlined in Figure 20.  Ingress admission control is at
+   control, as outlined in Figure 21.  Ingress admission control is at
    class granularity for premium classes (CIR only).  Non-premium class
    (i.e., Best Effort) has no separate class admission control policy,
    but it is allowed to use the entire slice capacity, which is
    available at any given moment.  I.e., slice capacity, which is not
    consumed by premium classes.  It is a hierarchical model, as depicted
-   in Figure 21.
+   in Figure 22.
 
                                           Slice
                                          policer   ┌─────────┐
@@ -1552,11 +1593,11 @@ Table of Contents
                                             '   └──┬───┘     │
                                                    └─────────┘
 
-   Figure 21: Ingress Slice Admission Control (5QI-aware) - Hierarchical
+   Figure 22: Ingress Slice Admission Control (5QI-aware) - Hierarchical
 
 5.2.2.  Outbound Edge Resource Control
 
-   Figure 22 outlines the outbound edge resource control model at the
+   Figure 23 outlines the outbound edge resource control model at the
    transport network layer for 5QI-aware slices.  Each slice is assigned
    multiple egress queues.  The sum of queue weights (equal to 5Q QoS
    CIRs within the slice) CIRs MUST NOT exceed the CIR of the slice
@@ -1606,7 +1647,7 @@ Table of Contents
       │     └───┬──┘─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
       └─────────┘
 
-           Figure 22: Egress Slice Admission Control (5QI-aware)
+           Figure 23: Egress Slice Admission Control (5QI-aware)
 
 5.3.  Transit Resource Control
 
@@ -1615,7 +1656,7 @@ Table of Contents
    (represented by DSCP related to 5QI set by mobile network functions
    in the packets handed off to the TN) is mapped to the TN QoS Class.
    Based in TN QoS Class, when the packet is encapsulated with outer
-   header (MPLS or IPv6), TN QoS Class marking (MPLS TC or IPv6 DHCP in
+   header (MPLS or IPv6), TN QoS Class marking (MPLS TC or IPv6 DSCP in
    outer header, as depicted in Figure 15 and Figure 16) is set in the
    outer header.  PHB on transit is based exclusively on that TN QoS
    Class marking, i.e., original 5G QoS Class DSCP is not taken into
@@ -1640,7 +1681,7 @@ Table of Contents
    constraints.  This document refers to such tunnel groups as
    'transport planes'.  For example, transport plane A might represent
    tunnels optimized for latency, and transport plane B tunnels
-   optimized for high capacity.  Figure 23 depicts an example of a
+   optimized for high capacity.  Figure 24 depicts an example of a
    simple network with two transport planes.  These transport planes
    might be realized via various IP/MPLS techniques, for example Flex-
    Algo or RSVP/SR traffic engineering tunnels with or without PCE, and
@@ -1671,10 +1712,10 @@ Table of Contents
                 ●════════▶  Tunnels of Transport Plane A
                 ○════════▷  Tunnels of Transport Plane B
 
-                        Figure 23: Transport Planes
+                        Figure 24: Transport Planes
 
    Note that there could be multiple tunnels within single transport
-   plane between any pair of PEs.  For readibility, Figure 23 shows only
+   plane between any pair of PEs.  For readibility, Figure 24 shows only
    single tunnel per transport plane for [ingress PE, egress PE] pair.
 
    Similar to the QoS mapping models discussed in Section 5, for mapping
@@ -1693,7 +1734,7 @@ Table of Contents
    therefore the entire slice is subject to the same per-hop behavior.
    Similarly, in 5QI-unaware transport plane mapping model, the entire
    slice is mapped to a single transport plane, as depicted in
-   Figure 24.
+   Figure 25.
 
                  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
                  ┏━━━━━━━━━━━━━━━━━┓                        │
@@ -1731,7 +1772,7 @@ Table of Contents
                  ┗━━━━━━━━━━━━━━━━━┛                        │
                  └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
 
-      Figure 24: Slice to Transport Plane Mapping (5QI-unaware Model)
+      Figure 25: Slice to Transport Plane Mapping (5QI-unaware Model)
 
    It is worth noting that there is no strict correlation between TN QoS
    Classes and Transport Planes.  The TN domain can be operated with
@@ -1750,7 +1791,7 @@ Table of Contents
    the granularity of 5G QoS Class.  Given that the potential number of
    transport planes is limited, packets from multiple 5G QoS Classes
    with similar characteristics are mapped to a common transport plane,
-   as depicted in Figure 25.
+   as depicted in Figure 26.
 
                  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
                  ┏━━━━━━━━━━━━━━━━━┓
@@ -1788,14 +1829,14 @@ Table of Contents
                  ┗━━━━━━━━━━━━━━━━━┛
                  └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
 
-       Figure 25: Slice to Transport Plane mapping (5QI-aware Model)
+       Figure 26: Slice to Transport Plane mapping (5QI-aware Model)
 
 7.  Capacity Planning/Management
 
    This section describes the information conveyed by the SMO to the
    transport controller with respect to slice bandwidth requirements.
 
-   Figure 26 shows three DCs that contain instances of network
+   Figure 27 shows three DCs that contain instances of network
    functions.  Also shown are PEs that have links to the DCs.  The PEs
    belong to the transport network.  Other details of the transport
    network, such as P-routers and transit links are not shown.  Also
@@ -1834,7 +1875,7 @@ Table of Contents
 
      ■ - SDP, with fine-grained QoS (dedicated resources per IETF NS)
 
-               Figure 26: An Example of Multi-DC Architecture
+               Figure 27: An Example of Multi-DC Architecture
 
    Let us consider 5G Slice X that uses some of the network functions in
    the three DCs.  If the slice has latency requirements, the SMO will
@@ -1854,7 +1895,7 @@ Table of Contents
    mechanism for conveying the information will be discussed in a future
    version of this document.
 
-   Figure 27 shows the matrix of bandwidth demands for 5G slice X.
+   Figure 28 shows the matrix of bandwidth demands for 5G slice X.
    Within the slice, multiple network function instances might be
    sending traffic from DCi to DCj.  However, the SMO sums the
    associated demands into one value.  For example, NF1A and NF1B in DC1
@@ -1895,7 +1936,7 @@ Table of Contents
                 └──────┴──────┴──────┴──────┴──────────────┘
                                    Slice Y
 
-                 Figure 27: Inter-DC Traffic Demand Matrix
+                 Figure 28: Inter-DC Traffic Demand Matrix
 
    [I-D.ietf-teas-ietf-network-slice-nbi-yang] can be used to convey all
    of the information in the traffic matrix to the IETF NSC.  The IETF
@@ -1995,7 +2036,7 @@ Table of Contents
    is 12 units (8 units for Slice X and 4 units for Slice Y).  When the
    SMO requests a new slice, the transport controller, in its mind,
    increments the bandwidth requirement according to the requirements of
-   the new slice.  For example, in Figure 26, suppose a new slice is
+   the new slice.  For example, in Figure 27, suppose a new slice is
    instantiated that needs 0.8 Gbps from DC1 to DC2.  The transport
    controller would increase its notion of the bandwidth requirement
    from DC1 to DC2 from 12 Gbps to 12.8 Gbps to accommodate the
@@ -2118,9 +2159,9 @@ Table of Contents
               Boucadair, M., Roberts, R., de Dios, O. G., Barguil, S.,
               and B. Wu, "YANG Data Models for 'Attachment Circuits'-as-
               a-Service (ACaaS)", Work in Progress, Internet-Draft,
-              draft-boro-opsawg-teas-attachment-circuit-02, 22 February
+              draft-boro-opsawg-teas-attachment-circuit-04, 2 March
               2023, <https://datatracker.ietf.org/doc/html/draft-boro-
-              opsawg-teas-attachment-circuit-02>.
+              opsawg-teas-attachment-circuit-04>.
 
    [I-D.gcdrb-teas-5g-network-slice-application]
               Geng, X., Contreras, L. M., Rokui, R., Dong, J., and I.
@@ -2182,8 +2223,8 @@ Table of Contents
 
    [O-RAN.WG9.XPSAAS]
               O-RAN Alliance, "O-RAN.WG9.XPSAAS: O-RAN WG9 Xhaul Packet
-              Switched Architectures and Solutions Version 02.00", July
-              2021, <https://www.o-ran.org/specifications>.
+              Switched Architectures and Solutions Version 03.00",
+              February 2022, <https://www.o-ran.org/specifications>.
 
    [RFC6459]  Korhonen, J., Ed., Soininen, J., Patil, B., Savolainen,
               T., Bajko, G., and K. Iisakkila, "IPv6 in 3rd Generation
@@ -2405,7 +2446,7 @@ B.1.  Key Building Blocks
    compose the 5G System (5GS) Architecture together with related
    interfaces (e.g., N1, N2).  This architecture has native Control and
    User Plane separation, and the Control Plane leverages a service-
-   based architecture.  Figure 28 outlines an example 5GS architecture
+   based architecture.  Figure 29 outlines an example 5GS architecture
    with a subset of possible network functions and network interfaces.
 
        ┌─────┐  ┌─────┐  ┌─────┐    ┌─────┐  ┌─────┐  ┌─────┐
@@ -2425,11 +2466,11 @@ B.1.  Key Building Blocks
                      │UE ├──┤(R)AN├─────┤ UPF ├────┤ UPF ├────( DN  )
                      └───┘  └─────┘     └─────┘    └─────┘     `───'
 
-          Figure 28: 5GS Architecture and Service-based Interfaces
+          Figure 29: 5GS Architecture and Service-based Interfaces
 
    Similar to previous versions of 3GPP mobile networks [RFC6459], a 5G
    mobile network is split into the following four major domains
-   (Figure 29):
+   (Figure 30):
 
    *  UE, MS, MN, and Mobile:
 
@@ -2485,13 +2526,13 @@ B.1.  Key Building Blocks
                                                       │
        └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
 
-        Figure 29: Building Blocks of 5G Architecture (A High-Level
+        Figure 30: Building Blocks of 5G Architecture (A High-Level
                               Representation)
 
 B.2.  Core Network (CN)
 
    The 5G Core Network (5GC) is made up of a set of NFs which fall into
-   two main categories (Figure 30):
+   two main categories (Figure 31):
 
    *  5GC User Plane:
 
@@ -2535,7 +2576,7 @@ B.2.  Core Network (CN)
           │         │    │                         │
            ─ ─ ─ ─ ─      ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
 
-                      Figure 30: 5G Core Network (CN)
+                      Figure 31: 5G Core Network (CN)
 
 B.3.  Radio Access Network (RAN)
 
@@ -2564,7 +2605,7 @@ B.3.  Radio Access Network (RAN)
    processing.  Furthermore, the CU can be itself split into Control
    Plane (CU-CP) and User Plane (CU-UP).
 
-   Figure 31 depicts a disaggregated RAN with NFs and interfaces.
+   Figure 32 depicts a disaggregated RAN with NFs and interfaces.
 
                  ┌─────────────────────────────────┐    ┌ ─ ─ ─ ─ ─ ┐
                  │                                 │ N3
@@ -2604,7 +2645,7 @@ B.3.  Radio Access Network (RAN)
                  │       disaggregated gNodeB      │
                  └─────────────────────────────────┘    └ ─ ─ ─ ─ ─ ┘
 
-                       Figure 31: RAN Disaggregation
+                       Figure 32: RAN Disaggregation
 
 B.4.  Transport Network (TN)
 
@@ -2625,7 +2666,7 @@ B.4.  Transport Network (TN)
       interconnection between the RAN and the Core Network.  All traffic
       is also encapsulated in IP.
 
-   Figure 32 illustrates the different segments of the Transport Network
+   Figure 33 illustrates the different segments of the Transport Network
    with the relevant Network Functions.
 
         ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
@@ -2640,11 +2681,11 @@ B.4.  Transport Network (TN)
          │ RU │      │ DU │         │ CU │       │ UPF ├────( DN  )
          └────┘      └────┘         └────┘       └─────┘     `───'
 
-                      Figure 32: 5G Transport Segments
+                      Figure 33: 5G Transport Segments
 
    It is worth mentioning that a given part of the transport network can
    carry several 5G transport segments concurrently, as outlined in
-   Figure 33.  This is because different types of 5G network functions
+   Figure 34.  This is because different types of 5G network functions
    might be placed in the same location (e.g., the UPF from one slice
    might be placed in the same location as the CU-UP from another
    slice).
@@ -2668,7 +2709,7 @@ B.4.  Transport Network (TN)
         │RU-2│      │DU-2│         │CU-2│        │UPF-2├────( DN  )
         └────┘      └────┘         └────┘        └─────┘     `───'
 
-                Figure 33: Concurrent 5G Transport Segments
+                Figure 34: Concurrent 5G Transport Segments
 
 Acknowledgments
 
