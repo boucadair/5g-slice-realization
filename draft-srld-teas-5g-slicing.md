@@ -1,6 +1,6 @@
 ---
 title: "A  Realization of IETF Network Slices for 5G Networks Using Current IP/ MPLS Technologies"
-abbrev: "5G Transport Slices"
+abbrev: "Implmementing 5G Transport Slices"
 category: info
 
 docname: draft-srld-teas-5g-slicing-latest
@@ -155,7 +155,7 @@ informative:
 
    This document describes a basic IETF Network Slice realization model
    in IP/MPLS networks with a focus on the Transport Network fulfilling
-   5G slicing connectivity requirements.  This realization model reuses many building blocks currently commonly used
+   5G slicing connectivity requirements. This realization model reuses many building blocks currently commonly used
    in service provider networks.
 
 --- middle
@@ -197,7 +197,7 @@ Service Management and Orchestration (SMO):
 : O-RAN management/orchestration entity
 
 Edge Transport Node (ETN):
-: Node, under the transport domain orchestration, that stitches the transport domain to adjacent domains. An ETN can be be a Provider Edge (PE) or a managed Customer Equipment (CE).
+: Node, under the transport domain orchestration, that stitches the transport domain to an adjacent domain (e.g., enterprise network, data center, peer provider network). An ETN can be be a Provider Edge (PE) or a managed Customer Equipment (CE).
 
 An extended list of abbreviations used in this document is provided in {{ext-abbr}}.
 
@@ -250,7 +250,7 @@ An extended list of abbreviations used in this document is provided in {{ext-abb
       describe the slice in the Transport Network domain of the overall 5G
       architecture, composed from RAN, TN, and CN domains.
 
-##  NF-to-NF Datapath vs Transport Network {#sec-nf-nf-datapath}
+##  NF-to-NF Datapath vs. Transport Network {#sec-nf-nf-datapath}
 
    The 3GPP specifications loosely define the Transport Network and its
    integration in RAN and CN domains: the role of the
@@ -364,13 +364,13 @@ An extended list of abbreviations used in this document is provided in {{ext-abb
       attached in a different VLAN/LAN than the ETN interface assuming some additional local routing capabilities between the ETN and the NF (e.g., CE, IP
       Fabric): B1, B2, B3, and B4.
 
-   *  ETN: The ETN can be either the PE (A3, A4, B3, and B4) or the CE if it
+   *  ETN: It can be either a PE (A3, A4, B3, and B4) or a CE if it
       is managed by the TN Orchestration (A1, A2, B1, and B2).
 
-   *  SDP: The SDP can be located in many places as per
-      Sectionb 4.2 of {{!I-D.ietf-teas-ietf-network-slices}}: A1/B1 for case
+   *  SDP: It can be located in many places as per
+      Section b 4.2 of {{!I-D.ietf-teas-ietf-network-slices}}: A1/B1 for case
       (1), A2/B2 for case (2), A3/B3 for case (3), and A4/B4 for case
-      (4))
+      (4).
 
    *  Redundancy/Scale-out: No example of redundancy/multihoming/scale-
       out is provided for the sake of simplicification.  Nonetheless,
@@ -457,7 +457,7 @@ An extended list of abbreviations used in this document is provided in {{ext-abb
 ~~~
 {: #figure-3 title="Examples of various combinations of Local Segments, ETN, and SDP" artwork-align="center"}
 
-###  Orchestration of Local Segment Terminations at ETN
+###  Orchestration of Local Segment Terminations at ETNs
 
    The interconnection between a 5G site and the Transport Network is
    made up of shared networking resources.  More precisely, the Local
@@ -1004,9 +1004,9 @@ representing slices              representing slices    slices
 
    The resources are managed via various QoS policies deployed in the
    network.  QoS mapping models to support 5G slicing connectivity
-   implemented over packet switched transport uses two layers of QoS:
+   implemented over packet switched transport uses two layers of QoS that are discussed in the following subsections.
 
-   (1)  5G QoS
+## 5G QoS
 
       At this layer QoS treatment is indicated by the 5QI (5G QoS
       indicator), as defined in {{TS-23.501}}.  A 5QI is an ID that is
@@ -1030,7 +1030,7 @@ representing slices              representing slices    slices
       In this document, this layer of QoS will be referred as '5G QoS
       Class' ('5G QoS' in short), or '5G DSCP'.
 
-   (2) TN QoS
+## TN QoS
 
       Control of the TN resources on transit links, as well as traffic
       scheduling/prioritization on transit links, is based on a flat
@@ -1048,18 +1048,20 @@ representing slices              representing slices    slices
       be DSCP or MPLS Traffic Class (TC).  This layer of QoS will be referred as 'TN QoS
       Class', or 'TN QoS' for short, in this document.
 
+## QoS Realization Models
+
    While 5QI might be exposed to the TN domain, via the DSCP value
    (corresponding to specific 5QI value) set in the IP packet generated
    by NFs, some 5G deployments might use 5QI in the RAN domain only,
    without requesting per 5QI differentiated treatment from the TN
-   domain.  This can be due to an NF limitation (no capability to set
+   domain.  This can be due to an NF limitation (e.g., no capability to set
    DSCP), or it might simply depend on the overall slicing deployment
    model.  The O-RAN Alliance, for example, defines a phased approach to
    the slicing, with initial phases utilizing only per slice, but not
    per 5QI, differentiated treatment in the TN domain
    (Annex F of {{O-RAN.WG9.XPSAAS}}).
 
-   Therefore, from QoS perspective, the 5G slicing connectivity
+   Therefore, from a QoS perspective, the 5G slicing connectivity
    realization architecture defines two high-level realization models
    for slicing in the transport domain: a 5QI-unaware model and a 5QI-
    aware model.  Both slicing models in the transport domain could be
@@ -1068,6 +1070,7 @@ representing slices              representing slices    slices
    at the same time the TN segment for 5G backhaul (N3 interface) might
    follow the 5QI-unaware model.
 
+   These models are further elaborated in the following two subsections.
 
 ##  5QI-unaware Model {#sec-5QI-unaware}
 
