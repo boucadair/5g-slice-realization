@@ -275,8 +275,7 @@ An extended list of abbreviations used in this document is provided in {{ext-abb
    * Local Segment:
       The Local segment either connects two NFs within a given site or connects a NF to
       the TN. In the first case, the realization of the segment is  driven by the 5G Orchestration without any
-      involvement of the IETF NSC or TNO. In the second case, the realization of this segment partially relies on the IETF NSC/TNO for the configuration of the TN-side of the segment (e.g. the configuration of the attachment circuit on a PE interface).  Generally, the Local Segment is a datapath local to a site with a potential extension to reach the TN. A
-      site can be (but not limited to): a Data Center (DC), a Point of Presence (PoP), a
+      involvement of the IETF NSC or TNO. In the second case, the realization of this segment partially relies on the IETF NSC/TNO for the configuration of the TN-side of the segment (e.g., the configuration of the attachment circuit on a PE interface).  Generally, the Local Segment is a datapath local to a site with a potential extension to reach the TN. A site can be (but not limited to): a Data Center (DC), a Point of Presence (PoP), a
       Central Office (CO), or a virtualized infrastructure in a Public
       Cloud.
 
@@ -472,7 +471,7 @@ An extended list of abbreviations used in this document is provided in {{ext-abb
 
    {{figure-4}} is a basic example of a Layer 3 CE-PE link realization
    with shared network resources, such as VLAN-ID and IP prefixes, which
-   must be passed between Orchestrators via the Network Slice Service Interface ({{?I-D.ietf-teas-ietf-network-slice-nbi-yang}}) or a Attachement Circuit Service Interface ({{?I-D.boro-opsawg-teas-attachment-circuit}}).
+   must be passed between Orchestrators via the Network Slice Service Interface ({{?I-D.ietf-teas-ietf-network-slice-nbi-yang}}) or an Attachement Circuit Service Interface ({{?I-D.boro-opsawg-teas-attachment-circuit}}).
 
 ~~~ aasvg
      Datapath network resources (e.g., VLAN ID, IP
@@ -880,9 +879,9 @@ VLANs representing slices           VLANs representing slices
    {2001:db8::a:300:0, 2001:db8::b:300:0}.
 
 ~~~ aasvg
- 2001:db8::A:0:0/96 (NF-A)                2001:db8::B:0:0/96 (NF-B)
+ 2001:db8::a:0:0/96 (NF-A)                2001:db8::b:0:0/96 (NF-B)
 
- 2001:db8::A:100:0/128  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─   2001:db8::B:100:0/128
+ 2001:db8::a:100:0/128  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─   2001:db8::b:100:0/128
      │                                     │                  │
 ┌────▼─┐ eMBB (SST=1)   │     Transport                     ┌─▼────┐
 │    ○═══════════════════■════════════════■═══════════════════○    │
@@ -890,7 +889,7 @@ VLANs representing slices           VLANs representing slices
 │    ○═══════════════════■════════════════■═══════════════════○    │
 └────▲─┘ MIoT (SST=3)   │      Network                      └─▲────┘
      │                                     │                  │
- 2001:db8::A:300:0/128  └ ─ ─ ─ ─ ─ ─ ─ ─ ─   2001:db8::B:300:0/128
+ 2001:db8::a:300:0/128  └ ─ ─ ─ ─ ─ ─ ─ ─ ─   2001:db8::b:300:0/128
 
      └──────────────────┘└────────────────┘└──────────────────┘
         Local Segment        TN Segment        Local Segment
@@ -1378,7 +1377,7 @@ representing slices              representing slices    slices
 
 ##  5QI-aware Model
 
-   In the 5QI-aware model, potentially a large number of 5G QoS Classes, represented via DSCP set by NF
+   In the 5QI-aware model, potentially a large number of 5G QoS Classes, represented via DSCP set by NFs
    (the architecture scales to thousands of 5G slices) is mapped
    (multiplexed) to up to 8 TN QoS Classes used in transport transit
    equipment, as outlined in {{figure-19}}.
@@ -1424,8 +1423,6 @@ S ┃   └──────────┘  ┃  │           ┃┌───
 ~~~
 {: #figure-19 title="Slice 5Q QoS to TN QoS Mapping (5QI-aware Model)" artwork-align="center"}
 
-Note: DOUBLE CHECK
-
    Given that in large scale deployments (large number of 5G
    slices), the number of potential 5G QoS Classes is much higher than
    the number of TN QoS Classes, multiple 5G QoS Classes with similar
@@ -1436,7 +1433,7 @@ Note: DOUBLE CHECK
    approach is outlined in {{figure-34}}. Please note, numbers specified in the figure
    (S-NSSAI, 5QI, DSCP, queue, ...) are for illustration purposes only and do not provide deployment guidance.
 
-   ~~~ aasvg
+~~~ aasvg
                       ┌───────────── ETN  ─────────────────┐
 ┌────── NF-A ──────┐  │                                    │
 │                  │  │ ┌ ─ ─ ─ ─ ┐                        │
@@ -1466,7 +1463,7 @@ Note: DOUBLE CHECK
 │└──────┘ └───────┘│  │ │└───────┘│                        │
 └──────────────────┘  │  ─ ─ ─ ─ ─                         │
                       └────────────────────────────────────┘
-  ~~~
+~~~
 {: #figure-34 title="example of 3GPP QoS mapped to TN QoS" artwork-align="center"}
 
 In current SDO progress of 3GPP (Rel.17) and O-RAN the mapping of 5QI to
