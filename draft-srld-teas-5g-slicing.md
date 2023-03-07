@@ -1024,9 +1024,8 @@ representing slices              representing slices    slices
    The mapping between 5QI and
    DSCP is out of scope for this document.  Mapping recommendations
    are documented, e.g., in {{?I-D.henry-tsvwg-diffserv-to-qci}}.
-   
-   Each slice
-   might have flows with multiple 5QIs, thus there could be many
+
+   Each slice service might have flows with multiple 5QIs, thus there could be many
    different 5QIs being deployed. 5QIs (or, more precisely,
    corresponding DSCP values) are visible to the TN domain at SDP
    (i.e., at the edge of the TN domain).
