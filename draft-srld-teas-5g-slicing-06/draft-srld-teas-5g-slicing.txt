@@ -481,7 +481,7 @@ Table of Contents
    Attachement Circuit Service Interface
    ([I-D.boro-opsawg-teas-attachment-circuit]).
 
-             Datapath network resources (e.g., VLAN ID, IP
+             Datapath network resources (e.g., VLAN-IDs or IP
             prefixes) exchanged via SMO-NSC interface (NSI)
 
               ┌ ─ ─ ─ ─ ─ ─ ┐                ┌ ─ ─ ─ ─ ─ ─ ┐
@@ -506,8 +506,8 @@ Table of Contents
 
                    Figure 4: An Example of Data Exchange
 
-   Note that the allocation of these resources (e.g., VLAN-ID or IP
-   resources) can be either managed by the SMO or the Transport Network.
+   Note that the allocation of these resources (e.g., VLAN-IDs or IP
+   prefixes) can be either managed by the SMO or the Transport Network.
    In other words, the initial SMO request for the creation of a new
    IETF Network Slice on a given 5G site may or may not include all
    network resources.  In the latter case, this information is exchanged
@@ -672,7 +672,7 @@ Table of Contents
    Network Resource Partition (NRP), which is defined as a collection of
    resources identified in the underlay network.  In the basic
    realization model described in this document, a single NRP is used
-   with following characteristics:
+   with the following characteristics:
 
    *  L2VPN/L3VPN service instances for logical separation:
 
@@ -750,12 +750,12 @@ Table of Contents
 
        Figure 8: Resource Allocation in with single NRP Slicing Model
 
-   The 5G control plane relies on S-NSSAI (Single Network Slice
+   The 5G control plane relies upon S-NSSAI (Single Network Slice
    Selection Assistance Information: 32-bit slice identifier) for slice
    identification.  The S-NSSAI is not visible to the transport domain,
    so instead 5G functions can expose the 5G slices to the transport
-   domain by mapping to explicit L2/L3 identifiers such as VLAN, IP
-   addresses or Differentiated Services Code Point (DSCP), as documented
+   domain by mapping to explicit L2/L3 identifiers such as VLAN-ID, IP
+   addresses, or Differentiated Services Code Point (DSCP) as documented
    in [I-D.gcdrb-teas-5g-network-slice-application].
 
 4.1.  VLAN Hand-off
@@ -1442,9 +1442,9 @@ Table of Contents
    QoS Class when transported in the TN domain.  That is, common per hop
    behavior (PHB) is executed on transit TN routers for all packets
    grouped together.  An example of this approach is outlined in
-   Figure 20.  Please note, numbers specified in the figure (S-NSSAI,
-   5QI, DSCP, queue, ...) are for illustration purposes only and do not
-   provide deployment guidance.
+   Figure 20.
+
+> Please note that the numbers indicated in {{figure-34}} (S-NSSAI, 5QI, DSCP, queue, etc.) are provided for illustration purposes only and shoudl not be considered as deployment guidance.
 
                              ┌───────────── ETN  ─────────────────┐
        ┌────── NF-A ──────┐  │                                    │
@@ -1476,7 +1476,7 @@ Table of Contents
        └──────────────────┘  │  ─ ─ ─ ─ ─                         │
                              └────────────────────────────────────┘
 
-              Figure 20: example of 3GPP QoS mapped to TN QoS
+              Figure 20: Example of 3GPP QoS Mapped to TN QoS
 
    In current SDO progress of 3GPP (Rel.17) and O-RAN the mapping of 5QI
    to DSCP is not expected in per-slice fashion, where 5QI to DSCP
@@ -1491,7 +1491,7 @@ Table of Contents
    domain transit routers do not evaluate original IP header for QoS
    related decisions.  The original DSCP marking retained in the
    original IP header is used at the PE for fine-grained per slice and
-   per 5G QoS Class inbound/outbound enforcement on AC link.
+   per 5G QoS Class inbound/outbound enforcement on the AC.
 
    In 5QI-aware model, compared to 5QI-unware model, edge resources are
    controlled in an even more granular, fine-grained manner, with
@@ -1510,10 +1510,10 @@ Table of Contents
    5G slice using multiple 5QIs can potentially specify rates in one of
    the following ways:
 
-   *  rates per traffic class (CIR or CIR+PIR), no rate per slice (sum
+   *  Rates per traffic class (CIR or CIR+PIR), no rate per slice (sum
       of rates per class gives the rate per slice).
 
-   *  rate per slice (CIR, or CIR+PIR), and rates per prioritized
+   *  Rate per slice (CIR or CIR+PIR), and rates per prioritized
       (premium) traffic classes (CIR only).  Best effort traffic class
       uses the bandwidth (within slice CIR/PIR) not consumed by
       prioritized classes.
@@ -1687,19 +1687,23 @@ Table of Contents
 
 6.  Transport Planes Mapping Models
 
-   A network operator might define various groups of tunnels, where each
+   A network operator might define various tunnel groups, where each
    tunnel group is created with specific optimization criteria and
    constraints.  This document refers to such tunnel groups as
-   'transport planes'.  For example, transport plane A might represent
-   tunnels optimized for latency, and transport plane B tunnels
-   optimized for high capacity.  Figure 24 depicts an example of a
-   simple network with two transport planes.  These transport planes
-   might be realized via various IP/MPLS techniques, for example Flex-
-   Algo or RSVP/SR traffic engineering tunnels with or without PCE, and
-   with or without bandwidth reservations.  Section 7 discusses in
-   detail different bandwidth models that can be deployed in the
-   transport network.  However, discussion about how to realize or
-   orchestrate transport planes is out of scope for this document.
+   'transport planes'.  For example, a transport plane "A" might
+   represent tunnels optimized for latency, and transport plane "B"
+   represent tunnels optimized for high capacity.
+
+   Figure 24 depicts an example of a simple network with two transport
+   planes.  These transport planes might be realized via various IP/MPLS
+   techniques, for example Flex-Algo or RSVP/SR traffic engineering
+   tunnels with or without PCE, and with or without bandwidth
+   reservations.
+
+   Section 7 discusses in detail different bandwidth models that can be
+   deployed in the transport network.  However, discussion about how to
+   realize or orchestrate transport planes is out of scope for this
+   document.
 
        ┌───────────────┐                                    ┌──────┐
        │  Ingress PE   │   ╔═══════════════════════════════▶│ PE-A │
@@ -1725,7 +1729,7 @@ Table of Contents
 
                         Figure 24: Transport Planes
 
-   Note that there could be multiple tunnels within single transport
+   Note that there could be multiple tunnels within a single transport
    plane between any pair of PEs.  For readibility, Figure 24 shows only
    single tunnel per transport plane for [ingress PE, egress PE] pair.
 
@@ -1888,16 +1892,16 @@ Table of Contents
 
                Figure 27: An Example of Multi-DC Architecture
 
-   Let us consider 5G Slice X that uses some of the network functions in
-   the three DCs.  If the slice has latency requirements, the SMO will
-   have taken those into account when deciding which NF instances in
-   which DC would be invoked for the slice.  As a result of such a
-   placement decision, the three DCs shown are involved in 5G Slice X,
+   Let us consider 5G Slice "X" that uses some of the network functions
+   in the three DCs.  If this slice has latency requirements, the SMO
+   will have taken those into account when deciding which NF instances
+   in which DC is to be invoked for this slice.  As a result of such a
+   placement decision, the three DCs shown are involved in 5G Slice "X",
    rather than other DCs.  For its decision-making, the SMO needs
-   information from the NSC about the latency between DCs.  Preferably,
-   the NSC would present the topology in an abstracted form, consisting
-   of point-to-point abstracted links between pairs of DCs and
-   associated latency and optionally delay variation and link loss
+   information from the NSC about the observed latency between DCs.
+   Preferably, the NSC would present the topology in an abstracted form,
+   consisting of point-to-point abstracted links between pairs of DCs
+   and associated latency and optionally delay variation and link loss
    values.  It would be valuable to have a mechanism for the SMO to
    inform the NSC which DC-pairs are of interest for these metrics -
    there may be of order thousands of DCs, but the SMO will only be
@@ -1906,7 +1910,7 @@ Table of Contents
    mechanism for conveying the information will be discussed in a future
    version of this document.
 
-   Figure 28 shows the matrix of bandwidth demands for 5G slice X.
+   Figure 28 shows the matrix of bandwidth demands for 5G slice "X".
    Within the slice, multiple network function instances might be
    sending traffic from DCi to DCj.  However, the SMO sums the
    associated demands into one value.  For example, NF1A and NF1B in DC1
@@ -1983,7 +1987,7 @@ Table of Contents
    [RFC8466] do not support requesting a particular transport-type,
    e.g., low-latency.  One option is to augment these models to convey
    this information.  This can be achieved by reusing the 'underlay-
-   transport' construct used in [RFC9182] and [RFC9291].
+   transport' construct defined in [RFC9182] and [RFC9291].
 
 7.1.  Bandwidth Models
 
