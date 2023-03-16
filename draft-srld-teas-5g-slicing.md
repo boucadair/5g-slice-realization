@@ -42,13 +42,6 @@ author:
    email: jlucek@juniper.net
 
  -
-   fullname: John Drake
-   organization: Juniper Networks
-   city: Sunnyvale
-   country: United States of America
-   email: jdrake@juniper.net
-
- -
     fullname: Mohamed Boucadair
     role: editor
     organization: Orange
@@ -63,6 +56,16 @@ author:
    country: Spain
    email: luismiguel.contrerasmurillo@telefonica.com
    uri:   http://lmcontreras.com/
+
+
+contributor:
+
+ -
+   fullname: John Drake
+   organization: Juniper Networks
+   city: Sunnyvale
+   country: United States of America
+   email: jdrake@juniper.net
 
  -
    fullname: Ivan Bykov
@@ -105,7 +108,6 @@ author:
    city: London
    country: United Kingdom
    email: mojdeh.amani@bt.com
-
 
 normative:
 
@@ -2579,8 +2581,3 @@ User Plane          ╱     │           │         ╲
    The authors would like to thank Adrian Farrel, Joel Halpern and Tarek
    Saad for their reviews of this document and for providing valuable
    feedback on it.
-
-# Contributors
-{:numbered="false"}
-
-   To be added later
