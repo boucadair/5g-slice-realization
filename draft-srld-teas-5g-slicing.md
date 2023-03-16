@@ -2579,8 +2579,3 @@ User Plane          ╱     │           │         ╲
    The authors would like to thank Adrian Farrel, Joel Halpern and Tarek
    Saad for their reviews of this document and for providing valuable
    feedback on it.
-
-# Contributors
-{:numbered="false"}
-
-   To be added later
