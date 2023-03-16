@@ -1846,6 +1846,8 @@ to TN QoS Classes may be rather common.
 
 #  Capacity Planning/Management {#sec-capacity-planning}
 
+## Bandwidth Requirements
+
    This section describes the information conveyed by the SMO to the
    transport controller with respect to slice bandwidth requirements.
 
