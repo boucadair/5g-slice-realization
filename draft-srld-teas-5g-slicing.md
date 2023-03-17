@@ -673,10 +673,10 @@ Specifically, the actual mapping is a design choice of service operators that ma
 
       This realization model of transport for 5G slices assumes Layer-3
       delivery for midhaul and backhaul transport connections, and a
-      Layer 2 or Layer 3 (eCPRI supports both) delivery model for
-      fronthaul connections.  L2VPN/L3VPN service instances might be
-      used as basic form of logical slice separation.  Further, using
-      service instances results in additional outer header (as packets
+      Layer 2 or Layer 3 for
+      fronthaul connections. eCPRI supports both delivery models. L2VPN/L3VPN service instances might be
+      used as a basic form of logical slice separation.  Furthermore, using
+      service instances results in an additional outer header (as packets
       are encapsulated/decapsulated at the nodes performing PE
       functions) providing clean discrimantion between 5G QoS and TN
       QoS, as explained in {{sec-qos-map}}.
@@ -692,24 +692,24 @@ Specifically, the actual mapping is a design choice of service operators that ma
       The toolset used here is granular ingress policing (rate limiting)
       to enforce contracted bandwidths per slice and, potentially, per
       traffic class within the slice.  Out-of-contract traffic might be
-      immediately dropped, or marked as high drop probability traffic,
-      which is more likely to be dropped somewhere at the transit if
+      immediately dropped, or marked as high drop-probability traffic,
+      which is more likely to be dropped somewhere in transit if
       congestion occurs.  In the egress direction at the edge of the
       transport domain, hierarchical schedulers/shapers can be deployed,
       providing guaranteed rates per slice, as well as guarantees per
-      traffic class within the slice.
+      traffic class within each slice.
 
       In the managed CE use cases (use cases A1, A2, B1, and B2 depicted in
-      {{figure-7}}) edge admission control could be distributed between CE
+      {{figure-7}}), edge admission control could be distributed between CE
       and PE, where one part of the edge admission control is
-      implemented on CE, and another part of the edge admission control
-      is implemented on PE.
+      implemented on the CE, and another part of the edge admission control
+      is implemented on the PE.
 
    *  Coarse resource control at the TN transit (non-attachment
       circuits) links of the transport domain, using a single NRP, spanning the entire TN domain.
       Transit nodes do not maintain any state of individual slices.
       Instead, only a flat (non-hierarchical) QoS model is used on
-      transit links with up to 8 traffic classes.  At the transport
+      transit links, with up to 8 traffic classes.  At the transport
       domain edge, traffic-flows from multiple slice services are mapped
       to the limited number of traffic classes used on transit links.
 
@@ -745,7 +745,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
 ~~~
 {: #figure-8 title="Resource Allocation in with single NRP Slicing Model" artwork-align="center"}
 
-   The 5G control plane relies upon S-NSSAI (Single Network Slice
+   The 5G control plane relies upon the S-NSSAI (Single Network Slice
    Selection Assistance Information: 32-bit slice identifier) for slice
    identification.  The S-NSSAI is not visible to the transport domain,
    so instead 5G functions can expose the 5G slices to the transport
@@ -765,7 +765,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
    interface, where eCPRI with Ethernet encapsulation is used), this
    VLAN is typically not transported across the TN domain.  Typically,
    it has only local significance at a particular SDP.  For
-   simplification it is recommended to rely on a same VLAN identifier
+   simplification it is recommended to rely on the same VLAN identifier
    for all ACs, when possible.  However, SDPs for a same slice at
    different locations may also use different VLAN values.  Therefore, a
    VLAN to IETF Network Slice mapping table MUST be maintained for each
@@ -798,14 +798,14 @@ VLANs representing slices           VLANs representing slices
 ##  IP Hand-off
 
    In this option, the slices in the transport domain are instantiated
-   by IP tunnels (for example, IPsec, GTP-U tunnel) established between
+   by IP tunnels (for example, IPsec or GTP-U tunnels) established between
    NFs.  The transport for a single 5G slice is constructed with
    multiple such tunnels, since a typical 5G slice contains many NFs -
    especially DUs and CUs.  If a shared NF (i.e., an NF that serves
    multiple slices, for example a shared DU) is deployed, multiple
    tunnels from shared NF are established, each tunnel representing a
    single slice.  As opposed to the VLAN hand-off case, there is no
-   logical interface representing slice on the PE, hence all slices are
+   logical interface representing a slice on the PE, hence all slices are
    handled within single service instance.  On the other hand, similarly
    to the VLAN hand-off case, a mapping table tracking IP to IETF
    Network Slice mapping is required.
@@ -831,21 +831,21 @@ VLANs representing slices           VLANs representing slices
 ~~~
 {: #figure-10 title="5G Slice with IP Hand-off" artwork-align="center"}
 
-   The mapping table can be simplified if, e.g., IPv6 addressing is used
+   The mapping table can be simplified if, for example, IPv6 addressing is used
    to address NFs.  An IPv6 address is a 128-bit long field, while the
    S-NSSAI is a 32-bit field: Slice/Service Type (SST): 8 bits, Slice
    Differentiator (SD): 24 bits. 32 bits, out of 128 bits of the IPv6
    address, may be used to encode the S-NSSAI, which makes an IP to
    Slice mapping table unnecessary. This mapping is simply a local allocation method
    to allocate IPv6 addresses to NF loopbacks, without redefining IPv6
-   semantic. Different IPv6 address allocation schemes following this
+   semantics. Different IPv6 address allocation schemes following this
    mapping approach may be used, with one example allocation showed in {{figure-11}}.
 
    Note that this addressing scheme is local to a node; intermediary nodes are not
    required to associate any additional semantic with IPv6 address.
 
    One
-   benefit of embedding the S-NSSAI in the IPv6 address is providing
+   benefit of embedding the S-NSSAI in the IPv6 address is that it provides
    a very easy way of identifying the packet as belonging to given
    S-NSSAI at any place in the transport domain.  This might be
    used, for example, to selectively enable per S-NSSAI monitoring, or
@@ -864,15 +864,15 @@ VLANs representing slices           VLANs representing slices
 {: #figure-11 title="An Example of S-NSSAI embedded into IPv6" artwork-align="center"}
 
    In the example shown in {{figure-11}}, the most significant 96 bits of the IPv6 address are
-   unique to NF, but do not carry any slice-specific information, while
+   unique to the NF, but do not carry any slice-specific information, while
    the least significant 32 bits are used to embed the S-NSSAI information.
    The 96-bit part of the address may be further divided based, for
    example, on the geographical location or the DC identification.
 
-   {{figure-12}} shows an example of slicing deployment, where S-NSSAI is
+   {{figure-12}} shows an example of a slicing deployment, where the S-NSSAI is
    embedded into IPv6 addresses used by NFs.  NF-A has a set of tunnel
    termination points, with unique per-slice IP addresses allocated from
-   the 2001:db8::a:0:0/96 prefix, while NF-B uses set of tunnel
+   the 2001:db8::a:0:0/96 prefix, while NF-B uses a set of tunnel
    termination points with per-slice IP addresses allocated from
    2001:db8::b:0:0/96.  This example shows two slices: eMBB (SST=1) and
    MIoT (SST=3).  Therefore, for eMBB the tunnel IP addresses are auto-
@@ -934,7 +934,7 @@ VLANs representing slices           VLANs representing slices
    could be instantiated either on the compute, hosting mobile network
    functions ({{figure-13}}, left hand side), or within the cloud
    infrastructure itself (e.g., on the top of the rack or leaf switch
-   within cloud IP fabric ({{figure-13}}, right hand side)). On the local segment connected to ETN packets are already MPLS
+   within cloud IP fabric ({{figure-13}}, right hand side)). On the local segment connected to ETN, packets are already MPLS
    encapsulated (or MPLSoUDP encapsulated, if cloud or compute
    infrastructure doesn't support native MPLS encapsulation). Therefore,
    the PE uses neither a VLAN nor an IP address for slice
@@ -985,7 +985,7 @@ representing slices              representing slices    slices
    1, and execute appropriate edge per hop behavior.
 
    It is worth noting that slice identification in the BGP control plane
-   might be at the prefix granularity.  In extreme case, each prefix can have
+   might be with per-prefix granularity.  In extreme case, each prefix can have
    different community representing a different slice.  Depending on the
    business requirements, each slice could be represented by a different
    service instance, as outlined in {{figure-13}}.  In that case, the route
