@@ -194,7 +194,7 @@ informative:
 The document uses the terms defined in {{!I-D.ietf-teas-ietf-network-slices}} and additional terms:
 
 Transport Network (TN): 
-: This document defines the Transport Network with a provider scope. The provider relies on the Transport Network to interconnect customer networks (e.g. customer sites or public/private cloud  managed by the customer), usually thanks to VPN services. The TN extends up the PE (Provider Edge) routers, which connects to adjacent Customer Networks. We also assume that the Transport Network is based on IP, MPLS or SRv6 technologies. 
+: This document defines the Transport Network with a provider scope. The provider relies on the Transport Network to interconnect customer networks (e.g. customer sites or public/private cloud  managed by the customer), usually thanks to VPN services. The TN extends up the PE (Provider Edge) routers, which connects to adjacent Customer Networks. We also assume that the Transport Network is based on IP, MPLS or SRv6 technologies.
 
 Customer: 
 : A Customer is an entity that relies on the Transport Network for interconnecting networks. In the context of this document, the customer manages and orchestates the 5G Mobile Network. The Customer network hosts notably 5G Network Functions for RAN and CORE Networks.
