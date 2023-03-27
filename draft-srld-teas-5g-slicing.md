@@ -204,10 +204,10 @@ Provider:
 * The IETF Network Slice Controller (NSC) orchestrates the IETF Network Slices.
 
 Customer Edge (CE):
-: The CE is a device managed by the customer that provides logical connectivity to the Transport Network. The logical connectivity is enforced at Layer 2 and/or Layer 3 and is denominated an Attachment Circuit. In the context of this document, examples of CEs include Routers, Switches Firewall, Servers or any Network Functions (CU, DU, UPF…). This document generalizes the definition of a CE with the introduction of Distributed CEs introduced in section {{???REF}}
+: The CE is a device managed by the customer that provides logical connectivity to the Transport Network. The logical connectivity is enforced at Layer 2 and/or Layer 3 and is denominated an Attachment Circuit. In the context of this document, examples of CEs include Routers, Switches Firewall, Servers or any Network Functions (CU, DU, UPF…). This document generalizes the definition of a CE with the introduction of Distributed CEs introduced in {{sec-distributed}}.
 
 Provider Edge (PE):
-: The PE is a device managed by the Transport Network Orchestration that is connected to the CE. The connectivity between the CE and the PE is achieved thanks to an Attachment Circuit. The PE function usually binds ACs to VPN services.  This document generalizes the definition of a CPE with the introduction of Distributed PEs introduced in section {???REF}
+: The PE is a device managed by the Transport Network Orchestration that is connected to the CE. The connectivity between the CE and the PE is achieved thanks to an Attachment Circuit. The PE function usually binds ACs to VPN services.  This document generalizes the definition of a CPE with the introduction of Distributed PEs introduced in {{sec-distributed}}.
 
 Attachment Circuit (AC):
 
@@ -250,7 +250,7 @@ In parrallel, a 5G Network Slice Orchestrator is responsible for orchestating th
 
 Deployments may not strictly fit with the generic PE/CE definition above. For example, the provider can mandate the use of a  Managed CE (aka Managed CPE) when providing VPNs services. Conversely, a CE (i.e. managed by the customer) may implement an MPLS/SRv6 PE function when connected to the Provider network via inter-AS MPLS/SRv6 techniques (e.g. Option B as per [??? REF]). These common Use-Cases introduce confusion in the existing terminology (PE or CE) and the actual location of the Attachment Circuit. The following sections clarifies these aspects.
 
-####  Distributed PE and CE
+####  Distributed PE and CE {#sec-distributed}
 
 This document introduces the concept of distributed CEs and PEs. This approach provides a generic definition of CE/PE/AC that is consistent with the orchestration perimeters. The CEs and PEs delimit respectively the Customer and Provider Orchestration domains, while the AC interconnects these domains.
 
