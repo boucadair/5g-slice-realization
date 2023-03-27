@@ -208,7 +208,7 @@ Customer Edge (CE):
 : The CE is a device managed by the customer that provides logical connectivity to the Transport Network. The logical connectivity is enforced at Layer 2 and/or Layer 3 and is denominated an Attachment Circuit. In the context of this document, examples of CEs include Routers, Switches Firewall, Servers or any Network Functions (CU, DU, UPF…). This document generalizes the definition of a CE with the introduction of Distributed CEs introduced in section {{???REF}}
 
 Provider Edge (PE): 
-: The PE is a device managed by the Transport Network Orchestration that is connected to the CE. The connectivity between the CE and the PE is achieved thanks to an Attachment Circuit. The PE function usually binds ACs to VPN services.  This document generalizes the definition of a CPE with the introduction of Distributed PEs introduced in section {???REF}
+: The PE is a device managed by the Transport Network Orchestration that is connected to the CE. The connectivity between the CE and the PE is achieved thanks to an Attachment Circuit. The PE function usually binds ACs to VPN services.  This document generalizes the PE definition with the introduction of Distributed PEs introduced in section {???REF }
 
 Attachment Circuit (AC):
 
