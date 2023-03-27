@@ -1440,7 +1440,8 @@ S ┃   └──────────┘  ┃  │           ┃┌───
    transit TN routers for all packets grouped together. An example of this
    approach is outlined in {{figure-34}}.
 
-    > Please note that the numbers indicated in {{figure-34}} (S-NSSAI, 5QI, DSCP, queue, etc.) are provided for illustration purposes only and shoudl not be considered as deployment guidance.
+Note: 
+: The numbers indicated in {{figure-34}} (S-NSSAI, 5QI, DSCP, queue, etc.) are provided for illustration purposes only and shoudl not be considered as deployment guidance.
 
 ~~~ aasvg
                       ┌───────────── ETN  ─────────────────┐
