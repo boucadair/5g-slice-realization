@@ -254,19 +254,21 @@ Deployments may not strictly fit with the generic PE/CE definition above. For ex
 
 This document introduces the concept of distributed CEs and PEs. This approach provides a generic definition of CE/PE/AC that is consistent with the orchestration perimeters. The CEs and PEs delimit respectively the Customer and Provider Orchestration domains, while the AC interconnects these domains.
 
-{{figure-1}} represents the generic model for CE and PE together with distributed CE and PE use-cases.
+{{fig-distributed-pe-ce}} represents the generic model for CE and PE together with distributed CE and PE use-cases.
 * Distributed CE: the logical connectivity is realized thanks to the configuration of multiple devices in the Customer Domain.  The CE function is distributed. An example of such a distribution is the realization of an interconnection with an L3 VPN service based on a distributed CE composed of an L2 switch and an L3 router (example ii).
 * Distributed PE: the logical connectivity is realized thanks to the configuration of multiple devices in the Transport Network (provider domain). The PE function is distributed. An example of a distributed PE is the “Managed CE service” as it is commonly named in the industry. In this case, a provider supplies VPN services based on CE and PE which are both managed by the provider. The “Managed CE” use case is a frequent source of confusion, since the actual Edge (Customer vs Provider) does not map with the Orchestration perimeters. For this purpose, these two elements are considered as distributed PE.
 
-For the rest of the document, CE and PE are used as unified terminology for a single device and a distributed device.
+In subsequent sections of this document, the terms CE and PE are used for both a single device and a distributed device.
 ~~~~
 {::include ./drawings/distributed-pe-ce.fig}
 ~~~~
-{: #fig-distributed-pe-ce title="Distributed CE and PE and Generic Model" artwork-align="center"}
+{: #fig-distributed-pe-ce title="Generic Model vs Distributed CE and PE" artwork-align="center"}
 
 ####  MPLS/SRv6 Attachment Circuit
 
-In some cases, the CE router connects with the Provider thanks to Inter-AS Option B/C. In this case, the configuration of VRFs together with Control Plane identifiers such as route-targets/route-distinguishers happens on the CE. This is a source of confusion since these are typical PE configuration points. Nonetheless, since we consider the definition based on Orchestration Scope.
+In some cases, the CE router connects with the Provider thanks to Inter-AS Option B/C. In this case, the configuration of VRFs together with Control Plane identifiers such as route-targets/route-distinguishers happens on the CE. This is a source of confusion since these are typical enforced on PE devices. The definition based on Orchestration Scope prevails: the CE is managed by the Customer and the AC is based on MPLS or SRv6 dataplane technologies.
+
+
 
 ###  Segmentation of the NF-to-NF Datapath
 
