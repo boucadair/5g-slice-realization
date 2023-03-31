@@ -222,12 +222,29 @@ An extended list of abbreviations used in this document is provided in {{ext-abb
 
 ## Forewords: scope of the Transport Network
 
-Appendix {{sec-5g-intro}} provides an  overview of 5G Networking. It is advised that the reader with limited background in 5G networking consult . It notably introduces the main building blocks of a 5G Network such as the RAN, CORE and Transport Network. The 3GPP specifications loosely define the Transport Network and its integration in RAN and CN domains. Tt is a non 3GPP-management system that interconnects Mobile Network Functions (NFs). Practically, this interconnection (e.g. the TN) may not map with a monolithic architecture and management domain. It is frequently segmented, non-uniform and managed by different entities. For example, a NF deployed in an Edge Data Centers connects to  a NF  in a Public Cloud thanks to a WAN network (e.g. MPLS-VPN service). Here, the TN can be interpreted as an abstraction representing an end-to-end connectivity based on 3 distinct IP networking domains: DC, WAN and Public Cloud. A model for the Transport Network based on Orchestration domains is introduced later in this document. This model permits to define more precisely where IETF Network Slice applies. Additionally, the term Transport Network is used to disambiguate 5G Networking (i.e. RAN and CORE NF Orchestration) with the NF interconnection (e.g. IP, packet-based forwarding). By extension, the disambiguation applies to Transport Network Slicing wrt End-to-End 5G Network Slicing (see section ???) as well the Management domains: RAN, Core and TN domains.
+Appendix {{sec-5g-intro}} provides an  overview of 5G Networking. It is advised that the reader with limited background in 5G networking consult . It notably introduces the main building blocks of a 5G Network such as the RAN, CORE and Transport Network. The 3GPP specifications loosely define the Transport Network and its integration in RAN and CN domains. Tt is a non 3GPP-management system that interconnects Mobile Network Functions (NFs). Practically, this interconnection (e.g. the TN) may not map with a monolithic architecture and management domain. It is frequently segmented, non-uniform and managed by different entities. For Example, {{fig-1}} depicts a NF deployed in an Edge Data Centers connected to  a NF  in a Public Cloud thanks to a WAN network (e.g. MPLS-VPN service). Here, the TN can be interpreted as an abstraction representing an end-to-end connectivity based on 3 distinct IP networking domains: DC, WAN and Public Cloud. A model for the Transport Network based on Orchestration domains is introduced later in this document. This model permits to define more precisely where IETF Network Slice applies. Additionally, the term Transport Network is used to disambiguate 5G Networking (i.e. RAN and CORE NF Orchestration) with the NF interconnection (e.g. IP, packet-based forwarding). By extension, the disambiguation applies to Transport Network Slicing wrt End-to-End 5G Network Slicing (see section ???) as well the Management domains: RAN, Core and TN domains.
 
-~~~~
-{::include ./drawings/distributed-pe-ce.txt}
-~~~~
-{: #fig-distributed title="Generic Model vs Distributed CE and PE" artwork-align="center"}
+~~~ aasvg
+     ┌──────────────────────────────────┐     
+  ┌──│      5G RAN or CORE Network      │──┐  
+  │  └──────────────────────────────────┘  │  
+  │                                        │  
+  ▼                                        ▼  
+┌──┐  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  ┌──┐ 
+│NF├ ─ ─      Transport Network        ├ ┤NF│ 
+└──┘  └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  └──┘ 
+          │             │            │        
+          ▼             ▼            ▼        
+                                              
+  ┌───Data Center──┐ ┌─MPLS-VPN─┐  ┌─Public─┐ 
+  │                │ │ Backbone │  │ Cloud  │ 
+  │   ┌───┐┌───┐   │┌┴─┐      ┌─┴┐┌┴─┐      │ 
+  │   └───┘└───┘   │└┬─┘      └─┬┘└┬─┘      │ 
+  │┌──┐┌──┐┌──┐┌──┐│┌┴─┐      ┌─┴┐ │        │ 
+  │└──┘└──┘└──┘└──┘│└┬─┘      └─┬┘ │        │ 
+  └────────────────┘ └──────────┘  └────────┘ 
+~~~
+{: #fig-1 title="Transport Network vs RAN and CORE Network" artwork-align="center"}
 
 
 ##  5G Network Slicing versus Transport Network Slicing
