@@ -294,57 +294,7 @@ This document introduces the concept of distributed CEs and PEs. This approach p
 
 In subsequent sections of this document, the terms CE and PE are used for both a single device and a distributed device.
 ~~~ aasvg
-┌ ─ ─ ─ ─ ─ ─ ─                       ┌ ─ ─ ─ ─ ─ ─ ─ ┐
-    Customer   │                          Provider     
-│     Site ┌────┐                  ┌──┴─┐  Network    │
-           │    ├──────────────────┤    │              
-│          │ CE ├ ─ ─ ─ ─AC ─ ─ ─ ─│ PE │             │
-           │    ├──────────────────┤    │              
-│          └────┘                  └──┬─┘             │
- ─ ─ ─ ─ ─ ─ ─ ┘                       ─ ─ ─ ─ ─ ─ ─ ─ 
-                  i) Generic Model                     
-┌ ─ ─ ─ ─ ─ ─ ─                       ┌ ─ ─ ─ ─ ─ ─ ─ ┐
-    Customer   │                          Provider     
-│     Site                            │    Network    │
- ┏━━━━━━━━━━━━━━━┓                                     
-│┃ ┌─────┐ ┌────┐┃                 ┌──┴─┐             │
- ┃ │     │ │    ├┃─────────────────┤    │              
-│┃ │     ├ ┼ ─ ─│┃ ─ ─ ─ AC─ ─ ─ ─ ┤ PE │             │
- ┃ │ RTR │ │ SW ├┃─────────────────┤    │              
-│┃ └─────┘ └────┘┃                 └──┬─┘             │
- ┗━━Distributed━━┛                                     
-│       CE                            │               │
- ─ ─ ─ ─ ─ ─ ─ ┘                       ─ ─ ─ ─ ─ ─ ─ ─ 
-                  ii) Distributed CE                   
-┌ ─ ─ ─ ─ ─ ─ ─                       ┌ ─ ─ ─ ─ ─ ─ ─ ┐
-    Customer   │                          Provider     
-│     Site                            │    Network    │
-               │                  ┏━━━━━━━━━━━━━━━┓    
-│          ┌────┐                 ┃┌──┴─┐   ┌────┐┃   │
-           │    ├─────────────────┃┤Mngd│   │    │┃    
-│          │ CE ├ ─ ─ ─ ─AC ─ ─ ─ ┃│ CE ├───┤ PE │┃   │
-           │    ├─────────────────┃┤    │   │    │┃    
-│          └────┘                 ┃└──┬─┘   └────┘┃   │
-               │                  ┗━━Distributed━━┛    
-│                                     │  PE           │
- ─ ─ ─ ─ ─ ─ ─ ┘                       ─ ─ ─ ─ ─ ─ ─ ─ 
-                  iii) Distributed PE
-                                                  
-┌ ─ ─ ─ ─ ─ ─ ─                       ┌ ─ ─ ─ ─ ─ ─ ─ ┐
-    Customer   │                          Provider     
-│     Site                            │    Network    │
-   ┏━━━━━━━━━━━━━━━━┓             ┏━━━━━━━━━━━━━━━━┓   
-│  ┃    IP Fabric   ┃             ┃┌──┴─┐   ┌────┐ ┃  │
-   ┃   ┌───┐┌───┐   ┃─────────────╋┤ DC │   │    │ ┃   
-│  ┃   └───┘└───┘   ┃ ─ ─ ─AC ─ ─ ╋│ GW ├───┤ PE │ ┃  │
-   ┃┌──┐┌──┐┌──┐┌──┐┃─────────────╋┤    │   │    │ ┃   
-│  ┃└──┘└──┘└──┘└──┘┃             ┃└──┬─┘   └────┘ ┃  │
-   ┗━━━Distributed━━┛             ┗━━Distributed━━━┛   
-│          CE                         │  PE           │
-               │                                       
-└ ─Data Center─                       └ ─ ─ ─ ─ ─ ─ ─ ┘
-                  iv) Distributed PE                   
-                        and CE                         
+{::include ./drawings/distributed-pe-ce.txt}
 ~~~
 {: #fig-2 title="Generic Model vs Distributed CE and PE" artwork-align="center"}
 
