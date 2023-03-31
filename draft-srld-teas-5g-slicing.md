@@ -218,7 +218,7 @@ Attachment Circuit (AC):
 
 An extended list of abbreviations used in this document is provided in {{ext-abbr}}.
 
-#  5G Network Slicing Integration in Transport Networks
+# 5G Network Slicing Integration in Transport Networks
 
 ## Forewords: scope of the Transport Network
 
@@ -256,17 +256,17 @@ Appendix {{sec-5g-intro}} provides an  overview of 5G Networking. It is advised 
 (e.g. customer sites or public/private cloud  managed by the customer), usually thanks to VPN services. The TN extends up the PE (Provider Edge) routers, which connects to adjacent Customer Networks. We also assume that the Transport Network is based on IP, MPLS or SRv6 technologies.
 
 
-
 ### Transport Network ???
 
-To start with, we assume that a 5G Network Slice Orchestrator is responsible for the orchestration of end-to-end 5G Slice. This includes the configuration of slices for the RAN and CORE domains  (i.e. 5G  Network Functions) and the Transport domain (i.e. NF-NF datapath). (??? add ref to framework for customer/provider naming) This document splits the orchestration Transport domain into two main building blocks: 
+
+To start with, we assume that a 5G Network Slice Orchestrator is responsible for the orchestration of end-to-end 5G Slice. This includes the configuration of slices for the RAN and CORE domains  (i.e. 5G  Network Functions) and the Transport domain (i.e. NF-NF datapath). (??? add ref to framework for customer/provider naming) This document splits the orchestration Transport domain into two main building blocks:
 - Customer Site: the customer site contains the 5G Network Functions and optionally additional routing devices.
 - Provider Network: the Provider Network interconnects customer sites (i.e. WAN).
 
 The RAN and CORE Networks NFs are deployed  
 This includes the orchestration  Customer and Transport Network
-This document defines the Transport Network with a service provider scope (i.e. WAN ). 
-The role of the TN is to interconnect Cutomer Networks (e.g. 5G sites with 5G Network Functions). 
+This document defines the Transport Network with a service provider scope (i.e. WAN ).
+The role of the TN is to interconnect Cutomer Networks (e.g. 5G sites with 5G Network Functions).
 
 This document makes of the terms defined in {{!I-D.ietf-teas-ietf-network-slices}}:
 * The TN extends up to the Provider Edge (PE).
@@ -274,7 +274,7 @@ This document makes of the terms defined in {{!I-D.ietf-teas-ietf-network-slices
 * The CE is a device managed by the customer (i.e. 5G Network Orchestration) that provides logical connectivity to the Transport Network via the Attachment Circuit.
 We also assume that the Transport Network is based on IP, MPLS or SRv6 technologies. Additionally, the orchestration of the TN is based on the IETF NSC. The CE can be 
 
-In parrallel, a 5G Network Slice Orchestrator is responsible for orchestating the end-to-end 5G Slice logic. This includes the orchestration of the Customer Network and the Transport Network. including Network Functions and the Transport Network. The Orchestration of the TN is enforced via the IETF NSC. 
+In parrallel, a 5G Network Slice Orchestrator is responsible for orchestating the end-to-end 5G Slice logic. This includes the orchestration of the Customer Network and the Transport Network. including Network Functions and the Transport Network. The Orchestration of the TN is enforced via the IETF NSC.
 
 ~~~~
 {::include ./drawings/end-to-end-TN.fig}
