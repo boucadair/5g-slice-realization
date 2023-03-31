@@ -271,9 +271,8 @@ The role of the TN is to interconnect Cutomer Networks (e.g. 5G sites with 5G Ne
 This document makes of the terms defined in {{!I-D.ietf-teas-ietf-network-slices}}:
 * The TN extends up to the Provider Edge (PE).
 * The PE is logically connected to the Customer Network via an Attachment Circuit.
-* The CE is a device managed by the customer (i.e. 5G Network Orchestration) that provides logical connectivity to the Transport Network via the Attachment Circuit.
-We also assume that the Transport Network is based on IP, MPLS or SRv6 technologies. Additionally, the orchestration of the TN is based on the IETF NSC. The CE can be 
-
+* The CE is a device managed by the customer (i.e. 5G Network Orchestration) that provides logical connectivity to the Transport Network via the Attachment Circuit. The CE can be a 5G Network Function (i.e. an element of 5G domain), or a TN Function (router, switch).
+We also assume that the Transport Network is based on IP, MPLS or SRv6 technologies. Additionally, the orchestration of the TN is based on the IETF NSC. 
 In parrallel, a 5G Network Slice Orchestrator is responsible for orchestating the end-to-end 5G Slice logic. This includes the orchestration of the Customer Network and the Transport Network. including Network Functions and the Transport Network. The Orchestration of the TN is enforced via the IETF NSC.
 
 ~~~~
