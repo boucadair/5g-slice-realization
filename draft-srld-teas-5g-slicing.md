@@ -272,7 +272,7 @@ This document makes of the terms defined in {{!I-D.ietf-teas-ietf-network-slices
 * The TN extends up to the Provider Edge (PE).
 * The PE is logically connected to the Customer Network via an Attachment Circuit.
 * The CE is a device managed by the customer (i.e. 5G Network Orchestration) that provides logical connectivity to the Transport Network via the Attachment Circuit. The CE can be a 5G Network Function (i.e. an element of 5G domain), or a TN Function (router, switch).
-We also assume that the Transport Network is based on IP, MPLS or SRv6 technologies. Additionally, the orchestration of the TN is based on the IETF NSC. 
+We also assume that the Transport Network is based on IP, MPLS or SRv6 technologies. Additionally, the orchestration of the TN is based on the IETF NSC.
 In parrallel, a 5G Network Slice Orchestrator is responsible for orchestating the end-to-end 5G Slice logic. This includes the orchestration of the Customer Network and the Transport Network. including Network Functions and the Transport Network. The Orchestration of the TN is enforced via the IETF NSC.
 
 ~~~~
@@ -320,7 +320,6 @@ Another variation is a co-Managed CE/PE device which is orchestrated by both the
       involvement of the IETF NSC. In the second case, the realization of this segment partially relies on the IETF NSC for the configuration of the AC on a PE interface.  Generally, the Local Segment is a datapath local to a site with a potential extension to reach the TN. A Customer Network can be (but not limited to): a Data Center (DC), a Point of Presence (PoP), a
       Central Office (CO), or a virtualized infrastructure in a Public
       Cloud.
-   *  
    Note that more complex scenarios can be considered (for example, adding an extra
    segmentation of TN or Local Segments).  Additionally, sites can be of
    different types (such as Edge, Data Center, or Public Cloud), each with
