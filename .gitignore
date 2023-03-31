@@ -21,3 +21,4 @@ draft-srld-teas-5g-slicing.xml
 package-lock.json
 report.xml
 !requirements.txt
+!drawings/*.txt
