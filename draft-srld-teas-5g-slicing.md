@@ -251,6 +251,35 @@ Appendix {{sec-5g-intro}} provides an  overview of 5G Networking. It is advised 
 
 ##  Segmentation of the Transport Network
 
+This document makes of the terms defined in {{!I-D.ietf-teas-ietf-network-slices}}. 
+
+In this document, we assume the following:
+* Customer: the Customer is an entity that is responsible for managing and orchestating the 5G Mobile Network, notably RAN and CORE networks.
+* Customer Sites:  The Customer manages and deploys 5G Network Functions (RAN and CORE) in Customer Sites. On top of 5G Network Function (e.g. gNB, 5GC), the Customer may manage additional TN elements and logic (e.g. servers, routers, switches, VPC Gateways...) within the Customer Site. The Customer Site can be either a physical or a virtual location. Examples of Customer Sites are a customer private locations (POP, DC), a VPC in a Public Cloud, or servers hosted within Provider or Colo service. The Orchestration of the TN within Customer Sites relies on diverse controllers for automation purposes (e.g. NFVI, Enhanced CNI, Fabric Managers, Public Cloud APIs). The detail of these is out of the scope of this document.
+* Provider: a provider is an entity responsible for interconnecting Customer Sites. The Provider orchestrates and manages the Provider Network.
+* Provider Network: the Provider Networks delivers interconnection services thanks to the Provider Network. The interconnection service is achieved thanks to IETF Network Slices (INS).
+The Provider relies on the IETF Network Slice Controller (NSC) to manage and orchestrate the IETF Network Slices.
+
+
+[??? drawing here] depicts a diverse TN???
+
+Customer:
+: A Customer is an entity that relies on the Provider Network (e.g. WAN) for interconnecting customer sites. In the context of this document, the customer manages and orchestates the 5G Mobile Network. The Customer site hosts notably 5G Network Functions for RAN and CORE Networks.
+
+  *  Provider Network: The TN section provides connectivity between Customer Networks. This section represents the connectivity between two PEs (e.g. VRF).The realization of this section is controlled by the NSC.
+
+The datapath between NFs can be decomposed into 3 main types of sections based on Orchestration domains or  logic:
+   *  Customer Site: the Customer site is deployed within the Customer Network. This section either connects two NFs located on the same Customer Network (??? insert REF} or it connects a NF to a CE. This section may not exist if the NF is the CE: in this case the AC connects the NF to the PE. The realization of this section is driven the 5G Network  Orchestration and potentially Customer Network Orchestration (e.g. Fabric Manager, Element Management System, VIM...). The realization of this section does not involve the Transport Network Orchestration.
+   *  Transport Network Section: The TN section provides connectivity between Customer Networks. This section represents the connectivity between two PEs (e.g. VRF).The realization of this section is controlled by the NSC.
+   *  Attachment Circuit section: As mentionned in previous sections, the Attachment Circuit connects the Customer Network to the Transport Network. In other words, the AC section represents the connectivity between a CE and PE.  The orchestration of this section relies partially the NSC for the configuration of the AC on the PE interface and the Customer Network Orchestration logic.
+
+This document makes of the terms defined in {{!I-D.ietf-teas-ietf-network-slices}}:
+* The Provider Network extends up to the Provider Edge (PE).
+* The PE is logically connected to the Customer Network via an Attachment Circuit.
+* The CE is a device managed by the customer (i.e. 5G Network Orchestration) that provides logical connectivity to the Transport Network via the Attachment Circuit. The CE can be a 5G Network Function (i.e. an element of 5G domain), or a TN Function (router, switch).
+We also assume that the Transport Network is based on IP, MPLS or SRv6 technologies. Additionally, the orchestration of the TN is based on the IETF NSC.
+In parrallel, a 5G Network Slice Orchestrator is responsible for orchestating the end-to-end 5G Slice logic. This includes the orchestration of the Customer Network and the Transport Network. including Network Functions and the Transport Network. The Orchestration of the TN is enforced via the IETF NSC.
+
 
 [insert ??? FIX]
 (e.g. customer sites or public/private cloud  managed by the customer), usually thanks to VPN services. The TN extends up the PE (Provider Edge) routers, which connects to adjacent Customer Networks. We also assume that the Transport Network is based on IP, MPLS or SRv6 technologies.
@@ -258,10 +287,6 @@ Appendix {{sec-5g-intro}} provides an  overview of 5G Networking. It is advised 
 
 ### Transport Network ???
 
-
-To start with, we assume that a 5G Network Slice Orchestrator is responsible for the orchestration of end-to-end 5G Slice. This includes the configuration of slices for the RAN and CORE domains  (i.e. 5G  Network Functions) and the Transport domain (i.e. NF-NF datapath). (??? add ref to framework for customer/provider naming) This document splits the orchestration Transport domain into two main building blocks:
-- Customer Site: the customer site contains the 5G Network Functions and optionally additional routing devices.
-- Provider Network: the Provider Network interconnects customer sites (i.e. WAN).
 
 The RAN and CORE Networks NFs are deployed
 This includes the orchestration  Customer and Transport Network
@@ -499,6 +524,11 @@ Another variation is a co-Managed CE/PE device which is orchestrated by both the
 {: #figure-3 title="Examples of various combinations of Local Segments, ETN, and SDP" artwork-align="center"}
 
 ###  Orchestration of Local Segment Terminations at ETNs
+
+[ ??? FIX REVIEW  this is not orchestration 
+To start with, we assume that a 5G Network Slice Orchestrator is responsible for the orchestration of end-to-end 5G Slice. This includes the configuration of slices for the RAN and CORE domains  (i.e. 5G  Network Functions) and the Transport domain (i.e. NF-NF datapath). (??? add ref to framework for customer/provider naming) This document splits the orchestration Transport domain into two main building blocks:
+- Customer Site: the customer site contains the 5G Network Functions and optionally additional routing devices.
+- Provider Network: the Provider Network interconnects customer sites (i.e. WAN).]
 
    The interconnection between a 5G site and the Transport Network is
    made up of shared networking resources.  More precisely, the Local
