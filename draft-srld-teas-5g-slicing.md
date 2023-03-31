@@ -193,7 +193,7 @@ informative:
 The document uses the terms defined in {{!I-D.ietf-teas-ietf-network-slices}} and additional terms:
 
 Transport Network (TN):
-: The term Transport Network is commonly used in mobile networking to represent the connectivity between mobile Network Functions. 
+: The term Transport Network is commonly used in mobile networking to represent the connectivity between mobile Network Functions.
 
 Customer:
 : A Customer is an entity that relies on the Provider Network (e.g. WAN) for interconnecting customer sites. In the context of this document, the customer manages and orchestates the 5G Mobile Network. The Customer network hosts notably 5G Network Functions for RAN and CORE Networks.
@@ -224,7 +224,7 @@ An extended list of abbreviations used in this document is provided in {{ext-abb
 
 Appendix {{sec-5g-intro}} provides an  overview of 5G Networking. It is advised that the reader with limited background in 5G networking consult . It notably introduces the main building blocks of a 5G Network such as the RAN, CORE and Transport Network. The 3GPP specifications loosely define the Transport Network and its integration in RAN and CN domains. Tt is a non 3GPP-management system that interconnects Mobile Network Functions (NFs). Practically, this interconnection (e.g. the TN) may not map with a monolithic architecture and management domain. It is frequently segmented, non-uniform and managed by different entities. For Example, {{fig-1}} depicts a NF deployed in an Edge Data Centers connected to  a NF  in a Public Cloud thanks to a WAN network (e.g. MPLS-VPN service). Here, the TN can be interpreted as an abstraction representing an end-to-end connectivity based on 3 distinct IP networking domains: DC, WAN and Public Cloud. A model for the Transport Network based on Orchestration domains is introduced later in this document. This model permits to define more precisely where IETF Network Slice applies. Additionally, the term Transport Network is used to disambiguate 5G Networking (i.e. RAN and CORE NF Orchestration) with the NF interconnection (e.g. IP, packet-based forwarding). By extension, the disambiguation applies to Transport Network Slicing wrt End-to-End 5G Network Slicing (see section ???) as well the Management domains: RAN, Core and TN domains.
 
-~~~ aasvg
+~~~~
      ┌──────────────────────────────────┐     
   ┌──│      5G RAN or CORE Network      │──┐  
   │  └──────────────────────────────────┘  │  
@@ -243,7 +243,7 @@ Appendix {{sec-5g-intro}} provides an  overview of 5G Networking. It is advised 
   │┌──┐┌──┐┌──┐┌──┐│┌┴─┐      ┌─┴┐ │        │ 
   │└──┘└──┘└──┘└──┘│└┬─┘      └─┬┘ │        │ 
   └────────────────┘ └──────────┘  └────────┘ 
-~~~
+~~~~
 {: #fig-1 title="Transport Network vs RAN and CORE Network" artwork-align="center"}
 
 
@@ -263,7 +263,7 @@ To start with, we assume that a 5G Network Slice Orchestrator is responsible for
 - Customer Site: the customer site contains the 5G Network Functions and optionally additional routing devices.
 - Provider Network: the Provider Network interconnects customer sites (i.e. WAN).
 
-The RAN and CORE Networks NFs are deployed  
+The RAN and CORE Networks NFs are deployed
 This includes the orchestration  Customer and Transport Network
 This document defines the Transport Network with a service provider scope (i.e. WAN ).
 The role of the TN is to interconnect Cutomer Networks (e.g. 5G sites with 5G Network Functions).
