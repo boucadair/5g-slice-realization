@@ -329,8 +329,8 @@ In subsequent sections of this document, the terms CE and PE are used for both a
                │                  ┗━━Distributed━━┛    
 │                                     │  PE           │
  ─ ─ ─ ─ ─ ─ ─ ┘                       ─ ─ ─ ─ ─ ─ ─ ─ 
-                  iii) Distributed PE                  
-                                                       
+                  iii) Distributed PE
+                                                  
 ┌ ─ ─ ─ ─ ─ ─ ─                       ┌ ─ ─ ─ ─ ─ ─ ─ ┐
     Customer   │                          Provider     
 │     Site                            │    Network    │
