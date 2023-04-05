@@ -1,19 +1,26 @@
-                                                                     
- □─────□ TN sections: i) Customer Site ii) AC iii) Provider Network  
-                                                                     
-                                                                     
-   ┌ ─ Customer─ ┐          ┌ ─ ─Provider ─ ┐          ┌ Customer─   
-         Site                    Network                   Site   │  
-   │             │          │               │          │             
-                         ┌────┐           ┌────┐                  │  
-   │┌───┐    ┌───┴┐  AC  │    │           │    │  AC  ┌┴──┐          
- i) │NF1├────┤ CE ├ ─ ─ ─│ PE │           │ PE ├ ─ ─ ─│NF3│       │  
- □ │└─┬─┘    └───┬┘      │    │           │    │      └┬──┘          
- │    │                  └────┘           └────┘                  │  
- │ │  │          │          │               │          │             
- □  ┌─┴─┐                                                         │  
-   ││NF2│        │          │               │          │             
-    └───┘                                                         │  
-   └ ─ ─ ─ ─ ─ ─ ┘          └ ─ ─ ─ ─ ─ ─ ─ ┘          └ ─ ─ ─ ─ ─   
-        □──────□ □────────□ □───────────────□ □────────□             
-            i)      ii)           iii)           ii)                 
+                                                                  
+                          IETF NETWORK SLICE                      
+                        ■─────────────────────■                   
+                        │          │          │                   
+                        │          │          │                   
+                        │          │          │                   
+                        ▽          ▽          ▽                   
+       □──CS──□ □───AC──■ □────────PN───────□ ■────CS──□          
+  ┌ ─ ─ ─ ─ ─ ─ ┐          ┌ ─ ─ ─ ─ ─ ─ ─ ┐          ┌ ─ ─ ─ ─ ─ 
+      Customer                  Provider                Customer │
+  │     Site    │          │    Network    │          │   Site    
+                        ┌────┐           ┌────┐                  │
+  │┌───┐    ┌───┴┐  AC  │    │           │    │  AC  ┌┴──┐        
+CS │NF1├────┤ CE ├ ─ ─ ─│ PE │           │ PE ├ ─ ─ ─│NF3│       │
+□ │└─┬─┘    └───┬┘      │    │           │    │      └┬──┘        
+│    │                  └────┘           └────┘                  │
+│ │  │          │          │               │          │           
+□  ┌─┴─┐                                                         │
+  ││NF2│        │          │               │          │           
+   └───┘                                                         │
+  └ ─ ─ ─ ─ ─ ─ ┘          └ ─ ─ ─ ─ ─ ─ ─ ┘          └ ─ ─ ─ ─ ─ 
+                                                                  
+    □──────□  TN sections:                                        
+              CS= Customer Site                                   
+              AC= AC                                              
+              PN= Provider Network                                
