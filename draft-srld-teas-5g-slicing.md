@@ -254,7 +254,7 @@ Appendix {{sec-5g-intro}} provides an  overview of 5G Networking. It is advised 
 ### Reference Design
 
 This section describes the reference design for modelling the Transport Network based on Orchestration and Management perimeters (Customer vs Provider). Figure [REF ??? fig-tn-arch] depicts the high level architecture. It makes of the terms defined in {{!I-D.ietf-teas-ietf-network-slices}} with the addition of Customer Site:
-Customer: 
+Customer:
 : the Customer is an entity that is responsible for managing and orchestating the End-to-End 5G Mobile Network, notably RAN and CORE networks.
 Customer Sites:
 : The Customer manages and deploys 5G Network Functions (RAN and CORE) in Customer Sites. On top of 5G Network Function (e.g. gNB, 5GC), the Customer may manage additional TN elements and logic (e.g. servers, routers, switches, VPC Gateways...) within the Customer Site. The Customer Site can be either a physical or a virtual location. Examples of Customer Sites are a customer private locations (POP, DC), a VPC in a Public Cloud, or servers hosted within Provider or Colo service. The Orchestration of the TN within Customer Sites relies on diverse controllers for automation purposes (e.g. NFVI, Enhanced CNI, Fabric Managers, Public Cloud APIs). The detail of these is out of the scope of this document.
@@ -291,7 +291,7 @@ In subsequent sections of this document, the terms CE and PE are used for both a
 
 #####  MPLS/SRv6 Attachment Circuit
 
-In some cases, the CE router connects with the Provider thanks to Inter-AS Option B/C with the use of MPLS or SRv6 dataplanes. This use-case is furtherly described in sections {{sec-10b}} and {{sec-10c}}. The configuration of VRFs together with Control Plane identifiers such as route-targets/route-distinguishers happens on the CE. This is a source of confusion since these configurations are typical enforced on PE devices. Notwitstanding, the reference design based on Orchestration Scope prevails: the CE is managed by the Customer and the AC is based on MPLS or SRv6 dataplane technologies. Note that the complete termination of the AC within the Provider Network may happen on distinct routers: this is another example of distributed PE (e.g: in Option C, the ASBR and a remote PE in the Provider Network with VRF configuration form a distributed PE). 
+In some cases, the CE router connects with the Provider thanks to Inter-AS Option B/C with the use of MPLS or SRv6 dataplanes. This use-case is furtherly described in sections {{sec-10b}} and {{sec-10c}}. The configuration of VRFs together with Control Plane identifiers such as route-targets/route-distinguishers happens on the CE. This is a source of confusion since these configurations are typical enforced on PE devices. Notwitstanding, the reference design based on Orchestration Scope prevails: the CE is managed by the Customer and the AC is based on MPLS or SRv6 dataplane technologies. Note that the complete termination of the AC within the Provider Network may happen on distinct routers: this is another example of distributed PE (e.g: in Option C, the ASBR and a remote PE in the Provider Network with VRF configuration form a distributed PE).
 
 ~~~~
 {::include ./drawings/mpls-ac.txt}
@@ -306,9 +306,9 @@ A co-Managed CE/PE device is orchestrated by both the Customer and the Provider.
 
 ####  End-to-End 5G Slice Orchestration Architecture
 
-(???REF to figure-orch) depicts the overall Orchestration Framework for the Orchestration of an end-to-end 5G Slice. An End-to-end 5G Network Slice Orchestrator (5G NSO) is responsible for orchestrating the end-to-end 5G Slice. The details of the 5G NSO is out of the scope of this document. The realization of the end-to-end 5G Slice spans all domains: RAN, CORE and Transport. As mentionned in (REF???TS28.530), the RAN and CORE domains are elements of the 3GPP Management System, while the TN is not. The orchestration of the TN is split into two sub-domains following the reference design {{???REF}}: 
-* Provider Network Orchestration: as defined in {{!I-D.ietf-teas-ietf-network-slices}} the Provider relies on the IETF Network Slice Controller (NSC) to manage and orchestrate IETF Network Slices in the Provider Network. This framework permits to manage connectivity together with SLOs. Ultimately, the 5G NSO interfacezs with the NSC for the configuration IETF Network Slices thanks IETF APIs and Data Models. 
-* Customer Site Orchestration: the Orchestration for TN elements of the Customer Sites relies diverse controllers (e.g. Fabric Manager, Element Management System, VIM...). The realization of this section does not involve the Transport Network Orchestration. ??? 
+(???REF to figure-orch) depicts the overall Orchestration Framework for the Orchestration of an end-to-end 5G Slice. An End-to-end 5G Network Slice Orchestrator (5G NSO) is responsible for orchestrating the end-to-end 5G Slice. The details of the 5G NSO is out of the scope of this document. The realization of the end-to-end 5G Slice spans all domains: RAN, CORE and Transport. As mentionned in (REF???TS28.530), the RAN and CORE domains are elements of the 3GPP Management System, while the TN is not. The orchestration of the TN is split into two sub-domains following the reference design {{???REF}}:
+* Provider Network Orchestration: as defined in {{!I-D.ietf-teas-ietf-network-slices}} the Provider relies on the IETF Network Slice Controller (NSC) to manage and orchestrate IETF Network Slices in the Provider Network. This framework permits to manage connectivity together with SLOs. Ultimately, the 5G NSO interfacezs with the NSC for the configuration IETF Network Slices thanks IETF APIs and Data Models.
+* Customer Site Orchestration: the Orchestration for TN elements of the Customer Sites relies diverse controllers (e.g. Fabric Manager, Element Management System, VIM...). The realization of this section does not involve the Transport Network Orchestration. ???
 
 In parrallel, a 5G Network Slice Orchestrator is responsible for orchestating the end-to-end 5G Slice logic. This includes the orchestration of the Customer Network and the Transport Network. including Network Functions and the Transport Network. The Orchestration of the TN is enforced via the IETF NSC.
 
@@ -317,221 +317,35 @@ In parrallel, a 5G Network Slice Orchestrator is responsible for orchestating th
 ~~~~
 {: #figure-orch title="Generic Model vs Distributed CE and PE" artwork-align="center"}
 
-=========================
+#### TN sections and Network Slice Instantiation
 
-####  Orchestration of TN sections 
+Based on the reference design, the datapath between NFs can be decomposed into 3 main types of sections. Figure ((??? REF tn-sections.txt)) depicts the different sections that are defined below:
+*  Customer Site section: This section either connects two NFs located in the same Customer Site (e.g. NF1-NF2) or it connects a NF to a CE (e.g. NF1-CE). This section may not exist if the NF is the CE (e.g. NF3): in this case the AC connects the NF to the PE. The realization of this section is driven the 5G Network  Orchestration and potentially Customer Site Orchestration (e.g. Fabric Manager, Element Management System, VIM...). The realization of this section does not involve the Transport Network Orchestration.
+* Provider Network section: This section represents the connectivity between two PEs (e.g. PE1-PE2).The realization of this section is controlled by the IETF NSC.
+* Attachment Circuit section: the AC section represents the connectivity between a CE and PE (e.g. CE-PE1 and PE2-NF3). The orchestration of this section relies partially on the NSC for the configuration of the AC on the PE interfaces and the Customer Site Orchestration for the configuration of the AC on the CE.
 
-Based on the reference design, the datapath between NFs can be decomposed into 3 main types of sections. 
-*  Customer Site section: This section either connects two NFs located on the same Customer Site (??? insert REF) or it connects a NF to a CE. This section may not exist if the NF is the CE: in this case the AC connects the NF to the PE. The realization of this section is driven the 5G Network  Orchestration and potentially Customer Site Orchestration (e.g. Fabric Manager, Element Management System, VIM...). The realization of this section does not involve the Transport Network Orchestration.
-* Provider Network: This section represents the connectivity between two PEs (e.g. VRF).The realization of this section is controlled by the IETF NSC.
-* Attachment Circuit section: the AC section represents the connectivity between a CE and PE. The orchestration of this section relies partially the NSC for the configuration of the AC on the PE interface and the Customer Site Orchestration for the configuration of the AC on the CE.
 
+As depicted in ((??? REF tn-sections.txt)), the realization of an IETF Network Slice (i.e., connectivity with
+   performance commitments) relies on the Provider Network Section and partially on the AC (the PE-side). Note that the provisionning of new NSI may rely on a partial or full pre-provisionned section (e.g. an NSI may rely on an existing AC). Notwithstanding, a framework for the automation of both sections is proposed in this document ((??? FUTURE REF)). In parrallel, we consider the Customer Site section and as an extension of the connectivity of the
+   RAN/CN domain without complex slice-specific performances requirements: the customer site infrastructure is usually overprovisioned with short distances (low latency) where basic QoS/Scheduling logic is sufficient to grant SLOs. In other words, the main effort for the enforcement of end-to-end SLOs is managed at the NSI between PE interfaces that carry the AC.
 
 ~~~~
-{::include ./drawings/}
+{::include ./drawings/tn-sections.txt}
 ~~~~
-{: #fig-end-to-end title="TN integration in 5G E2E Slicing" artwork-align="center"}
-
-####  Transport Network Segmentation 
-
-The TN (i.e. the datapath between NFs) can be decomposed into 3 main types of sections based on Orchestration
-domains and logic:
-*  Customer Network Section: the Customer Network section is deployed within the Customer Network. This section either connects two NFs located on the same Customer Network (??? insert REF) or it connects a NF to a CE. This section may not exist if the NF is the CE: in this case the AC connects the NF to the PE. The realization of this section is driven the 5G Network  Orchestration and potentially Customer Network Orchestration (e.g. Fabric Manager, Element Management System, VIM...). The realization of this section does not involve the Transport Network Orchestration.
-*  Transport Network Section: The TN section provides connectivity between Customer Sites. This section represents the connectivity between two PEs (e.g. VRF).The orchestration of this section is controlled by the NSC.
-*  Attachment Circuit: As mentionned in previous sections, the Attachment Circuit connects the Customer Site to the ¨Provider Network. In other words, the AC section represents the connectivity between a CE and PE.  The orchestration of this section relies partially the NSC for the configuration of the AC on the PE interface and the Customer Network Orchestration logic.
+{: #fig-end-to-end title="Segmentation of the Transport Network" artwork-align="center"}
 
 
-#### Additional Segmentation
-
-More complex scenarios can happen with extra segmentation of the TN and additional TN Orchestration domains. It is not realistic to describe any design flavor, however the main concepts presented here in terms of segmentation (Provider/Customer) and stitching (AC) can be reused for the integration of more complex integrations.
-
-
-???? KEPT in case we need recycle
-
-Additionally, sites can be of
-different types (such as Edge, Data Center, or Public Cloud), each with
-specific network design, hardware dependencies, management interface,
-and diverse networking technologies (e.g., MPLS, SRv6, VXLAN, or L2VPN vs.
-L3VPN).  The objective of this section is to clarify the scope
-of the Transport Network rather than to cover random technology or
-design combination.
-
-
-   {{figure-1}} is a representation of the end-to-end datapath between NFs including Segments and ETNs (in
-   practice PE or a managed CE), where applicable.
-
-~~~ aasvg
-      SMO/Site           TN           SMO/Site
-    Orchestration   Orchestration   Orchestration
-          │               │               │
-          │               │               │
-┌ ─ ─ ─ ─ ┼ ┐      ┌ ─ ─ ─│─ ─ ─ ┐      ┌ ┼ ─ ─ ─ ─ ┐
-          │               │               │
-│   ┌──┐  ▼ │    ┌─┴─┐    ▼    ┌─┴─┐    │ ▼  ┌──┐   │
-    │NF├─────────┤ETN├─────────┤ETN├─────────┤NF│
-│   └──┘    │    └─┬─┘Transport└─┬─┘    │    └──┘   │
-  5G Site 1            Network            5G Site 2
-└ ─ ─ ─ ─ ─ ┘      └ ─ ─ ─ ─ ─ ─ ┘      └ ─ ─ ─ ─ ─ ┘
-       └─────────┘   └─────────┘   └─────────┘
-          Local          TN           Local
-         Segment       Segment       Segment
-
-                   ■─────────────■
-                 IETF Network Slice
-
-       ◀─────────────────────────────────────▶
-           End-to-end datapath between NFs
-~~~
-{: #figure-1 title=" Segmentation of the NF-NF Datapath" artwork-align="center"}
-
-   NFs may also be placed in the same site and interconnected via a
-   Local Segment.  In such a case, there is no TN Segment (i.e., no
-   Transport Network Node is present in the datapath).
-
-~~~ aasvg
-                      SMO/Site
-                    Orchestration
-                          │
-                          │
-┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
-                          │
-│   ┌──┐                  ▼                  ┌──┐   │
-    │NF├─────────────────────────────────────┤NF│
-│   └──┘                                     └──┘   │
-                       5G Site
-└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
-       └─────────────────────────────────────┘
-                    Local Segment
-
-       ◀─────────────────────────────────────▶
-           End-to-end datapath between NFs
-~~~
-{: #figure-2 title="NF-to-NF Datapath within the Same Site" artwork-align="center"}
-
-   {{figure-3}} provides samples to illustrate the  different
-   realizations of Local and TN Segments, as well the SDPs:
-
-   *  Layer 2 vs. Layer 3 Local Segment: The Local Segment can interconnect the NF
-      and the ETN thanks to a unique VLAN/LAN with no intermediate
-      routing hop (the simplest example is an NF directly connected to a
-      PE): A1, A2, A3, and A4.  Alternatively, the NF interfaces may be
-      attached in a different VLAN/LAN than the ETN interface assuming some additional local routing capabilities between the ETN and the NF (e.g., CE, IP
-      Fabric): B1, B2, B3, and B4.
-
-   *  ETN: It can be either a PE (A3, A4, B3, and B4) or a CE if it
-      is managed by the TN Orchestration (A1, A2, B1, and B2).
-
-   *  SDP: It can be located in many places as per
-      Section b 4.2 of {{!I-D.ietf-teas-ietf-network-slices}}: A1/B1 for case
-      (1), A2/B2 for case (2), A3/B3 for case (3), and A4/B4 for case
-      (4).
-
-   *  Redundancy/Scale-out: No example of redundancy/multihoming/scale-
-      out is provided for the sake of simplicification.  Nonetheless,
-      each node/NF can be represented by multiple instances (e.g.,
-      multiple containers in a cloud architecture).
-
-~~~ aasvg
-       Local Segment              Transport Network
-◀───────────────────────────▶◀─────────────────── ─ ─ ─ ─
-
-┌─────────────────────┐      ┌─────────────────── ─ ─ ─ ┐
-│ Site Type A1        │      │
-│ ┌────┐              │    ┌─■──┐    ┌────┐      .      │
-│ │ NF ├───────────────────┤ CE ├────┤ PE ├─────╱ ╲
-│ └────┘              │    └─┬──┘    └────┘    ;   :    │
-└─────────────────────┘      │                 ;   :
-┌─────────────────────┐      │                ;     :   │
-│ Site Type A2        │      │                │     │
-│ ┌────┐              │ ┌────┤       ┌────┐   │     │   │
-│ │ NF ├────────────────┤ CE ■───────┤ PE ├───│     │
-│ └────┘              │ └────┤       └────┘   ;     :   │
-└─────────────────────┘      │               ; ┌───┐ :
-┌─────────────────────┐      │               │ │ P │ │  │
-│ Site Type A3        │      │               │ └───┘ │
-│ ┌────┐              │      ├────┐          │       │  │
-│ │ NF ├─────────────────────■ PE ├──────────│       │
-│ └────┘              │      ├────┘          │       │  │
-└─────────────────────┘      │               │       │
-┌─────────────────────┐      │               │       │  │
-│ Site Type A4        │      │               ;       :
-│ ┌────┐              │    ┌─■──┐           ;         : │
-│ │ NF ├───────────────────┤ PE ├───────────│  ┌───┐  │
-│ └────┘              │    └─┬──┘           │  │ P │  │ │
-└─────────────────────┘      │              │  └───┘  │
-┌─────────────────────┐      │              │         │ │
-│ Site Type B1.───.   │      │              │         │
-│           ,'     `. │      │              │         │ │
-│          ;  Local  :│      │              │         │
-│ ┌────┐   │ Routing ││    ┌─■──┐    ┌────┐ │         │ │
-│ │ NF ├───┤ managed ├─────┤ CE ├────┤ PE ├─┤         │
-│ └────┘   : by SMO  ;│    └─┬──┘    └────┘ │         │ │
-│           ╲       ╱ │      │              │         │
-│            `.   ,'  │      │              │  ┌───┐  │ │
-│              `─'    │      │              │  │ P │  │
-└─────────────────────┘      │              │  └───┘  │ │
-┌─────────────────────┐      │              │         │
-│ Site Type B2.───.   │      │              │         │ │
-│           ,'     `. │      │              │         │
-│          ;  Local  :│      │              │         │ │
-│ ┌────┐   │ Routing ││ ┌────┤       ┌────┐ │         │
-│ │ NF ├───┤ managed ├──┤ CE ■───────┤ PE ├─┤         │ │
-│ └────┘   : by SMO  ;│ └────┤       └────┘ │         │
-│           ╲       ╱ │      │              │         │ │
-│            `.   ,'  │      │              │  ┌───┐  │
-│              `─'    │      │              │  │ P │  │ │
-└─────────────────────┘      │              │  └───┘  │
-┌─────────────────────┐      │              │         │ │
-│ Site Type B3.───.   │      │              :         ;
-│           ,'     `. │      │               :       ;  │
-│          ;  Local  :│      │               │       │
-│ ┌────┐   │ Routing ││      ├────┐          │       │  │
-│ │ NF ├───┤ managed ├───────■ PE ├──────────│       │
-│ └────┘   : by SMO  ;│      ├────┘          │       │  │
-│           ╲       ╱ │      │               │       │
-│            `.   ,'  │      │               │ ┌───┐ │  │
-│              `─'    │      │               │ │ P │ │
-└─────────────────────┘      │               : └───┘ ;  │
-┌─────────────────────┐      │                :     ;
-│ Site Type B4.───.   │      │                │     │   │
-│           ,'     `. │      │                │     │
-│          ;  Local  :│      │                │     │   │
-│ ┌────┐   │ Routing ││    ┌─■──┐             :     ;
-│ │ NF │───┤ managed ├─────┤ PE ├──────────────:   ;    │
-│ └────┘   : by SMO  ;│    └─┬──┘              │   │
-│           ╲       ╱ │      │                 :   ;    │
-│            `.   ,'  │      │                  ╲ ╱
-│              `─'    │      │                   '      │
-└─────────────────────┘      └──────────────────── ─ ─ ─
-
-                          ├───────────────┤
-                                 ETN
-
-             ■ Service Demarcation Point
-~~~
-{: #figure-3 title="Examples of various combinations of Local Segments, ETN, and SDP" artwork-align="center"}
-
-###  Orchestration of Local Segment Terminations at ETNs
-
-[ ??? FIX REVIEW  this is not orchestration 
-To start with, we assume that a 5G Network Slice Orchestrator is responsible for the orchestration of end-to-end 5G Slice. This includes the configuration of slices for the RAN and CORE domains  (i.e. 5G  Network Functions) and the Transport domain (i.e. NF-NF datapath). (??? add ref to framework for customer/provider naming) This document splits the orchestration Transport domain into two main building blocks:
-- Customer Site: the customer site contains the 5G Network Functions and optionally additional routing devices.
-- Provider Network: the Provider Network interconnects customer sites (i.e. WAN).]
-
-   The interconnection between a 5G site and the Transport Network is
-   made up of shared networking resources.  More precisely, the Local
-   Segment terminates to an interface of the ETN, which must be
-   configured with consistent dataplane network information (e.g.,  VLAN-
-   ID and IP addresses/subnets).  Hence, the realization of this
-   interconnection requires a coordination between the Service
-   Management and Orchestration (SMO) and the Transport Orchestration (IETF
-   NSC).  In this document, and aligned with {{?RFC8969}}, we assume that this coordination is based upon
-   standard YANG data models and APIs (more details in further sections).
-
-   {{figure-4}} is a basic example of a Layer 3 CE-PE link realization
-   with shared network resources, such as VLAN-ID and IP prefixes, which
-   must be passed between Orchestrators via the Network Slice Service Interface ({{?I-D.ietf-teas-ietf-network-slice-nbi-yang}}) or an Attachement Circuit Service Interface ({{?I-D.boro-opsawg-teas-attachment-circuit}}).
-
+Resource synchronization for the realization of the Attachment Circuit:
+:
+The realization Attachment Circuit is
+made up of shared networking resources.  More precisely, a PE and a CE connected via an AC must be
+provisionned with consistent dataplane and control plane network information (e.g.,  VLAN-
+ID and IP addresses/subnets or BGP AS).  Hence, the realization of this
+interconnection requires a coordination between the Customer Site Orchestration and the NSC. In this document, and aligned with {{?RFC8969}}, we assume that this coordination is based upon standard YANG data models and APIs (more details in further sections).
+{{figure-4}} is a basic example of a Layer 3 CE-PE link realization
+with shared network resources, such as VLAN-ID and IP prefixes, which
+must be passed between Orchestrators via the Network Slice Service Interface. This document proposes to rely on IETF service data models to manage this complexity: ({{?I-D.ietf-teas-ietf-network-slice-nbi-yang}}) or an Attachement Circuit Service Interface ({{?I-D.boro-opsawg-teas-attachment-circuit}}).
+??? UPDATE DIAGRAM
 ~~~ aasvg
      Datapath network resources (e.g., VLAN-IDs or IP
     prefixes) exchanged via SMO-NSC interface (NSI)
@@ -550,7 +364,7 @@ To start with, we assume that a 5G Network Slice Orchestrator is responsible for
   │NF├──────┤CE├──────────────────────────┤PE│
 │ └──┘      └──┘  │      VLAN 100      │  └──┘           │
        Site
-│                 │                    │        TN       │
+│                 │                    │        Provider Network      │
  ─ ─ ─ ─ ─ ─ ─ ─ ─                      ─ ─ ─ ─ ─ ─ ─ ─ ─
 
     └────────────────────────────────────┘
@@ -558,12 +372,9 @@ To start with, we assume that a 5G Network Slice Orchestrator is responsible for
 ~~~
 {: #figure-4 title="An Example of Data Exchange" artwork-align="center"}
 
-   Note that the allocation of these resources (e.g.,  VLAN-IDs or IP prefixes)
-   can be either managed by the SMO or the Transport Network.  In other
-   words, the initial SMO request for the creation of a new IETF Network
-   Slice on a given 5G site may or may not include all network
-   resources.  In the latter case, this information is exchanged in a
-   second step.
+#### Additional Segmentation
+
+More complex scenarios can happen with extra segmentation of the TN and additional TN Orchestration domains. It is not realistic to describe any design flavor, however the main concepts presented here in terms of segmentation (Provider/Customer) and stitching (AC) can be reused for the integration of more complex integrations.
 
 ## 5G Slice to IETF Network Slice Mapping
 
