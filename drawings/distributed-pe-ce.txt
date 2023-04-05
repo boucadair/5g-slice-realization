@@ -6,7 +6,7 @@
            │    ├──────────────────┤    │              
 │          └────┘                  └──┬─┘             │
  ─ ─ ─ ─ ─ ─ ─ ┘                       ─ ─ ─ ─ ─ ─ ─ ─ 
-                  i) Generic Model                     
+                i) Reference Design                    
 ┌ ─ ─ ─ ─ ─ ─ ─                       ┌ ─ ─ ─ ─ ─ ─ ─ ┐
     Customer   │                          Provider     
 │     Site                            │    Network    │
