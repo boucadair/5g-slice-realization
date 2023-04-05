@@ -251,9 +251,9 @@ Appendix {{sec-5g-intro}} provides an  overview of 5G Networking. It is advised 
 
 ##  Segmentation of the Transport Network
 
-###  Generic Model
+### Reference Design
 
-This section describe a generic model for the Transport Network based on Orchestration and Management perimeters (Customer vs Provider). Figure [REF ??? fig-tn-arch] depicts the high level architecture. It makes of the terms defined in {{!I-D.ietf-teas-ietf-network-slices}} with the addition of Customer Site:
+This section describes the reference design for modelling the Transport Network based on Orchestration and Management perimeters (Customer vs Provider). Figure [REF ??? fig-tn-arch] depicts the high level architecture. It makes of the terms defined in {{!I-D.ietf-teas-ietf-network-slices}} with the addition of Customer Site:
 Customer: 
 : the Customer is an entity that is responsible for managing and orchestating the End-to-End 5G Mobile Network, notably RAN and CORE networks.
 Customer Sites:
@@ -265,14 +265,14 @@ Provider Network:
 Customer Edge (CE):
 : The CE is a device managed by the customer that provides logical connectivity to the Provider Network. The logical connectivity is enforced at Layer 2 and/or Layer 3 and is denominated an Attachment Circuit. Examples of CEs include TN Function (router, switch, Firewalls) and also 5G Network Function (i.e. an element of 5G domain such as CU, DU, UPF...). This document generalizes the definition of a CE with the introduction of Distributed CEs introduced in {{sec-distributed}}.
 Provider Edge (PE):
-: The PE is a device managed by the Provider that is connected to the CE. The connectivity between the CE and the PE is achieved thanks to an Attachment Circuit. The PE function usually binds ACs to VPN services. This document generalizes the definition of a PE with the introduction of Distributed PEs introduced in {{sec-distributed}}.
+: The PE is a device managed by the Provider that is connected to the CE. The connectivity between the CE and the PE is achieved thanks to an Attachment Circuit. The PE function usually binds ACs to VPN services. This document generalizes the definition of a PE with the introduction of Distributed PEs introduced in {{sec-distributed}}. T
 Attachment Circuit (AC):
 : The attachment circuit is the logical connection that attaches a CE to a PE in the Provider Network. A CE is connected to the PE thanks to one or multiple ACs. ACs are usually bound to a VPN service within the Provider Network. An AC is technology-specific. For consistency with data model terminology (insert ref ???), we assume that an AC is configured on a “bearer”, which represents the underlying connectivity. Examples of ACs are VLANs (AC) configured on a physical interface (bearer) or an Overlay VXLAN EVI (AC) configured on IP underlay (bearer).
 
 ~~~~
 {::include ./drawings/pe-ce-ac.txt}
 ~~~~
-{: #fig-tn-arch title="TN split in customer and provider domains" artwork-align="center"}
+{: #fig-tn-arch title="Reference Design: Customer Sites and Provider Network" artwork-align="center"}
 
 
 ####  Distributed PE and CE {#sec-distributed}
@@ -291,7 +291,12 @@ In subsequent sections of this document, the terms CE and PE are used for both a
 
 #####  MPLS/SRv6 Attachment Circuit
 
-In some cases, the CE router connects with the Provider thanks to Inter-AS Option B/C (FIXREF ???). In this case, the configuration of VRFs together with Control Plane identifiers such as route-targets/route-distinguishers happens on the CE. This is a source of confusion since these are typical enforced on PE devices. The definition based on Orchestration Scope prevails: the CE is managed by the Customer and the AC is based on MPLS or SRv6 dataplane technologies.
+In some cases, the CE router connects with the Provider thanks to Inter-AS Option B/C with the use of MPLS or SRv6 dataplanes. This use-case is furtherly described in sections {{sec-10b}} and {{sec-10c}}. In this case, the configuration of VRFs together with Control Plane identifiers such as route-targets/route-distinguishers happens on the CE. This is a source of confusion since these configurations are typical enforced on PE devices. Notwitstanding, the reference design based on Orchestration Scope prevails: the CE is managed by the Customer and the AC is based on MPLS or SRv6 dataplane technologies. Note that the complete termination of the AC within the Provider Network may happen on distinct routers: this is another example of distributed PE (e.g: in Option C, the ASBR and a remote PE with the VRF configuration form the distributed PE). 
+
+~~~~
+{::include ./drawings/}
+~~~~
+{: #figure-50 title="MPLS or SRv6 Attachment Circuit" artwork-align="center"}
 
 #####  Co-Managed CE / PE
 
@@ -299,16 +304,18 @@ Another variation is a co-Managed CE/PE device which is orchestrated by both the
 
 ###  TN Slice Orchestration
 
-####  End-to-End Orchestration Logic 
+####  End-to-End 5G Slice Orchestration Architecture
 
+To start with,  an End-to-end 5G Network Slice Orchestrator (5G NSO) is responsible for orchestrating the end-to-end 5G Slice. The details of the 5G NSO is out of the scope of this document. The realization of the end-to-end 5G Slice spans all domains: RAN, CORE and Transport. As mentionned in (REF???TS28.530), the RAN and CORE domains are elements of the 3GPP Management System, while the TN is not directly managed by 3GPP. The orchestration of the TN is split into two sub-domains following the reference design {{???REF}}: 
+* Provider Network Orchestration: as defined in {{!I-D.ietf-teas-ietf-network-slices}} the Provider relies on the IETF Network Slice Controller (NSC) to manage and orchestrate IETF Network Slices in the Provider Network. This framework permits to manage connectivity together with SLOs. Ultimately, the 5G NSO interfacezs with the NSC for the configuration IETF Network Slices thanks IETF APIs and Data Models. 
+* Customer Site Orchestration: the Orchestration for TN elements of the Customer Sites relies diverse controllers (e.g. Fabric Manager, Element Management System, VIM...). The realization of this section does not involve the Transport Network Orchestration. ??? 
 
-The interconnection service is achieved thanks to IETF Network Slices (INS). The Provider relies on the IETF Network Slice Controller (NSC) to manage and orchestrate the IETF Network Slices in the Provider Network. 
-
-Customer:
-: A Customer is an entity that relies on the Provider Network (e.g. WAN) for interconnecting customer sites. In the context of this document, the customer manages and orchestates the 5G Mobile Network. The Customer site hosts notably 5G Network Functions for RAN and CORE Networks.
-
-Additionally, the orchestration of the TN is based on the IETF NSC.
 In parrallel, a 5G Network Slice Orchestrator is responsible for orchestating the end-to-end 5G Slice logic. This includes the orchestration of the Customer Network and the Transport Network. including Network Functions and the Transport Network. The Orchestration of the TN is enforced via the IETF NSC.
+
+~~~~
+{::include ./drawings/tn-orchestration.txt}
+~~~~
+{: #figure-51 title="Generic Model vs Distributed CE and PE" artwork-align="center"}
 
 
 =========================
@@ -316,7 +323,7 @@ In parrallel, a 5G Network Slice Orchestrator is responsible for orchestating th
 ####  Segmentation Orchestration
 
 The datapath between NFs can be decomposed into 3 main types of sections based on Orchestration domains or  logic:
- *  Customer Site: the Customer site is deployed within the Customer Network. This section either connects two NFs located on the same Customer Network (??? insert REF} or it connects a NF to a CE. This section may not exist if the NF is the CE: in this case the AC connects the NF to the PE. The realization of this section is driven the 5G Network  Orchestration and potentially Customer Network Orchestration (e.g. Fabric Manager, Element Management System, VIM...). The realization of this section does not involve the Transport Network Orchestration.
+ *  Customer Site: the Customer site is deployed within the Customer Network. This section either connects two NFs located on the same Customer Network (??? insert REF) or it connects a NF to a CE. This section may not exist if the NF is the CE: in this case the AC connects the NF to the PE. The realization of this section is driven the 5G Network  Orchestration and potentially Customer Network Orchestration (e.g. Fabric Manager, Element Management System, VIM...). The realization of this section does not involve the Transport Network Orchestration.
   *Provider Network: The TN section provides connectivity between Customer Networks. This section represents the connectivity between two PEs (e.g. VRF).The realization of this section is controlled by the NSC.
   *  Attachment Circuit section: As mentionned in previous sections, the Attachment Circuit connects the Customer Network to the Transport Network. In other words, the AC section represents the connectivity between a CE and PE.  The orchestration of this section relies partially the NSC for the configuration of the AC on the PE interface and the Customer Network Orchestration logic.
 
@@ -325,21 +332,11 @@ This includes the orchestration  Customer and Transport Network
 This document defines the Transport Network with a service provider scope (i.e. WAN ).
 The role of the TN is to interconnect Cutomer Networks (e.g. 5G sites with 5G Network Functions).
 
-This document makes of the terms defined in {{!I-D.ietf-teas-ietf-network-slices}}:
-* The TN extends up to the Provider Edge (PE).
-* The PE is logically connected to the Customer Network via an Attachment Circuit.
-* The CE is a device managed by the customer (i.e. 5G Network Orchestration) that provides logical connectivity to the Transport Network via the Attachment Circuit. The CE can be a 5G Network Function (i.e. an element of 5G domain), or a TN Function (router, switch).
-We also assume that the Transport Network is based on IP, MPLS or SRv6 technologies. Additionally, the orchestration of the TN is based on the IETF NSC.
-In parrallel, a 5G Network Slice Orchestrator is responsible for orchestating the end-to-end 5G Slice logic. This includes the orchestration of the Customer Network and the Transport Network. including Network Functions and the Transport Network. The Orchestration of the TN is enforced via the IETF NSC.
 
 ~~~~
 {::include ./drawings/end-to-end-TN.fig}
 ~~~~
 {: #fig-end-to-end title="TN integration in 5G E2E Slicing" artwork-align="center"}
-
-Deployments may not strictly fit with the generic PE/CE definition above. For example, the provider can mandate the use of a  Managed CE (aka Managed CPE) when providing VPNs services. Conversely, a CE (i.e. managed by the customer) may implement an MPLS/SRv6 PE function when connected to the Provider network via inter-AS MPLS/SRv6 techniques (e.g. Option B as per [??? REF]). These common Use-Cases introduce confusion in the existing terminology (PE or CE) and the actual location of the Attachment Circuit. The following sections clarifies these aspects.
-
-??? Define the Customer Network Orchestration logic.
 
 ======================================OLD ------------------------- CHECK
 ###  Segmentation of the NF-to-NF Datapath
