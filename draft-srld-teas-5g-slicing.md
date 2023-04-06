@@ -202,7 +202,7 @@ An extended list of abbreviations used in this document is provided in {{ext-abb
 
 ## Forewords: scope of the Transport Network
 
-{{sec-5g-intro}} provides an  overview of 5G Networking. Notably, it introduces the main building blocks of a 5G Network such as the RAN, CORE and Transport Network. The 3GPP specifications loosely define the Transport Network and its integration in RAN and CN domains: it is a non 3GPP-managed sytem that interconnects Mobile Network Functions (NFs). Practically, the interconnection (i.e. the TN) may not map with a monolithic architecture and management domain. It is frequently segmented, non-uniform and managed by different entities. For Example, {{fig-1}} depicts a NF deployed in an Edge Data Centers connected to  a NF  in a Public Cloud thanks to a WAN network (e.g. MPLS-VPN service). Here, the TN can be interpreted as an abstraction representing an end-to-end connectivity based on 3 distinct IP networking domains: DC, WAN and Public Cloud. A model for the Transport Network based on orchestration domains is introduced later in this document. This model permits to define more precisely where IETF Network Slice applies. 
+{{sec-5g-intro}} provides an  overview of 5G Networking. Notably, it introduces the main building blocks of a 5G Network such as the RAN, CORE and Transport Network. The 3GPP specifications loosely define the Transport Network and its integration in RAN and CN domains: it is a non 3GPP-managed sytem that interconnects Mobile Network Functions (NFs). Practically, the interconnection (i.e. the TN) may not map with a monolithic architecture and management domain. It is frequently segmented, non-uniform and managed by different entities. For Example, {{fig-1}} depicts a NF deployed in an Edge Data Centers connected to  a NF  in a Public Cloud thanks to a WAN network (e.g. MPLS-VPN service). Here, the TN can be interpreted as an abstraction representing an end-to-end connectivity based on 3 distinct IP networking domains: DC, WAN and Public Cloud. A model for the Transport Network based on orchestration domains is introduced later in this document. This model permits to define more precisely where IETF Network Slice applies.
 
 ~~~~
      ┌──────────────────────────────────┐
@@ -226,7 +226,7 @@ An extended list of abbreviations used in this document is provided in {{ext-abb
 ~~~~
 {: #fig-1 title="Transport Network vs RAN and CORE Network" artwork-align="center"}
 
-TN as disambiguuation:
+TN as disambiguation:
 
 : Additionally, the term Transport Network is used for diambiguiation with 5G Networking (e.g. IP, packet-based forwarding vs RAN and CORE NF Orchestration). By extension, the disambiguation applies to Transport Network Slicing with refer to End-to-End 5G Network Slicing (cf. {{sec-5gtn}} ) as well the Management domains: RAN, Core and TN domains.
 
