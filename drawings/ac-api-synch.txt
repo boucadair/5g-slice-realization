@@ -1,6 +1,6 @@
       ┌─────────────┐                ┌──────────────────┐ 
       │Customer Site│  IETF APIs/DM  │     IETF NSC     │ 
-      │Orchestration│ ◀────────────▶ │(Provider Network │ 
+      │Orchestration│ ◀───────────▶ │(Provider Network │ 
       │             │                │ Orcherstration)  │ 
       │             │                │                  │ 
       └────────────┬┘                └┬─────────────────┘ 

@@ -374,10 +374,10 @@ As depicted in {{fig-end-to-end}}, the realization of an IETF Network Slice (i.e
 
 Resource synchronization for AC provisionning:
 
-The realization Attachment Circuit is made up of TN resources shared between the Customer Site Orchestration and the Provider Network Orchestration (i.e. NSC).  More precisely, a PE and a CE connected via an AC must be
+The realization of the Attachment Circuit is made up of TN resources shared between the Customer Site Orchestration and the Provider Network Orchestration (i.e. NSC).  More precisely, a PE and a CE connected via an AC must be
 provisionned with consistent dataplane and control plane network information (e.g.,  VLAN-
 ID and IP addresses/subnets or BGP AS).  Hence, the realization of this
-interconnection requires a coordination between the Customer Site Orchestration and the NSC. Automation for provisionning and managing the AC is a prereqsuisite. Hence, aligned with {{?RFC8969}}, we assume that this coordination is based upon standard YANG data models and IETF APIs (more details in further sections).
+interconnection is technology-specific and requires a coordination between the Customer Site Orchestration and the NSC. Automation for provisionning and managing the AC is a prereqsuisite. Hence, aligned with {{?RFC8969}}, we assume that this coordination is based upon standard YANG data models and IETF APIs (more details in further sections).
 {{figure-4}} is a basic example of a Layer 3 CE-PE link realization
 with shared network resources, such as VLAN-ID and IP prefixes, which
 must be passed between Orchestrators via the Network Slice Service Interface. This document proposes to rely on IETF service data models: ({{?I-D.ietf-teas-ietf-network-slice-nbi-yang}}) or an Attachement Circuit Service Interface ({{?I-D.boro-opsawg-teas-attachment-circuit}}).
