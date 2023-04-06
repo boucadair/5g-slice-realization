@@ -2,7 +2,7 @@
 
 This is the working area for the individual Internet-Draft, "A Realization of IETF Network Slices for 5G Networks Using Current IP/MPLS Technologies".
 
-* [Editor's Copy](https://robric.github.io/5g-slice-realization/#go.draft-srld-teas-5g-slicing.html)
+* [Editor's Copy](https://boucadair.github.io/5g-slice-realization/#go.draft-srld-teas-5g-slicing.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-srld-teas-5g-slicing)
 * [Individual Draft](https://datatracker.ietf.org/doc/html/draft-srld-teas-5g-slicing)
 * [Compare Editor's Copy to Individual Draft](https://boucadair.github.io/5g-slice-realization/#go.draft-srld-teas-5g-slicing.diff)
