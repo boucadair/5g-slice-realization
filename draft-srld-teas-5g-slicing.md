@@ -320,7 +320,7 @@ In some cases, the CE router connects with the Provider thanks to Inter-AS Optio
 ~~~~
 {::include ./drawings/mpls-ac.txt}
 ~~~~
-{: #figure-50 title="MPLS or SRv6 Attachment Circuit" artwork-align="center"}
+{: #figure-51 title="MPLS or SRv6 Attachment Circuit" artwork-align="center"}
 
 #####  Co-Managed CE / PE
 
@@ -350,8 +350,8 @@ Based on the reference design, the datapath between NFs can be decomposed into 3
 
 
 As depicted in ((??? REF tn-sections.txt)), the realization of an IETF Network Slice (i.e., connectivity with
-   performance commitments) relies on the Provider Network Section and partially on the AC (the PE-side). Note that the provisionning of new NSI may rely on a partial or full pre-provisionned section (e.g. an NSI may rely on an existing AC). Notwithstanding, a framework for the automation of both sections is proposed in this document ((??? FUTURE REF)). In parrallel, we consider the Customer Site section and as an extension of the connectivity of the
-   RAN/CN domain without complex slice-specific performances requirements: the customer site infrastructure is usually overprovisioned with short distances (low latency) where basic QoS/Scheduling logic is sufficient to grant SLOs. In other words, the main effort for the enforcement of end-to-end SLOs is managed at the NSI between PE interfaces that carry the AC.
+   performance commitments) relies on the Provider Network Section and partially on the AC (the PE-side). Note that the provisionning of new NSI may rely on a partial or full pre-provisionned section (e.g. an NSI may rely on an existing AC). Notwithstanding, a framework for the automation of both sections is proposed in this document ((??? FUTURE REF)). The Customer Site section is considered as an extension of the connectivity of the
+   RAN/CN domain without complex slice-specific performances requirements: the customer site infrastructure is usually overprovisioned with short distances (low latency) where basic QoS/Scheduling logic is sufficient to comply with SLOs. In other words, the main focus for the enforcement of end-to-end SLOs is managed at the NSI between PE interfaces connected to the AC.
 
 ~~~~
 {::include ./drawings/tn-sections.txt}
@@ -369,9 +369,9 @@ with shared network resources, such as VLAN-ID and IP prefixes, which
 must be passed between Orchestrators via the Network Slice Service Interface. This document proposes to rely on IETF service data models: ({{?I-D.ietf-teas-ietf-network-slice-nbi-yang}}) or an Attachement Circuit Service Interface ({{?I-D.boro-opsawg-teas-attachment-circuit}}).
 
 ~~~~
-{::include ./drawings/ac-synch.txt}
+{::include ./drawings/ac-api-synch.txt}
 ~~~~
-{: #figure-4 title="An Example of Data Exchange" artwork-align="center"}
+{: #figure-4 title="Coordination of TN ressources for the AC provisionning" artwork-align="center"}
 
 #### Additional Segmentation
 
