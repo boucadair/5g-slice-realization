@@ -343,7 +343,7 @@ A co-Managed CE device is orchestrated by both the Customer and the Provider. In
 
 * Provider Network Orchestration: as defined in {{!I-D.ietf-teas-ietf-network-slices}} the Provider relies on the IETF Network Slice Controller (NSC) to manage and orchestrate IETF Network Slices in the Provider Network. This framework permits to manage connectivity together with SLOs. Ultimately, the 5G NSO interfacezs with the NSC for the configuration IETF Network Slices thanks IETF APIs and Data Models.
 
-* Customer Site Orchestration: the Orchestration for TN elements of the Customer Sites relies diverse controllers (e.g. Fabric Manager, Element Management System, VIM...). The realization of this section does not involve the Transport Network Orchestration. ???
+* Customer Site Orchestration: the Orchestration for TN elements of the Customer Sites relies diverse controllers (e.g. Fabric Manager, Element Management System, VIM...). The realization of this section does not involve the Transport Network Orchestration.
 
 In parallel, a 5G Network Slice Orchestrator is responsible for orchestating the end-to-end 5G Slice logic. This includes the orchestration of the Customer Network and the Transport Network. including Network Functions and the Transport Network. The Orchestration of the TN is enforced via the IETF NSC.
 
@@ -354,13 +354,13 @@ In parallel, a 5G Network Slice Orchestrator is responsible for orchestating the
 
 #### TN sections and Network Slice Instantiation
 
-Based on the reference design, the datapath between NFs can be decomposed into 3 main types of sections. Figure ((??? REF tn-sections.txt)) depicts the different sections that are defined below:
+Based on the reference design, the datapath between NFs can be decomposed into 3 main types of sections. {{fig-end-to-end}} depicts the different sections:
 *  Customer Site section: This section either connects two NFs located in the same Customer Site (e.g. NF1-NF2) or it connects a NF to a CE (e.g. NF1-CE). This section may not exist if the NF is the CE (e.g. NF3): in this case the AC connects the NF to the PE. The realization of this section is driven the 5G Network  Orchestration and potentially Customer Site Orchestration (e.g. Fabric Manager, Element Management System, VIM...). The realization of this section does not involve the Transport Network Orchestration.
 * Provider Network section: This section represents the connectivity between two PEs (e.g. PE1-PE2).The realization of this section is controlled by the IETF NSC.
 * Attachment Circuit section: the AC section represents the connectivity between a CE and PE (e.g. CE-PE1 and PE2-NF3). The orchestration of this section relies partially on the NSC for the configuration of the AC on the PE interfaces and the Customer Site Orchestration for the configuration of the AC on the CE.
 
 
-As depicted in ((??? REF tn-sections.txt)), the realization of an IETF Network Slice (i.e., connectivity with
+As depicted in {{fig-end-to-end}}, the realization of an IETF Network Slice (i.e., connectivity with
    performance commitments) relies on the Provider Network Section and partially on the AC (the PE-side). Note that the provisionning of new NSI may rely on a partial or full pre-provisionned section (e.g. an NSI may rely on an existing AC). Notwithstanding, a framework for the automation of both sections is proposed in this document ((??? FUTURE REF)). The Customer Site section is considered as an extension of the connectivity of the
    RAN/CN domain without complex slice-specific performances requirements: the customer site infrastructure is usually overprovisioned with short distances (low latency) where basic QoS/Scheduling logic is sufficient to comply with SLOs. In other words, the main focus for the enforcement of end-to-end SLOs is managed at the NSI between PE interfaces connected to the AC.
 
@@ -370,8 +370,7 @@ As depicted in ((??? REF tn-sections.txt)), the realization of an IETF Network S
 {: #fig-end-to-end title="Segmentation of the Transport Network" artwork-align="center"}
 
 Resource synchronization for the realization of the Attachment Circuit:
-:
-The realization Attachment Circuit is made up of TN resources shared between the Customer Site Orchestration and the Provider Network Orchestration (i.e. NSC).  More precisely, a PE and a CE connected via an AC must be
+: The realization Attachment Circuit is made up of TN resources shared between the Customer Site Orchestration and the Provider Network Orchestration (i.e. NSC).  More precisely, a PE and a CE connected via an AC must be
 provisionned with consistent dataplane and control plane network information (e.g.,  VLAN-
 ID and IP addresses/subnets or BGP AS).  Hence, the realization of this
 interconnection requires a coordination between the Customer Site Orchestration and the NSC. Automation for provisionning and managing the AC is a prereqsuisite. Hence, aligned with {{?RFC8969}}, we assume that this coordination is based upon standard YANG data models and IETF APIs (more details in further sections).
