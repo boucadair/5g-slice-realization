@@ -334,49 +334,26 @@ As depicted in ((??? REF tn-sections.txt)), the realization of an IETF Network S
 ~~~~
 {: #fig-end-to-end title="Segmentation of the Transport Network" artwork-align="center"}
 
-
 Resource synchronization for the realization of the Attachment Circuit:
 :
-The realization Attachment Circuit is
-made up of shared networking resources.  More precisely, a PE and a CE connected via an AC must be
+The realization Attachment Circuit is made up of TN resources shared between the Customer Site Orchestration and the Provider Network Orchestration (i.e. NSC).  More precisely, a PE and a CE connected via an AC must be
 provisionned with consistent dataplane and control plane network information (e.g.,  VLAN-
 ID and IP addresses/subnets or BGP AS).  Hence, the realization of this
-interconnection requires a coordination between the Customer Site Orchestration and the NSC. In this document, and aligned with {{?RFC8969}}, we assume that this coordination is based upon standard YANG data models and APIs (more details in further sections).
+interconnection requires a coordination between the Customer Site Orchestration and the NSC. Automation for provisionning and managing the AC is a prereqsuisite. Hence, aligned with {{?RFC8969}}, we assume that this coordination is based upon standard YANG data models and IETF APIs (more details in further sections).
 {{figure-4}} is a basic example of a Layer 3 CE-PE link realization
 with shared network resources, such as VLAN-ID and IP prefixes, which
-must be passed between Orchestrators via the Network Slice Service Interface. This document proposes to rely on IETF service data models to manage this complexity: ({{?I-D.ietf-teas-ietf-network-slice-nbi-yang}}) or an Attachement Circuit Service Interface ({{?I-D.boro-opsawg-teas-attachment-circuit}}).
-??? UPDATE DIAGRAM
-~~~ aasvg
-     Datapath network resources (e.g., VLAN-IDs or IP
-    prefixes) exchanged via SMO-NSC interface (NSI)
+must be passed between Orchestrators via the Network Slice Service Interface. This document proposes to rely on IETF service data models: ({{?I-D.ietf-teas-ietf-network-slice-nbi-yang}}) or an Attachement Circuit Service Interface ({{?I-D.boro-opsawg-teas-attachment-circuit}}).
 
-      ┌ ─ ─ ─ ─ ─ ─ ┐                ┌ ─ ─ ─ ─ ─ ─ ┐
-                                           TN
-      │             │                │Orchestration│
-        SMO / Site     IETF APIs/DM
-      │Orchestration│ ◀────────────▶ │  IETF NSC   │
-       ─ ─ ─ ─ ─ ─ ─                  ─ ─ ─ ─ ─ ─ ─
-                │                        │
-                │                        │
-┌ ─ ─ ─ ─ ─ ─ ─ ┼ ┐                    ┌ ┼ ─ ─ ─ ─ ─ ─ ─ ┐
-                ▼                        ▼
-│ ┌──┐      ┌──┐.1│    192.0.2.0/31    │.0┌──┐           │
-  │NF├──────┤CE├──────────────────────────┤PE│
-│ └──┘      └──┘  │      VLAN 100      │  └──┘           │
-       Site
-│                 │                    │        Provider Network      │
- ─ ─ ─ ─ ─ ─ ─ ─ ─                      ─ ─ ─ ─ ─ ─ ─ ─ ─
-
-    └────────────────────────────────────┘
-                 Local Segment
-~~~
+~~~~
+{::include ./drawings/ac-synch.txt}
+~~~~
 {: #figure-4 title="An Example of Data Exchange" artwork-align="center"}
 
 #### Additional Segmentation
 
 More complex scenarios can happen with extra segmentation of the TN and additional TN Orchestration domains. It is not realistic to describe any design flavor, however the main concepts presented here in terms of segmentation (Provider/Customer) and stitching (AC) can be reused for the integration of more complex integrations.
 
-## 5G Slice to IETF Network Slice Mapping
+## 5G Slice to TN Slice mapping
 
    There are multiple options to map a 5G network slice to IETF Network
    Slices:
