@@ -300,7 +300,15 @@ Attachment Circuit (AC):
 {: #fig-tn-arch title="Reference Design: Customer Sites and Provider Network" artwork-align="center"}
 
 ####  Distributed PE and CE {#sec-distributed}
-??? temp removed due to bug
+
+This document introduces the concept of distributed CEs and PEs. This approach consolidates a generic definition of CE/PE/AC that is consistent with the orchestration perimeters. The CEs and PEs delimit respectively the Customer and Provider Orchestration domains, while the AC interconnects these domains.
+
+{{figure-dist}} depicts the reference model (i) together with examples of distributed CE and PE use-cases:
+~~~~
+{::include ./drawings/distributed-pe-ce.txt}
+~~~~
+{: #figure-dist title="Generic Model vs Distributed CE and PE" artwork-align="center"}
+
 
 ####  MPLS/SRv6 Attachment Circuit
 
