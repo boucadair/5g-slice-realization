@@ -290,8 +290,7 @@ This section describes the reference design for modelling the Transport Network 
 This document introduces the concept of distributed CEs and PEs. This approach provides a generic definition of CE/PE/AC that is consistent with the orchestration perimeters. The CEs and PEs delimit respectively the Customer and Provider Orchestration domains, while the AC interconnects these domains.
 
 (REF ??? figure below) represents the generic model for CE and PE together with examples of distributed CE and PE use-cases:
-* Distributed CE - the logical connectivity is realized thanks to the configuration of multiple devices in the Customer Domain. The CE function is distributed. An example of such a distribution is the realization of an interconnection with an L3 VPN service based on a distributed CE composed of an L2 switch and an L3 router (example ii).
-* Distributed PE - the logical connectivity is realized thanks to the configuration of multiple devices in the Transport Network (provider Orchestration domain). The PE function is distributed. An example of a distributed PE is the “Managed CE service” as it is commonly named in the industry. In this case, a provider supplies VPN services based on CE and PE which are both managed by the provider (example iii). The “Managed CE” use case is a frequent source of confusion, since the actual Edge (Customer vs Provider) does not map with the Orchestration perimeters. For this purpose, these two elements are considered as distributed PE. The managed CE can also be a Data Center Gateway as depicted in example iv.
+
 
 In subsequent sections of this document, the terms CE and PE are used for both a single device and a distributed device.
 ~~~~
