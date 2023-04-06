@@ -345,9 +345,9 @@ with shared network resources, such as VLAN-ID and IP prefixes, which
 must be passed between Orchestrators via the Network Slice Service Interface. This document proposes to rely on IETF service data models: ({{?I-D.ietf-teas-ietf-network-slice-nbi-yang}}) or an Attachement Circuit Service Interface ({{?I-D.boro-opsawg-teas-attachment-circuit}}).
 
 ~~~~
-{::include ./drawings/ac-synch.txt}
+{::include ./drawings/ac-api-synch.txt}
 ~~~~
-{: #figure-4 title="An Example of Data Exchange" artwork-align="center"}
+{: #figure-4 title="Coordination of TN ressources for the AC provisionning" artwork-align="center"}
 
 #### Additional Segmentation
 
