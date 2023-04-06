@@ -1,0 +1,21 @@
+      Coordination of TN Network resources for PE an      
+      CE (i.e., VLAN ID, IP prefixes) via IETF APIs       
+                                                          
+      ┌─────────────┐                ┌──────────────────┐ 
+      │Customer Site│                │     IETF NSC     │ 
+      │Orchestration│                │(Provider Network │ 
+      │             │  IETF APIs/DM  │ Orcherstration)  │ 
+      │             │ ◀────────────▶ │                  │ 
+      └────────────┬┘                └┬─────────────────┘ 
+                   │                  │                   
+                   │                  │                   
+┌ ─ ─ ─ ─ ─ ─ ─ ─ ─│┐                ┌│─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
+                   │                  │┌────┐             
+│ ┌──┐       ┌────┐▼│   192.0.2.0/31 │▼│    │            │
+  │NF├───────│ CE ├────────────────────┤ PE │             
+│ └──┘       └────┘.1    VLAN 100    .0│    │            │
+      Customer                         └────┘Provider     
+│       Site        │                │       Network     │
+ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─                  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ 
+                  □──────────AC────────□                  
+                                                          
