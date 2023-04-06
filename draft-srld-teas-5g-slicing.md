@@ -277,20 +277,26 @@ An extended list of abbreviations used in this document is provided in {{ext-abb
 
 ### Reference Design {#sec-ref-design}
 
-This section describes the reference design for modelling the Transport Network based on Orchestration and Management perimeters (Customer vs Provider). Figure (REF ??? fig-tn-arch) depicts the high level architecture. It makes of the terms defined in {{!I-D.ietf-teas-ietf-network-slices}} with the addition of Customer Site:
+This section describes the reference design for modelling the Transport Network based on Orchestration and Management perimeters (Customer vs Provider). Figure {{fig-tn-arch}} depicts the reference design. It makes use of the terms defined in {{!I-D.ietf-teas-ietf-network-slices}} with the addition of Customer Site:
 
 Customer:
 : the Customer is an entity that is responsible for managing and orchestating the End-to-End 5G Mobile Network, notably RAN and CORE networks.
+
 Customer Sites:
 : The Customer manages and deploys 5G Network Functions (RAN and CORE) in Customer Sites. On top of 5G Network Function (e.g. gNB, 5GC), the Customer may manage additional TN elements and logic (e.g. servers, routers, switches, VPC Gateways...) within the Customer Site. The Customer Site can be either a physical or a virtual location. Examples of Customer Sites are a customer private locations (POP, DC), a VPC in a Public Cloud, or servers hosted within Provider or Colo service. The Orchestration of the TN within Customer Sites relies on diverse controllers for automation purposes (e.g. NFVI, Enhanced CNI, Fabric Managers, Public Cloud APIs). The detail of these is out of the scope of this document.
+
 Provider:
 : a provider is an entity responsible for interconnecting Customer Sites. The Provider orchestrates and manages the Provider Network.
+
 Provider Network:
 : the Provider relies on the Provider Network to interconnect Customer Sites. We assume in this document that the Provider Network is based on IP, MPLS or SRv6 technologies.
+
 Customer Edge (CE):
 : The CE is a device managed by the customer that provides logical connectivity to the Provider Network. The logical connectivity is enforced at Layer 2 and/or Layer 3 and is denominated an Attachment Circuit. Examples of CEs include TN Function (router, switch, Firewalls) and also 5G Network Function (i.e. an element of 5G domain such as CU, DU, UPF...). This document generalizes the definition of a CE with the introduction of Distributed CEs introduced in {{sec-distributed}}.
+
 Provider Edge (PE):
 : The PE is a device managed by the Provider that is connected to the CE. The connectivity between the CE and the PE is achieved thanks to an Attachment Circuit. The PE function usually binds ACs to VPN services. This document generalizes the definition of a PE with the introduction of Distributed PEs introduced in {{sec-distributed}}. T
+
 Attachment Circuit (AC):
 : The attachment circuit is the logical connection that attaches a CE to a PE in the Provider Network. A CE is connected to the PE thanks to one or multiple ACs. ACs are usually bound to a VPN service within the Provider Network. An AC is technology-specific. For consistency with data model terminology (insert ref ???), we assume that an AC is configured on a “bearer”, which represents the underlying connectivity. Examples of ACs are VLANs (AC) configured on a physical interface (bearer) or an Overlay VXLAN EVI (AC) configured on IP underlay (bearer).
 
