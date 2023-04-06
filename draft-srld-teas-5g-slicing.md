@@ -355,8 +355,11 @@ In parallel, a 5G Network Slice Orchestrator is responsible for orchestating the
 ### TN sections and Network Slice Instantiation
 
 Based on the reference design, the datapath between NFs can be decomposed into 3 main types of sections. {{fig-end-to-end}} depicts the different sections:
+
 *  Customer Site section: This section either connects two NFs located in the same Customer Site (e.g. NF1-NF2) or it connects a NF to a CE (e.g. NF1-CE). This section may not exist if the NF is the CE (e.g. NF3): in this case the AC connects the NF to the PE. The realization of this section is driven the 5G Network  Orchestration and potentially Customer Site Orchestration (e.g. Fabric Manager, Element Management System, VIM...). The realization of this section does not involve the Transport Network Orchestration.
+
 * Provider Network section: This section represents the connectivity between two PEs (e.g. PE1-PE2).The realization of this section is controlled by the IETF NSC.
+
 * Attachment Circuit section: the AC section represents the connectivity between a CE and PE (e.g. CE-PE1 and PE2-NF3). The orchestration of this section relies partially on the NSC for the configuration of the AC on the PE interfaces and the Customer Site Orchestration for the configuration of the AC on the CE.
 
 
