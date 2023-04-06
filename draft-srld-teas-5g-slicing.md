@@ -277,7 +277,7 @@ An extended list of abbreviations used in this document is provided in {{ext-abb
 
 ### Reference Design {#sec-ref-design}
 
-This section describes the reference design for modelling the Transport Network based on Orchestration and Management perimeters (Customer vs Provider). Figure {{fig-tn-arch}} depicts the reference design. It makes use of the terms defined in {{!I-D.ietf-teas-ietf-network-slices}} with the addition of Customer Site:
+This section describes the reference design for modelling the Transport Network based on Orchestration and Management perimeters (Customer vs Provider). {{fig-tn-arch}} depicts the reference design. It makes use of the terms defined in {{!I-D.ietf-teas-ietf-network-slices}} with the addition of Customer Site:
 
 Customer:
 : the Customer is an entity that is responsible for managing and orchestating the End-to-End 5G Mobile Network, notably RAN and CORE networks.
