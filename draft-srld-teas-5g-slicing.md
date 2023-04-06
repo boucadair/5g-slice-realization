@@ -299,7 +299,7 @@ In subsequent sections of this document, the terms CE and PE are used for both a
 ~~~~
 {: #figure-50 title="Generic Model vs Distributed CE and PE" artwork-align="center"}
 
-#####  MPLS/SRv6 Attachment Circuit
+####  MPLS/SRv6 Attachment Circuit
 
 In some cases, the CE router connects with the Provider thanks to Inter-AS Option B/C with the use of MPLS or SRv6 dataplanes. This use-case is furtherly described in sections {{sec-10b}} and {{sec-10c}}. The configuration of VRFs together with Control Plane identifiers such as route-targets/route-distinguishers happens on the CE. This is a source of confusion since these configurations are typical enforced on PE devices. Notwitstanding, the reference design based on Orchestration Scope prevails: the CE is managed by the Customer and the AC is based on MPLS or SRv6 dataplane technologies. Note that the complete termination of the AC within the Provider Network may happen on distinct routers: this is another example of distributed PE (e.g: in Option C, the ASBR and a remote PE in the Provider Network with VRF configuration form a distributed PE).
 
@@ -308,9 +308,9 @@ In some cases, the CE router connects with the Provider thanks to Inter-AS Optio
 ~~~~
 {: #figure-51 title="MPLS or SRv6 Attachment Circuit" artwork-align="center"}
 
-#####  Co-Managed CE / PE
+####  Co-Managed CE
 
-A co-Managed CE/PE device is orchestrated by both the Customer and the Provider. In this case, Customer and Provider usually have control on distinct device configuration perimeters (e.g. Customer is responsible for the LAN interface, Provider is responsible for the WAN interface and Routing). Considering the generic model, the device has both PE and CE function and there is no strict AC connection, although we may consider that the AC stitching logic happens internally within the box. (??? need discussion on this particular + add link/ref with framework ???)
+A co-Managed CE device is orchestrated by both the Customer and the Provider. In this case, Customer and Provider usually have control on distinct device configuration perimeters (e.g. Customer is responsible for the LAN interface, Provider is responsible for the WAN interface and Routing). Considering the generic model, the device has both PE and CE function and there is no strict AC connection, although we may consider that the AC stitching logic happens internally within the box. (??? need discussion on this particular + add link/ref with framework ???)
 
 ###  TN Slice Orchestration
 
