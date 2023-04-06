@@ -275,9 +275,7 @@ Additionally, the term Transport Network is used for disambiguation with 5G Netw
       describe the slice in the Transport Network domain of the overall 5G
       architecture, composed from RAN, TN, and CN domains.
 
-##  Segmentation of the Transport Network
-
-### Reference Design {#sec-ref-design}
+## TN Reference Design {#sec-ref-design}
 
 This section describes the reference design for modelling the Transport Network based on Orchestration and Management perimeters (Customer vs Provider). {{fig-tn-arch}} depicts the reference design. It makes use of the terms defined in {{!I-D.ietf-teas-ietf-network-slices}} with the addition of Customer Site:
 
@@ -307,7 +305,7 @@ Attachment Circuit (AC):
 ~~~~
 {: #fig-tn-arch title="Reference Design: Customer Sites and Provider Network" artwork-align="center"}
 
-####  Distributed PE and CE {#sec-distributed}
+###  Distributed PE and CE {#sec-distributed}
 
 This document introduces the concept of distributed CEs and PEs. This approach consolidates a definition of CE/PE/AC that is consistent with orchestration perimeters. The CEs and PEs delimit respectively the Customer and Provider Orchestration domains, while the AC interconnects these domains.
 
@@ -324,7 +322,7 @@ In subsequent sections of this document, the terms CE and PE are used for both a
 {: #fig-50 title="Generic Model vs Distributed CE and PE" artwork-align="center"}
 
 
-####  MPLS/SRv6 Attachment Circuit
+###  MPLS/SRv6 Attachment Circuit
 
 In some cases, the CE router connects with the Provider thanks to Inter-AS Option B/C with the use of MPLS or SRv6 dataplanes. This use-case is furtherly described in sections {{sec-10b}} and {{sec-10c}}. The configuration of VRFs together with Control Plane identifiers such as route-targets/route-distinguishers happens on the CE. This is a source of confusion since these configurations are typically enforced on PE devices. Notwitstanding, the reference design based on Orchestration Scope prevails: the CE is managed by the Customer and the AC is based on MPLS or SRv6 dataplane technologies. Note that the complete termination of the AC within the Provider Network may happen on distinct routers: this is another example of distributed PE (e.g: in Option C, the ASBR and a remote PE in the Provider Network with VRF configuration form a distributed PE).
 
@@ -333,13 +331,13 @@ In some cases, the CE router connects with the Provider thanks to Inter-AS Optio
 ~~~~
 {: #figure-51 title="MPLS or SRv6 Attachment Circuit" artwork-align="center"}
 
-####  Co-Managed CE
+###  Co-Managed CE
 
 A co-Managed CE device is orchestrated by both the Customer and the Provider. In this case, Customer and Provider usually have control on distinct device configuration perimeters (e.g. Customer is responsible for the LAN interface, Provider is responsible for the WAN interface and Routing). Considering the generic model, the device has both PE and CE function and there is no strict AC connection, although we may consider that the AC stitching logic happens internally within the box. (??? need discussion on this particular + add link/ref with framework ???)
 
-###  TN Slice Orchestration
+##  Orchestration Overview
 
-####  End-to-End 5G Slice Orchestration Architecture
+###  End-to-End 5G Slice Orchestration Architecture
 
 {{figure-orch}} depicts a global framework for the orchestration of an end-to-end 5G Slice. An End-to-end 5G Network Slice Orchestrator (5G NSO) is responsible for orchestrating the end-to-end 5G Slice. The details of the 5G NSO is out of the scope of this document. The realization of the end-to-end 5G Slice spans all domains: RAN, CORE and Transport. As mentionned in {{TS-28.530}}, the RAN and CORE domains are elements of the 3GPP Management System, while the TN is not. The orchestration of the TN is split into two sub-domains following the reference design {#sec-ref-design}:
 
@@ -354,7 +352,7 @@ In parallel, a 5G Network Slice Orchestrator is responsible for orchestating the
 ~~~~
 {: #figure-orch title="Generic Model vs Distributed CE and PE" artwork-align="center"}
 
-#### TN sections and Network Slice Instantiation
+### TN sections and Network Slice Instantiation
 
 Based on the reference design, the datapath between NFs can be decomposed into 3 main types of sections. {{fig-end-to-end}} depicts the different sections:
 *  Customer Site section: This section either connects two NFs located in the same Customer Site (e.g. NF1-NF2) or it connects a NF to a CE (e.g. NF1-CE). This section may not exist if the NF is the CE (e.g. NF3): in this case the AC connects the NF to the PE. The realization of this section is driven the 5G Network  Orchestration and potentially Customer Site Orchestration (e.g. Fabric Manager, Element Management System, VIM...). The realization of this section does not involve the Transport Network Orchestration.
@@ -363,7 +361,7 @@ Based on the reference design, the datapath between NFs can be decomposed into 3
 
 
 As depicted in {{fig-end-to-end}}, the realization of an IETF Network Slice (i.e., connectivity with
-   performance commitments) relies on the Provider Network Section and partially on the AC (the PE-side). Note that the provisionning of new NSI may rely on a partial or full pre-provisionned section (e.g. an NSI may rely on an existing AC). Notwithstanding, a framework for the automation of both sections is proposed in this document ((??? FUTURE REF)). The Customer Site section is considered as an extension of the connectivity of the
+   performance commitments) involves the Provider Network Section and partially the AC (the PE-side). Note that the provisionning of new NSI may rely on a partial or full pre-provisionned section (e.g. an NSI may rely on an existing AC). Notwithstanding, a framework for the automation of both sections is proposed in this document ((??? FUTURE REF)). The Customer Site section is considered as an extension of the connectivity of the
    RAN/CN domain without complex slice-specific performances requirements: the customer site infrastructure is usually overprovisioned with short distances (low latency) where basic QoS/Scheduling logic is sufficient to comply with SLOs. In other words, the main focus for the enforcement of end-to-end SLOs is managed at the NSI between PE interfaces connected to the AC.
 
 ~~~~
@@ -371,9 +369,9 @@ As depicted in {{fig-end-to-end}}, the realization of an IETF Network Slice (i.e
 ~~~~
 {: #fig-end-to-end title="Segmentation of the Transport Network" artwork-align="center"}
 
-Resource synchronization for the realization of the AC:
+Resource synchronization for AC provisionning:
 
-: The realization Attachment Circuit is made up of TN resources shared between the Customer Site Orchestration and the Provider Network Orchestration (i.e. NSC).  More precisely, a PE and a CE connected via an AC must be
+The realization Attachment Circuit is made up of TN resources shared between the Customer Site Orchestration and the Provider Network Orchestration (i.e. NSC).  More precisely, a PE and a CE connected via an AC must be
 provisionned with consistent dataplane and control plane network information (e.g.,  VLAN-
 ID and IP addresses/subnets or BGP AS).  Hence, the realization of this
 interconnection requires a coordination between the Customer Site Orchestration and the NSC. Automation for provisionning and managing the AC is a prereqsuisite. Hence, aligned with {{?RFC8969}}, we assume that this coordination is based upon standard YANG data models and IETF APIs (more details in further sections).
@@ -386,7 +384,7 @@ must be passed between Orchestrators via the Network Slice Service Interface. Th
 ~~~~
 {: #figure-4 title="Coordination of TN ressources for the AC provisionning" artwork-align="center"}
 
-#### Additional Segmentation
+### Additional Segmentation and Domains
 
 More complex scenarios can happen with extra segmentation of the TN and additional TN Orchestration domains. It is not realistic to describe any design flavor, however the main concepts presented here in terms of segmentation (Provider/Customer) and stitching (AC) can be reused for the integration of more complex integrations.
 
