@@ -226,8 +226,9 @@ An extended list of abbreviations used in this document is provided in {{ext-abb
 ~~~~
 {: #fig-1 title="Transport Network vs RAN and CORE Network" artwork-align="center"}
 
-Networking 
-Additionally, the term Transport Network is used to disambiguate 5G Networking (i.e. RAN and CORE NF Orchestration) with the NF-NF interconnection (e.g. IP, packet-based forwarding). By extension, the disambiguation applies to Transport Network Slicing with refer to End-to-End 5G Network Slicing (cf. {{sec-5gtn}} ) as well the Management domains: RAN, Core and TN domains.
+TN as disambiguuation:
+
+: Additionally, the term Transport Network is used for diambiguiation with 5G Networking (e.g. IP, packet-based forwarding vs RAN and CORE NF Orchestration). By extension, the disambiguation applies to Transport Network Slicing with refer to End-to-End 5G Network Slicing (cf. {{sec-5gtn}} ) as well the Management domains: RAN, Core and TN domains.
 
 ##  5G Network Slicing versus Transport Network Slicing {#sec-5gtn}
 
