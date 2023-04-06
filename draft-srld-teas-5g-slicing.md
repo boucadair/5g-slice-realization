@@ -303,11 +303,12 @@ Attachment Circuit (AC):
 
 This document introduces the concept of distributed CEs and PEs. This approach consolidates a generic definition of CE/PE/AC that is consistent with the orchestration perimeters. The CEs and PEs delimit respectively the Customer and Provider Orchestration domains, while the AC interconnects these domains.
 
-{{figure-dist}} depicts the reference model (i) together with examples of distributed CE and PE use-cases:
+{{fig-50}} depicts the reference model (i) together with examples of distributed CEs and PEs.
+
 ~~~~
 {::include ./drawings/distributed-pe-ce.txt}
 ~~~~
-{: #figure-dist title="Generic Model vs Distributed CE and PE" artwork-align="center"}
+{: #fig-50 title="Generic Model vs Distributed CE and PE" artwork-align="center"}
 
 
 ####  MPLS/SRv6 Attachment Circuit
