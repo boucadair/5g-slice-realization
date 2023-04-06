@@ -275,7 +275,7 @@ Appendix {{sec-5g-intro}} provides an  overview of 5G Networking. It is advised 
 
 ##  Segmentation of the Transport Network
 
-### Reference Design
+### Reference Design {#sec-ref-design}
 
 This section describes the reference design for modelling the Transport Network based on Orchestration and Management perimeters (Customer vs Provider). Figure (REF ??? fig-tn-arch) depicts the high level architecture. It makes of the terms defined in {{!I-D.ietf-teas-ietf-network-slices}} with the addition of Customer Site:
 
@@ -319,7 +319,7 @@ A co-Managed CE device is orchestrated by both the Customer and the Provider. In
 
 ####  End-to-End 5G Slice Orchestration Architecture
 
-(???REF to figure-orch) depicts the overall Orchestration Framework for the Orchestration of an end-to-end 5G Slice. An End-to-end 5G Network Slice Orchestrator (5G NSO) is responsible for orchestrating the end-to-end 5G Slice. The details of the 5G NSO is out of the scope of this document. The realization of the end-to-end 5G Slice spans all domains: RAN, CORE and Transport. As mentionned in (REF???TS28.530), the RAN and CORE domains are elements of the 3GPP Management System, while the TN is not. The orchestration of the TN is split into two sub-domains following the reference design {{???REF}}:
+(???REF to figure-orch) depicts the overall Orchestration Framework for the Orchestration of an end-to-end 5G Slice. An End-to-end 5G Network Slice Orchestrator (5G NSO) is responsible for orchestrating the end-to-end 5G Slice. The details of the 5G NSO is out of the scope of this document. The realization of the end-to-end 5G Slice spans all domains: RAN, CORE and Transport. As mentionned in (REF???TS28.530), the RAN and CORE domains are elements of the 3GPP Management System, while the TN is not. The orchestration of the TN is split into two sub-domains following the reference design {#sec-ref-design}:
 * Provider Network Orchestration: as defined in {{!I-D.ietf-teas-ietf-network-slices}} the Provider relies on the IETF Network Slice Controller (NSC) to manage and orchestrate IETF Network Slices in the Provider Network. This framework permits to manage connectivity together with SLOs. Ultimately, the 5G NSO interfacezs with the NSC for the configuration IETF Network Slices thanks IETF APIs and Data Models.
 * Customer Site Orchestration: the Orchestration for TN elements of the Customer Sites relies diverse controllers (e.g. Fabric Manager, Element Management System, VIM...). The realization of this section does not involve the Transport Network Orchestration. ???
 
