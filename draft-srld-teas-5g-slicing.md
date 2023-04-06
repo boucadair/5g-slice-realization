@@ -284,20 +284,6 @@ This section describes the reference design for modelling the Transport Network 
 ~~~~
 {: #fig-tn-arch title="Reference Design: Customer Sites and Provider Network" artwork-align="center"}
 
-
-####  Distributed PE and CE {#sec-distributed}
-
-This document introduces the concept of distributed CEs and PEs. This approach provides a generic definition of CE/PE/AC that is consistent with the orchestration perimeters. The CEs and PEs delimit respectively the Customer and Provider Orchestration domains, while the AC interconnects these domains.
-
-(REF ??? figure below) represents the generic model for CE and PE together with examples of distributed CE and PE use-cases:
-
-
-In subsequent sections of this document, the terms CE and PE are used for both a single device and a distributed device.
-~~~~
-{::include ./drawings/distributed-pe-ce.txt}
-~~~~
-{: #figure-50 title="Generic Model vs Distributed CE and PE" artwork-align="center"}
-
 ####  MPLS/SRv6 Attachment Circuit
 
 In some cases, the CE router connects with the Provider thanks to Inter-AS Option B/C with the use of MPLS or SRv6 dataplanes. This use-case is furtherly described in sections {{sec-10b}} and {{sec-10c}}. The configuration of VRFs together with Control Plane identifiers such as route-targets/route-distinguishers happens on the CE. This is a source of confusion since these configurations are typical enforced on PE devices. Notwitstanding, the reference design based on Orchestration Scope prevails: the CE is managed by the Customer and the AC is based on MPLS or SRv6 dataplane technologies. Note that the complete termination of the AC within the Provider Network may happen on distinct routers: this is another example of distributed PE (e.g: in Option C, the ASBR and a remote PE in the Provider Network with VRF configuration form a distributed PE).
