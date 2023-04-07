@@ -1,11 +1,12 @@
                                                                   
-                          IETF NETWORK SLICE                      
-                        ■─────────────────────■                   
-                        │          │          │                   
+       ●──────────────────────TN Slice────────────────●           
+                                                                  
+                        ■─────IETF NETWORK────■                   
+                        │        SLICE        │                   
                         │          │          │                   
                         │          │          │                   
                         ▽          ▽          ▽                   
-       □──CS──□ □───AC──■ □────────PN───────□ ■───CS───□          
+       ●──CS──□ □───AC──■ □────────PN───────□ ■───AC──●           
   ┌ ─ ─ ─ ─ ─ ─ ┐          ┌ ─ ─ ─ ─ ─ ─ ─ ┐          ┌ ─ ─ ─ ─ ─ 
       Customer                  Provider                Customer │
   │     Site    │          │    Network    │          │   Site    
@@ -20,7 +21,7 @@ CS │NF1├────┤ CE ├ ─ ─ ─│ PE │           │ PE ├ �
    └───┘                                                         │
   └ ─ ─ ─ ─ ─ ─ ┘          └ ─ ─ ─ ─ ─ ─ ─ ┘          └ ─ ─ ─ ─ ─ 
                                                                   
-    □──────□  TN sections:                                        
-              CS= Customer Site                                   
-              AC= AC                                              
-              PN= Provider Network                                
+  □──────□  TN sections:                                          
+            CS= Customer Site                                     
+            AC= AC                                                
+            PN= Provider Network                                  
