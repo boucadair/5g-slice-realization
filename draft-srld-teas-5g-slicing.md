@@ -264,10 +264,10 @@ Additionally, the term "Transport Network" is used for disambiguation with 5G ne
       possible to implement 5G Network Slicing without TN
       Slicing, as explained in the next section.
 
-      TN Slicing is implemented using IETF technologies, therefore, inline with
+      TN Slicing is implemented using IETF technologies as described in
       {{!I-D.ietf-teas-ietf-network-slices}}.
 
-      In this document, the term "IETF Network Slice" (IETF NS, or INS in short) is used to
+      Although IETF Network Slices can be use more generally, the term "IETF Network Slice" (IETF NS, or INS in short) is used in this document to
       describe the slice in the Transport Network domain of the overall 5G
       architecture, composed from RAN, TN, and CN domains.
 
@@ -379,7 +379,7 @@ ID and IP addresses/subnets or BGP AS).  Hence, the realization of this
 interconnection is technology-specific and requires a coordination between the Customer Site Orchestration and the NSC. Automation for provisionning and managing the AC is a prereqsuisite. Hence, aligned with {{?RFC8969}}, we assume that this coordination is based upon standard YANG data models and IETF APIs (more details in further sections).
 {{figure-4}} is a basic example of a Layer 3 CE-PE link realization
 with shared network resources, such as VLAN-ID and IP prefixes, which
-must be passed between Orchestrators via the Network Slice Service Interface. This document proposes to rely on IETF service data models: ({{?I-D.ietf-teas-ietf-network-slice-nbi-yang}}) or an Attachment Circuit Service Interface ({{?I-D.boro-opsawg-teas-attachment-circuit}}).
+is passed between Orchestrators via the Network Slice Service Interface. This document proposes to rely upon IETF service data models: ({{?I-D.ietf-teas-ietf-network-slice-nbi-yang}}) or an Attachment Circuit Service Interface ({{?I-D.boro-opsawg-teas-attachment-circuit}}).
 
 ~~~~
 {::include ./drawings/ac-api-synch.txt}
@@ -569,7 +569,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
       conditioning'.  The main purpose is the enforcement of the
       bandwidth contract for the slice right at the edge of the
       transport domain where the traffic is handed-off between the
-      transport domain and the 5G domains (i.e., RAN/Core).
+      transport domain and the 5G domains (i.e., RAN/CN).
 
       The toolset used here is granular ingress policing (rate limiting)
       to enforce contracted bandwidths per slice and, potentially, per
@@ -581,11 +581,9 @@ Specifically, the actual mapping is a design choice of service operators that ma
       providing guaranteed rates per slice, as well as guarantees per
       traffic class within each slice.
 
-      In the managed CE use cases (use cases A1, A2, B1, and B2 depicted in
-      {{figure-7}}), edge admission control could be distributed between CE
-      and PE, where one part of the edge admission control is
-      implemented on the CE, and another part of the edge admission control
-      is implemented on the PE.
+      For managed CEs, edge admission control can be distributed between CEs
+      and PEs, where a part of the admission control is implemented on the CE
+      and other part of the admission control is implemented on the PE.
 
    *  Coarse resource control at the TN transit (non-attachment
       circuits) links of the transport domain, using a single NRP, spanning the entire TN domain.
@@ -625,14 +623,14 @@ Specifically, the actual mapping is a design choice of service operators that ma
     ■ fine-grained QoS (dedicated resources per IETF NS)
     □ coarse QoS, with resources shared by all IETF NSes
 ~~~
-{: #figure-8 title="Resource Allocation in with single NRP Slicing Model" artwork-align="center"}
+{: #figure-8 title="Resource Allocation Slicing Model with a Single NRP" artwork-align="center"}
 
-   The 5G control plane relies upon the S-NSSAI (Single Network Slice
-   Selection Assistance Information: 32-bit slice identifier) for slice
-   identification.  The S-NSSAI is not visible to the transport domain,
-   so instead 5G functions can expose the 5G slices to the transport
-   domain by mapping to explicit L2/L3 identifiers such as VLAN-ID, IP
-   addresses, or Differentiated Services Code Point (DSCP) as documented in {{?I-D.gcdrb-teas-5g-network-slice-application}}.
+   The 5G control plane relies upon the Single Network Slice
+   Selection Assistance Information (S-NSSAI) 32-bit slice identifier for slice
+   identification.  The S-NSSAI is not visible to the transport domain.
+   So instead, 5G functions can expose the 5G slices to the transport
+   domain by mapping to explicit Layer 2 or Layer 3 identifiers, such as VLAN-IDs, IP
+   addresses, or Differentiated Services Code Point (DSCP). More details about the mapping between 3GPP and IETF network slices is provided in {{?I-D.gcdrb-teas-5g-network-slice-application}}.
 
 ##  VLAN Hand-off {#sec-vlan-handoff}
 
