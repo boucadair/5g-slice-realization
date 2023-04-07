@@ -186,9 +186,7 @@ informative:
    A brief 5G overview is provided in {{sec-5g-intro}} for readers' convenience. The reader may refer to {{?RFC6459}} and {{TS-23.501}} for more
    details about 3GPP network architectures.
 
-# Conventions and Definitions
-
-{::boilerplate bcp14-tagged}
+# Definitions
 
 The document uses the terms defined in {{!I-D.ietf-teas-ietf-network-slices}}.
 
@@ -648,8 +646,8 @@ Specifically, the actual mapping is a design choice of service operators that ma
    simplification it is recommended to rely on the same VLAN identifier
    for all ACs, when possible.  However, SDPs for a same slice at
    different locations may also use different VLAN values.  Therefore, a
-   VLAN to IETF Network Slice mapping table MUST be maintained for each
-   AC, and the VLAN allocation MUST be coordinated between TN orchestration and
+   VLAN to IETF Network Slice mapping table must be maintained for each
+   AC, and the VLAN allocation must be coordinated between TN orchestration and
    local segment orchestration.  Thus, while VLAN hand-off is simple from
    the NF point of view, it adds complexity due to the requirement of
    maintaining mapping tables for each SDP.
@@ -1227,9 +1225,9 @@ representing slices              representing slices    slices
    {{figure-18}} outlines the outbound edge resource control model at the
    transport network layer for 5QI-unaware slices.  Each slice is
    assigned a single egress queue.  The sum of slice CIRs, used as the
-   weight in weighted queueing model, MUST NOT exceed the physical
+   weight in weighted queueing model, must not exceed the physical
    capacity of the attachment circuit.  Slice requests above this limit
-   MUST be rejected by the NSC, unless an already established slice with
+   must be rejected by the NSC, unless an already established slice with
    lower priority, if such exists, is preempted.
 
 ~~~ aasvg
@@ -1491,9 +1489,9 @@ to TN QoS Classes may be rather common.
    {{figure-22}} outlines the outbound edge resource control model at the
    transport network layer for 5QI-aware slices.  Each slice is assigned
    multiple egress queues.  The sum of queue weights (equal to 5Q QoS
-   CIRs within the slice) CIRs MUST NOT exceed the CIR of the slice
+   CIRs within the slice) CIRs must not exceed the CIR of the slice
    itself.  And, similarly to the 5QI-aware model, the sum of slice CIRs
-   MUST NOT exceed the physical capacity of the attachment circuit.
+   must not exceed the physical capacity of the attachment circuit.
 
 ~~~ aasvg
    ┌─────────┐        QoS output queues
