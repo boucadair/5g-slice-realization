@@ -321,12 +321,14 @@ In subsequent sections of this document, the terms CE and PE are used for both a
 
 ###  MPLS/SRv6 Attachment Circuit
 
-In some cases, a CE connects with the Provider using the Inter-AS Option B/C with the use of MPLS or SRv6 data planes. This use case is furtherly referred to in sections {{sec-10b}} and {{sec-10c}}. The configuration of VRFs together with control plane identifiers, such as route-targets/route-distinguishers happens on the CE. This is a source of confusion since these configurations are typically enforced on PE devices. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the Customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the Provider Network may happen on distinct routers: this is another example of distributed PE (e.g., in Option C, the ASBR and a remote PE in the Provider Network with VRF configuration form a distributed PE).
+In some cases, a CE connects with the Provider using the Inter-AS Option B/C with the use of MPLS or SRv6 data planes. An example is depicted in {{figure-51}}. The configuration of VRFs together with control plane identifiers, such as route-targets/route-distinguishers happens on the CE. This is a source of confusion since these configurations are typically enforced on PE devices. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the Customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the Provider Network may happen on distinct routers: this is another example of distributed PE (e.g., in Option C, the ASBR and a remote PE in the Provider Network with VRF configuration form a distributed PE).
 
 ~~~~
 {::include ./drawings/mpls-ac.txt}
 ~~~~
 {: #figure-51 title="MPLS or SRv6 Attachment Circuit" artwork-align="center"}
+
+This use case is also referred to in {{sec-10b}} and {{sec-10c}}.
 
 ###  Co-Managed CE
 
@@ -551,7 +553,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
 
    *  L2VPN/L3VPN service instances for logical separation:
 
-      This realization model of transport for 5G slices assumes Layer-3
+      This realization model of transport for 5G slices assumes Layer 3
       delivery for midhaul and backhaul transport connections, and a
       Layer 2 or Layer 3 for
       fronthaul connections. eCPRI supports both delivery models. L2VPN/L3VPN service instances might be
