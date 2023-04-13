@@ -191,11 +191,11 @@ An extended list of abbreviations used in this document is provided in {{ext-abb
 
 #  5G Network Slicing Integration in Transport Networks
 
-## Forewords: Scope of the Transport Network
+## Scope of the Transport Network
 
-{{sec-5g-intro}} provides an  overview of 5G network segements, notably the Radion Access Network (RAN), Core Network (CN), and Transport Network (TN). The 3GPP specifications loosely define the Transport Network and its integration in RAN and CN: it is an unmanaged 3GPP system that interconnects Network Functions (NFs). Practically, the interconnection (i.e., the TN) may not map with a monolithic architecture and management domain. It is frequently segmented, non-uniform and managed by different entities. For example, {{fig-1}} depicts a NF instance that is deployed in an Edge Data Center connected to a NF located in a Public Cloud via a WAN network (e.g., MPLS-VPN service). Here, the TN can be interpreted as an abstraction representing an end-to-end connectivity based on three distinct IP domains: DC, WAN, and Public Cloud. A model for the Transport Network based on orchestration domains is introduced later in this document. This model permits to define more precisely where IETF Network Slice applies.
+{{sec-5g-intro}} provides an overview of 5G network segments, notably the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN). The 3GPP specifications loosely define the Transport Network and its integration in RAN and CN: it is an unmanaged 3GPP system that interconnects Network Functions (NFs). Practically, the interconnection (i.e., the TN) may not map with a monolithic architecture and management domain. It is frequently segmented, non-uniform and managed by different entities. For example, {{fig-1}} depicts a NF instance that is deployed in an edge data center (DC) connected to a NF located in a Public Cloud via a WAN network (e.g., MPLS-VPN service). The TN can be interpreted as an abstraction representing an end-to-end connectivity based on three distinct IP/MPLS domains: DC, WAN, and Public Cloud. A model for the Transport Network based on orchestration domains is introduced in {{sec-orch}}. This model permits to define more precisely where IETF Network Slice applies.
 
-~~~~ aasvg
+~~~~
      ┌──────────────────────────────────┐
   ┌──│         5G RAN or CN             │──┐
   │  └──────────────────────────────────┘  │
@@ -217,7 +217,7 @@ An extended list of abbreviations used in this document is provided in {{ext-abb
 ~~~~
 {: #fig-1 title="Transport Network vs RAN and CN" artwork-align="center"}
 
-Additionally, the term "Transport Network" is used for disambiguation with 5G network (e.g., IP, packet-based forwarding vs RAN and CORE Networking). By extension, the disambiguation applies to Transport Network Slicing with refer to End-to-End 5G Network Slicing (see {{sec-5gtn}}) as well the management domains: RN, CN, and TN domains.
+The term "Transport Network" is used for disambiguation with 5G network (e.g., IP, packet-based forwarding vs RAN and CN). Consequently, the disambiguation applies to Transport Network Slicing vs.  End-to-End 5G Network Slicing (see {{sec-5gtn}}) as well the management domains: RAN, CN, and TN domains.
 
 ##  5G Network Slicing versus Transport Network Slicing {#sec-5gtn}
 
@@ -271,7 +271,7 @@ Additionally, the term "Transport Network" is used for disambiguation with 5G ne
 This section describes the reference design for modelling the Transport Network based on Orchestration and Management perimeters (Customer vs. Provider). {{fig-tn-arch}} depicts the reference design used in this document. This section makes use of the terms defined in {{!I-D.ietf-teas-ietf-network-slices}} with the addition of Customer Site.
 
 Customer:
-: An entity that is responsible for managing and orchestating the End-to-End 5G Mobile Network, notably RANs and CNs.
+: An entity that is responsible for managing and orchestrating the End-to-End 5G Mobile Network, notably RANs and CNs.
 
 Customer Sites:
 : A Customer manages and deploys 5G Network Functions (RAN and CN) in Customer Sites. On top of 5G Network Function (e.g., gNB, 5GC), a Customer may manage additional TN elements (e.g., servers, routers, switches, or VPC Gateways) within a Customer Site. A Customer Site can be either a physical or a virtual location. Examples of Customer Sites are a customer private locations (POP, DC), a VPC in a Public Cloud, or servers hosted within Provider or colocation service. The Orchestration of the TN within Customer Sites relies upon a set of controllers for automation purposes (e.g., NFVI, Enhanced CNI, Fabric Managers, or Public Cloud APIs). The detail of these is out of the scope of this document.
@@ -300,9 +300,9 @@ Attachment Circuit (AC):
 
 ###  Distributed PE and CE {#sec-distributed}
 
-This document introduces the concept of distributed CEs and PEs. This approach consolidates a definition of CE/PE/AC that is consistent with the orchestration perimeters. The CEs and PEs delimit respectively the Customer and Provider Orchestration domains, while the AC interconnects these domains.
+This document uses the concept of distributed CEs and PEs. This approach consolidates a definition of CE/PE/AC that is consistent with the orchestration perimeters. The CEs and PEs delimit respectively the Customer and Provider Orchestration domains, while the AC interconnects these domains.
 
-{{fig-50}} depicts the reference model (i) together with examples of distributed CEs and PEs:
+{{fig-50}} depicts the reference model together with examples of distributed CEs and PEs:
 
 Distributed CE:
 : The logical connectivity is realized by configuring multiple devices in the Customer domain. The CE function is distributed. An example of such a distribution is the realization of an interconnection using a L3VPN service based on a distributed CE composed of a switch (Layer 2) and a router (Layer 3) (example ii).
@@ -333,7 +333,7 @@ This use case is also referred to in {{sec-10b}} and {{sec-10c}}.
 
 A co-managed CE is orchestrated by both the Customer and the Provider. In this case, the Customer and Provider usually have control on distinct device configuration perimeters (e.g., the customer is responsible for the LAN interfaces, while the Provider is responsible for the WAN interfaces (including routing/forwarding policies)). Considering the generic model, a co-managed CE has both PE and CE functions and there is no strict AC connection, although we may consider that the AC stitching logic happens internally within the device. (??? need discussion on this particular + add link/ref with framework ???)
 
-##  Orchestration Overview
+##  Orchestration Overview {#sec-orch}
 
 ###  End-to-End 5G Slice Orchestration Architecture
 
@@ -362,8 +362,7 @@ Based on the reference design, the data path between NFs can be decomposed into 
 
 
 As depicted in {{fig-end-to-end}}, the realization of an IETF Network Slice (i.e., connectivity with
-   performance commitments) involves the Provider Network and partially the AC (the PE-side of the AC). Note that the provisioning of a new NSI may rely on a partial or full pre-provisioned leg (e.g., an NSI may rely on an existing AC). Notwithstanding, a framework for the automation of both legs is proposed in this document ((??? FUTURE REF)). The Customer Site leg is considered as an extension of the connectivity of the
-   RAN/CN domain without complex slice-specific performances requirements: the Customer Site infrastructure is usually over-provisioned with short distances (low latency) where basic QoS/Scheduling logic is sufficient to comply with the target SLOs. In other words, the main focus for the enforcement of end-to-end SLOs is managed at the NSI between PE interfaces connected to the AC.
+   performance commitments) involves the Provider Network and partially the AC (the PE-side of the AC). Note that the provisioning of a new NSI may rely on a partial or full pre-provisioned leg (e.g., an NSI may rely on an existing AC). Notwithstanding, a framework for the automation of both legs is proposed in this document ((??? FUTURE REF)). The Customer Site leg is considered as an extension of the connectivity of the RAN/CN domain without complex slice-specific performances requirements: the Customer Site infrastructure is usually over-provisioned with short distances (low latency) where basic QoS/Scheduling logic is sufficient to comply with the target SLOs. In other words, the main focus for the enforcement of end-to-end SLOs is managed at the NSI between PE interfaces connected to the AC.
 
 
 ~~~~
@@ -417,7 +416,7 @@ More complex scenarios can happen with extra segmentation of the TN and addition
       The 5G to IETF Network Slice mapping combines both
       approaches with a mix of shared and dedicated associations.
 
-~~~ aasvg
+~~~
 ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
 
 │                        5G Slice eMBB                          │
@@ -440,7 +439,7 @@ More complex scenarios can happen with extra segmentation of the TN and addition
 ~~~
 {: #figure-5 title="1 (5G Slice) to N (IETF Network Slice) Mapping" artwork-align="center"}
 
-~~~ aasvg
+~~~
                   ┌ ─ ─ ─ ─ ─ ─ ┐
                      Edge Cloud
                   │             │
@@ -493,7 +492,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
    capabilities, the NF vendor reference designs, as well as service
    providers or even legal requirements.
 
-~~~ aasvg
+~~~
    ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
                       ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
    │  1    ┌─────┐      ┌──────────────────────────┐ │    ┌─────┐  │
@@ -604,7 +603,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
       without bandwidth reservations, to force more consistent load
       distribution even in non-ECMP friendly network topologies.
 
-~~~ aasvg
+~~~
            ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
      ┌──────────┐               base NRP               ┌──────────┐
      │   ETN    │                                      │   ETN    │
@@ -654,7 +653,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
    the NF point of view, it adds complexity due to the requirement of
    maintaining mapping tables for each SDP.
 
-~~~ aasvg
+~~~
 VLANs representing slices           VLANs representing slices
 
            │     ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─      │             │
@@ -690,7 +689,7 @@ VLANs representing slices           VLANs representing slices
    to the VLAN hand-off case, a mapping table tracking IP to IETF
    Network Slice mapping is required.
 
-~~~ aasvg
+~~~
                                         Tunnels representing slices
 
                   ┌ ─ ─ ─ ─ ─ ─ ─ ─ ┐                   │
@@ -731,7 +730,7 @@ VLANs representing slices           VLANs representing slices
    used, for example, to selectively enable per S-NSSAI monitoring, or
    any other per S-NSSAI handling, if required.
 
-~~~ aasvg
+~~~
              NF specific          reserved
         (not slice specific)     for S-NSSAI
     ◀───────────────────────────▶ ◀───────▶
@@ -760,7 +759,7 @@ VLANs representing slices           VLANs representing slices
    2001:db8::b:100:0}, while for MIoT (SST=3) tunnel uses
    {2001:db8::a:300:0, 2001:db8::b:300:0}.
 
-~~~ aasvg
+~~~
  2001:db8::a:0:0/96 (NF-A)                2001:db8::b:0:0/96 (NF-B)
 
  2001:db8::a:100:0/128  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─   2001:db8::b:100:0/128
@@ -820,7 +819,7 @@ VLANs representing slices           VLANs representing slices
    the PE uses neither a VLAN nor an IP address for slice
    identification at the SDP, but instead uses the MPLS label.
 
-~~~ aasvg
+~~~
      ◁──────        ◁──────        ◁──────
      BGP VPN        BGP VPN        BGP VPN
        COM=1, L=A"    COM=1, L=A'    COM=1, L=A
@@ -973,7 +972,7 @@ representing slices              representing slices    slices
    transit links is fully coarse (single NRP, sharing resources among
    all IETF Network Slices), as displayed in {{figure-14}}.
 
-~~~ aasvg
+~~~
    ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
    ┏━━━━━━━━━━━━━━━━━┓         ETN                              │
    ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃
@@ -1030,7 +1029,7 @@ representing slices              representing slices    slices
    {{figure-15}} for MPLS encapsulation, and in {{figure-16}} for SRv6
    encapsulation.
 
-~~~ aasvg
+~~~
                                  ┌──────────────┐
                                  │ MPLS Header  │
                                  ├─────┬─────┐  │
@@ -1053,7 +1052,7 @@ representing slices              representing slices    slices
 ~~~
 {: #figure-15 title="QoS with MPLS Encapsulation" artwork-align="center"}
 
-~~~ aasvg
+~~~
                                  ┌──────────────┐
                                  │ IPv6 Header  │
                                  │      ┌───────┤
@@ -1159,7 +1158,7 @@ representing slices              representing slices    slices
    5Q QoS Class differentiation in the TN domain) is outlined in
    {{figure-17}}.
 
-~~~ aasvg
+~~~
             Slice
            policer     ┌─────────┐
               ║    ┌───┴──┐      │
@@ -1232,7 +1231,7 @@ representing slices              representing slices    slices
    must be rejected by the NSC, unless an already established slice with
    lower priority, if such exists, is preempted.
 
-~~~ aasvg
+~~~
       ┌─────────┐        QoS output queues
       │     ┌───┴──┐─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
       │     │ S    │                            ╲│╱
@@ -1270,7 +1269,7 @@ representing slices              representing slices    slices
    (multiplexed) to up to 8 TN QoS Classes used in transport transit
    equipment, as outlined in {{figure-19}}.
 
-~~~ aasvg
+~~~
   ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
   ┏━━━━━━━━━━━━━━━━━┓         ETN                              │
   ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃
@@ -1323,7 +1322,7 @@ S ┃   └──────────┘  ┃  │           ┃┌───
 Note:
 : The numbers indicated in {{figure-34}} (S-NSSAI, 5QI, DSCP, queue, etc.) are provided for illustration purposes only and should not be considered as deployment guidance.
 
-~~~ aasvg
+~~~
                       ┌───────────── ETN  ─────────────────┐
 ┌────── NF-A ──────┐  │                                    │
 │                  │  │ ┌ ─ ─ ─ ─ ┐                        │
@@ -1401,7 +1400,7 @@ to TN QoS Classes may be rather common.
    if a premium class doesn't consume all available class capacity, it
    cannot be reused by non-premium (i.e., Best Effort) class.
 
-~~~ aasvg
+~~~
                      Class             ┌─────────┐
                     policer         ┌──┴───┐     │
                                     │      │     │
@@ -1448,7 +1447,7 @@ to TN QoS Classes may be rather common.
    premium classes.  It is a hierarchical model, as depicted in
    {{figure-21}}.
 
-~~~ aasvg
+~~~
                               Slice
                              policer   ┌─────────┐
                    Class        .   ┌──┴───┐     │
@@ -1495,7 +1494,7 @@ to TN QoS Classes may be rather common.
    itself.  And, similarly to the 5QI-aware model, the sum of slice CIRs
    must not exceed the physical capacity of the attachment circuit.
 
-~~~ aasvg
+~~~
    ┌─────────┐        QoS output queues
    │     ┌───┴──┐─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
    │     │    ┌─┴──────────────────────────┐ ╲│╱
@@ -1582,7 +1581,7 @@ to TN QoS Classes may be rather common.
    discussion about how to realize or orchestrate transport planes is
    out of scope for this document.
 
-~~~ aasvg
+~~~
 ┌───────────────┐                                    ┌──────┐
 │  Ingress PE   │   ╔═══════════════════════════════▶│ PE-A │
 │               │   ║   ╔═══════════════════════════▷│      │
@@ -1629,7 +1628,7 @@ to TN QoS Classes may be rather common.
    slice is mapped to a single transport plane, as depicted in
    {{figure-24}}.
 
-~~~ aasvg
+~~~
    ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
    ┏━━━━━━━━━━━━━━━━━┓                        │
    ┃ Attach. Circuit ┃      PE router
@@ -1688,7 +1687,7 @@ to TN QoS Classes may be rather common.
    with similar characteristics are mapped to a common transport plane,
    as depicted in {{figure-25}}.
 
-~~~ aasvg
+~~~
      ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
      ┏━━━━━━━━━━━━━━━━━┓
      ┃ Attach. Circuit ┃                         │
@@ -1747,7 +1746,7 @@ to TN QoS Classes may be rather common.
    aware of the transport infrastructure and the links between the PEs
    and the DCs, but is not aware of the individual network functions.
 
-~~~ aasvg
+~~~
 ┌ ─ ─ ─ ─ DC 1─ ─ ─ ─    ┌ ─ ─ ─ ─ ─ ─ ─ ─ ┐   ┌ ─ ─ ─ ─ DC 2─ ─ ─ ─
   ┌──────┐           │  ┌────┐         ┌────┐              ┌──────┐ │
 │ │ NF1A │           ───■PE1A│         │PE2A■──┤           │ NF2A │
@@ -1813,7 +1812,7 @@ to TN QoS Classes may be rather common.
    PIR limits.  This is not included in the example, but the same
    principles apply in such cases.
 
-~~~ aasvg
+~~~
       To┌──────┬──────┬──────┬──────────────┐
 From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
  ┌──────┼──────┼──────┼──────┼──────────────┤
@@ -2244,7 +2243,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    based architecture.  {{figure-28}} outlines an example 5GS architecture
    with a subset of possible network functions and network interfaces.
 
-~~~ aasvg
+~~~
 
   ┌─────┐  ┌─────┐  ┌─────┐    ┌─────┐  ┌─────┐  ┌─────┐
   │NSSF │  │ NEF │  │ NRF │    │ PCF │  │ UDM │  │ AF  │
@@ -2297,7 +2296,7 @@ User Plane          ╱     │           │         ╲
       Network, as well as  within the RAN or within the CN.  The
       traffic generated by NFs is - mostly - based on IP or Ethernet.
 
-~~~ aasvg
+~~~
 ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
                                                │
 │             ┌────────────┐    ┌────────────┐
@@ -2349,7 +2348,7 @@ User Plane          ╱     │           │         ╲
 
       -  the SMF controls the 5GC UPF via the N4 interface
 
-~~~ aasvg
+~~~
   ┌ ─ ─ ─ ─ ┐    ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
       RAN               5G Core (5GC)
   │         │    │                         │
@@ -2404,7 +2403,7 @@ User Plane          ╱     │           │         ╲
    {{figure-31}} depicts a disaggregated RAN with NFs and interfaces.
 
 
-~~~ aasvg
+~~~
             ┌─────────────────────────────────┐    ┌ ─ ─ ─ ─ ─ ┐
             │                                 │ N3
 ┌────┐  NR  │                                 ├────┤  5G Core  │
@@ -2467,7 +2466,7 @@ User Plane          ╱     │           │         ╲
    {{figure-32}} illustrates the different segments of the Transport Network
    with the relevant Network Functions.
 
-~~~ aasvg
+~~~
 ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
 │                         Transport Network               │
 │                                                         │
@@ -2489,7 +2488,7 @@ User Plane          ╱     │           │         ╲
    might be placed in the same location as the CU-UP from another
    slice).
 
-~~~ aasvg
+~~~
 ┌ ─ ─ ─ ─ ┐
  ┌────┐     Colocated
 ││RU-1│   │ RU/DU
