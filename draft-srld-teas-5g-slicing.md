@@ -195,9 +195,9 @@ An extended list of abbreviations used in this document is provided in {{ext-abb
 
 {{sec-5g-intro}} provides an  overview of 5G network segements, notably the Radion Access Network (RAN), Core Network (CN), and Transport Network (TN). The 3GPP specifications loosely define the Transport Network and its integration in RAN and CN: it is an unmanaged 3GPP system that interconnects Network Functions (NFs). Practically, the interconnection (i.e., the TN) may not map with a monolithic architecture and management domain. It is frequently segmented, non-uniform and managed by different entities. For example, {{fig-1}} depicts a NF instance that is deployed in an Edge Data Center connected to a NF located in a Public Cloud via a WAN network (e.g., MPLS-VPN service). Here, the TN can be interpreted as an abstraction representing an end-to-end connectivity based on three distinct IP domains: DC, WAN, and Public Cloud. A model for the Transport Network based on orchestration domains is introduced later in this document. This model permits to define more precisely where IETF Network Slice applies.
 
-~~~~
+~~~~ aasvg
      ┌──────────────────────────────────┐
-  ┌──│      5G RAN or Core Network      │──┐
+  ┌──│         5G RAN or CN             │──┐
   │  └──────────────────────────────────┘  │
   │                                        │
   ▼                                        ▼
@@ -215,9 +215,9 @@ An extended list of abbreviations used in this document is provided in {{ext-abb
   │└──┘└──┘└──┘└──┘│└┬─┘      └─┬┘ │        │
   └────────────────┘ └──────────┘  └────────┘
 ~~~~
-{: #fig-1 title="Transport Network vs RAN and CORE Networks" artwork-align="center"}
+{: #fig-1 title="Transport Network vs RAN and CN" artwork-align="center"}
 
-Additionally, the term "Transport Network" is used for disambiguation with 5G network (e.g., IP, packet-based forwarding vs RAN and CORE Networking). By extension, the disambiguation applies to Transport Network Slicing with refer to End-to-End 5G Network Slicing (cf. {{sec-5gtn}}) as well the management domains: RN, CN, and TN domains.
+Additionally, the term "Transport Network" is used for disambiguation with 5G network (e.g., IP, packet-based forwarding vs RAN and CORE Networking). By extension, the disambiguation applies to Transport Network Slicing with refer to End-to-End 5G Network Slicing (see {{sec-5gtn}}) as well the management domains: RN, CN, and TN domains.
 
 ##  5G Network Slicing versus Transport Network Slicing {#sec-5gtn}
 
@@ -231,8 +231,8 @@ Additionally, the term "Transport Network" is used for disambiguation with 5G ne
       The objective of 5G Network Slicing is to provide a subset of
       resources of the whole 5G infrastructure to some users/customers,
       applications, or Public Land Mobile Networks (PLMNs) (e.g.,
-      RAN sharing). These resources are from the TN, RAN,
-      and Core Network Functions and the underlying infrastructure.
+      RAN sharing). These resources are from the TN, RAN, CN
+      Network Functions, and the underlying infrastructure.
 
       {{TS-28.530}} defines 5G Network Slicing by introducing the concept
       of Network Slice Subnet (NSS) to represent slices within each of
@@ -250,9 +250,9 @@ Additionally, the term "Transport Network" is used for disambiguation with 5G ne
      TN Slicing provides various degrees of sharing of resources between slices. For example, the network capacity can be shared by all slices, usually with a guaranteed minimum per slice, or each individual slice can be allocated dedicated network capacity. Parts of a given network may use the former, while others use the latter. For example, shared TN resources could be provided in the backhaul, and dedicated TN resources could be provided in the midhaul.
 
       There are different options to implement TN slices based upon
-      tools, such as VRFs (Virtual Routing and Forwarding instances)
-      for logical separation, QoS (Quality of Service), or TE (Traffic
-      Engineering).
+      tools, such as Virtual Routing and Forwarding instances (VRFs)
+      for logical separation, Quality of Service (QoS), or Traffic
+      Engineering (TE).
 
       A 5G network slicing architecture
       should integrate TN Slicing for an optimal control of SLAs, however, it is
@@ -262,7 +262,7 @@ Additionally, the term "Transport Network" is used for disambiguation with 5G ne
       TN slicing implemented using IETF technologies is described in
       {{!I-D.ietf-teas-ietf-network-slices}}.
 
-      Although IETF Network Slices can be use more generally, the term "IETF Network Slice" (IETF NS, or INS in short) is used in this document to
+      Although IETF Network Slices can be use more generally, the term "IETF Network Slice" is used in this document to
       describe the slice in the Transport Network domain of the overall 5G
       architecture, composed from RAN, TN, and CN domains.
 
