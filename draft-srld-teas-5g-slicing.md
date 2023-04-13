@@ -1,5 +1,5 @@
 ---
-title: "A  Realization of IETF Network Slices for 5G Networks Using Current IP/ MPLS Technologies"
+title: "A  Realization of IETF Network Slices for 5G Networks Using Current IP/MPLS Technologies"
 abbrev: "Implementing 5G Transport Slices"
 category: info
 
@@ -295,6 +295,8 @@ Attachment Circuit (AC):
 {::include ./drawings/pe-ce-ac.txt}
 ~~~~
 {: #fig-tn-arch title="Reference Design: Customer Sites and Provider Network" artwork-align="center"}
+
+> Note: In order to keep the figures simple, only one AC and single-homed CEs are represented. However, this document does not exclude the instantiation of multiple ACs between a CE and a PE nor the presence of CEs that are attached to more than one PE.
 
 ###  Distributed PE and CE {#sec-distributed}
 
