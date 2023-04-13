@@ -472,7 +472,7 @@ More complex scenarios can happen with extra segmentation of the TN and addition
    capabilities, the NF vendor reference designs, as well as service
    provider or even legal requirements.
 
-Specifically, the actual mapping is a design choice of service operators that may be a function of, e.g., the number of instantiated slices, requested services, or local engineering capabilities and guidelines. However, operators should carefully consider means to ease slice migration strategies (e.g., move from 1-to-1 mapping to N-to-1).
+Specifically, the actual mapping is a design choice of service operators that may be a function of, e.g., the number of instantiated slices, requested services, or local engineering capabilities and guidelines. However, operators should carefully consider means to ease slice migration strategies. For example, a provider may initially adopt a 1-to-1 mapping if it has to instantiate few network slices and accommodate the need of few customers. That provider may decide to move to a N-to-1 mapping for aggregation/scalability purposes if sustained increased slice demand is observed. Putting in place adequate automation means to realize network slices (including the adjustment of slice services to network slices mapping) would ease slice migration operations.
 
 ##  First 5G Slice versus Subsequent Slices
 
