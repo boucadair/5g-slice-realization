@@ -1990,6 +1990,62 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    that they avoid moving minimum-latency LSPs unless there is no
    alternative.
 
+# Network Slicing OAM
+
+   The deployment and maintenance of network slices with a network imply
+   a set OAM functions ({{?RFC6291}}) to be deployed by the providers, e.g.:
+
+   *  Providers should be able to execute OAM tasks on a per network slice
+      basis. These tasks can cover the "full" slice within a domain or a
+      portion of that slice (for troubleshooting purposes, for example).
+
+      For example, per-slice OAM tasks can consist in tracing resources that
+      are bound to a given network slice, tracing resources that are invoked
+      when forwarding a given flow bound to a given network slice,
+      assessing whether flow isolation characteristics are in
+      conformance with the network slice service requirements, or assessing
+      the compliance of the allocated network slice resource against flow/
+      customer service requirements.
+
+      {{?RFC7276}} provides an overview of available OAM
+      tools. These technology-specific tools can be reused in the context
+      of network slicing. Providers that deploy network slicing
+      capabilities should be able to select whatever OAM technology-
+      specific feature that would be address their needs.
+
+      SFC OAM {{?I-D.ietf-sfc-oam-packet}} should also be supported
+      for slices that make uses of service function chaining
+      {{?RFC7665}}. An example of SFC OAM technique to Continuity
+      Check, Connectivity Verification, or tracing service functions
+      is specified in {{?I-D.ietf-sfc-multi-layer-oam}}.
+
+   *  Providers may want to enable differentiated failure
+      detect and repair features for a subset of network
+      slices.  For example, a given network slice may require fast detect and
+      repair mechanisms (e.g., as a function of the nature of the
+      traffic forwarded through the network slice), while others may
+      not be engineered with such means. The provider can use
+      techniques such as {{?RFC5286}}, {{?RFC5714}}, or {{?RFC8355}}.
+
+   *  Providers may deploy means to dynamically discover the set of network slices that
+      are enabled within its network. Such dynamic discovery capability
+      facilitates the detection of any mismatch between the view
+      maintained by the control/management plane and the actual network
+      configuration.  When mismatches are detected, corrective actions
+      must be undertaken accordingly. For example, a provider may rely
+      upon L3NM {{?RFC9182}} or L2NM {{?RFC9291}} to maintain the full
+      set of L3VPN/L2VPNs that are used to deliver network slice services.
+      The correlation between an LxVPN instance and a network slice service
+      is maintained using "parent-service-id" attribute ({{Section 7.3 of ?RFC9182}}.
+
+   *  Means to report a set of network performance metrics to assess
+      whether the agreed slice service objectives are honored. For example,
+      {{?I-D.ietf-opsawg-yang-vpn-service-pm}} can be used to report links one-way delay,
+      one-way delay variation, etc. Both conventional active/passive
+      measurement methods {{?RFC7799}} or more recent telemetry methods
+      (e.g. YANG Push {{?RFC8641}}) can be used.
+
+
 # IANA Considerations
 
    This document does not make any IANA request.
