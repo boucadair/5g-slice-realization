@@ -320,7 +320,7 @@ In subsequent sections of this document, the terms CE and PE are used for both a
 
 ###  MPLS/SRv6 Attachment Circuit
 
-In some cases, a CE connects with the Provider using the Inter-AS Option B/C with the use of MPLS or SRv6 data planes. An example is depicted in {{figure-51}}. The configuration of VRFs together with control plane identifiers, such as route-targets/route-distinguishers happens on the CE. This is a source of confusion since these configurations are typically enforced on PE devices. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the Customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the Provider Network may happen on distinct routers: this is another example of distributed PE (e.g., in Option C, the ASBR and a remote PE in the Provider Network with VRF configuration form a distributed PE).
+In some cases, a CE connects with the provider network using the Inter-AS Option B/C with the use of MPLS or SRv6 data planes. An example is depicted in {{figure-51}}. The configuration of VRFs together with control plane identifiers, such as route targets/route distinguishers happens on the CE. This is a source of confusion since these configurations are typically enforced on PE devices. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the Customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE (e.g., in Option C, the ASBR and a remote PE in the Provider Network with VRF configuration form a distributed PE).
 
 ~~~~
 {::include ./drawings/mpls-ac.txt}
@@ -331,7 +331,9 @@ This use case is also referred to in {{sec-10b}} and {{sec-10c}}.
 
 ###  Co-Managed CE
 
-A co-managed CE is orchestrated by both the Customer and the Provider. In this case, the Customer and Provider usually have control on distinct device configuration perimeters (e.g., the customer is responsible for the LAN interfaces, while the Provider is responsible for the WAN interfaces (including routing/forwarding policies)). Considering the generic model, a co-managed CE has both PE and CE functions and there is no strict AC connection, although we may consider that the AC stitching logic happens internally within the device. (??? need discussion on this particular + add link/ref with framework ???)
+A co-managed CE is orchestrated by both the customer and the provider. In this case, the Customer and Provider usually have control on distinct device configuration perimeters (e.g., the customer is responsible for the LAN interfaces, while the Provider is responsible for the WAN interfaces (including routing/forwarding policies)). Considering the generic model, a co-managed CE has both PE and CE functions and there is no strict AC connection, although we may consider that the AC stitching logic happens internally within the device. The provider manages the AC between the CE and the PE.
+
+[comment]: <> (??? need discussion on this particular + add link/ref with framework ???)
 
 ##  Orchestration Overview {#sec-orch}
 
@@ -350,7 +352,7 @@ A TN Slice relies upon a data path that can involve both the Provider and Custom
 ~~~~
 {: #figure-orch title="End-to-end 5G Slice Orchestration with TN" artwork-align="center"}
 
-### TN Legs and Network Slice Instantiation
+### Transport Network Legs and Network Slice Instantiation
 
 Based on the reference design, the data path between NFs can be decomposed into three main types of sections. {{fig-end-to-end}} depicts the different legs:
 
@@ -362,8 +364,9 @@ Based on the reference design, the data path between NFs can be decomposed into 
 
 
 As depicted in {{fig-end-to-end}}, the realization of an IETF Network Slice (i.e., connectivity with
-   performance commitments) involves the Provider Network and partially the AC (the PE-side of the AC). Note that the provisioning of a new NSI may rely on a partial or full pre-provisioned leg (e.g., an NSI may rely on an existing AC). Notwithstanding, a framework for the automation of both legs is proposed in this document ((??? FUTURE REF)). The Customer Site leg is considered as an extension of the connectivity of the RAN/CN domain without complex slice-specific performances requirements: the Customer Site infrastructure is usually over-provisioned with short distances (low latency) where basic QoS/Scheduling logic is sufficient to comply with the target SLOs. In other words, the main focus for the enforcement of end-to-end SLOs is managed at the NSI between PE interfaces connected to the AC.
+   performance commitments) involves the Provider Network and partially the AC (the PE-side of the AC). Note that the provisioning of a new NSI may rely on a partial or full pre-provisioned leg (e.g., an NSI may rely on an existing AC). Notwithstanding, a framework for the automation of both legs is proposed in this document. The Customer Site leg is considered as an extension of the connectivity of the RAN/CN domain without complex slice-specific performances requirements: the Customer Site infrastructure is usually over-provisioned with short distances (low latency) where basic QoS/Scheduling logic is sufficient to comply with the target SLOs. In other words, the main focus for the enforcement of end-to-end SLOs is managed at the NSI between PE interfaces connected to the AC.
 
+[comment]: <> (??? FUTURE REF for "a framework for the automation of both legs is proposed in this document")
 
 ~~~~
 {::include ./drawings/tn-sections.txt}
@@ -372,18 +375,18 @@ As depicted in {{fig-end-to-end}}, the realization of an IETF Network Slice (i.e
 
 Resource synchronization for AC provisioning:
 : The realization of the Attachment Circuit is made up of TN resources shared between the Customer Site Orchestration and the Provider Network Orchestration (e.g., NSC).  More precisely, a PE and a CE connected via an AC must be
-provisioned with consistent data plane and control plane network information (e.g.,  VLAN-
-ID and IP addresses/subnets or BGP AS number). Hence, the realization of this
-interconnection is technology-specific and requires a coordination between the Customer Site Orchestration and an NSC. Automating the provisioning and management of the AC is recommended. Hence, aligned with {{?RFC8969}}, we assume that this coordination is based upon standard YANG data models and IETF APIs (more details in further sections).
+provisioned with consistent data plane and control plane  information (e.g., VLAN-
+IDs, IP addresses/subnets, or BGP AS number). Hence, the realization of this
+interconnection is technology-specific and requires a coordination between the Customer Site Orchestration and an NSC. Automating the provisioning and management of the AC is recommended. Aligned with {{?RFC8969}}, we assume that this coordination is based upon standard YANG data models and APIs (more details in further sections).
 
 : {{figure-4}} is a basic example of a Layer 3 CE-PE link realization
-with shared network resources (such as VLAN-ID and IP prefixes) which
-are passed between Orchestrators via the Network Slice Service Interface. This document proposes to rely upon IETF service data models: ({{?I-D.ietf-teas-ietf-network-slice-nbi-yang}}) or an Attachment Circuit Service Interface ({{?I-D.boro-opsawg-teas-attachment-circuit}}).
+with shared network resources (such as VLAN-IDs and IP prefixes) which
+are passed between Orchestrators via a dedicated interface. This document proposes to rely upon IETF service data models: the IETF Network Slice Service Interface {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}} or the Attachment Circuit Service Interface ({{?I-D.boro-opsawg-teas-attachment-circuit}}.
 
 ~~~~
 {::include ./drawings/ac-api-synch.txt}
 ~~~~
-{: #figure-4 title="Coordination of TN ressources for the AC provisionning" artwork-align="center"}
+{: #figure-4 title="Coordination of TN Ressources for the AC Provisionning" artwork-align="center"}
 
 ### Additional Segmentation and Domains
 
