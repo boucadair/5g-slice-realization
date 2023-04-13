@@ -170,7 +170,7 @@ informative:
    technologies.  The IETF network slicing framework introduces the
    concept of a Network Resource Partition (NRP), which is simply a
    collection of resources identified in the underlay network.  There
-   could be multiple realizations of high-level IETF Network Slice and
+   could be multiple realizations of IETF Network Slice and
    NRP concepts, where each realization might be optimized for the
    different network slicing use cases.
 
@@ -179,9 +179,6 @@ informative:
    fulfilling 5G slicing connectivity requirements.
    This IETF Network Slice realization model leverages many building blocks currently
    commonly used in service provider networks.
-
-   The reader may refer to {{?I-D.ietf-teas-ns-ip-mpls}} for more advanced
-   realization models.
 
    A brief 5G overview is provided in {{sec-5g-intro}} for readers' convenience. The reader may refer to {{?RFC6459}} and {{TS-23.501}} for more
    details about 3GPP network architectures.
@@ -262,7 +259,7 @@ Additionally, the term "Transport Network" is used for disambiguation with 5G ne
       possible to implement 5G Network Slicing without TN
       Slicing, as explained in the next section.
 
-      TN Slicing is implemented using IETF technologies as described in
+      TN slicing implemented using IETF technologies is described in 
       {{!I-D.ietf-teas-ietf-network-slices}}.
 
       Although IETF Network Slices can be use more generally, the term "IETF Network Slice" (IETF NS, or INS in short) is used in this document to
@@ -636,7 +633,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
 
    In this option, the IETF Network Slice, fulfilling connectivity
    requirements between NFs of some 5G slice, is represented at the SDP
-   by a VLAN, or double VLANs (commonly known as QinQ).  Each VLAN
+   by a VLAN ID, or double VLAN IDs (commonly known as QinQ).  Each VLAN
    represents a distinct logical interface on the attachment circuits,
    hence it provides the possibility to place these logical interfaces
    in distinct L2 or L3 service instances and implement separation
@@ -648,8 +645,8 @@ Specifically, the actual mapping is a design choice of service operators that ma
    simplification it is recommended to rely on the same VLAN identifier
    for all ACs, when possible.  However, SDPs for a same slice at
    different locations may also use different VLAN values.  Therefore, a
-   VLAN to IETF Network Slice mapping table must be maintained for each
-   AC, and the VLAN allocation must be coordinated between TN orchestration and
+   VLAN to IETF Network Slice mapping table is maintained for each
+   AC, and the VLAN allocation is coordinated between TN orchestration and
    local segment orchestration.  Thus, while VLAN hand-off is simple from
    the NF point of view, it adds complexity due to the requirement of
    maintaining mapping tables for each SDP.
@@ -721,7 +718,7 @@ VLANs representing slices           VLANs representing slices
    semantics. Different IPv6 address allocation schemes following this
    mapping approach may be used, with one example allocation showed in {{figure-11}}.
 
-   Note that this addressing scheme is local to a node; intermediary nodes are not
+   Note that this addressing scheme is local to an ingress or egress NF; intermediary nodes are not
    required to associate any additional semantic with IPv6 address.
 
    One
@@ -850,7 +847,7 @@ representing slices              representing slices    slices
 ~~~
 {: #figure-13 title="MPLS Hand-off: Option B" artwork-align="center"}
 
-   MPLS labels are allocated dynamically, especially in Option 10B
+   MPLS labels are allocated dynamically in Option 10B
    deployments, where at the domain boundaries service prefixes are
    reflected with next-hop self, and new label is dynamically allocated,
    as visible in {{figure-13}} (e.g., labels A, A' and A" for the first depicted slice).  Therefore, for any slice-specific per hop
