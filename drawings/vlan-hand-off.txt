@@ -1,0 +1,17 @@
+VLANs representing slices           VLANs representing slices       
+                                                                    
+           │     ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─      │             │           
+           │                        │     │             │           
+┌──────┐   ▼   ┌─┴───┐ Provider ┌─────┐   ▼   ┌─────┐   ▼   ┌──────┐
+│      ●───────●■    │          │    ■●───────●     ●───────●      │
+│ NF   ●───────●■ PE │          │ PE ■●───────●L2/L3●───────●   NF │
+│      ●───────●■    │          │    ■●───────●     ●───────●      │
+└──────┘       └─┬───┘  Network └─────┘       └─────┘       └──────┘
+                                    │                               
+                 └ ─ ─ ─ ─ ─ ─ ─ ─ ─                                
+      └────────┘└────────────────────┘└────────┘ └───────────┘      
+      Attachment   Provider Network   Attachment Customer Site      
+       Circuit         Section         Circuit      Section         
+                                                                    
+ ● – logical interface represented by VLAN on physical interface    
+ ■ - Service Demarcation Point                                      
