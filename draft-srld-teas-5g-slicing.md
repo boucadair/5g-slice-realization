@@ -170,7 +170,7 @@ informative:
    technologies.  The IETF network slicing framework introduces the
    concept of a Network Resource Partition (NRP), which is simply a
    collection of resources identified in the underlay network.  There
-   could be multiple realizations of high-level IETF Network Slice and
+   could be multiple realizations of IETF Network Slice and
    NRP concepts, where each realization might be optimized for the
    different network slicing use cases.
 
@@ -180,15 +180,10 @@ informative:
    This IETF Network Slice realization model leverages many building blocks currently
    commonly used in service provider networks.
 
-   The reader may refer to {{?I-D.ietf-teas-ns-ip-mpls}} for more advanced
-   realization models.
-
    A brief 5G overview is provided in {{sec-5g-intro}} for readers' convenience. The reader may refer to {{?RFC6459}} and {{TS-23.501}} for more
    details about 3GPP network architectures.
 
-# Conventions and Definitions
-
-{::boilerplate bcp14-tagged}
+# Definitions
 
 The document uses the terms defined in {{!I-D.ietf-teas-ietf-network-slices}}.
 
@@ -264,10 +259,10 @@ Additionally, the term "Transport Network" is used for disambiguation with 5G ne
       possible to implement 5G Network Slicing without TN
       Slicing, as explained in the next section.
 
-      TN Slicing is implemented using IETF technologies, therefore, inline with
+      TN slicing implemented using IETF technologies is described in
       {{!I-D.ietf-teas-ietf-network-slices}}.
 
-      In this document, the term "IETF Network Slice" (IETF NS, or INS in short) is used to
+      Although IETF Network Slices can be use more generally, the term "IETF Network Slice" (IETF NS, or INS in short) is used in this document to
       describe the slice in the Transport Network domain of the overall 5G
       architecture, composed from RAN, TN, and CN domains.
 
@@ -323,12 +318,14 @@ In subsequent sections of this document, the terms CE and PE are used for both a
 
 ###  MPLS/SRv6 Attachment Circuit
 
-In some cases, a CE connects with the Provider using the Inter-AS Option B/C with the use of MPLS or SRv6 data planes. This use case is furtherly referred to in sections {{sec-10b}} and {{sec-10c}}. The configuration of VRFs together with control plane identifiers, such as route-targets/route-distinguishers happens on the CE. This is a source of confusion since these configurations are typically enforced on PE devices. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the Customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the Provider Network may happen on distinct routers: this is another example of distributed PE (e.g., in Option C, the ASBR and a remote PE in the Provider Network with VRF configuration form a distributed PE).
+In some cases, a CE connects with the Provider using the Inter-AS Option B/C with the use of MPLS or SRv6 data planes. An example is depicted in {{figure-51}}. The configuration of VRFs together with control plane identifiers, such as route-targets/route-distinguishers happens on the CE. This is a source of confusion since these configurations are typically enforced on PE devices. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the Customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the Provider Network may happen on distinct routers: this is another example of distributed PE (e.g., in Option C, the ASBR and a remote PE in the Provider Network with VRF configuration form a distributed PE).
 
 ~~~~
 {::include ./drawings/mpls-ac.txt}
 ~~~~
 {: #figure-51 title="MPLS or SRv6 Attachment Circuit" artwork-align="center"}
+
+This use case is also referred to in {{sec-10b}} and {{sec-10c}}.
 
 ###  Co-Managed CE
 
@@ -379,7 +376,7 @@ ID and IP addresses/subnets or BGP AS).  Hence, the realization of this
 interconnection is technology-specific and requires a coordination between the Customer Site Orchestration and the NSC. Automation for provisionning and managing the AC is a prereqsuisite. Hence, aligned with {{?RFC8969}}, we assume that this coordination is based upon standard YANG data models and IETF APIs (more details in further sections).
 {{figure-4}} is a basic example of a Layer 3 CE-PE link realization
 with shared network resources, such as VLAN-ID and IP prefixes, which
-must be passed between Orchestrators via the Network Slice Service Interface. This document proposes to rely on IETF service data models: ({{?I-D.ietf-teas-ietf-network-slice-nbi-yang}}) or an Attachment Circuit Service Interface ({{?I-D.boro-opsawg-teas-attachment-circuit}}).
+is passed between Orchestrators via the Network Slice Service Interface. This document proposes to rely upon IETF service data models: ({{?I-D.ietf-teas-ietf-network-slice-nbi-yang}}) or an Attachment Circuit Service Interface ({{?I-D.boro-opsawg-teas-attachment-circuit}}).
 
 ~~~~
 {::include ./drawings/ac-api-synch.txt}
@@ -553,7 +550,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
 
    *  L2VPN/L3VPN service instances for logical separation:
 
-      This realization model of transport for 5G slices assumes Layer-3
+      This realization model of transport for 5G slices assumes Layer 3
       delivery for midhaul and backhaul transport connections, and a
       Layer 2 or Layer 3 for
       fronthaul connections. eCPRI supports both delivery models. L2VPN/L3VPN service instances might be
@@ -569,7 +566,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
       conditioning'.  The main purpose is the enforcement of the
       bandwidth contract for the slice right at the edge of the
       transport domain where the traffic is handed-off between the
-      transport domain and the 5G domains (i.e., RAN/Core).
+      transport domain and the 5G domains (i.e., RAN/CN).
 
       The toolset used here is granular ingress policing (rate limiting)
       to enforce contracted bandwidths per slice and, potentially, per
@@ -581,11 +578,9 @@ Specifically, the actual mapping is a design choice of service operators that ma
       providing guaranteed rates per slice, as well as guarantees per
       traffic class within each slice.
 
-      In the managed CE use cases (use cases A1, A2, B1, and B2 depicted in
-      {{figure-7}}), edge admission control could be distributed between CE
-      and PE, where one part of the edge admission control is
-      implemented on the CE, and another part of the edge admission control
-      is implemented on the PE.
+      For managed CEs, edge admission control can be distributed between CEs
+      and PEs, where a part of the admission control is implemented on the CE
+      and other part of the admission control is implemented on the PE.
 
    *  Coarse resource control at the TN transit (non-attachment
       circuits) links of the transport domain, using a single NRP, spanning the entire TN domain.
@@ -625,20 +620,20 @@ Specifically, the actual mapping is a design choice of service operators that ma
     ■ fine-grained QoS (dedicated resources per IETF NS)
     □ coarse QoS, with resources shared by all IETF NSes
 ~~~
-{: #figure-8 title="Resource Allocation in with single NRP Slicing Model" artwork-align="center"}
+{: #figure-8 title="Resource Allocation Slicing Model with a Single NRP" artwork-align="center"}
 
-   The 5G control plane relies upon the S-NSSAI (Single Network Slice
-   Selection Assistance Information: 32-bit slice identifier) for slice
-   identification.  The S-NSSAI is not visible to the transport domain,
-   so instead 5G functions can expose the 5G slices to the transport
-   domain by mapping to explicit L2/L3 identifiers such as VLAN-ID, IP
-   addresses, or Differentiated Services Code Point (DSCP) as documented in {{?I-D.gcdrb-teas-5g-network-slice-application}}.
+   The 5G control plane relies upon the Single Network Slice
+   Selection Assistance Information (S-NSSAI) 32-bit slice identifier for slice
+   identification.  The S-NSSAI is not visible to the transport domain.
+   So instead, 5G functions can expose the 5G slices to the transport
+   domain by mapping to explicit Layer 2 or Layer 3 identifiers, such as VLAN-IDs, IP
+   addresses, or Differentiated Services Code Point (DSCP). More details about the mapping between 3GPP and IETF network slices is provided in {{?I-D.gcdrb-teas-5g-network-slice-application}}.
 
 ##  VLAN Hand-off {#sec-vlan-handoff}
 
    In this option, the IETF Network Slice, fulfilling connectivity
    requirements between NFs of some 5G slice, is represented at the SDP
-   by a VLAN, or double VLANs (commonly known as QinQ).  Each VLAN
+   by a VLAN ID, or double VLAN IDs (commonly known as QinQ).  Each VLAN
    represents a distinct logical interface on the attachment circuits,
    hence it provides the possibility to place these logical interfaces
    in distinct L2 or L3 service instances and implement separation
@@ -650,8 +645,8 @@ Specifically, the actual mapping is a design choice of service operators that ma
    simplification it is recommended to rely on the same VLAN identifier
    for all ACs, when possible.  However, SDPs for a same slice at
    different locations may also use different VLAN values.  Therefore, a
-   VLAN to IETF Network Slice mapping table MUST be maintained for each
-   AC, and the VLAN allocation MUST be coordinated between TN orchestration and
+   VLAN to IETF Network Slice mapping table is maintained for each
+   AC, and the VLAN allocation is coordinated between TN orchestration and
    local segment orchestration.  Thus, while VLAN hand-off is simple from
    the NF point of view, it adds complexity due to the requirement of
    maintaining mapping tables for each SDP.
@@ -723,7 +718,7 @@ VLANs representing slices           VLANs representing slices
    semantics. Different IPv6 address allocation schemes following this
    mapping approach may be used, with one example allocation showed in {{figure-11}}.
 
-   Note that this addressing scheme is local to a node; intermediary nodes are not
+   Note that this addressing scheme is local to an ingress or egress NF; intermediary nodes are not
    required to associate any additional semantic with IPv6 address.
 
    One
@@ -852,7 +847,7 @@ representing slices              representing slices    slices
 ~~~
 {: #figure-13 title="MPLS Hand-off: Option B" artwork-align="center"}
 
-   MPLS labels are allocated dynamically, especially in Option 10B
+   MPLS labels are allocated dynamically in Option 10B
    deployments, where at the domain boundaries service prefixes are
    reflected with next-hop self, and new label is dynamically allocated,
    as visible in {{figure-13}} (e.g., labels A, A' and A" for the first depicted slice).  Therefore, for any slice-specific per hop
@@ -1229,9 +1224,9 @@ representing slices              representing slices    slices
    {{figure-18}} outlines the outbound edge resource control model at the
    transport network layer for 5QI-unaware slices.  Each slice is
    assigned a single egress queue.  The sum of slice CIRs, used as the
-   weight in weighted queueing model, MUST NOT exceed the physical
+   weight in weighted queueing model, must not exceed the physical
    capacity of the attachment circuit.  Slice requests above this limit
-   MUST be rejected by the NSC, unless an already established slice with
+   must be rejected by the NSC, unless an already established slice with
    lower priority, if such exists, is preempted.
 
 ~~~ aasvg
@@ -1493,9 +1488,9 @@ to TN QoS Classes may be rather common.
    {{figure-22}} outlines the outbound edge resource control model at the
    transport network layer for 5QI-aware slices.  Each slice is assigned
    multiple egress queues.  The sum of queue weights (equal to 5Q QoS
-   CIRs within the slice) CIRs MUST NOT exceed the CIR of the slice
+   CIRs within the slice) CIRs must not exceed the CIR of the slice
    itself.  And, similarly to the 5QI-aware model, the sum of slice CIRs
-   MUST NOT exceed the physical capacity of the attachment circuit.
+   must not exceed the physical capacity of the attachment circuit.
 
 ~~~ aasvg
    ┌─────────┐        QoS output queues
