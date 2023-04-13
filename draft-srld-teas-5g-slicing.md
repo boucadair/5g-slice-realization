@@ -234,13 +234,11 @@ The term "Transport Network" is used for disambiguation with 5G network (e.g., I
       RAN sharing). These resources are from the TN, RAN, CN
       Network Functions, and the underlying infrastructure.
 
-      {{TS-28.530}} defines 5G Network Slicing by introducing the concept
-      of Network Slice Subnet (NSS) to represent slices within each of
-      these domains: RAN, CN, and TN (i.e., RAN NSS, CN
-      NSS, and TN NSS).  As per 3GPP specifications (e.g., Section 4.5 of {{TS-28.530}}), an NSS can be shared or
-      dedicated to a single slice.
-
    * TN Slicing:
+
+      In this document, the term TN Slice is used in this document to
+      describe the slice in the Transport Network domain of the overall 5G
+      architecture, composed from RAN, TN, and CN domains.
 
       The objective of TN Slicing is to isolate,
       guarantee, or prioritize Transport Network resources for slices. Examples of such resources are:
@@ -257,14 +255,9 @@ The term "Transport Network" is used for disambiguation with 5G network (e.g., I
       A 5G network slicing architecture
       should integrate TN Slicing for an optimal control of SLAs, however, it is
       possible to implement 5G Network Slicing without TN
-      Slicing, as explained in the next section.
+      Slicing, as explained in section {{{#sec-mapping}}}.
 
-      TN slicing implemented using IETF technologies is described in
-      {{!I-D.ietf-teas-ietf-network-slices}}.
-
-      Although IETF Network Slices can be use more generally, the term "IETF Network Slice" is used in this document to
-      describe the slice in the Transport Network domain of the overall 5G
-      architecture, composed from RAN, TN, and CN domains.
+[comment]: <> (??? a drawing would help ???)
 
 ## Transport Network Reference Design {#sec-ref-design}
 
@@ -343,7 +336,7 @@ A co-managed CE is orchestrated by both the customer and the provider. In this c
 
 * Provider Network Orchestration domain: as defined in {{!I-D.ietf-teas-ietf-network-slices}}, the Provider relies on an IETF Network Slice Controller (NSC) to manage and orchestrate IETF Network Slices in the Provider Network. This framework permits to manage connectivity together with SLOs. Ultimately, the 5G NSO interfaces with an NSC for the management of IETF Network Slices using IETF APIs and data models.
 
-* Customer Site Orchestration domain: the Orchestration of TN elements of the Customer Sites relies upon a variety of  controllers (e.g., Fabric Manager, Element Management System, or VIM). The realization of this leg does not involve the Transport Network Orchestration.
+* Customer Site Orchestration domain: the Orchestration of TN elements of the Customer Sites relies upon a variety of  controllers (e.g., Fabric Manager, Element Management System, or VIM). The realization of this section does not involve the Transport Network Orchestration.
 
 A TN Slice relies upon a data path that can involve both the Provider and Customer TN Domains. Therefore, a TN Slice has broader scope than an IETF Network Slice since the latter applies to the Provider Network only. More details are provided in the next section.
 
@@ -352,21 +345,21 @@ A TN Slice relies upon a data path that can involve both the Provider and Custom
 ~~~~
 {: #figure-orch title="End-to-end 5G Slice Orchestration with TN" artwork-align="center"}
 
-### Transport Network Legs and Network Slice Instantiation
+### Transport Network Sections and Network Slice Instantiation
 
-Based on the reference design, the data path between NFs can be decomposed into three main types of sections. {{fig-end-to-end}} depicts the different legs:
+Based on the reference design, the data path between NFs can be decomposed into three main types of sections. {{fig-end-to-end}} depicts the different sections:
 
-*  Customer Site leg: Either connects two NFs located in the same Customer Site (e.g., NF1-NF2) or it connects a NF to a CE (e.g., NF1-CE). This leg may not present if the NF is the CE (e.g., NF3): in this case the AC connects the NF to the PE. The realization of this leg is driven by the 5G Network Orchestration and potentially the Customer Site Orchestration (e.g., Fabric Manager, Element Management System, or VIM). The realization of this leg does not involve the Transport Network Orchestration.
+*  Customer Site: Either connects two NFs located in the same Customer Site (e.g., NF1-NF2) or it connects a NF to a CE (e.g., NF1-CE). This section may not be present if the NF is the CE (e.g., NF3): in this case the AC connects the NF to the PE. The realization of this section is driven by the 5G Network Orchestration and potentially the Customer Site Orchestration (e.g., Fabric Manager, Element Management System, or VIM). The realization of this section does not involve the Transport Network Orchestration.
 
-* Provider Network leg: Represents the connectivity between two PEs (e.g., PE1-PE2).The realization of this leg is controlled by an IETF NSC.
+* Provider Network: Represents the connectivity between two PEs (e.g., PE1-PE2).The realization of this section is controlled by an IETF NSC.
 
-* Attachment Circuit leg: Represents the connectivity between CEs and PEs (e.g., CE-PE1 and PE2-NF3). The orchestration of this leg relies partially upon an  IETF NSC for the configuration of the AC on the PE customer-facing interfaces and the Customer Site Orchestration for the configuration of the AC on the CE.
+* Attachment Circuit: Represents the connectivity between CEs and PEs (e.g., CE-PE1 and PE2-NF3). The orchestration of this section relies partially upon an  IETF NSC for the configuration of the AC on the PE customer-facing interfaces and the Customer Site Orchestration for the configuration of the AC on the CE.
 
 
 As depicted in {{fig-end-to-end}}, the realization of an IETF Network Slice (i.e., connectivity with
-   performance commitments) involves the Provider Network and partially the AC (the PE-side of the AC). Note that the provisioning of a new NSI may rely on a partial or full pre-provisioned leg (e.g., an NSI may rely on an existing AC). Notwithstanding, a framework for the automation of both legs is proposed in this document. The Customer Site leg is considered as an extension of the connectivity of the RAN/CN domain without complex slice-specific performances requirements: the Customer Site infrastructure is usually over-provisioned with short distances (low latency) where basic QoS/Scheduling logic is sufficient to comply with the target SLOs. In other words, the main focus for the enforcement of end-to-end SLOs is managed at the NSI between PE interfaces connected to the AC.
+   performance commitments) involves the Provider Network and partially the AC (the PE-side of the AC). Note that the provisioning of a new NSI may rely on a partial or full pre-provisioned section (e.g., an NSI may rely on an existing AC). Notwithstanding, a framework for the automation of both sections is proposed in this document. The Customer Site section is considered as an extension of the connectivity of the RAN/CN domain without complex slice-specific performances requirements: the Customer Site infrastructure is usually over-provisioned with short distances (low latency) where basic QoS/Scheduling logic is sufficient to comply with the target SLOs. In other words, the main focus for the enforcement of end-to-end SLOs is managed at the NSI between PE interfaces connected to the AC.
 
-[comment]: <> (??? FUTURE REF for "a framework for the automation of both legs is proposed in this document")
+[comment]: <> (??? FUTURE REF for "a framework for the automation of both sections is proposed in this document")
 
 ~~~~
 {::include ./drawings/tn-sections.txt}
@@ -392,7 +385,7 @@ are passed between Orchestrators via a dedicated interface. This document propos
 
 More complex scenarios can happen with extra segmentation of the TN and additional TN Orchestration domains. It is not realistic to describe any design flavor, however the main concepts presented here in terms of segmentation (Provider/Customer) and stitching (AC) can be reused for the integration of more complex integrations.
 
-## 5G Slice to IETF Network Slice Mapping
+## 5G Slice to IETF Network Slice Mapping {#sec-mapping}
 
    There are multiple options to map a 5G network slice to IETF Network
    Slices:
