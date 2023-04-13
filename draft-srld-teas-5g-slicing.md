@@ -237,7 +237,7 @@ Additionally, the term "Transport Network" is used for disambiguation with 5G ne
       {{TS-28.530}} defines 5G Network Slicing by introducing the concept
       of Network Slice Subnet (NSS) to represent slices within each of
       these domains: RAN, CN, and TN (i.e., RAN NSS, CN
-      NSS, and TN NSS).  As per 3GPP specifications, an NSS can be shared or
+      NSS, and TN NSS).  As per 3GPP specifications (e.g., {{Section 4.5 of TS-28.530}}), an NSS can be shared or
       dedicated to a single slice.
 
    * TN Slicing:
