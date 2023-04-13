@@ -259,7 +259,7 @@ Additionally, the term "Transport Network" is used for disambiguation with 5G ne
       possible to implement 5G Network Slicing without TN
       Slicing, as explained in the next section.
 
-      TN slicing implemented using IETF technologies is described in 
+      TN slicing implemented using IETF technologies is described in
       {{!I-D.ietf-teas-ietf-network-slices}}.
 
       Although IETF Network Slices can be use more generally, the term "IETF Network Slice" (IETF NS, or INS in short) is used in this document to
