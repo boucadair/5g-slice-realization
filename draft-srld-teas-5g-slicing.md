@@ -185,7 +185,7 @@ informative:
 
 # Definitions
 
-The document uses the terms defined in {{!I-D.ietf-teas-ietf-network-slices}}.
+The document uses the terms defined in {{!I-D.ietf-teas-ietf-network-slices}}. See {{sec-ref-design}} for the contextualization of some of these terms.
 
 An extended list of abbreviations used in this document is provided in {{ext-abbr}}.
 
@@ -261,13 +261,20 @@ The term "Transport Network" is used for disambiguation with 5G network (e.g., I
 
 ## Transport Network Reference Design {#sec-ref-design}
 
-This section describes the reference design for modelling the Transport Network based on Orchestration and Management perimeters (Customer vs. Provider). {{fig-tn-arch}} depicts the reference design used in this document. This section makes use of the terms defined in {{!I-D.ietf-teas-ietf-network-slices}} with the addition of Customer Site.
+{{fig-tn-arch}} depicts the reference design used for modelling the Transport Network based on management perimeters (Customer vs. Provider).
+
+~~~~
+{::include ./drawings/pe-ce-ac.txt}
+~~~~
+{: #fig-tn-arch title="Reference Design: Customer Sites and Provider Network" artwork-align="center"}
+
+The description of the main componenets shown in {{fig-tn-arch}} are:
 
 Customer:
 : An entity that is responsible for managing and orchestrating the End-to-End 5G Mobile Network, notably RANs and CNs.
 
 Customer Sites:
-: A Customer manages and deploys 5G Network Functions (RAN and CN) in Customer Sites. On top of 5G Network Function (e.g., gNB, 5GC), a Customer may manage additional TN elements (e.g., servers, routers, switches, or VPC Gateways) within a Customer Site. A Customer Site can be either a physical or a virtual location. Examples of Customer Sites are a customer private locations (POP, DC), a VPC in a Public Cloud, or servers hosted within Provider or colocation service. The Orchestration of the TN within Customer Sites relies upon a set of controllers for automation purposes (e.g., NFVI, Enhanced CNI, Fabric Managers, or Public Cloud APIs). The detail of these is out of the scope of this document.
+: A Customer manages and deploys 5G Network Functions (RAN and CN) in Customer Sites. On top of 5G Network Functions (e.g., gNB, 5GC), a Customer may manage additional TN elements (e.g., servers, routers, switches, or VPC Gateways) within a Customer Site. A Customer Site can be either a physical or a virtual location. Examples of Customer Sites are a customer private locations (POP, DC), a VPC in a Public Cloud, or servers hosted within Provider or colocation service. The Orchestration of the TN within Customer Sites relies upon a set of controllers for automation purposes (e.g., NFVI, Enhanced CNI, Fabric Managers, or Public Cloud APIs). The detail of these is out of the scope of this document.
 
 Provider:
 : An entity responsible for interconnecting Customer Sites. The Provider orchestrates and manages a Provider Network.
@@ -283,11 +290,6 @@ Provider Edge (PE):
 
 Attachment Circuit (AC):
 : The logical connection that attaches a CE to a PE. A CE is connected to a PE via one or multiple ACs. An AC is technology-specific. For consistency with the AC data model terminology (e.g., {{?RFC9182}}), we assume that an AC is configured on a “bearer”, which represents the underlying connectivity. Examples of ACs are VLANs (AC) configured on a physical interface (bearer) or an Overlay VXLAN EVI (AC) configured on IP underlay (bearer).
-
-~~~~
-{::include ./drawings/pe-ce-ac.txt}
-~~~~
-{: #fig-tn-arch title="Reference Design: Customer Sites and Provider Network" artwork-align="center"}
 
 > Note: In order to keep the figures simple, only one AC and single-homed CEs are represented. However, this document does not exclude the instantiation of multiple ACs between a CE and a PE nor the presence of CEs that are attached to more than one PE.
 
