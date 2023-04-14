@@ -732,12 +732,8 @@ Specifically, the actual mapping is a design choice of service operators that ma
 
 ###  Option 10A {#sec-10a}
 
-   Strictly speaking, this option is not based on MPLS label hand-off.
-   In this option, MPLS is not used in VRF-to-VRF hand-offs,
-   since services are terminated at the boundary of each domain, and
-   VLAN hand-off is in place between the domains.  Thus, this option is
-   the same as VLAN hand-off, described in {{sec-vlan-handoff}}, and is
-   mentioned here for the sake of completeness.
+   This option is not based on MPLS label hand-off, 
+   but VLAN hand-off, described in {{sec-vlan-handoff}}.
 
 ###  Option 10B {#sec-10b}
 
