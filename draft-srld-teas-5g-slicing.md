@@ -483,11 +483,6 @@ Specifically, the actual mapping is a design choice of service operators that ma
    eMBB slice (SST=1 and no SD) should be supported globally.  This 5G
    slice would be the first slice in any 5G deployment.
 
-   Note that the actual realization of the mapping depends on several
-   factors such as the actual business cases, the NF vendor
-   capabilities, the NF vendor reference designs, as well as service
-   providers or even legal requirements.
-
 ~~~
    ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
                       ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
