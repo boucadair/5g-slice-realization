@@ -545,7 +545,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
    {{!I-D.ietf-teas-ietf-network-slices}} introduces the concept of the
    Network Resource Partition (NRP), which is defined as a collection of
    resources identified in the underlay network.  In the basic
-   realization model described in this document, a single NRP is used
+   realization model described in this document, depicted in {{figure-high-level-qos}}, a single NRP is used
    with the following characteristics:
 
    *  L2VPN/L3VPN service instances for logical separation:
@@ -616,7 +616,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
 
    In this option, the IETF Network Slice, fulfilling connectivity
    requirements between NFs of some 5G slice, is represented at the SDP
-   by a VLAN ID, or double VLAN IDs (commonly known as QinQ).  Each VLAN
+   by a VLAN ID (or double VLAN IDs, commonly known as QinQ), as depicted in {{figure-vlan-hand-off}}.  Each VLAN
    represents a distinct logical interface on the attachment circuits,
    hence it provides the possibility to place these logical interfaces
    in distinct L2 or L3 service instances and implement separation
@@ -645,7 +645,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
 
    In this option, the slices in the TN domain are instantiated
    by IP tunnels (for example, IPsec or GTP-U tunnels) established between
-   NFs.  The transport for a single 5G slice might be constructed with
+   NFs, as depicted in {{figure-ip-hand-off}}.  The transport for a single 5G slice might be constructed with
    multiple such tunnels, since a typical 5G slice contains many NFs -
    especially DUs and CUs.  If a shared NF (i.e., an NF that serves
    multiple slices, for example a shared DU) is deployed, multiple
