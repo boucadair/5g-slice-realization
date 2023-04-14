@@ -735,7 +735,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
 
 ###  Option 10A {#sec-10a}
 
-   This option is not based on MPLS label hand-off, 
+   This option is not based on MPLS label hand-off,
    but VLAN hand-off, described in {{sec-vlan-handoff}}.
 
 ###  Option 10B {#sec-10b}
