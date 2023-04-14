@@ -362,7 +362,11 @@ Based on the reference design, the data path between NFs can be decomposed into 
 As depicted in {{fig-end-to-end}}, the realization of an IETF Network Slice (i.e., connectivity with
    performance commitments) involves the Provider Network and partially the AC (the PE-side of the AC). Note that the provisioning of a new NSI may rely on a partial or full pre-provisioned section (e.g., an NSI may rely on an existing AC). Notwithstanding, a framework for the automation of both sections is proposed in this document. The Customer Site section is considered as an extension of the connectivity of the RAN/CN domain without complex slice-specific performances requirements: the Customer Site infrastructure is usually over-provisioned with short distances (low latency) where basic QoS/Scheduling logic is sufficient to comply with the target SLOs. In other words, the main focus for the enforcement of end-to-end SLOs is managed at the NSI between PE interfaces connected to the AC.
 
-[comment]: <> (??? FUTURE REF for "a framework for the automation of both sections is proposed in this document")
+
+{::comment}
+FUTURE REF for a framework for the automation of both sections is proposed in this document
+{:/comment}
+
 
 ~~~~
 {::include ./drawings/tn-sections.txt}
