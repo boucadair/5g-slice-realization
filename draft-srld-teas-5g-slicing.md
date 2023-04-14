@@ -1722,7 +1722,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    is 12 units (8 units for Slice X and 4 units for Slice Y).  When the
    5G NSO requests a new slice, the transport controller, in its mind,
    increments the bandwidth requirement according to the requirements of
-   the new slice.  For example, suppose a new slice is
+   the new slice.  For example, in {{figure-multi-DC}}, suppose a new slice is
    instantiated that needs 0.8 Gbps from DC1 to DC2.  The transport
    controller would increase its notion of the bandwidth requirement
    from DC1 to DC2 from 12 Gbps to 12.8 Gbps to accommodate the
