@@ -313,7 +313,7 @@ In subsequent sections of this document, the terms CE and PE are used for both a
 {: #fig-50 title="Generic Model vs Distributed CE and PE" artwork-align="center"}
 
 
-###  MPLS/SRv6 Attachment Circuit
+### Attachment Circuits for Inter-AS Option B/C
 
 In some cases, a CE connects with the provider network using the Inter-AS Option B/C with the use of MPLS or SRv6 data planes. An example is depicted in {{figure-51}}. The configuration of VRFs together with control plane identifiers, such as route targets/route distinguishers happens on the CE. This is a source of confusion since these configurations are typically enforced on PE devices. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the Customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE (e.g., in Option C, the ASBR and a remote PE in the Provider Network with VRF configuration form a distributed PE).
 
