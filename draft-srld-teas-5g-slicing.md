@@ -1130,8 +1130,8 @@ representing slices              representing slices    slices
 
    *  2r3c (two-rate three-color) rate limiter
 
-      This was initially defined in {{!RFC2698}}, and its improved version
-      in {{!RFC4115}}.  In essence, the traffic is assigned to one of the these three
+      This was initially defined in {{?RFC2698}}, and its improved version
+      in {{?RFC4115}}.  In essence, the traffic is assigned to one of the these three
       categories:
 
         -  Green, for traffic under CIR
@@ -1141,7 +1141,7 @@ representing slices              representing slices    slices
         -  Red, for traffic above PIR
 
 
-      An inbound 2r3c meter implemented with {{!RFC4115}}, compared to
+      An inbound 2r3c meter implemented with {{?RFC4115}}, compared to
       {{?RFC2698}}, is more 'customer friendly' as it doesn't impose
       outbound peak-rate shaping requirements on customer edge (CE)
       devices. 2r3c meters in general give greater flexibility for edge
@@ -1864,10 +1864,10 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    in {{sec-qos-map}}.  The SMO can use
    {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}} to request low-latency
    transport for a given slice if required.  However, {{?RFC8299}} or
-   {{!RFC8466}} do not support requesting a particular transport-type,
+   {{?RFC8466}} do not support requesting a particular transport-type,
    e.g., low-latency.  One option is to augment these models to convey
    this information.  This can be achieved by reusing the 'underlay-
-   transport' construct defined in {{!RFC9182}} and {{!RFC9291}}.
+   transport' construct defined in {{?RFC9182}} and {{?RFC9291}}.
 
 ##  Bandwidth Models {#sec-bw}
 
@@ -1896,10 +1896,9 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    to the customers but are not explicitly underpinned end to end across
    the transport network.
 
-   A variation on the scheme is that Flex-Algo, defined in
-   {{?I-D.ietf-lsr-flex-algo}}, is used, for example one Flex-Algo could
+   A variation on the scheme is that Flex-Algo {{?I-D.ietf-lsr-flex-algo}} is used. For example one Flex-Algo could
    use latency-based metrics and another Flex-Algo could use the IGP
-   metric.  There would be a many-to-one mapping of slices to Flex-
+   metric. There would be a many-to-one mapping of network slices to Flex-
    Algos.
 
    While Scheme 1 is technically feasible, it is vulnerable to
@@ -2019,9 +2018,8 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
 
    *  Providers may want to enable differentiated failure
       detect and repair features for a subset of network
-      slices.  For example, a given network slice may require fast detect and
-      repair mechanisms (e.g., as a function of the nature of the
-      traffic forwarded through the network slice), while others may
+      slices. For example, a given network slice may require fast detect and
+      repair mechanisms, while others may
       not be engineered with such means. The provider can use
       techniques such as {{?RFC5286}}, {{?RFC5714}}, or {{?RFC8355}}.
 
@@ -2038,9 +2036,9 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
 
    *  Means to report a set of network performance metrics to assess
       whether the agreed slice service objectives are honored. For example,
-      {{?I-D.ietf-opsawg-yang-vpn-service-pm}} can be used to report links one-way delay,
+      {{?I-D.ietf-opsawg-yang-vpn-service-pm}} can be used to report links' one-way delay,
       one-way delay variation, etc. Both conventional active/passive
-      measurement methods {{?RFC7799}} or more recent telemetry methods
+      measurement methods {{?RFC7799}} and more recent telemetry methods
       (e.g. YANG Push {{?RFC8641}}) can be used.
 
 
