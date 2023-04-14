@@ -407,8 +407,7 @@ More complex scenarios can happen with extra segmentation of the TN and addition
 
    * N to 1:
       Multiple 5G Network Slices may rely upon the same IETF Network
-      Slice (i.e., in {{TS-28.530}} semantic, two RAN/CN NSSes uses a
-      shared TN NSS).  In such a case, the Service Level Agreement (SLA) differentiation of slices
+      Slice.  In such a case, the Service Level Agreement (SLA) differentiation of slices
       would be entirely controlled at 5G Control Plane, for example, with
       appropriate placement strategies: this use case is represented in
       {{figure-6}}, where a User Plane Function (UPF) for the URLLC slice is
@@ -1945,8 +1944,6 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    NRP: Network Resource Partition
 
    NSC: Network Slice Controller
-
-   NSS: Network Slice Subnet
 
    PE: Provider Edge
 
