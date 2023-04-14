@@ -334,7 +334,7 @@ A co-managed CE is orchestrated by both the customer and the provider. In this c
 
 ###  End-to-End 5G Slice Orchestration Architecture
 
-{{figure-orch}} depicts a global framework for the orchestration of an end-to-end 5G Slice. An end-to-end 5G Network Slice Orchestrator (5G NSO) is responsible for orchestrating the end-to-end 5G Slice. The details of the 5G NSO is out of the scope of this document. The realization of the end-to-end 5G Slice spans RAN, CN, and TN. As mentionned in {{TS-28.530}}, the RAN and CN are segments of the 3GPP Management System, while the TN is not. The orchestration of the TN is split into two sub-domains in comformance with the reference design in {#sec-ref-design}:
+{{figure-orch}} depicts a global framework for the orchestration of an end-to-end 5G Slice. An end-to-end 5G Network Slice Orchestrator (5G NSO) is responsible for orchestrating the end-to-end 5G Slice. The details of the 5G NSO is out of the scope of this document. The realization of the end-to-end 5G Slice spans RAN, CN, and TN. As mentionned in {{TS-28.530}}, the RAN and CN are segments of the 3GPP Management System, while the TN is not. The orchestration of the TN is split into two sub-domains in conformance with the reference design in {#sec-ref-design}:
 
 * Provider Network Orchestration domain: as defined in {{!I-D.ietf-teas-ietf-network-slices}}, the Provider relies on an IETF Network Slice Controller (NSC) to manage and orchestrate IETF Network Slices in the Provider Network. This framework permits to manage connectivity together with SLOs. Ultimately, the 5G NSO interfaces with an NSC for the management of IETF Network Slices using IETF APIs and data models.
 
@@ -352,6 +352,7 @@ A TN Slice relies upon a data path that can involve both the Provider and Custom
 Based on the reference design, the data path between NFs can be decomposed into three main types of sections. {{fig-end-to-end}} depicts the different sections:
 
 *  Customer Site: Either connects two NFs located in the same Customer Site (e.g., NF1-NF2) or it connects a NF to a CE (e.g., NF1-CE). This section may not be present if the NF is the CE (e.g., NF3): in this case the AC connects the NF to the PE. The realization of this section is driven by the 5G Network Orchestration and potentially the Customer Site Orchestration (e.g., Fabric Manager, Element Management System, or VIM). The realization of this section does not involve the Transport Network Orchestration.
+
 
 * Provider Network: Represents the connectivity between two PEs (e.g., PE1-PE2).The realization of this section is controlled by an IETF NSC.
 
@@ -377,6 +378,7 @@ interconnection is technology-specific and requires a coordination between the C
 : {{figure-4}} is a basic example of a Layer 3 CE-PE link realization
 with shared network resources (such as VLAN-IDs and IP prefixes) which
 are passed between Orchestrators via a dedicated interface. This document proposes to rely upon IETF service data models: the IETF Network Slice Service Interface {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}} or the Attachment Circuit Service Interface ({{?I-D.boro-opsawg-teas-attachment-circuit}}.
+
 
 ~~~~
 {::include ./drawings/ac-api-synch.txt}
@@ -551,25 +553,24 @@ Specifically, the actual mapping is a design choice of service operators that ma
       fronthaul connections. eCPRI supports both delivery models. L2VPN/L3VPN service instances might be
       used as a basic form of logical slice separation.  Furthermore, using
       service instances results in an additional outer header (as packets
-      are encapsulated/decapsulated at the nodes performing PE
-      functions) providing clean discrimination between 5G QoS and TN
+      are encapsulated/decapsulated at the nodes hosting service instances) providing clean discrimination between 5G QoS and TN
       QoS, as explained in {{sec-qos-map}}.
 
-   *  Fine-grained resource control at the ETN:
+   *  Fine-grained resource control at the PE:
 
       This is sometimes called 'admission control' or 'traffic
       conditioning'.  The main purpose is the enforcement of the
       bandwidth contract for the slice right at the edge of the
-      transport domain where the traffic is handed-off between the
-      transport domain and the 5G domains (i.e., RAN/CN).
+      provider network where the traffic is handed-off between the
+      customer site and the provider network.
 
       The toolset used here is granular ingress policing (rate limiting)
       to enforce contracted bandwidths per slice and, potentially, per
       traffic class within the slice.  Out-of-contract traffic might be
       immediately dropped, or marked as high drop-probability traffic,
-      which is more likely to be dropped somewhere in transit if
-      congestion occurs.  In the egress direction at the edge of the
-      transport domain, hierarchical schedulers/shapers can be deployed,
+      which is more likely to be dropped somewhere inside the provider network if
+      congestion occurs.  In the egress direction at the PE node,
+      hierarchical schedulers/shapers can be deployed,
       providing guaranteed rates per slice, as well as guarantees per
       traffic class within each slice.
 
@@ -577,18 +578,17 @@ Specifically, the actual mapping is a design choice of service operators that ma
       and PEs, where a part of the admission control is implemented on the CE
       and other part of the admission control is implemented on the PE.
 
-   *  Coarse resource control at the TN transit (non-attachment
-      circuits) links of the transport domain, using a single NRP, spanning the entire TN domain.
-      Transit nodes do not maintain any state of individual slices.
+   *  Coarse resource control at the transit (non-attachment
+      circuits) links in the provider network, using a single NRP, spanning the entire provider network.
+      Transit nodes in the provider network do not maintain any state of individual slices.
       Instead, only a flat (non-hierarchical) QoS model is used on
-      transit links, with up to 8 traffic classes.  At the transport
-      domain edge, traffic-flows from multiple slice services are mapped
-      to the limited number of traffic classes used on transit links.
+      transit links in the provider network, with up to 8 traffic classes.  At the PE,
+      traffic-flows from multiple slice services are mapped
+      to the limited number of traffic classes used on provider network transit links.
 
-   *  Capacity planning/management for efficient usage of TN edge and TN
-      transit resources:
+   *  Capacity planning/management for efficient usage of provider network resources:
 
-      The role of capacity management is to ensure the transport
+      The role of capacity management is to ensure the provider network
       capacity can be utilized without causing any bottlenecks.  The
       toolset used here can range from careful network planning, to
       ensure more less equal traffic distribution (i.e., equal cost load
@@ -596,26 +596,11 @@ Specifically, the actual mapping is a design choice of service operators that ma
       without bandwidth reservations, to force more consistent load
       distribution even in non-ECMP friendly network topologies.
 
-~~~
-           ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
-     ┌──────────┐               base NRP               ┌──────────┐
-     │   ETN    │                                      │   ETN    │
-   ┌ ┼ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─│─
-     ■◀───┐│    │         IETF Network Slice 1         │   │┌────▶■ │
-   │ │    │     │        ┌─────┐        ┌─────┐        │    │     │
-     ■◀───┤│    │        │  P  │        │  P  │        │   │├────▶■ │
-   ├ ┼ ─ ─├────▶□◀──────▶□◀───▶□◀──────▶□────▶□◀──────▶□◀───┤─ ─ ─│─
-     ■◀───┤│    │        │     │        │     │        │   │├────▶■ │
-   │ │    │     │        └─────┘        └─────┘        │    │     │
-     ■◀───┘│    │         IETF Network Slice 2         │   │└────▶■ │
-   └ ┼ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─│─
-     │     │    │                                      │   │      │
-     └──────────┘                                      └──────────┘
-           └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
-    ■ fine-grained QoS (dedicated resources per IETF NS)
-    □ coarse QoS, with resources shared by all IETF NSes
-~~~
-{: #figure-8 title="Resource Allocation Slicing Model with a Single NRP" artwork-align="center"}
+~~~~
+{::include ./drawings/high-level-qos.txt}
+~~~~
+{: #figure-high-level-qos title="Resource Allocation Slicing Model with a Single NRP" artwork-align="center"}
+
 
    The 5G control plane relies upon the Single Network Slice
    Selection Assistance Information (S-NSSAI) 32-bit slice identifier for slice
@@ -635,43 +620,29 @@ Specifically, the actual mapping is a design choice of service operators that ma
    between slices via service instances.  Since the 5G interfaces are IP
    based interfaces (the only exception could be the F2 fronthaul-
    interface, where eCPRI with Ethernet encapsulation is used), this
-   VLAN is typically not transported across the TN domain.  Typically,
+   VLAN is typically not transported across the provider network.  Typically,
    it has only local significance at a particular SDP.  For
    simplification it is recommended to rely on the same VLAN identifier
    for all ACs, when possible.  However, SDPs for a same slice at
    different locations may also use different VLAN values.  Therefore, a
    VLAN to IETF Network Slice mapping table is maintained for each
-   AC, and the VLAN allocation is coordinated between TN orchestration and
-   local segment orchestration.  Thus, while VLAN hand-off is simple from
+   AC, and the VLAN allocation is coordinated between customer orchestration and
+   provider orchestration.  Thus, while VLAN hand-off is simple from
    the NF point of view, it adds complexity due to the requirement of
    maintaining mapping tables for each SDP.
 
-~~~
-VLANs representing slices           VLANs representing slices
 
-           │     ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─      │             │
-           │                        │     │             │
-┌──────┐   ▼   ┌─┴───┐ Transport┌─────┐   ▼   ┌─────┐   ▼   ┌──────┐
-│      ●───────●■    │          │    ■●───────●     ●───────●      │
-│ NF   ●───────●■ ETN│          │ETN ■●───────●L2/L3●───────●   NF │
-│      ●───────●■    │          │    ■●───────●     ●───────●      │
-└──────┘       └─┬───┘  Network └─────┘       └─────┘       └──────┘
-                                    │
-                 └ ─ ─ ─ ─ ─ ─ ─ ─ ─
-      └────────┘└────────────────────┘└─────────────────────┘
-         Local             TN                   Local
-        Segment          Segment               Segment
+~~~~
+{::include ./drawings/vlan-hand-off.txt}
+~~~~
+{: #figure-vlan-hand-off title="5G Slice with VLAN Hand-off" artwork-align="center"}
 
- ● – logical interface represented by VLAN on physical interface
- ■ - Service Demarcation Point
-~~~
-{: #figure-9 title="5G Slice with VLAN Hand-off" artwork-align="center"}
 
 ##  IP Hand-off
 
-   In this option, the slices in the transport domain are instantiated
+   In this option, the slices in the TN domain are instantiated
    by IP tunnels (for example, IPsec or GTP-U tunnels) established between
-   NFs.  The transport for a single 5G slice is constructed with
+   NFs.  The transport for a single 5G slice might be constructed with
    multiple such tunnels, since a typical 5G slice contains many NFs -
    especially DUs and CUs.  If a shared NF (i.e., an NF that serves
    multiple slices, for example a shared DU) is deployed, multiple
@@ -682,26 +653,11 @@ VLANs representing slices           VLANs representing slices
    to the VLAN hand-off case, a mapping table tracking IP to IETF
    Network Slice mapping is required.
 
-~~~
-                                        Tunnels representing slices
+~~~~
+{::include ./drawings/ip-hand-off.txt}
+~~~~
+{: #figure-ip-hand-off title="5G Slice with IP Hand-off" artwork-align="center"}
 
-                  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ┐                   │
-                                                        │
-┌──────┐       ┌──┴──┐ Transport┌───┴─┐       ┌─────┐   ▼   ┌──────┐
-│    ○════════════■════════════════■══════════════════════════○    │
-│ NF   ├───────┤ ETN │          │ ETN ├───────┤L2/L3├───────┤   NF │
-│    ○════════════■════════════════■══════════════════════════○    │
-└──────┘       └──┬──┘  Network └───┬─┘       └─────┘       └──────┘
-
-                  └ ─ ─ ─ ─ ─ ─ ─ ─ ┘
-      └────────┘└────────────────────┘└─────────────────────┘
-         Local             TN                   Local
-        Segment          Segment               Segment
-
-          ○ – tunnel (IPsec, GTP-U, ...) termination point
-          ■ - Service Demarcation Point
-~~~
-{: #figure-10 title="5G Slice with IP Hand-off" artwork-align="center"}
 
    The mapping table can be simplified if, for example, IPv6 addressing is used
    to address NFs.  An IPv6 address is a 128-bit long field, while the
@@ -719,7 +675,7 @@ VLANs representing slices           VLANs representing slices
    One
    benefit of embedding the S-NSSAI in the IPv6 address is that it provides
    a very easy way of identifying the packet as belonging to given
-   S-NSSAI at any place in the transport domain.  This might be
+   S-NSSAI at any place in the TN domain.  This might be
    used, for example, to selectively enable per S-NSSAI monitoring, or
    any other per S-NSSAI handling, if required.
 
@@ -741,7 +697,7 @@ VLANs representing slices           VLANs representing slices
    The 96-bit part of the address may be further divided based, for
    example, on the geographical location or the DC identification.
 
-   {{figure-12}} shows an example of a slicing deployment, where the S-NSSAI is
+   {{figure-s-nssai-deployment}} shows an example of a slicing deployment, where the S-NSSAI is
    embedded into IPv6 addresses used by NFs.  NF-A has a set of tunnel
    termination points, with unique per-slice IP addresses allocated from
    the 2001:db8::a:0:0/96 prefix, while NF-B uses a set of tunnel
@@ -752,38 +708,23 @@ VLANs representing slices           VLANs representing slices
    2001:db8::b:100:0}, while for MIoT (SST=3) tunnel uses
    {2001:db8::a:300:0, 2001:db8::b:300:0}.
 
-~~~
- 2001:db8::a:0:0/96 (NF-A)                2001:db8::b:0:0/96 (NF-B)
+~~~~
+{::include ./drawings/S-NSSAI-deployment.txt}
+~~~~
+{: #figure-s-nssai-deployment title="Deployment example with S-NSSAI embedded into IPv6" artwork-align="center"}
 
- 2001:db8::a:100:0/128  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─   2001:db8::b:100:0/128
-     │                                     │                  │
-┌────▼─┐ eMBB (SST=1)   │     Transport                     ┌─▼────┐
-│    ○═══════════════════■════════════════■═══════════════════○    │
-│ NF-A │                │                  │                │ NF-B │
-│    ○═══════════════════■════════════════■═══════════════════○    │
-└────▲─┘ MIoT (SST=3)   │      Network                      └─▲────┘
-     │                                     │                  │
- 2001:db8::a:300:0/128  └ ─ ─ ─ ─ ─ ─ ─ ─ ─   2001:db8::b:300:0/128
-
-     └──────────────────┘└────────────────┘└──────────────────┘
-        Local Segment        TN Segment        Local Segment
-
-          ○ – tunnel (IPsec, GTP-U, ...) termination point
-          ■ - Service Demarcation Point
-~~~
-{: #figure-12 title="Deployment example with S-NSSAI embedded into IPv6" artwork-align="center"}
 
 ##  MPLS Label Hand-off
 
    In this option, the service instances representing different slices
-   are created directly on the NF, or within the cloud infrastructure
-   hosting the NF, and attached to the TN domain.  Therefore, the packet
-   is MPLS encapsulated outside the TN domain with native MPLS
+   are created directly on the NF, or within the customer site
+   hosting the NF, and attached to the provider network.  Therefore, the packet
+   is MPLS encapsulated outside the provider network with native MPLS
    encapsulation, or MPLSoUDP encapsulation, depending on the capability
-   of the NF or cloud infrastructure, with the service label depicting
+   of the customer site, with the service label depicting
    the slice.
 
-   There are three major methods (based upon Section 10 of {{!RFC4364}}) for interconnecting multiple service domains:
+   There are three major methods (based upon Section 10 of {{!RFC4364}}) for interconnecting MPLS services over multiple service domains:
 
    *  Option 10A ({{sec-10a}}): VRF-to-VRF connections.
    *  Option 10B ({{sec-10b}}): redistribution of labeled VPN routes with next-hop
@@ -794,65 +735,40 @@ VLANs representing slices           VLANs representing slices
 
 ###  Option 10A {#sec-10a}
 
-   In this option, MPLS is not used in VRF-to-VRF hand-offs,
-   since services are terminated at the boundary of each domain, and
-   VLAN hand-off is in place between the domains.  Thus, this option is
-   the same as VLAN hand-off, described in {{sec-vlan-handoff}}.
+   This option is not based on MPLS label hand-off,
+   but VLAN hand-off, described in {{sec-vlan-handoff}}.
 
 ###  Option 10B {#sec-10b}
 
-   In this option, L3VPN service instances for different IETF
-   Network Slice Services are instantiated outside the TN domain.  These L3VPN service instances
-   could be instantiated either on the compute, hosting mobile network
-   functions ({{figure-13}}, left hand side), or within the cloud
+   In this option, L3VPN service instances are instantiated outside the
+   provider network.  These L3VPN service instances
+   are instantiated in the customer site, which could be for example either on the compute, hosting mobile network
+   functions ({{figure-mpls-10b-hand-off}}, left hand side), or within the DC/cloud
    infrastructure itself (e.g., on the top of the rack or leaf switch
-   within cloud IP fabric ({{figure-13}}, right hand side)). On the local segment connected to ETN, packets are already MPLS
-   encapsulated (or MPLSoUDP encapsulated, if cloud or compute
+   within cloud IP fabric ({{figure-mpls-10b-hand-off}}, right hand side)). On the
+   attachment circuit connected to PE, packets are already MPLS
+   encapsulated (or MPLSoUDP/MPLSoIP encapsulated, if cloud or compute
    infrastructure doesn't support native MPLS encapsulation). Therefore,
    the PE uses neither a VLAN nor an IP address for slice
    identification at the SDP, but instead uses the MPLS label.
 
-~~~
-     ◁──────        ◁──────        ◁──────
-     BGP VPN        BGP VPN        BGP VPN
-       COM=1, L=A"    COM=1, L=A'    COM=1, L=A
-       COM=2, L=B"    COM=2, L=B'    COM=2, L=B
-       COM=3, L=C"    COM=3, L=C'    COM=3, L=C
-    ◁─────────────▷◁────────────▷◁─────────────▷
-               nhs  nhs      nhs  nhs
-                                                        VLANs
- service instances                service instances  representing
-representing slices              representing slices    slices
-     │          ┌ ─ ─ ─ ─ ─ ─ ─ ─            │           │
-     │               Transport   │           │           │
-┌────▼─┐       ┌┴────┐       ┌─────┐       ┌─▼──────┐    ▼  ┌──────┐
-│    ◙ │       │■    │       │    ■│       │ ◙………………●───────●      │
-│ NF ◙ ├───────┤■ ETN│       │ETN ■├───────┤ ◙………………●───────●   NF │
-│    ◙ │       │■    │       │    ■│       │ ◙………………●───────●      │
-└──────┘       └┬────┘       └─────┘       └────────┘       └──────┘
-                      Network    │            L2/L3
-                └ ─ ─ ─ ─ ─ ─ ─ ─
-      └────────┘└──────────────────┘└───────────────────────┘
-         Local            TN                    Local
-        Segment         Segment                Segment
+~~~~
+{::include ./drawings/mpls-10b-hand-off.txt}
+~~~~
+{: #figure-mpls-10b-hand-off title="MPLS Hand-off: Option B" artwork-align="center"}
 
-  ● – logical interface represented by VLAN on physical interface
-  ◙ - service instances (with unique MPLS label)
-  ■ - Service Demarcation Point
-~~~
-{: #figure-13 title="MPLS Hand-off: Option B" artwork-align="center"}
 
    MPLS labels are allocated dynamically in Option 10B
    deployments, where at the domain boundaries service prefixes are
    reflected with next-hop self, and new label is dynamically allocated,
-   as visible in {{figure-13}} (e.g., labels A, A' and A" for the first depicted slice).  Therefore, for any slice-specific per hop
-   behavior at the TN domain edge, the ETN must be able to determine
+   as visible in {{figure-mpls-10b-hand-off}} (e.g., labels A, A' and A" for the first depicted slice).  Therefore, for any slice-specific per hop
+   behavior at the provider network edge, the PE must be able to determine
    which label represents which slice.  In the BGP control plane, when
-   exchanging service prefixes over local segment, each slice might be represented by a unique BGP community, so
+   exchanging service prefixes over attachment circuit, each slice might be represented by a unique BGP community, so
    tracking label assignment to the slice is possible.  For example, in
-   {{figure-13}}, for the slice identified with COM=1, ETN advertises a
+   {{figure-mpls-10b-hand-off}}, for the slice identified with COM=1, PE advertises a
    dynamically allocated label A".  Since, based on the community, the
-   label to slice association is known, ETN can use this dynamically
+   label to slice association is known, PE can use this dynamically
    allocated label A" to identify incoming packets as belonging to slice
    1, and execute appropriate edge per hop behavior.
 
@@ -860,7 +776,7 @@ representing slices              representing slices    slices
    might be with per-prefix granularity.  In extreme case, each prefix can have
    different community representing a different slice.  Depending on the
    business requirements, each slice could be represented by a different
-   service instance, as outlined in {{figure-13}}.  In that case, the route
+   service instance, as outlined in {{figure-mpls-10b-hand-off}}.  In that case, the route
    target extended community might be used as slice differentiator.  In
    another deployment, all prefixes (representing different slices)
    might be handled by single 'mobile' service instance, and some other
@@ -868,7 +784,7 @@ representing slices              representing slices    slices
    differentiation.  Or there could be a deployment that groups multiple
    slices together into a single service instance, resulting in a
    handful of service instances.  In any case, fine-grained per-hop
-   behavior at the edge of TN domain is possible.
+   behavior at the edge of provider network is possible.
 
 ###  Option 10C {#sec-10c}
 
@@ -878,7 +794,7 @@ representing slices              representing slices    slices
 
    The resources are managed via various QoS policies deployed in the
    network.  QoS mapping models to support 5G slicing connectivity
-   implemented over packet switched transport uses two layers of QoS that are discussed in the following subsections.
+   implemented over packet switched provider network uses two layers of QoS that are discussed in the following subsections.
 
 ## 5G QoS Layer
 
@@ -888,50 +804,50 @@ representing slices              representing slices    slices
    weights, admission thresholds, queue management thresholds, and link
    layer protocol configuration) in the RAN domain.  Given that
    5QI applies to the RAN domain, it is not visible to the
-   TN domain.  Therefore, if 5QI-aware treatment is desired in the TN
-   domain as well, 5G network functions might set DSCP with a value
-   representing 5QI so that differentiated treatment can implemented in TN domain
-   as well.  Based on these DSCP values, at SDP of each TN segment
+   provider network.  Therefore, if 5QI-aware treatment is desired in the provider
+   network as well, 5G network functions might set DSCP with a value
+   representing 5QI so that differentiated treatment can implemented in the provider network
+   as well.  Based on these DSCP values, at SDP of each provider network section
    used to construct transport for given 5G slice, very granular QoS
    enforcement might be implemented.
 
-   The mapping between 5QI and
+   The exact mapping between 5QI and
    DSCP is out of scope for this document.  Mapping recommendations
    are documented, e.g., in {{?I-D.henry-tsvwg-diffserv-to-qci}}.
 
    Each slice service might have flows with multiple 5QIs, thus there could be many
    different 5QIs being deployed. 5QIs (or, more precisely,
-   corresponding DSCP values) are visible to the TN domain at SDP
-   (i.e., at the edge of the TN domain).
+   corresponding DSCP values) are visible to the provider network at SDP
+   (i.e., at the edge of the provider network).
 
    In this document, this layer of QoS will be referred as '5G QoS
    Class' ('5G QoS' in short), or '5G DSCP'.
 
 ## TN QoS Layer
 
-   Control of the TN resources on transit links, as well as traffic
-   scheduling/prioritization on transit links, is based on a flat
+   Control of the TN resources on provider network transit links, as well as traffic
+   scheduling/prioritization on provider network transit links, is based on a flat
    (non-hierarchical) QoS model in this IETF Network Slice
    realization.  That is, IETF Network Slices are assigned dedicated
-   resources (e.g., QoS queues) at the edge of the TN domain (at
+   resources (e.g., QoS queues) at the edge of the provider network (at
    SDPs), while all IETF Network Slices are sharing resources (sharing
-   QoS queues) on the transit links of the TN domain.  Typical router
+   QoS queues) on the transit links of the provider network.  Typical router
    hardware can support up to 8 traffic queues per port, therefore
    the architecture assumes 8 traffic queues per port support in
    general.
 
    At this layer, QoS treatment is indicated by QoS indicator
-   specific to the encapsulation used in the TN domain, and it could
+   specific to the encapsulation used in the provider network, and it could
    be DSCP or MPLS Traffic Class (TC).  This layer of QoS will be referred as 'TN QoS
    Class', or 'TN QoS' for short, in this document.
 
 ## QoS Realization Models
 
-   While 5QI might be exposed to the TN domain, via the DSCP value
+   While 5QI might be exposed to the provider network, via the DSCP value
    (corresponding to specific 5QI value) set in the IP packet generated
    by NFs, some 5G deployments might use 5QI in the RAN domain only,
-   without requesting per 5QI differentiated treatment from the TN
-   domain.  This can be due to an NF limitation (e.g., no capability to set
+   without requesting per 5QI differentiated treatment from the provider network.
+   This can be due to an NF limitation (e.g., no capability to set
    DSCP), or it might simply depend on the overall slicing deployment
    model.  The O-RAN Alliance, for example, defines a phased approach to
    the slicing, with initial phases utilizing only per slice, but not
@@ -940,8 +856,8 @@ representing slices              representing slices    slices
 
    Therefore, from a QoS perspective, the 5G slicing connectivity
    realization architecture defines two high-level realization models
-   for slicing in the transport domain: a 5QI-unaware model and a 5QI-
-   aware model.  Both slicing models in the transport domain could be
+   for slicing in the TN domain: a 5QI-unaware model and a 5QI-
+   aware model.  Both slicing models in the TN domain could be
    used concurrently within the same 5G slice.  For example, the TN
    segment for 5G midhaul (F1-U interface) might be 5QI-aware, while
    at the same time the TN segment for 5G backhaul (N3 interface) might
@@ -952,72 +868,36 @@ representing slices              representing slices    slices
 ##  5QI-unaware Model {#sec-5QI-unaware}
 
    In 5QI-unaware mode, the DSCP values in the packets received from NF
-   at SDP are ignored.  In the TN domain, there is no QoS
+   at SDP are ignored.  In the provider network, there is no QoS
    differentiation at the 5G QoS Class level.  The entire IETF Network
    Slice is mapped to single TN QoS Class, and, therefore, to a single
-   QoS queue on the routers in the TN domain.  With a small number of
+   QoS queue on the routers in the provider network.  With a small number of
    deployed 5G slices (for example only two 5G slices: eMBB and MIoT),
    it is possible to dedicate a separate QoS queue for each slice on
-   transit routers.  However, with introduction of private/enterprises
+   transit routers in the provider network.  However, with introduction of private/enterprises
    slices, as the number of 5G slices (and thus corresponding IETF
-   Network Slices) increases, a single QoS queue on transit links serves
+   Network Slices) increases, a single QoS queue on transit links in the provider network serves
    multiple slices with similar characteristics.  QoS enforcement on
    transit links is fully coarse (single NRP, sharing resources among
-   all IETF Network Slices), as displayed in {{figure-14}}.
+   all IETF Network Slices), as displayed in {{figure-QoS-5QI-unaware}}.
 
-~~~
-   ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
-   ┏━━━━━━━━━━━━━━━━━┓         ETN                              │
-   ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃
-   ┃   SDP           ┃              ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
-   ┃│  ┌──────────┐ │┃              ┃       Transit link        ┃
-   ┃   │IETF NS 1 ├────────────┐    ┃┌────────────────────────┐ ┃
-   ┃│  └──────────┘ │┃         ├─────▶     TN QoS Class 1     │ ┃
-   ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃         │    ┃└────────────────────────┘ ┃
-   ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃         │    ┃┌────────────────────────┐ ┃
-   ┃   SDP           ┃         │    ┃│     TN QoS Class 2     │ ┃
-   ┃│  ┌──────────┐ │┃         │    ┃└────────────────────────┘ ┃
-   ┃   │IETF NS 2 ├────────┐   │    ┃┌────────────────────────┐ ┃
-   ┃│  └──────────┘ │┃     │   │    ┃│     TN QoS Class 3     │ ┃
-   ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃     │   │    ┃└────────────────────────┘ ┃
-   ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃     │   │    ┃┌────────────────────────┐ ┃
-   ┃   SDP           ┃     └─────────▶     TN QoS Class 4     │ ┃
-   ┃│  ┌──────────┐ │┃         │    ┃└────────────────────────┘ ┃
-   ┃   │IETF NS 3 ├────────────┘    ┃┌────────────────────────┐ ┃
-   ┃│  └──────────┘ │┃     ┌─────────▶     TN QoS Class 5     │ ┃
-   ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃     │        ┃└────────────────────────┘ ┃
-   ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃     │        ┃┌────────────────────────┐ ┃
-   ┃   SDP           ┃     │        ┃│     TN QoS Class 6     │ ┃
-   ┃│  ┌──────────┐ │┃     │        ┃└────────────────────────┘ ┃
-   ┃   │IETF NS 4 ├────────┤        ┃┌────────────────────────┐ ┃
-   ┃│  └──────────┘ │┃     │        ┃│     TN QoS Class 7     │ ┃
-   ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃     │        ┃└────────────────────────┘ ┃
-   ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃     │        ┃┌────────────────────────┐ ┃
-   ┃   SDP           ┃     │        ┃│     TN QoS Class 8     │ ┃
-   ┃│  ┌──────────┐ │┃     │        ┃└────────────────────────┘ ┃
-   ┃   │IETF NS 5 ├────────┘        ┃     Max 8 TN Classes      ┃
-   ┃│  └──────────┘ │┃              ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-   ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃                                          │
-   ┣━━━━━━━━━━━━━━━━━┛
-    ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
-   Fine-grained QoS enforcement         Coarse QoS enforcement
-     (dedicated resources per            (resources shared by
-       IETF Network Slice)                multiple IETF NSs)
-~~~
-{: #figure-14 title="Slice to TN QoS Mapping (5QI-unaware Model)" artwork-align="center"}
+~~~~
+{::include ./drawings/QoS-5QI-unaware.txt}
+~~~~
+{: #figure-QoS-5QI-unaware title="Slice to TN QoS Mapping (5QI-unaware Model)" artwork-align="center"}
 
-   When the IP traffic is handed over at the SDP from the local segment to the TN domain, the PE encapsulates the
-   traffic into MPLS (if MPLS transport is used in the TN domain), or
+   When the IP traffic is handed over at the SDP from the attachment circuit to the provider network, the PE encapsulates the
+   traffic into MPLS (if MPLS transport is used in the provider network), or
    IPv6 - optionally with some additional headers (if SRv6 transport is
-   used in the TN domain), and sends out the packets on the TN transit
+   used in the provider network), and sends out the packets on the provider network transit
    link.
 
    The original IP header retains the DCSP marking (which is ignored in
-   5QI-unaware mode), while the new header (MPLS or IPv6) carries QoS
+   5QI-unaware model), while the new header (MPLS or IPv6) carries QoS
    marking (MPLS Traffic Class bits for MPLS encapsulation, or DSCP for
    SRv6/IPv6 encapsulation) related to TN CoS.  Based on TN QoS Class
    marking, per hop behavior for all IETF Network Slices is executed on
-   TN links.  TN domain transit routers do not evaluate the original IP
+   provider network transit links.  Provider network transit routers do not evaluate the original IP
    header for QoS-related decisions.  This model is outlined in
    {{figure-15}} for MPLS encapsulation, and in {{figure-16}} for SRv6
    encapsulation.
@@ -1079,7 +959,7 @@ representing slices              representing slices    slices
    design, especially in combination with soft policing with in-profile/
    out-profile traffic, as discussed in {{sec-inbound-edge-resource-control}}.
 
-   Edge resources are controlled in a granular, fine-grained
+   Provider network edge resources are controlled in a granular, fine-grained
    manner, with dedicated resource allocation for each IETF Network
    Slice.  The resource control/enforcement happens at each SDP in two
    directions: inbound and outbound.
@@ -1087,12 +967,12 @@ representing slices              representing slices    slices
 
 ###  Inbound Edge Resource Control {#sec-inbound-edge-resource-control}
 
-   The main aspect of inbound edge resource control is per-slice traffic
+   The main aspect of inbound provider network edge resource control is per-slice traffic
    capacity enforcement.  This kind of enforcement is often called
    'admission control' or 'traffic conditioning'.  The goal of this
    inbound enforcement is to ensure that the traffic above the
    contracted rate is dropped or deprioritized, depending on the
-   business rules, right at the edge of TN domain.  This, combined with
+   business rules, right at the edge of provider network.  This, combined with
    appropriate network capacity planning/management ({{sec-capacity-planning}}) is required to ensure proper isolation between slices in
    a scalable manner.  As a result, traffic of one slice has no influence
    on the traffic of other slices, even if the slice is misbehaving
@@ -1107,8 +987,8 @@ representing slices              representing slices    slices
    *  PIR: Peak Information Rate (i.e., maximum bandwidth)
 
    These parameters define the traffic characteristics of the slice and
-   are part of SLO parameter set provided by the SMO to IETF NSC.  Based
-   on these parameters the inbound policy can be implemented using one
+   are part of SLO parameter set provided by the 5G NSO to IETF NSC.  Based
+   on these parameters the provider network inbound policy can be implemented using one
    of following options:
 
    *  1r2c (single-rate two-color) rate limiter
@@ -1121,9 +1001,9 @@ representing slices              representing slices    slices
       or remarked (with different MPLS TC or DSCP TN markings) to
       signify 'this packet should be dropped in the first place, if
       there is a congestion' (soft rate limiting), depending on the
-      business policy of the operator.  In the second case, while
+      business policy of the provicer network.  In the second case, while
       packets above CIR are forwarded at the SDP, they are subject to being
-      dropped during any congestion event at any place in the TN domain.
+      dropped during any congestion event at any place in the provider network.
 
    *  2r3c (two-rate three-color) rate limiter
 
@@ -1137,18 +1017,17 @@ representing slices              representing slices    slices
 
         -  Red, for traffic above PIR
 
-
       An inbound 2r3c meter implemented with {{?RFC4115}}, compared to
       {{?RFC2698}}, is more 'customer friendly' as it doesn't impose
       outbound peak-rate shaping requirements on customer edge (CE)
-      devices. 2r3c meters in general give greater flexibility for edge
+      devices. 2r3c meters in general give greater flexibility for provider network edge
       enforcement regarding accepting the traffic (green), de-
-      prioritizing and potentially dropping the traffic during
+      prioritizing and potentially dropping the traffic on transit during
       congestion (yellow), or hard dropping the traffic (red).
 
-   Inbound edge enforcement model for 5QI-unaware model, where all packets
-   belonging to the slice are treated the same way in the TN domain (no
-   5Q QoS Class differentiation in the TN domain) is outlined in
+   Inbound provider network edge enforcement model for 5QI-unaware model, where all packets
+   belonging to the slice are treated the same way in the provider network (no
+   5Q QoS Class differentiation in the provider) is outlined in
    {{figure-17}}.
 
 ~~~
@@ -1191,37 +1070,37 @@ representing slices              representing slices    slices
 
 ###  Outbound Edge Resource Control
 
-   While inbound slice admission control at the transport edge is
-   mandatory in the model, outbound edge resource control might not be
+   While inbound slice admission control at the provider network edge is
+   mandatory in the architecture described in this document, outbound provider network edge resource control might not be
    required in all use cases.  Use cases that specifically call for
-   outbound edge resource control are:
+   outbound provider network edge resource control are:
 
-   *  Slices use both CIR and PIR parameters, and transport edge links
+   *  Slices use both CIR and PIR parameters, and provider network edge links
       (attachment circuits) are dimensioned to fulfil the aggregate of
       slice CIRs.  If at any given time, some slices send the traffic
-      above CIR, congestion in outbound direction on the transport edge
-      link might happen.  Therefore, fine-grained resource control to
+      above CIR, congestion in outbound direction on the provider network edge
+      link (attachment circuit) might happen.  Therefore, fine-grained resource control to
       guarantee at least CIR for each slice is required.
 
    *  Any-to-Any (A2A) connectivity constructs are deployed, again
       resulting in potential congestion in outbound direction on the
-      transport edge links, even if only slice CIR parameters are used.
+      provider network edge links, even if only slice CIR parameters are used.
       This again requires fine-grained resource control per slice in
-      outbound direction at transport edge links.
+      outbound direction at the provider network edge links.
 
-   As opposed to inbound edge resource control, typically implemented
+   As opposed to inbound provider network edge resource control, typically implemented
    with rate-limiters/policers, outbound resource control is typically
    implemented with a weighted/priority queuing, potentially combined
    with optional shapers (per slice).  A detailed analysis of different
    queuing mechanisms is out of scope for this document, but is provided
    in {{?RFC7806}}.
 
-   {{figure-18}} outlines the outbound edge resource control model at the
-   transport network layer for 5QI-unaware slices.  Each slice is
+   {{figure-18}} outlines the outbound provider network edge resource control model
+   for 5QI-unaware slices.  Each slice is
    assigned a single egress queue.  The sum of slice CIRs, used as the
    weight in weighted queueing model, must not exceed the physical
    capacity of the attachment circuit.  Slice requests above this limit
-   must be rejected by the NSC, unless an already established slice with
+   must be rejected by the IETF NSC, unless an already established slice with
    lower priority, if such exists, is preempted.
 
 ~~~
@@ -1259,94 +1138,33 @@ representing slices              representing slices    slices
 
    In the 5QI-aware model, potentially a large number of 5G QoS Classes, represented via DSCP set by NFs
    (the architecture scales to thousands of 5G slices) is mapped
-   (multiplexed) to up to 8 TN QoS Classes used in transport transit
-   equipment, as outlined in {{figure-19}}.
+   (multiplexed) to up to 8 TN QoS Classes used in provider network transit
+   equipment, as outlined in {{figure-QoS-5QI-aware}}.
 
-~~~
-  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
-  ┏━━━━━━━━━━━━━━━━━┓         ETN                              │
-  ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃
-  ┃   SDP           ┃              ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
-  ┃│  ┌──────────┐ │┃              ┃       Transit link        ┃
-  ┃   │5G DSCP A ├───────────────┐ ┃┌────────────────────────┐ ┃
-I ┃│  └──────────┘ │┃            ├──▶     TN QoS Class 1     │ ┃
-E ┃   ┌──────────┐  ┃            │ ┃└────────────────────────┘ ┃
-T ┃│  │5G DSCP B ├───────────┐   │ ┃┌────────────────────────┐ ┃
-F ┃   └──────────┘  ┃        │   │ ┃│     TN QoS Class 2     │ ┃
-  ┃│  ┌──────────┐ │┃        │   │ ┃└────────────────────────┘ ┃
-N ┃   │5G DSCP C ├──╋─────┐  │   │ ┃┌────────────────────────┐ ┃
-S ┃│  └──────────┘ │┃     │  │   │ ┃│     TN QoS Class 3     │ ┃
-  ┃   ┌──────────┐  ┃     │  │   │ ┃└────────────────────────┘ ┃
-1 ┃│  │5G DSCP D ├─────┐  │  │   │ ┃┌────────────────────────┐ ┃
-  ┃   └──────────┘  ┃  │  │  ├──────▶     TN QoS Class 4     │ ┃
-  ┃└ ─ ─ ─ ─ ─ ─ ─ ┘┃  │  │  │   │ ┃└────────────────────────┘ ┃
-  ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃  │  │  │   │ ┃┌────────────────────────┐ ┃
-  ┃   ┌──────────┐  ┃  │  ├─────────▶     TN QoS Class 5     │ ┃
-  ┃│  │5G DSCP A ├─────│──│──│───┘ ┃└────────────────────────┘ ┃
-I ┃   └──────────┘  ┃  │  │  │     ┃┌────────────────────────┐ ┃
-E ┃│  ┌──────────┐ │┃  │  │  │     ┃│     TN QoS Class 6     │ ┃
-T ┃   │5G DSCP E ├─────│──│──┘     ┃└────────────────────────┘ ┃
-F ┃│  └──────────┘ │┃  │  │        ┃┌────────────────────────┐ ┃
-  ┃   ┌──────────┐  ┃  │  │        ┃│     TN QoS Class 7     │ ┃
-N ┃│  │5G DSCP F ├─────│──┘        ┃└────────────────────────┘ ┃
-S ┃   └──────────┘  ┃  │           ┃┌────────────────────────┐ ┃
-  ┃│  ┌──────────┐ │┃  ├────────────▶     TN QoS Class 8     │ ┃
-2 ┃   │5G DSCP G ├─────┘           ┃└────────────────────────┘ ┃
-  ┃│  └──────────┘ │┃              ┃     Max 8 TN Classes      ┃
-  ┃   SDP           ┃              ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-  ┃└ ─ ─ ─ ─ ─ ─ ─ ┘┃                                          │
-  ┣━━━━━━━━━━━━━━━━━┛
-   ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
-  Fine-grained QoS enforcement         Coarse QoS enforcement
-    (dedicated resources per            (resources shared by
-      IETF Network Slice)                multiple IETF NSs)
-~~~
-{: #figure-19 title="Slice 5Q QoS to TN QoS Mapping (5QI-aware Model)" artwork-align="center"}
+
+~~~~
+{::include ./drawings/QoS-5QI-aware.txt}
+~~~~
+{: #figure-QoS-5QI-aware title="Slice 5Q QoS to TN QoS Mapping (5QI-aware Model)" artwork-align="center"}
+
 
    Given that in large scale deployments (large number of 5G
    slices), the number of potential 5G QoS Classes is much higher than
    the number of TN QoS Classes, multiple 5G QoS Classes with similar
    characteristics - potentially from different slices -
-   would be grouped with common operator-defined TN logic and mapped to a same TN QoS Class when transported in the TN
-   domain.  That is, common per hop behavior (PHB) is executed on
-   transit TN routers for all packets grouped together. An example of this
-   approach is outlined in {{figure-34}}.
+   would be grouped with common operator-defined TN logic and mapped to a same TN QoS Class when transported in the
+   provider network.  That is, common per hop behavior (PHB) is executed on
+   transit provider network routers for all packets grouped together. An example of this
+   approach is outlined in {{figure-QoS-5QI-mapping-example}}.
 
 Note:
-: The numbers indicated in {{figure-34}} (S-NSSAI, 5QI, DSCP, queue, etc.) are provided for illustration purposes only and should not be considered as deployment guidance.
+: The numbers indicated in {{figure-QoS-5QI-mapping-example}} (S-NSSAI, 5QI, DSCP, queue, etc.) are provided for illustration purposes only and should not be considered as deployment guidance.
 
-~~~
-                      ┌───────────── ETN  ─────────────────┐
-┌────── NF-A ──────┐  │                                    │
-│                  │  │ ┌ ─ ─ ─ ─ ┐                        │
-│ 3GPP S-NSSAI 100 │  │     SDP                            │
-│┌──────┐ ┌───────┐│  │ │┌───────┐│                        │
-││5QI=1 ├─▶DSCP=46├──────▶DSCP=46├───┐                     │
-│└──────┘ └───────┘│  │ │└───────┘│  │                     │
-│┌──────┐ ┌───────┐│  │  ┌───────┐   │                     │
-││5QI=65├─▶DSCP=46├──────▶DSCP=46├┼──┤                     │
-│└──────┘ └───────┘│  │  └───────┘   │                     │
-│┌──────┐ ┌───────┐│  │ │┌───────┐│  │                     │
-││5QI=7 ├─▶DSCP=10├──────▶DSCP=10──────┐  ┌──────────────┐ │
-│└──────┘ └───────┘│  │ │└───────┘│  │ │  │TN QoS Class 5│ │
-└──────────────────┘  │  ─ ─ ─ ─ ─   ├─│──▶   Queue 5    │ │
-                      │              │ │  └──────────────┘ │
-┌────── NF-B ──────┐  │              │ │                   │
-│                  │  │ ┌ ─ ─ ─ ─ ┐  │ │                   │
-│ 3GPP S-NSSAI 200 │  │     SDP      │ │                   │
-│┌──────┐ ┌───────┐│  │ │┌───────┐│  │ │                   │
-││5QI=1 ├─▶DSCP=46├──────▶DSCP=46├───┤ │  ┌──────────────┐ │
-│└──────┘ └───────┘│  │ │└───────┘│  │ │  │TN QoS Class 1│ │
-│┌──────┐ ┌───────┐│  │  ┌───────┐   │ ├──▶   Queue 1    │ │
-││5QI=65├─▶DSCP=46├──────▶DSCP=46├┼──┘ │  └──────────────┘ │
-│└──────┘ └───────┘│  │  └───────┘     │                   │
-│┌──────┐ ┌───────┐│  │ │┌───────┐│    │                   │
-││5QI=7 ├─▶DSCP=10├──────▶DSCP=10├─────┘                   │
-│└──────┘ └───────┘│  │ │└───────┘│                        │
-└──────────────────┘  │  ─ ─ ─ ─ ─                         │
-                      └────────────────────────────────────┘
-~~~
-{: #figure-34 title="Example of 3GPP QoS Mapped to TN QoS" artwork-align="center"}
+
+~~~~
+{::include ./drawings/QoS-5QI-mapping-example.txt}
+~~~~
+{: #figure-QoS-5QI-mapping-example title="Example of 3GPP QoS Mapped to TN QoS" artwork-align="center"}
 
 In current SDO progress of 3GPP (Rel.17) and O-RAN the mapping of 5QI to
 DSCP is not expected in per-slice fashion, where 5QI to DSCP mapping may
@@ -1357,13 +1175,13 @@ to TN QoS Classes may be rather common.
    marking corresponding to 5QI (5G QoS Class), while the new header
    (MPLS or IPv6) carries QoS marking related to TN QoS Class.  Based on
    TN QoS Class marking, per hop behavior for all aggregated 5G QoS
-   Classes from all IETF Network Slices is executed on TN links.  TN
-   domain transit routers do not evaluate original IP header for QoS
+   Classes from all IETF Network Slices is executed on provider network transit links.  Provider network
+   transit routers do not evaluate original IP header for QoS
    related decisions.  The original DSCP marking retained in the
    original IP header is used at the PE for fine-grained per slice and
    per 5G QoS Class inbound/outbound enforcement on the AC.
 
-   In 5QI-aware model, compared to 5QI-unware model, edge resources are controlled in an even more
+   In 5QI-aware model, compared to 5QI-unware model, provider network edge resources are controlled in an even more
    granular, fine-grained manner, with dedicated resource allocation for
    each IETF Network Slice and dedicated resource allocation for number
    of traffic classes (most commonly up 4 or 8 traffic classes,
@@ -1535,18 +1353,18 @@ to TN QoS Classes may be rather common.
 
 ##  Transit Resource Control
 
-   Transit resource control is much simpler than Edge resource control.
-   As outlined in {{figure-19}}, at the edge, 5Q QoS Class marking
+   Transit resource control is much simpler than Edge resource control in the provider network.
+   As outlined in {{figure-QoS-5QI-aware}}, at the provider network edge, 5Q QoS Class marking
    (represented by DSCP related to 5QI set by mobile network functions
    in the packets handed off to the TN) is mapped to the TN QoS Class.
    Based in TN QoS Class, when the packet is encapsulated with outer
    header (MPLS or IPv6), TN QoS Class marking (MPLS TC or IPv6 DSCP in
    outer header, as depicted in {{figure-15}} and {{figure-16}}) is set in the
-   outer header.  PHB on transit is based exclusively on that TN QoS
+   outer header.  PHB in provuder network transit routers is based exclusively on that TN QoS
    Class marking, i.e., original 5G QoS Class DSCP is not taken into
    consideration on transit.
 
-   Transit resource control does not use any inbound interface policy,
+   Provider network transit resource control does not use any inbound interface policy,
    but only outbound interface policy, which is based on priority queue
    combined with weighted or deficit queuing model, without any shaper.
    The main purpose of transit resource control is to ensure that during
@@ -1561,7 +1379,7 @@ to TN QoS Classes may be rather common.
    tunnel group is created with specific optimization criteria and
    constraints.  This document refers to such tunnel groups as
    'transport planes'.  For example, a transport plane "A" might represent
-   tunnels optimized for latency, and transport plane "B" represent tunnels optimized for high capacity.
+   tunnels optimized for latency, and transport plane "B" might represent tunnels optimized for high capacity.
 
    {{figure-23}} depicts an example of a simple network with two transport
    planes.  These transport planes might be realized via various IP/MPLS
@@ -1570,7 +1388,7 @@ to TN QoS Classes may be rather common.
    reservations.
 
    {{sec-capacity-planning}} discusses in detail different bandwidth
-   models that can be deployed in the transport network.  However,
+   models that can be deployed in the provider network.  However,
    discussion about how to realize or orchestrate transport planes is
    out of scope for this document.
 
@@ -1605,15 +1423,15 @@ to TN QoS Classes may be rather common.
 
    Similar to the QoS mapping models discussed in {{sec-qos-map}}, for mapping
    to transport planes at the ingress PE, both 5QI-unaware and 5QI-aware
-   modes are defined.  In essence, entire slices can be mapped to
-   transport planes without 5G QoS consideration (5QI-unaware mode), or
+   models are defined.  In essence, entire slices can be mapped to
+   transport planes without 5G QoS consideration (5QI-unaware model), or
    flows with different 5G QoS Classes, even if they are from the same
    slice, might be mapped to different transport planes (5QI-aware
-   mode).
+   model).
 
 ##  5QI-unaware Model
 
-   As discussed in {{sec-5QI-unaware}}, in the 5QI-unware model, the TN domain
+   As discussed in {{sec-5QI-unaware}}, in the 5QI-unware model, the provider network
    doesn't take into account 5G QoS during execution of per-hop
    behavior.  The entire slice is mapped to single TN QoS Class,
    therefore the entire slice is subject to the same per-hop behavior.
@@ -1666,10 +1484,10 @@ to TN QoS Classes may be rather common.
    routers), and 2 Transport Planes (e.g., latency optimized transport
    plane using link latency metrics for path calculation, and transport
    plane following IGP metrics).  TN QoS Class determines the per-hop
-   behavior when the packets are transiting through the TN domain, while
+   behavior when the packets are transiting through the provider network, while
    Transport Plane determines the path, optimized or constrained based
    on operator's business criteria, that the packets use to transit
-   through the TN domain.
+   through the provider network.
 
 
 ##  5QI-aware Model
@@ -1723,72 +1541,49 @@ to TN QoS Classes may be rather common.
 
 ## Bandwidth Requirements
 
-   This section describes the information conveyed by the SMO to the
+   This section describes the information conveyed by the 5G NSO to the
    transport controller with respect to slice bandwidth requirements.
 
-   {{figure-26}} shows three DCs that contain instances of network
+   {{figure-multi-DC}} shows three DCs that contain instances of network
    functions.  Also shown are PEs that have links to the DCs.  The PEs
-   belong to the transport network.  Other details of the transport
+   belong to the provider network.  Other details of the provider
    network, such as P-routers and transit links are not shown.  Also
-   details of the DC infrastructure such as switches and routers are not
+   details of the DC infrastructure in customer sites, such as switches and routers are not
    shown.
 
-   The SMO is aware of the existence of the network functions and their
-   locations.  However, it is not aware of the details of the transport
+   The 5G NSO is aware of the existence of the network functions and their
+   locations.  However, it is not aware of the details of the provider
    network.  The transport controller has the opposite view - it is
-   aware of the transport infrastructure and the links between the PEs
-   and the DCs, but is not aware of the individual network functions.
+   aware of the provider network infrastructure and the links between the PEs
+   and the DCs, but is not aware of the individual network functions at customer sites.
 
-~~~
-┌ ─ ─ ─ ─ DC 1─ ─ ─ ─    ┌ ─ ─ ─ ─ ─ ─ ─ ─ ┐   ┌ ─ ─ ─ ─ DC 2─ ─ ─ ─
-  ┌──────┐           │  ┌────┐         ┌────┐              ┌──────┐ │
-│ │ NF1A │           ───■PE1A│         │PE2A■──┤           │ NF2A │
-  └──────┘           │  └────┘         └────┘              └──────┘ │
-│ ┌──────┐               │                 │   │           ┌──────┐
-  │ NF1B │           │                                     │ NF2B │ │
-│ └──────┘               │                 │   │           └──────┘
-  ┌──────┐           │  ┌────┐         ┌────┐              ┌──────┐ │
-│ │ NF1C │           ───■PE1B│         │PE2B■──┤           │ NF2C │
-  └──────┘           │  └────┘         └────┘              └──────┘ │
-└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─    │    Transport    │   └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+~~~~
+{::include ./drawings/multi-DC.txt}
+~~~~
+{: #figure-multi-DC title="An Example of Multi-DC Architecture" artwork-align="center"}
 
-                         │     Network     │   ┌ ─ ─ ─ ─ DC 3─ ─ ─ ─
-                                       ┌────┐              ┌──────┐ │
-                         │             │PE3A■──┤           │ NF3A │
-                                       └────┘              └──────┘ │
-                         │                 │   │           ┌──────┐
-                                                           │ NF3B │ │
-                         │                 │   │           └──────┘
-                                       ┌────┐              ┌──────┐ │
-                         │             │PE3B■──┤           │ NF3C │
-                                       └────┘              └──────┘ │
-                         └ ─ ─ ─ ─ ─ ─ ─ ─ ┘   └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
-
-  ■ - SDP, with fine-grained QoS (dedicated resources per IETF NS)
-~~~
-{: #figure-26 title="An Example of Multi-DC Architecture" artwork-align="center"}
 
    Let us consider 5G Slice "X" that uses some of the network functions in
-   the three DCs.  If this slice has latency requirements, the SMO will
+   the three DCs.  If this slice has latency requirements, the 5G NSO will
    have taken those into account when deciding which NF instances
    in which DC is to be invoked for this slice.  As a result of such a
    placement decision, the three DCs shown are involved in 5G Slice "X",
-   rather than other DCs.  For its decision-making, the SMO
+   rather than other DCs.  For its decision-making, the 5G NSO
    needs information from the NSC about the observed latency between DCs.
    Preferably, the NSC would present the topology in an abstracted form,
    consisting of point-to-point abstracted links between pairs of DCs
    and associated latency and optionally delay variation and link loss
-   values.  It would be valuable to have a mechanism for the SMO to
+   values.  It would be valuable to have a mechanism for the 5G NSO to
    inform the NSC which DC-pairs are of interest for these metrics -
-   there may be of order thousands of DCs, but the SMO will only be
+   there may be of order thousands of DCs, but the 5G NSO will only be
    interested in these metrics for a small fraction of all the possible
-   DC-pairs, i.e. those in the same region of the network.  The
+   DC-pairs, i.e. those in the same region of the provider network.  The
    mechanism for conveying the information will be discussed in a future
    version of this document.
 
    {{figure-27}} shows the matrix of bandwidth demands for 5G slice "X".
    Within the slice, multiple network function instances might be
-   sending traffic from DCi to DCj.  However, the SMO sums the
+   sending traffic from DCi to DCj.  However, the 5G NSO sums the
    associated demands into one value.  For example, NF1A and NF1B in DC1
    might be sending traffic to multiple NFs in DC2, but this is
    expressed as one value in the traffic matrix: the total bandwidth
@@ -1836,15 +1631,15 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    matrix to the appropriate PE routers, in order to enforce the
    bandwidth contract.  For example, it applies a policer of 11 units to
    PE1A and PE1B that face DC1, as this is the total bandwidth that DC1
-   sends into the transport network corresponding to Slice X.  Also, the
+   sends into the provider network corresponding to Slice X.  Also, the
    controller may apply shapers in the direction from the TN to the DC,
    if otherwise there is the possibility of a link in the DC being
    oversubscribed.  Note that a peer NF endpoint of an AC can be
    identified using 'peer-sap-id' as defined in {{?I-D.ietf-opsawg-sap}}.
 
-   Depending on the bandwidth model used in the network ({{sec-bw}}),
+   Depending on the bandwidth model used in the provider network ({{sec-bw}}),
    the other values in the matrix, i.e., the DC-to-DC demands, may not
-   be directly applied to the transport network.  Even so, the
+   be directly applied to the provider network.  Even so, the
    information may be useful to the IETF NSC for capacity planning and
    failure simulation purposes.  If, on the other hand, the DC-to-DC
    demand information is not used by the IETF NSC, the IETF YANG Data
@@ -1854,11 +1649,11 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    conveying the bandwidth information in the right-most column of the
    traffic matrix.
 
-   The transport network may be implemented in such a way that it has
+   The provider network may be implemented in such a way that it has
    various types of paths, for example low-latency traffic might be
    mapped onto a different transport path to other traffic (for example
    a particular flex-algo or a particular set of TE LSPs), as discussed
-   in {{sec-qos-map}}.  The SMO can use
+   in {{sec-qos-map}}.  The 5G NSO can use
    {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}} to request low-latency
    transport for a given slice if required.  However, {{?RFC8299}} or
    {{?RFC8466}} do not support requesting a particular transport-type,
@@ -1869,7 +1664,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
 ##  Bandwidth Models {#sec-bw}
 
    This section describes three bandwidth management schemes that could
-   be employed in the transport network.  Many variations are possible,
+   be employed in the provider network.  Many variations are possible,
    but each example describes the salient points of the corresponding
    scheme.  Schemes 2 and 3 use TE; other variations on TE are possible
    as described in {{?I-D.ietf-teas-rfc3272bis}}.
@@ -1885,13 +1680,13 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    In Scheme 1, although the operator provides bandwidth guarantees to
    the slice customers, there is no explicit end-to-end underpinning of
    the bandwidth SLO, in the form of bandwidth reservations across the
-   transport network.  Rather, the expected performance is achieved via
+   provider network.  Rather, the expected performance is achieved via
    capacity planning, based on traffic growth trends and anticipated
    future demands, in order to ensure that network links are not over-
    subscribed.  This scheme is analogous to that used in many existing
    business VPN deployments, in that bandwidth guarantees are provided
    to the customers but are not explicitly underpinned end to end across
-   the transport network.
+   the provider network.
 
    A variation on the scheme is that Flex-Algo {{?I-D.ietf-lsr-flex-algo}} is used. For example one Flex-Algo could
    use latency-based metrics and another Flex-Algo could use the IGP
@@ -1908,7 +1703,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
 
    Scheme 2 uses RSVP-TE or SR-TE LSPs with fixed bandwidth
    reservations.  By "fixed", we mean a value that stays constant over
-   time, unless the SMO communicates a change in slice bandwidth
+   time, unless the 5G NSO communicates a change in slice bandwidth
    requirements, due to the creation or modification of a slice.  Note
    that the "reservations" would be in the mind of the transport
    controller - it is not necessary (or indeed possible for SR-TE) to
@@ -1925,9 +1720,9 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    demands of the individual slices.  For example, if only Slice X and
    Slice Y are present, then the bandwidth requirement from DC1 to DC2
    is 12 units (8 units for Slice X and 4 units for Slice Y).  When the
-   SMO requests a new slice, the transport controller, in its mind,
+   5G NSO requests a new slice, the transport controller, in its mind,
    increments the bandwidth requirement according to the requirements of
-   the new slice.  For example, in {{figure-26}}, suppose a new slice is
+   the new slice.  For example, suppose a new slice is
    instantiated that needs 0.8 Gbps from DC1 to DC2.  The transport
    controller would increase its notion of the bandwidth requirement
    from DC1 to DC2 from 12 Gbps to 12.8 Gbps to accommodate the

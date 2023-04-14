@@ -1,0 +1,26 @@
+     ◁──────        ◁──────        ◁──────                          
+     BGP VPN        BGP VPN        BGP VPN                          
+       COM=1, L=A"    COM=1, L=A'    COM=1, L=A                     
+       COM=2, L=B"    COM=2, L=B'    COM=2, L=B                     
+       COM=3, L=C"    COM=3, L=C'    COM=3, L=C                     
+    ◁─────────────▷◁────────────▷◁─────────────▷                    
+               nhs  nhs      nhs  nhs                               
+                                                        VLANs       
+ service instances                service instances  representing   
+representing slices              representing slices    slices      
+     │          ┌ ─ ─ ─ ─ ─ ─ ─ ─            │           │          
+     │               Provider    │           │           │          
+┌────▼─┐       ┌┴────┐       ┌─────┐       ┌─▼──────┐    ▼  ┌──────┐
+│    ◙ │       │■    │       │    ■│       │ ◙………………●───────●      │
+│ NF ◙ ├───────┤■ PE │       │ PE ■├───────┤ ◙………………●───────●   NF │
+│    ◙ │       │■    │       │    ■│       │ ◙………………●───────●      │
+└──────┘       └┬────┘       └─────┘       └────────┘       └──────┘
+                      Network    │            L2/L3                 
+                └ ─ ─ ─ ─ ─ ─ ─ ─                                   
+     └────────┘└───────────────────┘┘└────────┘ └───────────┘       
+     Attachment   Provider Network   Attachment Customer Site       
+      Circuit         Section         Circuit      Section          
+                                                                    
+  ● – logical interface represented by VLAN on physical interface   
+  ◙ - service instances (with unique MPLS label)                    
+  ■ - Service Demarcation Point                                     

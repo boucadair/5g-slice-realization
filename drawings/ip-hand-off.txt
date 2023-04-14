@@ -1,0 +1,17 @@
+                                        Tunnels representing slices 
+                                                                    
+                  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ┐                   │           
+                                                        │           
+┌──────┐       ┌──┴──┐ Provider ┌───┴─┐       ┌─────┐   ▼   ┌──────┐
+│    ○════════════■════════════════■══════════════════════════○    │
+│ NF   ├───────┤ PE  │          │ PE  ├───────┤L2/L3├───────┤   NF │
+│    ○════════════■════════════════■══════════════════════════○    │
+└──────┘       └──┬──┘  Network └───┬─┘       └─────┘       └──────┘
+                                                                    
+                  └ ─ ─ ─ ─ ─ ─ ─ ─ ┘                               
+      └────────┘└────────────────────┘└────────┘ └───────────┘      
+      Attachment   Provider Network   Attachment Customer Site      
+       Circuit         Section         Circuit      Section         
+                                                                    
+          ○ – tunnel (IPsec, GTP-U, ...) termination point          
+          ■ - Service Demarcation Point                             
