@@ -626,7 +626,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
    for all ACs, when possible.  However, SDPs for a same slice at
    different locations may also use different VLAN values.  Therefore, a
    VLAN to IETF Network Slice mapping table is maintained for each
-   AC, and the VLAN allocation is coordinated between customer orchestartion and
+   AC, and the VLAN allocation is coordinated between customer orchestration and
    provider orchestration.  Thus, while VLAN hand-off is simple from
    the NF point of view, it adds complexity due to the requirement of
    maintaining mapping tables for each SDP.
