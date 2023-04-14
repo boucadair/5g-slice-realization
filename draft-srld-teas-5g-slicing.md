@@ -305,6 +305,7 @@ Distributed CE:
 Distributed PE:
 : The logical connectivity is realized by configuring  multiple devices in the Transport Network (provider Orchestration domain). The PE function is distributed. An example of a distributed PE is the “Managed CE service”. For example, a provider delivers VPN services using CEs and PEs which are both managed by the provider (case (iii) in {{fig-50}}). The managed CE can also be a Data Center Gateway as depicted in the example (iv) of {{fig-50}}. A provider-managed CE may attach to CEs of multiple customers. However, this device is part of the provider network.
 
+
 In subsequent sections of this document, the terms CE and PE are used for both a single and a distributed devices.
 
 ~~~~
@@ -315,7 +316,7 @@ In subsequent sections of this document, the terms CE and PE are used for both a
 
 ### Attachment Circuits for Inter-AS Option B/C
 
-In some cases, a CE connects with the provider network using the Inter-AS Option B/C with the use of MPLS or SRv6 data planes. An example is depicted in {{figure-51}}. The configuration of VRFs together with control plane identifiers, such as route targets/route distinguishers happens on the CE. This is a source of confusion since these configurations are typically enforced on PE devices. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the Customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE (e.g., in Option C, the ASBR and a remote PE in the Provider Network with VRF configuration form a distributed PE).
+In some cases, a CE connects to the provider network using Inter-AS Option B or C as defined section 10 of {{!RFC4364}} with the use of MPLS or SRv6 data planes. An example is depicted in {{figure-51}}. The configuration of VRFs together with control plane identifiers, such as route targets/route distinguishers happens on the CE. This is a source of confusion since these configurations are typically enforced on PE devices. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the Customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE (e.g., in Option C, the ASBR and a remote PE in the Provider Network with VRF configuration form a distributed PE).
 
 ~~~~
 {::include ./drawings/mpls-ac.txt}
