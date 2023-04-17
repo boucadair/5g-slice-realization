@@ -314,9 +314,9 @@ In subsequent sections of this document, the terms CE and PE are used for both a
 {: #fig-50 title="Generic Model vs Distributed CE and PE" artwork-align="center"}
 
 
-### Attachment Circuits for Inter-AS Option B/C
+### Attachment Circuits for Inter-AS Options B/C
 
-In some cases, a CE connects to the provider network using Inter-AS Option B or C as defined section 10 of {{!RFC4364}} with the use of MPLS or SRv6 data planes. An example is depicted in {{figure-51}}. The configuration of VRFs together with control plane identifiers, such as route targets/route distinguishers happens on the CE. This is a source of confusion since these configurations are typically enforced on PE devices. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the Customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE (e.g., in Option C, the ASBR and a remote PE in the Provider Network with VRF configuration form a distributed PE).
+In some cases, a CE connects to the provider network using Inter-AS Option B or C as defined in {{Section 10 of !RFC4364}} with the use of MPLS or SRv6 data planes. An example of such as an AC is depicted in {{figure-51}}. The configuration of VRFs together with control plane identifiers, such as Route Targets (RTs) and Route Distinguishers (RDs), happens on the CE. This is a source of confusion since these configurations are typically enforced on PE devices. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the Customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE (e.g., in  Inter-AS Option C, the Autonomous System Border Router (ASBR) and a remote PE in the Provider Network with VRF configuration form a distributed PE).
 
 ~~~~
 {::include ./drawings/mpls-ac.txt}
