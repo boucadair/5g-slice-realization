@@ -112,6 +112,17 @@ contributor:
 normative:
 
 informative:
+   5G-Book:
+              title: "5G Mobile Networks: A Systems Approach"
+              author:
+                -
+                  fullname: Larry Peterson
+                -
+                  fullname: Oguz Sunay
+                -
+                  fullname: Bruce Davie
+              date: 2022
+              target: https://5g.systemsapproach.org/
 
    TR-GSTR-TN5G:
               title: "Technical Report GSTR-TN5G"
@@ -180,7 +191,7 @@ informative:
    This IETF Network Slice realization model leverages many building blocks currently
    commonly used in service provider networks.
 
-   A brief 5G overview is provided in {{sec-5g-intro}} for readers' convenience. The reader may refer to {{?RFC6459}} and {{TS-23.501}} for more
+   A brief 5G overview is provided in {{sec-5g-intro}} for readers' convenience. The reader may refer to {{TS-23.501}} or {{5G-Book}} for more
    details about 3GPP network architectures.
 
 # Definitions
