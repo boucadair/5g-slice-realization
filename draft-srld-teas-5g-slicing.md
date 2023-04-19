@@ -730,19 +730,19 @@ Specifically, the actual mapping is a design choice of service operators that ma
 
    There are three major methods (based upon Section 10 of {{!RFC4364}}) for interconnecting MPLS services over multiple service domains:
 
-   *  Option 10A ({{sec-10a}}): VRF-to-VRF connections.
-   *  Option 10B ({{sec-10b}}): redistribution of labeled VPN routes with next-hop
+   *  Option A ({{sec-10a}}): VRF-to-VRF connections.
+   *  Option B ({{sec-10b}}): redistribution of labeled VPN routes with next-hop
       change at domain boundaries.
-   *  Option 10C ({{sec-10c}}): redistribution of labeled VPN routes without next-hop
+   *  Option C ({{sec-10c}}): redistribution of labeled VPN routes without next-hop
       change + redistribution of labeled transport routes with next-hop
       change at domain boundaries.
 
-###  Option 10A {#sec-10a}
+###  Option A {#sec-10a}
 
    This option is not based on MPLS label hand-off,
    but VLAN hand-off, described in {{sec-vlan-handoff}}.
 
-###  Option 10B {#sec-10b}
+###  Option B {#sec-10b}
 
    In this option, L3VPN service instances are instantiated outside the
    provider network.  These L3VPN service instances
@@ -790,7 +790,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
    handful of service instances.  In any case, fine-grained per-hop
    behavior at the edge of provider network is possible.
 
-###  Option 10C {#sec-10c}
+###  Option C {#sec-10c}
 
    ***for further study***
 
@@ -1844,10 +1844,16 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
 
 #  Security Considerations
 
-   IETF Network Slices considerations are discussed in Section 6 of
-   {{!I-D.ietf-teas-ietf-network-slices}}.
+IETF Network Slices considerations are discussed in Section 6 of {{!I-D.ietf-teas-ietf-network-slices}}.
 
-   TBC.
+Many of the YANG modules cited in this document define schema for data that is designed to be accessed via network management protocols such as NETCONF {{!RFC6241}} or RESTCONF {{!RFC8040}}. The lowest NETCONF layer is the secure transport layer, and the mandatory-to-implement secure transport is Secure Shell (SSH) {{!RFC6242}}. The lowest RESTCONF layer is HTTPS, and the mandatory-to-implement secure transport is TLS {{!RFC8446}}.
+
+The NETCONF access control model {{!RFC8341}} provides the means to restrict access for particular NETCONF or RESTCONF users to a preconfigured subset of all available NETCONF or RESTCONF protocol operations and content.
+
+Security considerations specific to each of the technologies and protocols listed in the document are discussed in the specification documents of each of these protocols.
+
+Adequate admission control policies should be configured in the edge of the provider network to control access to specific slice resources. Likewise, access to classification and mapping tables must be controlled to prevent misbehaviors (an unauthorized entity may modify the table to bind traffic to a random slice, redirect the traffic, etc.). Network devices must check that a required access privilege is provided before granting access to specific data or performing specific actions.
+
 
 --- back
 
