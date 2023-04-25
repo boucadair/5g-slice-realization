@@ -1796,26 +1796,26 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
 
 # Network Slicing OAM
 
-   The deployment and maintenance of network slices with a network imply
+   The deployment and maintenance of slices within a network imply
    a set OAM functions ({{?RFC6291}}) to be deployed by the providers, e.g.:
 
    *  Providers should be able to execute OAM tasks on a per network slice
       basis. These tasks can cover the "full" slice within a domain or a
       portion of that slice (for troubleshooting purposes, for example).
 
-      For example, per-slice OAM tasks can consist in tracing resources that
-      are bound to a given network slice, tracing resources that are invoked
-      when forwarding a given flow bound to a given network slice,
-      assessing whether flow isolation characteristics are in
-      conformance with the network slice service requirements, or assessing
-      the compliance of the allocated network slice resource against flow/
+      For example, per-slice OAM tasks can consist in (but not limited to):
+
+        - tracing resources that are bound to a given network slice,
+        - tracing resources that are invoked when forwarding a given flow bound to a given network slice,
+        - assessing whether flow isolation characteristics are in
+      conformance with the network slice service requirements, or
+        - assessing the compliance of the allocated network slice resources against flow/
       customer service requirements.
 
       {{?RFC7276}} provides an overview of available OAM
       tools. These technology-specific tools can be reused in the context
       of network slicing. Providers that deploy network slicing
-      capabilities should be able to select whatever OAM technology-
-      specific feature that would be address their needs.
+      capabilities should be able to select whatever OAM technology or specific feature that would address their needs.
 
       SFC OAM {{?I-D.ietf-sfc-oam-packet}} should also be supported
       for slices that make uses of service function chaining
@@ -1842,12 +1842,14 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
       is maintained using "parent-service-id" attribute ({{Section 7.3 of ?RFC9182}}.
 
    *  Means to report a set of network performance metrics to assess
-      whether the agreed slice service objectives are honored. For example,
+      whether the agreed slice service objectives are honored. These means are used for SLO monitoring and violation detect purposes. For example,
       {{?I-D.ietf-opsawg-yang-vpn-service-pm}} can be used to report links' one-way delay,
       one-way delay variation, etc. Both conventional active/passive
       measurement methods {{?RFC7799}} and more recent telemetry methods
       (e.g. YANG Push {{?RFC8641}}) can be used.
 
+   * Means to report and expose observed performance metrics and other OAM state to customer.
+     For example, {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}} exposes a set of statistics per SDP, connectivity construct, and connection group.
 
 # IANA Considerations
 
