@@ -142,7 +142,7 @@ informative:
               title: "TS 23.530: Management and orchestration; Concepts, use cases and requirements)"
               author:
                org: 3GPP
-              date: 2021
+              date: 2023
               target: https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3273
 
    O-RAN.WG9.XPSAAS:
@@ -202,9 +202,15 @@ An extended list of abbreviations used in this document is provided in {{ext-abb
 
 #  5G Network Slicing Integration in Transport Networks
 
-## Scope of the Transport Network
+## Scope of the Transport Network {#sec-scope}
 
-{{sec-5g-intro}} provides an overview of 5G network building blocks: the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN). The 3GPP does not define the Transport Network and its integration in RAN and CN: it is a non-3GPP managed system that interconnects Network Functions (NFs). Practically, the interconnection (i.e., the TN) may not map with a monolithic architecture and management domain. It is frequently segmented, non-uniform, and managed by different entities. For example, {{fig-1}} depicts a NF instance that is deployed in an edge data center (DC) connected to a NF located in a Public Cloud via a Wide Area Network (WAN) (e.g., MPLS-VPN service). The TN can be interpreted as an abstraction representing an end-to-end connectivity based on three distinct IP/MPLS domains: DC, WAN, and Public Cloud. A model for the Transport Network based on orchestration domains is introduced in {{sec-orch}}. This model permits to define more precisely where IETF Network Slice applies.
+{{sec-5g-intro}} provides an overview of 5G network building blocks: the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN). The Transport Network is defined by the 3GPP as the "part supporting connectivity within and between CN and RAN parts" (Section 1 of {{TS-28.530}}).
+
+As discussed in Section 4.4.1 of {{TS-28.530}}, the 3GPP managment system does not directly control the Transport Network: it is considered as a non-3GPP managed system.
+
+> 'The non-3GPP part includes TN parts. The 3GPP management system provides the network slice requirements to the corresponding management systems of those non-3GPP parts, e.g. the TN part supports connectivity within and between CN and AN parts.' (Section 4.4.1 of {{TS-28.530}})
+
+In practice, the TN may not map with a monolithic architecture and management domain. It is frequently segmented, non-uniform, and managed by different entities. For example, {{fig-1}} depicts a Network Function (NF) instance that is deployed in an edge data center (DC) connected to a NF located in a Public Cloud via a Wide Area Network (WAN) (e.g., MPLS-VPN service). The TN can be seen as an abstraction representing an end-to-end connectivity based on three distinct IP/MPLS domains: DC, WAN, and Public Cloud. A model for the Transport Network based on orchestration domains is introduced in {{sec-orch}}. This model permits to define more precisely where IETF Network Slice applies.
 
 ~~~~
      ┌──────────────────────────────────┐
@@ -228,7 +234,7 @@ An extended list of abbreviations used in this document is provided in {{ext-abb
 ~~~~
 {: #fig-1 title="Transport Network vs RAN and CN" artwork-align="center"}
 
-The term "Transport Network" is used for disambiguation with 5G network (e.g., IP, packet-based forwarding vs RAN and CN). Consequently, the disambiguation applies to Transport Network Slicing vs.  End-to-End 5G Network Slicing (see {{sec-5gtn}}) as well the management domains: RAN, CN, and TN domains.
+The term "Transport Network" is used for disambiguation with 5G network (e.g., IP, packet-based forwarding vs RAN and CN). Consequently, the disambiguation applies to Transport Network Slicing vs. End-to-End 5G Network Slicing (see {{sec-5gtn}}) as well the management domains: RAN, CN, and TN domains.
 
 ##  5G Network Slicing versus Transport Network Slicing {#sec-5gtn}
 
@@ -239,22 +245,18 @@ The term "Transport Network" is used for disambiguation with 5G network (e.g., I
 
    * 5G Network Slicing:
 
-      The objective of 5G Network Slicing is to provide a subset of
-      resources of the whole 5G infrastructure to some users/customers,
-      applications, or Public Land Mobile Networks (PLMNs) (e.g.,
-      RAN sharing). These resources are from the TN, RAN, CN
+      Is defined by the 3GPP as an appraoch where logical networks/partitions are created, with appropriate isolation, resources and optimized topology to serve a purpose or service category or customers {{TS-28.530}}. These resources are from the TN, RAN, CN
       Network Functions, and the underlying infrastructure.
 
    * TN Slicing:
 
-      In this document, the term TN Slice is used in this document to
-      describe the slice in the Transport Network domain of the overall 5G
-      architecture, composed from RAN, TN, and CN domains.
+      The term "TN Slice" is used in this document to
+      refer to a slice in the Transport Network domain of the overall 5G
+      architecture.
 
       The objective of TN Slicing is to isolate,
       guarantee, or prioritize Transport Network resources for slices. Examples of such resources are:
-      buffers, link capacity, or even Routing
-      Information Base (RIB) and Forwarding Information Base (FIB).
+      buffers, link capacity, or even Routing Information Base (RIB) and Forwarding Information Base (FIB).
 
      TN Slicing provides various degrees of sharing of resources between slices. For example, the network capacity can be shared by all slices, usually with a guaranteed minimum per slice, or each individual slice can be allocated dedicated network capacity. Parts of a given network may use the former, while others use the latter. For example, shared TN resources could be provided in the backhaul, and dedicated TN resources could be provided in the midhaul.
 
@@ -262,11 +264,6 @@ The term "Transport Network" is used for disambiguation with 5G network (e.g., I
       tools, such as Virtual Routing and Forwarding instances (VRFs)
       for logical separation, Quality of Service (QoS), or Traffic
       Engineering (TE).
-
-      A 5G network slicing architecture
-      should integrate TN Slicing for an optimal control of SLAs, however, it is
-      possible to implement 5G Network Slicing without TN
-      Slicing, as explained in section {{{#sec-mapping}}}.
 
 [comment]: <> (??? a drawing would help ???)
 
@@ -346,13 +343,17 @@ A co-managed CE is orchestrated by both the customer and the provider. In this c
 
 ###  End-to-End 5G Slice Orchestration Architecture
 
-{{figure-orch}} depicts a global framework for the orchestration of an end-to-end 5G Slice. An end-to-end 5G Network Slice Orchestrator (5G NSO) is responsible for orchestrating the end-to-end 5G Slice. The details of the 5G NSO is out of the scope of this document. The realization of the end-to-end 5G Slice spans RAN, CN, and TN. As mentioned in {{TS-28.530}}, the RAN and CN are under the responsibility of the 3GPP Management System, while the TN is not. The orchestration of the TN is split into two sub-domains in conformance with the reference design in {#sec-ref-design}:
+This section introduced a global framework for the orchestration of an end-to-end 5G Slice with a zoom on TN parts.
+
+> This framework is consistent with the coordination example shown in Figure 4.7.1 of {{TS-28.530}}.
+
+In reference to {{figure-orch}}, an end-to-end 5G Network Slice Orchestrator (5G NSO) is responsible for orchestrating end-to-end 5G Slices. The details of the 5G NSO is out of the scope of this document. The realization of the end-to-end 5G Slice spans RAN, CN, and TN. As mentioned in {{sec-scope}}, the RAN and CN are under the responsibility of the 3GPP Management System, while the TN is not. The orchestration of the TN is split into two sub-domains in conformance with the reference design in {#sec-ref-design}:
 
 * Provider Network Orchestration domain: as defined in {{!I-D.ietf-teas-ietf-network-slices}}, the provider relies on an IETF Network Slice Controller (NSC) to manage and orchestrate IETF Network Slices in the provider network. This framework permits to manage connectivity together with SLOs. Ultimately, the 5G NSO interfaces with an NSC for the management of IETF Network Slices using IETF APIs and data models.
 
 * Customer Site Orchestration domain: the Orchestration of TN elements of the Customer Sites relies upon a variety of  controllers (e.g., Fabric Manager, Element Management System, or VIM). The realization of this section does not involve the Transport Network Orchestration.
 
-A TN Slice relies upon a data path that can involve both the provider and customer TN domains. Therefore, a TN Slice has broader scope than an IETF Network Slice since the latter applies to the provider network only. More details are provided in the next section.
+A TN Slice relies upon resources that can involve both the provider and customer TN domains. Therefore, a TN Slice has broader scope than an IETF Network Slice since the latter applies to the provider network only. More details are provided in the next section.
 
 ~~~~
 {::include ./drawings/tn-orchestration.txt}
@@ -361,7 +362,7 @@ A TN Slice relies upon a data path that can involve both the provider and custom
 
 ### Transport Network Sections and Network Slice Instantiation
 
-Based on the reference design, the data path between NFs can be decomposed into three main types of sections. {{fig-end-to-end}} depicts the different sections:
+Based on the reference design, the connectivity between NFs can be decomposed into three main types of sections. {{fig-end-to-end}} depicts the different sections:
 
 *  Customer Site: Either connects two NFs located in the same Customer Site (e.g., NF1-NF2) or it connects a NF to a CE (e.g., NF1-CE). This section may not be present if the NF is the CE (e.g., NF3): in this case the AC connects the NF to the PE. The realization of this section is driven by the 5G Network Orchestration and potentially the Customer Site Orchestration (e.g., Fabric Manager, Element Management System, or VIM). The realization of this section does not involve the Transport Network Orchestration.
 
