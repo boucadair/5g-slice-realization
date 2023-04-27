@@ -343,9 +343,9 @@ A co-managed CE is orchestrated by both the customer and the provider. In this c
 
 ###  End-to-End 5G Slice Orchestration Architecture
 
-This section introduced a global framework for the orchestration of an end-to-end 5G Slice with a zoom on TN parts.
+This section introduces a global framework for the orchestration of an end-to-end 5G Slice with a zoom on TN parts.
 
-> This framework is consistent with the coordination example shown in Figure 4.7.1 of {{TS-28.530}}.
+> This framework is consistent with the management coordination example shown in Figure 4.7.1 of {{TS-28.530}}.
 
 In reference to {{figure-orch}}, an end-to-end 5G Network Slice Orchestrator (5G NSO) is responsible for orchestrating end-to-end 5G Slices. The details of the 5G NSO is out of the scope of this document. The realization of the end-to-end 5G Slice spans RAN, CN, and TN. As mentioned in {{sec-scope}}, the RAN and CN are under the responsibility of the 3GPP Management System, while the TN is not. The orchestration of the TN is split into two sub-domains in conformance with the reference design in {#sec-ref-design}:
 
