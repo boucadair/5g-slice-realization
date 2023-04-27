@@ -407,6 +407,8 @@ More complex scenarios can happen with extra segmentation of the TN and addition
 
 ## 5G Slice to IETF Network Slice Mapping {#sec-mapping}
 
+> Editor Note: This section is intended to focus on the realization implications of the mappings. Will reassess in future versions whether this section should be maintained or moved to {{?I-D.gcdrb-teas-5g-network-slice-application}}.
+
    There are multiple options to map a 5G network slice to IETF Network
    Slices:
 
