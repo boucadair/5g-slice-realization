@@ -808,13 +808,15 @@ Specifically, the actual mapping is a design choice of service operators that ma
 
    ***for further study***
 
-#  QoS Mapping Models {#sec-qos-map}
+#  QoS Mapping Realization Models {#sec-qos-map}
+
+## QoS Layers {#sec-qos-layers}
 
    The resources are managed via various QoS policies deployed in the
    network.  QoS mapping models to support 5G slicing connectivity
-   implemented over packet switched provider network uses two layers of QoS that are discussed in the following subsections.
+   implemented over packet switched provider network uses two layers of QoS that are discussed in {{sec-qos-layers}}.
 
-## 5G QoS Layer
+### 5G QoS Layer
 
    QoS treatment is indicated in the 5G QoS layer by the 5QI (5G QoS
    indicator), as defined in {{TS-23.501}}. A 5QI is an identifier (ID) that is
@@ -841,7 +843,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
    In this document, this layer of QoS will be referred as '5G QoS
    Class' ('5G QoS' in short), or '5G DSCP'.
 
-## TN QoS Layer
+### TN QoS Layer
 
    Control of the TN resources on provider network transit links, as well as traffic
    scheduling/prioritization on provider network transit links, is based on a flat
@@ -883,7 +885,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
 
    These models are further elaborated in the following two subsections.
 
-##  5QI-unaware Model {#sec-5QI-unaware}
+###  5QI-unaware Model {#sec-5QI-unaware}
 
    In 5QI-unaware mode, the DSCP values in the packets received from NF
    at SDP are ignored.  In the provider network, there is no QoS
@@ -983,7 +985,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
    directions: inbound and outbound.
 
 
-###  Inbound Edge Resource Control {#sec-inbound-edge-resource-control}
+####  Inbound Edge Resource Control {#sec-inbound-edge-resource-control}
 
    The main aspect of inbound provider network edge resource control is per-slice traffic
    capacity enforcement.  This kind of enforcement is often called
@@ -1086,7 +1088,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
 ~~~
 {: #figure-17 title="Ingress Slice Admission Control (5QI-unware Model)" artwork-align="center"}
 
-###  Outbound Edge Resource Control
+####  Outbound Edge Resource Control
 
    While inbound slice admission control at the provider network edge is
    mandatory in the architecture described in this document, outbound provider network edge resource control might not be
@@ -1152,7 +1154,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
 ~~~
 {: #figure-18 title="Ingress Slice Admission control (5QI-unaware Model)" artwork-align="center"}
 
-##  5QI-aware Model
+###  5QI-aware Model
 
    In the 5QI-aware model, potentially a large number of 5G QoS Classes, represented via DSCP set by NFs
    (the architecture scales to thousands of 5G slices) is mapped
@@ -1206,7 +1208,7 @@ to TN QoS Classes may be rather common.
    depending on the HW capability of the equipment) within each IETF
    Network Slice.
 
-###  Inbound Edge Resource Control
+####  Inbound Edge Resource Control
 
    Compared to the 5QI-unware model, admission control (traffic
    conditioning) in the 5QI-aware model is more granular, as it enforces
@@ -1314,7 +1316,7 @@ to TN QoS Classes may be rather common.
 ~~~
 {: #figure-21 title="Ingress Slice Admission Control (5QI-aware) - Hierarchical" artwork-align="center"}
 
-###  Outbound Edge Resource Control
+####  Outbound Edge Resource Control
 
    {{figure-22}} outlines the outbound edge resource control model at the
    transport network layer for 5QI-aware slices.  Each slice is assigned
