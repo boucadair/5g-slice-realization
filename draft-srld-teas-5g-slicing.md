@@ -1998,8 +1998,6 @@ Adequate admission control policies should be configured in the edge of the prov
 
    SMF: Session Management Function
 
-   SMO: Service Management and Orchestration
-
    S-NSSAI: Single Network Slice Selection Assistance Information
 
    SST: Slice/Service Type
