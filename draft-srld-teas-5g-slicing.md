@@ -258,7 +258,7 @@ The term "Transport Network" is used for disambiguation with 5G network (e.g., I
       guarantee, or prioritize Transport Network resources for slices. Examples of such resources are:
       buffers, link capacity, or even Routing Information Base (RIB) and Forwarding Information Base (FIB).
 
-     TN Slicing provides various degrees of sharing of resources between slices. For example, the network capacity can be shared by all slices, usually with a guaranteed minimum per slice, or each individual slice can be allocated dedicated network capacity. Parts of a given network may use the former, while others use the latter. For example, in order to satisfy local engineering guidelines and specific service requirements, shared TN resources could be provided in the backhaul, and dedicated TN resources could be provided in the midhaul. The capacity partitioning strategy is deployment specific.
+     TN Slicing provides various degrees of sharing of resources between slices. For example, the network capacity can be shared by all slices, usually with a guaranteed minimum per slice, or each individual slice can be allocated dedicated network capacity. Parts of a given network may use the former, while others use the latter. For example, in order to satisfy local engineering guidelines and specific service requirements, shared TN resources could be provided in the backhaul (or midhaul), and dedicated TN resources could be provided in the midhaul (or backhaul). The capacity partitioning strategy is deployment specific.
 
       There are different options to implement TN slices based upon
       tools, such as Virtual Routing and Forwarding instances (VRFs)
