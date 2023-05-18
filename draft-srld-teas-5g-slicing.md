@@ -1568,7 +1568,7 @@ to TN QoS Classes may be rather common.
    functions.  Also shown are PEs that have links to the DCs.  The PEs
    belong to the provider network.  Other details of the provider
    network, such as P-routers and transit links are not shown.  Also
-   details of the DC infrastructure in customer sites, such as switches and routers are not
+   details of the DC infrastructure in customer sites, such as switches and routers, are not
    shown.
 
    The 5G NSO is aware of the existence of the network functions and their
@@ -1586,20 +1586,19 @@ to TN QoS Classes may be rather common.
    Let us consider 5G Slice "X" that uses some of the network functions in
    the three DCs.  If this slice has latency requirements, the 5G NSO will
    have taken those into account when deciding which NF instances
-   in which DC is to be invoked for this slice.  As a result of such a
+   in which DC are to be invoked for this slice.  As a result of such a
    placement decision, the three DCs shown are involved in 5G Slice "X",
    rather than other DCs.  For its decision-making, the 5G NSO
    needs information from the NSC about the observed latency between DCs.
    Preferably, the NSC would present the topology in an abstracted form,
    consisting of point-to-point abstracted links between pairs of DCs
-   and associated latency and optionally delay variation and link loss
+   and associated latency and, optionally, delay variation and link loss
    values.  It would be valuable to have a mechanism for the 5G NSO to
    inform the NSC which DC-pairs are of interest for these metrics -
    there may be of order thousands of DCs, but the 5G NSO will only be
    interested in these metrics for a small fraction of all the possible
    DC-pairs, i.e. those in the same region of the provider network.  The
-   mechanism for conveying the information will be discussed in a future
-   version of this document.
+   mechanism for conveying the information is out of scope for this document.
 
    {{figure-27}} shows the matrix of bandwidth demands for 5G slice "X".
    Within the slice, multiple network function instances might be
