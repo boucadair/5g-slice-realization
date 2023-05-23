@@ -2339,6 +2339,6 @@ User Plane          ╱     │           │         ╲
 # Acknowledgments
 {:numbered="false"}
 
-   The authors would like to thank Adrian Farrel, Joel Halpern and Tarek
-   Saad for their reviews of this document and for providing valuable
-   feedback on it.
+   The authors would like to thank Adrian Farrel, Joel Halpern, Tarek
+   Saad, and Jie Dong for their reviews of this document and for providing valuable
+   comments.
