@@ -1,5 +1,5 @@
 ---
-title: "A  Realization of IETF Network Slices for 5G Networks Using Current IP/MPLS Technologies"
+title: "A  Realization of IETF Network Slices for 5G Networks Using Current IP/ MPLS Technologies"
 abbrev: "Implementing 5G Transport Slices"
 category: info
 
@@ -408,7 +408,7 @@ More complex scenarios can happen with extra segmentation of the TN and addition
 
 ## 5G Slice to IETF Network Slice Mapping {#sec-mapping}
 
-> Editor Note: This section is intended to focus on the realization implications of the mappings. Will reassess in future versions whether this section should be maintained or moved to {{?I-D.gcdrb-teas-5g-network-slice-application}}.
+> Editor Note: This section is intended to focus on the realization implications of the mappings. Will reassess in future versions whether this section should be maintained or moved to {{?I-D.ietf-teas-5g-network-slice-application}}.
 
    There are multiple options to map a 5G network slice to IETF Network
    Slices:
@@ -625,7 +625,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
    identification.  The S-NSSAI is not visible to the transport domain.
    So instead, 5G functions can expose the 5G slices to the transport
    domain by mapping to explicit Layer 2 or Layer 3 identifiers, such as VLAN-IDs, IP
-   addresses, or Differentiated Services Code Point (DSCP). More details about the mapping between 3GPP and IETF network slices is provided in {{?I-D.gcdrb-teas-5g-network-slice-application}}.
+   addresses, or Differentiated Services Code Point (DSCP). More details about the mapping between 3GPP and IETF network slices is provided in {{?I-D.ietf-teas-5g-network-slice-application}}.
 
 ##  VLAN Hand-off {#sec-vlan-handoff}
 
@@ -1847,7 +1847,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
 
    *  Means to report a set of network performance metrics to assess
       whether the agreed slice service objectives are honored. These means are used for SLO monitoring and violation detect purposes. For example,
-      {{?I-D.ietf-opsawg-yang-vpn-service-pm}} can be used to report links' one-way delay,
+      {{?RFC9375}} can be used to report links' one-way delay,
       one-way delay variation, etc. Both conventional active/passive
       measurement methods {{?RFC7799}} and more recent telemetry methods
       (e.g. YANG Push {{?RFC8641}}) can be used.
