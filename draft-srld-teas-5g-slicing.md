@@ -1881,7 +1881,7 @@ The following issues should be resolved prior to the WGLC:
 1. Assess which/whether some the material in the "5G Slice to IETF Network Slice Mapping" Section should be maintained in this draft or moved to {{?I-D.ietf-teas-5g-network-slice-application}} (Adrian)
    - This issue is tracked at https://github.com/boucadair/5g-slice-realization/issues/40.
 2. Assess whether we need to mainatin the "First 5G Slice vs Subsequent Slices" Section:
-   - Unless we explain how this ss important for realization, this section should be deleted (Med) 
+   - Unless we explain how this ss important for realization, this section should be deleted (Med)
    - The motivation of this section is not clear (from Reza)
    - Need to describe the implications to the realization of IETF network slices (Jie)
    - The issue is tracked at https://github.com/boucadair/5g-slice-realization/issues/19
@@ -1890,6 +1890,7 @@ The following issues should be resolved prior to the WGLC:
 4. Further discuss whether the TN slice in the customer site is covered or is out of the scope of IETF network slice (Jie)
    - The issue is tracked at https://github.com/boucadair/5g-slice-realization/issues/53
 
+Active issues can be tracked at: https://github.com/boucadair/5g-slice-realization/issues
 
 # Acronyms and Abbreviations {#ext-abbr}
 
