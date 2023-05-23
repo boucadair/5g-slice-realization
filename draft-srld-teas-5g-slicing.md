@@ -210,11 +210,11 @@ As discussed in Section 4.4.1 of {{TS-28.530}}, the 3GPP managment system does n
 
 > 'The non-3GPP part includes TN parts. The 3GPP management system provides the network slice requirements to the corresponding management systems of those non-3GPP parts, e.g. the TN part supports connectivity within and between CN and AN parts.' (Section 4.4.1 of {{TS-28.530}})
 
-In practice, the TN may not map with a monolithic architecture and management domain. It is frequently segmented, non-uniform, and managed by different entities. For example, {{fig-1}} depicts a Network Function (NF) instance that is deployed in an edge data center (DC) connected to a NF located in a Public Cloud via a Wide Area Network (WAN) (e.g., MPLS-VPN service). The TN can be seen as an abstraction representing an end-to-end connectivity based on three distinct domains: DC, WAN, and Public Cloud. A model for the Transport Network based on orchestration domains is introduced in {{sec-orch}}. This model permits to define more precisely where IETF Network Slice applies.
+In practice, the TN may not map with a monolithic architecture and management domain. It is frequently segmented, non-uniform, and managed by different entities. For example, {{fig-1}} depicts a Network Function (NF) instance that is deployed in an edge data center (DC) connected to a NF located in a Public Cloud via a Wide Area Network (WAN) (e.g., MPLS-VPN service). In this example, the TN can be seen as an abstraction representing an end-to-end connectivity based upon three distinct domains: DC, WAN, and Public Cloud. A model for the Transport Network based on orchestration domains is introduced in {{sec-orch}}. This model permits to define more precisely where the IETF Network Slices apply.
 
 ~~~~
      ┌──────────────────────────────────┐
-  ┌──│         5G RAN or CN             │──┐
+  ┌──│         5G NF (RAN or CN)        │──┐
   │  └──────────────────────────────────┘  │
   │                                        │
   ▼                                        ▼
@@ -232,9 +232,9 @@ In practice, the TN may not map with a monolithic architecture and management do
   │└──┘└──┘└──┘└──┘│└┬─┘      └─┬┘ │        │
   └────────────────┘ └──────────┘  └────────┘
 ~~~~
-{: #fig-1 title="Transport Network vs RAN and CN" artwork-align="center"}
+{: #fig-1 title="An Exampel of Transport Network Decomposition" artwork-align="center"}
 
-The term "Transport Network" is used for disambiguation with 5G network (e.g., IP, packet-based forwarding vs RAN and CN). Consequently, the disambiguation applies to Transport Network Slicing vs. End-to-End 5G Network Slicing (see {{sec-5gtn}}) as well the management domains: RAN, CN, and TN domains.
+The term "Transport Network" is used for disambiguation with 5G network (e.g., IP, packet-based forwarding vs RAN and CN). Consequently, the disambiguation applies to Transport Network Slicing vs. End-to-End 5G Network Slicing ({{sec-5gtn}}) as well the management domains: RAN, CN, and TN domains.
 
 ##  5G Network Slicing versus Transport Network Slicing {#sec-5gtn}
 
