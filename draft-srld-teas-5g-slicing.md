@@ -232,7 +232,7 @@ In practice, the TN may not map with a monolithic architecture and management do
   │└──┘└──┘└──┘└──┘│└┬─┘      └─┬┘ │        │
   └────────────────┘ └──────────┘  └────────┘
 ~~~~
-{: #fig-1 title="An Exampel of Transport Network Decomposition" artwork-align="center"}
+{: #fig-1 title="An Example of Transport Network Decomposition" artwork-align="center"}
 
 The term "Transport Network" is used for disambiguation with 5G network (e.g., IP, packet-based forwarding vs RAN and CN). Consequently, the disambiguation applies to Transport Network Slicing vs. End-to-End 5G Network Slicing ({{sec-5gtn}}) as well the management domains: RAN, CN, and TN domains.
 
