@@ -584,7 +584,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
 
       The toolset used here is granular ingress policing (rate limiting)
       to enforce contracted bandwidths per slice and, potentially, per
-      traffic class within the slice.  Out-of-contract traffic might be
+      traffic class within the slice.  Traffic above the enforced rate might be
       immediately dropped, or marked as high drop-probability traffic,
       which is more likely to be dropped somewhere inside the provider network if
       congestion occurs.  In the egress direction at the PE node,
@@ -1014,7 +1014,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
 
       This is the most basic rate limiter, which meters at the SDP a
       traffic stream of given slice and marks its packets as in-contract
-      (below contracted CIR) or out-of-contract (above contracted CIR).
+      (below CIR being enforced) or out-of-contract (above CIR being enforced).
       In-contract packets are accepted and forwarded.  Out-of contract
       packets are either dropped right at the SDP (hard rate limiting),
       or remarked (with different MPLS TC or DSCP TN markings) to
