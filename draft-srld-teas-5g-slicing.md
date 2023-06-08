@@ -596,7 +596,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
       and PEs, where a part of the admission control is implemented on the CE
       and other part of the admission control is implemented on the PE.
 
-   *  Coarse resource control at the transit (non-attachment
+   *  Coarse-grained resource control at the transit (non-attachment
       circuits) links in the provider network, using a single NRP, spanning the entire provider network.
       Transit nodes in the provider network do not maintain any state of individual slices.
       Instead, only a flat (non-hierarchical) QoS model is used on
@@ -898,7 +898,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
    slices, as the number of 5G slices (and thus corresponding IETF
    Network Slices) increases, a single QoS queue on transit links in the provider network serves
    multiple slices with similar characteristics.  QoS enforcement on
-   transit links is fully coarse (single NRP, sharing resources among
+   transit links is fully coarse-grained (single NRP, sharing resources among
    all IETF Network Slices), as displayed in {{figure-QoS-5QI-unaware}}.
 
 ~~~~
