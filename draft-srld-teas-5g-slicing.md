@@ -146,10 +146,10 @@ informative:
               target: https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3273
 
    O-RAN.WG9.XPSAAS:
-              title: "O-RAN.WG9.XPSAAS: O-RAN WG9 Xhaul Packet Switched Architectures and Solutions Version 03.00"
+              title: "O-RAN.WG9.XPSAAS: O-RAN WG9 Xhaul Packet Switched Architectures and Solutions Version 04.00"
               author:
                org: O-RAN Alliance
-              date: 27 February 2022
+              date: March 2023
               target: https://www.o-ran.org/specifications
 
    NG.113:
@@ -835,8 +835,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
    DSCP is out of scope for this document.  Mapping recommendations
    are documented, e.g., in {{?I-D.henry-tsvwg-diffserv-to-qci}}.
 
-   Each slice service might have flows with multiple 5QIs, thus there could be many
-   different 5QIs being deployed. 5QIs (or, more precisely,
+   Each slice service might have flows with multiple 5QIs. 5QIs (or, more precisely,
    corresponding DSCP values) are visible to the provider network at SDP
    (i.e., at the edge of the provider network).
 
@@ -988,7 +987,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
 ####  Inbound Edge Resource Control {#sec-inbound-edge-resource-control}
 
    The main aspect of inbound provider network edge resource control is per-slice traffic
-   capacity enforcement.  This kind of enforcement is often called
+   volume enforcement.  This kind of enforcement is often called
    'admission control' or 'traffic conditioning'.  The goal of this
    inbound enforcement is to ensure that the traffic above the
    contracted rate is dropped or deprioritized, depending on the
