@@ -14,4 +14,4 @@
   └──────────┘                                      └──────────┘   
         └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘        
  ■ - SDP, with fine-grained QoS (dedicated resources per TN slice) 
- □ - coarse QoS, with resources shared by all TN slices            
+ □ - coarse-grained QoS, with resources shared by all TN slices            

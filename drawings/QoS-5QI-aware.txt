@@ -32,6 +32,6 @@ S ┃   └──────────┘  ┃  │           ┃┌───
   ┃└ ─ ─ ─ ─ ─ ─ ─ ┘┃                                          │
   ┣━━━━━━━━━━━━━━━━━┛                                           
    ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
-  Fine-grained QoS enforcement         Coarse QoS enforcement   
-    (dedicated resources per            (resources shared by    
-      IETF Network Slice)                multiple IETF NSs)     
+  Fine-grained QoS enforcement   Coarse-grained QoS enforcement 
+    (dedicated resources per     (resources shared by multiple  
+      IETF Network Slice)                  IETF NSs)            
