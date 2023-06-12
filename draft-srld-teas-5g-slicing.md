@@ -1443,7 +1443,7 @@ to TN QoS Classes may be rather common.
    Similar to the QoS mapping models discussed in {{sec-qos-map}}, for mapping
    to transport planes at the ingress PE, both 5QI-unaware and 5QI-aware
    models are defined.  Essentially, entire slices can be mapped to
-   transport planes without 5G QoS consideration (5QI-unaware model). For example, 
+   transport planes without 5G QoS consideration (5QI-unaware model). For example,
    flows with different 5G QoS Classes, even from same
    slice, can be mapped to different transport planes (5QI-aware
    model).
