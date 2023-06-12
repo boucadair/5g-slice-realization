@@ -1319,8 +1319,8 @@ to TN QoS Classes may be rather common.
 
    {{figure-22}} outlines the outbound edge resource control model at the
    transport network layer for 5QI-aware slices.  Each slice is assigned
-   multiple egress queues.  The sum of queue weights (equal to 5Q QoS
-   CIRs within the slice) CIRs must not exceed the CIR of the slice
+   multiple egress queues.  The sum of queue weights, which are 5Q QoS
+   queue CIRs within the slice, must not exceed the CIR of the slice
    itself.  And, similarly to the 5QI-aware model, the sum of slice CIRs
    must not exceed the physical capacity of the attachment circuit.
 
@@ -1376,7 +1376,7 @@ to TN QoS Classes may be rather common.
    As outlined in {{figure-QoS-5QI-aware}}, at the provider network edge, 5Q QoS Class marking
    (represented by DSCP related to 5QI set by mobile network functions
    in the packets handed off to the TN) is mapped to the TN QoS Class.
-   Based in TN QoS Class, when the packet is encapsulated with outer
+   Based on TN QoS Class, when the packet is encapsulated with outer
    header (MPLS or IPv6), TN QoS Class marking (MPLS TC or IPv6 DSCP in
    outer header, as depicted in {{figure-15}} and {{figure-16}}) is set in the
    outer header.  PHB in provider network transit routers is based exclusively on that TN QoS
@@ -1437,15 +1437,15 @@ to TN QoS Classes may be rather common.
 {: #figure-23 title="Transport Planes" artwork-align="center"}
 
    Note that there could be multiple tunnels within a single transport plane
-   between any pair of PEs. For readability, {{figure-23}} shows only single
+   between any pair of PEs. {{figure-23}} shows only single
    tunnel per transport plane for (ingress PE, egress PE) pair.
 
    Similar to the QoS mapping models discussed in {{sec-qos-map}}, for mapping
    to transport planes at the ingress PE, both 5QI-unaware and 5QI-aware
-   models are defined.  In essence, entire slices can be mapped to
-   transport planes without 5G QoS consideration (5QI-unaware model), or
-   flows with different 5G QoS Classes, even if they are from the same
-   slice, might be mapped to different transport planes (5QI-aware
+   models are defined.  Essentially, entire slices can be mapped to
+   transport planes without 5G QoS consideration (5QI-unaware model). For example, 
+   flows with different 5G QoS Classes, even from same
+   slice, can be mapped to different transport planes (5QI-aware
    model).
 
 ##  5QI-unaware Model
@@ -1503,10 +1503,10 @@ to TN QoS Classes may be rather common.
    routers), and 2 Transport Planes (e.g., latency optimized transport
    plane using link latency metrics for path calculation, and transport
    plane following IGP metrics).  TN QoS Class determines the per-hop
-   behavior when the packets are transiting through the provider network, while
-   Transport Plane determines the path, optimized or constrained based
-   on operator's business criteria, that the packets use to transit
-   through the provider network.
+   behavior when the packets are transiting through the provider network,
+   while transport plane determines the paths for packets through provider
+   network based on operator's business model (operator's requirement).
+   This path can be optimised or constrained.
 
 
 ##  5QI-aware Model
