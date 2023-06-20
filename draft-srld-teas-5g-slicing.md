@@ -1013,9 +1013,9 @@ Specifically, the actual mapping is a design choice of service operators that ma
    *  1r2c (single-rate two-color) rate limiter
 
       This is the most basic rate limiter, which meters at the SDP a
-      traffic stream of given slice and marks its packets as in-contract
-      (below CIR being enforced) or out-of-contract (above CIR being enforced).
-      In-contract packets are accepted and forwarded.  Out-of contract
+      traffic stream of given slice and marks its packets as in-profile
+      (below CIR being enforced) or out-of-profile (above CIR being enforced).
+      In-profile packets are accepted and forwarded.  Out-of profile
       packets are either dropped right at the SDP (hard rate limiting),
       or remarked (with different MPLS TC or DSCP TN markings) to
       signify 'this packet should be dropped in the first place, if
@@ -1497,8 +1497,8 @@ to TN QoS Classes may be rather common.
 ~~~
 {: #figure-24 title="Slice to Transport Plane Mapping (5QI-unaware Model)" artwork-align="center"}
 
-   It is worth noting that there is no strict correlation between TN QoS
-   Classes and Transport Planes.  The TN domain can be operated with
+   It is worth noting that TN QoS Classes and Transport Planes are
+   orthogonal.  The TN domain can be operated with
    e.g., 8 TN QoS Classes (representing 8 hardware queues in the
    routers), and 2 Transport Planes (e.g., latency optimized transport
    plane using link latency metrics for path calculation, and transport
