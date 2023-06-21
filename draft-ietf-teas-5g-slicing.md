@@ -1,9 +1,9 @@
 ---
-title: "A  Realization of IETF Network Slices for 5G Networks Using Current IP/ MPLS Technologies"
+title: "A Realization of IETF Network Slices for 5G Networks Using Current IP/ MPLS Technologies"
 abbrev: "Implementing 5G Transport Slices"
 category: info
 
-docname: draft-srld-teas-5g-slicing-latest
+docname: draft-ietf-teas-5g-slicing-latest
 submissiontype: IETF
 number:
 date:
