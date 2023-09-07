@@ -360,20 +360,20 @@ A TN Slice relies upon resources that can involve both the provider and customer
 ~~~~
 {: #figure-orch title="End-to-end 5G Slice Orchestration with TN" artwork-align="center"}
 
-### Transport Network Sections and Network Slice Instantiation
+### Transport Network Scope and Network Slice Instantiation
 
-Based on the reference design, the connectivity between NFs can be decomposed into three main types of sections. {{fig-end-to-end}} depicts the different sections:
+Based on the reference design, the connectivity between NFs can be decomposed into three main parts which are depicted in {{fig-end-to-end}}:
 
-*  Customer Site: Either connects two NFs located in the same Customer Site (e.g., NF1-NF2) or it connects a NF to a CE (e.g., NF1-CE). This section may not be present if the NF is the CE (e.g., NF3): in this case the AC connects the NF to the PE. The realization of this section is driven by the 5G Network Orchestration and potentially the Customer Site Orchestration (e.g., Fabric Manager, Element Management System, or VIM). The realization of this section does not involve the Transport Network Orchestration.
+*  Customer Site: Either connects NFs located in the same Customer Site (e.g., NF1-NF2) or it connects a NF to a CE (e.g., NF1-CE). This connection may not be present if the NF is embedded in the CE itself (e.g., NF3); in such a case, the AC connects the NF to the PE. The realization within the Customer Site is driven by the 5G Network Orchestration and potentially the Customer Site Orchestration (e.g., Fabric Manager, Element Management System, or VIM). The realization does not involve the Transport Network Orchestration.
 
 
-* Provider Network: Represents the connectivity between two PEs (e.g., PE1-PE2).The realization of this section is controlled by an IETF NSC.
+* Provider Network: Represents the connectivity between two PEs (e.g., PE1-PE2).The realization of the slices in this part is controlled by an IETF NSC.
 
-* Attachment Circuit: Represents the connectivity between CEs and PEs (e.g., CE-PE1 and PE2-NF3). The orchestration of this section relies partially upon an  IETF NSC for the configuration of the AC on the PE customer-facing interfaces and the Customer Site Orchestration for the configuration of the AC on the CE.
+* Attachment Circuit: Represents the connectivity between CEs and PEs (e.g., CE-PE1 and PE2-NF3). The orchestration of the AC relies partially upon an  IETF NSC for the configuration of the AC on the PE customer-facing interfaces and the Customer Site Orchestration for the configuration of the AC on the CE.
 
 
 As depicted in {{fig-end-to-end}}, the realization of an IETF Network Slice (i.e., connectivity with
-   performance commitments) involves the provider network and partially the AC (the PE-side of the AC). Note that the provisioning of a new network slice may rely on a partial or full pre-provisioned section (e.g., a network slice may rely on an existing AC). Notwithstanding, a framework for the automation of both sections is proposed in this document. The Customer Site section is considered as an extension of the connectivity of the RAN/CN domain without complex slice-specific performances requirements: the Customer Site infrastructure is usually over-provisioned with short distances (low latency) where basic QoS/Scheduling logic is sufficient to comply with the target SLOs. In other words, the main focus for the enforcement of end-to-end SLOs is managed at the network slice between PE interfaces connected to the AC.
+   performance commitments) involves the provider network and partially ACs (the PE-side of an AC). Note that the provisioning of a new network slice may rely on a partial or full pre-provisioned resources (e.g., a Network Slice may rely on an existing AC). Notwithstanding, a framework for the automation of both sections is proposed in this document. The Customer Site is considered as an extension of the connectivity of the RAN/CN domain without complex slice-specific performances requirements: the Customer Site infrastructure is usually over-provisioned with short distances (low latency) where basic QoS/Scheduling logic is sufficient to comply with the target SLOs. In other words, the main focus for the enforcement of end-to-end SLOs is managed at the Network Slice between PE interfaces connected to an AC.
 
 
 {::comment}
