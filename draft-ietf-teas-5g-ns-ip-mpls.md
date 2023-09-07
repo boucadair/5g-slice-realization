@@ -493,12 +493,12 @@ Specifically, the actual mapping is a design choice of service operators that ma
 
 ##  First 5G Slice versus Subsequent Slices
 
-   A 5G Network Slice is fully functional with both 5G Control Plane and
-   User Plane capabilities (i.e., dedicated NF functions or contexts).
+   A 5G Network Slice is fully functional with both 5G Control Plane (CP) and
+   User Plane (UP) capabilities (i.e., dedicated NFs or contexts).
    In this regard, the creation of the "first slice" is subject to a
-   specific logic since it must deploy both CP and UP.  This is not the
-   case for the deployment of subsequent slices because they can share
-   the same CP of the first slice, while instantiating dedicated UP.  An
+   specific logic since it must cover both CP and UP.  This is not the
+   case for the deployment of subsequent slices because it may share
+   the same CP of the first slice, while instantiating dedicated UP. Engineering guidance (e.g., policy) should be typically provided by an operator to, e.g., slice controllers to indicate whether the same or dedicated CP NFs is allowed when processing a new slice creation request. Such guidance might be provided to better automate the realization of 5G slices and minimize the realization delay that might be induced by extra cycles to seek for operator validation. An
    example of an incremental deployment is depicted in {{figure-7}}.
 
    At the time of writing (2023), Section 6.2 of {{NG.113}} specifies that the
