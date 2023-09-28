@@ -353,7 +353,7 @@ In reference to {{figure-orch}}, an end-to-end 5G Network Slice Orchestrator (5G
 
 * Customer Site Orchestration domain: the Orchestration of TN elements of the Customer Sites relies upon a variety of  controllers (e.g., Fabric Manager, Element Management System, or VIM). The realization of this section does not involve the Transport Network Orchestration.
 
-A TN Slice relies upon resources that can involve both the provider and customer TN domains. Therefore, a TN Slice has broader scope than an IETF Network Slice since the latter applies to the provider network only. More details are provided in the next section.
+A TN Slice relies upon resources that can involve both the provider and customer TN domains. More details are provided in the next section.
 
 ~~~~
 {::include ./drawings/tn-orchestration.txt}
