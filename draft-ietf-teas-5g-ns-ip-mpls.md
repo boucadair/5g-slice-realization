@@ -191,6 +191,8 @@ informative:
    This IETF Network Slice realization model leverages many building blocks currently
    commonly used in service provider networks.
 
+   Note that 5G slicing can be implemented with or without Transport Network (TN) slicing. However, implementing TN slicing as part of 5G slicing allows operators to better control Service Level Agreements (SLAs). See {{sec-5g}}.
+
    A brief 5G overview is provided in {{sec-5g-intro}} for readers' convenience. The reader may refer to {{TS-23.501}} or {{5G-Book}} for more
    details about 3GPP network architectures.
 
@@ -200,7 +202,7 @@ The document uses the terms defined in {{!I-D.ietf-teas-ietf-network-slices}}. S
 
 An extended list of abbreviations used in this document is provided in {{ext-abbr}}.
 
-#  5G Network Slicing Integration in Transport Networks
+#  5G Network Slicing Integration in Transport Networks {#sec-5g}
 
 ## Scope of the Transport Network {#sec-scope}
 
