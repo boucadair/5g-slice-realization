@@ -171,7 +171,7 @@ informative:
    5G slicing connectivity requirements. This realization model reuses many building blocks currently commonly used
    in service provider networks.
 
-> Note the RFC Editor: Please update "RFC XXXX Network Slice"  with the RFC number assigned to {{I-D.ietf-teas-ietf-network-slices}}.
+> Note to the RFC Editor: Please update "RFC XXXX Network Slice"  with the RFC number assigned to {{I-D.ietf-teas-ietf-network-slices}}.
 
 --- middle
 
@@ -711,7 +711,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
     tt     - SST (8 bits)
     dddddd - SD (24 bits)
 ~~~
-{: #figure-11 title="An Example of S-NSSAI embedded into IPv6" artwork-align="center"}
+{: #figure-11 title="An Example of S-NSSAI Embedded into IPv6" artwork-align="center"}
 
    In the example shown in {{figure-11}}, the most significant 96 bits of the IPv6 address are
    unique to the NF, but do not carry any slice-specific information, while
@@ -733,7 +733,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
 ~~~~
 {::include ./drawings/S-NSSAI-deployment.txt}
 ~~~~
-{: #figure-s-nssai-deployment title="Deployment example with S-NSSAI embedded into IPv6" artwork-align="center"}
+{: #figure-s-nssai-deployment title="Deployment Example with S-NSSAI Embedded into IPv6 Addresses" artwork-align="center"}
 
 
 ##  MPLS Label Hand-off
