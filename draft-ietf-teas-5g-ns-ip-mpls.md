@@ -497,13 +497,8 @@ Specifically, the actual mapping is a design choice of service operators that ma
 
 ##  First 5G Slice versus Subsequent Slices
 
-   A 5G Network Slice is fully functional with both 5G Control Plane and
-   User Plane capabilities (i.e., dedicated NF functions or contexts).
-   In this regard, the creation of the "first slice" is subject to a
-   specific logic since it must deploy both CP and UP.  This is not the
-   case for the deployment of subsequent slices because they can share
-   the same CP of the first slice, while instantiating dedicated UP.  An
-   example of an incremental deployment is depicted in {{figure-7}}.
+An operational 5G Network Slice must incorporate both 5G Control Plane and User Plane capabilities.
+For instance, if we consider a slice based on split-CU in the RAN, both CU-UP and CU-CP must be deployed along with the associated interfaces E1, F1-c, F1-u, N2, and N3 which are conveyed in the TN. In this regard, the creation of the "first slice" can be subject to a specific logic compared with the subsequent slices. Referring to the example in {{figure-7}}, the first 5G slice relies on the deployment of NF-CP and NF-UP functions together with two TN slices for Control and User Plane (resp. INS-CP and INS-UP1). Next, the deployment of second slice relies solely on the instantiation of User plane Function (NF-UP2) together with a dedicated User plane TN slice (INS-UP2). The Control Plane of the first 5G slice is also updated to integrate the second slice: the TN Slice (INS-CP) and Network Functions (NF-CP) are shared.
 
    At the time of writing (2023), Section 6.2 of {{NG.113}} specifies that the
    eMBB slice (SST=1 and no Slice Differentiator (SD)) should be supported globally.  This 5G
