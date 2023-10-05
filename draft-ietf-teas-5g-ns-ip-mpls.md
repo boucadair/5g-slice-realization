@@ -511,11 +511,11 @@ Specifically, the actual mapping is a design choice of service operators that ma
    ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
                       ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
    │  1    ┌─────┐      ┌──────────────────────────┐ │    ┌─────┐  │
-      s S  │NF-CP├──────┤  CP IETF NS (IETF-NS-1)  ├──────┤NF-CP│
+      s S  │NF-CP├──────┤  CP TN Slice (INS-CP)    ├──────┤NF-CP│
    │  t l  └─────┘      └──────────────────────────┘ │    └─────┘  │
         i             │
    │  5 c  ┌─────┐      ┌──────────────────────────┐ │    ┌─────┐  │
-      G e  │NF-UP├──────┤  UP IETF NS (IETF-NS-2)  ├──────┤NF-UP│
+      G e  │NF-UP├──────┤  UP TN Slice (INS-UP1)   ├──────┤NF-UP│
    │       └─────┘      └──────────────────────────┘ │    └─────┘  │
     ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
                                                      │
@@ -533,18 +533,18 @@ Specifically, the actual mapping is a design choice of service operators that ma
    ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
                       ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
    │  1    ┌─────┐      ┌──────────────────────────┐ │    ┌─────┐  │
-      s S  │NF-CP├──────┤  CP IETF NS (IETF-NS-1)  ├──────┤NF-CP│
+      s S  │NF-CP├──────┤  CP TN Slice (INS-CP)    ├──────┤NF-CP│
    │  t l  └─────┘      └──────────────────────────┘ │    └─────┘  │
         i             │
    │  5 c  ┌─────┐      ┌──────────────────────────┐ │    ┌─────┐  │
-      G e  │NF-UP├──────┤  UP IETF NS (IETF-NS-2)  ├──────┤NF-UP│
+      G e  │NF-UP├──────┤  UP TN Slice (INS-UP1)   ├──────┤NF-UP│
    │       └─────┘      └──────────────────────────┘ │    └─────┘  │
     ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
                                                      │
    ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
       2                                              │
    │  n S  ┌──────┐   │ ┌──────────────────────────┐     ┌──────┐  │
-      d l  │NF-UP2├─────┤   UP2 IETF NS (IETF-NS-3)├─────┤NF-UP2│
+      d l  │NF-UP2├─────┤  UP TN Slice (INS-UP2)   ├─────┤NF-UP2│
    │    i  └──────┘   │ └──────────────────────────┘     └──────┘  │
       5 c                                            │
    │  G e             │                                            │
@@ -553,7 +553,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
                               Transport Network      │
                       │
                        ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
-       Deployment of additional 5G slice with shared Control Plane
+       Deployment of subsequent 5G slice with shared Control Plane
 ~~~
 {: #figure-7 title="First and Subsequent Slice Deployment" artwork-align="center"}
 
