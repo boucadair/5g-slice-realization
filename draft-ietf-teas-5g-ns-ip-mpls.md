@@ -332,14 +332,14 @@ A co-managed CE is orchestrated by both the customer and the provider. In this c
 
 [comment]: <> (??? need discussion on this particular + add link/ref with framework ???)
 
-### CE (with some PE functions): TITLE to be Found
+### Service-aware CE
 
-In some cases, a CE connects to the provider network using Inter-AS Option B or C as defined in {{Section 10 of !RFC4364}} with the use of MPLS or SRv6 data planes. An example of such as an AC is depicted in {{figure-51}}. The configuration of VRFs together with control plane identifiers, such as Route Targets (RTs) and Route Distinguishers (RDs), happens on the CE. This is a source of confusion since these configurations are typically enforced on PE devices. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE (e.g., in Inter-AS Option C, the Autonomous System Border Router (ASBR) and a remote PE in the provider network with VRF configuration form a distributed PE).
+While in most cases, the CE connects to the PE thanks to IP (e.g. vlans), a CE may also connect to the provider network with the use of MPLS -potentially over IP tunnels- or SRv6 data planes. The CE has awareness of provider services configuration (e.g. control plane identifiers such as Route Targets and Route Distinguishers). An example of such as an AC is depicted in {{figure-51}}. This is a source of confusion since these configurations are typically enforced on PE devices. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE.
 
 ~~~~
 {::include ./drawings/mpls-ac.txt}
 ~~~~
-{: #figure-51 title="MPLS or SRv6 Attachment Circuit" artwork-align="center"}
+{: #figure-51 title="Example of MPLS-based Attachment Circuit" artwork-align="center"}
 
 This use case is also referred to in {{sec-10b}} and {{sec-10c}}.
 
@@ -735,7 +735,7 @@ Overall, policies might be provided by an operator (e.g., to network slice contr
 {: #figure-s-nssai-deployment title="Deployment Example with S-NSSAI Embedded into IPv6 Addresses" artwork-align="center"}
 
 
-##  MPLS Label Hand-off
+##  MPLS Label Hand-off {#sec-mpls-ho}
 
    In this option, the service instances representing different slices
    are created directly on the NF, or within the customer site
