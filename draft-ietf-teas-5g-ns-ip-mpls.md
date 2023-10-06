@@ -334,7 +334,7 @@ A co-managed CE is orchestrated by both the customer and the provider. In this c
 
 ### Service-aware CE
 
-While in most cases, the CE connects to the PE thanks to IP (e.g. vlans), a CE may also connect to the provider network with the use of MPLS -potentially over IP tunnels- or SRv6 data planes. The CE has awareness of provider services configuration (e.g. control plane identifiers such as Route Targets and Route Distinguishers). An example of such as an AC is depicted in {{figure-51}}. This is a source of confusion since these configurations are typically enforced on PE devices. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE.
+While in most cases CEs connect to PEs using IP (e.g., VLANs), a CE may also connect to the provider network using MPLS -potentially over IP tunnels- or SRv6. The CE has awareness of provider services configuration (e.g., control plane identifiers such as Route Targets and Route Distinguishers). An example of such an AC is depicted in {{figure-51}}. This is a source of confusion since these configurations are typically enforced on PEs. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE.
 
 ~~~~
 {::include ./drawings/mpls-ac.txt}
