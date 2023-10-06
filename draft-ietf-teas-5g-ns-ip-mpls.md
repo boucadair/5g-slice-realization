@@ -309,7 +309,7 @@ Attachment Circuit (AC):
 
 ###  Distributed PE and CE {#sec-distributed}
 
-This document uses the concept of distributed CEs and PEs (e.g., Section 3.4.3 of {{?RFC4664}}). This approach consolidates a definition of CE/PE/AC that is consistent with the orchestration perimeters. The CEs and PEs delimit respectively the customer and provider orchestration domains, while the AC interconnects these domains.
+This document uses the concept of distributed CEs and PEs (e.g., {{Section 3.4.3 of ?RFC4664}}). This approach consolidates a definition of CE/PE/AC that is consistent with the orchestration perimeters. The CEs and PEs delimit respectively the customer and provider orchestration domains, while the AC interconnects these domains.
 
 Distributed CE:
 : The logical connectivity is realized by configuring multiple devices in the customer domain. The CE function is distributed. An example of such a distribution is the realization of an interconnection using a L3VPN service based on a distributed CE composed of a switch (Layer 2) and a router (Layer 3) (case (ii) in {{fig-50}}).
@@ -356,7 +356,7 @@ In reference to {{figure-orch}}, an end-to-end 5G Network Slice Orchestrator (5G
 
 * Provider Network Orchestration domain: as defined in {{!I-D.ietf-teas-ietf-network-slices}}, the provider relies on an RFC XXXX Network Slice Controller (NSC) to manage and orchestrate RFC XXXX Network Slices in the provider network. This framework permits to manage connectivity together with SLOs. Ultimately, the 5G NSO interfaces with an NSC for the management of RFC XXXX Network Slices using IETF APIs and data models.
 
-* Customer Site Orchestration domain: the Orchestration of TN elements of the Customer Sites relies upon a variety of  controllers (e.g., Fabric Manager, Element Management System, or VIM). The realization of this section does not involve the Transport Network Orchestration.
+* Customer Site Orchestration domain: the Orchestration of TN elements of the Customer Sites relies upon a variety of  controllers (e.g., Fabric Manager, Element Management System, or VIM). The realization of this segment does not involve the Transport Network Orchestration.
 
 A TN Slice relies upon resources that can involve both the provider and customer TN domains. More details are provided in {{sec-tn-nsi}}.
 
@@ -365,24 +365,24 @@ A TN Slice relies upon resources that can involve both the provider and customer
 ~~~~
 {: #figure-orch title="End-to-end 5G Slice Orchestration with TN" artwork-align="center"}
 
-### Transport Network Sections and Network Slice Instantiation {#sec-tn-nsi}
+### Transport Network Segments and Network Slice Instantiation {#sec-tn-nsi}
 
-Based on the reference design, the connectivity between NFs can be decomposed into three main types of sections. {{fig-end-to-end}} depicts the different sections:
+Based on the reference design, the connectivity between NFs can be decomposed into three main types of segments. {{fig-end-to-end}} depicts the different segments:
 
-*  Customer Site: Either connects two NFs located in the same Customer Site (e.g., NF1-NF2) or it connects a NF to a CE (e.g., NF1-CE). This section may not be present if the NF is the CE (e.g., NF3): in this case the AC connects the NF to the PE. The realization of this section is driven by the 5G Network Orchestration and potentially the Customer Site Orchestration (e.g., Fabric Manager, Element Management System, or VIM). The realization of this section does not involve the Transport Network Orchestration.
+*  Customer Site: Either connects two NFs located in the same Customer Site (e.g., NF1-NF2) or it connects a NF to a CE (e.g., NF1-CE). This segment may not be present if the NF is the CE (e.g., NF3): in this case the AC connects the NF to the PE. The realization of this segment is driven by the 5G Network Orchestration and potentially the Customer Site Orchestration (e.g., Fabric Manager, Element Management System, or VIM). The realization of this segment does not involve the Transport Network Orchestration.
 
 
-* Provider Network: Represents the connectivity between two PEs (e.g., PE1-PE2).The realization of this section is controlled by an IETF NSC.
+* Provider Network: Represents the connectivity between two PEs (e.g., PE1-PE2).The realization of this segment is controlled by an IETF NSC.
 
-* Attachment Circuit: Represents the connectivity between CEs and PEs (e.g., CE-PE1 and PE2-NF3). The orchestration of this section relies partially upon an  IETF NSC for the configuration of the AC on the PE customer-facing interfaces and the Customer Site Orchestration for the configuration of the AC on the CE.
+* Attachment Circuit: Represents the connectivity between CEs and PEs (e.g., CE-PE1 and PE2-NF3). The orchestration of this segment relies partially upon an  IETF NSC for the configuration of the AC on the PE customer-facing interfaces and the Customer Site Orchestration for the configuration of the AC on the CE.
 
 
 As depicted in {{fig-end-to-end}}, the realization of an RFC XXXX Network Slice (i.e., connectivity with
-   performance commitments) involves the provider network and partially the AC (the PE-side of the AC). Note that the provisioning of a new network slice may rely on a partial or full pre-provisioned section (e.g., a network slice may rely on an existing AC). Notwithstanding, a framework for the automation of both sections is proposed in this document. The Customer Site section is considered as an extension of the connectivity of the RAN/CN domain without complex slice-specific performances requirements: the Customer Site infrastructure is usually over-provisioned with short distances (low latency) where basic QoS/Scheduling logic is sufficient to comply with the target SLOs. In other words, the main focus for the enforcement of end-to-end SLOs is managed at the network slice between PE interfaces connected to the AC.
+   performance commitments) involves the provider network and partially the AC (the PE-side of the AC). Note that the provisioning of a new network slice may rely on a partial or full pre-provisioned segment (e.g., a network slice may rely on an existing AC). Notwithstanding, a framework for the automation of both segments is proposed in this document. The Customer Site segment is considered as an extension of the connectivity of the RAN/CN domain without complex slice-specific performances requirements: the Customer Site infrastructure is usually over-provisioned with short distances (low latency) where basic QoS/Scheduling logic is sufficient to comply with the target SLOs. In other words, the main focus for the enforcement of end-to-end SLOs is managed at the network slice between PE interfaces connected to the AC.
 
 
 {::comment}
-FUTURE REF for a framework for the automation of both sections is proposed in this document
+FUTURE REF for a framework for the automation of both segments is proposed in this document
 {:/comment}
 
 
@@ -830,7 +830,7 @@ Overall, policies might be provided by an operator (e.g., to network slice contr
    provider network.  Therefore, if 5QI-aware treatment is desired in the provider
    network as well, 5G network functions might set DSCP with a value
    representing 5QI so that differentiated treatment can implemented in the provider network
-   as well.  Based on these DSCP values, at SDP of each provider network section
+   as well.  Based on these DSCP values, at SDP of each provider network segment
    used to construct transport for given 5G slice, very granular QoS
    enforcement might be implemented.
 
@@ -1863,7 +1863,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
 
 #  Security Considerations
 
-RFC XXXX Network Slices considerations are discussed in Section 6 of {{!I-D.ietf-teas-ietf-network-slices}}.
+RFC XXXX Network Slices considerations are discussed in {{Section 6 of !I-D.ietf-teas-ietf-network-slices}}.
 
 Many of the YANG modules cited in this document define schema for data that is designed to be accessed via network management protocols such as NETCONF {{!RFC6241}} or RESTCONF {{!RFC8040}}. The lowest NETCONF layer is the secure transport layer, and the mandatory-to-implement secure transport is Secure Shell (SSH) {{!RFC6242}}. The lowest RESTCONF layer is HTTPS, and the mandatory-to-implement secure transport is TLS {{!RFC8446}}.
 
