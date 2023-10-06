@@ -1,5 +1,5 @@
 ---
-title: "A Realization of IETF Network Slices for 5G Networks Using Current IP/MPLS Technologies"
+title: "A Realization of RFCXXX Network Slices for 5G Networks Using Current IP/MPLS Technologies"
 abbrev: "Implementing 5G Transport Slices"
 category: info
 
@@ -166,10 +166,12 @@ informative:
    requirements for all mobile domains, including the Radio Access
    Network (RAN), Core Network (CN), and Transport Network (TN).
 
-   This document describes a basic IETF Network Slice realization model
+   This document describes a basic RFC XXXX Network Slice realization model
    in IP/MPLS networks with a focus on the Transport Network fulfilling
    5G slicing connectivity requirements. This realization model reuses many building blocks currently commonly used
    in service provider networks.
+
+> Note to the RFC Editor: Please update "RFC XXXX Network Slice"  with the RFC number assigned to {{I-D.ietf-teas-ietf-network-slices}}.
 
 --- middle
 
@@ -181,15 +183,17 @@ informative:
    technologies.  The IETF network slicing framework introduces the
    concept of a Network Resource Partition (NRP), which is simply a
    collection of resources identified in the underlay network.  There
-   could be multiple realizations of IETF Network Slice and
+   could be multiple realizations of RFC XXXX Network Slice and
    NRP concepts, where each realization might be optimized for the
    different network slicing use cases.
 
-   This document describes an IETF Network Slice realization model
+   This document describes an RFC XXXX Network Slice realization model
    in IP/MPLS networks, using a single NRP and with a focus on
    fulfilling 5G slicing connectivity requirements.
-   This IETF Network Slice realization model leverages many building blocks currently
+   This RFC XXXX Network Slice realization model leverages many building blocks currently
    commonly used in service provider networks.
+
+   Note that 5G slicing can be implemented with or without Transport Network (TN) slicing. However, implementing TN slicing as part of 5G slicing allows operators to better control Service Level Agreements (SLAs). See {{sec-5g}}.
 
    A brief 5G overview is provided in {{sec-5g-intro}} for readers' convenience. The reader may refer to {{TS-23.501}} or {{5G-Book}} for more
    details about 3GPP network architectures.
@@ -200,7 +204,7 @@ The document uses the terms defined in {{!I-D.ietf-teas-ietf-network-slices}}. S
 
 An extended list of abbreviations used in this document is provided in {{ext-abbr}}.
 
-#  5G Network Slicing Integration in Transport Networks
+#  5G Network Slicing Integration in Transport Networks {#sec-5g}
 
 ## Scope of the Transport Network {#sec-scope}
 
@@ -210,7 +214,7 @@ As discussed in Section 4.4.1 of {{TS-28.530}}, the 3GPP managment system does n
 
 > 'The non-3GPP part includes TN parts. The 3GPP management system provides the network slice requirements to the corresponding management systems of those non-3GPP parts, e.g. the TN part supports connectivity within and between CN and AN parts.' (Section 4.4.1 of {{TS-28.530}})
 
-In practice, the TN may not map with a monolithic architecture and management domain. It is frequently segmented, non-uniform, and managed by different entities. For example, {{fig-1}} depicts a Network Function (NF) instance that is deployed in an edge data center (DC) connected to a NF located in a Public Cloud via a Wide Area Network (WAN) (e.g., MPLS-VPN service). In this example, the TN can be seen as an abstraction representing an end-to-end connectivity based upon three distinct domains: DC, WAN, and Public Cloud. A model for the Transport Network based on orchestration domains is introduced in {{sec-orch}}. This model permits to define more precisely where the IETF Network Slices apply.
+In practice, the TN may not map with a monolithic architecture and management domain. It is frequently segmented, non-uniform, and managed by different entities. For example, {{fig-1}} depicts a Network Function (NF) instance that is deployed in an edge data center (DC) connected to a NF located in a Public Cloud via a Wide Area Network (WAN) (e.g., MPLS-VPN service). In this example, the TN can be seen as an abstraction representing an end-to-end connectivity based upon three distinct domains: DC, WAN, and Public Cloud. A model for the Transport Network based on orchestration domains is introduced in {{sec-orch}}. This model permits to define more precisely where the RFC XXXX Network Slices apply.
 
 ~~~~
      ┌──────────────────────────────────┐
@@ -322,9 +326,15 @@ Distributed PE:
 
 In subsequent sections of this document, the terms CE and PE are used for both a single and a distributed devices.
 
-### Attachment Circuits for Inter-AS Options B/C
+###  Co-Managed CE
 
-In some cases, a CE connects to the provider network using Inter-AS Option B or C as defined in {{Section 10 of !RFC4364}} with the use of MPLS or SRv6 data planes. An example of such as an AC is depicted in {{figure-51}}. The configuration of VRFs together with control plane identifiers, such as Route Targets (RTs) and Route Distinguishers (RDs), happens on the CE. This is a source of confusion since these configurations are typically enforced on PE devices. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE (e.g., in  Inter-AS Option C, the Autonomous System Border Router (ASBR) and a remote PE in the provider network with VRF configuration form a distributed PE).
+A co-managed CE is orchestrated by both the customer and the provider. In this case, the customer and provider usually have control on distinct device configuration perimeters (e.g., the customer is responsible for the LAN interfaces, while the provider is responsible for the WAN interfaces (including routing/forwarding policies)). Considering the generic model, a co-managed CE has both PE and CE functions and there is no strict AC connection, although we may consider that the AC stitching logic happens internally within the device. The provider manages the AC between the CE and the PE.
+
+[comment]: <> (??? need discussion on this particular + add link/ref with framework ???)
+
+### CE (with some PE functions): TITLE to be Found
+
+In some cases, a CE connects to the provider network using Inter-AS Option B or C as defined in {{Section 10 of !RFC4364}} with the use of MPLS or SRv6 data planes. An example of such as an AC is depicted in {{figure-51}}. The configuration of VRFs together with control plane identifiers, such as Route Targets (RTs) and Route Distinguishers (RDs), happens on the CE. This is a source of confusion since these configurations are typically enforced on PE devices. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE (e.g., in Inter-AS Option C, the Autonomous System Border Router (ASBR) and a remote PE in the provider network with VRF configuration form a distributed PE).
 
 ~~~~
 {::include ./drawings/mpls-ac.txt}
@@ -333,11 +343,6 @@ In some cases, a CE connects to the provider network using Inter-AS Option B or 
 
 This use case is also referred to in {{sec-10b}} and {{sec-10c}}.
 
-###  Co-Managed CE
-
-A co-managed CE is orchestrated by both the customer and the provider. In this case, the customer and provider usually have control on distinct device configuration perimeters (e.g., the customer is responsible for the LAN interfaces, while the provider is responsible for the WAN interfaces (including routing/forwarding policies)). Considering the generic model, a co-managed CE has both PE and CE functions and there is no strict AC connection, although we may consider that the AC stitching logic happens internally within the device. The provider manages the AC between the CE and the PE.
-
-[comment]: <> (??? need discussion on this particular + add link/ref with framework ???)
 
 ##  Orchestration Overview {#sec-orch}
 
@@ -349,18 +354,19 @@ This section introduces a global framework for the orchestration of an end-to-en
 
 In reference to {{figure-orch}}, an end-to-end 5G Network Slice Orchestrator (5G NSO) is responsible for orchestrating end-to-end 5G Slices. The details of the 5G NSO is out of the scope of this document. The realization of the end-to-end 5G Slice spans RAN, CN, and TN. As mentioned in {{sec-scope}}, the RAN and CN are under the responsibility of the 3GPP Management System, while the TN is not. The orchestration of the TN is split into two sub-domains in conformance with the reference design in {#sec-ref-design}:
 
-* Provider Network Orchestration domain: as defined in {{!I-D.ietf-teas-ietf-network-slices}}, the provider relies on an IETF Network Slice Controller (NSC) to manage and orchestrate IETF Network Slices in the provider network. This framework permits to manage connectivity together with SLOs. Ultimately, the 5G NSO interfaces with an NSC for the management of IETF Network Slices using IETF APIs and data models.
+* Provider Network Orchestration domain: as defined in {{!I-D.ietf-teas-ietf-network-slices}}, the provider relies on an RFC XXXX Network Slice Controller (NSC) to manage and orchestrate RFC XXXX Network Slices in the provider network. This framework permits to manage connectivity together with SLOs. Ultimately, the 5G NSO interfaces with an NSC for the management of RFC XXXX Network Slices using IETF APIs and data models.
 
 * Customer Site Orchestration domain: the Orchestration of TN elements of the Customer Sites relies upon a variety of  controllers (e.g., Fabric Manager, Element Management System, or VIM). The realization of this section does not involve the Transport Network Orchestration.
 
-A TN Slice relies upon resources that can involve both the provider and customer TN domains. Therefore, a TN Slice has broader scope than an IETF Network Slice since the latter applies to the provider network only. More details are provided in the next section.
+A TN Slice relies upon resources that can involve both the provider and customer TN domains. More details are provided in {{sec-tn-nsi}}.
 
 ~~~~
 {::include ./drawings/tn-orchestration.txt}
 ~~~~
 {: #figure-orch title="End-to-end 5G Slice Orchestration with TN" artwork-align="center"}
 
-### Transport Network Scope and Network Slice Instantiation
+### Transport Network Sections and Network Slice Instantiation {#sec-tn-nsi}
+
 
 Based on the reference design, the connectivity between NFs can be decomposed into three main parts which are depicted in {{fig-end-to-end}}:
 
@@ -372,8 +378,8 @@ Based on the reference design, the connectivity between NFs can be decomposed in
 * Attachment Circuit: Represents the connectivity between CEs and PEs (e.g., CE-PE1 and PE2-NF3). The orchestration of the AC relies partially upon an  IETF NSC for the configuration of the AC on the PE customer-facing interfaces and the Customer Site Orchestration for the configuration of the AC on the CE.
 
 
-As depicted in {{fig-end-to-end}}, the realization of an IETF Network Slice (i.e., connectivity with
-   performance commitments) involves the provider network and partially ACs (the PE-side of an AC). Note that the provisioning of a new network slice may rely on a partial or full pre-provisioned resources (e.g., a Network Slice may rely on an existing AC). Notwithstanding, a framework for the automation of both sections is proposed in this document. The Customer Site is considered as an extension of the connectivity of the RAN/CN domain without complex slice-specific performances requirements: the Customer Site infrastructure is usually over-provisioned with short distances (low latency) where basic QoS/Scheduling logic is sufficient to comply with the target SLOs. In other words, the main focus for the enforcement of end-to-end SLOs is managed at the Network Slice between PE interfaces connected to an AC.
+As depicted in {{fig-end-to-end}}, the realization of an RFC XXXX Network Slice (i.e., connectivity with
+   performance commitments) involves the provider network and partially the AC (the PE-side of the AC). Note that the provisioning of a new network slice may rely on a partial or full pre-provisioned section (e.g., a network slice may rely on an existing AC). Notwithstanding, a framework for the automation of both sections is proposed in this document. The Customer Site section is considered as an extension of the connectivity of the RAN/CN domain without complex slice-specific performances requirements: the Customer Site infrastructure is usually over-provisioned with short distances (low latency) where basic QoS/Scheduling logic is sufficient to comply with the target SLOs. In other words, the main focus for the enforcement of end-to-end SLOs is managed at the network slice between PE interfaces connected to the AC.
 
 
 {::comment}
@@ -394,7 +400,7 @@ interconnection is technology-specific and requires a coordination between the C
 
 : {{figure-4}} is a basic example of a Layer 3 CE-PE link realization
 with shared network resources (such as VLAN-IDs and IP prefixes) which
-are passed between Orchestrators via a dedicated interface. This document proposes to rely upon IETF service data models: the IETF Network Slice Service Interface {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}} or the Attachment Circuit Service Interface ({{?I-D.boro-opsawg-teas-attachment-circuit}}.
+are passed between Orchestrators via a dedicated interface. This document proposes to rely upon IETF service data models: the RFC XXXX Network Slice Service Interface {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}} or the Attachment Circuit Service Interface ({{?I-D.boro-opsawg-teas-attachment-circuit}}.
 
 
 ~~~~
@@ -406,7 +412,7 @@ are passed between Orchestrators via a dedicated interface. This document propos
 
 More complex scenarios can happen with extra segmentation of the TN and additional TN Orchestration domains. It is not realistic to describe any design flavor, however the main concepts presented here in terms of segmentation (provider/customer) and stitching (AC) can be reused for the integration of more complex integrations.
 
-## 5G Slice to IETF Network Slice Mapping {#sec-mapping}
+## 5G Slice to RFC XXXX Network Slice Mapping {#sec-mapping}
 
 > Editor Note: This section is intended to focus on the realization implications of the mappings. Will reassess in future versions whether this section should be maintained or moved to {{?I-D.ietf-teas-5g-network-slice-application}}.
 
@@ -431,7 +437,7 @@ More complex scenarios can happen with extra segmentation of the TN and addition
       for eMBB slice are instantiated in the regional cloud.
 
    * N to M:
-      The 5G to IETF Network Slice mapping combines both
+      The 5G to RFC XXXX Network Slice mapping combines both
       approaches with a mix of shared and dedicated associations.
 
 ~~~
@@ -441,11 +447,11 @@ More complex scenarios can happen with extra segmentation of the TN and addition
 
 │            ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐            │
   ┌─────┐ N3   ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐   N3 ┌─────┐
-│ │CU-UP├───────   IETF Network Slice UP_eMBB    ───────┤ UPF │ │
+│ │CU-UP├─────── RFC XXXX Network Slice UP_eMBB  ───────┤ UPF │ │
   └─────┘      └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘      └─────┘
 │            │                                     │            │
   ┌─────┐ N2   ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐   N2 ┌─────┐
-│ │CU-CP├───────      IETF Network Slice CP      ───────┤ AMF │ │
+│ │CU-CP├───────   RFC XXXX Network Slice CP     ───────┤ AMF │ │
   └─────┘      └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘      └─────┘
 └ ─ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ┘
 
@@ -455,7 +461,7 @@ More complex scenarios can happen with extra segmentation of the TN and addition
 
              └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
 ~~~
-{: #figure-5 title="1 (5G Slice) to N (IETF Network Slice) Mapping" artwork-align="center"}
+{: #figure-5 title="1 (5G Slice) to N (RFC XXXX Network Slice) Mapping" artwork-align="center"}
 
 ~~~
                   ┌ ─ ─ ─ ─ ─ ─ ┐
@@ -471,7 +477,7 @@ More complex scenarios can happen with extra segmentation of the TN and addition
                     │                            │ │   Regional
 │ ┌───────────┐ │ │                            │         Cloud    │
   │CU-UP_URLLC├─────┤                            │ │ ┌──────────┐
-│ └───────────┘ │ │         IETF Network       ├─────┤  5GC CP  │ │
+│ └───────────┘ │ │      RFC XXXX Network      ├─────┤  5GC CP  │ │
                     │        Slice ALL           │ │ └──────────┘
 │ ┌───────────┐ │ │                            │                  │
   │CU-UP_eMBB ├─────┤                            │ │ ┌──────────┐
@@ -482,7 +488,7 @@ More complex scenarios can happen with extra segmentation of the TN and addition
                   │      Transport Network
                    ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
 ~~~
-{: #figure-6 title="N (5G Slice) to 1 (IETF Network Slice) Mapping" artwork-align="center"}
+{: #figure-6 title="N (5G Slice) to 1 (RFC XXXX Network Slice) Mapping" artwork-align="center"}
 
    Note that the actual realization of the mapping depends on several
    factors, such as the actual business cases, the NF vendor
@@ -493,13 +499,8 @@ Specifically, the actual mapping is a design choice of service operators that ma
 
 ##  First 5G Slice versus Subsequent Slices
 
-   A 5G Network Slice is fully functional with both 5G Control Plane and
-   User Plane capabilities (i.e., dedicated NF functions or contexts).
-   In this regard, the creation of the "first slice" is subject to a
-   specific logic since it must deploy both CP and UP.  This is not the
-   case for the deployment of subsequent slices because they can share
-   the same CP of the first slice, while instantiating dedicated UP.  An
-   example of an incremental deployment is depicted in {{figure-7}}.
+An operational 5G Network Slice incorporates both 5G Control Plane and User Plane capabilities.
+For instance, consider a slice based on split-CU in the RAN, both CU-UP and CU-CP must be deployed along with the associated interfaces E1, F1-c, F1-u, N2, and N3 which are conveyed in the TN. In this regard, the creation of the "first slice" can be subject to a specific logic compared with the subsequent slices. Referring to the example in {{figure-7}}, the first 5G slice relies on the deployment of NF-CP and NF-UP functions together with two TN slices for Control and User Planes (INS-CP and INS-UP1). Next, the deployment of a second slice relies solely on the instantiation of a User Plane Function (NF-UP2) together with a dedicated User Plane TN slice (INS-UP2). The Control Plane of the first 5G slice is also updated to integrate the second slice: the TN Slice (INS-CP) and Network Functions (NF-CP) are shared.
 
    At the time of writing (2023), Section 6.2 of {{NG.113}} specifies that the
    eMBB slice (SST=1 and no Slice Differentiator (SD)) should be supported globally.  This 5G
@@ -509,11 +510,11 @@ Specifically, the actual mapping is a design choice of service operators that ma
    ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
                       ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
    │  1    ┌─────┐      ┌──────────────────────────┐ │    ┌─────┐  │
-      s S  │NF-CP├──────┤  CP IETF NS (IETF-NS-1)  ├──────┤NF-CP│
+      s S  │NF-CP├──────┤  CP TN Slice (INS-CP)    ├──────┤NF-CP│
    │  t l  └─────┘      └──────────────────────────┘ │    └─────┘  │
         i             │
    │  5 c  ┌─────┐      ┌──────────────────────────┐ │    ┌─────┐  │
-      G e  │NF-UP├──────┤  UP IETF NS (IETF-NS-2)  ├──────┤NF-UP│
+      G e  │NF-UP├──────┤  UP TN Slice (INS-UP1)   ├──────┤NF-UP│
    │       └─────┘      └──────────────────────────┘ │    └─────┘  │
     ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
                                                      │
@@ -531,18 +532,18 @@ Specifically, the actual mapping is a design choice of service operators that ma
    ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
                       ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
    │  1    ┌─────┐      ┌──────────────────────────┐ │    ┌─────┐  │
-      s S  │NF-CP├──────┤  CP IETF NS (IETF-NS-1)  ├──────┤NF-CP│
+      s S  │NF-CP├──────┤  CP TN Slice (INS-CP)    ├──────┤NF-CP│
    │  t l  └─────┘      └──────────────────────────┘ │    └─────┘  │
         i             │
    │  5 c  ┌─────┐      ┌──────────────────────────┐ │    ┌─────┐  │
-      G e  │NF-UP├──────┤  UP IETF NS (IETF-NS-2)  ├──────┤NF-UP│
+      G e  │NF-UP├──────┤  UP TN Slice (INS-UP1)   ├──────┤NF-UP│
    │       └─────┘      └──────────────────────────┘ │    └─────┘  │
     ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
                                                      │
    ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
       2                                              │
    │  n S  ┌──────┐   │ ┌──────────────────────────┐     ┌──────┐  │
-      d l  │NF-UP2├─────┤   UP2 IETF NS (IETF-NS-3)├─────┤NF-UP2│
+      d l  │NF-UP2├─────┤  UP TN Slice (INS-UP2)   ├─────┤NF-UP2│
    │    i  └──────┘   │ └──────────────────────────┘     └──────┘  │
       5 c                                            │
    │  G e             │                                            │
@@ -551,9 +552,12 @@ Specifically, the actual mapping is a design choice of service operators that ma
                               Transport Network      │
                       │
                        ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
-       Deployment of additional 5G slice with shared Control Plane
+       Deployment of subsequent 5G slice with shared Control Plane
 ~~~
 {: #figure-7 title="First and Subsequent Slice Deployment" artwork-align="center"}
+
+Overall, policies might be provided by an operator (e.g., to network slice controllers) to indicate whether the same or dedicated CP NFs are allowed when processing a new slice creation request. Providing such a policy is meant to better automate the realization of 5G slices and minimize the realization delay that might be induced by extra cycles to seek for operator validation.
+
 
 #  Overview of the Realization Model
 
@@ -625,11 +629,11 @@ Specifically, the actual mapping is a design choice of service operators that ma
    identification.  The S-NSSAI is not visible to the transport domain.
    So instead, 5G functions can expose the 5G slices to the transport
    domain by mapping to explicit Layer 2 or Layer 3 identifiers, such as VLAN-IDs, IP
-   addresses, or Differentiated Services Code Point (DSCP). More details about the mapping between 3GPP and IETF network slices is provided in {{?I-D.ietf-teas-5g-network-slice-application}}.
+   addresses, or Differentiated Services Code Point (DSCP). More details about the mapping between 3GPP and RFC XXXX Network Slices is provided in {{?I-D.ietf-teas-5g-network-slice-application}}.
 
 ##  VLAN Hand-off {#sec-vlan-handoff}
 
-   In this option, the IETF Network Slice, fulfilling connectivity
+   In this option, the RFC XXXX Network Slice, fulfilling connectivity
    requirements between NFs of some 5G slice, is represented at the SDP
    by a VLAN ID (or double VLAN IDs, commonly known as QinQ), as depicted in {{figure-vlan-hand-off}}.  Each VLAN
    represents a distinct logical interface on the attachment circuits,
@@ -643,7 +647,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
    simplification it is recommended to rely on the same VLAN identifier
    for all ACs, when possible.  However, SDPs for a same slice at
    different locations may also use different VLAN values.  Therefore, a
-   VLAN to IETF Network Slice mapping table is maintained for each
+   VLAN to RFC XXXX Network Slice mapping table is maintained for each
    AC, and the VLAN allocation is coordinated between customer orchestration and
    provider orchestration.  Thus, while VLAN hand-off is simple from
    the NF point of view, it adds complexity due to the requirement of
@@ -707,7 +711,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
     tt     - SST (8 bits)
     dddddd - SD (24 bits)
 ~~~
-{: #figure-11 title="An Example of S-NSSAI embedded into IPv6" artwork-align="center"}
+{: #figure-11 title="An Example of S-NSSAI Embedded into IPv6" artwork-align="center"}
 
    In the example shown in {{figure-11}}, the most significant 96 bits of the IPv6 address are
    unique to the NF, but do not carry any slice-specific information, while
@@ -729,7 +733,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
 ~~~~
 {::include ./drawings/S-NSSAI-deployment.txt}
 ~~~~
-{: #figure-s-nssai-deployment title="Deployment example with S-NSSAI embedded into IPv6" artwork-align="center"}
+{: #figure-s-nssai-deployment title="Deployment Example with S-NSSAI Embedded into IPv6 Addresses" artwork-align="center"}
 
 
 ##  MPLS Label Hand-off
@@ -846,10 +850,10 @@ Specifically, the actual mapping is a design choice of service operators that ma
 
    Control of the TN resources on provider network transit links, as well as traffic
    scheduling/prioritization on provider network transit links, is based on a flat
-   (non-hierarchical) QoS model in this IETF Network Slice
-   realization.  That is, IETF Network Slices are assigned dedicated
+   (non-hierarchical) QoS model in this RFC XXXX Network Slice
+   realization.  That is, RFC XXXX Network Slices are assigned dedicated
    resources (e.g., QoS queues) at the edge of the provider network (at
-   SDPs), while all IETF Network Slices are sharing resources (sharing
+   SDPs), while all RFC XXXX Network Slices are sharing resources (sharing
    QoS queues) on the transit links of the provider network.  Typical router
    hardware can support up to 8 traffic queues per port, therefore
    the architecture assumes 8 traffic queues per port support in
@@ -898,7 +902,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
    Network Slices) increases, a single QoS queue on transit links in the provider network serves
    multiple slices with similar characteristics.  QoS enforcement on
    transit links is fully coarse-grained (single NRP, sharing resources among
-   all IETF Network Slices), as displayed in {{figure-QoS-5QI-unaware}}.
+   all RFC XXXX Network Slices), as displayed in {{figure-QoS-5QI-unaware}}.
 
 ~~~~
 {::include ./drawings/QoS-5QI-unaware.txt}
@@ -915,7 +919,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
    5QI-unaware model), while the new header (MPLS or IPv6) carries QoS
    marking (MPLS Traffic Class bits for MPLS encapsulation, or DSCP for
    SRv6/IPv6 encapsulation) related to TN CoS.  Based on TN QoS Class
-   marking, per hop behavior for all IETF Network Slices is executed on
+   marking, per hop behavior for all RFC XXXX Network Slices is executed on
    provider network transit links.  Provider network transit routers do not evaluate the original IP
    header for QoS-related decisions.  This model is outlined in
    {{figure-15}} for MPLS encapsulation, and in {{figure-16}} for SRv6
@@ -1194,7 +1198,7 @@ to TN QoS Classes may be rather common.
    marking corresponding to 5QI (5G QoS Class), while the new header
    (MPLS or IPv6) carries QoS marking related to TN QoS Class.  Based on
    TN QoS Class marking, per hop behavior for all aggregated 5G QoS
-   Classes from all IETF Network Slices is executed on provider network transit links.  Provider network
+   Classes from all RFC XXXX Network Slices is executed on provider network transit links.  Provider network
    transit routers do not evaluate original IP header for QoS
    related decisions.  The original DSCP marking retained in the
    original IP header is used at the PE for fine-grained per slice and
@@ -1202,7 +1206,7 @@ to TN QoS Classes may be rather common.
 
    In 5QI-aware model, compared to 5QI-unware model, provider network edge resources are controlled in an even more
    granular, fine-grained manner, with dedicated resource allocation for
-   each IETF Network Slice and dedicated resource allocation for number
+   each RFC XXXX Network Slice and dedicated resource allocation for number
    of traffic classes (most commonly up 4 or 8 traffic classes,
    depending on the HW capability of the equipment) within each IETF
    Network Slice.
@@ -1860,7 +1864,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
 
 #  Security Considerations
 
-IETF Network Slices considerations are discussed in Section 6 of {{!I-D.ietf-teas-ietf-network-slices}}.
+RFC XXXX Network Slices considerations are discussed in Section 6 of {{!I-D.ietf-teas-ietf-network-slices}}.
 
 Many of the YANG modules cited in this document define schema for data that is designed to be accessed via network management protocols such as NETCONF {{!RFC6241}} or RESTCONF {{!RFC8040}}. The lowest NETCONF layer is the secure transport layer, and the mandatory-to-implement secure transport is Secure Shell (SSH) {{!RFC6242}}. The lowest RESTCONF layer is HTTPS, and the mandatory-to-implement secure transport is TLS {{!RFC8446}}.
 
@@ -1877,16 +1881,16 @@ Adequate admission control policies should be configured in the edge of the prov
 
 The following issues should be resolved prior to the WGLC:
 
-1. Assess which/whether some the material in the "5G Slice to IETF Network Slice Mapping" Section should be maintained in this draft or moved to {{?I-D.ietf-teas-5g-network-slice-application}} (Adrian)
+1. Assess which/whether some the material in the "5G Slice to RFC XXXX Network Slice Mapping" Section should be maintained in this draft or moved to {{?I-D.ietf-teas-5g-network-slice-application}} (Adrian)
    - This issue is tracked at https://github.com/boucadair/5g-slice-realization/issues/40.
 2. Assess whether we need to mainatin the "First 5G Slice vs Subsequent Slices" Section:
    - Unless we explain how this ss important for realization, this section should be deleted (Med)
    - The motivation of this section is not clear (from Reza)
-   - Need to describe the implications to the realization of IETF network slices (Jie)
+   - Need to describe the implications to the realization of RFC XXXX Network Slices (Jie)
    - The issue is tracked at https://github.com/boucadair/5g-slice-realization/issues/19
 3. Clarify the use of inter-AS option B/C to model the AC between CE and PE (Jie)
    - The issue is tracked at https://github.com/boucadair/5g-slice-realization/issues/52
-4. Further discuss whether the TN slice in the customer site is covered or is out of the scope of IETF network slice (Jie)
+4. Further discuss whether the TN slice in the customer site is covered or is out of the scope of RFC XXXX Network Slice (Jie)
    - The issue is tracked at https://github.com/boucadair/5g-slice-realization/issues/53
 
 Active issues can be tracked at: https://github.com/boucadair/5g-slice-realization/issues
@@ -2339,5 +2343,5 @@ User Plane          ╱     │           │         ╲
 {:numbered="false"}
 
    The authors would like to thank Adrian Farrel, Joel Halpern, Tarek
-   Saad, and Jie Dong for their reviews of this document and for providing valuable
-   comments.
+   Saad, Jie Dong, and Greg Mirsky for their reviews of this document
+   and for providing valuable comments.
