@@ -357,14 +357,14 @@ In reference to {{figure-orch}}, an end-to-end 5G Network Slice Orchestrator (5G
 
 * Customer Site Orchestration domain: the Orchestration of TN elements of the Customer Sites relies upon a variety of  controllers (e.g., Fabric Manager, Element Management System, or VIM). The realization of this section does not involve the Transport Network Orchestration.
 
-A TN Slice relies upon resources that can involve both the provider and customer TN domains. More details are provided in the next section.
+A TN Slice relies upon resources that can involve both the provider and customer TN domains. More details are provided in {{sec-tn-nsi}}.
 
 ~~~~
 {::include ./drawings/tn-orchestration.txt}
 ~~~~
 {: #figure-orch title="End-to-end 5G Slice Orchestration with TN" artwork-align="center"}
 
-### Transport Network Sections and Network Slice Instantiation
+### Transport Network Sections and Network Slice Instantiation {#sec-tn-nsi}
 
 Based on the reference design, the connectivity between NFs can be decomposed into three main types of sections. {{fig-end-to-end}} depicts the different sections:
 
@@ -445,11 +445,11 @@ More complex scenarios can happen with extra segmentation of the TN and addition
 
 │            ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐            │
   ┌─────┐ N3   ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐   N3 ┌─────┐
-│ │CU-UP├─────── RFC XXXX Network Slice UP_eMBB    ───────┤ UPF │ │
+│ │CU-UP├─────── RFC XXXX Network Slice UP_eMBB  ───────┤ UPF │ │
   └─────┘      └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘      └─────┘
 │            │                                     │            │
   ┌─────┐ N2   ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐   N2 ┌─────┐
-│ │CU-CP├───────   RFC XXXX Network Slice CP      ───────┤ AMF │ │
+│ │CU-CP├───────   RFC XXXX Network Slice CP     ───────┤ AMF │ │
   └─────┘      └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘      └─────┘
 └ ─ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ┘
 
@@ -475,7 +475,7 @@ More complex scenarios can happen with extra segmentation of the TN and addition
                     │                            │ │   Regional
 │ ┌───────────┐ │ │                            │         Cloud    │
   │CU-UP_URLLC├─────┤                            │ │ ┌──────────┐
-│ └───────────┘ │ │         IETF Network       ├─────┤  5GC CP  │ │
+│ └───────────┘ │ │      RFC XXXX Network      ├─────┤  5GC CP  │ │
                     │        Slice ALL           │ │ └──────────┘
 │ ┌───────────┐ │ │                            │                  │
   │CU-UP_eMBB ├─────┤                            │ │ ┌──────────┐
@@ -497,7 +497,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
 
 ##  First 5G Slice versus Subsequent Slices
 
-An operational 5G Network Slice must incorporate both 5G Control Plane and User Plane capabilities.
+An operational 5G Network Slice incorporates both 5G Control Plane and User Plane capabilities.
 For instance, consider a slice based on split-CU in the RAN, both CU-UP and CU-CP must be deployed along with the associated interfaces E1, F1-c, F1-u, N2, and N3 which are conveyed in the TN. In this regard, the creation of the "first slice" can be subject to a specific logic compared with the subsequent slices. Referring to the example in {{figure-7}}, the first 5G slice relies on the deployment of NF-CP and NF-UP functions together with two TN slices for Control and User Planes (INS-CP and INS-UP1). Next, the deployment of a second slice relies solely on the instantiation of a User Plane Function (NF-UP2) together with a dedicated User Plane TN slice (INS-UP2). The Control Plane of the first 5G slice is also updated to integrate the second slice: the TN Slice (INS-CP) and Network Functions (NF-CP) are shared.
 
    At the time of writing (2023), Section 6.2 of {{NG.113}} specifies that the
@@ -554,7 +554,8 @@ For instance, consider a slice based on split-CU in the RAN, both CU-UP and CU-C
 ~~~
 {: #figure-7 title="First and Subsequent Slice Deployment" artwork-align="center"}
 
-Overall, policies should be provided by an operator (e.g., to network slice controllers) to indicate whether the same or dedicated CP NFs are allowed when processing a new slice creation request. Such guidance might be provided to better automate the realization of 5G slices and minimize the realization delay that might be induced by extra cycles to seek for operator validation.
+Overall, policies might be provided by an operator (e.g., to network slice controllers) to indicate whether the same or dedicated CP NFs are allowed when processing a new slice creation request. Providing such a policy is meant to better automate the realization of 5G slices and minimize the realization delay that might be induced by extra cycles to seek for operator validation.
+
 
 #  Overview of the Realization Model
 
@@ -2340,5 +2341,5 @@ User Plane          ╱     │           │         ╲
 {:numbered="false"}
 
    The authors would like to thank Adrian Farrel, Joel Halpern, Tarek
-   Saad, and Jie Dong for their reviews of this document and for providing valuable
-   comments.
+   Saad, Jie Dong, and Greg Mirsky for their reviews of this document
+   and for providing valuable comments.
