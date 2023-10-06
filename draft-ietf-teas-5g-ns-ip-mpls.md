@@ -498,7 +498,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
 ##  First 5G Slice versus Subsequent Slices
 
 An operational 5G Network Slice must incorporate both 5G Control Plane and User Plane capabilities.
-For instance, if we consider a slice based on split-CU in the RAN, both CU-UP and CU-CP must be deployed along with the associated interfaces E1, F1-c, F1-u, N2, and N3 which are conveyed in the TN. In this regard, the creation of the "first slice" can be subject to a specific logic compared with the subsequent slices. Referring to the example in {{figure-7}}, the first 5G slice relies on the deployment of NF-CP and NF-UP functions together with two TN slices for Control and User Plane (resp. INS-CP and INS-UP1). Next, the deployment of second slice relies solely on the instantiation of User plane Function (NF-UP2) together with a dedicated User plane TN slice (INS-UP2). The Control Plane of the first 5G slice is also updated to integrate the second slice: the TN Slice (INS-CP) and Network Functions (NF-CP) are shared.
+For instance, consider a slice based on split-CU in the RAN, both CU-UP and CU-CP must be deployed along with the associated interfaces E1, F1-c, F1-u, N2, and N3 which are conveyed in the TN. In this regard, the creation of the "first slice" can be subject to a specific logic compared with the subsequent slices. Referring to the example in {{figure-7}}, the first 5G slice relies on the deployment of NF-CP and NF-UP functions together with two TN slices for Control and User Planes (INS-CP and INS-UP1). Next, the deployment of a second slice relies solely on the instantiation of a User Plane Function (NF-UP2) together with a dedicated User Plane TN slice (INS-UP2). The Control Plane of the first 5G slice is also updated to integrate the second slice: the TN Slice (INS-CP) and Network Functions (NF-CP) are shared.
 
    At the time of writing (2023), Section 6.2 of {{NG.113}} specifies that the
    eMBB slice (SST=1 and no Slice Differentiator (SD)) should be supported globally.  This 5G
@@ -553,6 +553,8 @@ For instance, if we consider a slice based on split-CU in the RAN, both CU-UP an
        Deployment of subsequent 5G slice with shared Control Plane
 ~~~
 {: #figure-7 title="First and Subsequent Slice Deployment" artwork-align="center"}
+
+Overall, policies should be provided by an operator (e.g., to network slice controllers) to indicate whether the same or dedicated CP NFs are allowed when processing a new slice creation request. Such guidance might be provided to better automate the realization of 5G slices and minimize the realization delay that might be induced by extra cycles to seek for operator validation.
 
 #  Overview of the Realization Model
 
