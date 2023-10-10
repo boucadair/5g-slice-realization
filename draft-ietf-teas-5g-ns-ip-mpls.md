@@ -180,7 +180,7 @@ informative:
 
    {{!I-D.ietf-teas-ietf-network-slices}} defines a framework for
    network slicing in the context of networks built using IETF
-   technologies.  The IETF network slicing framework introduces the
+   technologies.  The RFC XXXX network slicing framework introduces the
    concept of a Network Resource Partition (NRP), which is simply a
    collection of resources identified in the underlay network.  There
    could be multiple realizations of RFC XXXX Network Slice and
@@ -671,7 +671,7 @@ Overall, policies might be provided by an operator (e.g., to network slice contr
    single slice.  As opposed to the VLAN hand-off case, there is no
    logical interface representing a slice on the PE, hence all slices are
    handled within single service instance.  On the other hand, similarly
-   to the VLAN hand-off case, a mapping table tracking IP to IETF
+   to the VLAN hand-off case, a mapping table tracking IP to RFC XXXX
    Network Slice mapping is required.
 
 ~~~~
@@ -897,7 +897,7 @@ Overall, policies might be provided by an operator (e.g., to network slice contr
    deployed 5G slices (for example only two 5G slices: eMBB and MIoT),
    it is possible to dedicate a separate QoS queue for each slice on
    transit routers in the provider network.  However, with introduction of private/enterprises
-   slices, as the number of 5G slices (and thus corresponding IETF
+   slices, as the number of 5G slices (and thus corresponding RFC XXXX
    Network Slices) increases, a single QoS queue on transit links in the provider network serves
    multiple slices with similar characteristics.  QoS enforcement on
    transit links is fully coarse-grained (single NRP, sharing resources among
@@ -1207,7 +1207,7 @@ to TN QoS Classes may be rather common.
    granular, fine-grained manner, with dedicated resource allocation for
    each RFC XXXX Network Slice and dedicated resource allocation for number
    of traffic classes (most commonly up 4 or 8 traffic classes,
-   depending on the HW capability of the equipment) within each IETF
+   depending on the HW capability of the equipment) within each RFC XXXX
    Network Slice.
 
 ####  Inbound Edge Resource Control
@@ -1647,7 +1647,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
 {: #figure-27 title="Inter-DC Traffic Demand Matrix" artwork-align="center"}
 
    {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}} can be used to convey all
-   of the information in the traffic matrix to the RFC XXXX NSC.  The IETF
+   of the information in the traffic matrix to the RFC XXXX NSC.  The RFC XXXX
    NSC applies policers corresponding to the last column in the traffic
    matrix to the appropriate PE routers, in order to enforce the
    bandwidth contract.  For example, it applies a policer of 11 units to
@@ -1656,7 +1656,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    controller may apply shapers in the direction from the TN to the DC,
    if otherwise there is the possibility of a link in the DC being
    oversubscribed.  Note that a peer NF endpoint of an AC can be
-   identified using 'peer-sap-id' as defined in {{?I-D.ietf-opsawg-sap}}.
+   identified using 'peer-sap-id' as defined in {{?RFC9408}}.
 
    Depending on the bandwidth model used in the provider network ({{sec-bw}}),
    the other values in the matrix, i.e., the DC-to-DC demands, may not
@@ -1823,7 +1823,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
       of network slicing. Providers that deploy network slicing
       capabilities should be able to select whatever OAM technology or specific feature that would address their needs.
 
-      SFC OAM {{?I-D.ietf-sfc-oam-packet}} should also be supported
+      SFC OAM {{?RFC9451}} should also be supported
       for slices that make uses of service function chaining
       {{?RFC7665}}. An example of SFC OAM technique to Continuity
       Check, Connectivity Verification, or tracing service functions
