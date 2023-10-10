@@ -190,7 +190,7 @@ informative:
    This document describes an RFC XXXX Network Slice realization model
    in IP/MPLS networks, using a single NRP and with a focus on
    fulfilling 5G slicing connectivity requirements.
-   This RFC XXXX Network Slice realization model leverages many building blocks currently
+   This realization model leverages many building blocks currently
    commonly used in service provider networks.
 
    Note that 5G slicing can be implemented with or without Transport Network (TN) slicing. However, implementing TN slicing as part of 5G slicing allows operators to better control Service Level Agreements (SLAs). See {{sec-5g}}.
@@ -372,9 +372,9 @@ Based on the reference design, the connectivity between NFs can be decomposed in
 *  Customer Site: Either connects two NFs located in the same Customer Site (e.g., NF1-NF2) or it connects a NF to a CE (e.g., NF1-CE). This segment may not be present if the NF is the CE (e.g., NF3): in this case the AC connects the NF to the PE. The realization of this segment is driven by the 5G Network Orchestration and potentially the Customer Site Orchestration (e.g., Fabric Manager, Element Management System, or VIM). The realization of this segment does not involve the Transport Network Orchestration.
 
 
-* Provider Network: Represents the connectivity between two PEs (e.g., PE1-PE2).The realization of this segment is controlled by an IETF NSC.
+* Provider Network: Represents the connectivity between two PEs (e.g., PE1-PE2).The realization of this segment is controlled by an RFC XXXX NSC.
 
-* Attachment Circuit: Represents the connectivity between CEs and PEs (e.g., CE-PE1 and PE2-NF3). The orchestration of this segment relies partially upon an  IETF NSC for the configuration of the AC on the PE customer-facing interfaces and the Customer Site Orchestration for the configuration of the AC on the CE.
+* Attachment Circuit: Represents the connectivity between CEs and PEs (e.g., CE-PE1 and PE2-NF3). The orchestration of this segment relies partially upon an  RFC XXXX NSC for the configuration of the AC on the PE customer-facing interfaces and the Customer Site Orchestration for the configuration of the AC on the CE.
 
 
 As depicted in {{fig-end-to-end}}, the realization of an RFC XXXX Network Slice (i.e., connectivity with
@@ -415,18 +415,18 @@ More complex scenarios can happen with extra segmentation of the TN and addition
 
 > Editor Note: This section is intended to focus on the realization implications of the mappings. Will reassess in future versions whether this section should be maintained or moved to {{?I-D.ietf-teas-5g-network-slice-application}}.
 
-   There are multiple options to map a 5G network slice to IETF Network
+   There are multiple options to map a 5G network slice to RFC XXXX Network
    Slices:
 
    * 1 to N:
-      A single 5G Network Slice can map to multiple IETF Network
+      A single 5G Network Slice can map to multiple RFC XXXX Network
       Slices (1 to N).  One example of such a case is the separation of
       the 5G Control Plane and User Plane: this use case is represented
       in {{figure-5}} where a slice (eMBB) is deployed with a separation of
       User Plane and Control Plane at the TN.
 
    * N to 1:
-      Multiple 5G Network Slices may rely upon the same IETF Network
+      Multiple 5G Network Slices may rely upon the same RFC XXXX Network
       Slice.  In such a case, the Service Level Agreement (SLA) differentiation of slices
       would be entirely controlled at 5G Control Plane, for example, with
       appropriate placement strategies: this use case is represented in
@@ -891,7 +891,7 @@ Overall, policies might be provided by an operator (e.g., to network slice contr
 
    In 5QI-unaware mode, the DSCP values in the packets received from NF
    at SDP are ignored.  In the provider network, there is no QoS
-   differentiation at the 5G QoS Class level.  The entire IETF Network
+   differentiation at the 5G QoS Class level.  The entire RFC XXXX Network
    Slice is mapped to single TN QoS Class, and, therefore, to a single
    QoS queue on the routers in the provider network.  With a small number of
    deployed 5G slices (for example only two 5G slices: eMBB and MIoT),
@@ -982,7 +982,7 @@ Overall, policies might be provided by an operator (e.g., to network slice contr
    out-profile traffic, as discussed in {{sec-inbound-edge-resource-control}}.
 
    Provider network edge resources are controlled in a granular, fine-grained
-   manner, with dedicated resource allocation for each IETF Network
+   manner, with dedicated resource allocation for each RFC XXXX Network
    Slice.  The resource control/enforcement happens at each SDP in two
    directions: inbound and outbound.
 
@@ -1009,7 +1009,7 @@ Overall, policies might be provided by an operator (e.g., to network slice contr
    *  PIR: Peak Information Rate (i.e., maximum bandwidth)
 
    These parameters define the traffic characteristics of the slice and
-   are part of SLO parameter set provided by the 5G NSO to IETF NSC.  Based
+   are part of SLO parameter set provided by the 5G NSO to RFC XXXX NSC.  Based
    on these parameters the provider network inbound policy can be implemented using one
    of following options:
 
@@ -1122,7 +1122,7 @@ Overall, policies might be provided by an operator (e.g., to network slice contr
    assigned a single egress queue.  The sum of slice CIRs, used as the
    weight in weighted queueing model, must not exceed the physical
    capacity of the attachment circuit.  Slice requests above this limit
-   must be rejected by the IETF NSC, unless an already established slice with
+   must be rejected by the RFC XXXX NSC, unless an already established slice with
    lower priority, if such exists, is preempted.
 
 ~~~
@@ -1468,31 +1468,31 @@ to TN QoS Classes may be rather common.
    ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃                        │
    ┃   SDP           ┃
    ┃│  ┌──────────┐ │┃                        │
-   ┃   │IETF NS 1 ├──────────┐
+   ┃   │     NS 1 ├──────────┐
    ┃│  └──────────┘ │┃       │                │
    ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃       │
    ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃       │   ┌─────────┐  │
    ┃   SDP           ┃       │   │         │
    ┃│  ┌──────────┐ │┃       │   │Transport│  │
-   ┃   │IETF NS 2 ├──────┐   ├───▶  Plane  │
+   ┃   │     NS 2 ├──────┐   ├───▶  Plane  │
    ┃│  └──────────┘ │┃   │   │   │    A    │  │
    ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃   │   │   │         │
    ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃   │   │   └─────────┘  │
    ┃   SDP           ┃   │   │
    ┃│  ┌──────────┐ │┃   │   │                │
-   ┃   │IETF NS 3 ├──────┤   │
+   ┃   │     NS 3 ├──────┤   │
    ┃│  └──────────┘ │┃   │   │   ┌─────────┐  │
    ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃   │   │   │         │
    ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃   │   │   │Transport│  │
    ┃   SDP           ┃   ├───│───▶  Plane  │
    ┃│  ┌──────────┐ │┃   │   │   │    B    │  │
-   ┃   │IETF NS 4 ├──────┘   │   │         │
+   ┃   │     NS 4 ├──────┘   │   │         │
    ┃│  └──────────┘ │┃       │   └─────────┘  │
    ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃       │
    ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃       │                │
    ┃   SDP           ┃       │
    ┃│  ┌──────────┐ │┃       │                │
-   ┃   │IETF NS 5 ├──────────┘
+   ┃   │     NS 5 ├──────────┘
    ┃│  └──────────┘ │┃                        │
    ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃
    ┗━━━━━━━━━━━━━━━━━┛                        │
@@ -1647,7 +1647,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
 {: #figure-27 title="Inter-DC Traffic Demand Matrix" artwork-align="center"}
 
    {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}} can be used to convey all
-   of the information in the traffic matrix to the IETF NSC.  The IETF
+   of the information in the traffic matrix to the RFC XXXX NSC.  The IETF
    NSC applies policers corresponding to the last column in the traffic
    matrix to the appropriate PE routers, in order to enforce the
    bandwidth contract.  For example, it applies a policer of 11 units to
@@ -1661,9 +1661,9 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    Depending on the bandwidth model used in the provider network ({{sec-bw}}),
    the other values in the matrix, i.e., the DC-to-DC demands, may not
    be directly applied to the provider network.  Even so, the
-   information may be useful to the IETF NSC for capacity planning and
+   information may be useful to the RFC XXXX NSC for capacity planning and
    failure simulation purposes.  If, on the other hand, the DC-to-DC
-   demand information is not used by the IETF NSC, the IETF YANG Data
+   demand information is not used by the RFC XXXX NSC, the IETF YANG Data
    Model for L3VPN Service Delivery {{?RFC8299}} or the IETF YANG Data
    Model for L2VPN Service Delivery {{?RFC8466}} could be used instead of
    {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}}, as they support
