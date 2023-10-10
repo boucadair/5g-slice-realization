@@ -1,7 +1,7 @@
                                                                   
        ●──────────────────────TN Slice────────────────●           
                                                                   
-                        ■─────IETF NETWORK────■                   
+                        ■───RFC XXXX NETWORK──■                   
                         │        SLICE        │                   
                         │          │          │                   
                         │          │          │                   
