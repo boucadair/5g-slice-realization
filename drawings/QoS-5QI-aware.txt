@@ -34,4 +34,4 @@ S ┃   └──────────┘  ┃  │           ┃┌───
    ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
   Fine-grained QoS enforcement   Coarse-grained QoS enforcement 
     (dedicated resources per     (resources shared by multiple  
-      IETF Network Slice)                  IETF NSs)            
+     RFC XXXX Network Slice)        RFC XXXX Network Slices)            
