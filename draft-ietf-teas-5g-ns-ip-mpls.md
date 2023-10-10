@@ -193,6 +193,8 @@ informative:
    This realization model leverages many building blocks currently
    commonly used in service provider networks.
 
+This document focuses on the technical realization of RFC XXXX Network Slices. The realization is typically triggered by Network Slice Service requests. How a Network Slice Service request is placed for realization, including how it is derived from a 5G Slice Service request, is out of scope. Network Slice Service mapping considerations (e.g., mapping between 3GPP to IETF service parameters) are discussed in {{?I-D.ietf-teas-5g-network-slice-application}}.
+
    Note that 5G slicing can be implemented with or without Transport Network (TN) slicing. However, implementing TN slicing as part of 5G slicing allows operators to better control Service Level Agreements (SLAs). See {{sec-5g}}.
 
    A brief 5G overview is provided in {{sec-5g-intro}} for readers' convenience. The reader may refer to {{TS-23.501}} or {{5G-Book}} for more
