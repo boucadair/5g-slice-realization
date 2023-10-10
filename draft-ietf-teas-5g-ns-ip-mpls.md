@@ -1709,7 +1709,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    to the customers but are not explicitly underpinned end to end across
    the provider network.
 
-   A variation on the scheme is that Flex-Algo {{?I-D.ietf-lsr-flex-algo}} is used. For example one Flex-Algo could
+   A variation on the scheme is that Flex-Algo {{?RFC9350}} is used. For example one Flex-Algo could
    use latency-based metrics and another Flex-Algo could use the IGP
    metric. There would be a many-to-one mapping of network slices to Flex-
    Algos.
