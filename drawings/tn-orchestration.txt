@@ -15,7 +15,7 @@
   │    ┃        ┌───────────────┼──────────────┐       ┃   │    
   │             ▼               ▼              ▼           │    
   │    ┃┌───────────────┐┌───────────┐┌───────────────┐┃   │    
-  │     │ Customer Site ││ IETF NSC  ││ Customer Site │    │    
+  │     │ Customer Site ││RFCXXXX NSC││ Customer Site │    │    
   │    ┃│ Orchestration ││           ││ Orchestration │┃   │    
   │     └──┬────────────┘└─────┬─────┘└──────────────┬┘    │    
   │    ┗ ━ │ ━ ━ ━ ━ ━ ━ ━ ━ ━ ╋ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ╋ ┛   │    
@@ -33,8 +33,8 @@
     Customer                                          Customer │
 │     Site    │         │                 │         │   Site    
  ─ ─ ─ ─ ─ ─ ─           ─ ─ ─ ─ ─ ─ ─ ─ ─           ─ ─ ─ ─ ─ ┘
-                                                                
-                      ■─IETF Network Slice──■                   
+                              RFC XXXX                          
+                      ■────Network Slice───■                   
                                                                 
      ●──────────────────TN Slice────────────────────●           
                                                                 
