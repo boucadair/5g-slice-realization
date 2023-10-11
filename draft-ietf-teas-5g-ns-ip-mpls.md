@@ -219,24 +219,25 @@ As discussed in Section 4.4.1 of {{TS-28.530}}, the 3GPP managment system does n
 In practice, the TN may not map with a monolithic architecture and management domain. It is frequently segmented, non-uniform, and managed by different entities. For example, {{fig-1}} depicts a Network Function (NF) instance that is deployed in an edge data center (DC) connected to a NF located in a Public Cloud via a Wide Area Network (WAN) (e.g., MPLS-VPN service). In this example, the TN can be seen as an abstraction representing an end-to-end connectivity based upon three distinct domains: DC, WAN, and Public Cloud. A model for the Transport Network based on orchestration domains is introduced in {{sec-orch}}. This model permits to define more precisely where the RFC XXXX Network Slices apply.
 
 ~~~~
-     ┌──────────────────────────────────┐
-  ┌──│         5G NF (RAN or CN)        │──┐
-  │  └──────────────────────────────────┘  │
-  │                                        │
+     +----------------------------------+
+  +--+         5G NF (RAN or CN)        +--+
+  │  +----------------------------------+  |
+  │                                        |
   v                                        v
-┌──┐  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  ┌──┐
-│NF├ ─ ─      Transport Network        ├ ┤NF│
-└──┘  └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  └──┘
+.--.  +--------------------------------+  .--.
+|NF+--+      Transport Network         +--+NF|
+'--'  +--------------------------------+  '--'
           │             │            │
           v             v            v
 
-  ┌───Data Center──┐ ┌─MPLS-VPN─┐  ┌─Public─┐
+  +---Data Center--+ +-MPLS-VPN-+  +-Public-+
   │                │ │ Backbone │  │ Cloud  │
-  │   ┌───┐┌───┐   │┌┴─┐      ┌─┴┐┌┴─┐      │
-  │   └───┘└───┘   │└┬─┘      └─┬┘└┬─┘      │
-  │┌──┐┌──┐┌──┐┌──┐│┌┴─┐      ┌─┴┐ │        │
-  │└──┘└──┘└──┘└──┘│└┬─┘      └─┬┘ │        │
-  └────────────────┘ └──────────┘  └────────┘
+  │   .--..--.     │.--.      .--..--.      │
+  │   '--''--'     │'--'      '--''--'      │
+  |                |            |  |
+  │.--..--..--..--.│.--.      .--. │        │
+  │'--''--''--''--'│'--'      '--' │        │
+  +----------------+ +----------+  +--------+
 ~~~~
 {: #fig-1 title="An Example of Transport Network Decomposition" artwork-align="center"}
 
@@ -443,25 +444,25 @@ More complex scenarios can happen with extra segmentation of the TN and addition
       approaches with a mix of shared and dedicated associations.
 
 ~~~
-┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
-
+. ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ .
+|                                                               |
 │                        5G Slice eMBB                          │
-
-│            ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐            │
-  ┌─────┐ N3   ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐   N3 ┌─────┐
+|                                                               |
+│            . ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ .            │
+| .─────. N3 | . ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ . | N3 .─────. |
 │ │CU-UP├─────── RFC XXXX Network Slice UP_eMBB  ───────┤ UPF │ │
-  └─────┘      └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘      └─────┘
+| '─────'    | ' ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ' |    '─────' |
 │            │                                     │            │
-  ┌─────┐ N2   ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐   N2 ┌─────┐
+| .─────. N2 | . ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ . | N2 .─────. |
 │ │CU-CP├───────   RFC XXXX Network Slice CP     ───────┤ AMF │ │
-  └─────┘      └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘      └─────┘
-└ ─ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ┘
-
+| '─────'    | ' ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ' |    '─────' |
+' ─ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ '
              │                                     │
-                       Transport Network
              │                                     │
-
-             └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
+             |         Transport Network           |
+             │                                     │
+             │                                     │
+             ' ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ '
 ~~~
 {: #figure-5 title="1 (5G Slice) to N (RFC XXXX Network Slice) Mapping" artwork-align="center"}
 
