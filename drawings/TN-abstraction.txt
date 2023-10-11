@@ -2,12 +2,12 @@
   ┌──│      5G RAN or CORE Network      │──┐  
   │  └──────────────────────────────────┘  │  
   │                                        │  
-  ▼                                        ▼  
+  v                                        v  
 ┌──┐  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  ┌──┐ 
 │NF├ ─ ─      Transport Network        ├ ┤NF│ 
 └──┘  └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  └──┘ 
           │             │            │        
-          ▼             ▼            ▼        
+          v             v            v        
                                               
   ┌───Data Center──┐ ┌─MPLS-VPN─┐  ┌─Public─┐ 
   │                │ │ Backbone │  │ Cloud  │ 
