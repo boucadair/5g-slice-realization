@@ -1,16 +1,16 @@
-     ◁──────        ◁──────        ◁──────                          
+     <──────        <──────        <──────                          
      BGP VPN        BGP VPN        BGP VPN                          
        COM=1, L=A"    COM=1, L=A'    COM=1, L=A                     
        COM=2, L=B"    COM=2, L=B'    COM=2, L=B                     
        COM=3, L=C"    COM=3, L=C'    COM=3, L=C                     
-    ◁─────────────▷◁────────────▷◁─────────────▷                    
+    <─────────────><────────────><─────────────>                    
                nhs  nhs      nhs  nhs                               
                                                         VLANs       
  service instances                service instances  representing   
 representing slices              representing slices    slices      
      │          ┌ ─ ─ ─ ─ ─ ─ ─ ─            │           │          
      │               Provider    │           │           │          
-┌────▼─┐       ┌┴────┐       ┌─────┐       ┌─▼──────┐    ▼  ┌──────┐
+┌────▼─┐       ┌┴────┐       ┌─────┐       ┌─v──────┐    v  ┌──────┐
 │    ◙ │       │■    │       │    ■│       │ ◙………………●───────●      │
 │ NF ◙ ├───────┤■ PE │       │ PE ■├───────┤ ◙………………●───────●   NF │
 │    ◙ │       │■    │       │    ■│       │ ◙………………●───────●      │
@@ -19,8 +19,8 @@ representing slices              representing slices    slices
                 └ ─ ─ ─ ─ ─ ─ ─ ─                                   
      └────────┘└───────────────────┘┘└────────┘ └───────────┘       
      Attachment   Provider Network   Attachment Customer Site       
-      Circuit         Section         Circuit      Section          
+      Circuit         Segment         Circuit      Segment          
                                                                     
-  ● – logical interface represented by VLAN on physical interface   
-  ◙ - service instances (with unique MPLS label)                    
+  ● – Logical interface represented by VLAN on physical interface   
+  ◙ - Service instances (with unique MPLS labels)                    
   ■ - Service Demarcation Point                                     

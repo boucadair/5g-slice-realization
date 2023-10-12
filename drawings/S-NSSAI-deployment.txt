@@ -5,11 +5,11 @@
      │                                                        │     
      │            ┌ ─ ─ ─ ─ ─ ─ ─ ─ ┐   eMBB (SST=1)          │     
      │                                     │                  │     
-┌────▼─┐       ┌──┴──┐ Provider ┌───┴─┐    ▼  ┌─────┐       ┌─▼────┐
+┌────v─┐       ┌──┴──┐ Provider ┌───┴─┐    v  ┌─────┐       ┌─v────┐
 │    ○════════════■════════════════■══════════════════════════○    │
 │ NF   ├───────┤ PE  │          │ PE  ├───────┤L2/L3├───────┤   NF │
 │    ○════════════■════════════════■══════════════════════════○    │
-└────▲─┘       └──┬──┘  Network └───┬─┘    ▲  └─────┘       └─▲────┘
+└────^─┘       └──┬──┘  Network └───┬─┘    ^  └─────┘       └─^────┘
      │                                     │                  │     
      │            └ ─ ─ ─ ─ ─ ─ ─ ─ ┘   MIoT (SST=3)          │     
      │                                                        │     
@@ -17,7 +17,7 @@
                                                                     
       └────────┘└────────────────────┘└────────┘ └───────────┘      
       Attachment   Provider Network   Attachment Customer Site      
-       Circuit         Section         Circuit      Section         
+       Circuit         Segment         Circuit      Segment         
                                                                     
           ○ – tunnel (IPsec, GTP-U, ...) termination point          
           ■ - Service Demarcation Point                             

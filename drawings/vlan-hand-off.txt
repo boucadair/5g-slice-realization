@@ -11,7 +11,7 @@ VLANs representing slices           VLANs representing slices
                  └ ─ ─ ─ ─ ─ ─ ─ ─ ─                                
       └────────┘└────────────────────┘└────────┘ └───────────┘      
       Attachment   Provider Network   Attachment Customer Site      
-       Circuit         Section         Circuit      Section         
+       Circuit         Segment         Circuit      Segment         
                                                                     
- ● – logical interface represented by VLAN on physical interface    
+ ● – Logical interface represented by a VLAN on a physical interface    
  ■ - Service Demarcation Point                                      
