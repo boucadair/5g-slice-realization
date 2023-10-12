@@ -212,11 +212,11 @@ An extended list of abbreviations used in this document is provided in {{ext-abb
 
 {{sec-5g-intro}} provides an overview of 5G network building blocks: the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN). The Transport Network is defined by the 3GPP as the "part supporting connectivity within and between CN and RAN parts" (Section 1 of {{TS-28.530}}).
 
-As discussed in Section 4.4.1 of {{TS-28.530}}, the 3GPP managment system does not directly control the Transport Network: it is considered as a non-3GPP managed system.
+As discussed in Section 4.4.1 of {{TS-28.530}}, the 3GPP management system does not directly control the Transport Network: it is considered as a non-3GPP managed system.
 
 > 'The non-3GPP part includes TN parts. The 3GPP management system provides the network slice requirements to the corresponding management systems of those non-3GPP parts, e.g. the TN part supports connectivity within and between CN and AN parts.' (Section 4.4.1 of {{TS-28.530}})
 
-In practice, the TN may not map with a monolithic architecture and management domain. It is frequently segmented, non-uniform, and managed by different entities. For example, {{fig-1}} depicts a Network Function (NF) instance that is deployed in an edge data center (DC) connected to a NF located in a Public Cloud via a Wide Area Network (WAN) (e.g., MPLS-VPN service). In this example, the TN can be seen as an abstraction representing an end-to-end connectivity based upon three distinct domains: DC, WAN, and Public Cloud. A model for the Transport Network based on orchestration domains is introduced in {{sec-orch}}. This model permits to define more precisely where the RFC XXXX Network Slices apply.
+In practice, the TN may not map to a monolithic architecture and management domain. It is frequently segmented, non-uniform, and managed by different entities. For example, {{fig-1}} depicts a Network Function (NF) instance that is deployed in an edge data center (DC) connected to a NF located in a Public Cloud via a Wide Area Network (WAN) (e.g., MPLS-VPN service). In this example, the TN can be seen as an abstraction representing an end-to-end connectivity based upon three distinct domains: DC, WAN, and Public Cloud. A model for the Transport Network based on orchestration domains is introduced in {{sec-orch}}. This model permits to define more precisely where the RFC XXXX Network Slices apply.
 
 ~~~~
      +----------------------------------+
@@ -268,7 +268,7 @@ The term "Transport Network" is used for disambiguation with 5G network (e.g., I
      TN Slicing provides various degrees of sharing of resources between slices. For example, the network capacity can be shared by all slices, usually with a guaranteed minimum per slice, or each individual slice can be allocated dedicated network capacity. Parts of a given network may use the former, while others use the latter. For example, in order to satisfy local engineering guidelines and specific service requirements, shared TN resources could be provided in the backhaul (or midhaul), and dedicated TN resources could be provided in the midhaul (or backhaul). The capacity partitioning strategy is deployment specific.
 
       There are different options to implement TN slices based upon
-      mechanisms, such as Virtual Routing and Forwarding instances (VRFs)
+      mechanisms such as Virtual Routing and Forwarding instances (VRFs)
       for logical separation, Quality of Service (QoS), or Traffic
       Engineering (TE).
 
@@ -376,13 +376,13 @@ In reference to architecture in {{sec-5g-sli-arch}}, the connectivity between NF
 *  Customer Site: Either connects two NFs located in the same Customer Site (e.g., NF1-NF2) or connects a NF to a CE (e.g., NF1-CE). This segment may not be present if the NF is the CE (e.g., NF3): in this case the AC connects the NF to the PE. The realization of this segment is driven by the 5G Network Orchestration and potentially the Customer Site Orchestration. The realization of this segment does not involve the Transport Network Orchestration.
 
 
-* Provider Network: Represents the connectivity between two PEs (e.g., PE1-PE2).The realization of this segment is controlled by an RFC XXXX NSC.
+* Provider Network: Represents the connectivity between two PEs (e.g., PE1-PE2). The realization of this segment is controlled by an RFC XXXX NSC.
 
-* Attachment Circuit: Represents the connectivity between CEs and PEs (e.g., CE-PE1 and PE2-NF3). The orchestration of this segment relies partially upon an  RFC XXXX NSC for the configuration of the AC on the PE customer-facing interfaces and the Customer Site Orchestration for the configuration of the AC on the CE.
+* Attachment Circuit: Represents the connectivity between CEs and PEs (e.g., CE-PE1 and PE2-NF3). The orchestration of this segment relies partially upon an RFC XXXX NSC for the configuration of the AC on the PE customer-facing interfaces and the Customer Site Orchestration for the configuration of the AC on the CE.
 
 
 As depicted in {{fig-end-to-end}}, the realization of an RFC XXXX Network Slice (i.e., connectivity with
-   performance commitments) involves the provider network and partially the AC (the PE-side of the AC). Note that the provisioning of a new Network Slice may rely on a partial or full pre-provisioned segment (e.g., a new Network Slice may rely on an existing AC). The Customer Site segment is considered as an extension of the connectivity of the RAN/CN domain without complex slice-specific performances requirements: the Customer Site infrastructure is usually over-provisioned with short distances (low latency) where basic QoS/Scheduling logic is sufficient to comply with the target SLOs. In other words, the main focus for the enforcement of end-to-end SLOs is managed at the Network Slice between PE interfaces connected to the AC.
+   performance commitments) involves the provider network and partially the AC (the PE-side of the AC). Note that the provisioning of a new Network Slice may rely on a partial or full pre-provisioned segment (e.g., a new Network Slice may rely on an existing AC). The Customer Site segment is considered as an extension of the connectivity of the RAN/CN domain without complex slice-specific performances requirements: the Customer Site infrastructure is usually over-provisioned and involves short distances (low latency) where basic QoS/Scheduling logic is sufficient to comply with the target SLOs. In other words, the main focus for the enforcement of end-to-end SLOs is managed at the Network Slice between PE interfaces connected to the AC.
 
 
 {::comment}
@@ -399,7 +399,7 @@ Resource synchronization for AC provisioning:
 : The realization of the Attachment Circuit is made up of TN resources shared between the Customer Site Orchestration and the Provider Network Orchestration (e.g., RFC XXXX NSC).  More precisely, a PE and a CE connected via an AC must be
 provisioned with consistent data plane and control plane  information (e.g., VLAN-
 IDs, IP addresses/subnets, or BGP  Autonomous System (AS) Number). Hence, the realization of this
-interconnection is technology-specific and requires a coordination between the Customer Site Orchestration and an NSC. Automating the provisioning and management of the AC is recommended. Aligned with {{?RFC8969}}, this document assumes that this coordination is based upon standard YANG data models and APIs.
+interconnection is technology-specific and requires coordination between the Customer Site Orchestration and an NSC. Automating the provisioning and management of the AC is recommended. Aligned with {{?RFC8969}}, this document assumes that this coordination is based upon standard YANG data models and APIs.
 
 : {{figure-4}} is a basic example of a Layer 3 CE-PE link realization
 with shared network resources (such as VLAN-IDs and IP prefixes) which
@@ -417,7 +417,7 @@ More complex scenarios can happen with extra segmentation of the TN and addition
 
 ## Realization Schemes for RFC XXXX Network Slices {#sec-mapping}
 
-   There are multiple options to map a 5G Network Slice to RFC XXXX Network
+   There are multiple options for mapping a 5G Network Slice to RFC XXXX Network
 
    Slices:
 
@@ -1805,13 +1805,13 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
 # Network Slicing OAM
 
    The deployment and maintenance of slices within a network imply
-   a set OAM functions ({{?RFC6291}}) to be deployed by the providers, e.g.:
+   that a set of OAM functions ({{?RFC6291}}) need to be deployed by the providers, e.g.:
 
    *  Providers should be able to execute OAM tasks on a per Network Slice
       basis. These tasks can cover the "full" slice within a domain or a
       portion of that slice (for troubleshooting purposes, for example).
 
-      For example, per-slice OAM tasks can consist in (but not limited to):
+      For example, per-slice OAM tasks can consist of (but not limited to):
 
         - tracing resources that are bound to a given Network Slice,
         - tracing resources that are invoked when forwarding a given flow bound to a given Network Slice,
@@ -1884,7 +1884,7 @@ The following issues should be resolved prior to the WGLC:
 
 1. Assess which/whether some the material in the "5G Slice to RFC XXXX Network Slice Mapping" Section should be maintained in this draft or moved to {{?I-D.ietf-teas-5g-network-slice-application}} (Adrian)
    - This issue is tracked at https://github.com/boucadair/5g-slice-realization/issues/40.
-2. Assess whether we need to mainatin the "First 5G Slice vs Subsequent Slices" Section:
+2. Assess whether we need to maintain the "First 5G Slice vs Subsequent Slices" Section:
    - Unless we explain how this ss important for realization, this section should be deleted (Med)
    - The motivation of this section is not clear (from Reza)
    - Need to describe the implications to the realization of RFC XXXX Network Slices (Jie)
