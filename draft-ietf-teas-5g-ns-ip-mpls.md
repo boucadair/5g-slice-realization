@@ -417,9 +417,8 @@ More complex scenarios can happen with extra segmentation of the TN and addition
 
 ## Realization Schemes for RFC XXXX Network Slices {#sec-mapping}
 
-> Editor Note: This section is intended to focus on the realization implications of the mappings. Will reassess in future versions whether this section should be maintained or moved to {{?I-D.ietf-teas-5g-network-slice-application}}.
-
    There are multiple options to map a 5G Network Slice to RFC XXXX Network
+
    Slices:
 
    * 1 to N:
