@@ -1916,17 +1916,17 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
       maintained by the control/management plane and the actual network
       configuration.  When mismatches are detected, corrective actions
       must be undertaken accordingly. For example, a provider may rely
-      upon L3NM {{?RFC9182}} or L2NM {{?RFC9291}} to maintain the full
+      upon the L3NM {{?RFC9182}} or the L2NM {{?RFC9291}} to maintain the full
       set of L3VPN/L2VPNs that are used to deliver Network Slice Services.
       The correlation between an LxVPN instance and a Network Slice Service
-      is maintained using "parent-service-id" attribute ({{Section 7.3 of ?RFC9182}}.
+      is maintained using "parent-service-id" attribute ({{Section 7.3 of ?RFC9182}}).
 
    *  Means to report a set of network performance metrics to assess
       whether the agreed slice service objectives are honored. These means are used for SLO monitoring and violation detect purposes. For example,
       {{?RFC9375}} can be used to report links' one-way delay,
       one-way delay variation, etc. Both conventional active/passive
       measurement methods {{?RFC7799}} and more recent telemetry methods
-      (e.g. YANG Push {{?RFC8641}}) can be used.
+      (e.g., YANG Push {{?RFC8641}}) can be used.
 
    * Means to report and expose observed performance metrics and other OAM state to customer.
      For example, {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}} exposes a set of statistics per SDP, connectivity construct, and connection group.
