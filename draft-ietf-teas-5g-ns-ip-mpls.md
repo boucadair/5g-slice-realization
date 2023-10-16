@@ -864,18 +864,24 @@ As a result, a node in a customer site performs hierarchical next-hop resolution
 This architecture requires an end-to-end LSP leading from a packet's
 ingress node inside one customer site to its egress inside another customer
 site, through a provider network. Hence, at the domain (customer site, provider network)
-boundaries NEXT_HOP attribute for IPv4/IPv6 labeled unicast must be modified to self (nhs),
+boundaries NEXT_HOP attribute for IPv4/IPv6 labeled unicast must be modified to "next-hop self" (nhs),
 which results in new IPv4/IPv6 labeled unicast label allocation. Appropriate label swap
 forwarding entries for IPv4/IPv6 labeled unicast labels are programmed in the data plane.
-On the attachment circuit there is no additional 'labeled transport' (i.e., no LDP, RSVP, SR, ...) protocol.
+On the attachment circuit there is no additional 'labeled transport' protocol (i.e., no LDP, RSVP, SR, ...).
 
-The packets are transmitted over the attachment circuit with the IPv4/IPv6 labeled unicast as the top label, with service label deeper in the label stack. In Option C, the service label is not used for forwarding lookup on the PE. This significantly lowers the scaling pressure on PE, as PE must program forwarding entries only for IPv4/IPv6 labeled unicast host routes, used as NEXT_HOP for service prefixes. Also, since one IPv4/IPv6 labeled unicast host route represent one customer site, regardless of the number of slices in the customer site, the number of forwarding entries on a PE is considerably reduced.
+Packets are transmitted over the attachment circuit with the IPv4/IPv6 labeled
+unicast as the top label, with service label deeper in the label stack. In Option C,
+the service label is not used for forwarding lookup on the PE. This significantly
+lowers the scaling pressure on PEs, as PEs must program forwarding entries only for
+IPv4/IPv6 labeled unicast host routes, used as NEXT_HOP for service prefixes. Also,
+since one IPv4/IPv6 labeled unicast host route represent one customer site, regardless
+of the number of slices in the customer site, the number of forwarding entries
+on a PE is considerably reduced.
 
 For any slice-specific per-hop behavior at the provider network edge, as described
 in details in {{sec-over-rea-model}}, the PE must be able to determine which label in the packet
-represents which slice. This can be achieved by allocating deterministic service label
-ranges for each slice, and use these deterministic service label ranges for slice
-identification purposes on PE. 
+represents which slice. This can be achieved, for example, by allocating non-overlapping service label
+ranges for each slice, and use these ranges for slice identification purposes on PE.
 
 #  QoS Mapping Realization Models {#sec-qos-map}
 
