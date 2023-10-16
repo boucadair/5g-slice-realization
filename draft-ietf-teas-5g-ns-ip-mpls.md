@@ -417,9 +417,7 @@ More complex scenarios can happen with extra segmentation of the TN and addition
 
 ## Realization Schemes for RFC XXXX Network Slices {#sec-mapping}
 
-   There are multiple options for mapping a 5G Network Slice to RFC XXXX Network
-
-   Slices:
+   There are multiple options for mapping a 5G Network Slice to RFC XXXX Network Slices:
 
    * 1 to N:
       A single 5G Network Slice can map to multiple RFC XXXX Network
