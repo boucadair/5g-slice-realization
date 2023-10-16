@@ -305,7 +305,7 @@ Provider Edge (PE):
 : A device managed by a provider that is connected to a CE. The connectivity between a CE and a PE is achieved using one or multiple Attachment Circuit. This document generalizes the PE definition with the introduction of Distributed PEs in {{sec-distributed}}.
 
 Attachment Circuit (AC):
-: The logical connection that attaches a CE to a PE. A CE is connected to a PE via one or multiple ACs. An AC is technology-specific. For consistency with the AC data model terminology (e.g., {{?RFC9182}}), this document assumes that an AC is configured on a “bearer”, which represents the underlying connectivity. Examples of ACs are VLANs (AC) configured on a physical interface (bearer) or an Overlay VXLAN EVI (AC) configured on IP underlay (bearer).
+: The logical connection that attaches a CE to a PE. A CE is connected to a PE via one or multiple ACs. An AC is technology-specific. For consistency with the AC data model terminology (e.g., {{?RFC9182}}), this document assumes that an AC is configured on a “bearer”, which represents the underlying connectivity. Examples of ACs are Virtual Local Area Networks (VLANs) (AC) configured on a physical interface (bearer) or an Overlay VXLAN EVI (AC) configured on an IP underlay (bearer).
 
 
 > In order to keep the figures simple, only one AC and single-homed CEs are represented.
@@ -566,7 +566,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
    realization model described in this document, depicted in {{figure-high-level-qos}}, a single NRP is used
    with the following characteristics:
 
-   *  L2VPN/L3VPN service instances for logical separation:
+   *  Layer 2 Virtual Private Network (L2VPN)/Layer 3 Virtual Private Network (L3VPN) service instances for logical separation:
 
       This realization model of transport for 5G slices assumes Layer 3
       delivery for midhaul and backhaul transport connections, and a
@@ -633,7 +633,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
 ##  VLAN Hand-off {#sec-vlan-handoff}
 
    In this option, the RFC XXXX Network Slice, fulfilling connectivity
-   requirements between NFs of some 5G slice, is represented at the SDP
+   requirements between NFs of some 5G slice, is represented at the Service Demarcation Point (SDP)
    by a VLAN ID (or double VLAN IDs, commonly known as QinQ), as depicted in {{figure-vlan-hand-off}}.  Each VLAN
    represents a distinct logical interface on the attachment circuits,
    hence it provides the possibility to place these logical interfaces
@@ -863,7 +863,7 @@ As a result, a node in a customer site performs hierarchical next-hop resolution
 ~~~~
 {: #figure-mpls-10c-hand-off title="MPLS Hand-off: Option C" artwork-align="center"}
 
-This architecture requires an end-to-end LSP leading from a packet's
+This architecture requires an end-to-end Label Switched Path (LSP) leading from a packet's
 ingress node inside one customer site to its egress inside another customer
 site, through a provider network. Hence, at the domain (customer site, provider network)
 boundaries NEXT_HOP attribute for IPv4/IPv6 labeled unicast must be modified to "next-hop self" (nhs),
@@ -1072,7 +1072,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
    appropriate network capacity planning/management ({{sec-capacity-planning}}) is required to ensure proper isolation between slices in
    a scalable manner.  As a result, traffic of one slice has no influence
    on the traffic of other slices, even if the slice is misbehaving
-   (e.g., DDoS attacks or node/link failures) and generates traffic
+   (e.g., Distributed Denial-of-Service (DDoS) attacks or node/link failures) and generates traffic
    volumes above the contracted rates.
 
    The slice rates can be characterized with following parameters
@@ -1579,7 +1579,7 @@ to TN QoS Classes may be rather common.
    e.g., 8 TN QoS Classes (representing 8 hardware queues in the
    routers), and 2 Transport Planes (e.g., latency optimized transport
    plane using link latency metrics for path calculation, and transport
-   plane following IGP metrics).  TN QoS Class determines the per-hop
+   plane following Interior Gateway Protocol (IGP) metrics).  TN QoS Class determines the per-hop
    behavior when the packets are transiting through the provider network,
    while transport plane determines the paths for packets through provider
    network based on operator's business model (operator's requirement).
@@ -1950,21 +1950,25 @@ Adequate admission control policies should be configured in the edge of the prov
 
 --- back
 
-# Open Issues
+# Open Issues & Resolution
 
 The following issues should be resolved prior to the WGLC:
 
-1. Assess which/whether some the material in the "5G Slice to RFC XXXX Network Slice Mapping" Section should be maintained in this draft or moved to {{?I-D.ietf-teas-5g-network-slice-application}} (Adrian)
+1. Assess which/whether some of the material in the "5G Slice to RFC XXXX Network Slice Mapping" Section should be maintained in this draft or moved to {{?I-D.ietf-teas-5g-network-slice-application}} (Adrian)
    - This issue is tracked at https://github.com/boucadair/5g-slice-realization/issues/40.
+   - Update: The outcome of the discussion with the authors of the application I-D can be seen at: https://mailarchive.ietf.org/arch/msg/teas/4QifnnGAcnQcCTXRLSJtQ1SArLA/.
 2. Assess whether we need to maintain the "First 5G Slice vs Subsequent Slices" Section:
    - Unless we explain how this ss important for realization, this section should be deleted (Med)
    - The motivation of this section is not clear (from Reza)
    - Need to describe the implications to the realization of RFC XXXX Network Slices (Jie)
    - The issue is tracked at https://github.com/boucadair/5g-slice-realization/issues/19
+   - Update: The fix can be seen at https://mailarchive.ietf.org/arch/msg/teas/wADS6r8syhPsYl9rgZYjVE4Ii9U/
 3. Clarify the use of inter-AS option B/C to model the AC between CE and PE (Jie)
    - The issue is tracked at https://github.com/boucadair/5g-slice-realization/issues/52
+   - Update: The fix can be seen at https://mailarchive.ietf.org/arch/msg/teas/bBSAY7-GBJsECCrkgfrrrvoKGgM/.
 4. Further discuss whether the TN slice in the customer site is covered or is out of the scope of RFC XXXX Network Slice (Jie)
    - The issue is tracked at https://github.com/boucadair/5g-slice-realization/issues/53
+   - Update: The fix can be seen at https://mailarchive.ietf.org/arch/msg/teas/WtZF8AFnubcVUYBxcn7i8COozC0/.
 
 Active issues can be tracked at: https://github.com/boucadair/5g-slice-realization/issues
 
@@ -2037,8 +2041,6 @@ Active issues can be tracked at: https://github.com/boucadair/5g-slice-realizati
    ID: Identifier
 
    IGP: Interior Gateway Protocol
-
-   IP: Internet Protocol
 
    L2VPN: Layer 2 Virtual Private Network
 
