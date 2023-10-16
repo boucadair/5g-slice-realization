@@ -747,19 +747,23 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
    of the customer site, with the service label depicting
    the slice.
 
-   There are three major methods (based upon Section 10 of {{!RFC4364}}) for interconnecting MPLS services over multiple service domains:
+   There are three major methods (based upon {{Section 10 of !RFC4364}}) for interconnecting MPLS services over multiple service domains:
 
-   *  Option A ({{sec-10a}}): VRF-to-VRF connections.
-   *  Option B ({{sec-10b}}): redistribution of labeled VPN routes with next-hop
+   *  Option A ({{sec-10a}}):
+   : VRF-to-VRF connections.
+
+   *  Option B ({{sec-10b}}):
+     : redistribution of labeled VPN routes with next-hop
       change at domain boundaries.
-   *  Option C ({{sec-10c}}): redistribution of labeled VPN routes without next-hop
-      change + redistribution of labeled transport routes with next-hop
+
+   *  Option C ({{sec-10c}}):
+   :  redistribution of labeled VPN routes without next-hop
+      change and redistribution of labeled transport routes with next-hop
       change at domain boundaries.
 
 ###  Option A {#sec-10a}
 
-   This option is not based on MPLS label hand-off,
-   but VLAN hand-off, described in {{sec-vlan-handoff}}.
+   This option is not based on MPLS label hand-off, but VLAN hand-off, described in {{sec-vlan-handoff}}.
 
 ###  Option B {#sec-10b}
 
@@ -781,30 +785,30 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
 {: #figure-mpls-10b-hand-off title="MPLS Hand-off: Option B" artwork-align="center"}
 
 
-   MPLS labels are allocated dynamically in Option 10B
+   MPLS labels are allocated dynamically in Option B
    deployments, where at the domain boundaries service prefixes are
    reflected with next-hop self, and new label is dynamically allocated,
-   as visible in {{figure-mpls-10b-hand-off}} (e.g., labels A, A' and A" for the first depicted slice).  Therefore, for any slice-specific per hop
+   as visible in {{figure-mpls-10b-hand-off}} (e.g., labels A, A', and A" for the first depicted slice).  Therefore, for any slice-specific per-hop
    behavior at the provider network edge, the PE must be able to determine
    which label represents which slice.  In the BGP control plane, when
    exchanging service prefixes over attachment circuit, each slice might be represented by a unique BGP community, so
    tracking label assignment to the slice is possible.  For example, in
-   {{figure-mpls-10b-hand-off}}, for the slice identified with COM=1, PE advertises a
+   {{figure-mpls-10b-hand-off}}, for the slice identified with COM=1, the PE advertises a
    dynamically allocated label A".  Since, based on the community, the
-   label to slice association is known, PE can use this dynamically
+   label to slice association is known, the PE can use this dynamically
    allocated label A" to identify incoming packets as belonging to slice
-   1, and execute appropriate edge per hop behavior.
+   1, and execute appropriate edge per-hop behavior.
 
    It is worth noting that slice identification in the BGP control plane
-   might be with per-prefix granularity.  In extreme case, each prefix can have
+   might be with per-prefix granularity.  In the extreme case, each prefix can have
    different community representing a different slice.  Depending on the
    business requirements, each slice could be represented by a different
    service instance, as outlined in {{figure-mpls-10b-hand-off}}.  In that case, the route
    target extended community might be used as slice differentiator.  In
-   another deployment, all prefixes (representing different slices)
-   might be handled by single 'mobile' service instance, and some other
+   other deployments, all prefixes (representing different slices)
+   might be handled by a single 'mobile' service instance, and some other
    BGP attribute (e.g., a standard community) might be used for slice
-   differentiation.  Or there could be a deployment that groups multiple
+   differentiation.  There could be also a deployment option that groups multiple
    slices together into a single service instance, resulting in a
    handful of service instances.  In any case, fine-grained per-hop
    behavior at the edge of provider network is possible.
@@ -990,7 +994,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
    5QI-unaware model), while the new header (MPLS or IPv6) carries QoS
    marking (MPLS Traffic Class bits for MPLS encapsulation, or DSCP for
    SRv6/IPv6 encapsulation) related to TN CoS.  Based on TN QoS Class
-   marking, per hop behavior for all RFC XXXX Network Slices is executed on
+   marking, per-hop behavior for all RFC XXXX Network Slices is executed on
    provider network transit links.  Provider network transit routers do not evaluate the original IP
    header for QoS-related decisions.  This model is outlined in
    {{figure-15}} for MPLS encapsulation, and in {{figure-16}} for SRv6
@@ -1247,7 +1251,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
    the number of TN QoS Classes, multiple 5G QoS Classes with similar
    characteristics - potentially from different slices -
    would be grouped with common operator-defined TN logic and mapped to a same TN QoS Class when transported in the
-   provider network.  That is, common per hop behavior (PHB) is executed on
+   provider network.  That is, common Per-hop Behavior (PHB) {{?RFC2474}} is executed on
    transit provider network routers for all packets grouped together. An example of this
    approach is outlined in {{figure-QoS-5QI-mapping-example}}.
 
@@ -1268,7 +1272,7 @@ to TN QoS Classes may be rather common.
    Like in 5QI-unaware model, the original IP header retains the DCSP
    marking corresponding to 5QI (5G QoS Class), while the new header
    (MPLS or IPv6) carries QoS marking related to TN QoS Class.  Based on
-   TN QoS Class marking, per hop behavior for all aggregated 5G QoS
+   TN QoS Class marking, per-hop behavior for all aggregated 5G QoS
    Classes from all RFC XXXX Network Slices is executed on provider network transit links.  Provider network
    transit routers do not evaluate original IP header for QoS
    related decisions.  The original DSCP marking retained in the
