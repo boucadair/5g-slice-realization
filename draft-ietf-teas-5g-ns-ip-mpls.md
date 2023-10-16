@@ -811,7 +811,50 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
 
 ###  Option C {#sec-10c}
 
-   ***for further study***
+Option B relies on exchanging service prefixes between customer sites and provider network. This could create scaling challenges in large scale 5G deployments, as the PE node must carry all service prefixes. To alleviate this scaling challenge, in Option C, service prefixes are exchanged between customer sites only, offloading provider network from the task of carrying, propagating, and programing appropriate forwarding entries for service prefixes.
+
+Option C relies on exchanging service prefixes via multi-hop BGP peerings between customer sites - without changing the NEXT_HOP attribute. Additionally, IPv4/IPv6 labeled unicast (SAFI=4) host routes, used as NEXT_HOP for service prefixes, are exchanged via direct single-hop BGP peerings between adjacent nodes in customer site and provider network, as depicted in {{figure-mpls-10c-hand-off}}. As a result, node in customer site performs hierarchical next-hop resolution.
+
+~~~~
+     ◁───────────────────────────────────────────                     
+             BGP VPN                                                  
+               COM=1, L=A, NEXT_HOP=CS2                               
+               COM=2, L=B, NEXT_HOP=CS2                               
+               COM=3, L=C, NEXT_HOP=CS2                               
+     ◁──────────────────────────────────────────▷                     
+                                                                      
+      ◁──────        ◁──────        ◁──────                           
+      BGP LU         BGP LU         BGP LU                            
+        CS2, L=X"      CS2, L=X'      CS2, L=X                        
+     ◁─────────────▷◁────────────▷◁─────────────▷                     
+                nhs  nhs      nhs  nhs                                
+                                                         VLANs        
+  service instances                service instances  representing    
+ representing slices              representing slices    slices       
+┌ ─ ─ ┬ ┐       ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐       ┌ ┬ ─ ─ ─ ─ ─ ┬ ─ ─ ─ ─ ─ 
+      │               Provider                │           │          │
+│┌────▼─┤       ├─────┐       ┌─────┤       ├─▼──────┐    ▼  ┌──────┐ 
+ │    ◙ │       │■    │       │    ■│       │ ◙………………●───────●      ││
+││ NF ◙ ├───────┤■ PE │       │ PE ■├───────┤ ◙………………●───────●   NF │ 
+ │    ◙ │       │■    │       │    ■│       │ ◙………………●───────●      ││
+│└──────┤       ├─────┘       └─────┤       ├────────┘       └──────┘ 
+   CS1                 Network                         CS2           │
+└ ─ ─ ─ ┘       └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘       └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ 
+      └────────┘└───────────────────┘└────────┘ └───────────────────┘ 
+      Attachment   Provider Network  Attachment      Customer Site    
+       Circuit         Section        Circuit           Section       
+                                                                      
+   ● – logical interface represented by VLAN on physical interface    
+   ◙ - service instances (with unique MPLS label)                     
+   ■ - Service Demarcation Point                                                   
+~~~~
+{: #figure-mpls-10c-hand-off title="MPLS Hand-off: Option C" artwork-align="center"}   
+
+This architecture requires an end-to-end LSP leading from a packet's ingress node inside one customer site to its egress inside another customer site, through provider network.  Hence, at the domain (customer site, provider network) boundaries NEXT_HOP attribute for IPv4/IPv6 labeled unicast must be modified to self (nhs), which results in new IPv4/IPv6 labeled unicast label allocation. Appropriate label swap forwarding entries for IPv4/IPv6 labeled unicast labels are programmed in the data plane. On the attachment circuit there is no additional 'labeled transport' (i.e., no LDP - Label Distribution Protocol, RSVP Resource Reservation Protocol, SR - Segment Routing, ...) protocol.
+
+The packets are transmitted over the attachment circuit with the IPv4/IPv6 labeled unicast as the top label, with service label deeper in the label stack. In Option C, service label is not used for forwarding lookup on the PE. This significantly lowers the scaling pressure on PE, as PE must program forwarding entries only for IPv4/IPv6 labeled unicast host routes, used as NEXT_HOP for service prefixes. And, since one IPv4/IPv6 labeled unicast host route represent one customer site, regardless of the number of slices in the customer site, the number of forwarding entries on a PE is considerably reduced.
+
+For any slice-specific per hop behavior at the provider network edge, as described in details in Section 4, the PE must be able to determine which label in the packet represents which slice. It can be done by allocating deterministic service label ranges for each slice, and use these deterministic service label ranges for slice identification purposes on PE. Also, emerging work: MPLS Network Actions (MNA) {{I-D.ietf-mpls-mna-fwk}} can be use for slice identification purposes at PE.
 
 #  QoS Mapping Realization Models {#sec-qos-map}
 
