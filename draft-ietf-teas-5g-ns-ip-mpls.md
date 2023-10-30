@@ -371,7 +371,7 @@ A TN Slice relies upon resources that can involve both the provider and customer
 
 ### Transport Network Segments and Network Slice Instantiation {#sec-tn-nsi}
 
-In reference to architecture in {{sec-5g-sli-arch}}, the connectivity between NFs can be decomposed into three main types of segments that are shown in {{fig-end-to-end}}:
+In reference to the architecture depicted in {{sec-5g-sli-arch}}, the connectivity between NFs can be decomposed into three main types of segments that are shown in {{fig-end-to-end}}:
 
 *  Customer Site: Either connects two NFs located in the same Customer Site (e.g., NF1-NF2) or connects a NF to a CE (e.g., NF1-CE). This segment may not be present if the NF is the CE (e.g., NF3): in this case the AC connects the NF to the PE. The realization of this segment is driven by the 5G Network Orchestration and potentially the Customer Site Orchestration. The realization of this segment does not involve the Transport Network Orchestration.
 
@@ -895,8 +895,8 @@ ranges for each slice, and use these ranges for slice identification purposes on
 
 ### 5G QoS Layer
 
-   QoS treatment is indicated in the 5G QoS layer by the 5QI (5G QoS
-   indicator), as defined in {{TS-23.501}}. A 5QI is an identifier (ID) that is
+   QoS treatment is indicated in the 5G QoS layer by the 5G QoS
+   Indicator (5QI), as defined in {{TS-23.501}}. A 5QI is an identifier that is
    used as a reference to 5G QoS characteristics (e.g., scheduling
    weights, admission thresholds, queue management thresholds, and link
    layer protocol configuration) in the RAN domain.  Given that
@@ -913,45 +913,45 @@ ranges for each slice, and use these ranges for slice identification purposes on
    are documented, e.g., in {{?I-D.henry-tsvwg-diffserv-to-qci}}.
 
    Each slice service might have flows with multiple 5QIs. 5QIs (or, more precisely,
-   corresponding DSCP values) are visible to the provider network at SDP
+   corresponding DSCP values) are visible to the provider network at SDPs
    (i.e., at the edge of the provider network).
 
-   In this document, this layer of QoS will be referred as '5G QoS
-   Class' ('5G QoS' in short), or '5G DSCP'.
+   In this document, this layer of QoS is referred to as '5G QoS
+   Class' ('5G QoS' in short) or '5G DSCP'.
 
 ### TN QoS Layer
 
    Control of the TN resources on provider network transit links, as well as traffic
    scheduling/prioritization on provider network transit links, is based on a flat
-   (non-hierarchical) QoS model in this RFC XXXX Network Slice
+   (non-hierarchical) QoS model in this Network Slice
    realization.  That is, RFC XXXX Network Slices are assigned dedicated
    resources (e.g., QoS queues) at the edge of the provider network (at
    SDPs), while all RFC XXXX Network Slices are sharing resources (sharing
    QoS queues) on the transit links of the provider network.  Typical router
    hardware can support up to 8 traffic queues per port, therefore
-   the architecture assumes 8 traffic queues per port support in
+   the document assumes 8 traffic queues per port support in
    general.
 
-   At this layer, QoS treatment is indicated by QoS indicator
-   specific to the encapsulation used in the provider network, and it could
-   be DSCP or MPLS Traffic Class (TC).  This layer of QoS will be referred as 'TN QoS
+   At this layer, QoS treatment is indicated by a QoS indicator
+   specific to the encapsulation used in the provider network. Such an indicator may
+   be DSCP or MPLS Traffic Class (TC). This layer of QoS is referred to as 'TN QoS
    Class', or 'TN QoS' for short, in this document.
 
 ## QoS Realization Models
 
-   While 5QI might be exposed to the provider network, via the DSCP value
+   While 5QI might be exposed to the provider network via the DSCP value
    (corresponding to specific 5QI value) set in the IP packet generated
    by NFs, some 5G deployments might use 5QI in the RAN domain only,
-   without requesting per 5QI differentiated treatment from the provider network.
-   This can be due to an NF limitation (e.g., no capability to set
+   without requesting per-5QI differentiated treatment from the provider network.
+   This might be due to a NF limitation (e.g., no capability to set
    DSCP), or it might simply depend on the overall slicing deployment
    model.  The O-RAN Alliance, for example, defines a phased approach to
-   the slicing, with initial phases utilizing only per slice, but not
-   per 5QI, differentiated treatment in the TN domain
+   the slicing, with initial phases utilizing only per-slice, but not
+   per-5QI, differentiated treatment in the TN domain
    (Annex F of {{O-RAN.WG9.XPSAAS}}).
 
    Therefore, from a QoS perspective, the 5G slicing connectivity
-   realization architecture defines two high-level realization models
+   realization defines two high-level realization models
    for slicing in the TN domain: a 5QI-unaware model and a 5QI-
    aware model.  Both slicing models in the TN domain could be
    used concurrently within the same 5G slice.  For example, the TN
@@ -966,11 +966,11 @@ ranges for each slice, and use these ranges for slice identification purposes on
    In 5QI-unaware mode, the DSCP values in the packets received from NF
    at SDP are ignored.  In the provider network, there is no QoS
    differentiation at the 5G QoS Class level.  The entire RFC XXXX Network
-   Slice is mapped to single TN QoS Class, and, therefore, to a single
+   Slice is mapped to a single TN QoS Class, and, therefore, to a single
    QoS queue on the routers in the provider network.  With a small number of
-   deployed 5G slices (for example only two 5G slices: eMBB and MIoT),
+   deployed 5G slices (for example, only two 5G slices: eMBB and MIoT),
    it is possible to dedicate a separate QoS queue for each slice on
-   transit routers in the provider network.  However, with introduction of private/enterprises
+   transit routers in the provider network.  However, with the introduction of private/enterprises
    slices, as the number of 5G slices (and thus corresponding RFC XXXX
    Network Slices) increases, a single QoS queue on transit links in the provider network serves
    multiple slices with similar characteristics.  QoS enforcement on
@@ -991,7 +991,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
    The original IP header retains the DCSP marking (which is ignored in
    5QI-unaware model), while the new header (MPLS or IPv6) carries QoS
    marking (MPLS Traffic Class bits for MPLS encapsulation, or DSCP for
-   SRv6/IPv6 encapsulation) related to TN CoS.  Based on TN QoS Class
+   SRv6/IPv6 encapsulation) related to TN CoS.  Based on TN CoS
    marking, per-hop behavior for all RFC XXXX Network Slices is executed on
    provider network transit links.  Provider network transit routers do not evaluate the original IP
    header for QoS-related decisions.  This model is outlined in
@@ -1048,7 +1048,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
 ~~~
 {: #figure-16 title="QoS with IPv6 Encapsulation" artwork-align="center"}
 
-   From the QoS perspective, both options are similar.  However, there
+   From a QoS perspective, both options are similar.  However, there
    is one difference between the two options.  The MPLS TC is only 3
    bits (8 possible combinations), while DSCP is 6 bits (64 possible
    combinations).  Hence, SRv6 {{?RFC8754}} provides more flexibility for TN CoS
@@ -1232,9 +1232,9 @@ ranges for each slice, and use these ranges for slice identification purposes on
 
 ###  5QI-aware Model
 
-   In the 5QI-aware model, potentially a large number of 5G QoS Classes, represented via DSCP set by NFs
+   In the 5QI-aware model, potentially a large number of 5G QoS Classes, represented via the DSCP set by NFs
    (the architecture scales to thousands of 5G slices) is mapped
-   (multiplexed) to up to 8 TN QoS Classes used in provider network transit
+   (multiplexed) to up to 8 TN QoS Classes used in a provider network transit
    equipment, as outlined in {{figure-QoS-5QI-aware}}.
 
 
@@ -1244,8 +1244,8 @@ ranges for each slice, and use these ranges for slice identification purposes on
 {: #figure-QoS-5QI-aware title="Slice 5Q QoS to TN QoS Mapping (5QI-aware Model)" artwork-align="center"}
 
 
-   Given that in large scale deployments (large number of 5G
-   slices), the number of potential 5G QoS Classes is much higher than
+   Given that in deployments with a large number of 5G
+   slices, the number of potential 5G QoS Classes is much higher than
    the number of TN QoS Classes, multiple 5G QoS Classes with similar
    characteristics - potentially from different slices -
    would be grouped with common operator-defined TN logic and mapped to a same TN QoS Class when transported in the
@@ -1262,8 +1262,8 @@ Note:
 ~~~~
 {: #figure-QoS-5QI-mapping-example title="Example of 3GPP QoS Mapped to TN QoS" artwork-align="center"}
 
-In current SDO progress of 3GPP (Rel.17) and O-RAN the mapping of 5QI to
-DSCP is not expected in per-slice fashion, where 5QI to DSCP mapping may
+In current SDO progress of 3GPP (Release 17) and O-RAN, the mapping of 5QI to
+DSCP is not expected to be in a per-slice fashion, where 5QI to DSCP mapping may
 vary from 3GPP slice to 3GPP slice, hence the mapping of 5G QoS DSCP values
 to TN QoS Classes may be rather common.
 
