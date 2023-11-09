@@ -682,12 +682,12 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
 
    The mapping table can be simplified if, for example, IPv6 addressing is used
    to address NFs.  An IPv6 address is a 128-bit long field, while the
-   S-NSSAI is a 32-bit field: Slice/Service Type (SST): 8 bits, Slice
-   Differentiator (SD): 24 bits. 32 bits, out of 128 bits of the IPv6
-   address, may be used to encode the S-NSSAI, which makes an IP to
-   Slice mapping table unnecessary. This mapping is simply a local allocation method
-   to allocate IPv6 addresses to NF loopbacks, without redefining IPv6
-   semantics. Different IPv6 address allocation schemes following this
+   S-NSSAI is a 32-bit field (8 bits for Slice/Service Type (SST) and  24 bits for Slice
+   Differentiator (SD)). 32 bits, out of 128 bits of an IPv6
+   address, may be used to encode the S-NSSAI, which makes an IP address to
+   Slice mapping table unnecessary. This mapping is simply a local policy
+   to allocate IPv6 addresses to NF loopbacks, without redefining IPv6 address
+   semantics. IP forwarding is not altered by this method and is still achieved following BCP 198 {{!RFC7608}}. Different IPv6 address allocation schemes following this
    mapping approach may be used, with one example allocation showed in {{figure-11}}.
 
    Note that this addressing scheme is local to an ingress or egress NF; intermediary nodes are not
