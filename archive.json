@@ -1,0 +1,2377 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2023-11-12T00:28:42.310966+00:00",
+  "repo": "boucadair/5g-slice-realization",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    },
+    {
+      "name": "editorial",
+      "description": "Some edits to existing text are needed",
+      "color": "e99695"
+    },
+    {
+      "name": "new_text_needed",
+      "description": "",
+      "color": "4B4B44"
+    },
+    {
+      "name": "Full_Review",
+      "description": "",
+      "color": "bfd4f2"
+    },
+    {
+      "name": "Call_For_Adoption",
+      "description": "raised during the call for adoption",
+      "color": "c5def5"
+    },
+    {
+      "name": "tooling",
+      "description": "",
+      "color": "0e8a16"
+    }
+  ],
+  "issues": [
+    {
+      "number": 2,
+      "id": "I_kwDOIw9g6c5dJmH8",
+      "title": "should we restrict to IETF API for TN orchestration ? ",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/2",
+      "state": "CLOSED",
+      "author": "robric",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Section 3.2.2 may be too restrictive since it mandates the use of IETF API.  However, TMF APIs are also very common at this level of abstraction. We may rather focus on data models instead of API and not be restrictive on APIs (we can recommend IETF API though).\r\n\r\nR\r\nquoting:\r\n\"\r\nIn this document, and aligned with {{?RFC8969}}, we assume that this coordination is based upon\r\n   IETF YANG data models and APIs (more details in further sections).\r\n\"",
+      "createdAt": "2023-01-30T16:44:54Z",
+      "updatedAt": "2023-03-02T15:33:05Z",
+      "closedAt": "2023-03-02T15:33:05Z",
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "The IETF mention was mainly to reflect the models that are currently called in the draft. The key point is to rely on standard DMs/APIs. Please see [09e8628](https://github.com/boucadair/5g-slice-realization/commit/09e8628132ca44edb74964b9659353f96606a5ed)\r\n",
+          "createdAt": "2023-01-31T10:22:09Z",
+          "updatedAt": "2023-01-31T10:22:09Z"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "id": "I_kwDOIw9g6c5eh51d",
+      "title": "agreed on ORAN F2F change - remove from Chapter 5: remove transport planes C and D as they are not defined or mentioned on the text and figure",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/4",
+      "state": "CLOSED",
+      "author": "Ivan-Bykov-RBBN",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "kszarkowicz"
+      ],
+      "labels": [
+        "editorial"
+      ],
+      "body": "",
+      "createdAt": "2023-02-15T14:21:05Z",
+      "updatedAt": "2023-02-28T12:28:31Z",
+      "closedAt": "2023-02-28T12:28:31Z",
+      "comments": []
+    },
+    {
+      "number": 5,
+      "id": "I_kwDOIw9g6c5eh6VN",
+      "title": "agreed on ORAN F2F change - add Figure before Fig.19 with multiple tunnels on single pair of PE-PE",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/5",
+      "state": "CLOSED",
+      "author": "Ivan-Bykov-RBBN",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "Ivan-Bykov-RBBN"
+      ],
+      "labels": [
+        "new_text_needed"
+      ],
+      "body": "",
+      "createdAt": "2023-02-15T14:22:21Z",
+      "updatedAt": "2023-02-28T12:30:11Z",
+      "closedAt": "2023-02-28T12:30:11Z",
+      "comments": [
+        {
+          "author": "kszarkowicz",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Adding note under figure with more explabation about multipole tunnels",
+          "createdAt": "2023-02-28T12:29:45Z",
+          "updatedAt": "2023-02-28T12:29:45Z"
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "id": "I_kwDOIw9g6c5hAPIW",
+      "title": "Review Overall Structure",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/8",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "Ivan-Bykov-RBBN"
+      ],
+      "labels": [
+        "editorial",
+        "Full_Review"
+      ],
+      "body": "Check the overall flow and current content organization, links between section, etc",
+      "createdAt": "2023-03-16T13:13:44Z",
+      "updatedAt": "2023-10-05T12:58:43Z",
+      "closedAt": "2023-10-05T12:58:43Z",
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "@Ivan-Bykov-RBBN, this is a gentle nudge for this pending action.",
+          "createdAt": "2023-09-07T12:26:26Z",
+          "updatedAt": "2023-09-07T12:26:26Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "Closed as this is over due",
+          "createdAt": "2023-10-05T12:58:43Z",
+          "updatedAt": "2023-10-05T12:58:43Z"
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "id": "I_kwDOIw9g6c5hAPW-",
+      "title": "Review Section 3 (5G Network Slicing Integration in Transport Networks)",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/9",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "robric"
+      ],
+      "labels": [
+        "editorial",
+        "Full_Review"
+      ],
+      "body": "Start sharpening text, identify flaws/issues/missing items and report them, enhance readability, back text with relevant references, etc.",
+      "createdAt": "2023-03-16T13:14:13Z",
+      "updatedAt": "2023-05-11T14:36:40Z",
+      "closedAt": "2023-05-11T14:36:40Z",
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "The new text uses \"sections\" to refer to \"administrative scope\" which unfortunate. \r\n\r\n> ### TN Sections and Network Slice Instantiation\r\n",
+          "createdAt": "2023-04-07T10:09:49Z",
+          "updatedAt": "2023-04-07T10:09:49Z"
+        },
+        {
+          "author": "robric",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Well not exactly we have 3 sectiosn and 2 admin scopes - they are related but they don't map to the same thing.\nThis is a way to ignore the CS section and concentrate on AC And Provider network.\n\nRegards\nR\n\n\n\n\nJuniper Business Use Only\nFrom: Med ***@***.***>\nSent: Friday, April 7, 2023 12:10 PM\nTo: boucadair/5g-slice-realization ***@***.***>\nCc: Richard Roberts ***@***.***>; Assign ***@***.***>\nSubject: Re: [boucadair/5g-slice-realization] Review Section 3 (5G Network Slicing Integration in Transport Networks) (Issue #9)\n\n[External Email. Be cautious of content]\n\n\nThe new text uses \"sections\" to refer to \"administrative scope\" which unfortunate.\n\nTN Sections and Network Slice Instantiation\n\n-\nReply to this email directly, view it on GitHub<https://urldefense.com/v3/__https:/github.com/boucadair/5g-slice-realization/issues/9*issuecomment-1500146479__;Iw!!NEt6yMaO-gk!C5P9ux9WvvtdWkMM1FliDTc1IWHcTYnUlmKeYR-uYje4GhlbfO9q-QI-763aL2xGnF6G7EKRjFHHqy2EHfKUmK5EPA$>, or unsubscribe<https://urldefense.com/v3/__https:/github.com/notifications/unsubscribe-auth/AFFJ54MMNYPEWJACYJQLQT3W77RXPANCNFSM6AAAAAAV5GJIMY__;!!NEt6yMaO-gk!C5P9ux9WvvtdWkMM1FliDTc1IWHcTYnUlmKeYR-uYje4GhlbfO9q-QI-763aL2xGnF6G7EKRjFHHqy2EHfIQzsUF7w$>.\nYou are receiving this because you were assigned.Message ID: ***@***.******@***.***>>\n",
+          "createdAt": "2023-04-07T14:33:24Z",
+          "updatedAt": "2023-04-07T14:33:24Z"
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "id": "I_kwDOIw9g6c5hAPqN",
+      "title": "Review Section 4 (High-Level Overview of the Realization Model)",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/10",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "julianL999"
+      ],
+      "labels": [
+        "editorial"
+      ],
+      "body": "Start sharpening text, identify flaws/issues/missing items and report them, enhance readability, back text with relevant references, etc.",
+      "createdAt": "2023-03-16T13:15:01Z",
+      "updatedAt": "2023-03-17T12:26:36Z",
+      "closedAt": "2023-03-17T10:17:38Z",
+      "comments": [
+        {
+          "author": "julianL999",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I have done the review, I made some minor edits",
+          "createdAt": "2023-03-17T10:17:08Z",
+          "updatedAt": "2023-03-17T10:18:41Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "Thanks @julianL999.\r\n\r\nWouldn't you think that adding some subsections/headings is needed before the current 4.* to better reflect the high level overview?  \r\n\r\nCURRENT:\r\n\r\n> [4](https://boucadair.github.io/5g-slice-realization/draft-srld-teas-5g-slicing.html#section-4).  [High-Level Overview of the Realization Model](https://boucadair.github.io/5g-slice-realization/draft-srld-teas-5g-slicing.html#name-high-level-overview-of-the-)\r\n> \r\n> [4.1](https://boucadair.github.io/5g-slice-realization/draft-srld-teas-5g-slicing.html#section-4.1).  [VLAN Hand-off](https://boucadair.github.io/5g-slice-realization/draft-srld-teas-5g-slicing.html#name-vlan-hand-off)\r\n> \r\n> [4.2](https://boucadair.github.io/5g-slice-realization/draft-srld-teas-5g-slicing.html#section-4.2).  [IP Hand-off](https://boucadair.github.io/5g-slice-realization/draft-srld-teas-5g-slicing.html#name-ip-hand-off)\r\n> \r\n> [4.3](https://boucadair.github.io/5g-slice-realization/draft-srld-teas-5g-slicing.html#section-4.3).  [MPLS Label Hand-off](https://boucadair.github.io/5g-slice-realization/draft-srld-teas-5g-slicing.html#name-mpls-label-hand-off)\r\n> \r\n> [4.3.1](https://boucadair.github.io/5g-slice-realization/draft-srld-teas-5g-slicing.html#section-4.3.1).  [Option 10A](https://boucadair.github.io/5g-slice-realization/draft-srld-teas-5g-slicing.html#name-option-10a)\r\n> \r\n> [4.3.2](https://boucadair.github.io/5g-slice-realization/draft-srld-teas-5g-slicing.html#section-4.3.2).  [Option 10B](https://boucadair.github.io/5g-slice-realization/draft-srld-teas-5g-slicing.html#name-option-10b)\r\n> \r\n> [4.3.3](https://boucadair.github.io/5g-slice-realization/draft-srld-teas-5g-slicing.html#section-4.3.3).  [Option 10C](https://boucadair.github.io/5g-slice-realization/draft-srld-teas-5g-slicing.html#name-option-10c)",
+          "createdAt": "2023-03-17T10:48:12Z",
+          "updatedAt": "2023-03-17T10:48:26Z"
+        },
+        {
+          "author": "julianL999",
+          "authorAssociation": "COLLABORATOR",
+          "body": " Hi Med\nNot sure what headings you have in mind?\nthanks\nJulian\n\n    On Friday, 17 March 2023 at 10:48:25 GMT, Med ***@***.***> wrote:  \n \n \n\n\nThanks @julianL999.\n\nWouldn't you think that adding some subsections/headings are needed before the current 4.* to better reflect the high level overview?\n\nCURRENT:\n\n\n4. High-Level Overview of the Realization Model\n\n4.1. VLAN Hand-off\n\n4.2. IP Hand-off\n\n4.3. MPLS Label Hand-off\n\n4.3.1. Option 10A\n\n4.3.2. Option 10B\n\n4.3.3. Option 10C\n\n\n\u2014\nReply to this email directly, view it on GitHub, or unsubscribe.\nYou are receiving this because you were mentioned.Message ID: ***@***.***>\n  ",
+          "createdAt": "2023-03-17T12:00:34Z",
+          "updatedAt": "2023-03-17T12:00:34Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "> Hi Med Not sure what headings you have in mind?\r\n\r\nWhat I had in mind is to have a ToC that echoes the key components of the realization approach in the draft, e.g.: \r\n\r\n> 4. High-Level Overview of the Realization Model\r\n> 4.x VPN Technologies\r\n> 4.x Resource & Admission Control\r\n> 4.x Traffic Mapping or (SOME TITLE to group the VLAN/IP/MPLS subsections)\r\n> etc.",
+          "createdAt": "2023-03-17T12:26:20Z",
+          "updatedAt": "2023-03-17T12:26:36Z"
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "id": "I_kwDOIw9g6c5hAP9O",
+      "title": "Review Section 5 ( QoS Mapping Realization Models)",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/11",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "Moji-Amani",
+        "kszarkowicz"
+      ],
+      "labels": [
+        "editorial",
+        "Full_Review"
+      ],
+      "body": "Start sharpening text, identify flaws/issues/missing items and report them, enhance readability, back text with relevant references, etc.",
+      "createdAt": "2023-03-16T13:15:48Z",
+      "updatedAt": "2023-07-06T13:08:09Z",
+      "closedAt": "2023-07-06T13:08:09Z",
+      "comments": []
+    },
+    {
+      "number": 12,
+      "id": "I_kwDOIw9g6c5hAQL5",
+      "title": "Review Section 6 (Transport Planes Mapping Models)",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/12",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "Moji-Amani"
+      ],
+      "labels": [
+        "editorial",
+        "Full_Review"
+      ],
+      "body": "Start sharpening text, identify flaws/issues/missing items and report them, enhance readability, back text with relevant references, etc.",
+      "createdAt": "2023-03-16T13:16:22Z",
+      "updatedAt": "2023-07-06T13:08:27Z",
+      "closedAt": "2023-07-06T13:08:27Z",
+      "comments": []
+    },
+    {
+      "number": 13,
+      "id": "I_kwDOIw9g6c5hAQYz",
+      "title": "Review Section 7 (Capacity Planning/Management)",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/13",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "luismcontreras"
+      ],
+      "labels": [
+        "editorial",
+        "Full_Review"
+      ],
+      "body": "Start sharpening text, identify flaws/issues/missing items and report them, enhance readability, back text with relevant references, etc.",
+      "createdAt": "2023-03-16T13:16:52Z",
+      "updatedAt": "2023-10-05T12:58:25Z",
+      "closedAt": "2023-10-05T12:58:25Z",
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "Check with Luis",
+          "createdAt": "2023-03-16T15:21:02Z",
+          "updatedAt": "2023-03-16T15:21:02Z"
+        },
+        {
+          "author": "julianL999",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I have done a review and posted changed version last week (sorry I should have commented here at the time)",
+          "createdAt": "2023-05-23T11:57:24Z",
+          "updatedAt": "2023-05-23T11:57:24Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "Thanks @julianL999.\r\n\r\nWill leave the issue open till we have the review from @luismcontreras ",
+          "createdAt": "2023-05-23T12:13:20Z",
+          "updatedAt": "2023-05-23T12:13:20Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "@luismcontreras, this is a nudge for this pending issue. Can you please look at this? Thanls.",
+          "createdAt": "2023-09-07T12:27:34Z",
+          "updatedAt": "2023-09-07T12:27:34Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "Closed as this is over due.",
+          "createdAt": "2023-10-05T12:58:25Z",
+          "updatedAt": "2023-10-05T12:58:25Z"
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "id": "I_kwDOIw9g6c5hAREH",
+      "title": "Complete the Security Section ",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/14",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [
+        "new_text_needed"
+      ],
+      "body": "Currently is empty",
+      "createdAt": "2023-03-16T13:18:29Z",
+      "updatedAt": "2023-04-19T09:40:03Z",
+      "closedAt": "2023-04-19T09:40:02Z",
+      "comments": []
+    },
+    {
+      "number": 15,
+      "id": "I_kwDOIw9g6c5hARNd",
+      "title": "Review Appendices ",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/15",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "reza-github"
+      ],
+      "labels": [
+        "editorial",
+        "Full_Review"
+      ],
+      "body": "",
+      "createdAt": "2023-03-16T13:18:52Z",
+      "updatedAt": "2023-07-06T13:10:30Z",
+      "closedAt": "2023-07-06T13:10:30Z",
+      "comments": []
+    },
+    {
+      "number": 16,
+      "id": "I_kwDOIw9g6c5hATPC",
+      "title": "Slice-Specific OAM (service visibility)",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/16",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [
+        "new_text_needed"
+      ],
+      "body": "",
+      "createdAt": "2023-03-16T13:23:53Z",
+      "updatedAt": "2023-04-13T14:53:15Z",
+      "closedAt": "2023-04-13T14:53:15Z",
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "tracing, probing, which slice-specific information to expose, etc.",
+          "createdAt": "2023-03-16T15:26:37Z",
+          "updatedAt": "2023-03-16T15:26:37Z"
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "id": "I_kwDOIw9g6c5hIn0H",
+      "title": "Elaborate further the Slice Migration",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/17",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [
+        "new_text_needed"
+      ],
+      "body": "> However, operators should carefully consider means to\r\n> ease slice migration strategies (e.g., move from 1-to-1 mapping to N-to-1). \r\n",
+      "createdAt": "2023-03-17T17:04:37Z",
+      "updatedAt": "2023-04-13T14:53:01Z",
+      "closedAt": "2023-04-13T14:53:01Z",
+      "comments": []
+    },
+    {
+      "number": 18,
+      "id": "I_kwDOIw9g6c5hIoV7",
+      "title": "A reference architecture to show clearly NSC, TNO, 5G Orchestrator, \u2026",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/18",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "robric"
+      ],
+      "labels": [
+        "editorial"
+      ],
+      "body": "As per a comment from @reza-github ",
+      "createdAt": "2023-03-17T17:06:19Z",
+      "updatedAt": "2023-04-14T10:58:20Z",
+      "closedAt": "2023-04-14T10:58:14Z",
+      "comments": [
+        {
+          "author": "robric",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I have added this during the rewriting of section 3 (3.3.2).\r\nNaming convention have changed",
+          "createdAt": "2023-04-06T14:33:59Z",
+          "updatedAt": "2023-04-06T14:34:35Z"
+        },
+        {
+          "author": "robric",
+          "authorAssociation": "COLLABORATOR",
+          "body": "fixed",
+          "createdAt": "2023-04-14T10:58:20Z",
+          "updatedAt": "2023-04-14T10:58:20Z"
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "id": "I_kwDOIw9g6c5hIppr",
+      "title": "First 5G Slice versus Subsequent Slices",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/19",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "robric",
+        "kszarkowicz"
+      ],
+      "labels": [
+        "question",
+        "Call_For_Adoption"
+      ],
+      "body": "From @reza-github:\r\n\r\n> 3.4.  First 5G Slice versus Subsequent Slices\r\n> \r\n>    A 5G Network Slice is fully functional with both 5G Control Plane and\r\n>    User Plane capabilities (i.e., dedicated NF functions or contexts).\r\n>    In this regard, the creation of the \"first slice\" is subject to a\r\n>    specific logic since it must deploy both CP and UP.  This is not the\r\n>    case for the deployment of subsequent slices because they can share\r\n>    the same CP of the first slice, while instantiating dedicated UP.  An\r\n>    example of an incremental deployment is depicted in Figure 7 .\r\n\r\n\"Not clear. We need to talk about. Referring to Figure-7, creation of INS-3 still need to availability of the resource in the transport network. Unless you would like to convey another concept. Needs clarification.\"",
+      "createdAt": "2023-03-17T17:10:20Z",
+      "updatedAt": "2023-10-13T15:34:54Z",
+      "closedAt": "2023-10-13T15:34:54Z",
+      "comments": [
+        {
+          "author": "robric",
+          "authorAssociation": "COLLABORATOR",
+          "body": "ok let's discuss this point during the call.",
+          "createdAt": "2023-03-20T11:58:52Z",
+          "updatedAt": "2023-03-20T11:58:52Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "I agree with @reza-github here that this section does not bring much to the realization model. I tend to suggest deleting this section.",
+          "createdAt": "2023-04-14T14:00:26Z",
+          "updatedAt": "2023-04-14T14:00:26Z"
+        },
+        {
+          "author": "robric",
+          "authorAssociation": "COLLABORATOR",
+          "body": "this is an important concept behind 5g slicing. First slice is special in the case of UP virtualization",
+          "createdAt": "2023-04-25T07:22:15Z",
+          "updatedAt": "2023-04-25T07:22:15Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "From #48, if this section is kept:\r\n\r\n> Jie comments: Section 3.6. This section describes the first and the subsequent 5G network slices, For this document it may also need to describe the implications to the realization of IETF network slices. The figure shows some mapping examples, while some text would be helpful.\r\n> \r\n> Action: put more clarity in the text",
+          "createdAt": "2023-05-10T07:01:07Z",
+          "updatedAt": "2023-05-10T07:01:07Z"
+        },
+        {
+          "author": "robric",
+          "authorAssociation": "COLLABORATOR",
+          "body": "need discussion - to me this is simplified already... Need advices.",
+          "createdAt": "2023-10-05T12:53:51Z",
+          "updatedAt": "2023-10-05T12:53:51Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "> need discussion - to me this is simplified already... Need advices.\r\n\r\n@robric, please check https://github.com/boucadair/5g-slice-realization/pull/56/files and adjust that text as appropriate. Thanks.",
+          "createdAt": "2023-10-05T12:56:58Z",
+          "updatedAt": "2023-10-05T12:56:58Z"
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "id": "I_kwDOIw9g6c5izR8Y",
+      "title": "TO DO for richard",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/21",
+      "state": "CLOSED",
+      "author": "robric",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "robric"
+      ],
+      "labels": [],
+      "body": "in section 3:\r\n- Clarify TN Slice (end to end) vs IETF Network Slice ?\r\n- detail the orchestration of the IETF Network Slice\r\n- sections Titles and flow\r\n-  Add example with CSR in ref model",
+      "createdAt": "2023-04-06T15:09:41Z",
+      "updatedAt": "2023-07-06T13:11:08Z",
+      "closedAt": "2023-07-06T13:11:08Z",
+      "comments": []
+    },
+    {
+      "number": 22,
+      "id": "I_kwDOIw9g6c5i3K2g",
+      "title": "Use of BCP 14",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/22",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [
+        "editorial"
+      ],
+      "body": "As we are defining examples not recommendations, it is better to remove use of  the normative language",
+      "createdAt": "2023-04-07T10:07:08Z",
+      "updatedAt": "2023-04-07T14:58:14Z",
+      "closedAt": "2023-04-07T14:58:14Z",
+      "comments": []
+    },
+    {
+      "number": 24,
+      "id": "I_kwDOIw9g6c5i4ONB",
+      "title": "Cleanup ETN occurences",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/24",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "kszarkowicz"
+      ],
+      "labels": [
+        "editorial"
+      ],
+      "body": "",
+      "createdAt": "2023-04-07T15:03:00Z",
+      "updatedAt": "2023-04-14T13:06:15Z",
+      "closedAt": "2023-04-14T13:06:15Z",
+      "comments": []
+    },
+    {
+      "number": 26,
+      "id": "I_kwDOIw9g6c5jTcyj",
+      "title": "Add legend to diagrams",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/26",
+      "state": "CLOSED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "robric"
+      ],
+      "labels": [
+        "editorial"
+      ],
+      "body": "",
+      "createdAt": "2023-04-13T09:18:28Z",
+      "updatedAt": "2023-04-19T10:26:28Z",
+      "closedAt": "2023-04-19T10:26:28Z",
+      "comments": []
+    },
+    {
+      "number": 33,
+      "id": "I_kwDOIw9g6c5jbIuo",
+      "title": "Skip SVG rendering",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/33",
+      "state": "CLOSED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-04-14T11:15:56Z",
+      "updatedAt": "2023-04-14T11:26:25Z",
+      "closedAt": "2023-04-14T11:26:24Z",
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "Already fixed here: https://github.com/boucadair/5g-slice-realization/commit/7fbadd32cadf8621e494b36ba0e833c98214acfe",
+          "createdAt": "2023-04-14T11:26:12Z",
+          "updatedAt": "2023-04-14T11:26:12Z"
+        }
+      ]
+    },
+    {
+      "number": 34,
+      "id": "I_kwDOIw9g6c5jbKJu",
+      "title": "Remove RFC6459 reference, and rephrase the paragraph",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/34",
+      "state": "CLOSED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "robric"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-04-14T11:20:35Z",
+      "updatedAt": "2023-04-19T09:50:21Z",
+      "closedAt": "2023-04-19T09:50:21Z",
+      "comments": []
+    },
+    {
+      "number": 35,
+      "id": "I_kwDOIw9g6c5jbK5T",
+      "title": "The 3GPP specifications (without spec reference) need raphrasing",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/35",
+      "state": "CLOSED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "robric"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-04-14T11:22:47Z",
+      "updatedAt": "2023-04-14T13:10:38Z",
+      "closedAt": "2023-04-14T13:10:38Z",
+      "comments": []
+    },
+    {
+      "number": 36,
+      "id": "I_kwDOIw9g6c5jcBdW",
+      "title": "NSI",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/36",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "robric"
+      ],
+      "labels": [],
+      "body": "> As depicted in {{fig-end-to-end}}, the realization of an IETF Network Slice (i.e., connectivity with\r\n>    performance commitments) involves the provider network and partially the AC (the PE-side of the AC). Note that the provisioning of a new NSI may rely on a partial or full pre-provisioned section (e.g., an NSI may rely on an existing AC). Notwithstanding, a framework for the automation of both sections is proposed in this document. The Customer Site section is considered as an extension of the connectivity of the RAN/CN domain without complex slice-specific performances requirements: the Customer Site infrastructure is usually over-provisioned with short distances (low latency) where basic QoS/Scheduling logic is sufficient to comply with the target SLOs. In other words, the main focus for the enforcement of end-to-end SLOs is managed at the NSI between PE interfaces connected to the AC.\r\n\r\nNSI is only used in this part. Please expand at first use",
+      "createdAt": "2023-04-14T13:51:51Z",
+      "updatedAt": "2023-05-11T14:55:20Z",
+      "closedAt": "2023-05-11T14:55:19Z",
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "fixed at https://github.com/boucadair/5g-slice-realization/commit/dbb81745afcec9dba5508ee3e1a93b988f1afb80",
+          "createdAt": "2023-05-11T14:55:19Z",
+          "updatedAt": "2023-05-11T14:55:19Z"
+        }
+      ]
+    },
+    {
+      "number": 39,
+      "id": "I_kwDOIw9g6c5kSttM",
+      "title": "review OAM section",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/39",
+      "state": "CLOSED",
+      "author": "robric",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [],
+      "body": " Network Slicing OAM\r\n\r\n   The deployment and maintenance of network slices with a network imply\r\n   a set OAM functions ([RFC6291]) to be deployed by the providers,\r\n   e.g.:\r\n[REV]:\r\n- [edit] the \"with a network\" in the sentence is unclear \r\n- [edit] fix: \"implies\"\r\n\r\n   *  Providers should be able to execute OAM tasks on a per network\r\n      slice basis.  These tasks can cover the \"full\" slice within a\r\n      domain or a portion of that slice (for troubleshooting purposes,\r\n      for example).\r\n\r\n      For example, per-slice OAM tasks can consist in tracing resources\r\n      that are bound to a given network slice, tracing resources that\r\n      are invoked when forwarding a given flow bound to a given network\r\n      slice, assessing whether flow isolation characteristics are in\r\n      conformance with the network slice service requirements, or\r\n      assessing the compliance of the allocated network slice resource\r\n      against flow/ customer service requirements.\r\n\r\n[REV]:\r\n- [edit] sentence a bit long: split or bulletize\r\n- [content]: add SLO monitoring / violation \r\n\r\n      [RFC7276] provides an overview of available OAM tools.  These\r\n      technology-specific tools can be reused in the context of network\r\n      slicing.  Providers that deploy network slicing capabilities\r\n      should be able to select whatever OAM technology- specific feature\r\n      that would be address their needs.\r\n[REV]:\r\n- [edit] \"any OAM technology or specific feature that would address ...\"\r\n\r\n\r\n      SFC OAM [I-D.ietf-sfc-oam-packet] should also be supported for\r\n      slices that make uses of service function chaining [RFC7665].  An\r\n      example of SFC OAM technique to Continuity Check, Connectivity\r\n      Verification, or tracing service functions is specified in\r\n      [I-D.ietf-sfc-multi-layer-oam].\r\n\r\n   *  Providers may want to enable differentiated failure detect and\r\n      repair features for a subset of network slices.  For example, a\r\n      given network slice may require fast detect and repair mechanisms,\r\n      while others may not be engineered with such means.  The provider\r\n      can use techniques such as [RFC5286], [RFC5714], or [RFC8355].\r\n\r\n   *  Providers may deploy means to dynamically discover the set of\r\n      network slices that are enabled within its network.  Such dynamic\r\n      discovery capability facilitates the detection of any mismatch\r\n      between the view maintained by the control/management plane and\r\n      the actual network configuration.  When mismatches are detected,\r\n      corrective actions must be undertaken accordingly.  For example, a\r\n      provider may rely upon L3NM [RFC9182] or L2NM [RFC9291] to\r\n      maintain the full set of L3VPN/L2VPNs that are used to deliver\r\n      network slice services.  The correlation between an LxVPN instance\r\n      and a network slice service is maintained using \"parent-service-\r\n      id\" attribute (Section 7.3 of [RFC9182].\r\n\r\n   *  Means to report a set of network performance metrics to assess\r\n      whether the agreed slice service objectives are honored.  For\r\n      example, [I-D.ietf-opsawg-yang-vpn-service-pm] can be used to\r\n      report links' one-way delay, one-way delay variation, etc.  Both\r\n      conventional active/passive measurement methods [RFC7799] and more\r\n      recent telemetry methods (e.g.  YANG Push [RFC8641]) can be used.\r\n\r\n[REV]:\r\n- [content]- we should also add how to report/expose SLO/ OAM states for a slice. NBI YANG permits to do that.\r\n",
+      "createdAt": "2023-04-25T07:50:20Z",
+      "updatedAt": "2023-04-27T08:37:28Z",
+      "closedAt": "2023-04-27T08:37:28Z",
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "Thanks Richard. Pease see https://github.com/boucadair/5g-slice-realization/pull/41.",
+          "createdAt": "2023-04-25T14:23:21Z",
+          "updatedAt": "2023-04-25T14:23:21Z"
+        }
+      ]
+    },
+    {
+      "number": 40,
+      "id": "I_kwDOIw9g6c5kU9Sj",
+      "title": "Keep or Move the mapping details to the gcdrb",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/40",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [
+        "question",
+        "Call_For_Adoption"
+      ],
+      "body": "",
+      "createdAt": "2023-04-25T13:49:34Z",
+      "updatedAt": "2023-10-12T13:20:09Z",
+      "closedAt": "2023-10-12T13:20:09Z",
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "Sent an email to the authors of the application draft right now. ",
+          "createdAt": "2023-09-21T08:52:10Z",
+          "updatedAt": "2023-09-21T08:52:10Z"
+        }
+      ]
+    },
+    {
+      "number": 44,
+      "id": "I_kwDOIw9g6c5kjCUP",
+      "title": "Find a place for this note",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/44",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [
+        "question"
+      ],
+      "body": "A 5G network slicing architecture\r\n      should integrate TN Slicing for an optimal control of SLAs, however, it is\r\n      possible to implement 5G Network Slicing without TN\r\n      Slicing, as explained in section {{{#sec-mapping}}}.",
+      "createdAt": "2023-04-27T13:53:55Z",
+      "updatedAt": "2023-09-28T13:24:42Z",
+      "closedAt": "2023-09-28T13:24:42Z",
+      "comments": []
+    },
+    {
+      "number": 45,
+      "id": "I_kwDOIw9g6c5lhWXz",
+      "title": "Remove SMO",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/45",
+      "state": "CLOSED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [
+        "Call_For_Adoption"
+      ],
+      "body": "Comment form Jie to remove SMO references",
+      "createdAt": "2023-05-10T06:52:33Z",
+      "updatedAt": "2023-05-23T12:01:59Z",
+      "closedAt": "2023-05-10T06:55:56Z",
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "There was a stale mention in the abbr list. Removed now.",
+          "createdAt": "2023-05-10T06:55:56Z",
+          "updatedAt": "2023-05-10T06:55:56Z"
+        }
+      ]
+    },
+    {
+      "number": 46,
+      "id": "I_kwDOIw9g6c5lhW2U",
+      "title": " Scope of Transport network vs RAN and CN,",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/46",
+      "state": "CLOSED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "robric"
+      ],
+      "labels": [
+        "Call_For_Adoption"
+      ],
+      "body": "Jie comments: Section 3.1 provides a picture about the scope of Transport network vs RAN and CN, while in the picture it is not clear where the NFs of RAN and CN reside in. Should they also be part of the DC or the public cloud? And TN only provides the connectivity in the DC and cloud.\r\n\r\nAction: make the picture more clear.",
+      "createdAt": "2023-05-10T06:54:10Z",
+      "updatedAt": "2023-05-23T12:19:52Z",
+      "closedAt": "2023-05-23T12:19:52Z",
+      "comments": [
+        {
+          "author": "robric",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Update section 3.1:\r\n- rename the Figure 1: Example of TN decomposition\r\n- change the name of the 5G NF (RAN or CN)",
+          "createdAt": "2023-05-11T14:28:04Z",
+          "updatedAt": "2023-05-11T14:28:04Z"
+        }
+      ]
+    },
+    {
+      "number": 47,
+      "id": "I_kwDOIw9g6c5lhXav",
+      "title": "reasoning why TN resources can be shared in the backhaul, while dedicated resource is needed in the midhaul",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/47",
+      "state": "CLOSED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "robric"
+      ],
+      "labels": [
+        "Call_For_Adoption"
+      ],
+      "body": "Jie comments: ection 3.2 gives an example of TN slice resource management: \u201cFor example, shared TN resources could be provided in the backhaul, and dedicated TN resources could be provided in the midhaul.\u201d Suggest to provide some reasoning why TN resources can be shared in the backhaul, while dedicated resource is needed in the midhaul.",
+      "createdAt": "2023-05-10T06:56:05Z",
+      "updatedAt": "2023-05-23T12:01:47Z",
+      "closedAt": "2023-05-11T14:19:29Z",
+      "comments": [
+        {
+          "author": "robric",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I might just delete so people stop asking questions ? ",
+          "createdAt": "2023-05-10T07:18:05Z",
+          "updatedAt": "2023-05-10T07:18:05Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "That text is only an example, not a recommendation. It should be contextualized as per: \r\n\r\n> TN Slicing provides **various degrees of sharing of resources** between slices. _For example_, the network capacity can be shared by all slices, usually with a guaranteed minimum per slice, or each individual slice can be allocated dedicated network capacity. Parts of a given network may use the former, while others use the latter. For example, shared TN resources could be provided in the backhaul, and dedicated TN resources could be provided in the midhaul.\r\n\r\nAnyway, I suggest we simply go for the following change:\r\n\r\n> TN Slicing provides **various degrees of sharing of resources** between slices. _For example_, the network capacity can be shared by all slices, usually with a guaranteed minimum per slice, or each individual slice can be allocated dedicated network capacity. Parts of a given network may use the former, while others use the latter. For example, **and in order to satisfy local engineering guidelines and specific service requirements**, shared TN resources could be provided in the backhaul, and dedicated TN resources could be provided in the midhaul. **The capacity partitioning strategy is deployment specific**. ",
+          "createdAt": "2023-05-10T07:51:42Z",
+          "updatedAt": "2023-05-10T07:51:42Z"
+        }
+      ]
+    },
+    {
+      "number": 48,
+      "id": "I_kwDOIw9g6c5lhYCG",
+      "title": "The first and the subsequent 5G network slices",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/48",
+      "state": "CLOSED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "robric"
+      ],
+      "labels": [
+        "duplicate",
+        "Call_For_Adoption"
+      ],
+      "body": "Jie comments: Section 3.6. This section describes the first and the subsequent 5G network slices, For this document it may also need to describe the implications to the realization of IETF network slices. The figure shows some mapping examples, while some text would be helpful.\r\n\r\nAction: put more clarity in the text",
+      "createdAt": "2023-05-10T06:57:52Z",
+      "updatedAt": "2023-05-23T12:01:30Z",
+      "closedAt": "2023-05-10T06:59:53Z",
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "This one is redundant with https://github.com/boucadair/5g-slice-realization/issues/19",
+          "createdAt": "2023-05-10T06:59:53Z",
+          "updatedAt": "2023-05-10T06:59:53Z"
+        }
+      ]
+    },
+    {
+      "number": 49,
+      "id": "I_kwDOIw9g6c5lhYzb",
+      "title": "Section 5 name change",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/49",
+      "state": "CLOSED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "boucadair",
+        "robric",
+        "julianL999",
+        "kszarkowicz"
+      ],
+      "labels": [
+        "Call_For_Adoption"
+      ],
+      "body": "Jie''s comment: Section 5. If my understanding is correct, this section is mainly about the mapping of 5G QoS parameters to TN QoS parameters at the TN edge nodes (the PE). Then it is better to rename section 5.3 to \u201cRealization of QoS Mapping Models\u201d.",
+      "createdAt": "2023-05-10T06:59:50Z",
+      "updatedAt": "2023-05-23T12:01:17Z",
+      "closedAt": "2023-05-11T14:12:34Z",
+      "comments": []
+    },
+    {
+      "number": 52,
+      "id": "I_kwDOIw9g6c5moiFb",
+      "title": "Clarify the use of inter-AS option B/C to model the AC between CE and PE",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/52",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "robric"
+      ],
+      "labels": [
+        "Call_For_Adoption"
+      ],
+      "body": "",
+      "createdAt": "2023-05-23T11:52:58Z",
+      "updatedAt": "2023-10-13T15:34:33Z",
+      "closedAt": "2023-10-13T15:34:33Z",
+      "comments": [
+        {
+          "author": "robric",
+          "authorAssociation": "COLLABORATOR",
+          "body": "renamed and simplified the content of the section",
+          "createdAt": "2023-10-06T14:38:00Z",
+          "updatedAt": "2023-10-06T14:38:00Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "see https://github.com/boucadair/5g-slice-realization/commit/b022484155641c7dc3021ba30d8ec881d9746bcc",
+          "createdAt": "2023-10-10T09:26:16Z",
+          "updatedAt": "2023-10-10T09:26:16Z"
+        }
+      ]
+    },
+    {
+      "number": 53,
+      "id": "I_kwDOIw9g6c5moioD",
+      "title": "Is TN slice in the customer site covered or out of the scope of IETF network slice",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/53",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [
+        "Call_For_Adoption"
+      ],
+      "body": "",
+      "createdAt": "2023-05-23T11:54:15Z",
+      "updatedAt": "2023-09-28T13:24:30Z",
+      "closedAt": "2023-09-28T13:24:30Z",
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "This issue is related to this part of the text: \r\n\r\n> Therefore, a TN Slice has broader scope than an IETF Network Slice since the latter applies to the provider network only.\r\n\r\n",
+          "createdAt": "2023-09-07T11:45:53Z",
+          "updatedAt": "2023-09-07T11:45:53Z"
+        }
+      ]
+    },
+    {
+      "number": 54,
+      "id": "I_kwDOIw9g6c5mo4YE",
+      "title": "Check why automatic I-D upload does not work",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/54",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [
+        "tooling"
+      ],
+      "body": "https://datatracker.ietf.org/submit/status/133845/#autoid-4",
+      "createdAt": "2023-05-23T12:34:20Z",
+      "updatedAt": "2023-07-06T13:06:54Z",
+      "closedAt": "2023-07-06T13:06:54Z",
+      "comments": []
+    },
+    {
+      "number": 61,
+      "id": "I_kwDOIw9g6c5zDF9q",
+      "title": "cleanup IETF Network Slice/Section",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/61",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "robric"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-10-06T13:29:41Z",
+      "updatedAt": "2023-10-10T10:02:57Z",
+      "closedAt": "2023-10-10T10:02:56Z",
+      "comments": []
+    },
+    {
+      "number": 65,
+      "id": "I_kwDOIw9g6c5zXWEN",
+      "title": "Idnits: ",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/65",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "kszarkowicz"
+      ],
+      "labels": [],
+      "body": "  == There are 867 instances of lines with non-ascii characters in the\r\n     document.\r\n\r\n  == The page length should not exceed 58 lines per page, but there was 1\r\n     longer page, the longest (page 1) being 3235 lines\r\n\r\nsee more at [https://[author-tools.ietf.org/api/idnits?url=https://boucadair.github.io/5g-slice-realization/draft-ietf-teas-5g-ns-ip-mpls.txt&submissioncheck=True](https://author-tools.ietf.org/api/idnits?url=https://boucadair.github.io/5g-slice-realization/draft-ietf-teas-5g-ns-ip-mpls.txt&submissioncheck=True)](https://author-tools.ietf.org/api/idnits?url=https://boucadair.github.io/5g-slice-realization/draft-ietf-teas-5g-ns-ip-mpls.txt&verbose=2&submissioncheck=True)\r\n\r\n\r\nReduced the warnings by touching manually some figures, but there is a lot of work to be done to make idnits happy.",
+      "createdAt": "2023-10-10T14:29:20Z",
+      "updatedAt": "2023-10-15T10:51:28Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "Made some changes to the figures but still lot to do: \r\n\r\n  == There are 860 instances of lines with non-ascii characters in the\r\n     document.",
+          "createdAt": "2023-10-11T13:39:44Z",
+          "updatedAt": "2023-10-11T13:39:44Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "@kszarkowicz will make the arguments.",
+          "createdAt": "2023-10-12T13:14:09Z",
+          "updatedAt": "2023-10-12T13:14:09Z"
+        },
+        {
+          "author": "kszarkowicz",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Unicode is for diagrams is allowed format (https://authors.ietf.org/en/diagrams):\r\n\r\n\"[asciiflow](https://asciiflow.com/#/) is a web based interactive ASCII diagramming tool. It support both ASCII and extended Unicode box drawing characters. asciiflow only exports as text.\"\r\n\r\n\"[Monodraw](https://monodraw.helftone.com/) is an interactive ASCII diagramming tool that support both ASCII and extended Unicode box drawing characters.\"\r\n\r\nThe problem is not with the Unicode diagrams included in the draft. The problem is with false negative generated by idnits tool. Namely, idnits tool considers single, 16 bit long Unicode character as two, 8 bit characters. Therefore, the character length in the lines containing Unicode characters is doubled.\r\n\r\nFurther, idnits tool, of detects CR and/or LF in one of the two octet long of Unicode character, considers this a new line, generating false negative that number of lines per page exceeds 58 lines.\r\n\r\nThey way forward, thus, is to fix issues withg idnits, as the Unicode diagrams in the draft are correct.",
+          "createdAt": "2023-10-14T19:50:57Z",
+          "updatedAt": "2023-10-14T19:50:57Z"
+        },
+        {
+          "author": "kszarkowicz",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Adding to that, xml2rfc (https://github.com/ietf-tools/xml2rfc) properly renders Unicode diagrams without generating false negatives.",
+          "createdAt": "2023-10-15T10:51:28Z",
+          "updatedAt": "2023-10-15T10:51:28Z"
+        }
+      ]
+    },
+    {
+      "number": 67,
+      "id": "I_kwDOIw9g6c5zofWn",
+      "title": "Section \"Option C\"",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/67",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "kszarkowicz"
+      ],
+      "labels": [],
+      "body": "Add content or remove the section",
+      "createdAt": "2023-10-12T13:21:46Z",
+      "updatedAt": "2023-10-16T13:17:45Z",
+      "closedAt": "2023-10-16T13:17:44Z",
+      "comments": []
+    },
+    {
+      "number": 70,
+      "id": "I_kwDOIw9g6c51CVOY",
+      "title": "Arrange external reviews",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/70",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-10-26T13:15:16Z",
+      "updatedAt": "2023-10-27T12:33:23Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "Sent messages to Bo Wu (ACKed), Qin, Wu, Daniel King (ACKed), Daniele Ceccarelli (ACKed), Gorry and TSVWG.",
+          "createdAt": "2023-10-27T07:11:40Z",
+          "updatedAt": "2023-10-27T12:33:23Z"
+        }
+      ]
+    },
+    {
+      "number": 71,
+      "id": "I_kwDOIw9g6c51Unzd",
+      "title": "RFC8100",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/71",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [],
+      "body": "From Ruediger:\r\n\r\n> If you\u2019d like to mention additional options, RFC 8100 offers an option aggregating DSCPs based on the 3 most significant DSCP bits, creating 8 DSCP ranges for classification. Please note, that also [https://datatracker.ietf.org/doc/html/draft-ietf-tsvwg-nqb-20#name-aggregation-of-other-dscps-](https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdatatracker.ietf.org%2Fdoc%2Fhtml%2Fdraft-ietf-tsvwg-nqb-20%23name-aggregation-of-other-dscps-&data=05%7C01%7Cmohamed.boucadair%40orange.com%7C73853dfb05c7413c924808dbd92d3e71%7C90c7a20af34b40bfbc48b9253b6f5d20%7C0%7C0%7C638342560566078493%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=TW%2BNmN5QeupYm%2BGz4156RWGijLD%2Fls7P15IHRBeRFxc%3D&reserved=0) specifies mapping of DSCPs to PHBs by evaluating the three most significant DSCP bits only, and that latter draft is standards track. The method proposed by both docs allows to assign 8 DSCPs sharing the same 3 most significant bits on 8 \u201cinner\u201d/slice QoS-classes and simply map them to one outer/network 3-bit codepoint  by one policy entry rather than one per DSCP. I look at that as one further option and suggest to amend the method to your existing text, but whether or not you do that, I leave to you.",
+      "createdAt": "2023-10-30T13:18:41Z",
+      "updatedAt": "2023-10-30T13:18:41Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 72,
+      "id": "I_kwDOIw9g6c52QjcI",
+      "title": "Add an example how to realize the example from the application document",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/72",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-08T17:09:28Z",
+      "updatedAt": "2023-11-08T17:09:28Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 73,
+      "id": "I_kwDOIw9g6c52QkIs",
+      "title": "Terminology (Section 3.4) alignment with the app draft: NSSMF",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/73",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-08T17:11:10Z",
+      "updatedAt": "2023-11-08T17:11:10Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 75,
+      "id": "I_kwDOIw9g6c52cWQ1",
+      "title": "Consider adding an informative mention of Low Latency, Low Loss, and Scalable Throughput (L4S)",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/75",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [],
+      "body": "https://datatracker.ietf.org/doc/rfc9330/",
+      "createdAt": "2023-11-10T08:21:31Z",
+      "updatedAt": "2023-11-10T08:21:31Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOIw9g6c5IIgj9",
+      "title": "fix typo",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/1",
+      "state": "MERGED",
+      "author": "robric",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-01-19T14:48:49Z",
+      "updatedAt": "2023-01-20T07:29:59Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "65addc0b130b07309b7b701eea82863759de4695",
+      "headRepository": "robric/5g-slice-realization",
+      "headRefName": "main",
+      "headRefOid": "23aa644e6147102f77a397a63e3b858a54d1bade",
+      "closedAt": "2023-01-20T07:29:59Z",
+      "mergedAt": "2023-01-20T07:29:59Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "9d590449ed8441f573f942c3ab78212c77bf0573"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 3,
+      "id": "PR_kwDOIw9g6c5JNuCz",
+      "title": "Krzysztof's nits ",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/3",
+      "state": "MERGED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Krzysztof's nits (small editorial changes in the text and in few pictures)",
+      "createdAt": "2023-02-03T15:55:02Z",
+      "updatedAt": "2023-02-03T16:36:11Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "f398cd8e04bdca8f407c8a665e1f805d7f7ac5f7",
+      "headRepository": "kszarkowicz/5g-slice-realization",
+      "headRefName": "main",
+      "headRefOid": "8975d1734937636e58cb9d9a6e555fcbad531748",
+      "closedAt": "2023-02-03T16:36:10Z",
+      "mergedAt": "2023-02-03T16:36:10Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "ba754b6a45f73b28cda758e8a734794f774f83f6"
+      },
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "Fixed some conflicts as the edits were based on an old version",
+          "createdAt": "2023-02-03T16:36:05Z",
+          "updatedAt": "2023-02-03T16:36:05Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 6,
+      "id": "PR_kwDOIw9g6c5KDnIU",
+      "title": "changed QoS section and some editorial changes",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/6",
+      "state": "MERGED",
+      "author": "Ivan-Bykov-RBBN",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-02-15T17:39:34Z",
+      "updatedAt": "2023-03-02T15:25:05Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "6478b5f32734799575bbc614432bec0ffbfa9d94",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "Enhancements-of-QoS-section",
+      "headRefOid": "746e32e47772e1c8f472b0881928807c2a30bfe8",
+      "closedAt": "2023-03-02T15:25:03Z",
+      "mergedAt": "2023-03-02T15:25:03Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "7455212f8bf08a76140ae33a6b1df0cf86c24e8e"
+      },
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "Accept the PR, but we need to double check the text and align with the spirit of the document + references to the functions",
+          "createdAt": "2023-03-02T15:24:57Z",
+          "updatedAt": "2023-03-02T15:24:57Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 7,
+      "id": "PR_kwDOIw9g6c5MLOOZ",
+      "title": "Address the comment from the Chairs to shorten the list of authors",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/7",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "https://trac.ietf.org/trac/iesg/wiki/NumberOfAuthors",
+      "createdAt": "2023-03-16T06:52:57Z",
+      "updatedAt": "2023-03-16T15:31:33Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "21ac5d5006b87a5a159dc0a3a156afaebad41b5c",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-1",
+      "headRefOid": "646d54859334e92f0d8fdf93bce192e442cd19bb",
+      "closedAt": "2023-03-16T15:31:32Z",
+      "mergedAt": "2023-03-16T15:31:32Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "39e880b7a92323a84e8807910b210b0e98a4f0f7"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 20,
+      "id": "PR_kwDOIw9g6c5NlW2g",
+      "title": "DO NOT MERGE - this is for rendering -",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/20",
+      "state": "CLOSED",
+      "author": "robric",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-04-04T13:03:00Z",
+      "updatedAt": "2023-05-11T14:55:36Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "2757e90be8b2d5b6f7899d303be3fc7795bf6ed7",
+      "headRepository": "robric/5g-slice-realization",
+      "headRefName": "main",
+      "headRefOid": "8144bad62766308edec827c8918a74403bf83cd9",
+      "closedAt": "2023-05-11T14:55:36Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 23,
+      "id": "PR_kwDOIw9g6c5N17Zu",
+      "title": "S/Section/Leg",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/23",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-04-07T14:57:24Z",
+      "updatedAt": "2023-04-13T14:54:20Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "03b0181e010b4857e8bfabe7dc80767c740d7cb9",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "Legs-rather-than-sections",
+      "headRefOid": "3964298c12c89d20a8f55a51baece94f3ef9d528",
+      "closedAt": "2023-04-13T14:54:18Z",
+      "mergedAt": "2023-04-13T14:54:18Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "a716abd5259ce35e4e0c3bfdc4674d8e7289364a"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 25,
+      "id": "PR_kwDOIw9g6c5ONJjl",
+      "title": "slice migration",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/25",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-04-13T07:59:40Z",
+      "updatedAt": "2023-04-13T14:53:01Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "03b0181e010b4857e8bfabe7dc80767c740d7cb9",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-1",
+      "headRefOid": "86e36cc19d396594dcb930b54475ccd7f15500d3",
+      "closedAt": "2023-04-13T14:53:00Z",
+      "mergedAt": "2023-04-13T14:53:00Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "2ee49263e7f5283d8640926336468fac2d0d5707"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 27,
+      "id": "PR_kwDOIw9g6c5OOWbT",
+      "title": "Initial OAM Section",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/27",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-04-13T11:58:20Z",
+      "updatedAt": "2023-04-13T14:53:15Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "9568074da77c51b33ac098d481d551af786b1e25",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "OAM",
+      "headRefOid": "ef9f281b7d11906f5b1cf987caf7dfb16f0d14f3",
+      "closedAt": "2023-04-13T14:53:13Z",
+      "mergedAt": "2023-04-13T14:53:13Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "aded2a92117966804c7c09e92b43ee5e1919b5e1"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 28,
+      "id": "PR_kwDOIw9g6c5OOfDc",
+      "title": "Add a note about multi AC/Multihoming",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/28",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-04-13T12:23:34Z",
+      "updatedAt": "2023-04-13T14:53:27Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "4fc8ecf7498ccd55bc4c8f6ff447dd442de15649",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-2",
+      "headRefOid": "8fe1f60abc7624de3b2a185589d78e07868e5bee",
+      "closedAt": "2023-04-13T14:53:26Z",
+      "mergedAt": "2023-04-13T14:53:26Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "cee6909456484e93b7f6e726e5e9a7782d4fa4cd"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 29,
+      "id": "PR_kwDOIw9g6c5OSi05",
+      "title": "Remove duplicate text",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/29",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "This text is already mentioned in {#sec-mapping}",
+      "createdAt": "2023-04-14T05:22:56Z",
+      "updatedAt": "2023-04-14T12:19:12Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "9e598c9141a1a31c1ad71f9190108ed0ef7a6a42",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-1",
+      "headRefOid": "2335c0c24bc9330933c68feb78bca3cb43cd4541",
+      "closedAt": "2023-04-14T12:19:11Z",
+      "mergedAt": "2023-04-14T12:19:11Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "3fb9fae468479efbf90d8498fce02ddc9c933fe6"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 30,
+      "id": "PR_kwDOIw9g6c5OSkwT",
+      "title": "Rearrange sec-ref-design + avoid redundant refs",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/30",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-04-14T05:35:33Z",
+      "updatedAt": "2023-04-14T12:22:46Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "9e598c9141a1a31c1ad71f9190108ed0ef7a6a42",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-2",
+      "headRefOid": "5efeabc2c9c710a91d5da86cb65ce9b5847d1421",
+      "closedAt": "2023-04-14T12:22:45Z",
+      "mergedAt": "2023-04-14T12:22:45Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "fcb949badfecd7769ee0889d839e8fe4de040612"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 31,
+      "id": "PR_kwDOIw9g6c5OSpQo",
+      "title": "Refer to 3.4.3 of RFC4646 for managed CEs/distributed PEs + remove su\u2026",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/31",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "\u2026bjective text",
+      "createdAt": "2023-04-14T06:00:16Z",
+      "updatedAt": "2023-04-14T12:37:29Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "9e598c9141a1a31c1ad71f9190108ed0ef7a6a42",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-3",
+      "headRefOid": "ac1a820f7890b0f5b8df8dffb4979f7ba6d0c199",
+      "closedAt": "2023-04-14T12:37:28Z",
+      "mergedAt": "2023-04-14T12:37:28Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "5688f157396437a1625b79d63cbf64b558b3507c"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 32,
+      "id": "PR_kwDOIw9g6c5OT6D3",
+      "title": "Section 4/5/6 aligned to new terminology",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/32",
+      "state": "MERGED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-04-14T09:59:45Z",
+      "updatedAt": "2023-04-14T13:06:14Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "c0e76d81786b8cb719260c64df5490dd0afd3c9a",
+      "headRepository": "kszarkowicz/5g-slice-realization",
+      "headRefName": "main",
+      "headRefOid": "cb748c5d800764b400fbd1529a86197da4d2ebad",
+      "closedAt": "2023-04-14T13:06:14Z",
+      "mergedAt": "2023-04-14T13:06:14Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "cedaa75c280b2009d80d21ed7b7709d500f59b03"
+      },
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "@kszarkowicz, can you please rebase your PR as there are conflicts? Thanks.",
+          "createdAt": "2023-04-14T10:09:10Z",
+          "updatedAt": "2023-04-14T10:09:10Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c5Sk9VI",
+          "commit": {
+            "abbreviatedOid": "3917af4"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-04-14T13:01:48Z",
+          "updatedAt": "2023-04-14T13:01:48Z",
+          "comments": [
+            {
+              "originalPosition": 130,
+              "body": "```suggestion\r\n   AC, and the VLAN allocation is coordinated between customer orchestration and\r\n```",
+              "createdAt": "2023-04-14T13:01:48Z",
+              "updatedAt": "2023-04-14T13:01:48Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5Sk_AT",
+          "commit": {
+            "abbreviatedOid": "ba93562"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-04-14T13:06:06Z",
+          "updatedAt": "2023-04-14T13:06:06Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 37,
+      "id": "PR_kwDOIw9g6c5OpnWK",
+      "title": "Update security section",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/37",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-04-19T09:00:02Z",
+      "updatedAt": "2023-04-19T09:40:02Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "88a1bb4deff1dded0f47e873982a59527faf084c",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "update-security-section",
+      "headRefOid": "02a2238a0af6063d1af492c86b2bc5a188877bad",
+      "closedAt": "2023-04-19T09:40:01Z",
+      "mergedAt": "2023-04-19T09:40:01Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "780968b52df83039931f0b2de1c34ebc20fd9821"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 38,
+      "id": "PR_kwDOIw9g6c5Op4GO",
+      "title": "remove RFC6459",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/38",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-04-19T09:49:08Z",
+      "updatedAt": "2023-04-19T09:50:21Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "780968b52df83039931f0b2de1c34ebc20fd9821",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "remove-RFC6459",
+      "headRefOid": "1f28cf72fa343f1a17d7ce8b8ad7047e4073c739",
+      "closedAt": "2023-04-19T09:50:20Z",
+      "mergedAt": "2023-04-19T09:50:20Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "b457cd6efc878646ae7eddc9961ee7eed4a808c0"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 41,
+      "id": "PR_kwDOIw9g6c5PG-81",
+      "title": "OAM comments",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/41",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-04-25T14:22:34Z",
+      "updatedAt": "2023-04-27T08:37:28Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "6fa2ffd4a3f6d601be2ca8bb5b0475f43b56660c",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "oam-comments",
+      "headRefOid": "58b9256e2f350b80a9676de55b8b679d148f6351",
+      "closedAt": "2023-04-27T08:37:27Z",
+      "mergedAt": "2023-04-27T08:37:27Z",
+      "mergedBy": "robric",
+      "mergeCommit": {
+        "oid": "80e1b95ab18ac762ab4d957304cf4359eeae2552"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c5Tp3as",
+          "commit": {
+            "abbreviatedOid": "58b9256"
+          },
+          "author": "robric",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-04-27T08:37:12Z",
+          "updatedAt": "2023-04-27T08:37:12Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 42,
+      "id": "PR_kwDOIw9g6c5PLetd",
+      "title": "Avoid interpreting 3GPP specs",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/42",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-04-26T09:19:50Z",
+      "updatedAt": "2023-04-27T14:01:47Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "6fa2ffd4a3f6d601be2ca8bb5b0475f43b56660c",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "not-speak-for-3GPP",
+      "headRefOid": "443ca9baf6e0ad24bd82153c1fc9bba20678fc3b",
+      "closedAt": "2023-04-27T14:01:46Z",
+      "mergedAt": "2023-04-27T14:01:46Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "21a71145cfddaae872b35fb3f5ddf79d05bbfcad"
+      },
+      "comments": [
+        {
+          "author": "kszarkowicz",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I have reviewed Section 3, and I don't see this sections speaks for 3GPP. It looks good to me.",
+          "createdAt": "2023-04-26T18:29:45Z",
+          "updatedAt": "2023-04-26T18:29:45Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c5Timla",
+          "commit": {
+            "abbreviatedOid": "cdd0483"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-04-26T09:33:17Z",
+          "updatedAt": "2023-04-26T09:33:17Z",
+          "comments": [
+            {
+              "originalPosition": 83,
+              "body": "```suggestion\r\n> This framework is consistent with the coordination example shown in Figure 4.7.1 of {{TS-28.530}}.\r\n```",
+              "createdAt": "2023-04-26T09:33:17Z",
+              "updatedAt": "2023-04-26T09:33:17Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5Tp0Aw",
+          "commit": {
+            "abbreviatedOid": "cdd0483"
+          },
+          "author": "robric",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-04-27T08:29:18Z",
+          "updatedAt": "2023-04-27T08:29:18Z",
+          "comments": [
+            {
+              "originalPosition": 44,
+              "body": "On this one, I would be a a bit cautious, since I removed any ref to 3GPP (on purpose) by Just saying 5G slicing... So we avoid any interpretation",
+              "createdAt": "2023-04-27T08:29:18Z",
+              "updatedAt": "2023-04-27T08:29:18Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5Tp0w6",
+          "commit": {
+            "abbreviatedOid": "443ca9b"
+          },
+          "author": "robric",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "put a few comments (minor)",
+          "createdAt": "2023-04-27T08:31:04Z",
+          "updatedAt": "2023-04-27T08:33:08Z",
+          "comments": [
+            {
+              "originalPosition": 72,
+              "body": "is it removed (I am looking at the diff) ?",
+              "createdAt": "2023-04-27T08:31:04Z",
+              "updatedAt": "2023-04-27T08:33:09Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5TsM9p",
+          "commit": {
+            "abbreviatedOid": "cdd0483"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-04-27T13:47:19Z",
+          "updatedAt": "2023-04-27T13:47:20Z",
+          "comments": [
+            {
+              "originalPosition": 44,
+              "body": "This is a copy/past from 28530. This is less contentious than the previous text.",
+              "createdAt": "2023-04-27T13:47:19Z",
+              "updatedAt": "2023-04-27T13:47:20Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5TsNdf",
+          "commit": {
+            "abbreviatedOid": "cdd0483"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-04-27T13:48:14Z",
+          "updatedAt": "2023-04-27T13:48:14Z",
+          "comments": [
+            {
+              "originalPosition": 72,
+              "body": "Yes, it is removed.",
+              "createdAt": "2023-04-27T13:48:14Z",
+              "updatedAt": "2023-04-27T13:48:14Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 43,
+      "id": "PR_kwDOIw9g6c5PLiK5",
+      "title": "Add a note for the mapping Section",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/43",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "#40",
+      "createdAt": "2023-04-26T09:25:31Z",
+      "updatedAt": "2023-04-27T08:35:41Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "6fa2ffd4a3f6d601be2ca8bb5b0475f43b56660c",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "map-or-not",
+      "headRefOid": "64996382a6747f756937c7a92b449793c9bf8905",
+      "closedAt": "2023-04-27T08:35:39Z",
+      "mergedAt": "2023-04-27T08:35:39Z",
+      "mergedBy": "robric",
+      "mergeCommit": {
+        "oid": "efa808e6cc621129069029510279cef0a09744d6"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 50,
+      "id": "PR_kwDOIw9g6c5QKKRY",
+      "title": "Update Section 5",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/50",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "#49",
+      "createdAt": "2023-05-10T07:12:17Z",
+      "updatedAt": "2023-05-11T14:12:34Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "c4b0121456c95826b668b0836fff7cea0955569c",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-1",
+      "headRefOid": "ae3a41dfdee76c504afcf7882b578405c109d13e",
+      "closedAt": "2023-05-11T14:12:33Z",
+      "mergedAt": "2023-05-11T14:12:33Z",
+      "mergedBy": "robric",
+      "mergeCommit": {
+        "oid": "d367fb01b888141fd3cbe99df3afd5cfb829e609"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 51,
+      "id": "PR_kwDOIw9g6c5QKjw0",
+      "title": "clarify the degree of sharing resources is an example",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/51",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-05-10T08:35:58Z",
+      "updatedAt": "2023-05-11T14:19:29Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "c4b0121456c95826b668b0836fff7cea0955569c",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "example-not-reco",
+      "headRefOid": "ea8a810ce6dc6bcc20365c518510bfe5f1656650",
+      "closedAt": "2023-05-11T14:19:28Z",
+      "mergedAt": "2023-05-11T14:19:28Z",
+      "mergedBy": "robric",
+      "mergeCommit": {
+        "oid": "f32b18676cd382330fb958d4f41995fba569d616"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c5UzK6M",
+          "commit": {
+            "abbreviatedOid": "baf2a81"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-05-11T14:15:24Z",
+          "updatedAt": "2023-05-11T14:15:24Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\n     TN Slicing provides various degrees of sharing of resources between slices. For example, the network capacity can be shared by all slices, usually with a guaranteed minimum per slice, or each individual slice can be allocated dedicated network capacity. Parts of a given network may use the former, while others use the latter. For example, in order to satisfy local engineering guidelines and specific service requirements, shared TN resources could be provided in the backhaul, and dedicated TN resources could be provided in the midhaul. The capacity partitioning strategy is deployment specific.\r\n```",
+              "createdAt": "2023-05-11T14:15:24Z",
+              "updatedAt": "2023-05-11T14:15:25Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5UzL79",
+          "commit": {
+            "abbreviatedOid": "fb156d8"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-05-11T14:17:18Z",
+          "updatedAt": "2023-05-11T14:17:19Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\n     TN Slicing provides various degrees of sharing of resources between slices. For example, the network capacity can be shared by all slices, usually with a guaranteed minimum per slice, or each individual slice can be allocated dedicated network capacity. Parts of a given network may use the former, while others use the latter. For example, in order to satisfy local engineering guidelines and specific service requirements, shared TN resources could be provided in the backhaul (or midhaul), and dedicated TN resources could be provided in the midhaul (or backhaul). The capacity partitioning strategy is deployment specific.\r\n```",
+              "createdAt": "2023-05-11T14:17:18Z",
+              "updatedAt": "2023-05-11T14:17:19Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 55,
+      "id": "PR_kwDOIw9g6c5ZxLJt",
+      "title": "5G slicing with or without TN slicing",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/55",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-09-07T10:35:21Z",
+      "updatedAt": "2023-09-28T13:24:42Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "88c34179e9d659130d4cb59bd3190af0a979b96d",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-1",
+      "headRefOid": "4df14564a19b12398afe13dc1bc32d47a83022ad",
+      "closedAt": "2023-09-28T13:24:41Z",
+      "mergedAt": "2023-09-28T13:24:41Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "73b4cdd91ef6ae877778f1e71f0e4bb5a0c9033f"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 56,
+      "id": "PR_kwDOIw9g6c5Zxg8N",
+      "title": "Motivate first slice vs subsequent slice",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/56",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "A first attempt to be refined/enhanced",
+      "createdAt": "2023-09-07T11:41:03Z",
+      "updatedAt": "2023-10-06T06:02:13Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "88c34179e9d659130d4cb59bd3190af0a979b96d",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-2",
+      "headRefOid": "bdcc8de668021f5201635d779d07e94d74d702fd",
+      "closedAt": "2023-10-06T06:02:13Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "Covered here https://github.com/boucadair/5g-slice-realization/commit/f49a8ce4ff5ddbb88d56dcd78717f74809f12315",
+          "createdAt": "2023-10-06T06:02:13Z",
+          "updatedAt": "2023-10-06T06:02:13Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 57,
+      "id": "PR_kwDOIw9g6c5Zxsk-",
+      "title": "avoid the \"section\" thing",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/57",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "We do already have many terms. Let's simplify the narrative text",
+      "createdAt": "2023-09-07T12:17:41Z",
+      "updatedAt": "2023-10-06T13:36:20Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "1ed2abaf96a0e4cdd8f4c84cadc0705362187871",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-3",
+      "headRefOid": "c52aed4fb418b90a1df317e8054faf4fa64a3670",
+      "closedAt": "2023-10-06T13:36:20Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 58,
+      "id": "PR_kwDOIw9g6c5ZxuuI",
+      "title": "delete text about IETF network slice scope",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/58",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "The key information in this text is the sentence right this one. This sentence does not add much, IMO.",
+      "createdAt": "2023-09-07T12:24:01Z",
+      "updatedAt": "2023-09-28T13:24:29Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "88c34179e9d659130d4cb59bd3190af0a979b96d",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-4",
+      "headRefOid": "1b92754fe28daff43ac8cc10d5c368fcc82eb802",
+      "closedAt": "2023-09-28T13:24:29Z",
+      "mergedAt": "2023-09-28T13:24:29Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "1fc441351718f8294caf5bad879df6daa23db586"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 59,
+      "id": "PR_kwDOIw9g6c5b37s2",
+      "title": "remove note",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/59",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-10-04T08:48:25Z",
+      "updatedAt": "2023-10-12T13:20:09Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "bf00bb02f625931c191f9ea60e2c9e30636e1f35",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-1",
+      "headRefOid": "22472bffd32433aff4864ea35a7ba28c7f74f80e",
+      "closedAt": "2023-10-12T13:20:08Z",
+      "mergedAt": "2023-10-12T13:20:08Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "c49eef2336af4d6cea877fc37cdd850239587b9d"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 60,
+      "id": "PR_kwDOIw9g6c5cAh3u",
+      "title": "Align with the outcome of IESG review of the TEAS Framework",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/60",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-10-05T13:03:59Z",
+      "updatedAt": "2023-10-05T17:32:36Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "73b4cdd91ef6ae877778f1e71f0e4bb5a0c9033f",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-4",
+      "headRefOid": "d1a594864015b4e1cd2dabd02297d5454bc93c17",
+      "closedAt": "2023-10-05T17:32:35Z",
+      "mergedAt": "2023-10-05T17:32:35Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "772403e57d901147c65c4ccceb92173a1dc08835"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 62,
+      "id": "PR_kwDOIw9g6c5cHJfF",
+      "title": "bye bye scope!",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/62",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-10-06T13:41:53Z",
+      "updatedAt": "2023-10-06T13:42:14Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "1ed2abaf96a0e4cdd8f4c84cadc0705362187871",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-4",
+      "headRefOid": "8266664ef7d8244d9e57e262fc0b0ec97f78c06e",
+      "closedAt": "2023-10-06T13:42:13Z",
+      "mergedAt": "2023-10-06T13:42:13Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "2f95181203fa74ad55fe8c8b1536ea1ffc8df773"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 63,
+      "id": "PR_kwDOIw9g6c5cH9Ju",
+      "title": "minor edits to the service-aware CE",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/63",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-10-06T15:35:11Z",
+      "updatedAt": "2023-10-06T15:38:41Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "b3782f709bc6a5c7fdd911f99f634a35115aef94",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-4",
+      "headRefOid": "5acf8917a14facec99e0a5216430570d993a7e66",
+      "closedAt": "2023-10-06T15:38:40Z",
+      "mergedAt": "2023-10-06T15:38:40Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "451055166cf694eee8d02cf23ff8095dd6248dee"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c5jEnkU",
+          "commit": {
+            "abbreviatedOid": "5acf891"
+          },
+          "author": "robric",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-10-06T15:37:43Z",
+          "updatedAt": "2023-10-06T15:37:43Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 64,
+      "id": "PR_kwDOIw9g6c5cYMDe",
+      "title": "Scope vs application draft",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/64",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-10-10T12:31:08Z",
+      "updatedAt": "2023-10-10T13:00:51Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "16032ff9bfdc942480e7c947f05a95cdaee10c34",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "scope",
+      "headRefOid": "6ec5f3ba4dbf1a1340e8d60e0ee472f9db705a08",
+      "closedAt": "2023-10-10T13:00:50Z",
+      "mergedAt": "2023-10-10T13:00:50Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "cadbb4caede80e234112003c2b09129fcd1f9198"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 66,
+      "id": "PR_kwDOIw9g6c5cgiTa",
+      "title": "Update QoS-5QI-aware.txt",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/66",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-10-11T12:29:37Z",
+      "updatedAt": "2023-10-11T12:44:48Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "1a53f8a893ea4e3b3346914c7db4dff95e399fcd",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "less-idnits-warnings",
+      "headRefOid": "2869e183d0cfa12c6e68bbb6c14155999abdfb05",
+      "closedAt": "2023-10-11T12:44:47Z",
+      "mergedAt": "2023-10-11T12:44:47Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "2785a5e3ff131cd22c5548d5a1462f39165bfd15"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 68,
+      "id": "PR_kwDOIw9g6c5co2Ip",
+      "title": "Update draft-ietf-teas-5g-ns-ip-mpls.md",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/68",
+      "state": "MERGED",
+      "author": "julianL999",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "SPAG review (SPelling, Punctuation and Grammar)",
+      "createdAt": "2023-10-12T13:59:38Z",
+      "updatedAt": "2023-10-12T14:14:00Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "c49eef2336af4d6cea877fc37cdd850239587b9d",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "julianL999-patch-1",
+      "headRefOid": "c20a90615ba1442a5f0674cf59499e8dda0bce99",
+      "closedAt": "2023-10-12T14:13:59Z",
+      "mergedAt": "2023-10-12T14:13:59Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "53747bd4c8d5358de59213c0635a68df01abc024"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c5jy0a1",
+          "commit": {
+            "abbreviatedOid": "c20a906"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-10-12T14:01:41Z",
+          "updatedAt": "2023-10-12T14:01:41Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 69,
+      "id": "PR_kwDOIw9g6c5c3OUd",
+      "title": "Option C",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/69",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-10-16T07:06:51Z",
+      "updatedAt": "2023-10-16T13:17:45Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "53747bd4c8d5358de59213c0635a68df01abc024",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-1",
+      "headRefOid": "76d0cbf06afaab1119b20158a937450afc524e33",
+      "closedAt": "2023-10-16T13:17:43Z",
+      "mergedAt": "2023-10-16T13:17:43Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "11fff46e4060155b824ad6f589a2900301aa3d0c"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 74,
+      "id": "PR_kwDOIw9g6c5fBtaX",
+      "title": "insist that we don't correlate IPv6 address semantic/forwarding-routing",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/74",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-09T12:01:09Z",
+      "updatedAt": "2023-11-09T12:01:09Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "ef5a7271e7219c33a8ab5b055a7847903c524c47",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-1",
+      "headRefOid": "62204cffd2a934614b493806c40dd778046c471d",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    }
+  ]
+}
