@@ -1251,7 +1251,8 @@ ranges for each slice, and use these ranges for slice identification purposes on
    would be grouped with common operator-defined TN logic and mapped to a same TN QoS Class when transported in the
    provider network.  That is, common Per-hop Behavior (PHB) {{?RFC2474}} is executed on
    transit provider network routers for all packets grouped together. An example of this
-   approach is outlined in {{figure-QoS-5QI-mapping-example}}.
+   approach is outlined in {{figure-QoS-5QI-mapping-example}}. A provider may decide
+   to implement Diffserv-Intercon PHBs at the boundaries of its network domain {{?RFC8100}}.
 
 Note:
 : The numbers indicated in {{figure-QoS-5QI-mapping-example}} (S-NSSAI, 5QI, DSCP, queue, etc.) are provided for illustration purposes only and should not be considered as deployment guidance.
