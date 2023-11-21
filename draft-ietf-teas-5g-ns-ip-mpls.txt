@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 2 May 2024                                     Juniper Networks
+Expires: 24 May 2024                                    Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                         30 October 2023
+                                                        21 November 2023
 
 
  A Realization of RFC XXXX Network Slices for 5G Networks Using Current
@@ -60,7 +60,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 2 May 2024.
+   This Internet-Draft will expire on 24 May 2024.
 
 Copyright Notice
 
@@ -919,9 +919,9 @@ Table of Contents
       The role of capacity management is to ensure the provider network
       capacity can be utilized without causing any bottlenecks.  The
       toolset used here can range from careful network planning, to
-      ensure more less equal traffic distribution (i.e., equal cost load
-      balancing), to advanced traffic engineering techniques, with or
-      without bandwidth reservations, to force more consistent load
+      ensure a more or less equal traffic distribution (i.e., equal cost
+      load balancing), to advanced traffic engineering techniques, with
+      or without bandwidth reservations, to force more consistent load
       distribution even in non-ECMP friendly network topologies.
 
             ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
@@ -2562,9 +2562,10 @@ Table of Contents
 
    [I-D.ietf-sfc-multi-layer-oam]
               Mirsky, G., Meng, W., Ao, T., Khasnabish, B., Leung, K.,
-              and G. S. Mishra, "Active OAM for Service Function
-              Chaining (SFC)", Work in Progress, Internet-Draft, draft-
-              ietf-sfc-multi-layer-oam-28, 7 July 2023,
+              and G. S. Mishra, "Active Operations, Administration, and
+              Maintenance (OAM) for Service Function Chaining (SFC)",
+              Work in Progress, Internet-Draft, draft-ietf-sfc-multi-
+              layer-oam-28, 7 July 2023,
               <https://datatracker.ietf.org/doc/html/draft-ietf-sfc-
               multi-layer-oam-28>.
 
