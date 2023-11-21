@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 18 April 2024                                  Juniper Networks
+Expires: 24 May 2024                                    Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                         16 October 2023
+                                                        21 November 2023
 
 
  A Realization of RFC XXXX Network Slices for 5G Networks Using Current
@@ -60,7 +60,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 18 April 2024.
+   This Internet-Draft will expire on 24 May 2024.
 
 Copyright Notice
 
@@ -576,9 +576,9 @@ Table of Contents
 
 3.4.2.  Transport Network Segments and Network Slice Instantiation
 
-   In reference to architecture in Section 3.4.1, the connectivity
-   between NFs can be decomposed into three main types of segments that
-   are shown in Figure 6:
+   In reference to the architecture depicted in Section 3.4.1, the
+   connectivity between NFs can be decomposed into three main types of
+   segments that are shown in Figure 6:
 
    *  Customer Site: Either connects two NFs located in the same
       Customer Site (e.g., NF1-NF2) or connects a NF to a CE (e.g.,
@@ -919,9 +919,9 @@ Table of Contents
       The role of capacity management is to ensure the provider network
       capacity can be utilized without causing any bottlenecks.  The
       toolset used here can range from careful network planning, to
-      ensure more less equal traffic distribution (i.e., equal cost load
-      balancing), to advanced traffic engineering techniques, with or
-      without bandwidth reservations, to force more consistent load
+      ensure a more or less equal traffic distribution (i.e., equal cost
+      load balancing), to advanced traffic engineering techniques, with
+      or without bandwidth reservations, to force more consistent load
       distribution even in non-ECMP friendly network topologies.
 
             ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
@@ -1300,8 +1300,8 @@ Table of Contents
 
 5.1.1.  5G QoS Layer
 
-   QoS treatment is indicated in the 5G QoS layer by the 5QI (5G QoS
-   indicator), as defined in [TS-23.501].  A 5QI is an identifier (ID)
+   QoS treatment is indicated in the 5G QoS layer by the 5G QoS
+   Indicator (5QI), as defined in [TS-23.501].  A 5QI is an identifier
    that is used as a reference to 5G QoS characteristics (e.g.,
    scheduling weights, admission thresholds, queue management
    thresholds, and link layer protocol configuration) in the RAN domain.
@@ -1320,50 +1320,50 @@ Table of Contents
 
    Each slice service might have flows with multiple 5QIs. 5QIs (or,
    more precisely, corresponding DSCP values) are visible to the
-   provider network at SDP (i.e., at the edge of the provider network).
+   provider network at SDPs (i.e., at the edge of the provider network).
 
-   In this document, this layer of QoS will be referred as '5G QoS
-   Class' ('5G QoS' in short), or '5G DSCP'.
+   In this document, this layer of QoS is referred to as '5G QoS Class'
+   ('5G QoS' in short) or '5G DSCP'.
 
 5.1.2.  TN QoS Layer
 
    Control of the TN resources on provider network transit links, as
    well as traffic scheduling/prioritization on provider network transit
-   links, is based on a flat (non-hierarchical) QoS model in this RFC
-   XXXX Network Slice realization.  That is, RFC XXXX Network Slices are
+   links, is based on a flat (non-hierarchical) QoS model in this
+   Network Slice realization.  That is, RFC XXXX Network Slices are
    assigned dedicated resources (e.g., QoS queues) at the edge of the
    provider network (at SDPs), while all RFC XXXX Network Slices are
    sharing resources (sharing QoS queues) on the transit links of the
    provider network.  Typical router hardware can support up to 8
-   traffic queues per port, therefore the architecture assumes 8 traffic
+   traffic queues per port, therefore the document assumes 8 traffic
    queues per port support in general.
 
-   At this layer, QoS treatment is indicated by QoS indicator specific
-   to the encapsulation used in the provider network, and it could be
-   DSCP or MPLS Traffic Class (TC).  This layer of QoS will be referred
-   as 'TN QoS Class', or 'TN QoS' for short, in this document.
+   At this layer, QoS treatment is indicated by a QoS indicator specific
+   to the encapsulation used in the provider network.  Such an indicator
+   may be DSCP or MPLS Traffic Class (TC).  This layer of QoS is
+   referred to as 'TN QoS Class', or 'TN QoS' for short, in this
+   document.
 
 5.2.  QoS Realization Models
 
-   While 5QI might be exposed to the provider network, via the DSCP
-   value (corresponding to specific 5QI value) set in the IP packet
-   generated by NFs, some 5G deployments might use 5QI in the RAN domain
-   only, without requesting per 5QI differentiated treatment from the
-   provider network.  This can be due to an NF limitation (e.g., no
-   capability to set DSCP), or it might simply depend on the overall
-   slicing deployment model.  The O-RAN Alliance, for example, defines a
-   phased approach to the slicing, with initial phases utilizing only
-   per slice, but not per 5QI, differentiated treatment in the TN domain
+   While 5QI might be exposed to the provider network via the DSCP value
+   (corresponding to specific 5QI value) set in the IP packet generated
+   by NFs, some 5G deployments might use 5QI in the RAN domain only,
+   without requesting per-5QI differentiated treatment from the provider
+   network.  This might be due to a NF limitation (e.g., no capability
+   to set DSCP), or it might simply depend on the overall slicing
+   deployment model.  The O-RAN Alliance, for example, defines a phased
+   approach to the slicing, with initial phases utilizing only per-
+   slice, but not per-5QI, differentiated treatment in the TN domain
    (Annex F of [O-RAN.WG9.XPSAAS]).
 
    Therefore, from a QoS perspective, the 5G slicing connectivity
-   realization architecture defines two high-level realization models
-   for slicing in the TN domain: a 5QI-unaware model and a 5QI- aware
-   model.  Both slicing models in the TN domain could be used
-   concurrently within the same 5G slice.  For example, the TN segment
-   for 5G midhaul (F1-U interface) might be 5QI-aware, while at the same
-   time the TN segment for 5G backhaul (N3 interface) might follow the
-   5QI-unaware model.
+   realization defines two high-level realization models for slicing in
+   the TN domain: a 5QI-unaware model and a 5QI- aware model.  Both
+   slicing models in the TN domain could be used concurrently within the
+   same 5G slice.  For example, the TN segment for 5G midhaul (F1-U
+   interface) might be 5QI-aware, while at the same time the TN segment
+   for 5G backhaul (N3 interface) might follow the 5QI-unaware model.
 
    These models are further elaborated in the following two subsections.
 
@@ -1372,12 +1372,12 @@ Table of Contents
    In 5QI-unaware mode, the DSCP values in the packets received from NF
    at SDP are ignored.  In the provider network, there is no QoS
    differentiation at the 5G QoS Class level.  The entire RFC XXXX
-   Network Slice is mapped to single TN QoS Class, and, therefore, to a
-   single QoS queue on the routers in the provider network.  With a
-   small number of deployed 5G slices (for example only two 5G slices:
+   Network Slice is mapped to a single TN QoS Class, and, therefore, to
+   a single QoS queue on the routers in the provider network.  With a
+   small number of deployed 5G slices (for example, only two 5G slices:
    eMBB and MIoT), it is possible to dedicate a separate QoS queue for
    each slice on transit routers in the provider network.  However, with
-   introduction of private/enterprises slices, as the number of 5G
+   the introduction of private/enterprises slices, as the number of 5G
    slices (and thus corresponding RFC XXXX Network Slices) increases, a
    single QoS queue on transit links in the provider network serves
    multiple slices with similar characteristics.  QoS enforcement on
@@ -1434,11 +1434,11 @@ Table of Contents
    The original IP header retains the DCSP marking (which is ignored in
    5QI-unaware model), while the new header (MPLS or IPv6) carries QoS
    marking (MPLS Traffic Class bits for MPLS encapsulation, or DSCP for
-   SRv6/IPv6 encapsulation) related to TN CoS.  Based on TN QoS Class
-   marking, per-hop behavior for all RFC XXXX Network Slices is executed
-   on provider network transit links.  Provider network transit routers
-   do not evaluate the original IP header for QoS-related decisions.
-   This model is outlined in Figure 19 for MPLS encapsulation, and in
+   SRv6/IPv6 encapsulation) related to TN CoS.  Based on TN CoS marking,
+   per-hop behavior for all RFC XXXX Network Slices is executed on
+   provider network transit links.  Provider network transit routers do
+   not evaluate the original IP header for QoS-related decisions.  This
+   model is outlined in Figure 19 for MPLS encapsulation, and in
    Figure 20 for SRv6 encapsulation.
 
                                               ┌──────────────┐
@@ -1489,9 +1489,9 @@ Table of Contents
 
                    Figure 20: QoS with IPv6 Encapsulation
 
-   From the QoS perspective, both options are similar.  However, there
-   is one difference between the two options.  The MPLS TC is only 3
-   bits (8 possible combinations), while DSCP is 6 bits (64 possible
+   From a QoS perspective, both options are similar.  However, there is
+   one difference between the two options.  The MPLS TC is only 3 bits
+   (8 possible combinations), while DSCP is 6 bits (64 possible
    combinations).  Hence, SRv6 [RFC8754] provides more flexibility for
    TN CoS design, especially in combination with soft policing with in-
    profile/ out-profile traffic, as discussed in Section 5.2.1.1.
@@ -1677,9 +1677,10 @@ Table of Contents
 5.2.2.  5QI-aware Model
 
    In the 5QI-aware model, potentially a large number of 5G QoS Classes,
-   represented via DSCP set by NFs (the architecture scales to thousands
-   of 5G slices) is mapped (multiplexed) to up to 8 TN QoS Classes used
-   in provider network transit equipment, as outlined in Figure 23.
+   represented via the DSCP set by NFs (the architecture scales to
+   thousands of 5G slices) is mapped (multiplexed) to up to 8 TN QoS
+   Classes used in a provider network transit equipment, as outlined in
+   Figure 23.
 
        ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
        ┏━━━━━━━━━━━━━━━━━┓         PE                               │
@@ -1721,14 +1722,14 @@ Table of Contents
 
         Figure 23: Slice 5Q QoS to TN QoS Mapping (5QI-aware Model)
 
-   Given that in large scale deployments (large number of 5G slices),
-   the number of potential 5G QoS Classes is much higher than the number
-   of TN QoS Classes, multiple 5G QoS Classes with similar
-   characteristics - potentially from different slices - would be
-   grouped with common operator-defined TN logic and mapped to a same TN
-   QoS Class when transported in the provider network.  That is, common
-   Per-hop Behavior (PHB) [RFC2474] is executed on transit provider
-   network routers for all packets grouped together.  An example of this
+   Given that in deployments with a large number of 5G slices, the
+   number of potential 5G QoS Classes is much higher than the number of
+   TN QoS Classes, multiple 5G QoS Classes with similar characteristics
+   - potentially from different slices - would be grouped with common
+   operator-defined TN logic and mapped to a same TN QoS Class when
+   transported in the provider network.  That is, common Per-hop
+   Behavior (PHB) [RFC2474] is executed on transit provider network
+   routers for all packets grouped together.  An example of this
    approach is outlined in Figure 24.
 
    Note:  The numbers indicated in Figure 24 (S-NSSAI, 5QI, DSCP, queue,
@@ -1767,10 +1768,10 @@ Table of Contents
 
               Figure 24: Example of 3GPP QoS Mapped to TN QoS
 
-   In current SDO progress of 3GPP (Rel.17) and O-RAN the mapping of 5QI
-   to DSCP is not expected in per-slice fashion, where 5QI to DSCP
-   mapping may vary from 3GPP slice to 3GPP slice, hence the mapping of
-   5G QoS DSCP values to TN QoS Classes may be rather common.
+   In current SDO progress of 3GPP (Release 17) and O-RAN, the mapping
+   of 5QI to DSCP is not expected to be in a per-slice fashion, where
+   5QI to DSCP mapping may vary from 3GPP slice to 3GPP slice, hence the
+   mapping of 5G QoS DSCP values to TN QoS Classes may be rather common.
 
    Like in 5QI-unaware model, the original IP header retains the DCSP
    marking corresponding to 5QI (5G QoS Class), while the new header
@@ -2449,11 +2450,11 @@ Table of Contents
       between the view maintained by the control/management plane and
       the actual network configuration.  When mismatches are detected,
       corrective actions must be undertaken accordingly.  For example, a
-      provider may rely upon L3NM [RFC9182] or L2NM [RFC9291] to
+      provider may rely upon the L3NM [RFC9182] or the L2NM [RFC9291] to
       maintain the full set of L3VPN/L2VPNs that are used to deliver
       Network Slice Services.  The correlation between an LxVPN instance
       and a Network Slice Service is maintained using "parent-service-
-      id" attribute (Section 7.3 of [RFC9182].
+      id" attribute (Section 7.3 of [RFC9182]).
 
    *  Means to report a set of network performance metrics to assess
       whether the agreed slice service objectives are honored.  These
@@ -2461,7 +2462,7 @@ Table of Contents
       For example, [RFC9375] can be used to report links' one-way delay,
       one-way delay variation, etc.  Both conventional active/passive
       measurement methods [RFC7799] and more recent telemetry methods
-      (e.g.  YANG Push [RFC8641]) can be used.
+      (e.g., YANG Push [RFC8641]) can be used.
 
    *  Means to report and expose observed performance metrics and other
       OAM state to customer.  For example,
@@ -2561,9 +2562,10 @@ Table of Contents
 
    [I-D.ietf-sfc-multi-layer-oam]
               Mirsky, G., Meng, W., Ao, T., Khasnabish, B., Leung, K.,
-              and G. S. Mishra, "Active OAM for Service Function
-              Chaining (SFC)", Work in Progress, Internet-Draft, draft-
-              ietf-sfc-multi-layer-oam-28, 7 July 2023,
+              and G. S. Mishra, "Active Operations, Administration, and
+              Maintenance (OAM) for Service Function Chaining (SFC)",
+              Work in Progress, Internet-Draft, draft-ietf-sfc-multi-
+              layer-oam-28, 7 July 2023,
               <https://datatracker.ietf.org/doc/html/draft-ietf-sfc-
               multi-layer-oam-28>.
 
@@ -2571,17 +2573,17 @@ Table of Contents
               Geng, X., Contreras, L. M., Rokui, R., Dong, J., and I.
               Bykov, "IETF Network Slice Application in 3GPP 5G End-to-
               End Network Slice", Work in Progress, Internet-Draft,
-              draft-ietf-teas-5g-network-slice-application-01, 10 July
-              2023, <https://datatracker.ietf.org/doc/html/draft-ietf-
-              teas-5g-network-slice-application-01>.
+              draft-ietf-teas-5g-network-slice-application-02, 23
+              October 2023, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-teas-5g-network-slice-application-02>.
 
    [I-D.ietf-teas-ietf-network-slice-nbi-yang]
-              Wu, B., Dhody, D., Rokui, R., Saad, T., Han, L., and J.
-              Mullooly, "A YANG Data Model for the IETF Network Slice
-              Service", Work in Progress, Internet-Draft, draft-ietf-
-              teas-ietf-network-slice-nbi-yang-06, 10 July 2023,
+              Wu, B., Dhody, D., Rokui, R., Saad, T., and J. Mullooly,
+              "A YANG Data Model for the IETF Network Slice Service",
+              Work in Progress, Internet-Draft, draft-ietf-teas-ietf-
+              network-slice-nbi-yang-08, 23 October 2023,
               <https://datatracker.ietf.org/doc/html/draft-ietf-teas-
-              ietf-network-slice-nbi-yang-06>.
+              ietf-network-slice-nbi-yang-08>.
 
    [I-D.ietf-teas-rfc3272bis]
               Farrel, A., "Overview and Principles of Internet Traffic

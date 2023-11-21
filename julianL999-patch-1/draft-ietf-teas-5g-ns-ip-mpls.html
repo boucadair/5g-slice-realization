@@ -25,26 +25,26 @@
          
        
     ' name="description">
-<meta content="xml2rfc 3.18.1" name="generator">
+<meta content="xml2rfc 3.18.2" name="generator">
 <meta content="L3VPN" name="keyword">
 <meta content="L2VPN" name="keyword">
 <meta content="Slice Service" name="keyword">
 <meta content="draft-ietf-teas-5g-ns-ip-mpls-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.18.1
-    Python 3.11.5
+  xml2rfc 3.18.2
+    Python 3.11.6
     ConfigArgParse 1.5.3
     google-i18n-address 3.1.0
     intervaltree 3.1.0
     Jinja2 3.1.2
     lxml 4.9.3
-    platformdirs 3.11.0
+    platformdirs 4.0.0
     pycountry 22.3.5
     PyYAML 6.0
     requests 2.31.0
     setuptools 67.7.2
     six 1.16.0
-    wcwidth 0.2.8
+    wcwidth 0.2.10
 -->
 <link href="draft-ietf-teas-5g-ns-ip-mpls.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1043,11 +1043,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Implementing 5G Transport Slices</td>
-<td class="right">October 2023</td>
+<td class="right">November 2023</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Szarkowicz, et al.</td>
-<td class="center">Expires 18 April 2024</td>
+<td class="center">Expires 24 May 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1060,12 +1060,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-teas-5g-ns-ip-mpls-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-10-16" class="published">16 October 2023</time>
+<time datetime="2023-11-21" class="published">21 November 2023</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-04-18">18 April 2024</time></dd>
+<dd class="expires"><time datetime="2024-05-24">24 May 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1141,7 +1141,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 18 April 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 24 May 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1775,7 +1775,7 @@ However, this document does not exclude the instantiation of multiple ACs betwee
           <h4 id="name-transport-network-segments-">
 <a href="#section-3.4.2" class="section-number selfRef">3.4.2. </a><a href="#name-transport-network-segments-" class="section-name selfRef">Transport Network Segments and Network Slice Instantiation</a>
           </h4>
-<p id="section-3.4.2-1">In reference to architecture in <a href="#sec-5g-sli-arch" class="auto internal xref">Section 3.4.1</a>, the connectivity between NFs can be decomposed into three main types of segments that are shown in <a href="#fig-end-to-end" class="auto internal xref">Figure 6</a>:<a href="#section-3.4.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.4.2-1">In reference to the architecture depicted in <a href="#sec-5g-sli-arch" class="auto internal xref">Section 3.4.1</a>, the connectivity between NFs can be decomposed into three main types of segments that are shown in <a href="#fig-end-to-end" class="auto internal xref">Figure 6</a>:<a href="#section-3.4.2-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-3.4.2-2.1">
               <p id="section-3.4.2-2.1.1">Customer Site: Either connects two NFs located in the same Customer Site (e.g., NF1-NF2) or connects a NF to a CE (e.g., NF1-CE). This segment may not be present if the NF is the CE (e.g., NF3): in this case the AC connects the NF to the PE. The realization of this segment is driven by the 5G Network Orchestration and potentially the Customer Site Orchestration. The realization of this segment does not involve the Transport Network Orchestration.<a href="#section-3.4.2-2.1.1" class="pilcrow">¶</a></p>
@@ -2344,7 +2344,7 @@ to the limited number of traffic classes used on provider network transit links.
 The role of capacity management is to ensure the provider network
 capacity can be utilized without causing any bottlenecks.  The
 toolset used here can range from careful network planning, to
-ensure more less equal traffic distribution (i.e., equal cost load
+ensure a more or less equal traffic distribution (i.e., equal cost load
 balancing), to advanced traffic engineering techniques, with or
 without bandwidth reservations, to force more consistent load
 distribution even in non-ECMP friendly network topologies.<a href="#section-4-2.4.2" class="pilcrow">¶</a></p>
@@ -2795,8 +2795,8 @@ ranges for each slice, and use these ranges for slice identification purposes on
           <h4 id="name-5g-qos-layer">
 <a href="#section-5.1.1" class="section-number selfRef">5.1.1. </a><a href="#name-5g-qos-layer" class="section-name selfRef">5G QoS Layer</a>
           </h4>
-<p id="section-5.1.1-1">QoS treatment is indicated in the 5G QoS layer by the 5QI (5G QoS
-   indicator), as defined in <span>[<a href="#TS-23.501" class="cite xref">TS-23.501</a>]</span>. A 5QI is an identifier (ID) that is
+<p id="section-5.1.1-1">QoS treatment is indicated in the 5G QoS layer by the 5G QoS
+   Indicator (5QI), as defined in <span>[<a href="#TS-23.501" class="cite xref">TS-23.501</a>]</span>. A 5QI is an identifier that is
    used as a reference to 5G QoS characteristics (e.g., scheduling
    weights, admission thresholds, queue management thresholds, and link
    layer protocol configuration) in the RAN domain.  Given that
@@ -2811,10 +2811,10 @@ ranges for each slice, and use these ranges for slice identification purposes on
    DSCP is out of scope for this document.  Mapping recommendations
    are documented, e.g., in <span>[<a href="#I-D.henry-tsvwg-diffserv-to-qci" class="cite xref">I-D.henry-tsvwg-diffserv-to-qci</a>]</span>.<a href="#section-5.1.1-2" class="pilcrow">¶</a></p>
 <p id="section-5.1.1-3">Each slice service might have flows with multiple 5QIs. 5QIs (or, more precisely,
-   corresponding DSCP values) are visible to the provider network at SDP
+   corresponding DSCP values) are visible to the provider network at SDPs
    (i.e., at the edge of the provider network).<a href="#section-5.1.1-3" class="pilcrow">¶</a></p>
-<p id="section-5.1.1-4">In this document, this layer of QoS will be referred as '5G QoS
-   Class' ('5G QoS' in short), or '5G DSCP'.<a href="#section-5.1.1-4" class="pilcrow">¶</a></p>
+<p id="section-5.1.1-4">In this document, this layer of QoS is referred to as '5G QoS
+   Class' ('5G QoS' in short) or '5G DSCP'.<a href="#section-5.1.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="tn-qos-layer">
@@ -2824,17 +2824,17 @@ ranges for each slice, and use these ranges for slice identification purposes on
           </h4>
 <p id="section-5.1.2-1">Control of the TN resources on provider network transit links, as well as traffic
    scheduling/prioritization on provider network transit links, is based on a flat
-   (non-hierarchical) QoS model in this RFC XXXX Network Slice
+   (non-hierarchical) QoS model in this Network Slice
    realization.  That is, RFC XXXX Network Slices are assigned dedicated
    resources (e.g., QoS queues) at the edge of the provider network (at
    SDPs), while all RFC XXXX Network Slices are sharing resources (sharing
    QoS queues) on the transit links of the provider network.  Typical router
    hardware can support up to 8 traffic queues per port, therefore
-   the architecture assumes 8 traffic queues per port support in
+   the document assumes 8 traffic queues per port support in
    general.<a href="#section-5.1.2-1" class="pilcrow">¶</a></p>
-<p id="section-5.1.2-2">At this layer, QoS treatment is indicated by QoS indicator
-   specific to the encapsulation used in the provider network, and it could
-   be DSCP or MPLS Traffic Class (TC).  This layer of QoS will be referred as 'TN QoS
+<p id="section-5.1.2-2">At this layer, QoS treatment is indicated by a QoS indicator
+   specific to the encapsulation used in the provider network. Such an indicator may
+   be DSCP or MPLS Traffic Class (TC). This layer of QoS is referred to as 'TN QoS
    Class', or 'TN QoS' for short, in this document.<a href="#section-5.1.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -2845,18 +2845,18 @@ ranges for each slice, and use these ranges for slice identification purposes on
         <h3 id="name-qos-realization-models">
 <a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-qos-realization-models" class="section-name selfRef">QoS Realization Models</a>
         </h3>
-<p id="section-5.2-1">While 5QI might be exposed to the provider network, via the DSCP value
+<p id="section-5.2-1">While 5QI might be exposed to the provider network via the DSCP value
    (corresponding to specific 5QI value) set in the IP packet generated
    by NFs, some 5G deployments might use 5QI in the RAN domain only,
-   without requesting per 5QI differentiated treatment from the provider network.
-   This can be due to an NF limitation (e.g., no capability to set
+   without requesting per-5QI differentiated treatment from the provider network.
+   This might be due to a NF limitation (e.g., no capability to set
    DSCP), or it might simply depend on the overall slicing deployment
    model.  The O-RAN Alliance, for example, defines a phased approach to
-   the slicing, with initial phases utilizing only per slice, but not
-   per 5QI, differentiated treatment in the TN domain
+   the slicing, with initial phases utilizing only per-slice, but not
+   per-5QI, differentiated treatment in the TN domain
    (Annex F of <span>[<a href="#O-RAN.WG9.XPSAAS" class="cite xref">O-RAN.WG9.XPSAAS</a>]</span>).<a href="#section-5.2-1" class="pilcrow">¶</a></p>
 <p id="section-5.2-2">Therefore, from a QoS perspective, the 5G slicing connectivity
-   realization architecture defines two high-level realization models
+   realization defines two high-level realization models
    for slicing in the TN domain: a 5QI-unaware model and a 5QI-
    aware model.  Both slicing models in the TN domain could be
    used concurrently within the same 5G slice.  For example, the TN
@@ -2872,11 +2872,11 @@ ranges for each slice, and use these ranges for slice identification purposes on
 <p id="section-5.2.1-1">In 5QI-unaware mode, the DSCP values in the packets received from NF
    at SDP are ignored.  In the provider network, there is no QoS
    differentiation at the 5G QoS Class level.  The entire RFC XXXX Network
-   Slice is mapped to single TN QoS Class, and, therefore, to a single
+   Slice is mapped to a single TN QoS Class, and, therefore, to a single
    QoS queue on the routers in the provider network.  With a small number of
-   deployed 5G slices (for example only two 5G slices: eMBB and MIoT),
+   deployed 5G slices (for example, only two 5G slices: eMBB and MIoT),
    it is possible to dedicate a separate QoS queue for each slice on
-   transit routers in the provider network.  However, with introduction of private/enterprises
+   transit routers in the provider network.  However, with the introduction of private/enterprises
    slices, as the number of 5G slices (and thus corresponding RFC XXXX
    Network Slices) increases, a single QoS queue on transit links in the provider network serves
    multiple slices with similar characteristics.  QoS enforcement on
@@ -2937,7 +2937,7 @@ Fine-grained QoS enforcement   Coarse-grained QoS enforcement
 <p id="section-5.2.1-4">The original IP header retains the DCSP marking (which is ignored in
    5QI-unaware model), while the new header (MPLS or IPv6) carries QoS
    marking (MPLS Traffic Class bits for MPLS encapsulation, or DSCP for
-   SRv6/IPv6 encapsulation) related to TN CoS.  Based on TN QoS Class
+   SRv6/IPv6 encapsulation) related to TN CoS.  Based on TN CoS
    marking, per-hop behavior for all RFC XXXX Network Slices is executed on
    provider network transit links.  Provider network transit routers do not evaluate the original IP
    header for QoS-related decisions.  This model is outlined in
@@ -3005,7 +3005,7 @@ Fine-grained QoS enforcement   Coarse-grained QoS enforcement
 <a href="#name-qos-with-ipv6-encapsulation" class="selfRef">QoS with IPv6 Encapsulation</a>
             </figcaption></figure>
 </div>
-<p id="section-5.2.1-7">From the QoS perspective, both options are similar.  However, there
+<p id="section-5.2.1-7">From a QoS perspective, both options are similar.  However, there
    is one difference between the two options.  The MPLS TC is only 3
    bits (8 possible combinations), while DSCP is 6 bits (64 possible
    combinations).  Hence, SRv6 <span>[<a href="#RFC8754" class="cite xref">RFC8754</a>]</span> provides more flexibility for TN CoS
@@ -3223,9 +3223,9 @@ outbound direction at the provider network edge links.<a href="#section-5.2.1.2-
           <h4 id="name-5qi-aware-model">
 <a href="#section-5.2.2" class="section-number selfRef">5.2.2. </a><a href="#name-5qi-aware-model" class="section-name selfRef">5QI-aware Model</a>
           </h4>
-<p id="section-5.2.2-1">In the 5QI-aware model, potentially a large number of 5G QoS Classes, represented via DSCP set by NFs
+<p id="section-5.2.2-1">In the 5QI-aware model, potentially a large number of 5G QoS Classes, represented via the DSCP set by NFs
    (the architecture scales to thousands of 5G slices) is mapped
-   (multiplexed) to up to 8 TN QoS Classes used in provider network transit
+   (multiplexed) to up to 8 TN QoS Classes used in a provider network transit
    equipment, as outlined in <a href="#_figure-QoS-5QI-aware" class="auto internal xref">Figure 23</a>.<a href="#section-5.2.2-1" class="pilcrow">¶</a></p>
 <span id="name-slice-5q-qos-to-tn-qos-mapp"></span><div id="_figure-QoS-5QI-aware">
 <figure id="figure-23">
@@ -3274,8 +3274,8 @@ S ┃   └──────────┘  ┃  │           ┃┌───
 <a href="#name-slice-5q-qos-to-tn-qos-mapp" class="selfRef">Slice 5Q QoS to TN QoS Mapping (5QI-aware Model)</a>
             </figcaption></figure>
 </div>
-<p id="section-5.2.2-3">Given that in large scale deployments (large number of 5G
-   slices), the number of potential 5G QoS Classes is much higher than
+<p id="section-5.2.2-3">Given that in deployments with a large number of 5G
+   slices, the number of potential 5G QoS Classes is much higher than
    the number of TN QoS Classes, multiple 5G QoS Classes with similar
    characteristics - potentially from different slices -
    would be grouped with common operator-defined TN logic and mapped to a same TN QoS Class when transported in the
@@ -3328,8 +3328,8 @@ S ┃   └──────────┘  ┃  │           ┃┌───
 <a href="#name-example-of-3gpp-qos-mapped-" class="selfRef">Example of 3GPP QoS Mapped to TN QoS</a>
             </figcaption></figure>
 </div>
-<p id="section-5.2.2-6">In current SDO progress of 3GPP (Rel.17) and O-RAN the mapping of 5QI to
-DSCP is not expected in per-slice fashion, where 5QI to DSCP mapping may
+<p id="section-5.2.2-6">In current SDO progress of 3GPP (Release 17) and O-RAN, the mapping of 5QI to
+DSCP is not expected to be in a per-slice fashion, where 5QI to DSCP mapping may
 vary from 3GPP slice to 3GPP slice, hence the mapping of 5G QoS DSCP values
 to TN QoS Classes may be rather common.<a href="#section-5.2.2-6" class="pilcrow">¶</a></p>
 <p id="section-5.2.2-7">Like in 5QI-unaware model, the original IP header retains the DCSP
@@ -4100,10 +4100,10 @@ facilitates the detection of any mismatch between the view
 maintained by the control/management plane and the actual network
 configuration.  When mismatches are detected, corrective actions
 must be undertaken accordingly. For example, a provider may rely
-upon L3NM <span>[<a href="#RFC9182" class="cite xref">RFC9182</a>]</span> or L2NM <span>[<a href="#RFC9291" class="cite xref">RFC9291</a>]</span> to maintain the full
+upon the L3NM <span>[<a href="#RFC9182" class="cite xref">RFC9182</a>]</span> or the L2NM <span>[<a href="#RFC9291" class="cite xref">RFC9291</a>]</span> to maintain the full
 set of L3VPN/L2VPNs that are used to deliver Network Slice Services.
 The correlation between an LxVPN instance and a Network Slice Service
-is maintained using "parent-service-id" attribute (<span><a href="https://rfc-editor.org/rfc/rfc9182#section-7.3" class="relref">Section 7.3</a> of [<a href="#RFC9182" class="cite xref">RFC9182</a>]</span>.<a href="#section-8-2.3.1" class="pilcrow">¶</a></p>
+is maintained using "parent-service-id" attribute (<span><a href="https://rfc-editor.org/rfc/rfc9182#section-7.3" class="relref">Section 7.3</a> of [<a href="#RFC9182" class="cite xref">RFC9182</a>]</span>).<a href="#section-8-2.3.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-8-2.4">
           <p id="section-8-2.4.1">Means to report a set of network performance metrics to assess
@@ -4111,7 +4111,7 @@ whether the agreed slice service objectives are honored. These means are used fo
 <span>[<a href="#RFC9375" class="cite xref">RFC9375</a>]</span> can be used to report links' one-way delay,
 one-way delay variation, etc. Both conventional active/passive
 measurement methods <span>[<a href="#RFC7799" class="cite xref">RFC7799</a>]</span> and more recent telemetry methods
-(e.g. YANG Push <span>[<a href="#RFC8641" class="cite xref">RFC8641</a>]</span>) can be used.<a href="#section-8-2.4.1" class="pilcrow">¶</a></p>
+(e.g., YANG Push <span>[<a href="#RFC8641" class="cite xref">RFC8641</a>]</span>) can be used.<a href="#section-8-2.4.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-8-2.5">
           <p id="section-8-2.5.1">Means to report and expose observed performance metrics and other OAM state to customer.
@@ -4197,15 +4197,15 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
 <dd class="break"></dd>
 <dt id="I-D.ietf-sfc-multi-layer-oam">[I-D.ietf-sfc-multi-layer-oam]</dt>
         <dd>
-<span class="refAuthor">Mirsky, G.</span>, <span class="refAuthor">Meng, W.</span>, <span class="refAuthor">Ao, T.</span>, <span class="refAuthor">Khasnabish, B.</span>, <span class="refAuthor">Leung, K.</span>, and <span class="refAuthor">G. S. Mishra</span>, <span class="refTitle">"Active OAM for Service Function Chaining (SFC)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-sfc-multi-layer-oam-28</span>, <time datetime="2023-07-07" class="refDate">7 July 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-sfc-multi-layer-oam-28">https://datatracker.ietf.org/doc/html/draft-ietf-sfc-multi-layer-oam-28</a>&gt;</span>. </dd>
+<span class="refAuthor">Mirsky, G.</span>, <span class="refAuthor">Meng, W.</span>, <span class="refAuthor">Ao, T.</span>, <span class="refAuthor">Khasnabish, B.</span>, <span class="refAuthor">Leung, K.</span>, and <span class="refAuthor">G. S. Mishra</span>, <span class="refTitle">"Active Operations, Administration, and Maintenance (OAM) for Service Function Chaining (SFC)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-sfc-multi-layer-oam-28</span>, <time datetime="2023-07-07" class="refDate">7 July 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-sfc-multi-layer-oam-28">https://datatracker.ietf.org/doc/html/draft-ietf-sfc-multi-layer-oam-28</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-teas-5g-network-slice-application">[I-D.ietf-teas-5g-network-slice-application]</dt>
         <dd>
-<span class="refAuthor">Geng, X.</span>, <span class="refAuthor">Contreras, L. M.</span>, <span class="refAuthor">Rokui, R.</span>, <span class="refAuthor">Dong, J.</span>, and <span class="refAuthor">I. Bykov</span>, <span class="refTitle">"IETF Network Slice Application in 3GPP 5G End-to-End Network Slice"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-5g-network-slice-application-01</span>, <time datetime="2023-07-10" class="refDate">10 July 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-5g-network-slice-application-01">https://datatracker.ietf.org/doc/html/draft-ietf-teas-5g-network-slice-application-01</a>&gt;</span>. </dd>
+<span class="refAuthor">Geng, X.</span>, <span class="refAuthor">Contreras, L. M.</span>, <span class="refAuthor">Rokui, R.</span>, <span class="refAuthor">Dong, J.</span>, and <span class="refAuthor">I. Bykov</span>, <span class="refTitle">"IETF Network Slice Application in 3GPP 5G End-to-End Network Slice"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-5g-network-slice-application-02</span>, <time datetime="2023-10-23" class="refDate">23 October 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-5g-network-slice-application-02">https://datatracker.ietf.org/doc/html/draft-ietf-teas-5g-network-slice-application-02</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-teas-ietf-network-slice-nbi-yang">[I-D.ietf-teas-ietf-network-slice-nbi-yang]</dt>
         <dd>
-<span class="refAuthor">Wu, B.</span>, <span class="refAuthor">Dhody, D.</span>, <span class="refAuthor">Rokui, R.</span>, <span class="refAuthor">Saad, T.</span>, <span class="refAuthor">Han, L.</span>, and <span class="refAuthor">J. Mullooly</span>, <span class="refTitle">"A YANG Data Model for the IETF Network Slice Service"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-ietf-network-slice-nbi-yang-06</span>, <time datetime="2023-07-10" class="refDate">10 July 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slice-nbi-yang-06">https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slice-nbi-yang-06</a>&gt;</span>. </dd>
+<span class="refAuthor">Wu, B.</span>, <span class="refAuthor">Dhody, D.</span>, <span class="refAuthor">Rokui, R.</span>, <span class="refAuthor">Saad, T.</span>, and <span class="refAuthor">J. Mullooly</span>, <span class="refTitle">"A YANG Data Model for the IETF Network Slice Service"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-ietf-network-slice-nbi-yang-08</span>, <time datetime="2023-10-23" class="refDate">23 October 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slice-nbi-yang-08">https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slice-nbi-yang-08</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-teas-rfc3272bis">[I-D.ietf-teas-rfc3272bis]</dt>
         <dd>
