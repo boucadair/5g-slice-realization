@@ -612,7 +612,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
       The role of capacity management is to ensure the provider network
       capacity can be utilized without causing any bottlenecks.  The
       toolset used here can range from careful network planning, to
-      ensure more less equal traffic distribution (i.e., equal cost load
+      ensure a more or less equal traffic distribution (i.e., equal cost load
       balancing), to advanced traffic engineering techniques, with or
       without bandwidth reservations, to force more consistent load
       distribution even in non-ECMP friendly network topologies.
