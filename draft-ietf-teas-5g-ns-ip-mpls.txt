@@ -2278,8 +2278,8 @@ Table of Contents
    The provider network may be implemented in such a way that it has
    various types of paths, for example low-latency traffic might be
    mapped onto a different transport path to other traffic (for example
-   a particular flex-algo or a particular set of TE LSPs), as discussed
-   in Section 5.  The 5G NSO can use
+   a particular flex-algo, a particular set of TE LSPs, or a specific
+   queue [RFC9330]), as discussed in Section 5.  The 5G NSO can use
    [I-D.ietf-teas-ietf-network-slice-nbi-yang] to request low-latency
    transport for a given slice if required.  However, [RFC8299] or
    [RFC8466] do not support requesting a particular transport-type,
@@ -2713,6 +2713,12 @@ Table of Contents
               S., and L. Munoz, "A YANG Network Data Model for Layer 2
               VPNs", RFC 9291, DOI 10.17487/RFC9291, September 2022,
               <https://www.rfc-editor.org/rfc/rfc9291>.
+
+   [RFC9330]  Briscoe, B., Ed., De Schepper, K., Bagnulo, M., and G.
+              White, "Low Latency, Low Loss, and Scalable Throughput
+              (L4S) Internet Service: Architecture", RFC 9330,
+              DOI 10.17487/RFC9330, January 2023,
+              <https://www.rfc-editor.org/rfc/rfc9330>.
 
    [RFC9350]  Psenak, P., Ed., Hegde, S., Filsfils, C., Talaulikar, K.,
               and A. Gulko, "IGP Flexible Algorithm", RFC 9350,
