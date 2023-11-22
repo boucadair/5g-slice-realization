@@ -2445,8 +2445,7 @@ Table of Contents
       SFC OAM [RFC9451] should also be supported for slices that make
       uses of service function chaining [RFC7665].  An example of SFC
       OAM technique to Continuity Check, Connectivity Verification, or
-      tracing service functions is specified in
-      [I-D.ietf-sfc-multi-layer-oam].
+      tracing service functions is specified in [RFC9516].
 
    *  Providers may want to enable differentiated failure detect and
       repair features for a subset of network slices.  For example, a
@@ -2574,15 +2573,6 @@ Table of Contents
               henry-tsvwg-diffserv-to-qci-04, 13 April 2020,
               <https://datatracker.ietf.org/doc/html/draft-henry-tsvwg-
               diffserv-to-qci-04>.
-
-   [I-D.ietf-sfc-multi-layer-oam]
-              Mirsky, G., Meng, W., Ao, T., Khasnabish, B., Leung, K.,
-              and G. S. Mishra, "Active Operations, Administration, and
-              Maintenance (OAM) for Service Function Chaining (SFC)",
-              Work in Progress, Internet-Draft, draft-ietf-sfc-multi-
-              layer-oam-28, 7 July 2023,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-sfc-
-              multi-layer-oam-28>.
 
    [I-D.ietf-teas-5g-network-slice-application]
               Geng, X., Contreras, L. M., Rokui, R., Dong, J., and I.
@@ -2746,6 +2736,12 @@ Table of Contents
               Maintenance (OAM) Packet and Behavior in the Network
               Service Header (NSH)", RFC 9451, DOI 10.17487/RFC9451,
               August 2023, <https://www.rfc-editor.org/rfc/rfc9451>.
+
+   [RFC9516]  Mirsky, G., Meng, W., Ao, T., Khasnabish, B., Leung, K.,
+              and G. Mishra, "Active Operations, Administration, and
+              Maintenance (OAM) for Service Function Chaining (SFC)",
+              RFC 9516, DOI 10.17487/RFC9516, November 2023,
+              <https://www.rfc-editor.org/rfc/rfc9516>.
 
    [TR-GSTR-TN5G]
               ITU-T, "Technical Report GSTR-TN5G", February 2018,
