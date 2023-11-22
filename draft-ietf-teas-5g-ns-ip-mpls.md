@@ -2418,5 +2418,5 @@ User Plane          ╱     │           │         ╲
 {:numbered="false"}
 
    The authors would like to thank Adrian Farrel, Joel Halpern, Tarek
-   Saad, Jie Dong, and Greg Mirsky for their reviews of this document
-   and for providing valuable comments.
+   Saad, Jie Dong, Greg Mirsky, Rüdiger Geib, and Nicklous D. Morris for
+   their review of this document and for providing valuable comments.
