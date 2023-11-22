@@ -1906,7 +1906,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
       for slices that make uses of service function chaining
       {{?RFC7665}}. An example of SFC OAM technique to Continuity
       Check, Connectivity Verification, or tracing service functions
-      is specified in {{?I-D.ietf-sfc-multi-layer-oam}}.
+      is specified in {{?RFC9516}}.
 
    *  Providers may want to enable differentiated failure
       detect and repair features for a subset of network
