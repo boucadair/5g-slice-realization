@@ -38,13 +38,13 @@
     intervaltree 3.1.0
     Jinja2 3.1.2
     lxml 4.9.3
-    platformdirs 3.11.0
+    platformdirs 4.0.0
     pycountry 22.3.5
     PyYAML 6.0
     requests 2.31.0
     setuptools 67.7.2
     six 1.16.0
-    wcwidth 0.2.9
+    wcwidth 0.2.10
 -->
 <link href="draft-ietf-teas-5g-ns-ip-mpls.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1047,7 +1047,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Szarkowicz, et al.</td>
-<td class="center">Expires 12 May 2024</td>
+<td class="center">Expires 25 May 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1060,12 +1060,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-teas-5g-ns-ip-mpls-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-11-09" class="published">9 November 2023</time>
+<time datetime="2023-11-22" class="published">22 November 2023</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-05-12">12 May 2024</time></dd>
+<dd class="expires"><time datetime="2024-05-25">25 May 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1141,7 +1141,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 12 May 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 25 May 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1768,6 +1768,11 @@ However, this document does not exclude the instantiation of multiple ACs betwee
 <a href="#name-end-to-end-5g-slice-orchestr" class="selfRef">End-to-end 5G Slice Orchestration with TN</a>
             </figcaption></figure>
 </div>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-3.4.1-7.1">
+              <p id="section-3.4.1-7.1.1">The various orchestration depicted in the figure are implementation examples of the 3GPP's Network Slice Subnet Management Function (NSSMF).<a href="#section-3.4.1-7.1.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
 </section>
 </div>
 <div id="sec-tn-nsi">
@@ -2344,7 +2349,7 @@ to the limited number of traffic classes used on provider network transit links.
 The role of capacity management is to ensure the provider network
 capacity can be utilized without causing any bottlenecks.  The
 toolset used here can range from careful network planning, to
-ensure more less equal traffic distribution (i.e., equal cost load
+ensure a more or less equal traffic distribution (i.e., equal cost load
 balancing), to advanced traffic engineering techniques, with or
 without bandwidth reservations, to force more consistent load
 distribution even in non-ECMP friendly network topologies.<a href="#section-4-2.4.2" class="pilcrow">¶</a></p>
@@ -2405,8 +2410,9 @@ distribution even in non-ECMP friendly network topologies.<a href="#section-4-2.
    VLAN to RFC XXXX Network Slice mapping table is maintained for each
    AC, and the VLAN allocation is coordinated between customer orchestration and
    provider orchestration.  Thus, while VLAN hand-off is simple from
-   the NF point of view, it adds complexity due to the requirement of
-   maintaining mapping tables for each SDP.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+   the NF point of view, it adds complexity due to the requirement of maintaining
+   mapping tables for each SDP and requires a configuration task of new VLAN and
+   IP subnet for every slice on every attachment circuit.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
 <span id="name-5g-slice-with-vlan-hand-off"></span><div id="_figure-vlan-hand-off">
 <figure id="figure-12">
           <div class="alignCenter art-text artwork" id="section-4.1-2.1">
@@ -3281,7 +3287,8 @@ S ┃   └──────────┘  ┃  │           ┃┌───
    would be grouped with common operator-defined TN logic and mapped to a same TN QoS Class when transported in the
    provider network.  That is, common Per-hop Behavior (PHB) <span>[<a href="#RFC2474" class="cite xref">RFC2474</a>]</span> is executed on
    transit provider network routers for all packets grouped together. An example of this
-   approach is outlined in <a href="#_figure-QoS-5QI-mapping-example" class="auto internal xref">Figure 24</a>.<a href="#section-5.2.2-3" class="pilcrow">¶</a></p>
+   approach is outlined in <a href="#_figure-QoS-5QI-mapping-example" class="auto internal xref">Figure 24</a>. A provider may decide
+   to implement Diffserv-Intercon PHBs at the boundaries of its network domain <span>[<a href="#RFC8100" class="cite xref">RFC8100</a>]</span>.<a href="#section-5.2.2-3" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-5.2.2-4">
             <dt id="section-5.2.2-4.1">Note:</dt>
             <dd style="margin-left: 1.5em" id="section-5.2.2-4.2">
@@ -3904,7 +3911,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
 <p id="section-7.1-10">The provider network may be implemented in such a way that it has
    various types of paths, for example low-latency traffic might be
    mapped onto a different transport path to other traffic (for example
-   a particular flex-algo or a particular set of TE LSPs), as discussed
+   a particular flex-algo, a particular set of TE LSPs, or a specific queue <span>[<a href="#RFC9330" class="cite xref">RFC9330</a>]</span>), as discussed
    in <a href="#sec-qos-map" class="auto internal xref">Section 5</a>.  The 5G NSO can use
    <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="cite xref">I-D.ietf-teas-ietf-network-slice-nbi-yang</a>]</span> to request low-latency
    transport for a given slice if required.  However, <span>[<a href="#RFC8299" class="cite xref">RFC8299</a>]</span> or
@@ -4083,7 +4090,7 @@ SFC OAM <span>[<a href="#RFC9451" class="cite xref">RFC9451</a>]</span> should a
 for slices that make uses of service function chaining
 <span>[<a href="#RFC7665" class="cite xref">RFC7665</a>]</span>. An example of SFC OAM technique to Continuity
 Check, Connectivity Verification, or tracing service functions
-is specified in <span>[<a href="#I-D.ietf-sfc-multi-layer-oam" class="cite xref">I-D.ietf-sfc-multi-layer-oam</a>]</span>.<a href="#section-8-2.1.5" class="pilcrow">¶</a></p>
+is specified in <span>[<a href="#RFC9516" class="cite xref">RFC9516</a>]</span>.<a href="#section-8-2.1.5" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-8-2.2">
           <p id="section-8-2.2.1">Providers may want to enable differentiated failure
@@ -4199,10 +4206,6 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
         <dd>
 <span class="refAuthor">Henry, J.</span>, <span class="refAuthor">Szigeti, T.</span>, and <span class="refAuthor">L. M. Contreras</span>, <span class="refTitle">"Diffserv to QCI Mapping"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-henry-tsvwg-diffserv-to-qci-04</span>, <time datetime="2020-04-13" class="refDate">13 April 2020</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-henry-tsvwg-diffserv-to-qci-04">https://datatracker.ietf.org/doc/html/draft-henry-tsvwg-diffserv-to-qci-04</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="I-D.ietf-sfc-multi-layer-oam">[I-D.ietf-sfc-multi-layer-oam]</dt>
-        <dd>
-<span class="refAuthor">Mirsky, G.</span>, <span class="refAuthor">Meng, W.</span>, <span class="refAuthor">Ao, T.</span>, <span class="refAuthor">Khasnabish, B.</span>, <span class="refAuthor">Leung, K.</span>, and <span class="refAuthor">G. S. Mishra</span>, <span class="refTitle">"Active OAM for Service Function Chaining (SFC)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-sfc-multi-layer-oam-28</span>, <time datetime="2023-07-07" class="refDate">7 July 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-sfc-multi-layer-oam-28">https://datatracker.ietf.org/doc/html/draft-ietf-sfc-multi-layer-oam-28</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="I-D.ietf-teas-5g-network-slice-application">[I-D.ietf-teas-5g-network-slice-application]</dt>
         <dd>
 <span class="refAuthor">Geng, X.</span>, <span class="refAuthor">Contreras, L. M.</span>, <span class="refAuthor">Rokui, R.</span>, <span class="refAuthor">Dong, J.</span>, and <span class="refAuthor">I. Bykov</span>, <span class="refTitle">"IETF Network Slice Application in 3GPP 5G End-to-End Network Slice"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-5g-network-slice-application-02</span>, <time datetime="2023-10-23" class="refDate">23 October 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-5g-network-slice-application-02">https://datatracker.ietf.org/doc/html/draft-ietf-teas-5g-network-slice-application-02</a>&gt;</span>. </dd>
@@ -4271,6 +4274,10 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
         <dd>
 <span class="refAuthor">Baker, F.</span> and <span class="refAuthor">R. Pan</span>, <span class="refTitle">"On Queuing, Marking, and Dropping"</span>, <span class="seriesInfo">RFC 7806</span>, <span class="seriesInfo">DOI 10.17487/RFC7806</span>, <time datetime="2016-04" class="refDate">April 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7806">https://www.rfc-editor.org/rfc/rfc7806</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC8100">[RFC8100]</dt>
+        <dd>
+<span class="refAuthor">Geib, R., Ed.</span> and <span class="refAuthor">D. Black</span>, <span class="refTitle">"Diffserv-Interconnection Classes and Practice"</span>, <span class="seriesInfo">RFC 8100</span>, <span class="seriesInfo">DOI 10.17487/RFC8100</span>, <time datetime="2017-03" class="refDate">March 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8100">https://www.rfc-editor.org/rfc/rfc8100</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC8299">[RFC8299]</dt>
         <dd>
 <span class="refAuthor">Wu, Q., Ed.</span>, <span class="refAuthor">Litkowski, S.</span>, <span class="refAuthor">Tomotaki, L.</span>, and <span class="refAuthor">K. Ogaki</span>, <span class="refTitle">"YANG Data Model for L3VPN Service Delivery"</span>, <span class="seriesInfo">RFC 8299</span>, <span class="seriesInfo">DOI 10.17487/RFC8299</span>, <time datetime="2018-01" class="refDate">January 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8299">https://www.rfc-editor.org/rfc/rfc8299</a>&gt;</span>. </dd>
@@ -4303,6 +4310,10 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
         <dd>
 <span class="refAuthor">Boucadair, M., Ed.</span>, <span class="refAuthor">Gonzalez de Dios, O., Ed.</span>, <span class="refAuthor">Barguil, S.</span>, and <span class="refAuthor">L. Munoz</span>, <span class="refTitle">"A YANG Network Data Model for Layer 2 VPNs"</span>, <span class="seriesInfo">RFC 9291</span>, <span class="seriesInfo">DOI 10.17487/RFC9291</span>, <time datetime="2022-09" class="refDate">September 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9291">https://www.rfc-editor.org/rfc/rfc9291</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC9330">[RFC9330]</dt>
+        <dd>
+<span class="refAuthor">Briscoe, B., Ed.</span>, <span class="refAuthor">De Schepper, K.</span>, <span class="refAuthor">Bagnulo, M.</span>, and <span class="refAuthor">G. White</span>, <span class="refTitle">"Low Latency, Low Loss, and Scalable Throughput (L4S) Internet Service: Architecture"</span>, <span class="seriesInfo">RFC 9330</span>, <span class="seriesInfo">DOI 10.17487/RFC9330</span>, <time datetime="2023-01" class="refDate">January 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9330">https://www.rfc-editor.org/rfc/rfc9330</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC9350">[RFC9350]</dt>
         <dd>
 <span class="refAuthor">Psenak, P., Ed.</span>, <span class="refAuthor">Hegde, S.</span>, <span class="refAuthor">Filsfils, C.</span>, <span class="refAuthor">Talaulikar, K.</span>, and <span class="refAuthor">A. Gulko</span>, <span class="refTitle">"IGP Flexible Algorithm"</span>, <span class="seriesInfo">RFC 9350</span>, <span class="seriesInfo">DOI 10.17487/RFC9350</span>, <time datetime="2023-02" class="refDate">February 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9350">https://www.rfc-editor.org/rfc/rfc9350</a>&gt;</span>. </dd>
@@ -4318,6 +4329,10 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
 <dt id="RFC9451">[RFC9451]</dt>
         <dd>
 <span class="refAuthor">Boucadair, M.</span>, <span class="refTitle">"Operations, Administration, and Maintenance (OAM) Packet and Behavior in the Network Service Header (NSH)"</span>, <span class="seriesInfo">RFC 9451</span>, <span class="seriesInfo">DOI 10.17487/RFC9451</span>, <time datetime="2023-08" class="refDate">August 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9451">https://www.rfc-editor.org/rfc/rfc9451</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9516">[RFC9516]</dt>
+        <dd>
+<span class="refAuthor">Mirsky, G.</span>, <span class="refAuthor">Meng, W.</span>, <span class="refAuthor">Ao, T.</span>, <span class="refAuthor">Khasnabish, B.</span>, <span class="refAuthor">Leung, K.</span>, and <span class="refAuthor">G. Mishra</span>, <span class="refTitle">"Active Operations, Administration, and Maintenance (OAM) for Service Function Chaining (SFC)"</span>, <span class="seriesInfo">RFC 9516</span>, <span class="seriesInfo">DOI 10.17487/RFC9516</span>, <time datetime="2023-11" class="refDate">November 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9516">https://www.rfc-editor.org/rfc/rfc9516</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="TR-GSTR-TN5G">[TR-GSTR-TN5G]</dt>
         <dd>
@@ -4849,8 +4864,8 @@ is also encapsulated in IP.<a href="#appendix-C.4-2.3.1" class="pilcrow">¶</a><
 <a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
       </h2>
 <p id="appendix-D-1">The authors would like to thank Adrian Farrel, Joel Halpern, Tarek
-   Saad, Jie Dong, and Greg Mirsky for their reviews of this document
-   and for providing valuable comments.<a href="#appendix-D-1" class="pilcrow">¶</a></p>
+   Saad, Jie Dong, Greg Mirsky, Rüdiger Geib, and Nicklous D. Morris for
+   their review of this document and for providing valuable comments.<a href="#appendix-D-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="contributors">

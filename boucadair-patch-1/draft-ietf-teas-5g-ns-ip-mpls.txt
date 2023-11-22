@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 12 May 2024                                    Juniper Networks
+Expires: 25 May 2024                                    Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                         9 November 2023
+                                                        22 November 2023
 
 
  A Realization of RFC XXXX Network Slices for 5G Networks Using Current
@@ -60,7 +60,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 12 May 2024.
+   This Internet-Draft will expire on 25 May 2024.
 
 Copyright Notice
 
@@ -574,6 +574,10 @@ Table of Contents
 
             Figure 5: End-to-end 5G Slice Orchestration with TN
 
+      The various orchestration depicted in the figure are
+      implementation examples of the 3GPP's Network Slice Subnet
+      Management Function (NSSMF).
+
 3.4.2.  Transport Network Segments and Network Slice Instantiation
 
    In reference to the architecture depicted in Section 3.4.1, the
@@ -919,9 +923,9 @@ Table of Contents
       The role of capacity management is to ensure the provider network
       capacity can be utilized without causing any bottlenecks.  The
       toolset used here can range from careful network planning, to
-      ensure more less equal traffic distribution (i.e., equal cost load
-      balancing), to advanced traffic engineering techniques, with or
-      without bandwidth reservations, to force more consistent load
+      ensure a more or less equal traffic distribution (i.e., equal cost
+      load balancing), to advanced traffic engineering techniques, with
+      or without bandwidth reservations, to force more consistent load
       distribution even in non-ECMP friendly network topologies.
 
             ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
@@ -974,7 +978,9 @@ Table of Contents
    AC, and the VLAN allocation is coordinated between customer
    orchestration and provider orchestration.  Thus, while VLAN hand-off
    is simple from the NF point of view, it adds complexity due to the
-   requirement of maintaining mapping tables for each SDP.
+   requirement of maintaining mapping tables for each SDP and requires a
+   configuration task of new VLAN and IP subnet for every slice on every
+   attachment circuit.
 
    VLANs representing slices           VLANs representing slices
 
@@ -1732,7 +1738,9 @@ Table of Contents
    transported in the provider network.  That is, common Per-hop
    Behavior (PHB) [RFC2474] is executed on transit provider network
    routers for all packets grouped together.  An example of this
-   approach is outlined in Figure 24.
+   approach is outlined in Figure 24.  A provider may decide to
+   implement Diffserv-Intercon PHBs at the boundaries of its network
+   domain [RFC8100].
 
    Note:  The numbers indicated in Figure 24 (S-NSSAI, 5QI, DSCP, queue,
       etc.) are provided for illustration purposes only and should not
@@ -2276,8 +2284,8 @@ Table of Contents
    The provider network may be implemented in such a way that it has
    various types of paths, for example low-latency traffic might be
    mapped onto a different transport path to other traffic (for example
-   a particular flex-algo or a particular set of TE LSPs), as discussed
-   in Section 5.  The 5G NSO can use
+   a particular flex-algo, a particular set of TE LSPs, or a specific
+   queue [RFC9330]), as discussed in Section 5.  The 5G NSO can use
    [I-D.ietf-teas-ietf-network-slice-nbi-yang] to request low-latency
    transport for a given slice if required.  However, [RFC8299] or
    [RFC8466] do not support requesting a particular transport-type,
@@ -2437,8 +2445,7 @@ Table of Contents
       SFC OAM [RFC9451] should also be supported for slices that make
       uses of service function chaining [RFC7665].  An example of SFC
       OAM technique to Continuity Check, Connectivity Verification, or
-      tracing service functions is specified in
-      [I-D.ietf-sfc-multi-layer-oam].
+      tracing service functions is specified in [RFC9516].
 
    *  Providers may want to enable differentiated failure detect and
       repair features for a subset of network slices.  For example, a
@@ -2567,14 +2574,6 @@ Table of Contents
               <https://datatracker.ietf.org/doc/html/draft-henry-tsvwg-
               diffserv-to-qci-04>.
 
-   [I-D.ietf-sfc-multi-layer-oam]
-              Mirsky, G., Meng, W., Ao, T., Khasnabish, B., Leung, K.,
-              and G. S. Mishra, "Active OAM for Service Function
-              Chaining (SFC)", Work in Progress, Internet-Draft, draft-
-              ietf-sfc-multi-layer-oam-28, 7 July 2023,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-sfc-
-              multi-layer-oam-28>.
-
    [I-D.ietf-teas-5g-network-slice-application]
               Geng, X., Contreras, L. M., Rokui, R., Dong, J., and I.
               Bykov, "IETF Network Slice Application in 3GPP 5G End-to-
@@ -2667,6 +2666,10 @@ Table of Contents
               RFC 7806, DOI 10.17487/RFC7806, April 2016,
               <https://www.rfc-editor.org/rfc/rfc7806>.
 
+   [RFC8100]  Geib, R., Ed. and D. Black, "Diffserv-Interconnection
+              Classes and Practice", RFC 8100, DOI 10.17487/RFC8100,
+              March 2017, <https://www.rfc-editor.org/rfc/rfc8100>.
+
    [RFC8299]  Wu, Q., Ed., Litkowski, S., Tomotaki, L., and K. Ogaki,
               "YANG Data Model for L3VPN Service Delivery", RFC 8299,
               DOI 10.17487/RFC8299, January 2018,
@@ -2707,6 +2710,12 @@ Table of Contents
               VPNs", RFC 9291, DOI 10.17487/RFC9291, September 2022,
               <https://www.rfc-editor.org/rfc/rfc9291>.
 
+   [RFC9330]  Briscoe, B., Ed., De Schepper, K., Bagnulo, M., and G.
+              White, "Low Latency, Low Loss, and Scalable Throughput
+              (L4S) Internet Service: Architecture", RFC 9330,
+              DOI 10.17487/RFC9330, January 2023,
+              <https://www.rfc-editor.org/rfc/rfc9330>.
+
    [RFC9350]  Psenak, P., Ed., Hegde, S., Filsfils, C., Talaulikar, K.,
               and A. Gulko, "IGP Flexible Algorithm", RFC 9350,
               DOI 10.17487/RFC9350, February 2023,
@@ -2727,6 +2736,12 @@ Table of Contents
               Maintenance (OAM) Packet and Behavior in the Network
               Service Header (NSH)", RFC 9451, DOI 10.17487/RFC9451,
               August 2023, <https://www.rfc-editor.org/rfc/rfc9451>.
+
+   [RFC9516]  Mirsky, G., Meng, W., Ao, T., Khasnabish, B., Leung, K.,
+              and G. Mishra, "Active Operations, Administration, and
+              Maintenance (OAM) for Service Function Chaining (SFC)",
+              RFC 9516, DOI 10.17487/RFC9516, November 2023,
+              <https://www.rfc-editor.org/rfc/rfc9516>.
 
    [TR-GSTR-TN5G]
               ITU-T, "Technical Report GSTR-TN5G", February 2018,
@@ -3248,8 +3263,9 @@ C.4.  Transport Network (TN)
 Acknowledgments
 
    The authors would like to thank Adrian Farrel, Joel Halpern, Tarek
-   Saad, Jie Dong, and Greg Mirsky for their reviews of this document
-   and for providing valuable comments.
+   Saad, Jie Dong, Greg Mirsky, Rüdiger Geib, and Nicklous D.  Morris
+   for their review of this document and for providing valuable
+   comments.
 
 Contributors
 
