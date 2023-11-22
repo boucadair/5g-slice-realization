@@ -652,8 +652,9 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
    VLAN to RFC XXXX Network Slice mapping table is maintained for each
    AC, and the VLAN allocation is coordinated between customer orchestration and
    provider orchestration.  Thus, while VLAN hand-off is simple from
-   the NF point of view, it adds complexity due to the requirement of
-   maintaining mapping tables for each SDP.
+   the NF point of view, it adds complexity due to the requirement of maintaining
+   mapping tables for each SDP and requires a configuration task of new VLAN and
+   IP subnet for every slice on every attachment circuit.
 
 
 ~~~~
