@@ -978,7 +978,9 @@ Table of Contents
    AC, and the VLAN allocation is coordinated between customer
    orchestration and provider orchestration.  Thus, while VLAN hand-off
    is simple from the NF point of view, it adds complexity due to the
-   requirement of maintaining mapping tables for each SDP.
+   requirement of maintaining mapping tables for each SDP and requires a
+   configuration task of new VLAN and IP subnet for every slice on every
+   attachment circuit.
 
    VLANs representing slices           VLANs representing slices
 
