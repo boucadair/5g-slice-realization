@@ -1732,7 +1732,9 @@ Table of Contents
    transported in the provider network.  That is, common Per-hop
    Behavior (PHB) [RFC2474] is executed on transit provider network
    routers for all packets grouped together.  An example of this
-   approach is outlined in Figure 24.
+   approach is outlined in Figure 24.  A provider may decide to
+   implement Diffserv-Intercon PHBs at the boundaries of its network
+   domain [RFC8100].
 
    Note:  The numbers indicated in Figure 24 (S-NSSAI, 5QI, DSCP, queue,
       etc.) are provided for illustration purposes only and should not
@@ -2667,6 +2669,10 @@ Table of Contents
    [RFC7806]  Baker, F. and R. Pan, "On Queuing, Marking, and Dropping",
               RFC 7806, DOI 10.17487/RFC7806, April 2016,
               <https://www.rfc-editor.org/rfc/rfc7806>.
+
+   [RFC8100]  Geib, R., Ed. and D. Black, "Diffserv-Interconnection
+              Classes and Practice", RFC 8100, DOI 10.17487/RFC8100,
+              March 2017, <https://www.rfc-editor.org/rfc/rfc8100>.
 
    [RFC8299]  Wu, Q., Ed., Litkowski, S., Tomotaki, L., and K. Ogaki,
               "YANG Data Model for L3VPN Service Delivery", RFC 8299,
