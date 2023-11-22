@@ -1748,7 +1748,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    The provider network may be implemented in such a way that it has
    various types of paths, for example low-latency traffic might be
    mapped onto a different transport path to other traffic (for example
-   a particular flex-algo or a particular set of TE LSPs), as discussed
+   a particular flex-algo, a particular set of TE LSPs, or a specific queue {{?RFC9330}}), as discussed
    in {{sec-qos-map}}.  The 5G NSO can use
    {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}} to request low-latency
    transport for a given slice if required.  However, {{?RFC8299}} or
