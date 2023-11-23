@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 25 May 2024                                    Juniper Networks
+Expires: 26 May 2024                                    Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                        22 November 2023
+                                                        23 November 2023
 
 
  A Realization of RFC XXXX Network Slices for 5G Networks Using Current
@@ -60,7 +60,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 25 May 2024.
+   This Internet-Draft will expire on 26 May 2024.
 
 Copyright Notice
 
@@ -574,9 +574,8 @@ Table of Contents
 
             Figure 5: End-to-end 5G Slice Orchestration with TN
 
-      The various orchestration depicted in the figure are
-      implementation examples of the 3GPP's Network Slice Subnet
-      Management Function (NSSMF).
+      The various orchestration depicted in the figure encompass the
+      3GPP's Network Slice Subnet Management Function (NSSMF).
 
 3.4.2.  Transport Network Segments and Network Slice Instantiation
 
