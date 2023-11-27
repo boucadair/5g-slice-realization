@@ -4,7 +4,7 @@
                                                                           
 ┌ ─ ─ ─ ─ ─ ─ ─ ─       ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐       ┌ ─ ─ ─ ─ ─ ─ ─ ─ 
      Customer    │         Provider Network                Customer    │
-│      Site             │                     │       │      Site       
+│      Site 1           │                     │       │      Site 2     
            ┌────┐│       ┌────┐         ┌────┐         ┌────┐          │
 │┌──┐      │    │   AC  ││    │         │    ││  AC   ││ NF │           
  │┌─┴┐─ ─ ─│ CE ├│─ ─ ─ ─│ PE │         │ PE │─ ─ ─ ─ ─│(CE)│          │
