@@ -616,33 +616,32 @@ Table of Contents
    focus for the enforcement of end-to-end SLOs is managed at the
    Network Slice between PE interfaces connected to the AC.
 
+           ├───────────────────────TN Slice─────────────┤
 
-           |──────────────────────TN Slice────────────────|
+                             ○─────RFC XXXX ─────○
+                             │   Network Slice   │
+                             │                   │
+                             │                   │
+                             ▼                   ▼
+           ○──CS───□ □───AC──○ □──────PN───────□ ○──AC──○
+       ┌ ─ ─ ─ ─ ─ ─           ┌ ─ ─ ─ ─ ─ ─ ─ ┐         ┌ ─ ─ ─ ─ ─
+          Customer  │               Provider               Customer │
+       │   Site 1              │    Network    │         │  Site 2
+                    │        ┌────┐          ┌────┐                 │
+       │┌───┐    ┌────┐  AC  │    │          │    │ AC ┌─┴─┐
+     CS │NF1├────┤ CE ├──────┤ PE │          │ PE ├────┤NF3│        │
+     □ │└─┬─┘    └────┘      │    │          │    │    └─┬─┘
+     │    │         │        └────┘          └────┘                 │
+     │ │  │                    │               │         │
+     □  ┌─┴─┐       │                                               │
+       ││NF2│                  │               │         │
+        └───┘       │                                               │
+       └ ─ ─ ─ ─ ─ ─           └ ─ ─ ─ ─ ─ ─ ─ ┘         └ ─ ─ ─ ─ ─
 
-                            o───RFC XXXX Network──o
-                            │        Slice        │
-                            │          │          │
-                            │          |          │
-                            v          v          v
-           o──CS──□ □───AC──o □────────PN───────□ o───AC──o
-      +-------------+          +---------------+          +----------+
-      |   Customer  |          |     Provider  |          | Customer │
-      │     Site    │          │    Network    │          │   Site   |
-      |             |       +----+           +----+       |          │
-      │+---+    +----+  AC  │    │           │    │  AC  +---+       |
-    CS|│NF1├────┤ CE +------+ PE │           │ PE ├ ─ ─ ─│NF3│       │
-    □ │+-+-+    +----+      │    │           │    │      +---+       |
-    │ |  │                  +----+           +----+       |          │
-    │ │  │          │          │               │          │          |
-    □ |+-+-+        │          │               │          │          |
-      ││NF2│        │          │               │          │          |
-      |+---+        │          │               │          │          |
-      +-------------+          +---------------+          +----------+
-
-      □──────□  TN segments:
-                CS= Customer Site
-                AC= AC
-                PN= Provider Network
+                   □──────□  TN segments:
+                               CS = Customer Segment
+                               AC = Attachment Circuit
+                               PN = Provider Network
 
               Figure 6: Segmentation of the Transport Network
 
