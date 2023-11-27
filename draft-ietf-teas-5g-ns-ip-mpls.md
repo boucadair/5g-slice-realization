@@ -219,25 +219,7 @@ As discussed in Section 4.4.1 of {{TS-28.530}}, the 3GPP management system does 
 In practice, the TN may not map to a monolithic architecture and management domain. It is frequently segmented, non-uniform, and managed by different entities. For example, {{fig-1}} depicts a Network Function (NF) instance that is deployed in an edge data center (DC) connected to a NF located in a Public Cloud via a Wide Area Network (WAN) (e.g., MPLS-VPN service). In this example, the TN can be seen as an abstraction representing an end-to-end connectivity based upon three distinct domains: DC, WAN, and Public Cloud. A model for the Transport Network based on orchestration domains is introduced in {{sec-orch}}. This model permits to define more precisely where the RFC XXXX Network Slices apply.
 
 ~~~~
-     +----------------------------------+
-  +--+         5G NF (RAN or CN)        +--+
-  |  +----------------------------------+  |
-  |                                        |
-  v                                        v
-.--.  +--------------------------------+  .--.
-|NF+--+      Transport Network         +--+NF|
-'--'  +--------------------------------+  '--'
-          |             |            |
-          v             v            v
-  +---Data Center--+ +-MPLS-VPN-+  +-Public-+
-  |                | | Backbone |  | Cloud  |
-  |   .--..--.     |.--.      .--..--.      |
-  |   '--''--'     |'--'      '--''--'      |
-  |                | |          |  |        |
-  |.--..--..--..--.|.--.      .--. |        |
-  |'--''--''--''--'|'--'      '--' |        |
-  |                | |          |  |        |
-  +----------------+ +----------+  +--------+
+{::include ./drawings/TN-abstraction.txt}
 ~~~~
 {: #fig-1 title="An Example of Transport Network Decomposition" artwork-align="center"}
 
