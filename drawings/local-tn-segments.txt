@@ -12,7 +12,7 @@
        v                            v                            v        
 ┌ ─ ─ ─ ─ ─ ─ ─             ┌ ─ ─ ─ ─ ─ ─ ─ ┐             ┌ ─ ─ ─ ─ ─ ─ ─ 
     Customer   │                Transport                     Customer   │
-│   Network                 │    Network    │             │   Network     
+│   Network  1              │    Network    │             │   Network 2   
            ┌───┴┐        ┌────┐           ┌────┐         ┌────┐          │
 │┌──┐      │    │   AC   │    │           │    │   AC    │ NF │           
  │┌─┴┐─ ─ ─│ CE ├ ─ ─ ─ ─│ PE │           │ PE │─ ─ ─ ─ ─│(CE)│          │
