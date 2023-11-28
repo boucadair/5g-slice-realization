@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 30 May 2024                                    Juniper Networks
+Expires: 31 May 2024                                    Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                        27 November 2023
+                                                        28 November 2023
 
 
  A Realization of RFC XXXX Network Slices for 5G Networks Using Current
@@ -60,7 +60,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 30 May 2024.
+   This Internet-Draft will expire on 31 May 2024.
 
 Copyright Notice
 
@@ -666,23 +666,24 @@ Table of Contents
       Circuit Service Interface
       ([I-D.boro-opsawg-teas-attachment-circuit].
 
-              +-------------+                +------------------+
-              │Customer Site│  IETF APIs/DM  │  RFC XXXX NSC    │
-              │Orchestration│ <------------> │(Provider Network │
-              │             │                │ Orcherstration)  │
-              │             │                │                  │
-              +-------------+                +------------------+
-                           │                  │
-                           │                  │
-        + ─ ─ ─ ─ ─ ─ ─ ─ ─│+                +│------------------+
-        |                  │|                |│+----+            |
-        │ +--+       +----+v│   192.0.2.0/31 │v│    │            │
-        | │NF|-------| CE +--------------------+ PE │            |
-        │ +--+       +----+.1    VLAN 100    .0│    │            │
-        |     Customer      |                | +----+Provider    |
-        │       Site        │                │       Network     │
-        +-------------------+                +-------------------+
-                          |──────────AC────────|
+            ┌ ─ ─ ─ ─ ─ ─ ─ ┐                ┌ ─ ─ ─ ─ ─ ─ ─ ─
+                                                RFCXXXX NSC   │
+            │ Customer Site │                │
+              Orchestration    IETF APIs/DM    (Provider Network│
+            │               │ ◀────────────▶ │ Orchestration)
+             ─ ─ ─ ─ ─ ─ ─ ─                  ─ ─ ─ ─ ─ ─ ─ ─ ┘
+                        │                        │
+                        │                        │
+        ┌ ─ ─ ─ ─ ─ ─ ─ ┼ ┐                    ┌ ┼ ─ ─ ─ ─ ─ ─ ─ ┐
+                        ▼                        ▼
+        │ ┌──┐      ┌──┐.1│    192.0.2.0/31    │.0┌──┐           │
+          │NF├──────┤CE├──────────────────────────┤PE│
+        │ └──┘      └──┘  │      VLAN 100      │  └──┘           │
+             Customer                                Provider
+        │      Site       │                    │     Network     │
+         ─ ─ ─ ─ ─ ─ ─ ─ ─                      ─ ─ ─ ─ ─ ─ ─ ─ ─
+
+                       └─────────── AC ──────────┘
 
        Figure 7: Coordination of TN Resources for the AC Provisioning
 
