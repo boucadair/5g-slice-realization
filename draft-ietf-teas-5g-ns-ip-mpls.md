@@ -662,7 +662,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
    traffic steering, bandwidth allocation, security policies, or monitoring).
 
    One example of the realization is the arrangement, where the TN slices in the TN
-   domain are instantiated by IP tunnels (for example, IPsec or GTP-U tunnels)
+   domain are instantiated using IP tunnels (for example, IPsec or GTP-U tunnels)
    established between NFs, as depicted in {{figure-ip-hand-off}}. The transport for
    a single 5G slice might be constructed with multiple such tunnels, since a
    typical 5G slice contains many NFs - especially DUs and CUs. If a shared NF (i.e.,
