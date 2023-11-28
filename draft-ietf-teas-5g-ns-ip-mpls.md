@@ -650,7 +650,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
 
    In this option, an explicit mapping between source/destination IP addresses and
    slice's specific S-NSSAI is used. The mapping can have either local (e.g.,
-   pertaining to single NF attachment), or global TN significance. The mapping can
+   pertaining to single NF attachment) or global TN significance. The mapping can
    be realized in multiple ways, as examples:
 
    * S-NSSAI to a dedicated IP address for each NF
