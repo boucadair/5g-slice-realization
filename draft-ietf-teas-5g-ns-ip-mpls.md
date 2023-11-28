@@ -688,7 +688,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
    S-NSSAI, which makes an IP to Slice mapping table unnecessary. Alternatively,
    instead of using 2 full octets from the 8 octets in an IPv6 address, a provider
    could build a mapping table that uses only one octet or parts of an octet to
-   represent utilized S-NSSAI. This mapping is simply a local allocation method to
+   represent utilized S-NSSAI. This mapping is a local allocation method to
    allocate IPv6 addresses to NF in order to be representative of the S-NSSAI without
    redefining IPv6 semantics. IP forwarding is not altered by this method and is
    still achieved following BCP 198 {{!RFC7608}}. Different IPv6 address allocation
