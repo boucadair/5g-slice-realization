@@ -659,7 +659,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
 
    Mapping S-NSSAI to IP addresses makes IP addresses an identifier for eventual
    policy decisions in the Transport Network (e.g., Differentiated Services,
-   Traffic Steering, Bandwidth Allocation, Security Policies, Monitoring, ...).
+   traffic steering, bandwidth allocation, security policies, or monitoring).
 
    One example of the realization is the arrangement, where the TN slices in the TN
    domain are instantiated by IP tunnels (for example, IPsec or GTP-U tunnels)
