@@ -700,7 +700,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
 
    One benefit of embedding the S-NSSAI in the IPv6 address is that specific S-NSSAI
    can be identified as interesting at any place in the TN domain. This might be used,
-   for example, to selectively enable per S-NSSAI monitoring, traffic engineer or any
+   for example, to selectively enable per S-NSSAI monitoring, traffic engineering or any
    other per S-NSSAI handling, if required.
 
 ~~~
