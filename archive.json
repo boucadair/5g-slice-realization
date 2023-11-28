@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-11-26T00:29:29.939051+00:00",
+  "timestamp": "2023-11-28T00:27:39.221788+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -2684,6 +2684,444 @@
       },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 84,
+      "id": "PR_kwDOIw9g6c5gbIsb",
+      "title": "ac-api-sync figure update (Unicode)",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/84",
+      "state": "OPEN",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-27T10:49:31Z",
+      "updatedAt": "2023-11-27T14:38:41Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "6f350a68af039caeb338398f585873c25d152aca",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-ac-api-sync-figure",
+      "headRefOid": "706507c3dba0f0001f384fce72a82d1e76ac711c",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c5oVLpu",
+          "commit": {
+            "abbreviatedOid": "706507c"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-27T13:05:25Z",
+          "updatedAt": "2023-11-27T13:05:25Z",
+          "comments": [
+            {
+              "originalPosition": 21,
+              "body": "```suggestion\r\n      Orchestration    IETF APIs/DM    (Provider Network\u2502   \r\n```",
+              "createdAt": "2023-11-27T13:05:25Z",
+              "updatedAt": "2023-11-27T13:05:26Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5oV_dm",
+          "commit": {
+            "abbreviatedOid": "706507c"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "\"Provider site\" should be \"provider network\". ",
+          "createdAt": "2023-11-27T14:38:41Z",
+          "updatedAt": "2023-11-27T14:38:41Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 85,
+      "id": "PR_kwDOIw9g6c5gbMhk",
+      "title": "Update end-to-end-dp.txt",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/85",
+      "state": "MERGED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-27T10:58:17Z",
+      "updatedAt": "2023-11-27T13:06:13Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "6f350a68af039caeb338398f585873c25d152aca",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-end-to-end-dp-update",
+      "headRefOid": "c3733f0dd4179a51274d1ba087abea8d43227d1a",
+      "closedAt": "2023-11-27T13:06:12Z",
+      "mergedAt": "2023-11-27T13:06:12Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "edb707ee370b7cf0d0447e695c880d799243a454"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c5oVL8h",
+          "commit": {
+            "abbreviatedOid": "c3733f0"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-11-27T13:06:08Z",
+          "updatedAt": "2023-11-27T13:06:08Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 86,
+      "id": "PR_kwDOIw9g6c5gbfHN",
+      "title": "Update high-level-qos.txt",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/86",
+      "state": "MERGED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-27T11:49:43Z",
+      "updatedAt": "2023-11-27T13:06:43Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "6f350a68af039caeb338398f585873c25d152aca",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-high-level-qos-figure",
+      "headRefOid": "2943c872d5d0568b926b731d7e30b6c2cd47368f",
+      "closedAt": "2023-11-27T13:06:42Z",
+      "mergedAt": "2023-11-27T13:06:42Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "6db0a2de0b0d6b59b0e35ce52a54010779516336"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c5oVMKD",
+          "commit": {
+            "abbreviatedOid": "2943c87"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-11-27T13:06:36Z",
+          "updatedAt": "2023-11-27T13:06:36Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 87,
+      "id": "PR_kwDOIw9g6c5gbgD5",
+      "title": "Update high-level-qos.monopic",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/87",
+      "state": "MERGED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-27T11:52:12Z",
+      "updatedAt": "2023-11-27T13:07:01Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "6f350a68af039caeb338398f585873c25d152aca",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-Update-high-level-qos-monopic",
+      "headRefOid": "1dbf4c3f5d5c7930b6e9d32fd7b92ff1d76247ba",
+      "closedAt": "2023-11-27T13:07:01Z",
+      "mergedAt": "2023-11-27T13:07:01Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "8cb57e553014afa2ddeec3c4dbc696153af49cf8"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 88,
+      "id": "PR_kwDOIw9g6c5gbgt6",
+      "title": "Update local-tn-segments.txt",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/88",
+      "state": "MERGED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-27T11:54:06Z",
+      "updatedAt": "2023-11-27T13:07:23Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "6f350a68af039caeb338398f585873c25d152aca",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-patch-1",
+      "headRefOid": "af16b6898125ab87a3d80efe82dc173d431f5027",
+      "closedAt": "2023-11-27T13:07:22Z",
+      "mergedAt": "2023-11-27T13:07:22Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "da5b83ba5699561c9a24581da80e9e94eef58120"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c5oVMdL",
+          "commit": {
+            "abbreviatedOid": "af16b68"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-11-27T13:07:17Z",
+          "updatedAt": "2023-11-27T13:07:17Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 89,
+      "id": "PR_kwDOIw9g6c5gbshk",
+      "title": "add-tn-sections-monopic",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/89",
+      "state": "MERGED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-27T12:25:54Z",
+      "updatedAt": "2023-11-27T13:08:17Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "6f350a68af039caeb338398f585873c25d152aca",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-add-tn-sections-monopic",
+      "headRefOid": "c99b19bdc090da10833cdd2b91a64273438d2645",
+      "closedAt": "2023-11-27T13:08:16Z",
+      "mergedAt": "2023-11-27T13:08:16Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "cbdb8d6bc6b2a352b651a5f9d871f9685baeb176"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 90,
+      "id": "PR_kwDOIw9g6c5gbsvh",
+      "title": "Update tn-sections.txt",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/90",
+      "state": "MERGED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-27T12:26:28Z",
+      "updatedAt": "2023-11-27T13:08:06Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "6f350a68af039caeb338398f585873c25d152aca",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-tn-section-figure",
+      "headRefOid": "60212b1047523caf9b102bf2e0a0f99104bb7233",
+      "closedAt": "2023-11-27T13:08:06Z",
+      "mergedAt": "2023-11-27T13:08:06Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "8b61c7b3abbf24b8c797d9e0e87f05aa66bdf1dc"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c5oVMxV",
+          "commit": {
+            "abbreviatedOid": "60212b1"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-11-27T13:08:01Z",
+          "updatedAt": "2023-11-27T13:08:01Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 91,
+      "id": "PR_kwDOIw9g6c5gbs1S",
+      "title": "Update pe-ce-ac.txt",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/91",
+      "state": "MERGED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-27T12:26:42Z",
+      "updatedAt": "2023-11-27T13:08:35Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "6f350a68af039caeb338398f585873c25d152aca",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-pe-ce-ac-figure",
+      "headRefOid": "c8b2ca36b1e9138e0adf09c0e9390b3fd623e675",
+      "closedAt": "2023-11-27T13:08:35Z",
+      "mergedAt": "2023-11-27T13:08:34Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "96f6259b0442f03161645214bfabeda774bc01fd"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c5oVM_E",
+          "commit": {
+            "abbreviatedOid": "c8b2ca3"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-11-27T13:08:29Z",
+          "updatedAt": "2023-11-27T13:08:29Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 92,
+      "id": "PR_kwDOIw9g6c5gcfSF",
+      "title": "Update TN-abstraction.txt",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/92",
+      "state": "MERGED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-27T14:25:25Z",
+      "updatedAt": "2023-11-27T14:36:43Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "96f6259b0442f03161645214bfabeda774bc01fd",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-tn-abstraction-figure",
+      "headRefOid": "17f39e043155773791cdd48b874f0b21c740efa2",
+      "closedAt": "2023-11-27T14:36:42Z",
+      "mergedAt": "2023-11-27T14:36:42Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "d8f5faf857008d396f03a4a76617ec692ecc05cc"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c5oV-NN",
+          "commit": {
+            "abbreviatedOid": "17f39e0"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-11-27T14:36:38Z",
+          "updatedAt": "2023-11-27T14:36:38Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 93,
+      "id": "PR_kwDOIw9g6c5gcf8Z",
+      "title": "TN-abstraction-monopic-addition",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/93",
+      "state": "MERGED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-27T14:26:48Z",
+      "updatedAt": "2023-11-27T14:36:55Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "96f6259b0442f03161645214bfabeda774bc01fd",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-tn-abstraction-monopic-addition",
+      "headRefOid": "bf6c36deae50633ef9b904a1f10dc45fd5ed6fa5",
+      "closedAt": "2023-11-27T14:36:54Z",
+      "mergedAt": "2023-11-27T14:36:54Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "7c3b72b76e2d095029ea0ff14f4409d8fafd3958"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 94,
+      "id": "PR_kwDOIw9g6c5gchPv",
+      "title": "TN-Deccomposition - chnagjng to figure reference",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/94",
+      "state": "MERGED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-27T14:29:37Z",
+      "updatedAt": "2023-11-27T14:37:26Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "96f6259b0442f03161645214bfabeda774bc01fd",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-tn-decomposition-figure-reference",
+      "headRefOid": "46122e3951f33db037b63bf7c2871c5842fbaf69",
+      "closedAt": "2023-11-27T14:37:25Z",
+      "mergedAt": "2023-11-27T14:37:25Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "b5c532cad85b342019e05a6fc28ad55ec9b3e465"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c5oV-tb",
+          "commit": {
+            "abbreviatedOid": "46122e3"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-11-27T14:37:19Z",
+          "updatedAt": "2023-11-27T14:37:19Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
