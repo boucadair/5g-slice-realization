@@ -668,7 +668,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
    typical 5G slice contains many NFs - especially DUs and CUs. If a shared NF (i.e.,
    an NF that serves multiple slices, for example a shared DU) is deployed, multiple
    tunnels from shared NF are established, each tunnel representing a single slice.
-   
+
 ~~~~
 {::include ./drawings/ip-hand-off.txt}
 ~~~~
@@ -680,7 +680,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
    The IP and VLAN hand-offs are not mutually exclusive, but instead could be used
    concurrently. Since the TN doesn't recognize S-NSSAI, a mapping table similar to
    the VLAN Hand-off solution must be utilized {{sec-vlan-handoff}}.
-   
+
    The mapping table can be simplified if, for example, IPv6 addressing is used to
    address NFs. An IPv6 address is a 128-bit long field, while the S-NSSAI is a
    32-bit field: Slice/Service Type (SST): 8 bits, Slice Differentiator (SD): 24
@@ -694,7 +694,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
    still achieved following BCP 198 {{!RFC7608}}. Different IPv6 address allocation
    schemes following this approach may be used, with one example allocation shown
    in {{figure-11}}.
-   
+
    Note that this addressing scheme is local to an ingress or egress NF; intermediary
    TN nodes are not required to associate any additional semantic with IPv6 address.
 
