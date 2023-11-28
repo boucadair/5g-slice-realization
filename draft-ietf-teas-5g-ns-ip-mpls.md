@@ -702,6 +702,10 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
    can be identified as interesting at any place in the TN domain. This might be used,
    for example, to selectively enable per S-NSSAI monitoring, traffic engineering or any
    other per S-NSSAI handling, if required.
+   
+   However, operators using such mapping method should be aware of the implications
+   of any change of S-NSSAI on the addressing plans. It is out of scope of this document
+   to elaborate on these implications.
 
 ~~~
              NF specific          reserved
