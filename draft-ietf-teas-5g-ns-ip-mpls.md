@@ -735,7 +735,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
    Therefore, for customer A eMBB the tunnel IP addresses are auto-derived (without the need
    for an explicit mapping table) as the IP's {2001:db8:a::100:1, 2001:db8:b::100:1},
    where {:0100:0001} are used as the last two octets, and for customer B MIoT (SST=3,
-   SD=00003) tunnel uses the IP's {2001:db8:a::0300:0003, 2001:db8:b::0300:0003} and simply
+   SD=00003) tunnel uses the IP's {2001:db8:a::300:3, 2001:db8:b::300:3} and simply
    adds {:0300:0003} as the last two octets.
 
 ~~~~
