@@ -1020,13 +1020,13 @@ Table of Contents
    Differentiated Services, traffic steering, bandwidth allocation,
    security policies, or monitoring).
 
-   One example of the realization is the arrangement, where the TN
-   slices in the TN domain are instantiated using IP tunnels (for
-   example, IPsec or GTP-U tunnels) established between NFs, as depicted
-   in Figure 13.  The transport for a single 5G slice might be
-   constructed with multiple such tunnels, since a typical 5G slice
-   contains many NFs - especially DUs and CUs.  If a shared NF (i.e., an
-   NF that serves multiple slices, for example a shared DU) is deployed,
+   One example of the realization is the arrangement, where the slices
+   in the TN domain are instantiated using IP tunnels (for example,
+   IPsec or GTP-U tunnels) established between NFs, as depicted in
+   Figure 13.  The transport for a single 5G slice might be constructed
+   with multiple such tunnels, since a typical 5G slice contains many
+   NFs - especially DUs and CUs.  If a shared NF (i.e., an NF that
+   serves multiple slices, for example a shared DU) is deployed,
    multiple tunnels from shared NF are established, each tunnel
    representing a single slice.
 
