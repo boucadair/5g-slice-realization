@@ -656,6 +656,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
    * S-NSSAI to a dedicated IP address for each NF
    * S-NSSAI to a pool of IP addresses for global TN deployment
    * S-NSSAI to a subset of bits of an IP address
+   * Use a deterministic algorithm to map S-NSAAI to an IP subnet, prefix, or pools. For example, adaptations to the algorithm defined in {{?RFC7422}} may be considered.
 
    Mapping S-NSSAI to IP addresses makes IP addresses an identifier for eventual
    policy decisions in the Transport Network (e.g., Differentiated Services,
