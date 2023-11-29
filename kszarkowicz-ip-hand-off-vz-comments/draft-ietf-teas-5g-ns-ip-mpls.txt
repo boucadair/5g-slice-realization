@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 31 May 2024                                    Juniper Networks
+Expires: 1 June 2024                                    Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                        28 November 2023
+                                                        29 November 2023
 
 
  A Realization of RFC XXXX Network Slices for 5G Networks Using Current
@@ -60,7 +60,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 31 May 2024.
+   This Internet-Draft will expire on 1 June 2024.
 
 Copyright Notice
 
@@ -1015,6 +1015,10 @@ Table of Contents
 
    *  S-NSSAI to a subset of bits of an IP address
 
+   *  Use a deterministic algorithm to map S-NSAAI to an IP subnet,
+      prefix, or pools.  For example, adaptations to the algorithm
+      defined in [RFC7422] may be considered.
+
    Mapping S-NSSAI to IP addresses makes IP addresses an identifier for
    eventual policy decisions in the Transport Network (e.g.,
    Differentiated Services, traffic steering, bandwidth allocation,
@@ -1083,6 +1087,10 @@ Table of Contents
    per S-NSSAI monitoring, traffic engineering or any other per S-NSSAI
    handling, if required.
 
+   However, operators using such mapping method should be aware of the
+   implications of any change of S-NSSAI on the addressing plans.  It is
+   out of scope of this document to elaborate on these implications.
+
                             NF specific          reserved
                        (not slice specific)     for S-NSSAI
                    <───────────────────────────> <───────>
@@ -1110,11 +1118,12 @@ Table of Contents
    shows two slices: customer A eMBB (SST=01, SD=00001) and customer B
    MIoT (SST=03, SD=00003).  Therefore, for customer A eMBB the tunnel
    IP addresses are auto-derived (without the need for an explicit
-   mapping table) as the IP's {2001:db8:a::0100:0001,
-   2001:db8:b::0100:0001}, where {:0100:0001} are used as the last two
-   octets, and for customer B MIoT (SST=3, SD=00003) tunnel uses the
-   IP's {2001:db8:a::0300:0003, 2001:db8:b::0300:0003} and simply adds
-   {:0300:0003} as the last two octets.
+   mapping table) as the IP's {2001:db8:a::100:1, 2001:db8:b::100:1},
+   where {:0100:0001} are used as the last two octets, and for customer
+   B MIoT (SST=3, SD=00003) tunnel uses the IP's {2001:db8:a::300:3,
+   2001:db8:b::300:3} and simply adds {:0300:0003} as the last two
+   octets.  Leading zeros are not represented in IPv6 addresses as per
+   [RFC5952].
 
     2001:db8::a:0:0/96 (NF-A)                2001:db8::b:0:0/96 (NF-B)
 
@@ -2662,6 +2671,11 @@ Table of Contents
               RFC 5714, DOI 10.17487/RFC5714, January 2010,
               <https://www.rfc-editor.org/rfc/rfc5714>.
 
+   [RFC5952]  Kawamura, S. and M. Kawashima, "A Recommendation for IPv6
+              Address Text Representation", RFC 5952,
+              DOI 10.17487/RFC5952, August 2010,
+              <https://www.rfc-editor.org/rfc/rfc5952>.
+
    [RFC6291]  Andersson, L., van Helvoort, H., Bonica, R., Romascanu,
               D., and S. Mansfield, "Guidelines for the Use of the "OAM"
               Acronym in the IETF", BCP 161, RFC 6291,
@@ -2679,6 +2693,12 @@ Table of Contents
               and Maintenance (OAM) Tools", RFC 7276,
               DOI 10.17487/RFC7276, June 2014,
               <https://www.rfc-editor.org/rfc/rfc7276>.
+
+   [RFC7422]  Donley, C., Grundemann, C., Sarawat, V., Sundaresan, K.,
+              and O. Vautrin, "Deterministic Address Mapping to Reduce
+              Logging in Carrier-Grade NAT Deployments", RFC 7422,
+              DOI 10.17487/RFC7422, December 2014,
+              <https://www.rfc-editor.org/rfc/rfc7422>.
 
    [RFC7665]  Halpern, J., Ed. and C. Pignataro, Ed., "Service Function
               Chaining (SFC) Architecture", RFC 7665,
