@@ -1047,7 +1047,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Szarkowicz, et al.</td>
-<td class="center">Expires 25 May 2024</td>
+<td class="center">Expires 1 June 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1060,12 +1060,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-teas-5g-ns-ip-mpls-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-11-22" class="published">22 November 2023</time>
+<time datetime="2023-11-29" class="published">29 November 2023</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-05-25">25 May 2024</time></dd>
+<dd class="expires"><time datetime="2024-06-01">1 June 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1141,7 +1141,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 25 May 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 1 June 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1420,25 +1420,25 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <figure id="figure-1">
           <div class="alignCenter art-text artwork" id="section-3.1-5.1">
 <pre>
-     +----------------------------------+
-  +--+         5G NF (RAN or CN)        +--+
-  |  +----------------------------------+  |
-  |                                        |
-  v                                        v
-.--.  +--------------------------------+  .--.
-|NF+--+      Transport Network         +--+NF|
-'--'  +--------------------------------+  '--'
-          |             |            |
-          v             v            v
-  +---Data Center--+ +-MPLS-VPN-+  +-Public-+
-  |                | | Backbone |  | Cloud  |
-  |   .--..--.     |.--.      .--..--.      |
-  |   '--''--'     |'--'      '--''--'      |
-  |                | |          |  |        |
-  |.--..--..--..--.|.--.      .--. |        |
-  |'--''--''--''--'|'--'      '--' |        |
-  |                | |          |  |        |
-  +----------------+ +----------+  +--------+
+      ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+ ┌─────      5G RAN or CORE Network      ├────┐
+ │    └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─     │
+ │                                            │
+ │                                            │
+ ▼                                            ▼
+┌──┐  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─   ┌──┐
+│NF├──         Transport Network         ├──┤NF│
+└──┘  └ ─ ┬ ─ ─ ─ ─ ─ ─ ─ ─ ┬ ─ ─ ─ ─ ─ ┬   └──┘
+          │                 │           │
+          │                 │           │
+          ▼                 ▼           ▼
+  ┌ ─ Data Center ─   ┌ MPLS VPN─   ┌ Public─
+                   │    Backbone │    Cloud  │
+  │   ┌───┐┌───┐     ┌┴─┐      ┌──┐┌┴─┐
+      └───┘└───┘   │ └──┘      └─┬┘└──┘      │
+  │┌──┐┌──┐┌──┐┌──┐  ┌┴─┐      ┌──┐ │
+   └──┘└──┘└──┘└──┘│ └──┘      └─┬┘          │
+  └ ─ ─ ─ ─ ─ ─ ─ ─   └ ─ ─ ─ ─ ─   └ ─ ─ ─ ─
 </pre>
 </div>
 <figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
@@ -1501,7 +1501,7 @@ There are different options to implement TN slices based upon
 
 ┌ ─ ─ ─ ─ ─ ─ ─ ─       ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐       ┌ ─ ─ ─ ─ ─ ─ ─ ─
      Customer    │         Provider Network                Customer    │
-│      Site             │                     │       │      Site
+│      Site 1           │                     │       │      Site 2
            ┌────┐│       ┌────┐         ┌────┐         ┌────┐          │
 │┌──┐      │    │   AC  ││    │         │    ││  AC   ││ NF │
  │┌─┴┐─ ─ ─│ CE ├│─ ─ ─ ─│ PE │         │ PE │─ ─ ─ ─ ─│(CE)│          │
@@ -1557,7 +1557,12 @@ There are different options to implement TN slices based upon
           <dd class="break"></dd>
 <dt id="section-3.3-4.15">Attachment Circuit (AC):</dt>
           <dd style="margin-left: 1.5em" id="section-3.3-4.16">
-            <p id="section-3.3-4.16.1">The logical connection that attaches a CE to a PE. A CE is connected to a PE via one or multiple ACs. An AC is technology-specific. For consistency with the AC data model terminology (e.g., <span>[<a href="#RFC9182" class="cite xref">RFC9182</a>]</span>), this document assumes that an AC is configured on a “bearer”, which represents the underlying connectivity. Examples of ACs are Virtual Local Area Networks (VLANs) (AC) configured on a physical interface (bearer) or an Overlay VXLAN EVI (AC) configured on an IP underlay (bearer).<a href="#section-3.3-4.16.1" class="pilcrow">¶</a></p>
+            <p id="section-3.3-4.16.1">The logical connection that attaches a CE to a PE. A CE is connected to a PE via one or multiple ACs. An AC is technology-specific. For consistency with the AC data models terminology (e.g., <span>[<a href="#I-D.ietf-opsawg-teas-attachment-circuit" class="cite xref">I-D.ietf-opsawg-teas-attachment-circuit</a>]</span> and <span>[<a href="#I-D.ietf-opsawg-ntw-attachment-circuit" class="cite xref">I-D.ietf-opsawg-ntw-attachment-circuit</a>]</span>), this document assumes that an AC is configured on a "bearer", which represents the underlying connectivity.<a href="#section-3.3-4.16.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-3.3-4.17"></dt>
+          <dd style="margin-left: 1.5em" id="section-3.3-4.18">
+            <p id="section-3.3-4.18.1">Examples of ACs are Virtual Local Area Networks (VLANs) (AC) configured on a physical interface (bearer) or an Overlay VXLAN EVI (AC) configured on an IP underlay (bearer).<a href="#section-3.3-4.18.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -1572,7 +1577,7 @@ However, this document does not exclude the instantiation of multiple ACs betwee
           <h4 id="name-distributed-pe-and-ce">
 <a href="#section-3.3.1" class="section-number selfRef">3.3.1. </a><a href="#name-distributed-pe-and-ce" class="section-name selfRef">Distributed PE and CE</a>
           </h4>
-<p id="section-3.3.1-1">This document uses the concept of distributed CEs and PEs (e.g., <span><a href="https://rfc-editor.org/rfc/rfc4664#section-3.4.3" class="relref">Section 3.4.3</a> of [<a href="#RFC4664" class="cite xref">RFC4664</a>]</span>). This approach consolidates a definition of CE/PE/AC that is consistent with the orchestration perimeters. The CEs and PEs delimit respectively the customer and provider orchestration domains, while the AC interconnects these domains.<a href="#section-3.3.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.3.1-1">This document uses the concept of distributed CEs and PEs (e.g., <span><a href="https://rfc-editor.org/rfc/rfc4664#section-3.4.3" class="relref">Section 3.4.3</a> of [<a href="#RFC4664" class="cite xref">RFC4664</a>]</span>). This approach consolidates a definition of CE/AC/PE that is consistent with the orchestration perimeters. The CEs and PEs delimit respectively the customer and provider orchestration domains, while the AC interconnects these domains.<a href="#section-3.3.1-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-3.3.1-2">
             <dt id="section-3.3.1-2.1">Distributed CE:</dt>
             <dd style="margin-left: 1.5em" id="section-3.3.1-2.2">
@@ -1581,7 +1586,7 @@ However, this document does not exclude the instantiation of multiple ACs betwee
             <dd class="break"></dd>
 <dt id="section-3.3.1-2.3">Distributed PE:</dt>
             <dd style="margin-left: 1.5em" id="section-3.3.1-2.4">
-              <p id="section-3.3.1-2.4.1">The logical connectivity is realized by configuring  multiple devices in the Transport Network (provider orchestration domain). The PE function is distributed. An example of a distributed PE is the “Managed CE service”. For example, a provider delivers VPN services using CEs and PEs which are both managed by the provider (case (iii) in <a href="#fig-50" class="auto internal xref">Figure 3</a>). The managed CE can also be a Data Center Gateway as depicted in the example (iv) of <a href="#fig-50" class="auto internal xref">Figure 3</a>. A provider-managed CE may attach to CEs of multiple customers. However, this device is part of the provider network.<a href="#section-3.3.1-2.4.1" class="pilcrow">¶</a></p>
+              <p id="section-3.3.1-2.4.1">The logical connectivity is realized by configuring  multiple devices in the Transport Network (provider orchestration domain). The PE function is distributed. An example of a distributed PE is the "Managed CE service". For example, a provider delivers VPN services using CEs and PEs which are both managed by the provider (case (iii) in <a href="#fig-50" class="auto internal xref">Figure 3</a>). The managed CE can also be a Data Center Gateway as depicted in the example (iv) of <a href="#fig-50" class="auto internal xref">Figure 3</a>. A provider-managed CE may attach to CEs of multiple customers. However, this device is part of the provider network.<a href="#section-3.3.1-2.4.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 </dl>
@@ -1664,7 +1669,7 @@ However, this document does not exclude the instantiation of multiple ACs betwee
           <h4 id="name-service-aware-ce">
 <a href="#section-3.3.3" class="section-number selfRef">3.3.3. </a><a href="#name-service-aware-ce" class="section-name selfRef">Service-aware CE</a>
           </h4>
-<p id="section-3.3.3-1">While in most cases CEs connect to PEs using IP (e.g., VLANs), a CE may also connect to the provider network using MPLS -potentially over IP tunnels- or SRv6. The CE has awareness of provider services configuration (e.g., control plane identifiers such as Route Targets and Route Distinguishers). An example of such an AC is depicted in <a href="#_figure-51" class="auto internal xref">Figure 4</a>. This is a source of confusion since these configurations are typically enforced on PEs. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE.<a href="#section-3.3.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.3.3-1">While in most cases CEs connect to PEs using IP (e.g., VLANs), a CE may also connect to the provider network using MPLS -potentially over IP tunnels- or Segment Routing over IPv6 (SRv6) <span>[<a href="#RFC8754" class="cite xref">RFC8754</a>]</span>. The CE has awareness of provider services configuration (e.g., control plane identifiers such as Route Targets (RTs) and Route Distinguishers (RDs)). An example of such an AC is depicted in <a href="#_figure-51" class="auto internal xref">Figure 4</a>. This is a source of confusion since these configurations are typically enforced on PEs. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE.<a href="#section-3.3.3-1" class="pilcrow">¶</a></p>
 <span id="name-example-of-mpls-based-attac"></span><div id="_figure-51">
 <figure id="figure-4">
             <div class="alignCenter art-text artwork" id="section-3.3.3-2.1">
@@ -1770,7 +1775,7 @@ However, this document does not exclude the instantiation of multiple ACs betwee
 </div>
 <ul class="normal ulEmpty">
 <li class="normal ulEmpty" id="section-3.4.1-7.1">
-              <p id="section-3.4.1-7.1.1">The various orchestration depicted in the figure are implementation examples of the 3GPP's Network Slice Subnet Management Function (NSSMF).<a href="#section-3.4.1-7.1.1" class="pilcrow">¶</a></p>
+              <p id="section-3.4.1-7.1.1">The various orchestration depicted in the figure encompass the 3GPP's Network Slice Subnet Management Function (NSSMF).<a href="#section-3.4.1-7.1.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </section>
@@ -1798,33 +1803,32 @@ However, this document does not exclude the instantiation of multiple ACs betwee
 <figure id="figure-6">
             <div class="alignCenter art-text artwork" id="section-3.4.2-4.1">
 <pre>
+      ├───────────────────────TN Slice─────────────┤
 
-       |──────────────────────TN Slice────────────────|
+                        ○─────RFC XXXX ─────○
+                        │   Network Slice   │
+                        │                   │
+                        │                   │
+                        ▼                   ▼
+      ○──CS───□ □───AC──○ □──────PN───────□ ○──AC──○
+  ┌ ─ ─ ─ ─ ─ ─           ┌ ─ ─ ─ ─ ─ ─ ─ ┐         ┌ ─ ─ ─ ─ ─
+     Customer  │               Provider               Customer │
+  │   Site 1              │    Network    │         │  Site 2
+               │        ┌────┐          ┌────┐                 │
+  │┌───┐    ┌────┐  AC  │    │          │    │ AC ┌─┴─┐
+CS │NF1├────┤ CE ├──────┤ PE │          │ PE ├────┤NF3│        │
+□ │└─┬─┘    └────┘      │    │          │    │    └─┬─┘
+│    │         │        └────┘          └────┘                 │
+│ │  │                    │               │         │
+□  ┌─┴─┐       │                                               │
+  ││NF2│                  │               │         │
+   └───┘       │                                               │
+  └ ─ ─ ─ ─ ─ ─           └ ─ ─ ─ ─ ─ ─ ─ ┘         └ ─ ─ ─ ─ ─
 
-                        o───RFC XXXX Network──o
-                        │        Slice        │
-                        │          │          │
-                        │          |          │
-                        v          v          v
-       o──CS──□ □───AC──o □────────PN───────□ o───AC──o
-  +-------------+          +---------------+          +----------+
-  |   Customer  |          |     Provider  |          | Customer │
-  │     Site    │          │    Network    │          │   Site   |
-  |             |       +----+           +----+       |          │
-  │+---+    +----+  AC  │    │           │    │  AC  +---+       |
-CS|│NF1├────┤ CE +------+ PE │           │ PE ├ ─ ─ ─│NF3│       │
-□ │+-+-+    +----+      │    │           │    │      +---+       |
-│ |  │                  +----+           +----+       |          │
-│ │  │          │          │               │          │          |
-□ |+-+-+        │          │               │          │          |
-  ││NF2│        │          │               │          │          |
-  |+---+        │          │               │          │          |
-  +-------------+          +---------------+          +----------+
-
-  □──────□  TN segments:
-            CS= Customer Site
-            AC= AC
-            PN= Provider Network
+              □──────□  TN segments:
+                          CS = Customer Segment
+                          AC = Attachment Circuit
+                          PN = Provider Network
 </pre>
 </div>
 <figcaption><a href="#figure-6" class="selfRef">Figure 6</a>:
@@ -1844,36 +1848,36 @@ interconnection is technology-specific and requires coordination between the Cus
             <dd style="margin-left: 1.5em" id="section-3.4.2-5.4">
               <p id="section-3.4.2-5.4.1"><a href="#_figure-4" class="auto internal xref">Figure 7</a> is a basic example of a Layer 3 CE-PE link realization
 with shared network resources (such as VLAN-IDs and IP prefixes) which
-are passed between Orchestrators via a dedicated interface, e.g., the RFC XXXX Network Slice Service Interface <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="cite xref">I-D.ietf-teas-ietf-network-slice-nbi-yang</a>]</span> or the Attachment Circuit Service Interface (<span>[<a href="#I-D.boro-opsawg-teas-attachment-circuit" class="cite xref">I-D.boro-opsawg-teas-attachment-circuit</a>]</span>.<a href="#section-3.4.2-5.4.1" class="pilcrow">¶</a></p>
+are passed between Orchestrators via a dedicated interface, e.g., the RFC XXXX Network Slice Service Interface <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="cite xref">I-D.ietf-teas-ietf-network-slice-nbi-yang</a>]</span> or the Attachment Circuit Service Interface (<span>[<a href="#I-D.ietf-opsawg-teas-attachment-circuit" class="cite xref">I-D.ietf-opsawg-teas-attachment-circuit</a>]</span>.<a href="#section-3.4.2-5.4.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 </dl>
-<span id="name-coordination-of-tn-resource"></span><div id="_figure-4">
+<span id="name-coordination-of-transport-n"></span><div id="_figure-4">
 <figure id="figure-7">
             <div class="alignCenter art-text artwork" id="section-3.4.2-6.1">
 <pre>
-      +-------------+                +------------------+
-      │Customer Site│  IETF APIs/DM  │  RFC XXXX NSC    │
-      │Orchestration│ &lt;------------&gt; │(Provider Network │
-      │             │                │ Orcherstration)  │
-      │             │                │                  │
-      +-------------+                +------------------+
-                   │                  │
-                   │                  │
-+ ─ ─ ─ ─ ─ ─ ─ ─ ─│+                +│------------------+
-|                  │|                |│+----+            |
-│ +--+       +----+v│   192.0.2.0/31 │v│    │            │
-| │NF|-------| CE +--------------------+ PE │            |
-│ +--+       +----+.1    VLAN 100    .0│    │            │
-|     Customer      |                | +----+Provider    |
-│       Site        │                │       Network     │
-+-------------------+                +-------------------+
-                  |──────────AC────────|
+    ┌ ─ ─ ─ ─ ─ ─ ─ ┐                ┌ ─ ─ ─ ─ ─ ─ ─ ─
+                                        RFCXXXX NSC   │
+    │ Customer Site │                │
+      Orchestration    IETF APIs/DM    (Provider Network│
+    │               │ ◀────────────▶ │ Orchestration)
+     ─ ─ ─ ─ ─ ─ ─ ─                  ─ ─ ─ ─ ─ ─ ─ ─ ┘
+                │                        │
+                │                        │
+┌ ─ ─ ─ ─ ─ ─ ─ ┼ ┐                    ┌ ┼ ─ ─ ─ ─ ─ ─ ─ ┐
+                ▼                        ▼
+│ ┌──┐      ┌──┐.1│    192.0.2.0/31    │.0┌──┐           │
+  │NF├──────┤CE├──────────────────────────┤PE│
+│ └──┘      └──┘  │      VLAN 100      │  └──┘           │
+     Customer                                Provider
+│      Site       │                    │     Network     │
+ ─ ─ ─ ─ ─ ─ ─ ─ ─                      ─ ─ ─ ─ ─ ─ ─ ─ ─
 
+               └─────────── AC ──────────┘
 </pre>
 </div>
 <figcaption><a href="#figure-7" class="selfRef">Figure 7</a>:
-<a href="#name-coordination-of-tn-resource" class="selfRef">Coordination of TN Resources for the AC Provisioning</a>
+<a href="#name-coordination-of-transport-n" class="selfRef">Coordination of Transport Network Resources for the AC Provisioning</a>
             </figcaption></figure>
 </div>
 </section>
@@ -2300,12 +2304,12 @@ For instance, consider a slice based on split-CU in the RAN, both CU-UP and CU-C
    with the following characteristics:<a href="#section-4-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-4-2.1">
-          <p id="section-4-2.1.1">Layer 2 Virtual Private Network (L2VPN)/Layer 3 Virtual Private Network (L3VPN) service instances for logical separation:<a href="#section-4-2.1.1" class="pilcrow">¶</a></p>
+          <p id="section-4-2.1.1">Layer 2 Virtual Private Network (L2VPN) <span>[<a href="#RFC4664" class="cite xref">RFC4664</a>]</span> and/or Layer 3 Virtual Private Network (L3VPN) <span>[<a href="#RFC4364" class="cite xref">RFC4364</a>]</span> service instances for logical separation:<a href="#section-4-2.1.1" class="pilcrow">¶</a></p>
 <p id="section-4-2.1.2">
 This realization model of transport for 5G slices assumes Layer 3
 delivery for midhaul and backhaul transport connections, and a
 Layer 2 or Layer 3 for
-fronthaul connections. eCPRI supports both delivery models. L2VPN/L3VPN service instances might be
+fronthaul connections. Enhanced Common Public Radio Interface (eCPRI) supports both delivery models. L2VPN/L3VPN service instances might be
 used as a basic form of logical slice separation.  Furthermore, using
 service instances results in an additional outer header (as packets
 are encapsulated/decapsulated at the nodes hosting service instances) providing clean discrimination between 5G QoS and TN
@@ -2360,19 +2364,19 @@ distribution even in non-ECMP friendly network topologies.<a href="#section-4-2.
         <div class="alignCenter art-text artwork" id="section-4-3.1">
 <pre>
         ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
-  +----------+               Base NRP               +----------+
+  ┌──────────┐               base NRP               ┌──────────┐
   │    PE    │                                      │    PE    │
-. ┼ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─│─.
-  ■&lt;───┐│    │     RFC XXXX Network Slice 1         │    ┌┼───&gt;■ │
+┌ ┼ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─│─
+  ■◀───┐│    │       RFC XXXX Network Slice 1       │    ┌┼───▶■ │
 │ │    │     │        ┌─────┐        ┌─────┐        │    │     │
-  ■&lt;───┤│    │        │  P  │        │  P  │        │    ├┼───&gt;■ │
-├ ┼ ─ ─├────&gt;□&lt;──────&gt;□&lt;───&gt;□&lt;──────&gt;□────&gt;□&lt;──────&gt;□&lt;───┤─ ─ ─│─
-  ■&lt;───┤│    │        │     │        │     │        │    ├┼───&gt;■ │
+  ■◀───┤│    │        │  P  │        │  P  │        │    ├┼───▶■ │
+├ ┼ ─ ─├────▶□◀──────▶□◀───▶□◀──────▶□────▶□◀──────▶□◀───┤─ ─ ─│─
+  ■◀───┤│    │        │     │        │     │        │    ├┼───▶■ │
 │ │    │     │        └─────┘        └─────┘        │    │     │
-  ■&lt;───┘│    │     RFC XXXX Network Slice 2         │    └┼───&gt;■ │
-' ┼ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─│─'
+  ■◀───┘│    │       RFC XXXX Network Slice 2       │    └┼───▶■ │
+└ ┼ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─│─
   │     │    │                                      │     │    │
-  +----------+                                      +----------+
+  └──────────┘                                      └──────────┘
         └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
  ■ - SDP, with fine-grained QoS (dedicated resources per TN slice)
  □ - coarse-grained QoS, with resources shared by all TN slices
@@ -2387,7 +2391,8 @@ distribution even in non-ECMP friendly network topologies.<a href="#section-4-2.
    identification.  The S-NSSAI is not visible to the transport domain.
    So instead, 5G functions can expose the 5G slices to the transport
    domain by mapping to explicit Layer 2 or Layer 3 identifiers, such as VLAN-IDs, IP
-   addresses, or Differentiated Services Code Point (DSCP). More details about the mapping between 3GPP and RFC XXXX Network Slices is provided in <span>[<a href="#I-D.ietf-teas-5g-network-slice-application" class="cite xref">I-D.ietf-teas-5g-network-slice-application</a>]</span>.<a href="#section-4-4" class="pilcrow">¶</a></p>
+   addresses, or Differentiated Services Code Point (DSCP). More details about the mapping
+   between 3GPP and RFC XXXX Network Slices is provided in <span>[<a href="#I-D.ietf-teas-5g-network-slice-application" class="cite xref">I-D.ietf-teas-5g-network-slice-application</a>]</span>.<a href="#section-4-4" class="pilcrow">¶</a></p>
 <div id="sec-vlan-handoff">
 <section id="section-4.1">
         <h3 id="name-vlan-hand-off">
@@ -2447,21 +2452,37 @@ VLANs representing slices           VLANs representing slices
         <h3 id="name-ip-hand-off">
 <a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-ip-hand-off" class="section-name selfRef">IP Hand-off</a>
         </h3>
-<p id="section-4.2-1">In this option, the slices in the TN domain are instantiated
-   by IP tunnels (for example, IPsec or GTP-U tunnels) established between
-   NFs, as depicted in <a href="#_figure-ip-hand-off" class="auto internal xref">Figure 13</a>.  The transport for a single 5G slice might be constructed with
-   multiple such tunnels, since a typical 5G slice contains many NFs -
-   especially DUs and CUs.  If a shared NF (i.e., an NF that serves
-   multiple slices, for example a shared DU) is deployed, multiple
-   tunnels from shared NF are established, each tunnel representing a
-   single slice.  As opposed to the VLAN hand-off case, there is no
-   logical interface representing a slice on the PE, hence all slices are
-   handled within single service instance.  On the other hand, similarly
-   to the VLAN hand-off case, a mapping table tracking IP to RFC XXXX
-   Network Slice mapping is required.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+<p id="section-4.2-1">In this option, an explicit mapping between source/destination IP addresses and
+   slice's specific S-NSSAI is used. The mapping can have either local (e.g.,
+   pertaining to single NF attachment) or global TN significance. The mapping can
+   be realized in multiple ways, including (but not limited to):<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4.2-2.1">
+            <p id="section-4.2-2.1.1">S-NSSAI to a dedicated IP address for each NF<a href="#section-4.2-2.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.2-2.2">
+            <p id="section-4.2-2.2.1">S-NSSAI to a pool of IP addresses for global TN deployment<a href="#section-4.2-2.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.2-2.3">
+            <p id="section-4.2-2.3.1">S-NSSAI to a subset of bits of an IP address<a href="#section-4.2-2.3.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.2-2.4">
+            <p id="section-4.2-2.4.1">Use a deterministic algorithm to map S-NSAAI to an IP subnet, prefix, or pools. For example, adaptations to the algorithm defined in <span>[<a href="#RFC7422" class="cite xref">RFC7422</a>]</span> may be considered.<a href="#section-4.2-2.4.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<p id="section-4.2-3">Mapping S-NSSAI to IP addresses makes IP addresses an identifier for eventual
+   policy decisions in the Transport Network (e.g., Differentiated Services,
+   traffic steering, bandwidth allocation, security policies, or monitoring).<a href="#section-4.2-3" class="pilcrow">¶</a></p>
+<p id="section-4.2-4">One example of the realization is the arrangement, where the slices in the TN
+   domain are instantiated using IP tunnels (for example, IPsec or GTP-U tunnels)
+   established between NFs, as depicted in <a href="#_figure-ip-hand-off" class="auto internal xref">Figure 13</a>. The transport for
+   a single 5G slice might be constructed with multiple such tunnels, since a
+   typical 5G slice contains many NFs - especially DUs and CUs. If a shared NF (i.e.,
+   an NF that serves multiple slices, for example a shared DU) is deployed, multiple
+   tunnels from shared NF are established, each tunnel representing a single slice.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
 <span id="name-5g-slice-with-ip-hand-off"></span><div id="_figure-ip-hand-off">
 <figure id="figure-13">
-          <div class="alignCenter art-text artwork" id="section-4.2-2.1">
+          <div class="alignCenter art-text artwork" id="section-4.2-5.1">
 <pre>
                                         Tunnels representing slices
 
@@ -2486,26 +2507,36 @@ VLANs representing slices           VLANs representing slices
 <a href="#name-5g-slice-with-ip-hand-off" class="selfRef">5G Slice with IP Hand-off</a>
           </figcaption></figure>
 </div>
-<p id="section-4.2-3">The mapping table can be simplified if, for example, IPv6 addressing is used
-   to address NFs.  An IPv6 address is a 128-bit long field, while the
-   S-NSSAI is a 32-bit field (8 bits for Slice/Service Type (SST) and  24 bits for Slice
-   Differentiator (SD)). 32 bits, out of 128 bits of an IPv6
-   address, may be used to encode the S-NSSAI, which makes an IP address to
-   Slice mapping table unnecessary. This mapping is simply a local policy
-   to allocate IPv6 addresses to NF loopbacks, without redefining IPv6 address
-   semantics. IP forwarding is not altered by this method and is still achieved following BCP 198 <span>[<a href="#RFC7608" class="cite xref">RFC7608</a>]</span>. Different IPv6 address allocation schemes following this
-   mapping approach may be used, with one example allocation showed in <a href="#_figure-11" class="auto internal xref">Figure 14</a>.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
-<p id="section-4.2-4">Note that this addressing scheme is local to an ingress or egress NF; intermediary nodes are not
-   required to associate any additional semantic with IPv6 address.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
-<p id="section-4.2-5">One
-   benefit of embedding the S-NSSAI in the IPv6 address is that it provides
-   a very easy way of identifying the packet as belonging to given
-   S-NSSAI at any place in the TN domain.  This might be
-   used, for example, to selectively enable per S-NSSAI monitoring, or
-   any other per S-NSSAI handling, if required.<a href="#section-4.2-5" class="pilcrow">¶</a></p>
+<p id="section-4.2-6">As opposed to the VLAN hand-off case, there is no logical interface representing
+   a slice on the PE, hence all slices are handled within single service instance.
+   The IP and VLAN hand-offs are not mutually exclusive, but instead could be used
+   concurrently. Since the TN doesn't recognize S-NSSAI, a mapping table similar to
+   the VLAN Hand-off solution must be utilized <a href="#sec-vlan-handoff" class="auto internal xref">Section 4.1</a>.<a href="#section-4.2-6" class="pilcrow">¶</a></p>
+<p id="section-4.2-7">The mapping table can be simplified if, for example, IPv6 addressing is used to
+   address NFs. An IPv6 address is a 128-bit long field, while the S-NSSAI is a
+   32-bit field: Slice/Service Type (SST): 8 bits, Slice Differentiator (SD): 24
+   bits. 32 bits, out of 128 bits of the IPv6 address, may be used to encode the
+   S-NSSAI, which makes an IP to Slice mapping table unnecessary. Alternatively,
+   instead of using 2 full octets from the 8 octets in an IPv6 address, a provider
+   could build a mapping table that uses only one octet or parts of an octet to
+   represent utilized S-NSSAI. This mapping is a local allocation method to
+   allocate IPv6 addresses to NF in order to be representative of the S-NSSAI without
+   redefining IPv6 semantics. IP forwarding is not altered by this method and is
+   still achieved following BCP 198 <span>[<a href="#RFC7608" class="cite xref">RFC7608</a>]</span>. Different IPv6 address allocation
+   schemes following this approach may be used, with one example allocation shown
+   in <a href="#_figure-11" class="auto internal xref">Figure 14</a>.<a href="#section-4.2-7" class="pilcrow">¶</a></p>
+<p id="section-4.2-8">Note that this addressing scheme is local to an ingress or egress NF; intermediary
+   TN nodes are not required to associate any additional semantic with IPv6 address.<a href="#section-4.2-8" class="pilcrow">¶</a></p>
+<p id="section-4.2-9">One benefit of embedding the S-NSSAI in the IPv6 address is that specific S-NSSAI
+   can be identified as interesting at any place in the TN domain. This might be used,
+   for example, to selectively enable per S-NSSAI monitoring, traffic engineering or any
+   other per S-NSSAI handling, if required.<a href="#section-4.2-9" class="pilcrow">¶</a></p>
+<p id="section-4.2-10">However, operators using such mapping method should be aware of the implications
+   of any change of S-NSSAI on the addressing plans. It is out of scope of this document
+   to elaborate on these implications.<a href="#section-4.2-10" class="pilcrow">¶</a></p>
 <span id="name-an-example-of-s-nssai-embed"></span><div id="_figure-11">
 <figure id="figure-14">
-          <div class="alignCenter art-text artwork" id="section-4.2-6.1">
+          <div class="alignCenter art-text artwork" id="section-4.2-11.1">
 <pre>
              NF specific          reserved
         (not slice specific)     for S-NSSAI
@@ -2521,41 +2552,42 @@ VLANs representing slices           VLANs representing slices
 <a href="#name-an-example-of-s-nssai-embed" class="selfRef">An Example of S-NSSAI Embedded into IPv6</a>
           </figcaption></figure>
 </div>
-<p id="section-4.2-7">In the example shown in <a href="#_figure-11" class="auto internal xref">Figure 14</a>, the most significant 96 bits of the IPv6 address are
-   unique to the NF, but do not carry any slice-specific information, while
-   the least significant 32 bits are used to embed the S-NSSAI information.
-   The 96-bit part of the address may be further divided based, for
-   example, on the geographical location or the DC identification.<a href="#section-4.2-7" class="pilcrow">¶</a></p>
-<p id="section-4.2-8"><a href="#_figure-s-nssai-deployment" class="auto internal xref">Figure 15</a> shows an example of a slicing deployment, where the S-NSSAI is
-   embedded into IPv6 addresses used by NFs.  NF-A has a set of tunnel
-   termination points, with unique per-slice IP addresses allocated from
-   the 2001:db8::a:0:0/96 prefix, while NF-B uses a set of tunnel
-   termination points with per-slice IP addresses allocated from
-   2001:db8::b:0:0/96.  This example shows two slices: eMBB (SST=1) and
-   MIoT (SST=3).  Therefore, for eMBB the tunnel IP addresses are auto-
-   derived (without the need for a mapping table) as {2001:db8::a:100:0,
-   2001:db8::b:100:0}, while for MIoT (SST=3) tunnel uses
-   {2001:db8::a:300:0, 2001:db8::b:300:0}.<a href="#section-4.2-8" class="pilcrow">¶</a></p>
+<p id="section-4.2-12">In the example shown in <a href="#_figure-11" class="auto internal xref">Figure 14</a>, the most significant 96 bits of the IPv6 address
+   are unique to the NF, but do not carry any slice-specific information, while the least
+   significant 32 bits are used to embed the S-NSSAI information. The 96-bit part of the
+   address may then be engineered/architected by the provider, for example, on the
+   geographical location or the DC identification.<a href="#section-4.2-12" class="pilcrow">¶</a></p>
+<p id="section-4.2-13"><a href="#_figure-s-nssai-deployment" class="auto internal xref">Figure 15</a> uses the example from <a href="#_figure-11" class="auto internal xref">Figure 14</a> to demonstrate a
+   slicing deployment, where the entire S-NSSAI is embedded into IPv6 addresses used by
+   NFs. NF-A has a set of tunnel termination points, with unique per-slice IP addresses
+   allocated from the 2001:db8:a:0::/96 prefix, while NF-B uses a set of tunnel termination
+   points with per-slice IP addresses allocated from 2001:db8:b:0::/96. This example shows
+   two slices: customer A eMBB (SST=01, SD=00001) and customer B MIoT (SST=03, SD=00003).
+   Therefore, for customer A eMBB the tunnel IP addresses are auto-derived (without the need
+   for an explicit mapping table) as the IP's {2001:db8:a::100:1, 2001:db8:b::100:1},
+   where {:0100:0001} are used as the last two octets, and for customer B MIoT (SST=3,
+   SD=00003) tunnel uses the IP's {2001:db8:a::300:3, 2001:db8:b::300:3} and simply
+   adds {:0300:0003} as the last two octets. Leading zeros are not represented in IPv6 addresses as per <span>[<a href="#RFC5952" class="cite xref">RFC5952</a>]</span>.<a href="#section-4.2-13" class="pilcrow">¶</a></p>
 <span id="name-deployment-example-with-s-n"></span><div id="_figure-s-nssai-deployment">
 <figure id="figure-15">
-          <div class="alignCenter art-text artwork" id="section-4.2-9.1">
+          <div class="alignCenter art-text artwork" id="section-4.2-14.1">
 <pre>
- 2001:db8::a:0:0/96 (NF-A)                2001:db8::b:0:0/96 (NF-B)
+ 2001:db8:a::/96 (NF-A)                      2001:db8:b::/96 (NF-B)
 
- 2001:db8::a:100:0/128                        2001:db8::b:100:0/128
+ 2001:db8:a::100:1/128                2001:db8:b::100:1/128
      │                                                        │
      │                                                        │
      │            ┌ ─ ─ ─ ─ ─ ─ ─ ─ ┐   eMBB (SST=1)          │
      │                                     │                  │
-┌────v─┐       ┌──┴──┐ Provider ┌───┴─┐    v  ┌─────┐       ┌─v────┐
+┌────▼─┐       ┌──┴──┐ Provider ┌───┴─┐    ▼  ┌─────┐       ┌─▼────┐
 │    ○════════════■════════════════■══════════════════════════○    │
 │ NF   ├───────┤ PE  │          │ PE  ├───────┤L2/L3├───────┤   NF │
 │    ○════════════■════════════════■══════════════════════════○    │
-└────^─┘       └──┬──┘  Network └───┬─┘    ^  └─────┘       └─^────┘
+└────▲─┘       └──┬──┘  Network └───┬─┘    ▲  └─────┘       └─▲────┘
      │                                     │                  │
-     │            └ ─ ─ ─ ─ ─ ─ ─ ─ ┘   MIoT (SST=3)          │
+     │            └ ─ ─ ─ ─ ─ ─ ─ ─ ┘ MIoT (SST=3)            │
      │                                                        │
- 2001:db8::a:300:0/128                        2001:db8::b:300:0/128
+ 2001:db8:a::300:3/128               2001:db8:b::300:3/128
 
       └────────┘└────────────────────┘└────────┘ └───────────┘
       Attachment   Provider Network   Attachment Customer Site
@@ -2580,7 +2612,7 @@ VLANs representing slices           VLANs representing slices
    are created directly on the NF, or within the customer site
    hosting the NF, and attached to the provider network.  Therefore, the packet
    is MPLS encapsulated outside the provider network with native MPLS
-   encapsulation, or MPLSoUDP encapsulation, depending on the capability
+   encapsulation, or MPLS-in-UDP encapsulation <span>[<a href="#RFC7510" class="cite xref">RFC7510</a>]</span>, depending on the capability
    of the customer site, with the service label depicting
    the slice.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
 <p id="section-4.3-2">There are three major methods (based upon <span><a href="https://rfc-editor.org/rfc/rfc4364#section-10" class="relref">Section 10</a> of [<a href="#RFC4364" class="cite xref">RFC4364</a>]</span>) for interconnecting MPLS services over multiple service domains:<a href="#section-4.3-2" class="pilcrow">¶</a></p>
@@ -2631,7 +2663,7 @@ change at domain boundaries.<a href="#section-4.3-3.3.1.2.1" class="pilcrow">¶<
    infrastructure itself (e.g., on the top of the rack or leaf switch
    within cloud IP fabric (<a href="#_figure-mpls-10b-hand-off" class="auto internal xref">Figure 16</a>, right hand side)). On the
    attachment circuit connected to PE, packets are already MPLS
-   encapsulated (or MPLSoUDP/MPLSoIP encapsulated, if cloud or compute
+   encapsulated (or MPLS-in-UDP/MPLS-in-IP encapsulated, if cloud or compute
    infrastructure don’t support native MPLS encapsulation). Therefore,
    the PE uses neither a VLAN nor an IP address for slice
    identification at the SDP, but instead uses the MPLS label.<a href="#section-4.3.2-1" class="pilcrow">¶</a></p>
@@ -4198,13 +4230,17 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
 <a href="#section-11.2" class="section-number selfRef">11.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
-<dt id="I-D.boro-opsawg-teas-attachment-circuit">[I-D.boro-opsawg-teas-attachment-circuit]</dt>
-        <dd>
-<span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Roberts, R.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, and <span class="refAuthor">B. Wu</span>, <span class="refTitle">"YANG Data Models for 'Attachment Circuits'-as-a-Service (ACaaS)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-boro-opsawg-teas-attachment-circuit-07</span>, <time datetime="2023-07-10" class="refDate">10 July 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-boro-opsawg-teas-attachment-circuit-07">https://datatracker.ietf.org/doc/html/draft-boro-opsawg-teas-attachment-circuit-07</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="I-D.henry-tsvwg-diffserv-to-qci">[I-D.henry-tsvwg-diffserv-to-qci]</dt>
         <dd>
 <span class="refAuthor">Henry, J.</span>, <span class="refAuthor">Szigeti, T.</span>, and <span class="refAuthor">L. M. Contreras</span>, <span class="refTitle">"Diffserv to QCI Mapping"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-henry-tsvwg-diffserv-to-qci-04</span>, <time datetime="2020-04-13" class="refDate">13 April 2020</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-henry-tsvwg-diffserv-to-qci-04">https://datatracker.ietf.org/doc/html/draft-henry-tsvwg-diffserv-to-qci-04</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-opsawg-ntw-attachment-circuit">[I-D.ietf-opsawg-ntw-attachment-circuit]</dt>
+        <dd>
+<span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Roberts, R.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, and <span class="refAuthor">B. Wu</span>, <span class="refTitle">"A Network YANG Data Model for Attachment Circuits"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-opsawg-ntw-attachment-circuit-02</span>, <time datetime="2023-11-28" class="refDate">28 November 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-ntw-attachment-circuit-02">https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-ntw-attachment-circuit-02</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-opsawg-teas-attachment-circuit">[I-D.ietf-opsawg-teas-attachment-circuit]</dt>
+        <dd>
+<span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Roberts, R.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, and <span class="refAuthor">B. Wu</span>, <span class="refTitle">"YANG Data Models for 'Attachment Circuits'-as-a-Service (ACaaS)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-opsawg-teas-attachment-circuit-02</span>, <time datetime="2023-11-27" class="refDate">27 November 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-teas-attachment-circuit-02">https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-teas-attachment-circuit-02</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-teas-5g-network-slice-application">[I-D.ietf-teas-5g-network-slice-application]</dt>
         <dd>
@@ -4250,6 +4286,10 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
         <dd>
 <span class="refAuthor">Shand, M.</span> and <span class="refAuthor">S. Bryant</span>, <span class="refTitle">"IP Fast Reroute Framework"</span>, <span class="seriesInfo">RFC 5714</span>, <span class="seriesInfo">DOI 10.17487/RFC5714</span>, <time datetime="2010-01" class="refDate">January 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5714">https://www.rfc-editor.org/rfc/rfc5714</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC5952">[RFC5952]</dt>
+        <dd>
+<span class="refAuthor">Kawamura, S.</span> and <span class="refAuthor">M. Kawashima</span>, <span class="refTitle">"A Recommendation for IPv6 Address Text Representation"</span>, <span class="seriesInfo">RFC 5952</span>, <span class="seriesInfo">DOI 10.17487/RFC5952</span>, <time datetime="2010-08" class="refDate">August 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5952">https://www.rfc-editor.org/rfc/rfc5952</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC6291">[RFC6291]</dt>
         <dd>
 <span class="refAuthor">Andersson, L.</span>, <span class="refAuthor">van Helvoort, H.</span>, <span class="refAuthor">Bonica, R.</span>, <span class="refAuthor">Romascanu, D.</span>, and <span class="refAuthor">S. Mansfield</span>, <span class="refTitle">"Guidelines for the Use of the "OAM" Acronym in the IETF"</span>, <span class="seriesInfo">BCP 161</span>, <span class="seriesInfo">RFC 6291</span>, <span class="seriesInfo">DOI 10.17487/RFC6291</span>, <time datetime="2011-06" class="refDate">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6291">https://www.rfc-editor.org/rfc/rfc6291</a>&gt;</span>. </dd>
@@ -4261,6 +4301,14 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
 <dt id="RFC7276">[RFC7276]</dt>
         <dd>
 <span class="refAuthor">Mizrahi, T.</span>, <span class="refAuthor">Sprecher, N.</span>, <span class="refAuthor">Bellagamba, E.</span>, and <span class="refAuthor">Y. Weingarten</span>, <span class="refTitle">"An Overview of Operations, Administration, and Maintenance (OAM) Tools"</span>, <span class="seriesInfo">RFC 7276</span>, <span class="seriesInfo">DOI 10.17487/RFC7276</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7276">https://www.rfc-editor.org/rfc/rfc7276</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7422">[RFC7422]</dt>
+        <dd>
+<span class="refAuthor">Donley, C.</span>, <span class="refAuthor">Grundemann, C.</span>, <span class="refAuthor">Sarawat, V.</span>, <span class="refAuthor">Sundaresan, K.</span>, and <span class="refAuthor">O. Vautrin</span>, <span class="refTitle">"Deterministic Address Mapping to Reduce Logging in Carrier-Grade NAT Deployments"</span>, <span class="seriesInfo">RFC 7422</span>, <span class="seriesInfo">DOI 10.17487/RFC7422</span>, <time datetime="2014-12" class="refDate">December 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7422">https://www.rfc-editor.org/rfc/rfc7422</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7510">[RFC7510]</dt>
+        <dd>
+<span class="refAuthor">Xu, X.</span>, <span class="refAuthor">Sheth, N.</span>, <span class="refAuthor">Yong, L.</span>, <span class="refAuthor">Callon, R.</span>, and <span class="refAuthor">D. Black</span>, <span class="refTitle">"Encapsulating MPLS in UDP"</span>, <span class="seriesInfo">RFC 7510</span>, <span class="seriesInfo">DOI 10.17487/RFC7510</span>, <time datetime="2015-04" class="refDate">April 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7510">https://www.rfc-editor.org/rfc/rfc7510</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC7665">[RFC7665]</dt>
         <dd>
