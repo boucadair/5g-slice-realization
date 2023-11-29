@@ -1557,7 +1557,12 @@ There are different options to implement TN slices based upon
           <dd class="break"></dd>
 <dt id="section-3.3-4.15">Attachment Circuit (AC):</dt>
           <dd style="margin-left: 1.5em" id="section-3.3-4.16">
-            <p id="section-3.3-4.16.1">The logical connection that attaches a CE to a PE. A CE is connected to a PE via one or multiple ACs. An AC is technology-specific. For consistency with the AC data model terminology (e.g., <span>[<a href="#RFC9182" class="cite xref">RFC9182</a>]</span>), this document assumes that an AC is configured on a “bearer”, which represents the underlying connectivity. Examples of ACs are Virtual Local Area Networks (VLANs) (AC) configured on a physical interface (bearer) or an Overlay VXLAN EVI (AC) configured on an IP underlay (bearer).<a href="#section-3.3-4.16.1" class="pilcrow">¶</a></p>
+            <p id="section-3.3-4.16.1">The logical connection that attaches a CE to a PE. A CE is connected to a PE via one or multiple ACs. An AC is technology-specific. For consistency with the AC data models terminology (e.g., <span>[<a href="#I-D.ietf-opsawg-teas-attachment-circuit" class="cite xref">I-D.ietf-opsawg-teas-attachment-circuit</a>]</span> and <span>[<a href="#I-D.ietf-opsawg-ntw-attachment-circuit" class="cite xref">I-D.ietf-opsawg-ntw-attachment-circuit</a>]</span>), this document assumes that an AC is configured on a "bearer", which represents the underlying connectivity.<a href="#section-3.3-4.16.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-3.3-4.17"></dt>
+          <dd style="margin-left: 1.5em" id="section-3.3-4.18">
+            <p id="section-3.3-4.18.1">Examples of ACs are Virtual Local Area Networks (VLANs) (AC) configured on a physical interface (bearer) or an Overlay VXLAN EVI (AC) configured on an IP underlay (bearer).<a href="#section-3.3-4.18.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -1572,7 +1577,7 @@ However, this document does not exclude the instantiation of multiple ACs betwee
           <h4 id="name-distributed-pe-and-ce">
 <a href="#section-3.3.1" class="section-number selfRef">3.3.1. </a><a href="#name-distributed-pe-and-ce" class="section-name selfRef">Distributed PE and CE</a>
           </h4>
-<p id="section-3.3.1-1">This document uses the concept of distributed CEs and PEs (e.g., <span><a href="https://rfc-editor.org/rfc/rfc4664#section-3.4.3" class="relref">Section 3.4.3</a> of [<a href="#RFC4664" class="cite xref">RFC4664</a>]</span>). This approach consolidates a definition of CE/PE/AC that is consistent with the orchestration perimeters. The CEs and PEs delimit respectively the customer and provider orchestration domains, while the AC interconnects these domains.<a href="#section-3.3.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.3.1-1">This document uses the concept of distributed CEs and PEs (e.g., <span><a href="https://rfc-editor.org/rfc/rfc4664#section-3.4.3" class="relref">Section 3.4.3</a> of [<a href="#RFC4664" class="cite xref">RFC4664</a>]</span>). This approach consolidates a definition of CE/AC/PE that is consistent with the orchestration perimeters. The CEs and PEs delimit respectively the customer and provider orchestration domains, while the AC interconnects these domains.<a href="#section-3.3.1-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-3.3.1-2">
             <dt id="section-3.3.1-2.1">Distributed CE:</dt>
             <dd style="margin-left: 1.5em" id="section-3.3.1-2.2">
@@ -1581,7 +1586,7 @@ However, this document does not exclude the instantiation of multiple ACs betwee
             <dd class="break"></dd>
 <dt id="section-3.3.1-2.3">Distributed PE:</dt>
             <dd style="margin-left: 1.5em" id="section-3.3.1-2.4">
-              <p id="section-3.3.1-2.4.1">The logical connectivity is realized by configuring  multiple devices in the Transport Network (provider orchestration domain). The PE function is distributed. An example of a distributed PE is the “Managed CE service”. For example, a provider delivers VPN services using CEs and PEs which are both managed by the provider (case (iii) in <a href="#fig-50" class="auto internal xref">Figure 3</a>). The managed CE can also be a Data Center Gateway as depicted in the example (iv) of <a href="#fig-50" class="auto internal xref">Figure 3</a>. A provider-managed CE may attach to CEs of multiple customers. However, this device is part of the provider network.<a href="#section-3.3.1-2.4.1" class="pilcrow">¶</a></p>
+              <p id="section-3.3.1-2.4.1">The logical connectivity is realized by configuring  multiple devices in the Transport Network (provider orchestration domain). The PE function is distributed. An example of a distributed PE is the "Managed CE service". For example, a provider delivers VPN services using CEs and PEs which are both managed by the provider (case (iii) in <a href="#fig-50" class="auto internal xref">Figure 3</a>). The managed CE can also be a Data Center Gateway as depicted in the example (iv) of <a href="#fig-50" class="auto internal xref">Figure 3</a>. A provider-managed CE may attach to CEs of multiple customers. However, this device is part of the provider network.<a href="#section-3.3.1-2.4.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 </dl>
@@ -1664,7 +1669,7 @@ However, this document does not exclude the instantiation of multiple ACs betwee
           <h4 id="name-service-aware-ce">
 <a href="#section-3.3.3" class="section-number selfRef">3.3.3. </a><a href="#name-service-aware-ce" class="section-name selfRef">Service-aware CE</a>
           </h4>
-<p id="section-3.3.3-1">While in most cases CEs connect to PEs using IP (e.g., VLANs), a CE may also connect to the provider network using MPLS -potentially over IP tunnels- or SRv6. The CE has awareness of provider services configuration (e.g., control plane identifiers such as Route Targets and Route Distinguishers). An example of such an AC is depicted in <a href="#_figure-51" class="auto internal xref">Figure 4</a>. This is a source of confusion since these configurations are typically enforced on PEs. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE.<a href="#section-3.3.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.3.3-1">While in most cases CEs connect to PEs using IP (e.g., VLANs), a CE may also connect to the provider network using MPLS -potentially over IP tunnels- or Segment Routing over IPv6 (SRv6) <span>[<a href="#RFC8754" class="cite xref">RFC8754</a>]</span>. The CE has awareness of provider services configuration (e.g., control plane identifiers such as Route Targets (RTs) and Route Distinguishers (RDs)). An example of such an AC is depicted in <a href="#_figure-51" class="auto internal xref">Figure 4</a>. This is a source of confusion since these configurations are typically enforced on PEs. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE.<a href="#section-3.3.3-1" class="pilcrow">¶</a></p>
 <span id="name-example-of-mpls-based-attac"></span><div id="_figure-51">
 <figure id="figure-4">
             <div class="alignCenter art-text artwork" id="section-3.3.3-2.1">
@@ -1843,11 +1848,11 @@ interconnection is technology-specific and requires coordination between the Cus
             <dd style="margin-left: 1.5em" id="section-3.4.2-5.4">
               <p id="section-3.4.2-5.4.1"><a href="#_figure-4" class="auto internal xref">Figure 7</a> is a basic example of a Layer 3 CE-PE link realization
 with shared network resources (such as VLAN-IDs and IP prefixes) which
-are passed between Orchestrators via a dedicated interface, e.g., the RFC XXXX Network Slice Service Interface <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="cite xref">I-D.ietf-teas-ietf-network-slice-nbi-yang</a>]</span> or the Attachment Circuit Service Interface (<span>[<a href="#I-D.boro-opsawg-teas-attachment-circuit" class="cite xref">I-D.boro-opsawg-teas-attachment-circuit</a>]</span>.<a href="#section-3.4.2-5.4.1" class="pilcrow">¶</a></p>
+are passed between Orchestrators via a dedicated interface, e.g., the RFC XXXX Network Slice Service Interface <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="cite xref">I-D.ietf-teas-ietf-network-slice-nbi-yang</a>]</span> or the Attachment Circuit Service Interface (<span>[<a href="#I-D.ietf-opsawg-teas-attachment-circuit" class="cite xref">I-D.ietf-opsawg-teas-attachment-circuit</a>]</span>.<a href="#section-3.4.2-5.4.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 </dl>
-<span id="name-coordination-of-tn-resource"></span><div id="_figure-4">
+<span id="name-coordination-of-transport-n"></span><div id="_figure-4">
 <figure id="figure-7">
             <div class="alignCenter art-text artwork" id="section-3.4.2-6.1">
 <pre>
@@ -1872,7 +1877,7 @@ are passed between Orchestrators via a dedicated interface, e.g., the RFC XXXX N
 </pre>
 </div>
 <figcaption><a href="#figure-7" class="selfRef">Figure 7</a>:
-<a href="#name-coordination-of-tn-resource" class="selfRef">Coordination of TN Resources for the AC Provisioning</a>
+<a href="#name-coordination-of-transport-n" class="selfRef">Coordination of Transport Network Resources for the AC Provisioning</a>
             </figcaption></figure>
 </div>
 </section>
@@ -2299,12 +2304,12 @@ For instance, consider a slice based on split-CU in the RAN, both CU-UP and CU-C
    with the following characteristics:<a href="#section-4-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-4-2.1">
-          <p id="section-4-2.1.1">Layer 2 Virtual Private Network (L2VPN)/Layer 3 Virtual Private Network (L3VPN) service instances for logical separation:<a href="#section-4-2.1.1" class="pilcrow">¶</a></p>
+          <p id="section-4-2.1.1">Layer 2 Virtual Private Network (L2VPN) <span>[<a href="#RFC4664" class="cite xref">RFC4664</a>]</span> and/or Layer 3 Virtual Private Network (L3VPN) <span>[<a href="#RFC4364" class="cite xref">RFC4364</a>]</span> service instances for logical separation:<a href="#section-4-2.1.1" class="pilcrow">¶</a></p>
 <p id="section-4-2.1.2">
 This realization model of transport for 5G slices assumes Layer 3
 delivery for midhaul and backhaul transport connections, and a
 Layer 2 or Layer 3 for
-fronthaul connections. eCPRI supports both delivery models. L2VPN/L3VPN service instances might be
+fronthaul connections. Enhanced Common Public Radio Interface (eCPRI) supports both delivery models. L2VPN/L3VPN service instances might be
 used as a basic form of logical slice separation.  Furthermore, using
 service instances results in an additional outer header (as packets
 are encapsulated/decapsulated at the nodes hosting service instances) providing clean discrimination between 5G QoS and TN
@@ -2607,7 +2612,7 @@ VLANs representing slices           VLANs representing slices
    are created directly on the NF, or within the customer site
    hosting the NF, and attached to the provider network.  Therefore, the packet
    is MPLS encapsulated outside the provider network with native MPLS
-   encapsulation, or MPLSoUDP encapsulation, depending on the capability
+   encapsulation, or MPLS-in-UDP encapsulation <span>[<a href="#RFC7510" class="cite xref">RFC7510</a>]</span>, depending on the capability
    of the customer site, with the service label depicting
    the slice.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
 <p id="section-4.3-2">There are three major methods (based upon <span><a href="https://rfc-editor.org/rfc/rfc4364#section-10" class="relref">Section 10</a> of [<a href="#RFC4364" class="cite xref">RFC4364</a>]</span>) for interconnecting MPLS services over multiple service domains:<a href="#section-4.3-2" class="pilcrow">¶</a></p>
@@ -2658,7 +2663,7 @@ change at domain boundaries.<a href="#section-4.3-3.3.1.2.1" class="pilcrow">¶<
    infrastructure itself (e.g., on the top of the rack or leaf switch
    within cloud IP fabric (<a href="#_figure-mpls-10b-hand-off" class="auto internal xref">Figure 16</a>, right hand side)). On the
    attachment circuit connected to PE, packets are already MPLS
-   encapsulated (or MPLSoUDP/MPLSoIP encapsulated, if cloud or compute
+   encapsulated (or MPLS-in-UDP/MPLS-in-IP encapsulated, if cloud or compute
    infrastructure don’t support native MPLS encapsulation). Therefore,
    the PE uses neither a VLAN nor an IP address for slice
    identification at the SDP, but instead uses the MPLS label.<a href="#section-4.3.2-1" class="pilcrow">¶</a></p>
@@ -4225,13 +4230,17 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
 <a href="#section-11.2" class="section-number selfRef">11.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
-<dt id="I-D.boro-opsawg-teas-attachment-circuit">[I-D.boro-opsawg-teas-attachment-circuit]</dt>
-        <dd>
-<span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Roberts, R.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, and <span class="refAuthor">B. Wu</span>, <span class="refTitle">"YANG Data Models for 'Attachment Circuits'-as-a-Service (ACaaS)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-boro-opsawg-teas-attachment-circuit-07</span>, <time datetime="2023-07-10" class="refDate">10 July 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-boro-opsawg-teas-attachment-circuit-07">https://datatracker.ietf.org/doc/html/draft-boro-opsawg-teas-attachment-circuit-07</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="I-D.henry-tsvwg-diffserv-to-qci">[I-D.henry-tsvwg-diffserv-to-qci]</dt>
         <dd>
 <span class="refAuthor">Henry, J.</span>, <span class="refAuthor">Szigeti, T.</span>, and <span class="refAuthor">L. M. Contreras</span>, <span class="refTitle">"Diffserv to QCI Mapping"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-henry-tsvwg-diffserv-to-qci-04</span>, <time datetime="2020-04-13" class="refDate">13 April 2020</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-henry-tsvwg-diffserv-to-qci-04">https://datatracker.ietf.org/doc/html/draft-henry-tsvwg-diffserv-to-qci-04</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-opsawg-ntw-attachment-circuit">[I-D.ietf-opsawg-ntw-attachment-circuit]</dt>
+        <dd>
+<span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Roberts, R.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, and <span class="refAuthor">B. Wu</span>, <span class="refTitle">"A Network YANG Data Model for Attachment Circuits"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-opsawg-ntw-attachment-circuit-02</span>, <time datetime="2023-11-28" class="refDate">28 November 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-ntw-attachment-circuit-02">https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-ntw-attachment-circuit-02</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-opsawg-teas-attachment-circuit">[I-D.ietf-opsawg-teas-attachment-circuit]</dt>
+        <dd>
+<span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Roberts, R.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, and <span class="refAuthor">B. Wu</span>, <span class="refTitle">"YANG Data Models for 'Attachment Circuits'-as-a-Service (ACaaS)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-opsawg-teas-attachment-circuit-02</span>, <time datetime="2023-11-27" class="refDate">27 November 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-teas-attachment-circuit-02">https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-teas-attachment-circuit-02</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-teas-5g-network-slice-application">[I-D.ietf-teas-5g-network-slice-application]</dt>
         <dd>
@@ -4296,6 +4305,10 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
 <dt id="RFC7422">[RFC7422]</dt>
         <dd>
 <span class="refAuthor">Donley, C.</span>, <span class="refAuthor">Grundemann, C.</span>, <span class="refAuthor">Sarawat, V.</span>, <span class="refAuthor">Sundaresan, K.</span>, and <span class="refAuthor">O. Vautrin</span>, <span class="refTitle">"Deterministic Address Mapping to Reduce Logging in Carrier-Grade NAT Deployments"</span>, <span class="seriesInfo">RFC 7422</span>, <span class="seriesInfo">DOI 10.17487/RFC7422</span>, <time datetime="2014-12" class="refDate">December 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7422">https://www.rfc-editor.org/rfc/rfc7422</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7510">[RFC7510]</dt>
+        <dd>
+<span class="refAuthor">Xu, X.</span>, <span class="refAuthor">Sheth, N.</span>, <span class="refAuthor">Yong, L.</span>, <span class="refAuthor">Callon, R.</span>, and <span class="refAuthor">D. Black</span>, <span class="refTitle">"Encapsulating MPLS in UDP"</span>, <span class="seriesInfo">RFC 7510</span>, <span class="seriesInfo">DOI 10.17487/RFC7510</span>, <time datetime="2015-04" class="refDate">April 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7510">https://www.rfc-editor.org/rfc/rfc7510</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC7665">[RFC7665]</dt>
         <dd>

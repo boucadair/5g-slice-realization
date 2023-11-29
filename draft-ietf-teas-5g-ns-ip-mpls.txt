@@ -353,12 +353,16 @@ Table of Contents
 
    Attachment Circuit (AC):  The logical connection that attaches a CE
       to a PE.  A CE is connected to a PE via one or multiple ACs.  An
-      AC is technology-specific.  For consistency with the AC data model
-      terminology (e.g., [RFC9182]), this document assumes that an AC is
-      configured on a “bearer”, which represents the underlying
-      connectivity.  Examples of ACs are Virtual Local Area Networks
-      (VLANs) (AC) configured on a physical interface (bearer) or an
-      Overlay VXLAN EVI (AC) configured on an IP underlay (bearer).
+      AC is technology-specific.  For consistency with the AC data
+      models terminology (e.g.,
+      [I-D.ietf-opsawg-teas-attachment-circuit] and
+      [I-D.ietf-opsawg-ntw-attachment-circuit]), this document assumes
+      that an AC is configured on a "bearer", which represents the
+      underlying connectivity.
+
+      Examples of ACs are Virtual Local Area Networks (VLANs) (AC)
+      configured on a physical interface (bearer) or an Overlay VXLAN
+      EVI (AC) configured on an IP underlay (bearer).
 
       In order to keep the figures simple, only one AC and single-homed
       CEs are represented.  However, this document does not exclude the
@@ -369,7 +373,7 @@ Table of Contents
 
    This document uses the concept of distributed CEs and PEs (e.g.,
    Section 3.4.3 of [RFC4664]).  This approach consolidates a definition
-   of CE/PE/AC that is consistent with the orchestration perimeters.
+   of CE/AC/PE that is consistent with the orchestration perimeters.
    The CEs and PEs delimit respectively the customer and provider
    orchestration domains, while the AC interconnects these domains.
 
@@ -383,7 +387,7 @@ Table of Contents
    Distributed PE:  The logical connectivity is realized by configuring
       multiple devices in the Transport Network (provider orchestration
       domain).  The PE function is distributed.  An example of a
-      distributed PE is the “Managed CE service”. For example, a
+      distributed PE is the "Managed CE service".  For example, a
       provider delivers VPN services using CEs and PEs which are both
       managed by the provider (case (iii) in Figure 3).  The managed CE
       can also be a Data Center Gateway as depicted in the example (iv)
@@ -467,16 +471,16 @@ Table of Contents
 
    While in most cases CEs connect to PEs using IP (e.g., VLANs), a CE
    may also connect to the provider network using MPLS -potentially over
-   IP tunnels- or SRv6.  The CE has awareness of provider services
-   configuration (e.g., control plane identifiers such as Route Targets
-   and Route Distinguishers).  An example of such an AC is depicted in
-   Figure 4.  This is a source of confusion since these configurations
-   are typically enforced on PEs.  Notwithstanding, the reference design
-   based on Orchestration scope prevails: the CE is managed by the
-   customer and the AC is based on MPLS or SRv6 data plane technologies.
-   Note that the complete termination of the AC within the provider
-   network may happen on distinct routers: this is another example of
-   distributed PE.
+   IP tunnels- or Segment Routing over IPv6 (SRv6) [RFC8754].  The CE
+   has awareness of provider services configuration (e.g., control plane
+   identifiers such as Route Targets (RTs) and Route Distinguishers
+   (RDs)).  An example of such an AC is depicted in Figure 4.  This is a
+   source of confusion since these configurations are typically enforced
+   on PEs.  Notwithstanding, the reference design based on Orchestration
+   scope prevails: the CE is managed by the customer and the AC is based
+   on MPLS or SRv6 data plane technologies.  Note that the complete
+   termination of the AC within the provider network may happen on
+   distinct routers: this is another example of distributed PE.
 
           ┌ ─ ─ ─ ─ ─ ─ ─                       ┌ ─ ─ ─ ─ ─ ─ ─ ┐
               Customer   │                          Provider
@@ -664,7 +668,7 @@ Table of Contents
       e.g., the RFC XXXX Network Slice Service Interface
       [I-D.ietf-teas-ietf-network-slice-nbi-yang] or the Attachment
       Circuit Service Interface
-      ([I-D.boro-opsawg-teas-attachment-circuit].
+      ([I-D.ietf-opsawg-teas-attachment-circuit].
 
             ┌ ─ ─ ─ ─ ─ ─ ─ ┐                ┌ ─ ─ ─ ─ ─ ─ ─ ─
                                                 RFCXXXX NSC   │
@@ -685,7 +689,8 @@ Table of Contents
 
                        └─────────── AC ──────────┘
 
-       Figure 7: Coordination of TN Resources for the AC Provisioning
+      Figure 7: Coordination of Transport Network Resources for the AC
+                                Provisioning
 
 3.4.3.  Additional Segmentation and Domains
 
@@ -870,18 +875,20 @@ Table of Contents
    realization model described in this document, depicted in Figure 11,
    a single NRP is used with the following characteristics:
 
-   *  Layer 2 Virtual Private Network (L2VPN)/Layer 3 Virtual Private
-      Network (L3VPN) service instances for logical separation:
+   *  Layer 2 Virtual Private Network (L2VPN) [RFC4664] and/or Layer 3
+      Virtual Private Network (L3VPN) [RFC4364] service instances for
+      logical separation:
 
       This realization model of transport for 5G slices assumes Layer 3
       delivery for midhaul and backhaul transport connections, and a
-      Layer 2 or Layer 3 for fronthaul connections. eCPRI supports both
-      delivery models.  L2VPN/L3VPN service instances might be used as a
-      basic form of logical slice separation.  Furthermore, using
-      service instances results in an additional outer header (as
-      packets are encapsulated/decapsulated at the nodes hosting service
-      instances) providing clean discrimination between 5G QoS and TN
-      QoS, as explained in Section 5.
+      Layer 2 or Layer 3 for fronthaul connections.  Enhanced Common
+      Public Radio Interface (eCPRI) supports both delivery models.
+      L2VPN/L3VPN service instances might be used as a basic form of
+      logical slice separation.  Furthermore, using service instances
+      results in an additional outer header (as packets are
+      encapsulated/decapsulated at the nodes hosting service instances)
+      providing clean discrimination between 5G QoS and TN QoS, as
+      explained in Section 5.
 
    *  Fine-grained resource control at the PE:
 
@@ -1158,8 +1165,9 @@ Table of Contents
    are created directly on the NF, or within the customer site hosting
    the NF, and attached to the provider network.  Therefore, the packet
    is MPLS encapsulated outside the provider network with native MPLS
-   encapsulation, or MPLSoUDP encapsulation, depending on the capability
-   of the customer site, with the service label depicting the slice.
+   encapsulation, or MPLS-in-UDP encapsulation [RFC7510], depending on
+   the capability of the customer site, with the service label depicting
+   the slice.
 
    There are three major methods (based upon Section 10 of [RFC4364])
    for interconnecting MPLS services over multiple service domains:
@@ -1187,10 +1195,11 @@ Table of Contents
    within the DC/cloud infrastructure itself (e.g., on the top of the
    rack or leaf switch within cloud IP fabric (Figure 16, right hand
    side)).  On the attachment circuit connected to PE, packets are
-   already MPLS encapsulated (or MPLSoUDP/MPLSoIP encapsulated, if cloud
-   or compute infrastructure don’t support native MPLS encapsulation).
-   Therefore, the PE uses neither a VLAN nor an IP address for slice
-   identification at the SDP, but instead uses the MPLS label.
+   already MPLS encapsulated (or MPLS-in-UDP/MPLS-in-IP encapsulated, if
+   cloud or compute infrastructure don’t support native MPLS
+   encapsulation).  Therefore, the PE uses neither a VLAN nor an IP
+   address for slice identification at the SDP, but instead uses the
+   MPLS label.
 
         <──────        <──────        <──────
         BGP VPN        BGP VPN        BGP VPN
@@ -2595,20 +2604,28 @@ Table of Contents
 
 11.2.  Informative References
 
-   [I-D.boro-opsawg-teas-attachment-circuit]
-              Boucadair, M., Roberts, R., de Dios, O. G., Barguil, S.,
-              and B. Wu, "YANG Data Models for 'Attachment Circuits'-as-
-              a-Service (ACaaS)", Work in Progress, Internet-Draft,
-              draft-boro-opsawg-teas-attachment-circuit-07, 10 July
-              2023, <https://datatracker.ietf.org/doc/html/draft-boro-
-              opsawg-teas-attachment-circuit-07>.
-
    [I-D.henry-tsvwg-diffserv-to-qci]
               Henry, J., Szigeti, T., and L. M. Contreras, "Diffserv to
               QCI Mapping", Work in Progress, Internet-Draft, draft-
               henry-tsvwg-diffserv-to-qci-04, 13 April 2020,
               <https://datatracker.ietf.org/doc/html/draft-henry-tsvwg-
               diffserv-to-qci-04>.
+
+   [I-D.ietf-opsawg-ntw-attachment-circuit]
+              Boucadair, M., Roberts, R., de Dios, O. G., Barguil, S.,
+              and B. Wu, "A Network YANG Data Model for Attachment
+              Circuits", Work in Progress, Internet-Draft, draft-ietf-
+              opsawg-ntw-attachment-circuit-02, 28 November 2023,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-
+              ntw-attachment-circuit-02>.
+
+   [I-D.ietf-opsawg-teas-attachment-circuit]
+              Boucadair, M., Roberts, R., de Dios, O. G., Barguil, S.,
+              and B. Wu, "YANG Data Models for 'Attachment Circuits'-as-
+              a-Service (ACaaS)", Work in Progress, Internet-Draft,
+              draft-ietf-opsawg-teas-attachment-circuit-02, 27 November
+              2023, <https://datatracker.ietf.org/doc/html/draft-ietf-
+              opsawg-teas-attachment-circuit-02>.
 
    [I-D.ietf-teas-5g-network-slice-application]
               Geng, X., Contreras, L. M., Rokui, R., Dong, J., and I.
@@ -2699,6 +2716,11 @@ Table of Contents
               Logging in Carrier-Grade NAT Deployments", RFC 7422,
               DOI 10.17487/RFC7422, December 2014,
               <https://www.rfc-editor.org/rfc/rfc7422>.
+
+   [RFC7510]  Xu, X., Sheth, N., Yong, L., Callon, R., and D. Black,
+              "Encapsulating MPLS in UDP", RFC 7510,
+              DOI 10.17487/RFC7510, April 2015,
+              <https://www.rfc-editor.org/rfc/rfc7510>.
 
    [RFC7665]  Halpern, J., Ed. and C. Pignataro, Ed., "Service Function
               Chaining (SFC) Architecture", RFC 7665,
