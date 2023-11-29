@@ -743,7 +743,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
    are created directly on the NF, or within the customer site
    hosting the NF, and attached to the provider network.  Therefore, the packet
    is MPLS encapsulated outside the provider network with native MPLS
-   encapsulation, or MPLS-in-UDP encapsulation {{RFC7510}}, depending on the capability
+   encapsulation, or MPLS-in-UDP encapsulation {{?RFC7510}}, depending on the capability
    of the customer site, with the service label depicting
    the slice.
 
