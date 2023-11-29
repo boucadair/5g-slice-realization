@@ -613,7 +613,8 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
    identification.  The S-NSSAI is not visible to the transport domain.
    So instead, 5G functions can expose the 5G slices to the transport
    domain by mapping to explicit Layer 2 or Layer 3 identifiers, such as VLAN-IDs, IP
-   addresses, or Differentiated Services Code Point (DSCP). More details about the mapping between 3GPP and RFC XXXX Network Slices is provided in {{?I-D.ietf-teas-5g-network-slice-application}}.
+   addresses, or Differentiated Services Code Point (DSCP). More details about the mapping
+   between 3GPP and RFC XXXX Network Slices is provided in {{?I-D.ietf-teas-5g-network-slice-application}}.
 
 ##  VLAN Hand-off {#sec-vlan-handoff}
 
@@ -647,18 +648,27 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
 
 ##  IP Hand-off
 
-   In this option, the slices in the TN domain are instantiated
-   by IP tunnels (for example, IPsec or GTP-U tunnels) established between
-   NFs, as depicted in {{figure-ip-hand-off}}.  The transport for a single 5G slice might be constructed with
-   multiple such tunnels, since a typical 5G slice contains many NFs -
-   especially DUs and CUs.  If a shared NF (i.e., an NF that serves
-   multiple slices, for example a shared DU) is deployed, multiple
-   tunnels from shared NF are established, each tunnel representing a
-   single slice.  As opposed to the VLAN hand-off case, there is no
-   logical interface representing a slice on the PE, hence all slices are
-   handled within single service instance.  On the other hand, similarly
-   to the VLAN hand-off case, a mapping table tracking IP to RFC XXXX
-   Network Slice mapping is required.
+   In this option, an explicit mapping between source/destination IP addresses and
+   slice's specific S-NSSAI is used. The mapping can have either local (e.g.,
+   pertaining to single NF attachment) or global TN significance. The mapping can
+   be realized in multiple ways, including (but not limited to):
+
+   * S-NSSAI to a dedicated IP address for each NF
+   * S-NSSAI to a pool of IP addresses for global TN deployment
+   * S-NSSAI to a subset of bits of an IP address
+   * Use a deterministic algorithm to map S-NSAAI to an IP subnet, prefix, or pools. For example, adaptations to the algorithm defined in {{?RFC7422}} may be considered.
+
+   Mapping S-NSSAI to IP addresses makes IP addresses an identifier for eventual
+   policy decisions in the Transport Network (e.g., Differentiated Services,
+   traffic steering, bandwidth allocation, security policies, or monitoring).
+
+   One example of the realization is the arrangement, where the slices in the TN
+   domain are instantiated using IP tunnels (for example, IPsec or GTP-U tunnels)
+   established between NFs, as depicted in {{figure-ip-hand-off}}. The transport for
+   a single 5G slice might be constructed with multiple such tunnels, since a
+   typical 5G slice contains many NFs - especially DUs and CUs. If a shared NF (i.e.,
+   an NF that serves multiple slices, for example a shared DU) is deployed, multiple
+   tunnels from shared NF are established, each tunnel representing a single slice.
 
 ~~~~
 {::include ./drawings/ip-hand-off.txt}
@@ -666,25 +676,37 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
 {: #figure-ip-hand-off title="5G Slice with IP Hand-off" artwork-align="center"}
 
 
-   The mapping table can be simplified if, for example, IPv6 addressing is used
-   to address NFs.  An IPv6 address is a 128-bit long field, while the
-   S-NSSAI is a 32-bit field (8 bits for Slice/Service Type (SST) and  24 bits for Slice
-   Differentiator (SD)). 32 bits, out of 128 bits of an IPv6
-   address, may be used to encode the S-NSSAI, which makes an IP address to
-   Slice mapping table unnecessary. This mapping is simply a local policy
-   to allocate IPv6 addresses to NF loopbacks, without redefining IPv6 address
-   semantics. IP forwarding is not altered by this method and is still achieved following BCP 198 {{!RFC7608}}. Different IPv6 address allocation schemes following this
-   mapping approach may be used, with one example allocation showed in {{figure-11}}.
+   As opposed to the VLAN hand-off case, there is no logical interface representing
+   a slice on the PE, hence all slices are handled within single service instance.
+   The IP and VLAN hand-offs are not mutually exclusive, but instead could be used
+   concurrently. Since the TN doesn't recognize S-NSSAI, a mapping table similar to
+   the VLAN Hand-off solution must be utilized {{sec-vlan-handoff}}.
 
-   Note that this addressing scheme is local to an ingress or egress NF; intermediary nodes are not
-   required to associate any additional semantic with IPv6 address.
+   The mapping table can be simplified if, for example, IPv6 addressing is used to
+   address NFs. An IPv6 address is a 128-bit long field, while the S-NSSAI is a
+   32-bit field: Slice/Service Type (SST): 8 bits, Slice Differentiator (SD): 24
+   bits. 32 bits, out of 128 bits of the IPv6 address, may be used to encode the
+   S-NSSAI, which makes an IP to Slice mapping table unnecessary. Alternatively,
+   instead of using 2 full octets from the 8 octets in an IPv6 address, a provider
+   could build a mapping table that uses only one octet or parts of an octet to
+   represent utilized S-NSSAI. This mapping is a local allocation method to
+   allocate IPv6 addresses to NF in order to be representative of the S-NSSAI without
+   redefining IPv6 semantics. IP forwarding is not altered by this method and is
+   still achieved following BCP 198 {{!RFC7608}}. Different IPv6 address allocation
+   schemes following this approach may be used, with one example allocation shown
+   in {{figure-11}}.
 
-   One
-   benefit of embedding the S-NSSAI in the IPv6 address is that it provides
-   a very easy way of identifying the packet as belonging to given
-   S-NSSAI at any place in the TN domain.  This might be
-   used, for example, to selectively enable per S-NSSAI monitoring, or
-   any other per S-NSSAI handling, if required.
+   Note that this addressing scheme is local to an ingress or egress NF; intermediary
+   TN nodes are not required to associate any additional semantic with IPv6 address.
+
+   One benefit of embedding the S-NSSAI in the IPv6 address is that specific S-NSSAI
+   can be identified as interesting at any place in the TN domain. This might be used,
+   for example, to selectively enable per S-NSSAI monitoring, traffic engineering or any
+   other per S-NSSAI handling, if required.
+
+   However, operators using such mapping method should be aware of the implications
+   of any change of S-NSSAI on the addressing plans. It is out of scope of this document
+   to elaborate on these implications.
 
 ~~~
              NF specific          reserved
@@ -698,22 +720,23 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
 ~~~
 {: #figure-11 title="An Example of S-NSSAI Embedded into IPv6" artwork-align="center"}
 
-   In the example shown in {{figure-11}}, the most significant 96 bits of the IPv6 address are
-   unique to the NF, but do not carry any slice-specific information, while
-   the least significant 32 bits are used to embed the S-NSSAI information.
-   The 96-bit part of the address may be further divided based, for
-   example, on the geographical location or the DC identification.
+   In the example shown in {{figure-11}}, the most significant 96 bits of the IPv6 address
+   are unique to the NF, but do not carry any slice-specific information, while the least
+   significant 32 bits are used to embed the S-NSSAI information. The 96-bit part of the
+   address may then be engineered/architected by the provider, for example, on the
+   geographical location or the DC identification.
 
-   {{figure-s-nssai-deployment}} shows an example of a slicing deployment, where the S-NSSAI is
-   embedded into IPv6 addresses used by NFs.  NF-A has a set of tunnel
-   termination points, with unique per-slice IP addresses allocated from
-   the 2001:db8::a:0:0/96 prefix, while NF-B uses a set of tunnel
-   termination points with per-slice IP addresses allocated from
-   2001:db8::b:0:0/96.  This example shows two slices: eMBB (SST=1) and
-   MIoT (SST=3).  Therefore, for eMBB the tunnel IP addresses are auto-
-   derived (without the need for a mapping table) as {2001:db8::a:100:0,
-   2001:db8::b:100:0}, while for MIoT (SST=3) tunnel uses
-   {2001:db8::a:300:0, 2001:db8::b:300:0}.
+   {{figure-s-nssai-deployment}} uses the example from {{figure-11}} to demonstrate a
+   slicing deployment, where the entire S-NSSAI is embedded into IPv6 addresses used by
+   NFs. NF-A has a set of tunnel termination points, with unique per-slice IP addresses
+   allocated from the 2001:db8:a:0::/96 prefix, while NF-B uses a set of tunnel termination
+   points with per-slice IP addresses allocated from 2001:db8:b:0::/96. This example shows
+   two slices: customer A eMBB (SST=01, SD=00001) and customer B MIoT (SST=03, SD=00003).
+   Therefore, for customer A eMBB the tunnel IP addresses are auto-derived (without the need
+   for an explicit mapping table) as the IP's {2001:db8:a::100:1, 2001:db8:b::100:1},
+   where {:0100:0001} are used as the last two octets, and for customer B MIoT (SST=3,
+   SD=00003) tunnel uses the IP's {2001:db8:a::300:3, 2001:db8:b::300:3} and simply
+   adds {:0300:0003} as the last two octets. Leading zeros are not represented in IPv6 addresses as per {{?RFC5952}}.
 
 ~~~~
 {::include ./drawings/S-NSSAI-deployment.txt}
