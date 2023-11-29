@@ -287,7 +287,8 @@ Provider Edge (PE):
 : A device managed by a provider that is connected to a CE. The connectivity between a CE and a PE is achieved using one or multiple Attachment Circuit. This document generalizes the PE definition with the introduction of Distributed PEs in {{sec-distributed}}.
 
 Attachment Circuit (AC):
-: The logical connection that attaches a CE to a PE. A CE is connected to a PE via one or multiple ACs. An AC is technology-specific. For consistency with the AC data model terminology (e.g., {{?RFC9182}}), this document assumes that an AC is configured on a “bearer”, which represents the underlying connectivity. Examples of ACs are Virtual Local Area Networks (VLANs) (AC) configured on a physical interface (bearer) or an Overlay VXLAN EVI (AC) configured on an IP underlay (bearer).
+: The logical connection that attaches a CE to a PE. A CE is connected to a PE via one or multiple ACs. An AC is technology-specific. For consistency with the AC data models terminology (e.g., {{?I-D.ietf-opsawg-teas-attachment-circuit}} and {{?I-D.ietf-opsawg-ntw-attachment-circuit}}), this document assumes that an AC is configured on a "bearer", which represents the underlying connectivity.
+: Examples of ACs are Virtual Local Area Networks (VLANs) (AC) configured on a physical interface (bearer) or an Overlay VXLAN EVI (AC) configured on an IP underlay (bearer).
 
 
 > In order to keep the figures simple, only one AC and single-homed CEs are represented.
@@ -295,13 +296,13 @@ Attachment Circuit (AC):
 
 ###  Distributed PE and CE {#sec-distributed}
 
-This document uses the concept of distributed CEs and PEs (e.g., {{Section 3.4.3 of ?RFC4664}}). This approach consolidates a definition of CE/PE/AC that is consistent with the orchestration perimeters. The CEs and PEs delimit respectively the customer and provider orchestration domains, while the AC interconnects these domains.
+This document uses the concept of distributed CEs and PEs (e.g., {{Section 3.4.3 of ?RFC4664}}). This approach consolidates a definition of CE/AC/PE that is consistent with the orchestration perimeters. The CEs and PEs delimit respectively the customer and provider orchestration domains, while the AC interconnects these domains.
 
 Distributed CE:
 : The logical connectivity is realized by configuring multiple devices in the customer domain. The CE function is distributed. An example of such a distribution is the realization of an interconnection using a L3VPN service based on a distributed CE composed of a switch (Layer 2) and a router (Layer 3) (case (ii) in {{fig-50}}).
 
 Distributed PE:
-: The logical connectivity is realized by configuring  multiple devices in the Transport Network (provider orchestration domain). The PE function is distributed. An example of a distributed PE is the “Managed CE service”. For example, a provider delivers VPN services using CEs and PEs which are both managed by the provider (case (iii) in {{fig-50}}). The managed CE can also be a Data Center Gateway as depicted in the example (iv) of {{fig-50}}. A provider-managed CE may attach to CEs of multiple customers. However, this device is part of the provider network.
+: The logical connectivity is realized by configuring  multiple devices in the Transport Network (provider orchestration domain). The PE function is distributed. An example of a distributed PE is the "Managed CE service". For example, a provider delivers VPN services using CEs and PEs which are both managed by the provider (case (iii) in {{fig-50}}). The managed CE can also be a Data Center Gateway as depicted in the example (iv) of {{fig-50}}. A provider-managed CE may attach to CEs of multiple customers. However, this device is part of the provider network.
 
 {{fig-50}} depicts the reference model together with examples of distributed CEs and PEs.
 
@@ -316,11 +317,9 @@ In subsequent sections of this document, the terms CE and PE are used for both s
 
 A co-managed CE is orchestrated by both the customer and the provider. In this case, the customer and provider usually have control on distinct device configuration perimeters (e.g., the customer is responsible for the LAN interfaces, while the provider is responsible for the WAN interfaces (including routing/forwarding policies)). Considering the generic model, a co-managed CE has both PE and CE functions and there is no strict AC connection, although we may consider that the AC stitching logic happens internally within the CE device itself. The provider manages the AC between the CE and the PE.
 
-[comment]: <> (??? need discussion on this particular + add link/ref with framework ???)
-
 ### Service-aware CE
 
-While in most cases CEs connect to PEs using IP (e.g., VLANs), a CE may also connect to the provider network using MPLS -potentially over IP tunnels- or SRv6. The CE has awareness of provider services configuration (e.g., control plane identifiers such as Route Targets and Route Distinguishers). An example of such an AC is depicted in {{figure-51}}. This is a source of confusion since these configurations are typically enforced on PEs. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE.
+While in most cases CEs connect to PEs using IP (e.g., VLANs), a CE may also connect to the provider network using MPLS -potentially over IP tunnels- or Segment Routing over IPv6 (SRv6) {{?RFC8754}}. The CE has awareness of provider services configuration (e.g., control plane identifiers such as Route Targets (RTs) and Route Distinguishers (RDs)). An example of such an AC is depicted in {{figure-51}}. This is a source of confusion since these configurations are typically enforced on PEs. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE.
 
 ~~~~
 {::include ./drawings/mpls-ac.txt}
@@ -369,12 +368,6 @@ In reference to the architecture depicted in {{sec-5g-sli-arch}}, the connectivi
 As depicted in {{fig-end-to-end}}, the realization of an RFC XXXX Network Slice (i.e., connectivity with
    performance commitments) involves the provider network and partially the AC (the PE-side of the AC). Note that the provisioning of a new Network Slice may rely on a partial or full pre-provisioned segment (e.g., a new Network Slice may rely on an existing AC). The Customer Site segment is considered as an extension of the connectivity of the RAN/CN domain without complex slice-specific performances requirements: the Customer Site infrastructure is usually over-provisioned and involves short distances (low latency) where basic QoS/Scheduling logic is sufficient to comply with the target SLOs. In other words, the main focus for the enforcement of end-to-end SLOs is managed at the Network Slice between PE interfaces connected to the AC.
 
-
-{::comment}
-FUTURE REF for a framework for the automation of both segments is proposed in this document
-{:/comment}
-
-
 ~~~~
 {::include ./drawings/tn-sections.txt}
 ~~~~
@@ -388,13 +381,13 @@ interconnection is technology-specific and requires coordination between the Cus
 
 : {{figure-4}} is a basic example of a Layer 3 CE-PE link realization
 with shared network resources (such as VLAN-IDs and IP prefixes) which
-are passed between Orchestrators via a dedicated interface, e.g., the RFC XXXX Network Slice Service Interface {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}} or the Attachment Circuit Service Interface ({{?I-D.boro-opsawg-teas-attachment-circuit}}.
+are passed between Orchestrators via a dedicated interface, e.g., the RFC XXXX Network Slice Service Interface {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}} or the Attachment Circuit Service Interface ({{?I-D.ietf-opsawg-teas-attachment-circuit}}.
 
 
 ~~~~
 {::include ./drawings/ac-api-synch.txt}
 ~~~~
-{: #figure-4 title="Coordination of TN Resources for the AC Provisioning" artwork-align="center"}
+{: #figure-4 title="Coordination of Transport Network Resources for the AC Provisioning" artwork-align="center"}
 
 ### Additional Segmentation and Domains
 
@@ -551,12 +544,12 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
    realization model described in this document, depicted in {{figure-high-level-qos}}, a single NRP is used
    with the following characteristics:
 
-   *  Layer 2 Virtual Private Network (L2VPN)/Layer 3 Virtual Private Network (L3VPN) service instances for logical separation:
+   *  Layer 2 Virtual Private Network (L2VPN) {{?RFC4664}} and/or Layer 3 Virtual Private Network (L3VPN) {{?RFC4364}} service instances for logical separation:
 
       This realization model of transport for 5G slices assumes Layer 3
       delivery for midhaul and backhaul transport connections, and a
       Layer 2 or Layer 3 for
-      fronthaul connections. eCPRI supports both delivery models. L2VPN/L3VPN service instances might be
+      fronthaul connections. Enhanced Common Public Radio Interface (eCPRI) supports both delivery models. L2VPN/L3VPN service instances might be
       used as a basic form of logical slice separation.  Furthermore, using
       service instances results in an additional outer header (as packets
       are encapsulated/decapsulated at the nodes hosting service instances) providing clean discrimination between 5G QoS and TN
@@ -750,7 +743,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
    are created directly on the NF, or within the customer site
    hosting the NF, and attached to the provider network.  Therefore, the packet
    is MPLS encapsulated outside the provider network with native MPLS
-   encapsulation, or MPLSoUDP encapsulation, depending on the capability
+   encapsulation, or MPLS-in-UDP encapsulation {{?RFC7510}}, depending on the capability
    of the customer site, with the service label depicting
    the slice.
 
@@ -781,7 +774,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
    infrastructure itself (e.g., on the top of the rack or leaf switch
    within cloud IP fabric ({{figure-mpls-10b-hand-off}}, right hand side)). On the
    attachment circuit connected to PE, packets are already MPLS
-   encapsulated (or MPLSoUDP/MPLSoIP encapsulated, if cloud or compute
+   encapsulated (or MPLS-in-UDP/MPLS-in-IP encapsulated, if cloud or compute
    infrastructure don’t support native MPLS encapsulation). Therefore,
    the PE uses neither a VLAN nor an IP address for slice
    identification at the SDP, but instead uses the MPLS label.
