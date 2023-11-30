@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-11-28T00:27:39.221788+00:00",
+  "timestamp": "2023-11-30T00:27:42.972397+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -1214,7 +1214,7 @@
       "id": "I_kwDOIw9g6c53egum",
       "title": "Reworking IP hand-off (VZ comments)",
       "url": "https://github.com/boucadair/5g-slice-realization/issues/81",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "kszarkowicz",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -1223,9 +1223,17 @@
       "labels": [],
       "body": "VZ proposed text:\r\n\r\nIn this option, the slice's specific S-NSSAI is mapped to a specific IP at each NF.  The IP is then defined as \"interesting\" and available for manipulation via multiple policy options in the IP network.   There are multiple mapping schemes that can be utilized where NSSAI equals IP (e.g. S-NSSAI to IPv4, S-NSSAI to IPv6).  These schemes can be single attach point specific or TN wide, for instance 1 S-NSSAI to 1 IP at each NF, 1 S-NSSAI to a pool of IP's for TN wide or 1 S-NSSAI to a subsection of IP address.  The IP and VLAN hand-off's are not mutually exclusive, but instead could be used together.  Since the TN doesn't recognize S-NSSAI, a mapping table similar to the VLAN Hand-off solution must be utilized.\r\n \r\nThe mapping table can be simplified if, for example, IPv6 addressing is used to address NFs. An IPv6 address is a 128-bit long field, while the S-NSSAI is a 32-bit field: Slice/Service Type (SST): 8 bits, Slice Differentiator (SD): 24 bits. 32 bits, out of 128 bits of the IPv6 address, may be used to encode the S-NSSAI, which makes an IP to Slice mapping table unnecessary. Alternatively, instead of using 2 full segments from the 8 segments in an IPv6 address, a provider could build a mapping table that used only one segment or parts of a segment to represent utilized S-NSSAI. This mapping is simply a local allocation method to allocate IPv6 addresses to NF in order to be representative of the S-NSSAI without redefining IPv6 semantics. Different IPv6 address allocation schemes following this approach may be used, with one example allocation shown in Figure 14.  \r\n \r\nNote that this addressing scheme is local to an ingress or egress NF; intermediary TN nodes are not required to associate any additional semantic with IPv6 address.\r\n\r\nOne benefit of embedding the S-NSSAI in the IPv6 address is that specific S-NSSAI can be identified as interesting at any place in the TN domain. This might be used, for example, to selectively enable per S-NSSAI monitoring, traffic engineer or any other per S-NSSAI handling, if required.\r\n\r\nIn the example shown in Figure 14, the most significant 96 bits of the IPv6 address are unique to the NF, but do not carry any slice-specific information, while the least significant 32 bits are used to embed the S-NSSAI information. The 96-bit part of the address may then be engineered/architected by the provider, for example, on the geographical location or the DC identification.\r\n\r\nFigure 15 uses the example from Figure 14 to demonstrate a slicing deployment where the entire S-NSSAI is embedded into IPv6 addresses used by NFs. NF-A has a set of tunnel termination points, with unique per-slice IP addresses allocated from the 2001:db8:a:0::/96 prefix, while NF-B uses a set of tunnel termination points with per-slice IP addresses allocated from 2001:db8:b:0::/96. This example shows two slices: customer A eMBB (SST=01, SD=00001) and customer B MIoT (SST=03, SD=00003). Therefore, for customer A eMBB the tunnel IP addresses are auto-derived (without the need for a mapping table) as the IP's {2001:db8:a:100::, 2001:db8:b:100::} simply add {:0100:0001}  as the IP's {2001:db8:a::100:0001, 2001:db8:b::100:0001} simply add {:0100:0001} as the last 2 segments and for customer B MIoT (SST=3) tunnel uses the IP's {2001:db8:a::300:0003, 2001:db8:b::300:0003} and simply adds {:0300:0003} as the last 2 segments.\r\n\r\n\r\n\r\nAlso, Figure 15 would need to be updated to reflect the changes,",
       "createdAt": "2023-11-21T15:04:01Z",
-      "updatedAt": "2023-11-21T15:04:01Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2023-11-29T20:20:09Z",
+      "closedAt": "2023-11-29T20:20:09Z",
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "fixed #95 ",
+          "createdAt": "2023-11-29T20:20:09Z",
+          "updatedAt": "2023-11-29T20:20:09Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -2690,24 +2698,26 @@
       "id": "PR_kwDOIw9g6c5gbIsb",
       "title": "ac-api-sync figure update (Unicode)",
       "url": "https://github.com/boucadair/5g-slice-realization/pull/84",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "kszarkowicz",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2023-11-27T10:49:31Z",
-      "updatedAt": "2023-11-27T14:38:41Z",
+      "updatedAt": "2023-11-28T09:43:20Z",
       "baseRepository": "boucadair/5g-slice-realization",
       "baseRefName": "main",
       "baseRefOid": "6f350a68af039caeb338398f585873c25d152aca",
       "headRepository": "boucadair/5g-slice-realization",
       "headRefName": "kszarkowicz-ac-api-sync-figure",
-      "headRefOid": "706507c3dba0f0001f384fce72a82d1e76ac711c",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "ca4d5e723d663fd088acfa16a5777e82c1e84f72",
+      "closedAt": "2023-11-28T09:43:19Z",
+      "mergedAt": "2023-11-28T09:43:19Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "081d3cbefbc8ec7bb19f722b38a0c8dc065b6546"
+      },
       "comments": [],
       "reviews": [
         {
@@ -3122,6 +3132,491 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 95,
+      "id": "PR_kwDOIw9g6c5gjYw-",
+      "title": "Reworking IP Hand-off section based on VZ comments",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/95",
+      "state": "MERGED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-28T13:15:20Z",
+      "updatedAt": "2023-11-29T08:00:04Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "081d3cbefbc8ec7bb19f722b38a0c8dc065b6546",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-ip-hand-off-vz-comments",
+      "headRefOid": "22c4a52dda0f37d5b8c0493531223e5dfcdbd219",
+      "closedAt": "2023-11-29T08:00:03Z",
+      "mergedAt": "2023-11-29T08:00:03Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "d6ff4c32067c99da8003911160a4627f00c2f68e"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c5ofJVi",
+          "commit": {
+            "abbreviatedOid": "6baeb95"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-28T14:11:06Z",
+          "updatedAt": "2023-11-28T14:11:07Z",
+          "comments": [
+            {
+              "originalPosition": 28,
+              "body": "```suggestion\r\n   pertaining to single NF attachment) or global TN significance. The mapping can\r\n```",
+              "createdAt": "2023-11-28T14:11:06Z",
+              "updatedAt": "2023-11-28T14:11:07Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5ofJnK",
+          "commit": {
+            "abbreviatedOid": "6baeb95"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-28T14:11:37Z",
+          "updatedAt": "2023-11-28T14:11:38Z",
+          "comments": [
+            {
+              "originalPosition": 29,
+              "body": "```suggestion\r\n   be realized in multiple ways, including (but not limited to):\r\n```",
+              "createdAt": "2023-11-28T14:11:37Z",
+              "updatedAt": "2023-11-28T14:11:38Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5ofKLA",
+          "commit": {
+            "abbreviatedOid": "6baeb95"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-28T14:12:40Z",
+          "updatedAt": "2023-11-28T14:12:40Z",
+          "comments": [
+            {
+              "originalPosition": 37,
+              "body": "```suggestion\r\n   traffic steering, bandwidth allocation, security policies, or monitoring).\r\n```",
+              "createdAt": "2023-11-28T14:12:40Z",
+              "updatedAt": "2023-11-28T14:12:41Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5ofKSP",
+          "commit": {
+            "abbreviatedOid": "6baeb95"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-28T14:12:52Z",
+          "updatedAt": "2023-11-28T14:12:53Z",
+          "comments": [
+            {
+              "originalPosition": 39,
+              "body": "```suggestion\r\n   One example of the realization is the arrangement, where the slices in the TN\r\n```",
+              "createdAt": "2023-11-28T14:12:53Z",
+              "updatedAt": "2023-11-28T14:12:53Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5ofKf1",
+          "commit": {
+            "abbreviatedOid": "6baeb95"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-28T14:13:17Z",
+          "updatedAt": "2023-11-28T14:13:17Z",
+          "comments": [
+            {
+              "originalPosition": 40,
+              "body": "```suggestion\r\n   domain are instantiated using IP tunnels (for example, IPsec or GTP-U tunnels)\r\n```",
+              "createdAt": "2023-11-28T14:13:17Z",
+              "updatedAt": "2023-11-28T14:13:17Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5ofLJA",
+          "commit": {
+            "abbreviatedOid": "6baeb95"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-28T14:14:28Z",
+          "updatedAt": "2023-11-28T14:14:28Z",
+          "comments": [
+            {
+              "originalPosition": 85,
+              "body": "```suggestion\r\n   represent utilized S-NSSAI. This mapping is a local allocation method to\r\n```",
+              "createdAt": "2023-11-28T14:14:28Z",
+              "updatedAt": "2023-11-28T14:14:28Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5ofLkN",
+          "commit": {
+            "abbreviatedOid": "6baeb95"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-28T14:15:14Z",
+          "updatedAt": "2023-11-28T14:15:14Z",
+          "comments": [
+            {
+              "originalPosition": 97,
+              "body": "```suggestion\r\n   for example, to selectively enable per S-NSSAI monitoring, traffic engineering or any\r\n```",
+              "createdAt": "2023-11-28T14:15:14Z",
+              "updatedAt": "2023-11-28T14:15:14Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5ofMnx",
+          "commit": {
+            "abbreviatedOid": "6baeb95"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-28T14:17:07Z",
+          "updatedAt": "2023-11-28T14:17:08Z",
+          "comments": [
+            {
+              "originalPosition": 98,
+              "body": "```suggestion\r\n   other per S-NSSAI handling, if required.\r\n   \r\n   However, operators using such mapping method should be aware of the implications\r\n   of any change of S-NSSAI on the addressing plans. It is out of scope of this document\r\n   to elaborate on these implications.\r\n```",
+              "createdAt": "2023-11-28T14:17:08Z",
+              "updatedAt": "2023-11-28T14:17:08Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5ofOjc",
+          "commit": {
+            "abbreviatedOid": "6baeb95"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-28T14:20:35Z",
+          "updatedAt": "2023-11-28T14:20:36Z",
+          "comments": [
+            {
+              "originalPosition": 33,
+              "body": "```suggestion\r\n   * S-NSSAI to a subset of bits of an IP address\r\n   * Use a deterministic algorithm to map S-NSAAI to an IP subnet, prefix, or pools. For example, adaptations to the algorithm defined in {{?RFC7422}} may be considered.\r\n```",
+              "createdAt": "2023-11-28T14:20:35Z",
+              "updatedAt": "2023-11-28T14:20:36Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5ofPwU",
+          "commit": {
+            "abbreviatedOid": "6baeb95"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-28T14:22:37Z",
+          "updatedAt": "2023-11-28T14:22:37Z",
+          "comments": [
+            {
+              "originalPosition": 135,
+              "body": "```suggestion\r\n   for an explicit mapping table) as the IP's {2001:db8:a::100:1, 2001:db8:b::100:1},\r\n```",
+              "createdAt": "2023-11-28T14:22:37Z",
+              "updatedAt": "2023-11-28T14:22:37Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5ofP8_",
+          "commit": {
+            "abbreviatedOid": "6baeb95"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-28T14:22:58Z",
+          "updatedAt": "2023-11-28T14:22:59Z",
+          "comments": [
+            {
+              "originalPosition": 137,
+              "body": "```suggestion\r\n   SD=00003) tunnel uses the IP's {2001:db8:a::300:3, 2001:db8:b::300:3} and simply\r\n```",
+              "createdAt": "2023-11-28T14:22:59Z",
+              "updatedAt": "2023-11-28T14:22:59Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5ofQa1",
+          "commit": {
+            "abbreviatedOid": "6baeb95"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-28T14:23:46Z",
+          "updatedAt": "2023-11-28T14:23:47Z",
+          "comments": [
+            {
+              "originalPosition": 138,
+              "body": "```suggestion\r\n   adds {:0300:0003} as the last two octets. Leading zeros are not represented in IPv6 addresses as per {{?RFC5952}}.\r\n```",
+              "createdAt": "2023-11-28T14:23:47Z",
+              "updatedAt": "2023-11-28T14:23:54Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5olcby",
+          "commit": {
+            "abbreviatedOid": "22c4a52"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-11-29T07:59:55Z",
+          "updatedAt": "2023-11-29T07:59:55Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 96,
+      "id": "PR_kwDOIw9g6c5gjeU9",
+      "title": "IP-Hand-off-example-figure",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/96",
+      "state": "MERGED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-28T13:26:48Z",
+      "updatedAt": "2023-11-29T07:55:01Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "081d3cbefbc8ec7bb19f722b38a0c8dc065b6546",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-IP-Hand-off-example-figure",
+      "headRefOid": "d84a54c838e7db24135b18be533b4c7f5a8dbe8f",
+      "closedAt": "2023-11-29T07:55:00Z",
+      "mergedAt": "2023-11-29T07:55:00Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "0847510af3c5aa058a9ec7f3c4e1879a3dd32e16"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c5ofGo0",
+          "commit": {
+            "abbreviatedOid": "bdbd483"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-28T14:06:07Z",
+          "updatedAt": "2023-11-28T14:06:08Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\n 2001:db8:a::100:1/128                2001:db8:b::100:1/128 \r\n```\r\n\r\nAs per https://datatracker.ietf.org/doc/html/rfc5952: leading zeros should be omitted.",
+              "createdAt": "2023-11-28T14:06:07Z",
+              "updatedAt": "2023-11-28T14:06:08Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5ofHGL",
+          "commit": {
+            "abbreviatedOid": "bdbd483"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-28T14:06:59Z",
+          "updatedAt": "2023-11-28T14:07:00Z",
+          "comments": [
+            {
+              "originalPosition": 22,
+              "body": "```suggestion\r\n 2001:db8:a::300:3/128               2001:db8:b::300:3/128 \r\n```\r\n\r\ntoo much zeros for the first address + leasing zeros should be ommited!",
+              "createdAt": "2023-11-28T14:06:59Z",
+              "updatedAt": "2023-11-28T14:07:00Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5ofH0M",
+          "commit": {
+            "abbreviatedOid": "bdbd483"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-28T14:08:22Z",
+          "updatedAt": "2023-11-28T14:08:22Z",
+          "comments": [
+            {
+              "originalPosition": 27,
+              "body": "```suggestion\r\n       Circuit         Segment         Circuit      Segment         \r\n```\r\n\r\nWe agreed to not use section, but segment",
+              "createdAt": "2023-11-28T14:08:22Z",
+              "updatedAt": "2023-11-28T14:08:22Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5ofIEq",
+          "commit": {
+            "abbreviatedOid": "bdbd483"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "CHANGES_REQUESTED",
+          "body": "Please see the proposed changes",
+          "createdAt": "2023-11-28T14:08:48Z",
+          "updatedAt": "2023-11-28T14:08:48Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5olaoI",
+          "commit": {
+            "abbreviatedOid": "d84a54c"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-11-29T07:54:53Z",
+          "updatedAt": "2023-11-29T07:54:53Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 97,
+      "id": "PR_kwDOIw9g6c5gjfYA",
+      "title": "IP-Hand-off-example-figure-monodraw",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/97",
+      "state": "MERGED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-28T13:28:34Z",
+      "updatedAt": "2023-11-29T08:00:22Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "081d3cbefbc8ec7bb19f722b38a0c8dc065b6546",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-IP-Hand-off-example-figure-monodraw",
+      "headRefOid": "0f5d0ae5d3203d9928956ed285d2a5a0e0b84f80",
+      "closedAt": "2023-11-29T08:00:21Z",
+      "mergedAt": "2023-11-29T08:00:21Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "82dc2e89bfb3c92bcac0995b0581e3926106a312"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 98,
+      "id": "PR_kwDOIw9g6c5gpC-C",
+      "title": "fix + add more references and other minor edits",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/98",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-29T08:30:21Z",
+      "updatedAt": "2023-11-29T20:16:00Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "82dc2e89bfb3c92bcac0995b0581e3926106a312",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-1",
+      "headRefOid": "3431cc66abcd289cea5c88f0d625472a788cbe20",
+      "closedAt": "2023-11-29T20:15:59Z",
+      "mergedAt": "2023-11-29T20:15:59Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "741785eac96ac3629f90b084d75a7438a31342b5"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 99,
+      "id": "PR_kwDOIw9g6c5gtj1h",
+      "title": "Create in-solidarity.yml",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/99",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-29T20:41:13Z",
+      "updatedAt": "2023-11-29T20:41:35Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "741785eac96ac3629f90b084d75a7438a31342b5",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-1",
+      "headRefOid": "cd9e404ddfb934ecf06dc4f30cd2c1a0c6c4dd41",
+      "closedAt": "2023-11-29T20:41:34Z",
+      "mergedAt": "2023-11-29T20:41:34Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "f70ef1501e214de8ca17f701ead7bf5e4d3327ab"
+      },
+      "comments": [],
+      "reviews": []
     }
   ]
 }
