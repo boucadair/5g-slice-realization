@@ -442,29 +442,7 @@ More complex scenarios can happen with extra segmentation of the TN and addition
 {: #figure-5 title="1 (5G Slice) to N (RFC XXXX Network Slice) Mapping" artwork-align="center"}
 
 ~~~
-                  .-------------.
-                  |  Edge Cloud |
-                  |             |
-                  | .---------. |
-                  | │UPF_URLLC│ |
-                  | '-----+---' |
-                  '-------│-----'
-.---------------. .-------|----------------------.
-|               | | .-----+--------------------. │ .--------------.
-|   Cell Site   │ | |                          │ | |              |
-|               | | │                          | │ │   Regional   |
-| .-----------. │ │ |                          | | |     Cloud    |
-| │CU-UP_URLLC+-----+                          | │ │ .----------. |
-| '-----------' │ │ |    RFC XXXX Network      +-----+  5GC CP  │ |
-|               | | │        Slice ALL         | │ │ '----------' |
-| .-----------. | │                            | | | |            |
-| │CU-UP_eMBB +-----+                          | | | .----------. |
-│ '-----------' | | |                          +-----+ UPF_eMBB │ |
-'---------------' | |                          | | | '----------' |
-                  | '--------------------------' | |              |
-                  |                              | '--------------'
-                  |      Transport Network       |
-                  '------------------------------'
+{::include ./drawings/n-to-1-mapping.txt}
 ~~~
 {: #figure-6 title="N (5G Slice) to 1 (RFC XXXX Network Slice) Mapping" artwork-align="center"}
 
