@@ -670,12 +670,12 @@ Table of Contents
       Circuit Service Interface
       ([I-D.ietf-opsawg-teas-attachment-circuit].
 
-            ┌ ─ ─ ─ ─ ─ ─ ─ ┐                ┌ ─ ─ ─ ─ ─ ─ ─ ─
-                                                RFCXXXX NSC   │
-            │ Customer Site │                │
-              Orchestration    IETF APIs/DM    (Provider Network│
-            │               │ ◀────────────▶ │ Orchestration)
-             ─ ─ ─ ─ ─ ─ ─ ─                  ─ ─ ─ ─ ─ ─ ─ ─ ┘
+          ┌ ─ ─ ─ ─ ─ ─ ─ ┐                   ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─
+                                                  RFCXXXX NSC    │
+          │ Customer Site │                   │
+            Orchestration      IETF APIs/DM    (Provider Network │
+          │               │◀─────────────────▶│  Orchestration)
+           ─ ─ ─ ─ ─ ─ ─ ─                     ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
                         │                        │
                         │                        │
         ┌ ─ ─ ─ ─ ─ ─ ─ ┼ ┐                    ┌ ┼ ─ ─ ─ ─ ─ ─ ─ ┐
