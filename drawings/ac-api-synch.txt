@@ -1,9 +1,9 @@
-    ┌ ─ ─ ─ ─ ─ ─ ─ ┐                ┌ ─ ─ ─ ─ ─ ─ ─ ─    
-                                        RFCXXXX NSC   │   
-    │ Customer Site │                │                    
-      Orchestration    IETF APIs/DM    (Provider Network│   
-    │               │ ◀────────────▶ │ Orchestration)     
-     ─ ─ ─ ─ ─ ─ ─ ─                  ─ ─ ─ ─ ─ ─ ─ ─ ┘   
+  ┌ ─ ─ ─ ─ ─ ─ ─ ┐                   ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ 
+                                          RFCXXXX NSC    │
+  │ Customer Site │                   │                   
+    Orchestration      IETF APIs/DM    (Provider Network │
+  │               │◀─────────────────▶│  Orchestration)   
+   ─ ─ ─ ─ ─ ─ ─ ─                     ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
                 │                        │                
                 │                        │                
 ┌ ─ ─ ─ ─ ─ ─ ─ ┼ ┐                    ┌ ┼ ─ ─ ─ ─ ─ ─ ─ ┐
@@ -15,4 +15,4 @@
 │      Site       │                    │     Network     │
  ─ ─ ─ ─ ─ ─ ─ ─ ─                      ─ ─ ─ ─ ─ ─ ─ ─ ─ 
                                                           
-               └─────────── AC ──────────┘                          
+               └─────────── AC ──────────┘                                     
