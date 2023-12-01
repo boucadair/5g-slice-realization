@@ -419,25 +419,7 @@ More complex scenarios can happen with extra segmentation of the TN and addition
       approaches with a mix of shared and dedicated associations.
 
 ~~~
-. ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ .
-|                                                               |
-│                        5G Slice eMBB                          │
-|                                                               |
-│            . ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ .            │
-| .─────. N3 | . ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ . | N3 .─────. |
-│ │CU-UP├─────── RFC XXXX Network Slice UP_eMBB  ───────┤ UPF │ |
-| '─────'    | ' ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ' |    '─────' |
-│            |                                     |            |
-| .─────. N2 | . ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ . | N2 .─────. |
-│ │CU-CP├───────   RFC XXXX Network Slice CP     ───────┤ AMF │ |
-| '─────'    | ' ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ' |    '─────' |
-' ─ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ '
-             │                                     │
-             │                                     │
-             |         Transport Network           |
-             │                                     │
-             │                                     │
-             ' ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ '
+{::include ./drawings/1-to-n-mapping.txt}
 ~~~
 {: #figure-5 title="1 (5G Slice) to N (RFC XXXX Network Slice) Mapping" artwork-align="center"}
 
