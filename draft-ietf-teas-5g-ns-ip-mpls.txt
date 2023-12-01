@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 1 June 2024                                    Juniper Networks
+Expires: 3 June 2024                                    Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                        29 November 2023
+                                                         1 December 2023
 
 
  A Realization of RFC XXXX Network Slices for 5G Networks Using Current
@@ -60,7 +60,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 1 June 2024.
+   This Internet-Draft will expire on 3 June 2024.
 
 Copyright Notice
 
@@ -487,13 +487,13 @@ Table of Contents
           │     Site                            │    Network    │
                          │
           │                                     │               │
-                         │ ◀──────MP-BGP─────▶
-          │          ┌────┐                  ┌──┴─┐             │
-                     │    │   MPLS-based AC  │    │
-          │          │ CE ├ ─ ─ ─ ─ ─ ─ ─ ─ ─│ PE │             │
-                  ┏━━┻━━━━┻━━┓               │    │
-          │       ┃  VRF foo ┃               └──┬─┘             │
-           ─ ─ ─ ─┗━ ━━━━━━━━┛                   ─ ─ ─ ─ ─ ─ ─ ─
+                         │  ◀─────MP-BGP─────▶
+          │           ┌────┐                  ┌─┴──┐            │
+                      │    │   MPLS-based AC  │    │
+          │           │ CE ├──────────────────▶ PE │            │
+                   ┏━━┻━━━━┻━━┓               │    │
+          │        ┃ VRF foo  ┃               └─┬──┘            │
+           ─ ─ ─ ─ ┻━━━━━━━━━━┛                  ─ ─ ─ ─ ─ ─ ─ ─
 
              Figure 4: Example of MPLS-based Attachment Circuit
 
@@ -2615,17 +2615,17 @@ Table of Contents
               Boucadair, M., Roberts, R., de Dios, O. G., Barguil, S.,
               and B. Wu, "A Network YANG Data Model for Attachment
               Circuits", Work in Progress, Internet-Draft, draft-ietf-
-              opsawg-ntw-attachment-circuit-02, 28 November 2023,
+              opsawg-ntw-attachment-circuit-03, 30 November 2023,
               <https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-
-              ntw-attachment-circuit-02>.
+              ntw-attachment-circuit-03>.
 
    [I-D.ietf-opsawg-teas-attachment-circuit]
               Boucadair, M., Roberts, R., de Dios, O. G., Barguil, S.,
               and B. Wu, "YANG Data Models for 'Attachment Circuits'-as-
               a-Service (ACaaS)", Work in Progress, Internet-Draft,
-              draft-ietf-opsawg-teas-attachment-circuit-02, 27 November
+              draft-ietf-opsawg-teas-attachment-circuit-03, 1 December
               2023, <https://datatracker.ietf.org/doc/html/draft-ietf-
-              opsawg-teas-attachment-circuit-02>.
+              opsawg-teas-attachment-circuit-03>.
 
    [I-D.ietf-teas-5g-network-slice-application]
               Geng, X., Contreras, L. M., Rokui, R., Dong, J., and I.
