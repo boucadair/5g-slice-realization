@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-11-30T00:27:42.972397+00:00",
+  "timestamp": "2023-12-03T00:29:41.310089+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -1234,6 +1234,22 @@
           "updatedAt": "2023-11-29T20:20:09Z"
         }
       ]
+    },
+    {
+      "number": 102,
+      "id": "I_kwDOIw9g6c54dpQF",
+      "title": "Daniele's Review",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/102",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "> `Authors, WG,\r\n> \r\n> I reviewed draft-ietf-teas-5g-ns-ip-mpls. Please find below some comments:\r\n> \r\n> \u2022\tGeneral: This is applicable in general to all the network slicing drafts: I don\u2019t really like the usage of \u201cRFC XXXX Network Slice\u201d. The term will need to be used both in IETF and mostly outside the IETF, it needs to be more intuitive. I\u2019m happy with TN network slice, IETF network slice, but not RFC XXXX, it doesn\u2019t provide context for an external user. The term Transport Network is controversial due to different meaning, but the in the draft is extensively used, then why not using it also to identify the slice? Moreover, if one day the RFC will be obsoleted? We\u2019ll need to update the name of the network slices?\r\n> \u2022\tAbstract: s/This feature covers slicing requirements/This feature introduces new requirements for all the domains.\r\n> \u2022\tIntroduction: \u201c(NRP), which is simply a collection of   resources identified in the underlay network\u201d \u2013 which underlay network? Underlay WRT to the NRP? It needs to be explained a bit better.\r\n> \u2022\tIntroduction:  \u201cThis document describes an RFC XXXX Network Slice realization model in IP/MPLS networks, using a single NRP and with a focus on fulfilling 5G slicing connectivity requirement\u201d \u2013 Unsing a single NRP is a choice of the authors or there is a 1:1 mapping between Slice and NRP?\r\n> \u2022\tSection 3.3 and related: The definition of transport network scope and reference design is very useful, but would have been more appropriate in the framework (too late now\u2026). Why does the transport network go from NF to NF and not from CE to CE? Isn\u2019t the NF typically part of the RAN or the PC domains? \r\n> \u2022\tCustomer site orchestration domain: is this aligned with the framework? From the framework I understood that the NSC manages the RFCXXXX network slice, but here the orchestraion of the TN is done by the RFCXXXX + customer site orchestrators. Does this mean that the TN slice and the RFC XXXX slice are different things? In this case it should be stated clearly before in the text (maybe it is but it took me 12 pages to understand it?) Maybe anticipating figure 5 to the beginning as clearly defining the scope of RFC XXX slice and TN slice helps. I went back to check the framework and couldn\u2019t find any relationship between the RFC XXXX network slice and the TN network slice, shouldn\u2019t it be there?\r\n> \u2022\tSection 3.5. Why 1 to N mapping? Are you sure the split between UP and CP would lead to a single 5G slice mapped into multiple RFC XXXX slices? The number of RFC XXXX should be significantly lower than the number of 5G slices otherwise we risk to have serious scalability issues.\r\n> \u2022\tOne interesting topic to address would be the case of TN slices composed by multiple segments (I sent some text to describe it a while back). The stitching of the different segments would be a nice problem to be addressed.\r\n> \r\n> Thanks,\r\n> Daniele\r\n> `",
+      "createdAt": "2023-12-01T14:50:22Z",
+      "updatedAt": "2023-12-01T14:50:22Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -3617,6 +3633,378 @@
       },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 100,
+      "id": "PR_kwDOIw9g6c5g6COf",
+      "title": "Update mpls-ac.txt",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/100",
+      "state": "MERGED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-12-01T14:46:00Z",
+      "updatedAt": "2023-12-01T14:48:11Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "f70ef1501e214de8ca17f701ead7bf5e4d3327ab",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-mpls-ac-figure-update",
+      "headRefOid": "8110bdd8eaac072fc56d958cf9122f553335536a",
+      "closedAt": "2023-12-01T14:48:10Z",
+      "mergedAt": "2023-12-01T14:48:10Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "db6cb37c7a975038bfc7fb009296573720a0e741"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c5o5vqw",
+          "commit": {
+            "abbreviatedOid": "8110bdd"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-12-01T14:48:05Z",
+          "updatedAt": "2023-12-01T14:48:05Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 101,
+      "id": "PR_kwDOIw9g6c5g6C8D",
+      "title": "mpls-ac-monopic",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/101",
+      "state": "MERGED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-12-01T14:47:45Z",
+      "updatedAt": "2023-12-01T14:50:33Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "f70ef1501e214de8ca17f701ead7bf5e4d3327ab",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-mpls-ac-monopic",
+      "headRefOid": "5348daca99ac3fe1699528be351154b82bd8a526",
+      "closedAt": "2023-12-01T14:50:33Z",
+      "mergedAt": "2023-12-01T14:50:33Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "fbed0e3b090e630cf355ecd40e70562018f9e883"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 103,
+      "id": "PR_kwDOIw9g6c5g6RcV",
+      "title": "tn-orchestration-unicode",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/103",
+      "state": "MERGED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-12-01T15:26:23Z",
+      "updatedAt": "2023-12-01T15:30:04Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "fbed0e3b090e630cf355ecd40e70562018f9e883",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-tn-orchestration-unicode",
+      "headRefOid": "b45b6d46c5aa90b1c31581e2ec851fac0844cab3",
+      "closedAt": "2023-12-01T15:30:03Z",
+      "mergedAt": "2023-12-01T15:30:03Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "926ccdac0b85d6911ca117ea6eaacd71509b8f01"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c5o6CId",
+          "commit": {
+            "abbreviatedOid": "b45b6d4"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-12-01T15:29:59Z",
+          "updatedAt": "2023-12-01T15:29:59Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 104,
+      "id": "PR_kwDOIw9g6c5g6R6-",
+      "title": "tn-orchestration-monopic",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/104",
+      "state": "MERGED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-12-01T15:27:44Z",
+      "updatedAt": "2023-12-01T15:30:17Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "fbed0e3b090e630cf355ecd40e70562018f9e883",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-tn-orchestration-monopic",
+      "headRefOid": "73cef6c701ee40c39c1f5d7db82f3f20fc63c9ba",
+      "closedAt": "2023-12-01T15:30:16Z",
+      "mergedAt": "2023-12-01T15:30:16Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "d6b55d90c43082c2fe3394cbd9d001a641e43e32"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 105,
+      "id": "PR_kwDOIw9g6c5g6TQu",
+      "title": "Update ac-api-synch.txt",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/105",
+      "state": "MERGED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-12-01T15:31:27Z",
+      "updatedAt": "2023-12-01T15:37:56Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "d6b55d90c43082c2fe3394cbd9d001a641e43e32",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-ac-api-synch",
+      "headRefOid": "fe53cb05bc337ec4c0cbf09c6843f590277c4df8",
+      "closedAt": "2023-12-01T15:37:55Z",
+      "mergedAt": "2023-12-01T15:37:55Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "f99291a7d69d89a4c4f12aefecdddc64c8b8a36e"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c5o6Fir",
+          "commit": {
+            "abbreviatedOid": "fe53cb0"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-12-01T15:37:50Z",
+          "updatedAt": "2023-12-01T15:37:50Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 106,
+      "id": "PR_kwDOIw9g6c5g6VW2",
+      "title": "1-to-n-mapping-reference",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/106",
+      "state": "MERGED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-12-01T15:37:22Z",
+      "updatedAt": "2023-12-01T16:09:00Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "d6b55d90c43082c2fe3394cbd9d001a641e43e32",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-1-to-n-mapping-reference",
+      "headRefOid": "2d8874c50c62c081f7e9d9365789db5154eb45c1",
+      "closedAt": "2023-12-01T16:08:59Z",
+      "mergedAt": "2023-12-01T16:08:59Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "649130a10aae286cdd4aafd749e5a0610ad862ba"
+      },
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "Will merge when 1-to-n-mapping.txt is added to the drawing folder. Thanks",
+          "createdAt": "2023-12-01T15:40:42Z",
+          "updatedAt": "2023-12-01T15:40:42Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 107,
+      "id": "PR_kwDOIw9g6c5g6XAZ",
+      "title": "adding n-to-1-mapping figures",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/107",
+      "state": "MERGED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-12-01T15:42:00Z",
+      "updatedAt": "2023-12-01T15:51:59Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "f99291a7d69d89a4c4f12aefecdddc64c8b8a36e",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-n-to-1-mapping-figures",
+      "headRefOid": "99124dd44b4d2a46f43e59e8532ffa36d1af8886",
+      "closedAt": "2023-12-01T15:51:58Z",
+      "mergedAt": "2023-12-01T15:51:58Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "f45dca54fd6994db790305bb398518f63caa00dc"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 108,
+      "id": "PR_kwDOIw9g6c5g6Xu_",
+      "title": "n-to-1-mapping figure reference",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/108",
+      "state": "MERGED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-12-01T15:44:07Z",
+      "updatedAt": "2023-12-01T15:54:02Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "f99291a7d69d89a4c4f12aefecdddc64c8b8a36e",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-n-to-1-mapping-reference",
+      "headRefOid": "b7221b1328ebdcfb6b4d51479dac404920e8acef",
+      "closedAt": "2023-12-01T15:54:01Z",
+      "mergedAt": "2023-12-01T15:54:01Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "981996cbf2f2c32d5554aa994569e5354d405db2"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 109,
+      "id": "PR_kwDOIw9g6c5g6cDD",
+      "title": "1st-slice-figures",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/109",
+      "state": "MERGED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-12-01T15:54:01Z",
+      "updatedAt": "2023-12-01T15:55:22Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "f45dca54fd6994db790305bb398518f63caa00dc",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-1st-slice-figures",
+      "headRefOid": "adca98c0ab6ef024c2a79a04a017118dcbe7c1d3",
+      "closedAt": "2023-12-01T15:55:21Z",
+      "mergedAt": "2023-12-01T15:55:21Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "8723736e24e51cdae22adf2b88ad22d3e5bd0185"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 110,
+      "id": "PR_kwDOIw9g6c5g6dRF",
+      "title": "1st-slice-reference",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/110",
+      "state": "MERGED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-12-01T15:56:03Z",
+      "updatedAt": "2023-12-01T15:58:58Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "8723736e24e51cdae22adf2b88ad22d3e5bd0185",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-1st-slice-reference",
+      "headRefOid": "028f2be97c5f61061924780f72829945aa3dd87f",
+      "closedAt": "2023-12-01T15:58:57Z",
+      "mergedAt": "2023-12-01T15:58:57Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "38980590d0a8c2b8231536dcceac39a578f96d05"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 111,
+      "id": "PR_kwDOIw9g6c5g6fKA",
+      "title": "Adding 1-to-n mapping files",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/111",
+      "state": "MERGED",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-12-01T16:01:26Z",
+      "updatedAt": "2023-12-01T16:08:29Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "38980590d0a8c2b8231536dcceac39a578f96d05",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-adding-1-to-n-mapping",
+      "headRefOid": "6c957dea3cf471688f27935f3821bb9977fdaa13",
+      "closedAt": "2023-12-01T16:08:28Z",
+      "mergedAt": "2023-12-01T16:08:28Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "69937111e7d9d0cf470c5dc4415572c24ef04ecc"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c5o6Y5O",
+          "commit": {
+            "abbreviatedOid": "6c957de"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-12-01T16:08:23Z",
+          "updatedAt": "2023-12-01T16:08:23Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
