@@ -955,7 +955,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
 ├──────┴───────┤             ╲   ├──────┴───────┤
 │              │              ╲  │              │
 │              │               ╲ │              │
-│              │                ▏│              │
+│              │                ││              │
 │   Payload    │               ╱ │   Payload    │
 │(GTP-U/IPsec) │              ╱  │(GTP-U/IPsec) │
 │              │             ╱   │              │
