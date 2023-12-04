@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 3 June 2024                                    Juniper Networks
+Expires: 6 June 2024                                    Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                         1 December 2023
+                                                         4 December 2023
 
 
  A Realization of RFC XXXX Network Slices for 5G Networks Using Current
@@ -60,7 +60,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 June 2024.
+   This Internet-Draft will expire on 6 June 2024.
 
 Copyright Notice
 
@@ -1532,7 +1532,7 @@ Table of Contents
              ├──────┴───────┤             ╲   ├──────┴───────┤
              │              │              ╲  │              │
              │              │               ╲ │              │
-             │              │                ▏│              │
+             │              │                ││              │
              │   Payload    │               ╱ │   Payload    │
              │(GTP-U/IPsec) │              ╱  │(GTP-U/IPsec) │
              │              │             ╱   │              │
