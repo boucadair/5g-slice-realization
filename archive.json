@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-12-03T00:29:41.310089+00:00",
+  "timestamp": "2023-12-05T00:28:06.125681+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -1248,6 +1248,54 @@
       "body": "> `Authors, WG,\r\n> \r\n> I reviewed draft-ietf-teas-5g-ns-ip-mpls. Please find below some comments:\r\n> \r\n> \u2022\tGeneral: This is applicable in general to all the network slicing drafts: I don\u2019t really like the usage of \u201cRFC XXXX Network Slice\u201d. The term will need to be used both in IETF and mostly outside the IETF, it needs to be more intuitive. I\u2019m happy with TN network slice, IETF network slice, but not RFC XXXX, it doesn\u2019t provide context for an external user. The term Transport Network is controversial due to different meaning, but the in the draft is extensively used, then why not using it also to identify the slice? Moreover, if one day the RFC will be obsoleted? We\u2019ll need to update the name of the network slices?\r\n> \u2022\tAbstract: s/This feature covers slicing requirements/This feature introduces new requirements for all the domains.\r\n> \u2022\tIntroduction: \u201c(NRP), which is simply a collection of   resources identified in the underlay network\u201d \u2013 which underlay network? Underlay WRT to the NRP? It needs to be explained a bit better.\r\n> \u2022\tIntroduction:  \u201cThis document describes an RFC XXXX Network Slice realization model in IP/MPLS networks, using a single NRP and with a focus on fulfilling 5G slicing connectivity requirement\u201d \u2013 Unsing a single NRP is a choice of the authors or there is a 1:1 mapping between Slice and NRP?\r\n> \u2022\tSection 3.3 and related: The definition of transport network scope and reference design is very useful, but would have been more appropriate in the framework (too late now\u2026). Why does the transport network go from NF to NF and not from CE to CE? Isn\u2019t the NF typically part of the RAN or the PC domains? \r\n> \u2022\tCustomer site orchestration domain: is this aligned with the framework? From the framework I understood that the NSC manages the RFCXXXX network slice, but here the orchestraion of the TN is done by the RFCXXXX + customer site orchestrators. Does this mean that the TN slice and the RFC XXXX slice are different things? In this case it should be stated clearly before in the text (maybe it is but it took me 12 pages to understand it?) Maybe anticipating figure 5 to the beginning as clearly defining the scope of RFC XXX slice and TN slice helps. I went back to check the framework and couldn\u2019t find any relationship between the RFC XXXX network slice and the TN network slice, shouldn\u2019t it be there?\r\n> \u2022\tSection 3.5. Why 1 to N mapping? Are you sure the split between UP and CP would lead to a single 5G slice mapped into multiple RFC XXXX slices? The number of RFC XXXX should be significantly lower than the number of 5G slices otherwise we risk to have serious scalability issues.\r\n> \u2022\tOne interesting topic to address would be the case of TN slices composed by multiple segments (I sent some text to describe it a while back). The stitching of the different segments would be a nice problem to be addressed.\r\n> \r\n> Thanks,\r\n> Daniele\r\n> `",
       "createdAt": "2023-12-01T14:50:22Z",
       "updatedAt": "2023-12-01T14:50:22Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 112,
+      "id": "I_kwDOIw9g6c54mmLi",
+      "title": "Bo's comments",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/112",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "> 1. On the mapping between IETF Network Slice Service SDP and 5G CE, this document and draft-5g-network-slice-application (5g-application) both provide some content. I think it would be more clear to list all 5G CE options in one document and avoid the inconsistency between the two documents. For example, Section 4 Overview of the Realization Model describes three options: VLAN, IP, and MPLS. However draft-5g-application has more options than these. This document says that 5G CEs have BGP protocol mapping, while Section 5.3 of draft-5g-application does not .\r\n> 2. Section 6 Transport Planes Mapping Models introduces \"tunnel group\" or \"transport planes'. Can you clarify how to manage the tunnel groups? Does tunnel group management also requires topology and resource allocation management? As I am wondering the difference between tunnel group management and NRP management. Per Section 4.2. Control Plane Network Resource Partition Mode of draft-ietf-teas-ns-ip-mpls, NRP has a mode of control plane without data plane encapsulation mechanism.\r\n> 3. Section 3 5G Network Slicing Integration in Transport Networks defines various distributed CE-PE models which are not used in subsequent sections. Are these different models related to the implementation of QoS mapping, connectivity, or capacity planning? Could you add some text to reflect that?\r\n",
+      "createdAt": "2023-12-04T09:20:30Z",
+      "updatedAt": "2023-12-04T09:20:30Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 113,
+      "id": "I_kwDOIw9g6c54nYsK",
+      "title": "list of update - https://datatracker.ietf.org/doc/draft-ietf-teas-5g-ns-ip-mpls/",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/113",
+      "state": "OPEN",
+      "author": "robric",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "- Title of section 4 is not representative of the content \r\n- Need to modify text in 4.2 to have non IP headers identifiers that not IP address: DSCP-based slice identification, label, ports...\r\n- Titles 3.4.2 and 3.5 (fsee answer to Daniele feedback)\r\n",
+      "createdAt": "2023-12-04T11:02:59Z",
+      "updatedAt": "2023-12-04T11:04:03Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 114,
+      "id": "I_kwDOIw9g6c54n0iN",
+      "title": "fix issues for printing on windows",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/114",
+      "state": "OPEN",
+      "author": "robric",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "In some windows, we can see several formatting issues for figures (even in .txt), we need to work on something more neutral / digestible on most system and browsers.\r\n\r\n-  replace char small vertical bar  \u258fwith regular pipe \u2502 \r\n-  replace arrows \u25c0 with \"inferior than\" <   (same for opposite direction)\r\n-  replace  diamond \u25c7 with something else (e.g. \"+\")\r\n-  find other issues :-)",
+      "createdAt": "2023-12-04T12:05:41Z",
+      "updatedAt": "2023-12-04T12:05:41Z",
       "closedAt": null,
       "comments": []
     }
