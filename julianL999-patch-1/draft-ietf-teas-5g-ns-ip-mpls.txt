@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 24 May 2024                                    Juniper Networks
+Expires: 14 June 2024                                   Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                        21 November 2023
+                                                        12 December 2023
 
 
  A Realization of RFC XXXX Network Slices for 5G Networks Using Current
@@ -19,10 +19,11 @@ Expires: 24 May 2024                                    Juniper Networks
 
 Abstract
 
-   5G slicing is a feature that was introduced by the 3rd Generation
-   Partnership Project (3GPP) in mobile networks.  This feature covers
-   slicing requirements for all mobile domains, including the Radio
-   Access Network (RAN), Core Network (CN), and Transport Network (TN).
+   Slicing is a feature that was introduced by the 3rd Generation
+   Partnership Project (3GPP) in mobile networks.  Realization of 5G
+   slicing implies requirements for all mobile domains, including the
+   Radio Access Network (RAN), Core Network (CN), and Transport Network
+   (TN).
 
    This document describes a basic RFC XXXX Network Slice realization
    model in IP/MPLS networks with a focus on the Transport Network
@@ -60,7 +61,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 May 2024.
+   This Internet-Draft will expire on 14 June 2024.
 
 Copyright Notice
 
@@ -140,14 +141,14 @@ Table of Contents
    [I-D.ietf-teas-ietf-network-slices] defines a framework for network
    slicing in the context of networks built using IETF technologies.
    The RFC XXXX network slicing framework introduces the concept of a
-   Network Resource Partition (NRP), which is simply a collection of
-   resources identified in the underlay network.  There could be
-   multiple realizations of RFC XXXX Network Slice and NRP concepts,
-   where each realization might be optimized for the different network
-   slicing use cases.
+   Network Resource Partition (NRP), which is a collection of resources
+   identified in the underlay network.  There could be multiple
+   realizations of RFC XXXX Network Slice and NRP concepts, where each
+   realization might be optimized for the different network slicing use
+   cases.
 
    This document describes an RFC XXXX Network Slice realization model
-   in IP/MPLS networks, using a single NRP and with a focus on
+   in IP/MPLS networks, using one or more NRPs and with a focus on
    fulfilling 5G slicing connectivity requirements.  This realization
    model leverages many building blocks currently commonly used in
    service provider networks.
@@ -211,25 +212,25 @@ Table of Contents
    introduced in Section 3.4.  This model permits to define more
    precisely where the RFC XXXX Network Slices apply.
 
-                   +----------------------------------+
-                +--+         5G NF (RAN or CN)        +--+
-                |  +----------------------------------+  |
-                |                                        |
-                v                                        v
-              .--.  +--------------------------------+  .--.
-              |NF+--+      Transport Network         +--+NF|
-              '--'  +--------------------------------+  '--'
-                        |             |            |
-                        v             v            v
-                +---Data Center--+ +-MPLS-VPN-+  +-Public-+
-                |                | | Backbone |  | Cloud  |
-                |   .--..--.     |.--.      .--..--.      |
-                |   '--''--'     |'--'      '--''--'      |
-                |                | |          |  |        |
-                |.--..--..--..--.|.--.      .--. |        |
-                |'--''--''--''--'|'--'      '--' |        |
-                |                | |          |  |        |
-                +----------------+ +----------+  +--------+
+                   ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+              ┌─────      5G RAN or CORE Network      ├────┐
+              │    └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─     │
+              │                                            │
+              │                                            │
+              ▼                                            ▼
+             ┌──┐  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─   ┌──┐
+             │NF├──         Transport Network         ├──┤NF│
+             └──┘  └ ─ ┬ ─ ─ ─ ─ ─ ─ ─ ─ ┬ ─ ─ ─ ─ ─ ┬   └──┘
+                       │                 │           │
+                       │                 │           │
+                       ▼                 ▼           ▼
+               ┌ ─ Data Center ─   ┌ MPLS VPN─   ┌ Public─
+                                │    Backbone │    Cloud  │
+               │   ┌───┐┌───┐     ┌┴─┐      ┌──┐┌┴─┐
+                   └───┘└───┘   │ └──┘      └─┬┘└──┘      │
+               │┌──┐┌──┐┌──┐┌──┐  ┌┴─┐      ┌──┐ │
+                └──┘└──┘└──┘└──┘│ └──┘      └─┬┘          │
+               └ ─ ─ ─ ─ ─ ─ ─ ─   └ ─ ─ ─ ─ ─   └ ─ ─ ─ ─
 
           Figure 1: An Example of Transport Network Decomposition
 
@@ -293,7 +294,7 @@ Table of Contents
 
 ┌ ─ ─ ─ ─ ─ ─ ─ ─       ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐       ┌ ─ ─ ─ ─ ─ ─ ─ ─
      Customer    │         Provider Network                Customer    │
-│      Site             │                     │       │      Site
+│      Site 1           │                     │       │      Site 2
            ┌────┐│       ┌────┐         ┌────┐         ┌────┐          │
 │┌──┐      │    │   AC  ││    │         │    ││  AC   ││ NF │
  │┌─┴┐─ ─ ─│ CE ├│─ ─ ─ ─│ PE │         │ PE │─ ─ ─ ─ ─│(CE)│          │
@@ -353,12 +354,16 @@ Table of Contents
 
    Attachment Circuit (AC):  The logical connection that attaches a CE
       to a PE.  A CE is connected to a PE via one or multiple ACs.  An
-      AC is technology-specific.  For consistency with the AC data model
-      terminology (e.g., [RFC9182]), this document assumes that an AC is
-      configured on a “bearer”, which represents the underlying
-      connectivity.  Examples of ACs are Virtual Local Area Networks
-      (VLANs) (AC) configured on a physical interface (bearer) or an
-      Overlay VXLAN EVI (AC) configured on an IP underlay (bearer).
+      AC is technology-specific.  For consistency with the AC data
+      models terminology (e.g.,
+      [I-D.ietf-opsawg-teas-attachment-circuit] and
+      [I-D.ietf-opsawg-ntw-attachment-circuit]), this document assumes
+      that an AC is configured on a "bearer", which represents the
+      underlying connectivity.
+
+      Examples of ACs are Virtual Local Area Networks (VLANs) (AC)
+      configured on a physical interface (bearer) or an Overlay VXLAN
+      EVI (AC) configured on an IP underlay (bearer).
 
       In order to keep the figures simple, only one AC and single-homed
       CEs are represented.  However, this document does not exclude the
@@ -369,7 +374,7 @@ Table of Contents
 
    This document uses the concept of distributed CEs and PEs (e.g.,
    Section 3.4.3 of [RFC4664]).  This approach consolidates a definition
-   of CE/PE/AC that is consistent with the orchestration perimeters.
+   of CE/AC/PE that is consistent with the orchestration perimeters.
    The CEs and PEs delimit respectively the customer and provider
    orchestration domains, while the AC interconnects these domains.
 
@@ -383,7 +388,7 @@ Table of Contents
    Distributed PE:  The logical connectivity is realized by configuring
       multiple devices in the Transport Network (provider orchestration
       domain).  The PE function is distributed.  An example of a
-      distributed PE is the “Managed CE service”. For example, a
+      distributed PE is the "Managed CE service".  For example, a
       provider delivers VPN services using CEs and PEs which are both
       managed by the provider (case (iii) in Figure 3).  The managed CE
       can also be a Data Center Gateway as depicted in the example (iv)
@@ -467,29 +472,29 @@ Table of Contents
 
    While in most cases CEs connect to PEs using IP (e.g., VLANs), a CE
    may also connect to the provider network using MPLS -potentially over
-   IP tunnels- or SRv6.  The CE has awareness of provider services
-   configuration (e.g., control plane identifiers such as Route Targets
-   and Route Distinguishers).  An example of such an AC is depicted in
-   Figure 4.  This is a source of confusion since these configurations
-   are typically enforced on PEs.  Notwithstanding, the reference design
-   based on Orchestration scope prevails: the CE is managed by the
-   customer and the AC is based on MPLS or SRv6 data plane technologies.
-   Note that the complete termination of the AC within the provider
-   network may happen on distinct routers: this is another example of
-   distributed PE.
+   IP tunnels- or Segment Routing over IPv6 (SRv6) [RFC8754].  The CE
+   has awareness of provider services configuration (e.g., control plane
+   identifiers such as Route Targets (RTs) and Route Distinguishers
+   (RDs)).  An example of such an AC is depicted in Figure 4.  This is a
+   source of confusion since these configurations are typically enforced
+   on PEs.  Notwithstanding, the reference design based on Orchestration
+   scope prevails: the CE is managed by the customer and the AC is based
+   on MPLS or SRv6 data plane technologies.  Note that the complete
+   termination of the AC within the provider network may happen on
+   distinct routers: this is another example of distributed PE.
 
           ┌ ─ ─ ─ ─ ─ ─ ─                       ┌ ─ ─ ─ ─ ─ ─ ─ ┐
               Customer   │                          Provider
           │     Site                            │    Network    │
                          │
           │                                     │               │
-                         │ ◀──────MP-BGP─────▶
-          │          ┌────┐                  ┌──┴─┐             │
-                     │    │   MPLS-based AC  │    │
-          │          │ CE ├ ─ ─ ─ ─ ─ ─ ─ ─ ─│ PE │             │
-                  ┏━━┻━━━━┻━━┓               │    │
-          │       ┃  VRF foo ┃               └──┬─┘             │
-           ─ ─ ─ ─┗━ ━━━━━━━━┛                   ─ ─ ─ ─ ─ ─ ─ ─
+                         │  ◀─────MP-BGP─────▶
+          │           ┌────┐                  ┌─┴──┐            │
+                      │    │   MPLS-based AC  │    │
+          │           │ CE ├──────────────────│ PE │            │
+                   ┏━━┻━━━━┻━━┓               │    │
+          │        ┃ VRF foo  ┃               └─┬──┘            │
+           ─ ─ ─ ─ ┻━━━━━━━━━━┛                  ─ ─ ─ ─ ─ ─ ─ ─
 
              Figure 4: Example of MPLS-based Attachment Circuit
 
@@ -532,47 +537,50 @@ Table of Contents
    A TN Slice relies upon resources that can involve both the provider
    and customer TN domains.  More details are provided in Section 3.4.2.
 
-                              +-----------+
+                              ┌───────────┐
                               │  5G NSO   │
-                              +-----------+
+                              └───────────┘
                                  │   │
                                  │   │
-                                 v   │
-                   +---------------+ │
+                                 ▼   │
+                   ┌───────────────┐ │
                    │ 3GPP domains  │ │
-       +-----------+ Orchestration +----------------------------+
+       ┌───────────│ Orchestration │────────────────────────────┐
        │           │ (RAN and CN)  │ │                          │
-       │           +---------------+ │                          │
+       │           └───────────────┘ │                          │
        │                             │                          │
        │    ┏ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━│━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ┓   │
-       │      TN Orchestration       │                          │
+       │     TN Orchestration        │                          │
        │    ┃        ┌───────────────┼──────────────┐       ┃   │
-       │             v               v              v           │
+       │             ▼               ▼              ▼           │
        │    ┃┌───────────────┐┌───────────┐┌───────────────┐┃   │
        │     │ Customer Site ││RFCXXXX NSC││ Customer Site │    │
        │    ┃│ Orchestration ││           ││ Orchestration │┃   │
        │     └──┬────────────┘└─────┬─────┘└──────────────┬┘    │
-       │    ┗ ━ │ ━ ━ ━ ━ ━ ━ ━ ━ ━ ╋ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ╋ ┛   │
+       │    ┗ ━ ╋ ━ ━ ━ ━ ━ ━ ━ ━ ━ ╋ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ╋ ┛   │
        │        │                   │                     │     │
        │        │                   │                     │     │
        │        │                   │                     │     │
-       │        v                   v                     v     │
+       │        ▼                   ▼                     ▼     │
      ┌ ┼ ─ ─ ─ ─ ─ ┐         ┌ ─ ─ ─ ─ ─ ─ ─ ─ ┐         ┌ ─ ─ ─│─ ─
        │                          Provider                      │   │
-     │ v           │       ┌─┴──┐ Network   ┌──┴─┐      ┌┴───┐  │
-      ┌──┐     ┌────┐  AC  │    │           │    │  AC  │ NF <──┘   │
-     ││NF● ─ ─ ┤ CE ├ ─ ─ ─■ PE │           │ PE ■ ─ ─ ─●(CE)│
+     │ ▼           │       ┌─┴──┐  Network  ┌──┴─┐      ┌┴───┐  │
+      ┌──┐     ┌────┐  AC  │    │           │    │  AC  │ NF │◀─┘   │
+     ││NF◍ ─ ─ ┤ CE ├ ─ ─ ─■ PE │           │ PE ■ ─ ─ ─◍(CE)│
       └──┘     └────┘      │    │           │    │      └────┘      │
      │             │       └─┬──┘           └──┬─┘       │
-         Customer                                          Customer │
-     │     Site    │         │                 │         │   Site
+        Customer                                           Customer │
+     │    Site     │         │                 │         │   Site
       ─ ─ ─ ─ ─ ─ ─           ─ ─ ─ ─ ─ ─ ─ ─ ─           ─ ─ ─ ─ ─ ┘
                                    RFC XXXX
-                           ■────Network Slice───■
+                           ■─────Network Slice───■
 
-          ●──────────────────TN Slice────────────────────●
+         ◍───────────────────TN Slice───────────────────◍
 
             Figure 5: End-to-end 5G Slice Orchestration with TN
+
+      The various orchestration depicted in the figure encompass the
+      3GPP's Network Slice Subnet Management Function (NSSMF).
 
 3.4.2.  Transport Network Segments and Network Slice Instantiation
 
@@ -613,33 +621,32 @@ Table of Contents
    focus for the enforcement of end-to-end SLOs is managed at the
    Network Slice between PE interfaces connected to the AC.
 
+           ├───────────────────────TN Slice─────────────┤
 
-           |──────────────────────TN Slice────────────────|
+                             ○─────RFC XXXX ─────○
+                             │   Network Slice   │
+                             │                   │
+                             │                   │
+                             ▼                   ▼
+           ○──CS───□ □───AC──○ □──────PN───────□ ○──AC──○
+       ┌ ─ ─ ─ ─ ─ ─           ┌ ─ ─ ─ ─ ─ ─ ─ ┐         ┌ ─ ─ ─ ─ ─
+          Customer  │               Provider               Customer │
+       │   Site 1              │    Network    │         │  Site 2
+                    │        ┌────┐          ┌────┐                 │
+       │┌───┐    ┌────┐  AC  │    │          │    │ AC ┌─┴─┐
+     CS │NF1├────┤ CE ├──────┤ PE │          │ PE ├────┤NF3│        │
+     □ │└─┬─┘    └────┘      │    │          │    │    └─┬─┘
+     │    │         │        └────┘          └────┘                 │
+     │ │  │                    │               │         │
+     □  ┌─┴─┐       │                                               │
+       ││NF2│                  │               │         │
+        └───┘       │                                               │
+       └ ─ ─ ─ ─ ─ ─           └ ─ ─ ─ ─ ─ ─ ─ ┘         └ ─ ─ ─ ─ ─
 
-                            o───RFC XXXX Network──o
-                            │        Slice        │
-                            │          │          │
-                            │          |          │
-                            v          v          v
-           o──CS──□ □───AC──o □────────PN───────□ o───AC──o
-      +-------------+          +---------------+          +----------+
-      |   Customer  |          |     Provider  |          | Customer │
-      │     Site    │          │    Network    │          │   Site   |
-      |             |       +----+           +----+       |          │
-      │+---+    +----+  AC  │    │           │    │  AC  +---+       |
-    CS|│NF1├────┤ CE +------+ PE │           │ PE ├ ─ ─ ─│NF3│       │
-    □ │+-+-+    +----+      │    │           │    │      +---+       |
-    │ |  │                  +----+           +----+       |          │
-    │ │  │          │          │               │          │          |
-    □ |+-+-+        │          │               │          │          |
-      ││NF2│        │          │               │          │          |
-      |+---+        │          │               │          │          |
-      +-------------+          +---------------+          +----------+
-
-      □──────□  TN segments:
-                CS= Customer Site
-                AC= AC
-                PN= Provider Network
+                   □──────□  TN segments:
+                               CS = Customer Segment
+                               AC = Attachment Circuit
+                               PN = Provider Network
 
               Figure 6: Segmentation of the Transport Network
 
@@ -662,27 +669,29 @@ Table of Contents
       e.g., the RFC XXXX Network Slice Service Interface
       [I-D.ietf-teas-ietf-network-slice-nbi-yang] or the Attachment
       Circuit Service Interface
-      ([I-D.boro-opsawg-teas-attachment-circuit].
+      ([I-D.ietf-opsawg-teas-attachment-circuit].
 
-              +-------------+                +------------------+
-              │Customer Site│  IETF APIs/DM  │  RFC XXXX NSC    │
-              │Orchestration│ <------------> │(Provider Network │
-              │             │                │ Orcherstration)  │
-              │             │                │                  │
-              +-------------+                +------------------+
-                           │                  │
-                           │                  │
-        + ─ ─ ─ ─ ─ ─ ─ ─ ─│+                +│------------------+
-        |                  │|                |│+----+            |
-        │ +--+       +----+v│   192.0.2.0/31 │v│    │            │
-        | │NF|-------| CE +--------------------+ PE │            |
-        │ +--+       +----+.1    VLAN 100    .0│    │            │
-        |     Customer      |                | +----+Provider    |
-        │       Site        │                │       Network     │
-        +-------------------+                +-------------------+
-                          |──────────AC────────|
+          ┌ ─ ─ ─ ─ ─ ─ ─ ┐                   ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─
+                                                  RFCXXXX NSC    │
+          │ Customer Site │                   │
+            Orchestration      IETF APIs/DM    (Provider Network │
+          │               │◀─────────────────▶│  Orchestration)
+           ─ ─ ─ ─ ─ ─ ─ ─                     ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
+                        │                        │
+                        │                        │
+        ┌ ─ ─ ─ ─ ─ ─ ─ ┼ ┐                    ┌ ┼ ─ ─ ─ ─ ─ ─ ─ ┐
+                        ▼                        ▼
+        │ ┌──┐      ┌──┐.1│    192.0.2.0/31    │.0┌──┐           │
+          │NF├──────┤CE├──────────────────────────┤PE│
+        │ └──┘      └──┘  │      VLAN 100      │  └──┘           │
+             Customer                                Provider
+        │      Site       │                    │     Network     │
+         ─ ─ ─ ─ ─ ─ ─ ─ ─                      ─ ─ ─ ─ ─ ─ ─ ─ ─
 
-       Figure 7: Coordination of TN Resources for the AC Provisioning
+                       └─────────── AC ──────────┘
+
+      Figure 7: Coordination of Transport Network Resources for the AC
+                                Provisioning
 
 3.4.3.  Additional Segmentation and Domains
 
@@ -716,51 +725,51 @@ Table of Contents
    *  N to M: The 5G to RFC XXXX Network Slice mapping combines both
       approaches with a mix of shared and dedicated associations.
 
-     . ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ .
-     |                                                               |
+     ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
+
      │                        5G Slice eMBB                          │
-     |                                                               |
-     │            . ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ .            │
-     | .─────. N3 | . ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ . | N3 .─────. |
-     │ │CU-UP├─────── RFC XXXX Network Slice UP_eMBB  ───────┤ UPF │ |
-     | '─────'    | ' ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ' |    '─────' |
-     │            |                                     |            |
-     | .─────. N2 | . ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ . | N2 .─────. |
-     │ │CU-CP├───────   RFC XXXX Network Slice CP     ───────┤ AMF │ |
-     | '─────'    | ' ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ' |    '─────' |
-     ' ─ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ '
+
+     │            ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐            │
+       ┌─────┐ N3   ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐   N3 ┌─────┐
+     │ │CU-UP├─────── RFC XXXX Network Slice UP_eMBB  ───────┤ UPF │ │
+       └─────┘      └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘      └─────┘
+     │            │                                     │            │
+       ┌─────┐ N2   ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐   N2 ┌─────┐
+     │ │CU-CP├───────    RFC XXXX Network Slice CP    ───────┤ AMF │ │
+       └─────┘      └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘      └─────┘
+     └ ─ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ┘
+
                   │                                     │
+                            Transport Network
                   │                                     │
-                  |         Transport Network           |
-                  │                                     │
-                  │                                     │
-                  ' ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ '
+
+                  └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
 
         Figure 8: 1 (5G Slice) to N (RFC XXXX Network Slice) Mapping
 
-                      .-------------.
-                      |  Edge Cloud |
-                      |             |
-                      | .---------. |
-                      | │UPF_URLLC│ |
-                      | '-----+---' |
-                      '-------│-----'
-    .---------------. .-------|----------------------.
-    |               | | .-----+--------------------. │ .--------------.
-    |   Cell Site   │ | |                          │ | |              |
-    |               | | │                          | │ │   Regional   |
-    | .-----------. │ │ |                          | | |     Cloud    |
-    | │CU-UP_URLLC+-----+                          | │ │ .----------. |
-    | '-----------' │ │ |    RFC XXXX Network      +-----+  5GC CP  │ |
-    |               | | │        Slice ALL         | │ │ '----------' |
-    | .-----------. | │                            | | | |            |
-    | │CU-UP_eMBB +-----+                          | | | .----------. |
-    │ '-----------' | | |                          +-----+ UPF_eMBB │ |
-    '---------------' | |                          | | | '----------' |
-                      | '--------------------------' | |              |
-                      |                              | '--------------'
-                      |      Transport Network       |
-                      '------------------------------'
+                      ┌ ─ ─ ─ ─ ─ ─ ┐
+                         Edge Cloud
+                      │             │
+                        ┌─────────┐
+                      │ │UPF_URLLC│ │
+                        └─────┬───┘
+                      └ ─ ─ ─ │ ─ ─ ┘
+    ┌ ─ ─ ─ ─ ─ ─ ─ ┐ ┌ ─ ─ ─ │ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+                        ┌ ─ ─ ┴ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  │ ┌ ─ ─ ─ ─ ─ ─ ─
+    │   Cell Site   │ │                            │                  │
+                        │                            │ │   Regional
+    │ ┌───────────┐ │ │                            │         Cloud    │
+      │CU-UP_URLLC├─────┤                            │ │ ┌──────────┐
+    │ └───────────┘ │ │       RFC XXXX Network     ├─────┤  5GC CP  │ │
+                        │        Slice ALL           │ │ └──────────┘
+    │ ┌───────────┐ │ │                            │                  │
+      │CU-UP_eMBB ├─────┤                            │ │ ┌──────────┐
+    │ └───────────┘ │ │                            ├─────┤ UPF_eMBB │ │
+     ─ ─ ─ ─ ─ ─ ─ ─    │                            │ │ └──────────┘
+                      │  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘                  │
+                                                     │ └ ─ ─ ─ ─ ─ ─ ─
+                      │      Transport Network
+                       ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
 
         Figure 9: N (5G Slice) to 1 (RFC XXXX Network Slice) Mapping
 
@@ -804,51 +813,52 @@ Table of Contents
    be supported globally.  This 5G slice would be the first slice in any
    5G deployment.
 
-       .--------------------------------------------------------------.
-       |                  . ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─.            |
-       |  1    .-----.    | .--------------------------. │    .-----. │
-       |  s S  |NF-CP+------+  CP TN Slice (INS-CP)    +------+NF-CP│
-       |  t l  '-----'    | '--------------------------' │    '-----' │
-       |    i             |                              |
-       |  5 c  .-----.    | .--------------------------. │    .-----. │
-       |  G e  │NF-UP+------+  UP TN Slice (INS-UP1)   +------+NF-UP| |
-       |       '-----'    | '--------------------------' |    '-----' │
-       '--------------------------------------------------------------'
-                          |                              |
-                          |      Transport Network       |
-                          |                              |
-                          ' ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─'
-                             Deployment of first 5G slice
-                                         │ │
-                                         │ │
-                                        ─┘ └─
-                                        ╲   ╱
-                                         ╲ ╱
-                                          V
-       .--------------------------------------------------------------.
-       |                  . ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─.            |
-       |  1    .-----.    | .--------------------------. │    .-----. │
-       |  s S  │NF-CP+------+  CP TN Slice (INS-CP)    ├──────┤NF-CP│ |
-       │  t l  '-----'    | '--------------------------' |    '-----' │
-       |    i             |                              |            |
-       │  5 c  .-----.    | .--------------------------. │    .-----. │
-       |  G e  │NF-UP+------+  UP TN Slice (INS-UP1)   ├──────┤NF-UP│ |
-       │       '-----'    | '--------------------------' │    '-----' │
-       '------------------|-------------------------------------------'
-                          |                              |
-       .------------------|-------------------------------------------.
-       |  2               |                              │            |
-       │  n S  .------.   │ .--------------------------. |   .------. |
-       |  d l  │NF-UP2+-----+  UP TN Slice (INS-UP2)   +-----+NF-UP2│ |
-       │    i  '------'   │ '--------------------------' |   '------' |
-       |  5 c             |                              │            |
-       │  G e             │                              |            |
-       '--------------------------------------------------------------'
-                          |                              |
-                          |      Transport Network       |
-                          |                              |
-                          ' ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─'
-           Deployment of subsequent 5G slice with shared Control Plane
+     ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
+                        ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+     │  1    ┌─────┐      ┌──────────────────────────┐ │    ┌─────┐  │
+        s S  │NF-CP├──────┤   CP TN Slice (TNS-CP)   ├──────┤NF-CP│
+     │  t l  └─────┘      └──────────────────────────┘ │    └─────┘  │
+          i             │
+     │  5 c  ┌─────┐      ┌──────────────────────────┐ │    ┌─────┐  │
+        G e  │NF-UP├──────┤  UP TN Slice (TNS-UP1)   ├──────┤NF-UP│
+     │       └─────┘      └──────────────────────────┘ │    └─────┘  │
+      ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+                                                       │
+                        │      Transport Network
+                                                       │
+                        └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+                           Deployment of first 5G slice
+                                       │ │
+                                       │ │
+                                       │ │
+                                      ─┘ └─
+                                      ╲   ╱
+                                       ╲ ╱
+                                        V
+     ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
+                        ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+     │  1    ┌─────┐      ┌──────────────────────────┐ │    ┌─────┐  │
+        s S  │NF-CP├──────┤   CP TN Slice (TNS-CP)   ├──────┤NF-CP│
+     │  t l  └─────┘      └──────────────────────────┘ │    └─────┘  │
+          i             │
+     │  5 c  ┌─────┐      ┌──────────────────────────┐ │    ┌─────┐  │
+        G e  │NF-UP├──────┤  UP TN Slice (TNS-UP1)   ├──────┤NF-UP│
+     │       └─────┘      └──────────────────────────┘ │    └─────┘  │
+      ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+                                                       │
+     ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
+        2                                              │
+     │  n S  ┌──────┐   │ ┌──────────────────────────┐     ┌──────┐  │
+        d l  │NF-UP2├─────┤  UP TN Slice (TNS-UP2)   ├─────┤NF-UP2│
+     │    i  └──────┘   │ └──────────────────────────┘     └──────┘  │
+        5 c                                            │
+     │  G e             │                                            │
+      ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ─
+                        │
+                                Transport Network      │
+                        │
+                         ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
+         Deployment of additional 5G slice with shared Control Plane
 
               Figure 10: First and Subsequent Slice Deployment
 
@@ -867,18 +877,20 @@ Table of Contents
    realization model described in this document, depicted in Figure 11,
    a single NRP is used with the following characteristics:
 
-   *  Layer 2 Virtual Private Network (L2VPN)/Layer 3 Virtual Private
-      Network (L3VPN) service instances for logical separation:
+   *  Layer 2 Virtual Private Network (L2VPN) [RFC4664] and/or Layer 3
+      Virtual Private Network (L3VPN) [RFC4364] service instances for
+      logical separation:
 
       This realization model of transport for 5G slices assumes Layer 3
       delivery for midhaul and backhaul transport connections, and a
-      Layer 2 or Layer 3 for fronthaul connections. eCPRI supports both
-      delivery models.  L2VPN/L3VPN service instances might be used as a
-      basic form of logical slice separation.  Furthermore, using
-      service instances results in an additional outer header (as
-      packets are encapsulated/decapsulated at the nodes hosting service
-      instances) providing clean discrimination between 5G QoS and TN
-      QoS, as explained in Section 5.
+      Layer 2 or Layer 3 for fronthaul connections.  Enhanced Common
+      Public Radio Interface (eCPRI) supports both delivery models.
+      L2VPN/L3VPN service instances might be used as a basic form of
+      logical slice separation.  Furthermore, using service instances
+      results in an additional outer header (as packets are
+      encapsulated/decapsulated at the nodes hosting service instances)
+      providing clean discrimination between 5G QoS and TN QoS, as
+      explained in Section 5.
 
    *  Fine-grained resource control at the PE:
 
@@ -924,25 +936,25 @@ Table of Contents
       or without bandwidth reservations, to force more consistent load
       distribution even in non-ECMP friendly network topologies.
 
-            ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
-      +----------+               Base NRP               +----------+
-      │    PE    │                                      │    PE    │
-    . ┼ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─│─.
-      ■<───┐│    │     RFC XXXX Network Slice 1         │    ┌┼───>■ │
-    │ │    │     │        ┌─────┐        ┌─────┐        │    │     │
-      ■<───┤│    │        │  P  │        │  P  │        │    ├┼───>■ │
-    ├ ┼ ─ ─├────>□<──────>□<───>□<──────>□────>□<──────>□<───┤─ ─ ─│─
-      ■<───┤│    │        │     │        │     │        │    ├┼───>■ │
-    │ │    │     │        └─────┘        └─────┘        │    │     │
-      ■<───┘│    │     RFC XXXX Network Slice 2         │    └┼───>■ │
-    ' ┼ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─│─'
-      │     │    │                                      │     │    │
-      +----------+                                      +----------+
-            └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
-     ■ - SDP, with fine-grained QoS (dedicated resources per TN slice)
-     □ - coarse-grained QoS, with resources shared by all TN slices
+              ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
+        ┌──────────┐               base NRP               ┌──────────┐
+        │    PE    │                                      │    PE    │
+      ┌ ┼ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─│─
+        ■<───┐│    │       RFC XXXX Network Slice 1       │    ┌┼───>■ │
+      │ │    │     │        ┌─────┐        ┌─────┐        │    │     │
+        ■<───┤│    │        │  P  │        │  P  │        │    ├┼───>■ │
+      ├ ┼ ─ ─├────>□<──────>□<───>□<──────>□────>□<──────>□<───┤─ ─ ─│─
+        ■<───┤│    │        │     │        │     │        │    ├┼───>■ │
+      │ │    │     │        └─────┘        └─────┘        │    │     │
+        ■<───┘│    │       RFC XXXX Network Slice 2       │    └┼───>■ │
+      └ ┼ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─│─
+        │     │    │                                      │     │    │
+        └──────────┘                                      └──────────┘
+              └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
+   ■ - SDP, with fine-grained QoS (dedicated resources per TN slice)
+   □ - coarse-grained QoS, with resources shared by all TN slices
 
-       Figure 11: Resource Allocation Slicing Model with a Single NRP
+      Figure 11: Resource Allocation Slicing Model with a Single NRP
 
    The 5G control plane relies upon the Single Network Slice Selection
    Assistance Information (S-NSSAI) 32-bit slice identifier for slice
@@ -974,7 +986,9 @@ Table of Contents
    AC, and the VLAN allocation is coordinated between customer
    orchestration and provider orchestration.  Thus, while VLAN hand-off
    is simple from the NF point of view, it adds complexity due to the
-   requirement of maintaining mapping tables for each SDP.
+   requirement of maintaining mapping tables for each SDP and requires a
+   configuration task of new VLAN and IP subnet for every slice on every
+   attachment circuit.
 
    VLANs representing slices           VLANs representing slices
 
@@ -998,18 +1012,36 @@ Table of Contents
 
 4.2.  IP Hand-off
 
-   In this option, the slices in the TN domain are instantiated by IP
-   tunnels (for example, IPsec or GTP-U tunnels) established between
-   NFs, as depicted in Figure 13.  The transport for a single 5G slice
-   might be constructed with multiple such tunnels, since a typical 5G
-   slice contains many NFs - especially DUs and CUs.  If a shared NF
-   (i.e., an NF that serves multiple slices, for example a shared DU) is
-   deployed, multiple tunnels from shared NF are established, each
-   tunnel representing a single slice.  As opposed to the VLAN hand-off
-   case, there is no logical interface representing a slice on the PE,
-   hence all slices are handled within single service instance.  On the
-   other hand, similarly to the VLAN hand-off case, a mapping table
-   tracking IP to RFC XXXX Network Slice mapping is required.
+   In this option, an explicit mapping between source/destination IP
+   addresses and slice's specific S-NSSAI is used.  The mapping can have
+   either local (e.g., pertaining to single NF attachment) or global TN
+   significance.  The mapping can be realized in multiple ways,
+   including (but not limited to):
+
+   *  S-NSSAI to a dedicated IP address for each NF
+
+   *  S-NSSAI to a pool of IP addresses for global TN deployment
+
+   *  S-NSSAI to a subset of bits of an IP address
+
+   *  Use a deterministic algorithm to map S-NSAAI to an IP subnet,
+      prefix, or pools.  For example, adaptations to the algorithm
+      defined in [RFC7422] may be considered.
+
+   Mapping S-NSSAI to IP addresses makes IP addresses an identifier for
+   eventual policy decisions in the Transport Network (e.g.,
+   Differentiated Services, traffic steering, bandwidth allocation,
+   security policies, or monitoring).
+
+   One example of the realization is the arrangement, where the slices
+   in the TN domain are instantiated using IP tunnels (for example,
+   IPsec or GTP-U tunnels) established between NFs, as depicted in
+   Figure 13.  The transport for a single 5G slice might be constructed
+   with multiple such tunnels, since a typical 5G slice contains many
+   NFs - especially DUs and CUs.  If a shared NF (i.e., an NF that
+   serves multiple slices, for example a shared DU) is deployed,
+   multiple tunnels from shared NF are established, each tunnel
+   representing a single slice.
 
                                            Tunnels representing slices
 
@@ -1031,26 +1063,42 @@ Table of Contents
 
                     Figure 13: 5G Slice with IP Hand-off
 
+   As opposed to the VLAN hand-off case, there is no logical interface
+   representing a slice on the PE, hence all slices are handled within
+   single service instance.  The IP and VLAN hand-offs are not mutually
+   exclusive, but instead could be used concurrently.  Since the TN
+   doesn't recognize S-NSSAI, a mapping table similar to the VLAN Hand-
+   off solution must be utilized Section 4.1.
+
    The mapping table can be simplified if, for example, IPv6 addressing
    is used to address NFs.  An IPv6 address is a 128-bit long field,
    while the S-NSSAI is a 32-bit field: Slice/Service Type (SST): 8
    bits, Slice Differentiator (SD): 24 bits. 32 bits, out of 128 bits of
    the IPv6 address, may be used to encode the S-NSSAI, which makes an
-   IP to Slice mapping table unnecessary.  This mapping is simply a
-   local allocation method to allocate IPv6 addresses to NF loopbacks,
-   without redefining IPv6 semantics.  Different IPv6 address allocation
-   schemes following this mapping approach may be used, with one example
-   allocation showed in Figure 14.
+   IP to Slice mapping table unnecessary.  Alternatively, instead of
+   using 2 full octets from the 8 octets in an IPv6 address, a provider
+   could build a mapping table that uses only one octet or parts of an
+   octet to represent utilized S-NSSAI.  This mapping is a local
+   allocation method to allocate IPv6 addresses to NF in order to be
+   representative of the S-NSSAI without redefining IPv6 semantics.  IP
+   forwarding is not altered by this method and is still achieved
+   following BCP 198 [RFC7608].  Different IPv6 address allocation
+   schemes following this approach may be used, with one example
+   allocation shown in Figure 14.
 
    Note that this addressing scheme is local to an ingress or egress NF;
-   intermediary nodes are not required to associate any additional
+   intermediary TN nodes are not required to associate any additional
    semantic with IPv6 address.
 
-   One benefit of embedding the S-NSSAI in the IPv6 address is that it
-   provides a very easy way of identifying the packet as belonging to
-   given S-NSSAI at any place in the TN domain.  This might be used, for
-   example, to selectively enable per S-NSSAI monitoring, or any other
-   per S-NSSAI handling, if required.
+   One benefit of embedding the S-NSSAI in the IPv6 address is that
+   specific S-NSSAI can be identified as interesting at any place in the
+   TN domain.  This might be used, for example, to selectively enable
+   per S-NSSAI monitoring, traffic engineering or any other per S-NSSAI
+   handling, if required.
+
+   However, operators using such mapping method should be aware of the
+   implications of any change of S-NSSAI on the addressing plans.  It is
+   out of scope of this document to elaborate on these implications.
 
                             NF specific          reserved
                        (not slice specific)     for S-NSSAI
@@ -1066,37 +1114,42 @@ Table of Contents
    In the example shown in Figure 14, the most significant 96 bits of
    the IPv6 address are unique to the NF, but do not carry any slice-
    specific information, while the least significant 32 bits are used to
-   embed the S-NSSAI information.  The 96-bit part of the address may be
-   further divided based, for example, on the geographical location or
-   the DC identification.
+   embed the S-NSSAI information.  The 96-bit part of the address may
+   then be engineered/architected by the provider, for example, on the
+   geographical location or the DC identification.
 
-   Figure 15 shows an example of a slicing deployment, where the S-NSSAI
-   is embedded into IPv6 addresses used by NFs.  NF-A has a set of
-   tunnel termination points, with unique per-slice IP addresses
-   allocated from the 2001:db8::a:0:0/96 prefix, while NF-B uses a set
-   of tunnel termination points with per-slice IP addresses allocated
-   from 2001:db8::b:0:0/96.  This example shows two slices: eMBB (SST=1)
-   and MIoT (SST=3).  Therefore, for eMBB the tunnel IP addresses are
-   auto- derived (without the need for a mapping table) as
-   {2001:db8::a:100:0, 2001:db8::b:100:0}, while for MIoT (SST=3) tunnel
-   uses {2001:db8::a:300:0, 2001:db8::b:300:0}.
+   Figure 15 uses the example from Figure 14 to demonstrate a slicing
+   deployment, where the entire S-NSSAI is embedded into IPv6 addresses
+   used by NFs.  NF-A has a set of tunnel termination points, with
+   unique per-slice IP addresses allocated from the 2001:db8:a:0::/96
+   prefix, while NF-B uses a set of tunnel termination points with per-
+   slice IP addresses allocated from 2001:db8:b:0::/96.  This example
+   shows two slices: customer A eMBB (SST=01, SD=00001) and customer B
+   MIoT (SST=03, SD=00003).  Therefore, for customer A eMBB the tunnel
+   IP addresses are auto-derived (without the need for an explicit
+   mapping table) as the IP's {2001:db8:a::100:1, 2001:db8:b::100:1},
+   where {:0100:0001} are used as the last two octets, and for customer
+   B MIoT (SST=3, SD=00003) tunnel uses the IP's {2001:db8:a::300:3,
+   2001:db8:b::300:3} and simply adds {:0300:0003} as the last two
+   octets.  Leading zeros are not represented in IPv6 addresses as per
+   [RFC5952].
 
-    2001:db8::a:0:0/96 (NF-A)                2001:db8::b:0:0/96 (NF-B)
+    2001:db8:a::/96 (NF-A)                      2001:db8:b::/96 (NF-B)
 
-    2001:db8::a:100:0/128                        2001:db8::b:100:0/128
+    2001:db8:a::100:1/128                2001:db8:b::100:1/128
         │                                                        │
         │                                                        │
         │            ┌ ─ ─ ─ ─ ─ ─ ─ ─ ┐   eMBB (SST=1)          │
         │                                     │                  │
-   ┌────v─┐       ┌──┴──┐ Provider ┌───┴─┐    v  ┌─────┐       ┌─v────┐
+   ┌────▼─┐       ┌──┴──┐ Provider ┌───┴─┐    ▼  ┌─────┐       ┌─▼────┐
    │    ○════════════■════════════════■══════════════════════════○    │
    │ NF   ├───────┤ PE  │          │ PE  ├───────┤L2/L3├───────┤   NF │
    │    ○════════════■════════════════■══════════════════════════○    │
-   └────^─┘       └──┬──┘  Network └───┬─┘    ^  └─────┘       └─^────┘
+   └────▲─┘       └──┬──┘  Network └───┬─┘    ▲  └─────┘       └─▲────┘
         │                                     │                  │
-        │            └ ─ ─ ─ ─ ─ ─ ─ ─ ┘   MIoT (SST=3)          │
+        │            └ ─ ─ ─ ─ ─ ─ ─ ─ ┘ MIoT (SST=3)            │
         │                                                        │
-    2001:db8::a:300:0/128                        2001:db8::b:300:0/128
+    2001:db8:a::300:3/128               2001:db8:b::300:3/128
 
          └────────┘└────────────────────┘└────────┘ └───────────┘
          Attachment   Provider Network   Attachment Customer Site
@@ -1114,8 +1167,9 @@ Table of Contents
    are created directly on the NF, or within the customer site hosting
    the NF, and attached to the provider network.  Therefore, the packet
    is MPLS encapsulated outside the provider network with native MPLS
-   encapsulation, or MPLSoUDP encapsulation, depending on the capability
-   of the customer site, with the service label depicting the slice.
+   encapsulation, or MPLS-in-UDP encapsulation [RFC7510], depending on
+   the capability of the customer site, with the service label depicting
+   the slice.
 
    There are three major methods (based upon Section 10 of [RFC4364])
    for interconnecting MPLS services over multiple service domains:
@@ -1143,10 +1197,11 @@ Table of Contents
    within the DC/cloud infrastructure itself (e.g., on the top of the
    rack or leaf switch within cloud IP fabric (Figure 16, right hand
    side)).  On the attachment circuit connected to PE, packets are
-   already MPLS encapsulated (or MPLSoUDP/MPLSoIP encapsulated, if cloud
-   or compute infrastructure don’t support native MPLS encapsulation).
-   Therefore, the PE uses neither a VLAN nor an IP address for slice
-   identification at the SDP, but instead uses the MPLS label.
+   already MPLS encapsulated (or MPLS-in-UDP/MPLS-in-IP encapsulated, if
+   cloud or compute infrastructure don’t support native MPLS
+   encapsulation).  Therefore, the PE uses neither a VLAN nor an IP
+   address for slice identification at the SDP, but instead uses the
+   MPLS label.
 
         <──────        <──────        <──────
         BGP VPN        BGP VPN        BGP VPN
@@ -1478,7 +1533,7 @@ Table of Contents
              ├──────┴───────┤             ╲   ├──────┴───────┤
              │              │              ╲  │              │
              │              │               ╲ │              │
-             │              │                ▏│              │
+             │              │                ││              │
              │   Payload    │               ╱ │   Payload    │
              │(GTP-U/IPsec) │              ╱  │(GTP-U/IPsec) │
              │              │             ╱   │              │
@@ -1730,7 +1785,9 @@ Table of Contents
    transported in the provider network.  That is, common Per-hop
    Behavior (PHB) [RFC2474] is executed on transit provider network
    routers for all packets grouped together.  An example of this
-   approach is outlined in Figure 24.
+   approach is outlined in Figure 24.  A provider may decide to
+   implement Diffserv-Intercon PHBs at the boundaries of its network
+   domain [RFC8100].
 
    Note:  The numbers indicated in Figure 24 (S-NSSAI, 5QI, DSCP, queue,
       etc.) are provided for illustration purposes only and should not
@@ -1979,23 +2036,22 @@ Table of Contents
 
 6.  Transport Planes Mapping Models
 
-   A network operator might define various tunnel groups, where each
-   tunnel group is created with specific optimization criteria and
-   constraints.  This document refers to such tunnel groups as
-   'transport planes'.  For example, a transport plane "A" might
-   represent tunnels optimized for latency, and transport plane "B"
-   might represent tunnels optimized for high capacity.
+   A network operator can define multiple transport planes.  A transport
+   plane could be realized in multiple ways, for example * a mesh of TE
+   tunnels created with specific optimization criteria and constraints.
+   For example, mesh "A" might represent tunnels optimized for latency,
+   and mesh "B" might represent tunnels optimized for high capacity.  *
+   a flex-algo with a particular metric-type (e.g. latency) * as an NRP
+   * a combination of the above
 
+   Detailed realization of transport planes is out of scope for this
+   draft.  NRPs are discussed in detail in [I-D.ietf-teas-ns-ip-mpls]
    Figure 28 depicts an example of a simple network with two transport
-   planes.  These transport planes might be realized via various IP/MPLS
-   techniques, for example Flex-Algo or RSVP/SR traffic engineering
-   tunnels with or without PCE, and with or without bandwidth
-   reservations.
-
-   Section 7 discusses in detail different bandwidth models that can be
-   deployed in the provider network.  However, discussion about how to
-   realize or orchestrate transport planes is out of scope for this
-   document.
+   planes each using a mesh of TE tunnels with or without PCE, and with
+   or without bandwidth reservations.  Section 7 discusses in detail
+   different bandwidth models that can be deployed in the provider
+   network.  However, discussion about how to realize or orchestrate
+   transport planes is out of scope for this document.
 
        ┌───────────────┐                                    ┌──────┐
        │  Ingress PE   │   ╔═══════════════════════════════>│ PE-A │
@@ -2274,8 +2330,8 @@ Table of Contents
    The provider network may be implemented in such a way that it has
    various types of paths, for example low-latency traffic might be
    mapped onto a different transport path to other traffic (for example
-   a particular flex-algo or a particular set of TE LSPs), as discussed
-   in Section 5.  The 5G NSO can use
+   a particular flex-algo, a particular set of TE LSPs, or a specific
+   queue [RFC9330]), as discussed in Section 5.  The 5G NSO can use
    [I-D.ietf-teas-ietf-network-slice-nbi-yang] to request low-latency
    transport for a given slice if required.  However, [RFC8299] or
    [RFC8466] do not support requesting a particular transport-type,
@@ -2435,8 +2491,7 @@ Table of Contents
       SFC OAM [RFC9451] should also be supported for slices that make
       uses of service function chaining [RFC7665].  An example of SFC
       OAM technique to Continuity Check, Connectivity Verification, or
-      tracing service functions is specified in
-      [I-D.ietf-sfc-multi-layer-oam].
+      tracing service functions is specified in [RFC9516].
 
    *  Providers may want to enable differentiated failure detect and
       repair features for a subset of network slices.  For example, a
@@ -2517,6 +2572,15 @@ Table of Contents
               <https://datatracker.ietf.org/doc/html/draft-ietf-teas-
               ietf-network-slices-25>.
 
+   [I-D.ietf-teas-ns-ip-mpls]
+              Saad, T., Beeram, V. P., Dong, J., Wen, B., Ceccarelli,
+              D., Halpern, J. M., Peng, S., Chen, R., Liu, X.,
+              Contreras, L. M., Rokui, R., and L. Jalil, "Realizing
+              Network Slices in IP/MPLS Networks", Work in Progress,
+              Internet-Draft, draft-ietf-teas-ns-ip-mpls-03, 26 November
+              2023, <https://datatracker.ietf.org/doc/html/draft-ietf-
+              teas-ns-ip-mpls-03>.
+
    [RFC4364]  Rosen, E. and Y. Rekhter, "BGP/MPLS IP Virtual Private
               Networks (VPNs)", RFC 4364, DOI 10.17487/RFC4364, February
               2006, <https://www.rfc-editor.org/rfc/rfc4364>.
@@ -2529,6 +2593,11 @@ Table of Contents
    [RFC6242]  Wasserman, M., "Using the NETCONF Protocol over Secure
               Shell (SSH)", RFC 6242, DOI 10.17487/RFC6242, June 2011,
               <https://www.rfc-editor.org/rfc/rfc6242>.
+
+   [RFC7608]  Boucadair, M., Petrescu, A., and F. Baker, "IPv6 Prefix
+              Length Recommendation for Forwarding", BCP 198, RFC 7608,
+              DOI 10.17487/RFC7608, July 2015,
+              <https://www.rfc-editor.org/rfc/rfc7608>.
 
    [RFC8040]  Bierman, A., Bjorklund, M., and K. Watsen, "RESTCONF
               Protocol", RFC 8040, DOI 10.17487/RFC8040, January 2017,
@@ -2545,14 +2614,6 @@ Table of Contents
 
 11.2.  Informative References
 
-   [I-D.boro-opsawg-teas-attachment-circuit]
-              Boucadair, M., Roberts, R., de Dios, O. G., Barguil, S.,
-              and B. Wu, "YANG Data Models for 'Attachment Circuits'-as-
-              a-Service (ACaaS)", Work in Progress, Internet-Draft,
-              draft-boro-opsawg-teas-attachment-circuit-07, 10 July
-              2023, <https://datatracker.ietf.org/doc/html/draft-boro-
-              opsawg-teas-attachment-circuit-07>.
-
    [I-D.henry-tsvwg-diffserv-to-qci]
               Henry, J., Szigeti, T., and L. M. Contreras, "Diffserv to
               QCI Mapping", Work in Progress, Internet-Draft, draft-
@@ -2560,14 +2621,21 @@ Table of Contents
               <https://datatracker.ietf.org/doc/html/draft-henry-tsvwg-
               diffserv-to-qci-04>.
 
-   [I-D.ietf-sfc-multi-layer-oam]
-              Mirsky, G., Meng, W., Ao, T., Khasnabish, B., Leung, K.,
-              and G. S. Mishra, "Active Operations, Administration, and
-              Maintenance (OAM) for Service Function Chaining (SFC)",
-              Work in Progress, Internet-Draft, draft-ietf-sfc-multi-
-              layer-oam-28, 7 July 2023,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-sfc-
-              multi-layer-oam-28>.
+   [I-D.ietf-opsawg-ntw-attachment-circuit]
+              Boucadair, M., Roberts, R., de Dios, O. G., Barguil, S.,
+              and B. Wu, "A Network YANG Data Model for Attachment
+              Circuits", Work in Progress, Internet-Draft, draft-ietf-
+              opsawg-ntw-attachment-circuit-03, 30 November 2023,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-
+              ntw-attachment-circuit-03>.
+
+   [I-D.ietf-opsawg-teas-attachment-circuit]
+              Boucadair, M., Roberts, R., de Dios, O. G., Barguil, S.,
+              and B. Wu, "YANG Data Models for 'Attachment Circuits'-as-
+              a-Service (ACaaS)", Work in Progress, Internet-Draft,
+              draft-ietf-opsawg-teas-attachment-circuit-03, 1 December
+              2023, <https://datatracker.ietf.org/doc/html/draft-ietf-
+              opsawg-teas-attachment-circuit-03>.
 
    [I-D.ietf-teas-5g-network-slice-application]
               Geng, X., Contreras, L. M., Rokui, R., Dong, J., and I.
@@ -2630,6 +2698,11 @@ Table of Contents
               RFC 5714, DOI 10.17487/RFC5714, January 2010,
               <https://www.rfc-editor.org/rfc/rfc5714>.
 
+   [RFC5952]  Kawamura, S. and M. Kawashima, "A Recommendation for IPv6
+              Address Text Representation", RFC 5952,
+              DOI 10.17487/RFC5952, August 2010,
+              <https://www.rfc-editor.org/rfc/rfc5952>.
+
    [RFC6291]  Andersson, L., van Helvoort, H., Bonica, R., Romascanu,
               D., and S. Mansfield, "Guidelines for the Use of the "OAM"
               Acronym in the IETF", BCP 161, RFC 6291,
@@ -2648,6 +2721,17 @@ Table of Contents
               DOI 10.17487/RFC7276, June 2014,
               <https://www.rfc-editor.org/rfc/rfc7276>.
 
+   [RFC7422]  Donley, C., Grundemann, C., Sarawat, V., Sundaresan, K.,
+              and O. Vautrin, "Deterministic Address Mapping to Reduce
+              Logging in Carrier-Grade NAT Deployments", RFC 7422,
+              DOI 10.17487/RFC7422, December 2014,
+              <https://www.rfc-editor.org/rfc/rfc7422>.
+
+   [RFC7510]  Xu, X., Sheth, N., Yong, L., Callon, R., and D. Black,
+              "Encapsulating MPLS in UDP", RFC 7510,
+              DOI 10.17487/RFC7510, April 2015,
+              <https://www.rfc-editor.org/rfc/rfc7510>.
+
    [RFC7665]  Halpern, J., Ed. and C. Pignataro, Ed., "Service Function
               Chaining (SFC) Architecture", RFC 7665,
               DOI 10.17487/RFC7665, October 2015,
@@ -2660,6 +2744,10 @@ Table of Contents
    [RFC7806]  Baker, F. and R. Pan, "On Queuing, Marking, and Dropping",
               RFC 7806, DOI 10.17487/RFC7806, April 2016,
               <https://www.rfc-editor.org/rfc/rfc7806>.
+
+   [RFC8100]  Geib, R., Ed. and D. Black, "Diffserv-Interconnection
+              Classes and Practice", RFC 8100, DOI 10.17487/RFC8100,
+              March 2017, <https://www.rfc-editor.org/rfc/rfc8100>.
 
    [RFC8299]  Wu, Q., Ed., Litkowski, S., Tomotaki, L., and K. Ogaki,
               "YANG Data Model for L3VPN Service Delivery", RFC 8299,
@@ -2701,6 +2789,12 @@ Table of Contents
               VPNs", RFC 9291, DOI 10.17487/RFC9291, September 2022,
               <https://www.rfc-editor.org/rfc/rfc9291>.
 
+   [RFC9330]  Briscoe, B., Ed., De Schepper, K., Bagnulo, M., and G.
+              White, "Low Latency, Low Loss, and Scalable Throughput
+              (L4S) Internet Service: Architecture", RFC 9330,
+              DOI 10.17487/RFC9330, January 2023,
+              <https://www.rfc-editor.org/rfc/rfc9330>.
+
    [RFC9350]  Psenak, P., Ed., Hegde, S., Filsfils, C., Talaulikar, K.,
               and A. Gulko, "IGP Flexible Algorithm", RFC 9350,
               DOI 10.17487/RFC9350, February 2023,
@@ -2721,6 +2815,12 @@ Table of Contents
               Maintenance (OAM) Packet and Behavior in the Network
               Service Header (NSH)", RFC 9451, DOI 10.17487/RFC9451,
               August 2023, <https://www.rfc-editor.org/rfc/rfc9451>.
+
+   [RFC9516]  Mirsky, G., Meng, W., Ao, T., Khasnabish, B., Leung, K.,
+              and G. Mishra, "Active Operations, Administration, and
+              Maintenance (OAM) for Service Function Chaining (SFC)",
+              RFC 9516, DOI 10.17487/RFC9516, November 2023,
+              <https://www.rfc-editor.org/rfc/rfc9516>.
 
    [TR-GSTR-TN5G]
               ITU-T, "Technical Report GSTR-TN5G", February 2018,
@@ -3242,8 +3342,9 @@ C.4.  Transport Network (TN)
 Acknowledgments
 
    The authors would like to thank Adrian Farrel, Joel Halpern, Tarek
-   Saad, Jie Dong, and Greg Mirsky for their reviews of this document
-   and for providing valuable comments.
+   Saad, Jie Dong, Greg Mirsky, Rüdiger Geib, and Nicklous D.  Morris
+   for their review of this document and for providing valuable
+   comments.
 
 Contributors
 
