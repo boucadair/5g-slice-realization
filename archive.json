@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-12-10T00:30:21.149789+00:00",
+  "timestamp": "2023-12-12T00:28:02.253842+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -72,6 +72,11 @@
       "name": "tooling",
       "description": "",
       "color": "0e8a16"
+    },
+    {
+      "name": "InProgress",
+      "description": "",
+      "color": "bfd4f2"
     }
   ],
   "issues": [
@@ -1296,6 +1301,24 @@
       "body": "In some windows, we can see several formatting issues for figures (even in .txt), we need to work on something more neutral / digestible on most system and browsers.\r\n\r\n-  replace char small vertical bar  \u258fwith regular pipe \u2502 \r\n-  replace arrows \u25c0 with \"inferior than\" <   (same for opposite direction)\r\n-  replace  diamond \u25c7 with something else (e.g. \"+\")\r\n-  find other issues :-)",
       "createdAt": "2023-12-04T12:05:41Z",
       "updatedAt": "2023-12-04T12:05:41Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 115,
+      "id": "I_kwDOIw9g6c55Vv-c",
+      "title": "Request early directorate reviews (deadline 08/01/2024)",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/115",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [
+        "InProgress"
+      ],
+      "body": "\r\n2023-12-11 | 02 | Requested Early review by TSVART\r\n-- | -- | --\r\n2023-12-11 | 02 | Requested Early review by RTGDIR\r\n2023-12-11 | 02 | Requested Early review by OPSDIR\r\n2023-12-11 | 02 | Requested Early review by INTDIR\r\n",
+      "createdAt": "2023-12-11T13:58:20Z",
+      "updatedAt": "2023-12-11T13:59:09Z",
       "closedAt": null,
       "comments": []
     }
