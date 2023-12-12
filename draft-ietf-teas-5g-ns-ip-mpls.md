@@ -161,8 +161,8 @@ informative:
 
 --- abstract
 
-   5G slicing is a feature that was introduced by the 3rd Generation
-   Partnership Project (3GPP) in mobile networks. This feature covers slicing
+   Slicing is a feature that was introduced by the 3rd Generation
+   Partnership Project (3GPP) in mobile networks. Realization of 5G slicing implies
    requirements for all mobile domains, including the Radio Access
    Network (RAN), Core Network (CN), and Transport Network (TN).
 
@@ -181,14 +181,14 @@ informative:
    {{!I-D.ietf-teas-ietf-network-slices}} defines a framework for
    network slicing in the context of networks built using IETF
    technologies.  The RFC XXXX network slicing framework introduces the
-   concept of a Network Resource Partition (NRP), which is simply a
+   concept of a Network Resource Partition (NRP), which is a
    collection of resources identified in the underlay network.  There
    could be multiple realizations of RFC XXXX Network Slice and
    NRP concepts, where each realization might be optimized for the
    different network slicing use cases.
 
    This document describes an RFC XXXX Network Slice realization model
-   in IP/MPLS networks, using a single NRP and with a focus on
+   in IP/MPLS networks, using one or more NRPs and with a focus on
    fulfilling 5G slicing connectivity requirements.
    This realization model leverages many building blocks currently
    commonly used in service provider networks.
@@ -1390,17 +1390,19 @@ to TN QoS Classes may be rather common.
 
 #  Transport Planes Mapping Models
 
-   A network operator might define various tunnel groups, where each
-   tunnel group is created with specific optimization criteria and
-   constraints.  This document refers to such tunnel groups as
-   'transport planes'.  For example, a transport plane "A" might represent
-   tunnels optimized for latency, and transport plane "B" might represent tunnels optimized for high capacity.
+   A network operator can define multiple transport planes. A transport plane could be realized in multiple ways, for example:
+     
+     (i) a mesh of TE tunnels created with specific optimization criteria and
+   constraints. For example, mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.
+     (ii) a flex-algo with a particular metric-type (e.g. latency) 
+     (iii) as an NRP
+     (iv)  a combination of the above  
 
+   Detailed realization of transport planes is out of scope for this draft. NRPs are discussed in detail in {{!I-D.ietf-teas-ns-ip-mpls}}
+   
    {{figure-23}} depicts an example of a simple network with two transport
-   planes.  These transport planes might be realized via various IP/MPLS
-   techniques, for example Flex-Algo or RSVP/SR traffic engineering
-   tunnels with or without PCE, and with or without bandwidth
-   reservations.
+   planes each using a mesh of TE tunnels with or without PCE, and with or without bandwidth
+   reservations. 
 
    {{sec-capacity-planning}} discusses in detail different bandwidth
    models that can be deployed in the provider network.  However,
