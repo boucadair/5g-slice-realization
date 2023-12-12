@@ -1400,7 +1400,7 @@ to TN QoS Classes may be rather common.
    Detailed realization of transport planes is out of scope for this draft. NRPs are discussed in detail in {{!I-D.ietf-teas-ns-ip-mpls}}
    {{figure-23}} depicts an example of a simple network with two transport
    planes each using a mesh of TE tunnels with or without PCE, and with or without bandwidth
-   reservations. 
+   reservations.
    {{sec-capacity-planning}} discusses in detail different bandwidth
    models that can be deployed in the provider network.  However,
    discussion about how to realize or orchestrate transport planes is
