@@ -1047,7 +1047,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Szarkowicz, et al.</td>
-<td class="center">Expires 14 June 2024</td>
+<td class="center">Expires 16 June 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1060,12 +1060,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-teas-5g-ns-ip-mpls-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-12-12" class="published">12 December 2023</time>
+<time datetime="2023-12-14" class="published">14 December 2023</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-06-14">14 June 2024</time></dd>
+<dd class="expires"><time datetime="2024-06-16">16 June 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1141,7 +1141,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 14 June 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 16 June 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1214,7 +1214,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
                 </ul>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.5">
-                <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="auto internal xref">3.5</a>.  <a href="#name-realization-schemes-for-rfc" class="internal xref">Realization Schemes for RFC XXXX Network Slices</a></p>
+                <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="auto internal xref">3.5</a>.  <a href="#name-mapping-schemes-between-5g-" class="internal xref">Mapping Schemes between 5G Network Slices and Transport Network Slices</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.6">
                 <p id="section-toc.1-1.3.2.6.1"><a href="#section-3.6" class="auto internal xref">3.6</a>.  <a href="#name-first-5g-slice-versus-subse" class="internal xref">First 5G Slice versus Subsequent Slices</a></p>
@@ -1894,23 +1894,21 @@ are passed between Orchestrators via a dedicated interface, e.g., the RFC XXXX N
 </div>
 <div id="sec-mapping">
 <section id="section-3.5">
-        <h3 id="name-realization-schemes-for-rfc">
-<a href="#section-3.5" class="section-number selfRef">3.5. </a><a href="#name-realization-schemes-for-rfc" class="section-name selfRef">Realization Schemes for RFC XXXX Network Slices</a>
+        <h3 id="name-mapping-schemes-between-5g-">
+<a href="#section-3.5" class="section-number selfRef">3.5. </a><a href="#name-mapping-schemes-between-5g-" class="section-name selfRef">Mapping Schemes between 5G Network Slices and Transport Network Slices</a>
         </h3>
-<p id="section-3.5-1">There are multiple options for mapping a 5G Network Slice to RFC XXXX Network Slices:<a href="#section-3.5-1" class="pilcrow">¶</a></p>
+<p id="section-3.5-1">There are multiple options for mapping 5G Network Slices to TN slices:<a href="#section-3.5-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-3.5-2.1">
             <p id="section-3.5-2.1.1">1 to N:
- A single 5G Network Slice can map to multiple RFC XXXX Network
- Slices (1 to N).  One example of such a case is the separation of
+ A single 5G Network Slice can map to multiple TN slices (1 to N).  One example of such a case is the separation of
  the 5G Control Plane and User Plane: this use case is represented
  in <a href="#_figure-5" class="auto internal xref">Figure 8</a> where a slice (eMBB) is deployed with a separation of
  User Plane and Control Plane at the TN.<a href="#section-3.5-2.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-3.5-2.2">
-            <p id="section-3.5-2.2.1">N to 1:
- Multiple 5G Network Slices may rely upon the same RFC XXXX Network
- Slice.  In such a case, the Service Level Agreement (SLA) differentiation of slices
+            <p id="section-3.5-2.2.1">M to 1:
+ Multiple 5G Network Slices may rely upon the same TN slice.  In such a case, the Service Level Agreement (SLA) differentiation of slices
  would be entirely controlled at 5G Control Plane, for example, with
  appropriate placement strategies: this use case is represented in
  <a href="#_figure-6" class="auto internal xref">Figure 9</a>, where a User Plane Function (UPF) for the URLLC slice is
@@ -1919,14 +1917,15 @@ are passed between Orchestrators via a dedicated interface, e.g., the RFC XXXX N
  for eMBB slice are instantiated in the regional cloud.<a href="#section-3.5-2.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-3.5-2.3">
-            <p id="section-3.5-2.3.1">N to M:
- The 5G to RFC XXXX Network Slice mapping combines both
+            <p id="section-3.5-2.3.1">M to N:
+ The 5G to TN slice mapping combines both
  approaches with a mix of shared and dedicated associations.<a href="#section-3.5-2.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
+<p id="section-3.5-3">In practice, for operational and scaling reasons, typically M to N would be used, with M &gt;&gt; N.<a href="#section-3.5-3" class="pilcrow">¶</a></p>
 <span id="name-1-5g-slice-to-n-rfc-xxxx-ne"></span><div id="_figure-5">
 <figure id="figure-8">
-          <div class="alignCenter art-text artwork" id="section-3.5-3.1">
+          <div class="alignCenter art-text artwork" id="section-3.5-4.1">
 <pre>
 ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
 
@@ -1955,7 +1954,7 @@ are passed between Orchestrators via a dedicated interface, e.g., the RFC XXXX N
 </div>
 <span id="name-n-5g-slice-to-1-rfc-xxxx-ne"></span><div id="_figure-6">
 <figure id="figure-9">
-          <div class="alignCenter art-text artwork" id="section-3.5-4.1">
+          <div class="alignCenter art-text artwork" id="section-3.5-5.1">
 <pre>
                   ┌ ─ ─ ─ ─ ─ ─ ┐
                      Edge Cloud
@@ -1986,11 +1985,11 @@ are passed between Orchestrators via a dedicated interface, e.g., the RFC XXXX N
 <a href="#name-n-5g-slice-to-1-rfc-xxxx-ne" class="selfRef">N (5G Slice) to 1 (RFC XXXX Network Slice) Mapping</a>
           </figcaption></figure>
 </div>
-<p id="section-3.5-5">Note that the actual realization of the mapping depends on several
+<p id="section-3.5-6">Note that the actual realization of the mapping depends on several
    factors, such as the actual business cases, the NF vendor
    capabilities, the NF vendor reference designs, as well as service
-   provider or even legal requirements.<a href="#section-3.5-5" class="pilcrow">¶</a></p>
-<p id="section-3.5-6">Specifically, the actual mapping is a design choice of service operators that may be a function of, e.g., the number of instantiated slices, requested services, or local engineering capabilities and guidelines. However, operators should carefully consider means to ease slice migration strategies. For example, a provider may initially adopt a 1-to-1 mapping if it has to instantiate few Network Slices and accommodate the need of few customers. That provider may decide to move to a N-to-1 mapping for aggregation/scalability purposes if sustained increased slice demand is observed. Putting in place adequate automation means to realize Network Slices (including the adjustment of slice services to Network Slices mapping) would ease slice migration operations.<a href="#section-3.5-6" class="pilcrow">¶</a></p>
+   provider or even legal requirements.<a href="#section-3.5-6" class="pilcrow">¶</a></p>
+<p id="section-3.5-7">Specifically, the actual mapping is a design choice of service operators that may be a function of, e.g., the number of instantiated slices, requested services, or local engineering capabilities and guidelines. However, operators should carefully consider means to ease slice migration strategies. For example, a provider may initially adopt a 1-to-1 mapping if it has to instantiate few Network Slices and accommodate the need of few customers. That provider may decide to move to a N-to-1 mapping for aggregation/scalability purposes if sustained increased slice demand is observed. Putting in place adequate automation means to realize Network Slices (including the adjustment of slice services to Network Slices mapping) would ease slice migration operations.<a href="#section-3.5-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="first-5g-slice-versus-subsequent-slices">
@@ -3523,16 +3522,16 @@ S ┃   └──────────┘  ┃  │           ┃┌───
 DSCP is not expected to be in a per-slice fashion, where 5QI to DSCP mapping may
 vary from 3GPP slice to 3GPP slice, hence the mapping of 5G QoS DSCP values
 to TN QoS Classes may be rather common.<a href="#section-5.2.2-6" class="pilcrow">¶</a></p>
-<p id="section-5.2.2-7">Like in 5QI-unaware model, the original IP header retains the DCSP
+<p id="section-5.2.2-7">Like in the 5QI-unaware model, the original IP header retains the DCSP
    marking corresponding to 5QI (5G QoS Class), while the new header
    (MPLS or IPv6) carries QoS marking related to TN QoS Class.  Based on
    TN QoS Class marking, per-hop behavior for all aggregated 5G QoS
-   Classes from all RFC XXXX Network Slices is executed on provider network transit links.  Provider network
-   transit routers do not evaluate original IP header for QoS
+   Classes from all RFC XXXX Network Slices is executed on the provider network transit links.  Provider network
+   transit routers do not evaluate the original IP header for QoS
    related decisions.  The original DSCP marking retained in the
    original IP header is used at the PE for fine-grained per slice and
    per 5G QoS Class inbound/outbound enforcement on the AC.<a href="#section-5.2.2-7" class="pilcrow">¶</a></p>
-<p id="section-5.2.2-8">In 5QI-aware model, compared to 5QI-unware model, provider network edge resources are controlled in an even more
+<p id="section-5.2.2-8">In the 5QI-aware model, compared to the 5QI-unware model, provider network edge resources are controlled in an even more
    granular, fine-grained manner, with dedicated resource allocation for
    each RFC XXXX Network Slice and dedicated resource allocation for number
    of traffic classes (most commonly up 4 or 8 traffic classes,
@@ -3547,7 +3546,7 @@ to TN QoS Classes may be rather common.<a href="#section-5.2.2-6" class="pilcrow
    conditioning) in the 5QI-aware model is more granular, as it enforces
    not only per slice capacity constraints, but may as well enforce the
    constraints per 5G QoS Class within each slice.<a href="#section-5.2.2.1-1" class="pilcrow">¶</a></p>
-<p id="section-5.2.2.1-2">5G slice using multiple 5QIs can potentially specify rates in one of
+<p id="section-5.2.2.1-2">A 5G slice using multiple 5QIs can potentially specify rates in one of
    the following ways:<a href="#section-5.2.2.1-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-5.2.2.1-3.1">
@@ -3766,9 +3765,9 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
       </h2>
 <p id="section-6-1">A network operator can define multiple transport planes. A transport plane could be realized in multiple ways, for example
    * a mesh of TE tunnels created with specific optimization criteria and
-   constraints. For example, mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.
+   constraints. E.g., mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.
    * a flex-algo with a particular metric-type (e.g. latency)
-   * as an NRP
+   * an NRP
    * a combination of the above<a href="#section-6-1" class="pilcrow">¶</a></p>
 <p id="section-6-2">Detailed realization of transport planes is out of scope for this draft. NRPs are discussed in detail in <span>[<a href="#I-D.ietf-teas-ns-ip-mpls" class="cite xref">I-D.ietf-teas-ns-ip-mpls</a>]</span>
         <a href="#_figure-23" class="auto internal xref">Figure 28</a> depicts an example of a simple network with two transport
@@ -3778,7 +3777,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    models that can be deployed in the provider network.  However,
    discussion about how to realize or orchestrate transport planes is
    out of scope for this document.<a href="#section-6-2" class="pilcrow">¶</a></p>
-<span id="name-transport-planes"></span><div id="_figure-23">
+<span id="name-transport-planes-example-ba"></span><div id="_figure-23">
 <figure id="figure-28">
         <div class="alignCenter art-text artwork" id="section-6-3.1">
 <pre>
@@ -3806,7 +3805,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
 </pre>
 </div>
 <figcaption><a href="#figure-28" class="selfRef">Figure 28</a>:
-<a href="#name-transport-planes" class="selfRef">Transport Planes</a>
+<a href="#name-transport-planes-example-ba" class="selfRef">Transport Planes example based on TE tunnels</a>
         </figcaption></figure>
 </div>
 <p id="section-6-4">Note that there could be multiple tunnels within a single transport plane
@@ -4392,7 +4391,7 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
 <dd class="break"></dd>
 <dt id="I-D.ietf-opsawg-ntw-attachment-circuit">[I-D.ietf-opsawg-ntw-attachment-circuit]</dt>
         <dd>
-<span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Roberts, R.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, and <span class="refAuthor">B. Wu</span>, <span class="refTitle">"A Network YANG Data Model for Attachment Circuits"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-opsawg-ntw-attachment-circuit-03</span>, <time datetime="2023-11-30" class="refDate">30 November 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-ntw-attachment-circuit-03">https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-ntw-attachment-circuit-03</a>&gt;</span>. </dd>
+<span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Roberts, R.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, and <span class="refAuthor">B. Wu</span>, <span class="refTitle">"A Network YANG Data Model for Attachment Circuits"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-opsawg-ntw-attachment-circuit-04</span>, <time datetime="2023-12-14" class="refDate">14 December 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-ntw-attachment-circuit-04">https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-ntw-attachment-circuit-04</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-opsawg-teas-attachment-circuit">[I-D.ietf-opsawg-teas-attachment-circuit]</dt>
         <dd>
