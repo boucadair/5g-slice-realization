@@ -401,7 +401,7 @@ More complex scenarios can happen with extra segmentation of the TN and addition
       A single 5G Network Slice can map to multiple TN slices (1 to N).  One example of such a case is the separation of
       the 5G Control Plane and User Plane: this use case is represented
       in {{figure-5}} where a slice (eMBB) is deployed with a separation of
-      User Plane and Control Plane at the TN. 
+      User Plane and Control Plane at the TN.
 
    * M to 1:
       Multiple 5G Network Slices may rely upon the same TN slice.  In such a case, the Service Level Agreement (SLA) differentiation of slices
