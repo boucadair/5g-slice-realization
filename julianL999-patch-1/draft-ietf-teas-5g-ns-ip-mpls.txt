@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 16 June 2024                                   Juniper Networks
+Expires: 17 June 2024                                   Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                        14 December 2023
+                                                        15 December 2023
 
 
  A Realization of RFC XXXX Network Slices for 5G Networks Using Current
@@ -61,7 +61,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 June 2024.
+   This Internet-Draft will expire on 17 June 2024.
 
 Copyright Notice
 
@@ -788,13 +788,13 @@ Table of Contents
    slices, requested services, or local engineering capabilities and
    guidelines.  However, operators should carefully consider means to
    ease slice migration strategies.  For example, a provider may
-   initially adopt a 1-to-1 mapping if it has to instantiate few Network
-   Slices and accommodate the need of few customers.  That provider may
-   decide to move to a N-to-1 mapping for aggregation/scalability
-   purposes if sustained increased slice demand is observed.  Putting in
-   place adequate automation means to realize Network Slices (including
-   the adjustment of slice services to Network Slices mapping) would
-   ease slice migration operations.
+   initially adopt a 1-to-1 mapping if it has to instantiate just a few
+   Network Slices and accommodate the need of only a few customers.
+   That provider may decide to move to a N-to-1 mapping for aggregation/
+   scalability purposes if sustained increased slice demand is observed.
+   Putting in place adequate automation means to realize Network Slices
+   (including the adjustment of slice services to Network Slices
+   mapping) would ease slice migration operations.
 
 3.6.  First 5G Slice versus Subsequent Slices
 
@@ -803,7 +803,7 @@ Table of Contents
    split-CU in the RAN, both CU-UP and CU-CP must be deployed along with
    the associated interfaces E1, F1-c, F1-u, N2, and N3 which are
    conveyed in the TN.  In this regard, the creation of the "first
-   slice" can be subject to a specific logic compared with the
+   slice" can be subject to a specific logic that does not apply to
    subsequent slices.  Referring to the example in Figure 10, the first
    5G slice relies on the deployment of NF-CP and NF-UP functions
    together with two TN slices for Control and User Planes (INS-CP and
