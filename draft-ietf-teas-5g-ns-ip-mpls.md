@@ -452,14 +452,11 @@ For instance, consider a slice based on split-CU in the RAN, both CU-UP and CU-C
 Overall, policies might be provided by an operator (e.g., to Network Slice Controllers) to indicate whether the same or dedicated CP NFs are allowed when processing a new slice creation request. Providing such a policy is meant to better automate the realization of 5G slices and minimize the realization delay that might be induced by extra cycles to seek for operator validation.
 
 
-#  Overview of the Realization Model {#sec-over-rea-model}
+##  Overview of the Transport Network Realization Model {#sec-over-rea-model}
 
-   {{!I-D.ietf-teas-ietf-network-slices}} introduces the concept of the
-   Network Resource Partition (NRP), which is defined as a collection of
-   resources identified in the underlay network.  In the basic
-   realization model described in this document, depicted in {{figure-high-level-qos}}, a single NRP is used
-   with the following characteristics:
-
+   The realization model described in this document is depicted in
+   {{figure-high-level-qos}}. The following building blocks are used:
+ 
    *  Layer 2 Virtual Private Network (L2VPN) {{?RFC4664}} and/or Layer 3 Virtual Private Network (L3VPN) {{?RFC4364}} service instances for logical separation:
 
       This realization model of transport for 5G slices assumes Layer 3
@@ -516,13 +513,19 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
 ~~~~
 {: #figure-high-level-qos title="Resource Allocation Slicing Model with a Single NRP" artwork-align="center"}
 
+#  Hand-off between domains {#sec-over-rea-model}
 
+   ?????????
+   
    The 5G control plane relies upon the Single Network Slice
    Selection Assistance Information (S-NSSAI) 32-bit slice identifier for slice
    identification.  The S-NSSAI is not visible to the transport domain.
-   So instead, 5G functions can expose the 5G slices to the transport
+   So instead, 5G network function can expose the 5G slices to the transport
    domain by mapping to explicit Layer 2 or Layer 3 identifiers, such as VLAN-IDs, IP
-   addresses, or Differentiated Services Code Point (DSCP). More details about the mapping
+   addresses, or Differentiated Services Code Point (DSCP). The realization of the mapping
+   between customer site and provider network is commonly refered to as the "hand-off".
+   
+   More details about the mapping
    between 3GPP and RFC XXXX Network Slices is provided in {{?I-D.ietf-teas-5g-network-slice-application}}.
 
 ##  VLAN Hand-off {#sec-vlan-handoff}
