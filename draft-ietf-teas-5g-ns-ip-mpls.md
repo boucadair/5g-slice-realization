@@ -398,10 +398,7 @@ More complex scenarios can happen with extra segmentation of the TN and addition
    There are multiple options for mapping 5G Network Slices to TN slices:
 
    * 1 to N:
-      A single 5G Network Slice can map to multiple TN slices (1 to N).  One example of such a case is the separation of
-      the 5G Control Plane and User Plane: this use case is represented
-      in {{figure-5}} where a slice (eMBB) is deployed with a separation of
-      User Plane and Control Plane at the TN.
+A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For instance, consider the scenario depicted in {{figure-5}}, illustrating the separation of the 5G Control Plane and User Plane in TN slices for a single 5G EMBB network slice. It's important to note that this mapping can serve as an interim step to N:M mapping: a subset of the TN slices can be intended for sharing by multiple 5G Network Slices. Further details about this scheme are described in {#sec-firstslice}.
 
    * M to 1:
       Multiple 5G Network Slices may rely upon the same TN slice.  In such a case, the Service Level Agreement (SLA) differentiation of slices
@@ -435,7 +432,7 @@ In practice, for operational and scaling reasons, typically M to N would be used
 
 Specifically, the actual mapping is a design choice of service operators that may be a function of, e.g., the number of instantiated slices, requested services, or local engineering capabilities and guidelines. However, operators should carefully consider means to ease slice migration strategies. For example, a provider may initially adopt a 1-to-1 mapping if it has to instantiate just a few Network Slices and accommodate the need of only a few customers. That provider may decide to move to a N-to-1 mapping for aggregation/scalability purposes if sustained increased slice demand is observed. Putting in place adequate automation means to realize Network Slices (including the adjustment of slice services to Network Slices mapping) would ease slice migration operations.
 
-##  First 5G Slice versus Subsequent Slices
+##  First 5G Slice versus Subsequent Slices {#sec-firstslice}
 
 An operational 5G Network Slice incorporates both 5G Control Plane and User Plane capabilities.
 For instance, consider a slice based on split-CU in the RAN, both CU-UP and CU-CP must be deployed along with the associated interfaces E1, F1-c, F1-u, N2, and N3 which are conveyed in the TN. In this regard, the creation of the "first slice" can be subject to a specific logic that does not apply to subsequent slices. Referring to the example in {{figure-7}}, the first 5G slice relies on the deployment of NF-CP and NF-UP functions together with two TN slices for Control and User Planes (INS-CP and INS-UP1). Next, the deployment of a second slice relies solely on the instantiation of a User Plane Function (NF-UP2) together with a dedicated User Plane TN slice (INS-UP2). The Control Plane of the first 5G slice is also updated to integrate the second slice: the TN Slice (INS-CP) and Network Functions (NF-CP) are shared.
