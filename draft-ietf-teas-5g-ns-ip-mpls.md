@@ -1397,7 +1397,7 @@ to TN QoS Classes may be rather common.
    * an NRP
    * a combination of the above
 
-   Detailed realization of transport planes is out of scope for this draft. NRPs are discussed in detail in {{!I-D.ietf-teas-ns-ip-mpls}}
+   Detailed realization of transport planes is out of scope for this document. NRPs are discussed in detail in {{?I-D.ietf-teas-ns-ip-mpls}}
    {{figure-23}} depicts an example of a simple network with two transport
    planes each using a mesh of TE tunnels with or without PCE, and with or without bandwidth
    reservations.
