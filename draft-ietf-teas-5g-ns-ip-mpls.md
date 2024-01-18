@@ -510,7 +510,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
 ~~~~
 {: #figure-high-level-qos title="Resource Allocation Slicing Model with a Single NRP" artwork-align="center"}
 
-#  Hand-off Between Domains {#sec-over-rea-model}
+#  Hand-off Between Domains {#sec-handoff-domains}
 
    The 5G control plane relies upon the Single Network Slice
    Selection Assistance Information (S-NSSAI) 32-bit slice identifier for slice
