@@ -453,7 +453,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
 
    The realization model described in this document is depicted in
    {{figure-high-level-qos}}. The following building blocks are used:
- 
+
    *  Layer 2 Virtual Private Network (L2VPN) {{?RFC4664}} and/or Layer 3 Virtual Private Network (L3VPN) {{?RFC4364}} service instances for logical separation:
 
       This realization model of transport for 5G slices assumes Layer 3
@@ -510,10 +510,8 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
 ~~~~
 {: #figure-high-level-qos title="Resource Allocation Slicing Model with a Single NRP" artwork-align="center"}
 
-#  Hand-off between domains {#sec-over-rea-model}
+#  Hand-off Between Domains {#sec-over-rea-model}
 
-   ?????????
-   
    The 5G control plane relies upon the Single Network Slice
    Selection Assistance Information (S-NSSAI) 32-bit slice identifier for slice
    identification.  The S-NSSAI is not visible to the transport domain.
@@ -521,7 +519,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
    domain by mapping to explicit Layer 2 or Layer 3 identifiers, such as VLAN-IDs, IP
    addresses, or Differentiated Services Code Point (DSCP). The realization of the mapping
    between customer site and provider network is commonly refered to as the "hand-off".
-   
+
    More details about the mapping
    between 3GPP and RFC XXXX Network Slices is provided in {{?I-D.ietf-teas-5g-network-slice-application}}.
 
