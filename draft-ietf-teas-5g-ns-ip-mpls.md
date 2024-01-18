@@ -517,7 +517,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
    The 5G control plane relies upon the Single Network Slice
    Selection Assistance Information (S-NSSAI) 32-bit slice identifier for slice
    identification.  The S-NSSAI is not visible to the transport domain.
-   So instead, 5G network function can expose the 5G slices to the transport
+   So instead, 5G network functions can expose the 5G slices to the transport
    domain by mapping to explicit Layer 2 or Layer 3 identifiers, such as VLAN-IDs, IP
    addresses, or Differentiated Services Code Point (DSCP). The realization of the mapping
    between customer site and provider network is commonly refered to as the "hand-off".
