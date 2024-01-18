@@ -25,13 +25,13 @@
          
        
     ' name="description">
-<meta content="xml2rfc 3.18.2" name="generator">
+<meta content="xml2rfc 3.19.1" name="generator">
 <meta content="L3VPN" name="keyword">
 <meta content="L2VPN" name="keyword">
 <meta content="Slice Service" name="keyword">
 <meta content="draft-ietf-teas-5g-ns-ip-mpls-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.18.2
+  xml2rfc 3.19.1
     Python 3.11.6
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
@@ -44,7 +44,7 @@
     requests 2.31.0
     setuptools 68.2.2
     six 1.16.0
-    wcwidth 0.2.12
+    wcwidth 0.2.13
 -->
 <link href="draft-ietf-teas-5g-ns-ip-mpls.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1043,11 +1043,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Implementing 5G Transport Slices</td>
-<td class="right">December 2023</td>
+<td class="right">January 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Szarkowicz, et al.</td>
-<td class="center">Expires 17 June 2024</td>
+<td class="center">Expires 21 July 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1060,12 +1060,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-teas-5g-ns-ip-mpls-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-12-15" class="published">15 December 2023</time>
+<time datetime="2024-01-18" class="published">18 January 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-06-17">17 June 2024</time></dd>
+<dd class="expires"><time datetime="2024-07-21">21 July 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1141,7 +1141,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 17 June 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 21 July 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1150,7 +1150,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
         </h2>
 <p id="section-boilerplate.2-1">
-            Copyright (c) 2023 IETF Trust and the persons identified as the
+            Copyright (c) 2024 IETF Trust and the persons identified as the
             document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.2-2">
             This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1219,10 +1219,13 @@ svg :is([fill="white"], [fill^="#fff"]) {
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.6">
                 <p id="section-toc.1-1.3.2.6.1"><a href="#section-3.6" class="auto internal xref">3.6</a>.  <a href="#name-first-5g-slice-versus-subse" class="internal xref">First 5G Slice versus Subsequent Slices</a></p>
 </li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.7">
+                <p id="section-toc.1-1.3.2.7.1"><a href="#section-3.7" class="auto internal xref">3.7</a>.  <a href="#name-overview-of-the-transport-n" class="internal xref">Overview of the Transport Network Realization Model</a></p>
+</li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
-            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-overview-of-the-realization" class="internal xref">Overview of the Realization Model</a></p>
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-hand-off-between-domains" class="internal xref">Hand-off Between Domains</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-vlan-hand-off" class="internal xref">VLAN Hand-off</a></p>
@@ -1901,10 +1904,7 @@ are passed between Orchestrators via a dedicated interface, e.g., the RFC XXXX N
 <ul class="normal">
 <li class="normal" id="section-3.5-2.1">
             <p id="section-3.5-2.1.1">1 to N:
- A single 5G Network Slice can map to multiple TN slices (1 to N).  One example of such a case is the separation of
- the 5G Control Plane and User Plane: this use case is represented
- in <a href="#_figure-5" class="auto internal xref">Figure 8</a> where a slice (eMBB) is deployed with a separation of
- User Plane and Control Plane at the TN.<a href="#section-3.5-2.1.1" class="pilcrow">¶</a></p>
+A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For instance, consider the scenario depicted in <a href="#_figure-5" class="auto internal xref">Figure 8</a>, illustrating the separation of the 5G Control Plane and User Plane in TN slices for a single 5G EMBB network slice. It's important to note that this mapping can serve as an interim step to N:M mapping. In this scenario, a subset of the TN slices can be intended for sharing by multiple 5G Network Slices (e.g. The Control Plane TN slice is shared by multiple 5G network Slices). Further details about this scheme are described in {#sec-firstslice}.<a href="#section-3.5-2.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-3.5-2.2">
             <p id="section-3.5-2.2.1">M to 1:
@@ -1992,7 +1992,7 @@ are passed between Orchestrators via a dedicated interface, e.g., the RFC XXXX N
 <p id="section-3.5-7">Specifically, the actual mapping is a design choice of service operators that may be a function of, e.g., the number of instantiated slices, requested services, or local engineering capabilities and guidelines. However, operators should carefully consider means to ease slice migration strategies. For example, a provider may initially adopt a 1-to-1 mapping if it has to instantiate just a few Network Slices and accommodate the need of only a few customers. That provider may decide to move to a N-to-1 mapping for aggregation/scalability purposes if sustained increased slice demand is observed. Putting in place adequate automation means to realize Network Slices (including the adjustment of slice services to Network Slices mapping) would ease slice migration operations.<a href="#section-3.5-7" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="first-5g-slice-versus-subsequent-slices">
+<div id="sec-firstslice">
 <section id="section-3.6">
         <h3 id="name-first-5g-slice-versus-subse">
 <a href="#section-3.6" class="section-number selfRef">3.6. </a><a href="#name-first-5g-slice-versus-subse" class="section-name selfRef">First 5G Slice versus Subsequent Slices</a>
@@ -2441,22 +2441,17 @@ For instance, consider a slice based on split-CU in the RAN, both CU-UP and CU-C
 <p id="section-3.6-4">Overall, policies might be provided by an operator (e.g., to Network Slice Controllers) to indicate whether the same or dedicated CP NFs are allowed when processing a new slice creation request. Providing such a policy is meant to better automate the realization of 5G slices and minimize the realization delay that might be induced by extra cycles to seek for operator validation.<a href="#section-3.6-4" class="pilcrow">¶</a></p>
 </section>
 </div>
-</section>
-</div>
 <div id="sec-over-rea-model">
-<section id="section-4">
-      <h2 id="name-overview-of-the-realization">
-<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-overview-of-the-realization" class="section-name selfRef">Overview of the Realization Model</a>
-      </h2>
-<p id="section-4-1"><span>[<a href="#I-D.ietf-teas-ietf-network-slices" class="cite xref">I-D.ietf-teas-ietf-network-slices</a>]</span> introduces the concept of the
-   Network Resource Partition (NRP), which is defined as a collection of
-   resources identified in the underlay network.  In the basic
-   realization model described in this document, depicted in <a href="#_figure-high-level-qos" class="auto internal xref">Figure 11</a>, a single NRP is used
-   with the following characteristics:<a href="#section-4-1" class="pilcrow">¶</a></p>
+<section id="section-3.7">
+        <h3 id="name-overview-of-the-transport-n">
+<a href="#section-3.7" class="section-number selfRef">3.7. </a><a href="#name-overview-of-the-transport-n" class="section-name selfRef">Overview of the Transport Network Realization Model</a>
+        </h3>
+<p id="section-3.7-1">The realization model described in this document is depicted in
+   <a href="#_figure-high-level-qos" class="auto internal xref">Figure 11</a>. The following building blocks are used:<a href="#section-3.7-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-4-2.1">
-          <p id="section-4-2.1.1">Layer 2 Virtual Private Network (L2VPN) <span>[<a href="#RFC4664" class="cite xref">RFC4664</a>]</span> and/or Layer 3 Virtual Private Network (L3VPN) <span>[<a href="#RFC4364" class="cite xref">RFC4364</a>]</span> service instances for logical separation:<a href="#section-4-2.1.1" class="pilcrow">¶</a></p>
-<p id="section-4-2.1.2">
+<li class="normal" id="section-3.7-2.1">
+            <p id="section-3.7-2.1.1">Layer 2 Virtual Private Network (L2VPN) <span>[<a href="#RFC4664" class="cite xref">RFC4664</a>]</span> and/or Layer 3 Virtual Private Network (L3VPN) <span>[<a href="#RFC4364" class="cite xref">RFC4364</a>]</span> service instances for logical separation:<a href="#section-3.7-2.1.1" class="pilcrow">¶</a></p>
+<p id="section-3.7-2.1.2">
 This realization model of transport for 5G slices assumes Layer 3
 delivery for midhaul and backhaul transport connections, and a
 Layer 2 or Layer 3 for
@@ -2464,17 +2459,17 @@ fronthaul connections. Enhanced Common Public Radio Interface (eCPRI) supports b
 used as a basic form of logical slice separation.  Furthermore, using
 service instances results in an additional outer header (as packets
 are encapsulated/decapsulated at the nodes hosting service instances) providing clean discrimination between 5G QoS and TN
-QoS, as explained in <a href="#sec-qos-map" class="auto internal xref">Section 5</a>.<a href="#section-4-2.1.2" class="pilcrow">¶</a></p>
+QoS, as explained in <a href="#sec-qos-map" class="auto internal xref">Section 5</a>.<a href="#section-3.7-2.1.2" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-4-2.2">
-          <p id="section-4-2.2.1">Fine-grained resource control at the PE:<a href="#section-4-2.2.1" class="pilcrow">¶</a></p>
-<p id="section-4-2.2.2">
+          <li class="normal" id="section-3.7-2.2">
+            <p id="section-3.7-2.2.1">Fine-grained resource control at the PE:<a href="#section-3.7-2.2.1" class="pilcrow">¶</a></p>
+<p id="section-3.7-2.2.2">
 This is sometimes called 'admission control' or 'traffic
 conditioning'.  The main purpose is the enforcement of the
 bandwidth contract for the slice right at the edge of the
 provider network where the traffic is handed-off between the
-customer site and the provider network.<a href="#section-4-2.2.2" class="pilcrow">¶</a></p>
-<p id="section-4-2.2.3">
+customer site and the provider network.<a href="#section-3.7-2.2.2" class="pilcrow">¶</a></p>
+<p id="section-3.7-2.2.3">
 The toolset used here is granular ingress policing (rate limiting)
 to enforce contracted bandwidths per slice and, potentially, per
 traffic class within the slice.  Traffic above the enforced rate might be
@@ -2483,36 +2478,36 @@ which is more likely to be dropped somewhere inside the provider network if
 congestion occurs.  In the egress direction at the PE node,
 hierarchical schedulers/shapers can be deployed,
 providing guaranteed rates per slice, as well as guarantees per
-traffic class within each slice.<a href="#section-4-2.2.3" class="pilcrow">¶</a></p>
-<p id="section-4-2.2.4">
+traffic class within each slice.<a href="#section-3.7-2.2.3" class="pilcrow">¶</a></p>
+<p id="section-3.7-2.2.4">
 For managed CEs, edge admission control can be distributed between CEs
 and PEs, where a part of the admission control is implemented on the CE
-and other part of the admission control is implemented on the PE.<a href="#section-4-2.2.4" class="pilcrow">¶</a></p>
+and other part of the admission control is implemented on the PE.<a href="#section-3.7-2.2.4" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-4-2.3">
-          <p id="section-4-2.3.1">Coarse-grained resource control at the transit (non-attachment
+          <li class="normal" id="section-3.7-2.3">
+            <p id="section-3.7-2.3.1">Coarse-grained resource control at the transit (non-attachment
 circuits) links in the provider network, using a single NRP, spanning the entire provider network.
 Transit nodes in the provider network do not maintain any state of individual slices.
 Instead, only a flat (non-hierarchical) QoS model is used on
 transit links in the provider network, with up to 8 traffic classes.  At the PE,
 traffic-flows from multiple slice services are mapped
-to the limited number of traffic classes used on provider network transit links.<a href="#section-4-2.3.1" class="pilcrow">¶</a></p>
+to the limited number of traffic classes used on provider network transit links.<a href="#section-3.7-2.3.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-4-2.4">
-          <p id="section-4-2.4.1">Capacity planning/management for efficient usage of provider network resources:<a href="#section-4-2.4.1" class="pilcrow">¶</a></p>
-<p id="section-4-2.4.2">
+          <li class="normal" id="section-3.7-2.4">
+            <p id="section-3.7-2.4.1">Capacity planning/management for efficient usage of provider network resources:<a href="#section-3.7-2.4.1" class="pilcrow">¶</a></p>
+<p id="section-3.7-2.4.2">
 The role of capacity management is to ensure the provider network
 capacity can be utilized without causing any bottlenecks.  The
 toolset used here can range from careful network planning, to
 ensure a more or less equal traffic distribution (i.e., equal cost load
 balancing), to advanced traffic engineering techniques, with or
 without bandwidth reservations, to force more consistent load
-distribution even in non-ECMP friendly network topologies.<a href="#section-4-2.4.2" class="pilcrow">¶</a></p>
+distribution even in non-ECMP friendly network topologies.<a href="#section-3.7-2.4.2" class="pilcrow">¶</a></p>
 </li>
-      </ul>
+        </ul>
 <span id="name-resource-allocation-slicing"></span><div id="_figure-high-level-qos">
 <figure id="figure-11">
-        <div class="alignCenter art-text artwork" id="section-4-3.1">
+          <div class="alignCenter art-text artwork" id="section-3.7-3.1">
 <pre>
             ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
       ┌──────────┐               base NRP               ┌──────────┐
@@ -2535,15 +2530,26 @@ distribution even in non-ECMP friendly network topologies.<a href="#section-4-2.
 </div>
 <figcaption><a href="#figure-11" class="selfRef">Figure 11</a>:
 <a href="#name-resource-allocation-slicing" class="selfRef">Resource Allocation Slicing Model with a Single NRP</a>
-        </figcaption></figure>
+          </figcaption></figure>
 </div>
-<p id="section-4-4">The 5G control plane relies upon the Single Network Slice
+</section>
+</div>
+</section>
+</div>
+<div id="sec-handoff-domains">
+<section id="section-4">
+      <h2 id="name-hand-off-between-domains">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-hand-off-between-domains" class="section-name selfRef">Hand-off Between Domains</a>
+      </h2>
+<p id="section-4-1">The 5G control plane relies upon the Single Network Slice
    Selection Assistance Information (S-NSSAI) 32-bit slice identifier for slice
    identification.  The S-NSSAI is not visible to the transport domain.
-   So instead, 5G functions can expose the 5G slices to the transport
+   So instead, 5G network functions can expose the 5G slices to the transport
    domain by mapping to explicit Layer 2 or Layer 3 identifiers, such as VLAN-IDs, IP
-   addresses, or Differentiated Services Code Point (DSCP). More details about the mapping
-   between 3GPP and RFC XXXX Network Slices is provided in <span>[<a href="#I-D.ietf-teas-5g-network-slice-application" class="cite xref">I-D.ietf-teas-5g-network-slice-application</a>]</span>.<a href="#section-4-4" class="pilcrow">¶</a></p>
+   addresses, or Differentiated Services Code Point (DSCP). The realization of the mapping
+   between customer site and provider network is commonly refered to as the "hand-off".<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-2">More details about the mapping
+   between 3GPP and RFC XXXX Network Slices is provided in <span>[<a href="#I-D.ietf-teas-5g-network-slice-application" class="cite xref">I-D.ietf-teas-5g-network-slice-application</a>]</span>.<a href="#section-4-2" class="pilcrow">¶</a></p>
 <div id="sec-vlan-handoff">
 <section id="section-4.1">
         <h3 id="name-vlan-hand-off">
@@ -2957,7 +2963,7 @@ since one IPv4/IPv6 labeled unicast host route represent one customer site, rega
 of the number of slices in the customer site, the number of forwarding entries
 on a PE is considerably reduced.<a href="#section-4.3.3-5" class="pilcrow">¶</a></p>
 <p id="section-4.3.3-6">For any slice-specific per-hop behavior at the provider network edge, as described
-in details in <a href="#sec-over-rea-model" class="auto internal xref">Section 4</a>, the PE must be able to determine which label in the packet
+in details in <a href="#sec-over-rea-model" class="auto internal xref">Section 3.7</a>, the PE must be able to determine which label in the packet
 represents which slice. This can be achieved, for example, by allocating non-overlapping service label
 ranges for each slice, and use these ranges for slice identification purposes on PE.<a href="#section-4.3.3-6" class="pilcrow">¶</a></p>
 </section>
@@ -3769,7 +3775,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    * a flex-algo with a particular metric-type (e.g. latency)
    * an NRP
    * a combination of the above<a href="#section-6-1" class="pilcrow">¶</a></p>
-<p id="section-6-2">Detailed realization of transport planes is out of scope for this draft. NRPs are discussed in detail in <span>[<a href="#I-D.ietf-teas-ns-ip-mpls" class="cite xref">I-D.ietf-teas-ns-ip-mpls</a>]</span>
+<p id="section-6-2">Detailed realization of transport planes is out of scope for this document. NRPs are discussed in detail in <span>[<a href="#I-D.ietf-teas-ns-ip-mpls" class="cite xref">I-D.ietf-teas-ns-ip-mpls</a>]</span>
         <a href="#_figure-23" class="auto internal xref">Figure 28</a> depicts an example of a simple network with two transport
    planes each using a mesh of TE tunnels with or without PCE, and with or without bandwidth
    reservations.
@@ -4344,10 +4350,6 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
         <dd>
 <span class="refAuthor">Farrel, A.</span>, <span class="refAuthor">Drake, J.</span>, <span class="refAuthor">Rokui, R.</span>, <span class="refAuthor">Homma, S.</span>, <span class="refAuthor">Makhijani, K.</span>, <span class="refAuthor">Contreras, L. M.</span>, and <span class="refAuthor">J. Tantsura</span>, <span class="refTitle">"A Framework for Network Slices in Networks Built from IETF Technologies"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-ietf-network-slices-25</span>, <time datetime="2023-09-14" class="refDate">14 September 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slices-25">https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slices-25</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="I-D.ietf-teas-ns-ip-mpls">[I-D.ietf-teas-ns-ip-mpls]</dt>
-        <dd>
-<span class="refAuthor">Saad, T.</span>, <span class="refAuthor">Beeram, V. P.</span>, <span class="refAuthor">Dong, J.</span>, <span class="refAuthor">Wen, B.</span>, <span class="refAuthor">Ceccarelli, D.</span>, <span class="refAuthor">Halpern, J. M.</span>, <span class="refAuthor">Peng, S.</span>, <span class="refAuthor">Chen, R.</span>, <span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Contreras, L. M.</span>, <span class="refAuthor">Rokui, R.</span>, and <span class="refAuthor">L. Jalil</span>, <span class="refTitle">"Realizing Network Slices in IP/MPLS Networks"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-ns-ip-mpls-03</span>, <time datetime="2023-11-26" class="refDate">26 November 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-ip-mpls-03">https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-ip-mpls-03</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="RFC4364">[RFC4364]</dt>
         <dd>
 <span class="refAuthor">Rosen, E.</span> and <span class="refAuthor">Y. Rekhter</span>, <span class="refTitle">"BGP/MPLS IP Virtual Private Networks (VPNs)"</span>, <span class="seriesInfo">RFC 4364</span>, <span class="seriesInfo">DOI 10.17487/RFC4364</span>, <time datetime="2006-02" class="refDate">February 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4364">https://www.rfc-editor.org/rfc/rfc4364</a>&gt;</span>. </dd>
@@ -4395,7 +4397,7 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
 <dd class="break"></dd>
 <dt id="I-D.ietf-opsawg-teas-attachment-circuit">[I-D.ietf-opsawg-teas-attachment-circuit]</dt>
         <dd>
-<span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Roberts, R.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, and <span class="refAuthor">B. Wu</span>, <span class="refTitle">"YANG Data Models for 'Attachment Circuits'-as-a-Service (ACaaS)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-opsawg-teas-attachment-circuit-03</span>, <time datetime="2023-12-01" class="refDate">1 December 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-teas-attachment-circuit-03">https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-teas-attachment-circuit-03</a>&gt;</span>. </dd>
+<span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Roberts, R.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, and <span class="refAuthor">B. Wu</span>, <span class="refTitle">"YANG Data Models for Bearers and 'Attachment Circuits'-as-a-Service (ACaaS)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-opsawg-teas-attachment-circuit-04</span>, <time datetime="2024-01-14" class="refDate">14 January 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-teas-attachment-circuit-04">https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-teas-attachment-circuit-04</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-teas-5g-network-slice-application">[I-D.ietf-teas-5g-network-slice-application]</dt>
         <dd>
@@ -4404,6 +4406,10 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
 <dt id="I-D.ietf-teas-ietf-network-slice-nbi-yang">[I-D.ietf-teas-ietf-network-slice-nbi-yang]</dt>
         <dd>
 <span class="refAuthor">Wu, B.</span>, <span class="refAuthor">Dhody, D.</span>, <span class="refAuthor">Rokui, R.</span>, <span class="refAuthor">Saad, T.</span>, and <span class="refAuthor">J. Mullooly</span>, <span class="refTitle">"A YANG Data Model for the IETF Network Slice Service"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-ietf-network-slice-nbi-yang-08</span>, <time datetime="2023-10-23" class="refDate">23 October 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slice-nbi-yang-08">https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slice-nbi-yang-08</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-teas-ns-ip-mpls">[I-D.ietf-teas-ns-ip-mpls]</dt>
+        <dd>
+<span class="refAuthor">Saad, T.</span>, <span class="refAuthor">Beeram, V. P.</span>, <span class="refAuthor">Dong, J.</span>, <span class="refAuthor">Wen, B.</span>, <span class="refAuthor">Ceccarelli, D.</span>, <span class="refAuthor">Halpern, J. M.</span>, <span class="refAuthor">Peng, S.</span>, <span class="refAuthor">Chen, R.</span>, <span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Contreras, L. M.</span>, <span class="refAuthor">Rokui, R.</span>, and <span class="refAuthor">L. Jalil</span>, <span class="refTitle">"Realizing Network Slices in IP/MPLS Networks"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-ns-ip-mpls-03</span>, <time datetime="2023-11-26" class="refDate">26 November 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-ip-mpls-03">https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-ip-mpls-03</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-teas-rfc3272bis">[I-D.ietf-teas-rfc3272bis]</dt>
         <dd>

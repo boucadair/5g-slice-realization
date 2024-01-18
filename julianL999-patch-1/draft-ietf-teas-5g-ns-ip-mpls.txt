@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 17 June 2024                                   Juniper Networks
+Expires: 21 July 2024                                   Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                        15 December 2023
+                                                         18 January 2024
 
 
  A Realization of RFC XXXX Network Slices for 5G Networks Using Current
@@ -61,11 +61,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 17 June 2024.
+   This Internet-Draft will expire on 21 July 2024.
 
 Copyright Notice
 
-   Copyright (c) 2023 IETF Trust and the persons identified as the
+   Copyright (c) 2024 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -96,7 +96,8 @@ Table of Contents
      3.5.  Mapping Schemes between 5G Network Slices and Transport
            Network Slices
      3.6.  First 5G Slice versus Subsequent Slices
-   4.  Overview of the Realization Model
+     3.7.  Overview of the Transport Network Realization Model
+   4.  Hand-off Between Domains
      4.1.  VLAN Hand-off
      4.2.  IP Hand-off
      4.3.  MPLS Label Hand-off
@@ -708,11 +709,16 @@ Table of Contents
    There are multiple options for mapping 5G Network Slices to TN
    slices:
 
-   *  1 to N: A single 5G Network Slice can map to multiple TN slices (1
-      to N).  One example of such a case is the separation of the 5G
-      Control Plane and User Plane: this use case is represented in
-      Figure 8 where a slice (eMBB) is deployed with a separation of
-      User Plane and Control Plane at the TN.
+   *  1 to N: A single 5G Network Slice can be mapped to multiple TN
+      slices (1 to N).  For instance, consider the scenario depicted in
+      Figure 8, illustrating the separation of the 5G Control Plane and
+      User Plane in TN slices for a single 5G EMBB network slice.  It's
+      important to note that this mapping can serve as an interim step
+      to N:M mapping.  In this scenario, a subset of the TN slices can
+      be intended for sharing by multiple 5G Network Slices (e.g.  The
+      Control Plane TN slice is shared by multiple 5G network Slices).
+      Further details about this scheme are described in {#sec-
+      firstslice}.
 
    *  M to 1: Multiple 5G Network Slices may rely upon the same TN
       slice.  In such a case, the Service Level Agreement (SLA)
@@ -874,13 +880,10 @@ Table of Contents
    slices and minimize the realization delay that might be induced by
    extra cycles to seek for operator validation.
 
-4.  Overview of the Realization Model
+3.7.  Overview of the Transport Network Realization Model
 
-   [I-D.ietf-teas-ietf-network-slices] introduces the concept of the
-   Network Resource Partition (NRP), which is defined as a collection of
-   resources identified in the underlay network.  In the basic
-   realization model described in this document, depicted in Figure 11,
-   a single NRP is used with the following characteristics:
+   The realization model described in this document is depicted in
+   Figure 11.  The following building blocks are used:
 
    *  Layer 2 Virtual Private Network (L2VPN) [RFC4664] and/or Layer 3
       Virtual Private Network (L3VPN) [RFC4364] service instances for
@@ -961,12 +964,18 @@ Table of Contents
 
       Figure 11: Resource Allocation Slicing Model with a Single NRP
 
+4.  Hand-off Between Domains
+
    The 5G control plane relies upon the Single Network Slice Selection
    Assistance Information (S-NSSAI) 32-bit slice identifier for slice
    identification.  The S-NSSAI is not visible to the transport domain.
-   So instead, 5G functions can expose the 5G slices to the transport
-   domain by mapping to explicit Layer 2 or Layer 3 identifiers, such as
-   VLAN-IDs, IP addresses, or Differentiated Services Code Point (DSCP).
+   So instead, 5G network functions can expose the 5G slices to the
+   transport domain by mapping to explicit Layer 2 or Layer 3
+   identifiers, such as VLAN-IDs, IP addresses, or Differentiated
+   Services Code Point (DSCP).  The realization of the mapping between
+   customer site and provider network is commonly refered to as the
+   "hand-off".
+
    More details about the mapping between 3GPP and RFC XXXX Network
    Slices is provided in [I-D.ietf-teas-5g-network-slice-application].
 
@@ -1343,7 +1352,7 @@ Table of Contents
    considerably reduced.
 
    For any slice-specific per-hop behavior at the provider network edge,
-   as described in details in Section 4, the PE must be able to
+   as described in details in Section 3.7, the PE must be able to
    determine which label in the packet represents which slice.  This can
    be achieved, for example, by allocating non-overlapping service label
    ranges for each slice, and use these ranges for slice identification
@@ -2050,7 +2059,7 @@ Table of Contents
    combination of the above
 
    Detailed realization of transport planes is out of scope for this
-   draft.  NRPs are discussed in detail in [I-D.ietf-teas-ns-ip-mpls]
+   document.  NRPs are discussed in detail in [I-D.ietf-teas-ns-ip-mpls]
    Figure 28 depicts an example of a simple network with two transport
    planes each using a mesh of TE tunnels with or without PCE, and with
    or without bandwidth reservations.  Section 7 discusses in detail
@@ -2577,15 +2586,6 @@ Table of Contents
               <https://datatracker.ietf.org/doc/html/draft-ietf-teas-
               ietf-network-slices-25>.
 
-   [I-D.ietf-teas-ns-ip-mpls]
-              Saad, T., Beeram, V. P., Dong, J., Wen, B., Ceccarelli,
-              D., Halpern, J. M., Peng, S., Chen, R., Liu, X.,
-              Contreras, L. M., Rokui, R., and L. Jalil, "Realizing
-              Network Slices in IP/MPLS Networks", Work in Progress,
-              Internet-Draft, draft-ietf-teas-ns-ip-mpls-03, 26 November
-              2023, <https://datatracker.ietf.org/doc/html/draft-ietf-
-              teas-ns-ip-mpls-03>.
-
    [RFC4364]  Rosen, E. and Y. Rekhter, "BGP/MPLS IP Virtual Private
               Networks (VPNs)", RFC 4364, DOI 10.17487/RFC4364, February
               2006, <https://www.rfc-editor.org/rfc/rfc4364>.
@@ -2636,11 +2636,12 @@ Table of Contents
 
    [I-D.ietf-opsawg-teas-attachment-circuit]
               Boucadair, M., Roberts, R., de Dios, O. G., Barguil, S.,
-              and B. Wu, "YANG Data Models for 'Attachment Circuits'-as-
-              a-Service (ACaaS)", Work in Progress, Internet-Draft,
-              draft-ietf-opsawg-teas-attachment-circuit-03, 1 December
-              2023, <https://datatracker.ietf.org/doc/html/draft-ietf-
-              opsawg-teas-attachment-circuit-03>.
+              and B. Wu, "YANG Data Models for Bearers and 'Attachment
+              Circuits'-as-a-Service (ACaaS)", Work in Progress,
+              Internet-Draft, draft-ietf-opsawg-teas-attachment-circuit-
+              04, 14 January 2024,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-
+              teas-attachment-circuit-04>.
 
    [I-D.ietf-teas-5g-network-slice-application]
               Geng, X., Contreras, L. M., Rokui, R., Dong, J., and I.
@@ -2657,6 +2658,15 @@ Table of Contents
               network-slice-nbi-yang-08, 23 October 2023,
               <https://datatracker.ietf.org/doc/html/draft-ietf-teas-
               ietf-network-slice-nbi-yang-08>.
+
+   [I-D.ietf-teas-ns-ip-mpls]
+              Saad, T., Beeram, V. P., Dong, J., Wen, B., Ceccarelli,
+              D., Halpern, J. M., Peng, S., Chen, R., Liu, X.,
+              Contreras, L. M., Rokui, R., and L. Jalil, "Realizing
+              Network Slices in IP/MPLS Networks", Work in Progress,
+              Internet-Draft, draft-ietf-teas-ns-ip-mpls-03, 26 November
+              2023, <https://datatracker.ietf.org/doc/html/draft-ietf-
+              teas-ns-ip-mpls-03>.
 
    [I-D.ietf-teas-rfc3272bis]
               Farrel, A., "Overview and Principles of Internet Traffic
