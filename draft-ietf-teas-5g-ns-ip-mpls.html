@@ -1669,7 +1669,7 @@ However, this document does not exclude the instantiation of multiple ACs betwee
           <h4 id="name-service-aware-ce">
 <a href="#section-3.3.3" class="section-number selfRef">3.3.3. </a><a href="#name-service-aware-ce" class="section-name selfRef">Service-aware CE</a>
           </h4>
-<p id="section-3.3.3-1">While in most cases CEs connect to PEs using IP (e.g., VLANs), a CE may also connect to the provider network using MPLS -potentially over IP tunnels- or Segment Routing over IPv6 (SRv6) <span>[<a href="#RFC8754" class="cite xref">RFC8754</a>]</span>. The CE has awareness of provider services configuration (e.g., control plane identifiers such as Route Targets (RTs) and Route Distinguishers (RDs)). An example of such an AC is depicted in <a href="#_figure-51" class="auto internal xref">Figure 4</a>. This is a source of confusion since these configurations are typically enforced on PEs. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE.<a href="#section-3.3.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.3.3-1">While in most cases CEs connect to PEs using IP (e.g., VLANs), a CE may also connect to the provider network using MPLS -potentially over IP tunnels- or Segment Routing over IPv6 (SRv6) <span>[<a href="#RFC8986" class="cite xref">RFC8986</a>]</span><span>[<a href="#RFC8754" class="cite xref">RFC8754</a>]</span>. The CE has awareness of provider services configuration (e.g., control plane identifiers such as Route Targets (RTs) and Route Distinguishers (RDs)). An example of such an AC is depicted in <a href="#_figure-51" class="auto internal xref">Figure 4</a>. This is a source of confusion since these configurations are typically enforced on PEs. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE.<a href="#section-3.3.3-1" class="pilcrow">¶</a></p>
 <span id="name-example-of-mpls-based-attac"></span><div id="_figure-51">
 <figure id="figure-4">
             <div class="alignCenter art-text artwork" id="section-3.3.3-2.1">
@@ -3198,7 +3198,7 @@ Fine-grained QoS enforcement   Coarse-grained QoS enforcement
 <p id="section-5.2.1-7">From a QoS perspective, both options are similar.  However, there
    is one difference between the two options.  The MPLS TC is only 3
    bits (8 possible combinations), while DSCP is 6 bits (64 possible
-   combinations).  Hence, SRv6 <span>[<a href="#RFC8754" class="cite xref">RFC8754</a>]</span> provides more flexibility for TN CoS
+   combinations).  Hence, SRv6 provides more flexibility for TN CoS
    design, especially in combination with soft policing with in-profile/
    out-profile traffic, as discussed in <a href="#sec-inbound-edge-resource-control" class="auto internal xref">Section 5.2.1.1</a>.<a href="#section-5.2.1-7" class="pilcrow">¶</a></p>
 <p id="section-5.2.1-8">Provider network edge resources are controlled in a granular, fine-grained
@@ -4151,7 +4151,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
           <h4 id="name-scheme-2-te-lsps-with-fixed">
 <a href="#section-7.2.2" class="section-number selfRef">7.2.2. </a><a href="#name-scheme-2-te-lsps-with-fixed" class="section-name selfRef">Scheme 2: TE LSPs with Fixed Bandwidth Reservations</a>
           </h4>
-<p id="section-7.2.2-1">Scheme 2 uses RSVP-TE or SR-TE LSPs with fixed bandwidth
+<p id="section-7.2.2-1">Scheme 2 uses RSVP-TE <span>[<a href="#RFC3209" class="cite xref">RFC3209</a>]</span> or SR-TE LSPs with fixed bandwidth
    reservations.  By "fixed", we mean a value that stays constant over
    time, unless the 5G NSO communicates a change in slice bandwidth
    requirements, due to the creation or modification of a slice.  Note
@@ -4422,6 +4422,10 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
         <dd>
 <span class="refAuthor">Heinanen, J.</span> and <span class="refAuthor">R. Guerin</span>, <span class="refTitle">"A Two Rate Three Color Marker"</span>, <span class="seriesInfo">RFC 2698</span>, <span class="seriesInfo">DOI 10.17487/RFC2698</span>, <time datetime="1999-09" class="refDate">September 1999</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2698">https://www.rfc-editor.org/rfc/rfc2698</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC3209">[RFC3209]</dt>
+        <dd>
+<span class="refAuthor">Awduche, D.</span>, <span class="refAuthor">Berger, L.</span>, <span class="refAuthor">Gan, D.</span>, <span class="refAuthor">Li, T.</span>, <span class="refAuthor">Srinivasan, V.</span>, and <span class="refAuthor">G. Swallow</span>, <span class="refTitle">"RSVP-TE: Extensions to RSVP for LSP Tunnels"</span>, <span class="seriesInfo">RFC 3209</span>, <span class="seriesInfo">DOI 10.17487/RFC3209</span>, <time datetime="2001-12" class="refDate">December 2001</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc3209">https://www.rfc-editor.org/rfc/rfc3209</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC4115">[RFC4115]</dt>
         <dd>
 <span class="refAuthor">Aboul-Magd, O.</span> and <span class="refAuthor">S. Rabie</span>, <span class="refTitle">"A Differentiated Service Two-Rate, Three-Color Marker with Efficient Handling of in-Profile Traffic"</span>, <span class="seriesInfo">RFC 4115</span>, <span class="seriesInfo">DOI 10.17487/RFC4115</span>, <time datetime="2005-07" class="refDate">July 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4115">https://www.rfc-editor.org/rfc/rfc4115</a>&gt;</span>. </dd>
@@ -4501,6 +4505,10 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
 <dt id="RFC8969">[RFC8969]</dt>
         <dd>
 <span class="refAuthor">Wu, Q., Ed.</span>, <span class="refAuthor">Boucadair, M., Ed.</span>, <span class="refAuthor">Lopez, D.</span>, <span class="refAuthor">Xie, C.</span>, and <span class="refAuthor">L. Geng</span>, <span class="refTitle">"A Framework for Automating Service and Network Management with YANG"</span>, <span class="seriesInfo">RFC 8969</span>, <span class="seriesInfo">DOI 10.17487/RFC8969</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8969">https://www.rfc-editor.org/rfc/rfc8969</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8986">[RFC8986]</dt>
+        <dd>
+<span class="refAuthor">Filsfils, C., Ed.</span>, <span class="refAuthor">Camarillo, P., Ed.</span>, <span class="refAuthor">Leddy, J.</span>, <span class="refAuthor">Voyer, D.</span>, <span class="refAuthor">Matsushima, S.</span>, and <span class="refAuthor">Z. Li</span>, <span class="refTitle">"Segment Routing over IPv6 (SRv6) Network Programming"</span>, <span class="seriesInfo">RFC 8986</span>, <span class="seriesInfo">DOI 10.17487/RFC8986</span>, <time datetime="2021-02" class="refDate">February 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8986">https://www.rfc-editor.org/rfc/rfc8986</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9182">[RFC9182]</dt>
         <dd>

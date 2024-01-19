@@ -471,16 +471,17 @@ Table of Contents
 
    While in most cases CEs connect to PEs using IP (e.g., VLANs), a CE
    may also connect to the provider network using MPLS -potentially over
-   IP tunnels- or Segment Routing over IPv6 (SRv6) [RFC8754].  The CE
-   has awareness of provider services configuration (e.g., control plane
-   identifiers such as Route Targets (RTs) and Route Distinguishers
-   (RDs)).  An example of such an AC is depicted in Figure 4.  This is a
-   source of confusion since these configurations are typically enforced
-   on PEs.  Notwithstanding, the reference design based on Orchestration
-   scope prevails: the CE is managed by the customer and the AC is based
-   on MPLS or SRv6 data plane technologies.  Note that the complete
-   termination of the AC within the provider network may happen on
-   distinct routers: this is another example of distributed PE.
+   IP tunnels- or Segment Routing over IPv6 (SRv6) [RFC8986][RFC8754].
+   The CE has awareness of provider services configuration (e.g.,
+   control plane identifiers such as Route Targets (RTs) and Route
+   Distinguishers (RDs)).  An example of such an AC is depicted in
+   Figure 4.  This is a source of confusion since these configurations
+   are typically enforced on PEs.  Notwithstanding, the reference design
+   based on Orchestration scope prevails: the CE is managed by the
+   customer and the AC is based on MPLS or SRv6 data plane technologies.
+   Note that the complete termination of the AC within the provider
+   network may happen on distinct routers: this is another example of
+   distributed PE.
 
           ┌ ─ ─ ─ ─ ─ ─ ─                       ┌ ─ ─ ─ ─ ─ ─ ─ ┐
               Customer   │                          Provider
@@ -1546,9 +1547,9 @@ Table of Contents
    From a QoS perspective, both options are similar.  However, there is
    one difference between the two options.  The MPLS TC is only 3 bits
    (8 possible combinations), while DSCP is 6 bits (64 possible
-   combinations).  Hence, SRv6 [RFC8754] provides more flexibility for
-   TN CoS design, especially in combination with soft policing with in-
-   profile/ out-profile traffic, as discussed in Section 5.2.1.1.
+   combinations).  Hence, SRv6 provides more flexibility for TN CoS
+   design, especially in combination with soft policing with in-profile/
+   out-profile traffic, as discussed in Section 5.2.1.1.
 
    Provider network edge resources are controlled in a granular, fine-
    grained manner, with dedicated resource allocation for each RFC XXXX
@@ -2379,7 +2380,7 @@ Table of Contents
 
 7.2.2.  Scheme 2: TE LSPs with Fixed Bandwidth Reservations
 
-   Scheme 2 uses RSVP-TE or SR-TE LSPs with fixed bandwidth
+   Scheme 2 uses RSVP-TE [RFC3209] or SR-TE LSPs with fixed bandwidth
    reservations.  By "fixed", we mean a value that stays constant over
    time, unless the 5G NSO communicates a change in slice bandwidth
    requirements, due to the creation or modification of a slice.  Note
@@ -2671,6 +2672,11 @@ Table of Contents
               Marker", RFC 2698, DOI 10.17487/RFC2698, September 1999,
               <https://www.rfc-editor.org/rfc/rfc2698>.
 
+   [RFC3209]  Awduche, D., Berger, L., Gan, D., Li, T., Srinivasan, V.,
+              and G. Swallow, "RSVP-TE: Extensions to RSVP for LSP
+              Tunnels", RFC 3209, DOI 10.17487/RFC3209, December 2001,
+              <https://www.rfc-editor.org/rfc/rfc3209>.
+
    [RFC4115]  Aboul-Magd, O. and S. Rabie, "A Differentiated Service
               Two-Rate, Three-Color Marker with Efficient Handling of
               in-Profile Traffic", RFC 4115, DOI 10.17487/RFC4115, July
@@ -2770,6 +2776,12 @@ Table of Contents
               L. Geng, "A Framework for Automating Service and Network
               Management with YANG", RFC 8969, DOI 10.17487/RFC8969,
               January 2021, <https://www.rfc-editor.org/rfc/rfc8969>.
+
+   [RFC8986]  Filsfils, C., Ed., Camarillo, P., Ed., Leddy, J., Voyer,
+              D., Matsushima, S., and Z. Li, "Segment Routing over IPv6
+              (SRv6) Network Programming", RFC 8986,
+              DOI 10.17487/RFC8986, February 2021,
+              <https://www.rfc-editor.org/rfc/rfc8986>.
 
    [RFC9182]  Barguil, S., Gonzalez de Dios, O., Ed., Boucadair, M.,
               Ed., Munoz, L., and A. Aguado, "A YANG Network Data Model
