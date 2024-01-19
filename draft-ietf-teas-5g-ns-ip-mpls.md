@@ -319,7 +319,7 @@ A co-managed CE is orchestrated by both the customer and the provider. In this c
 
 ### Service-aware CE
 
-While in most cases CEs connect to PEs using IP (e.g., VLANs), a CE may also connect to the provider network using MPLS -potentially over IP tunnels- or Segment Routing over IPv6 (SRv6) {{?RFC8754}}. The CE has awareness of provider services configuration (e.g., control plane identifiers such as Route Targets (RTs) and Route Distinguishers (RDs)). An example of such an AC is depicted in {{figure-51}}. This is a source of confusion since these configurations are typically enforced on PEs. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE.
+While in most cases CEs connect to PEs using IP (e.g., VLANs), a CE may also connect to the provider network using MPLS -potentially over IP tunnels- or Segment Routing over IPv6 (SRv6) {{?RFC8986}}{{?RFC8754}}. The CE has awareness of provider services configuration (e.g., control plane identifiers such as Route Targets (RTs) and Route Distinguishers (RDs)). An example of such an AC is depicted in {{figure-51}}. This is a source of confusion since these configurations are typically enforced on PEs. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE.
 
 ~~~~
 {::include ./drawings/mpls-ac.txt}
@@ -969,7 +969,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
    From a QoS perspective, both options are similar.  However, there
    is one difference between the two options.  The MPLS TC is only 3
    bits (8 possible combinations), while DSCP is 6 bits (64 possible
-   combinations).  Hence, SRv6 {{?RFC8754}} provides more flexibility for TN CoS
+   combinations).  Hence, SRv6 provides more flexibility for TN CoS
    design, especially in combination with soft policing with in-profile/
    out-profile traffic, as discussed in {{sec-inbound-edge-resource-control}}.
 
@@ -1715,7 +1715,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
 
 ###  Scheme 2: TE LSPs with Fixed Bandwidth Reservations
 
-   Scheme 2 uses RSVP-TE or SR-TE LSPs with fixed bandwidth
+   Scheme 2 uses RSVP-TE {{?RFC3209}} or SR-TE LSPs with fixed bandwidth
    reservations.  By "fixed", we mean a value that stays constant over
    time, unless the 5G NSO communicates a change in slice bandwidth
    requirements, due to the creation or modification of a slice.  Note
