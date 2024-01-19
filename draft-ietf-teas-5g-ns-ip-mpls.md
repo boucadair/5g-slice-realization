@@ -2339,3 +2339,6 @@ User Plane          ╱     │           │         ╲
    The authors would like to thank Adrian Farrel, Joel Halpern, Tarek
    Saad, Jie Dong, Greg Mirsky, Rüdiger Geib, and Nicklous D. Morris for
    their review of this document and for providing valuable comments.
+
+   Thanks to Alvaro Retana for the rtg-dir review and
+   Yoshifumi Nishida for the tsv-art review.
