@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-01-18T00:28:03.725472+00:00",
+  "timestamp": "2024-01-21T00:31:09.505357+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -77,6 +77,11 @@
       "name": "InProgress",
       "description": "",
       "color": "bfd4f2"
+    },
+    {
+      "name": "directorate-review",
+      "description": "",
+      "color": "d93f0b"
     }
   ],
   "issues": [
@@ -1345,6 +1350,150 @@
       "body": "",
       "createdAt": "2023-12-15T14:13:01Z",
       "updatedAt": "2023-12-15T14:13:01Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 117,
+      "id": "I_kwDOIw9g6c58epr7",
+      "title": "Implication of change of S-NSSAI on IP/VLAN Addressing",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/117",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [
+        "directorate-review"
+      ],
+      "body": "",
+      "createdAt": "2024-01-18T14:30:04Z",
+      "updatedAt": "2024-01-18T14:36:24Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 118,
+      "id": "I_kwDOIw9g6c58eqay",
+      "title": "(5.2.1.2. Outbound Edge Resource Control) Check the language",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/118",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [
+        "directorate-review"
+      ],
+      "body": "> While inbound slice admission control at the provider network edge is mandatory in the architecture described in this document, outbound provider network edge resource control might not be required in all use cases. Use cases that specifically call for outbound provider network edge resource control are\r\n\r\nFrom Alvaro: \"Note that only one mention of a \"mandatory (function) in the architecture described in this document\" is present in the whole document (Section 5.2.1.2.  Outbound Edge Resource Control) -- making everything else optional and requiring some guidance.\"",
+      "createdAt": "2024-01-18T14:31:34Z",
+      "updatedAt": "2024-01-18T14:36:18Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 119,
+      "id": "I_kwDOIw9g6c58equ0",
+      "title": "Tunnel group",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/119",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [
+        "directorate-review"
+      ],
+      "body": "Form Alvaro:\r\n\r\n> Speaking of terms only mentioned once, \"tunnel group\" is only used in the first paragraph of Section 6 to introduce \"transport planes\".  Is this indirection necessary?  Also, what is the difference between tunnel groups/transport planes and an NRP?  Even if it is evident to you, it would help readers if it was clarified.",
+      "createdAt": "2024-01-18T14:32:13Z",
+      "updatedAt": "2024-01-18T14:36:11Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 120,
+      "id": "I_kwDOIw9g6c58es8m",
+      "title": "Security Considerations",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/120",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [
+        "directorate-review"
+      ],
+      "body": "Security Considerations\r\n\r\nI-D.ietf-teas-ietf-network-slices points to specific issues that need to be addressed in actual implementations or deployments:\r\n\r\n   Conformance to security constraints\r\n   IETF NSC authentication\r\n   Specific isolation criteria\r\n   Data Confidentiality and Integrity of an IETF Network Slice\r\n\r\n...but none of these are addressed here.\r\n",
+      "createdAt": "2024-01-18T14:36:46Z",
+      "updatedAt": "2024-01-18T14:36:46Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 121,
+      "id": "I_kwDOIw9g6c58et4I",
+      "title": "Missing References",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/121",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [
+        "directorate-review"
+      ],
+      "body": "From Alvaro: `Note that some references are wrong (rfc8754 specifies the SRH; the reference to SRv6 should be rfc8986), and others are missing: I didn't see a reference to where a \"5G Network Slice\" is defined, and there's no reference for \"RSVP-TE or SR-TE LSPs\".  Are there references for 1r2c/2r3c?`",
+      "createdAt": "2024-01-18T14:38:43Z",
+      "updatedAt": "2024-01-18T14:38:43Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 122,
+      "id": "I_kwDOIw9g6c58ewE1",
+      "title": "Add Risk/Mitigation in the security cons section:",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/122",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [
+        "directorate-review"
+      ],
+      "body": "From Alvaro: \r\n\r\n> Thus, without careful planning or traffic\r\n>    policing, it may be possible to attack an IETF Network Slice Service\r\n>    simply by increasing the traffic on another service in the network.\r\n\r\nThe realization requires understanding the potential risks/mitigations that are slice-specific.  This document mentions that resources can be shared between slices and even suggests a mechanism that can result in per S-NSSAI monitoring.  These issues need to be highlighted in this section.",
+      "createdAt": "2024-01-18T14:43:17Z",
+      "updatedAt": "2024-01-18T14:43:18Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 125,
+      "id": "I_kwDOIw9g6c58kZAV",
+      "title": "What is transport controller?",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/125",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [
+        "directorate-review"
+      ],
+      "body": "From Yoshi: \r\n  \r\n> Section 7.1\r\n>      what is transport controller? I think the term and its role should be\r\n>      explained more clearly.\r\n",
+      "createdAt": "2024-01-19T08:15:51Z",
+      "updatedAt": "2024-01-19T08:15:51Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 126,
+      "id": "I_kwDOIw9g6c58kZV8",
+      "title": "Readers expectation",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/126",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [
+        "directorate-review"
+      ],
+      "body": "From Yoshi: \r\n\r\n> This is a fairly long document that contains various information. I think it would be good if it describes which people should read it as well as how to utilize the information in the doc in the introduction. Also, it seems that some information described in the doc is not strongly related to others. Do we expect that the readers of the doc should read entire document or only part of it based on their interests? In the latter case, I think it would be good to describe who should read which sections.",
+      "createdAt": "2024-01-19T08:16:29Z",
+      "updatedAt": "2024-01-19T08:16:29Z",
       "closedAt": null,
       "comments": []
     }
@@ -4102,6 +4251,101 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 123,
+      "id": "PR_kwDOIw9g6c5kc4pk",
+      "title": "Julian l999 patch 1",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/123",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-01-18T17:48:32Z",
+      "updatedAt": "2024-01-18T18:01:49Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "7dbc2054293b783da2e4ac38479cdc5e3f56caab",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "julianL999-patch-1",
+      "headRefOid": "c28ff9a0bf45c5eb0b8bf58bf962f9598a853439",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c5tF8Lc",
+          "commit": {
+            "abbreviatedOid": "89487e5"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-01-18T17:55:51Z",
+          "updatedAt": "2024-01-18T17:55:52Z",
+          "comments": [
+            {
+              "originalPosition": 117,
+              "body": "```suggestion\r\n   So instead, 5G network functions can expose the 5G slices to the transport\r\n```",
+              "createdAt": "2024-01-18T17:55:51Z",
+              "updatedAt": "2024-01-18T17:55:52Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5tF8cy",
+          "commit": {
+            "abbreviatedOid": "3d951a1"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-01-18T17:56:34Z",
+          "updatedAt": "2024-01-18T17:56:35Z",
+          "comments": [
+            {
+              "originalPosition": 174,
+              "body": "```suggestion\r\n   Detailed realization of transport planes is out of scope for this document. NRPs are discussed in detail in {{?I-D.ietf-teas-ns-ip-mpls}}\r\n```",
+              "createdAt": "2024-01-18T17:56:34Z",
+              "updatedAt": "2024-01-18T17:56:35Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 124,
+      "id": "PR_kwDOIw9g6c5kgvZ8",
+      "title": "fix some references",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/124",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "#121 ",
+      "createdAt": "2024-01-19T08:05:23Z",
+      "updatedAt": "2024-01-19T08:18:35Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "7dbc2054293b783da2e4ac38479cdc5e3f56caab",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-1",
+      "headRefOid": "092aa685f96d2d10908a4be37ee8066ea114dae9",
+      "closedAt": "2024-01-19T08:18:34Z",
+      "mergedAt": "2024-01-19T08:18:34Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "f76907bed3f1b65ed6269a4bbb58314da49ee28b"
+      },
+      "comments": [],
+      "reviews": []
     }
   ]
 }
