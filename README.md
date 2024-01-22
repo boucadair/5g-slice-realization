@@ -5,7 +5,7 @@ This is the working area for the individual Internet-Draft, "A Realization of IE
 * [Editor's Copy](https://boucadair.github.io/5g-slice-realization/#go.draft-ietf-teas-5g-ns-ip-mpls.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-ietf-teas-5g-ns-ip-mpls)
 * [Individual Draft](https://datatracker.ietf.org/doc/html/draft-ietf-teas-5g-ns-ip-mpls)
-* [Compare Editor's Copy to Individual Draft](https://boucadair.github.io/5g-slice-realization/#go.draft-ietf-teas-5g-ns-ip-mpls.diff)
+* [Compare Editor's Copy to Individual Draft](https://boucadair.github.io/5g-slice-realization/)
 
 
 ## Contributing
