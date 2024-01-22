@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 21 July 2024                                   Juniper Networks
+Expires: 25 July 2024                                   Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                         18 January 2024
+                                                         22 January 2024
 
 
  A Realization of RFC XXXX Network Slices for 5G Networks Using Current
@@ -61,7 +61,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 21 July 2024.
+   This Internet-Draft will expire on 25 July 2024.
 
 Copyright Notice
 
@@ -712,10 +712,10 @@ Table of Contents
    *  1 to N: A single 5G Network Slice can be mapped to multiple TN
       slices (1 to N).  For instance, consider the scenario depicted in
       Figure 8, illustrating the separation of the 5G Control Plane and
-      User Plane in TN slices for a single 5G EMBB network slice.  It's
+      User Plane in TN slices for a single 5G eMBB network slice.  It is
       important to note that this mapping can serve as an interim step
       to N:M mapping.  In this scenario, a subset of the TN slices can
-      be intended for sharing by multiple 5G Network Slices (e.g.  The
+      be intended for sharing by multiple 5G network slices (e.g., the
       Control Plane TN slice is shared by multiple 5G network Slices).
       Further details about this scheme are described in {#sec-
       firstslice}.
