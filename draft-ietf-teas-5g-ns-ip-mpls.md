@@ -319,7 +319,7 @@ A co-managed CE is orchestrated by both the customer and the provider. In this c
 
 ### Service-aware CE
 
-While in most cases CEs connect to PEs using IP (e.g., VLANs), a CE may also connect to the provider network using MPLS -potentially over IP tunnels- or Segment Routing over IPv6 (SRv6) {{?RFC8986}}{{?RFC8754}}. The CE has awareness of provider services configuration (e.g., control plane identifiers such as Route Targets (RTs) and Route Distinguishers (RDs)). An example of such an AC is depicted in {{figure-51}}. This is a source of confusion since these configurations are typically enforced on PEs. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE.
+While in most cases CEs connect to PEs using IP (e.g., VLANs), a CE may also connect to the provider network using MPLS -potentially over IP tunnels- or Segment Routing over IPv6 (SRv6) {{?RFC8986}}. The CE has awareness of provider services configuration (e.g., control plane identifiers such as Route Targets (RTs) and Route Distinguishers (RDs)). An example of such an AC is depicted in {{figure-51}}. This is a source of confusion since these configurations are typically enforced on PEs. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE.
 
 ~~~~
 {::include ./drawings/mpls-ac.txt}
@@ -1005,7 +1005,8 @@ ranges for each slice, and use these ranges for slice identification purposes on
 
    *  1r2c (single-rate two-color) rate limiter
 
-      This is the most basic rate limiter, which meters at the SDP a
+      This is the most basic rate limiter, described in Section 2.3 of {{?RFC2475}}
+      It meters at the SDP a
       traffic stream of given slice and marks its packets as in-profile
       (below CIR being enforced) or out-of-profile (above CIR being enforced).
       In-profile packets are accepted and forwarded.  Out-of profile
@@ -1389,7 +1390,7 @@ to TN QoS Classes may be rather common.
 #  Transport Planes Mapping Models
 
    A network operator can define multiple transport planes. A transport plane could be realized in multiple ways, for example
-   * a mesh of TE tunnels created with specific optimization criteria and
+   * a mesh of RSVP-TE ({?RFC3209}}) or SR-TE ({{?RFC9256}}) tunels created with specific optimization criteria and
    constraints. E.g., mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.
    * a flex-algo with a particular metric-type (e.g. latency)
    * an NRP
@@ -1712,7 +1713,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
 
 ###  Scheme 2: TE LSPs with Fixed Bandwidth Reservations
 
-   Scheme 2 uses RSVP-TE {{?RFC3209}} or SR-TE LSPs with fixed bandwidth
+   Scheme 2 uses RSVP-TE {{?RFC3209}} or SR-TE LSPs {{?RFC9256}} with fixed bandwidth
    reservations.  By "fixed", we mean a value that stays constant over
    time, unless the 5G NSO communicates a change in slice bandwidth
    requirements, due to the creation or modification of a slice.  Note
