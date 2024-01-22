@@ -161,8 +161,8 @@ informative:
 
 --- abstract
 
-   5G slicing is a feature that was introduced by the 3rd Generation
-   Partnership Project (3GPP) in mobile networks. This feature covers slicing
+   Slicing is a feature that was introduced by the 3rd Generation
+   Partnership Project (3GPP) in mobile networks. Realization of 5G slicing implies
    requirements for all mobile domains, including the Radio Access
    Network (RAN), Core Network (CN), and Transport Network (TN).
 
@@ -181,14 +181,14 @@ informative:
    {{!I-D.ietf-teas-ietf-network-slices}} defines a framework for
    network slicing in the context of networks built using IETF
    technologies.  The RFC XXXX network slicing framework introduces the
-   concept of a Network Resource Partition (NRP), which is simply a
+   concept of a Network Resource Partition (NRP), which is a
    collection of resources identified in the underlay network.  There
    could be multiple realizations of RFC XXXX Network Slice and
    NRP concepts, where each realization might be optimized for the
    different network slicing use cases.
 
    This document describes an RFC XXXX Network Slice realization model
-   in IP/MPLS networks, using a single NRP and with a focus on
+   in IP/MPLS networks, using one or more NRPs and with a focus on
    fulfilling 5G slicing connectivity requirements.
    This realization model leverages many building blocks currently
    commonly used in service provider networks.
@@ -393,20 +393,15 @@ are passed between Orchestrators via a dedicated interface, e.g., the RFC XXXX N
 
 More complex scenarios can happen with extra segmentation of the TN and additional TN Orchestration domains. It is not realistic to describe any design flavor, however the main concepts presented here in terms of segmentation (provider/customer) and stitching (AC) can be reused for the integration of more complex integrations.
 
-## Realization Schemes for RFC XXXX Network Slices {#sec-mapping}
+## Mapping Schemes between 5G Network Slices and Transport Network Slices {#sec-mapping}
 
-   There are multiple options for mapping a 5G Network Slice to RFC XXXX Network Slices:
+   There are multiple options for mapping 5G Network Slices to TN slices:
 
    * 1 to N:
-      A single 5G Network Slice can map to multiple RFC XXXX Network
-      Slices (1 to N).  One example of such a case is the separation of
-      the 5G Control Plane and User Plane: this use case is represented
-      in {{figure-5}} where a slice (eMBB) is deployed with a separation of
-      User Plane and Control Plane at the TN.
+A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For instance, consider the scenario depicted in {{figure-5}}, illustrating the separation of the 5G Control Plane and User Plane in TN slices for a single 5G eMBB network slice. It is important to note that this mapping can serve as an interim step to N:M mapping. In this scenario, a subset of the TN slices can be intended for sharing by multiple 5G network slices (e.g., the Control Plane TN slice is shared by multiple 5G network Slices). Further details about this scheme are described in {#sec-firstslice}.
 
-   * N to 1:
-      Multiple 5G Network Slices may rely upon the same RFC XXXX Network
-      Slice.  In such a case, the Service Level Agreement (SLA) differentiation of slices
+   * M to 1:
+      Multiple 5G Network Slices may rely upon the same TN slice.  In such a case, the Service Level Agreement (SLA) differentiation of slices
       would be entirely controlled at 5G Control Plane, for example, with
       appropriate placement strategies: this use case is represented in
       {{figure-6}}, where a User Plane Function (UPF) for the URLLC slice is
@@ -414,9 +409,11 @@ More complex scenarios can happen with extra segmentation of the TN and addition
       better latency/jitter control, while the 5G Control Plane and the UPF
       for eMBB slice are instantiated in the regional cloud.
 
-   * N to M:
-      The 5G to RFC XXXX Network Slice mapping combines both
+   * M to N:
+      The 5G to TN slice mapping combines both
       approaches with a mix of shared and dedicated associations.
+
+In practice, for operational and scaling reasons, typically M to N would be used, with M >> N.
 
 ~~~
 {::include ./drawings/1-to-n-mapping.txt}
@@ -433,12 +430,12 @@ More complex scenarios can happen with extra segmentation of the TN and addition
    capabilities, the NF vendor reference designs, as well as service
    provider or even legal requirements.
 
-Specifically, the actual mapping is a design choice of service operators that may be a function of, e.g., the number of instantiated slices, requested services, or local engineering capabilities and guidelines. However, operators should carefully consider means to ease slice migration strategies. For example, a provider may initially adopt a 1-to-1 mapping if it has to instantiate few Network Slices and accommodate the need of few customers. That provider may decide to move to a N-to-1 mapping for aggregation/scalability purposes if sustained increased slice demand is observed. Putting in place adequate automation means to realize Network Slices (including the adjustment of slice services to Network Slices mapping) would ease slice migration operations.
+Specifically, the actual mapping is a design choice of service operators that may be a function of, e.g., the number of instantiated slices, requested services, or local engineering capabilities and guidelines. However, operators should carefully consider means to ease slice migration strategies. For example, a provider may initially adopt a 1-to-1 mapping if it has to instantiate just a few Network Slices and accommodate the need of only a few customers. That provider may decide to move to a N-to-1 mapping for aggregation/scalability purposes if sustained increased slice demand is observed. Putting in place adequate automation means to realize Network Slices (including the adjustment of slice services to Network Slices mapping) would ease slice migration operations.
 
-##  First 5G Slice versus Subsequent Slices
+##  First 5G Slice versus Subsequent Slices {#sec-firstslice}
 
 An operational 5G Network Slice incorporates both 5G Control Plane and User Plane capabilities.
-For instance, consider a slice based on split-CU in the RAN, both CU-UP and CU-CP must be deployed along with the associated interfaces E1, F1-c, F1-u, N2, and N3 which are conveyed in the TN. In this regard, the creation of the "first slice" can be subject to a specific logic compared with the subsequent slices. Referring to the example in {{figure-7}}, the first 5G slice relies on the deployment of NF-CP and NF-UP functions together with two TN slices for Control and User Planes (INS-CP and INS-UP1). Next, the deployment of a second slice relies solely on the instantiation of a User Plane Function (NF-UP2) together with a dedicated User Plane TN slice (INS-UP2). The Control Plane of the first 5G slice is also updated to integrate the second slice: the TN Slice (INS-CP) and Network Functions (NF-CP) are shared.
+For instance, consider a slice based on split-CU in the RAN, both CU-UP and CU-CP must be deployed along with the associated interfaces E1, F1-c, F1-u, N2, and N3 which are conveyed in the TN. In this regard, the creation of the "first slice" can be subject to a specific logic that does not apply to subsequent slices. Referring to the example in {{figure-7}}, the first 5G slice relies on the deployment of NF-CP and NF-UP functions together with two TN slices for Control and User Planes (INS-CP and INS-UP1). Next, the deployment of a second slice relies solely on the instantiation of a User Plane Function (NF-UP2) together with a dedicated User Plane TN slice (INS-UP2). The Control Plane of the first 5G slice is also updated to integrate the second slice: the TN Slice (INS-CP) and Network Functions (NF-CP) are shared.
 
    At the time of writing (2023), Section 6.1.2 of {{NG.113}} specifies that the
    eMBB slice (SST=1 and no Slice Differentiator (SD)) should be supported globally.  This 5G
@@ -452,13 +449,10 @@ For instance, consider a slice based on split-CU in the RAN, both CU-UP and CU-C
 Overall, policies might be provided by an operator (e.g., to Network Slice Controllers) to indicate whether the same or dedicated CP NFs are allowed when processing a new slice creation request. Providing such a policy is meant to better automate the realization of 5G slices and minimize the realization delay that might be induced by extra cycles to seek for operator validation.
 
 
-#  Overview of the Realization Model {#sec-over-rea-model}
+##  Overview of the Transport Network Realization Model {#sec-over-rea-model}
 
-   {{!I-D.ietf-teas-ietf-network-slices}} introduces the concept of the
-   Network Resource Partition (NRP), which is defined as a collection of
-   resources identified in the underlay network.  In the basic
-   realization model described in this document, depicted in {{figure-high-level-qos}}, a single NRP is used
-   with the following characteristics:
+   The realization model described in this document is depicted in
+   {{figure-high-level-qos}}. The following building blocks are used:
 
    *  Layer 2 Virtual Private Network (L2VPN) {{?RFC4664}} and/or Layer 3 Virtual Private Network (L3VPN) {{?RFC4364}} service instances for logical separation:
 
@@ -516,13 +510,17 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
 ~~~~
 {: #figure-high-level-qos title="Resource Allocation Slicing Model with a Single NRP" artwork-align="center"}
 
+#  Hand-off Between Domains {#sec-handoff-domains}
 
    The 5G control plane relies upon the Single Network Slice
    Selection Assistance Information (S-NSSAI) 32-bit slice identifier for slice
    identification.  The S-NSSAI is not visible to the transport domain.
-   So instead, 5G functions can expose the 5G slices to the transport
+   So instead, 5G network functions can expose the 5G slices to the transport
    domain by mapping to explicit Layer 2 or Layer 3 identifiers, such as VLAN-IDs, IP
-   addresses, or Differentiated Services Code Point (DSCP). More details about the mapping
+   addresses, or Differentiated Services Code Point (DSCP). The realization of the mapping
+   between customer site and provider network is commonly refered to as the "hand-off".
+
+   More details about the mapping
    between 3GPP and RFC XXXX Network Slices is provided in {{?I-D.ietf-teas-5g-network-slice-application}}.
 
 ##  VLAN Hand-off {#sec-vlan-handoff}
@@ -1186,17 +1184,17 @@ DSCP is not expected to be in a per-slice fashion, where 5QI to DSCP mapping may
 vary from 3GPP slice to 3GPP slice, hence the mapping of 5G QoS DSCP values
 to TN QoS Classes may be rather common.
 
-   Like in 5QI-unaware model, the original IP header retains the DCSP
+   Like in the 5QI-unaware model, the original IP header retains the DCSP
    marking corresponding to 5QI (5G QoS Class), while the new header
    (MPLS or IPv6) carries QoS marking related to TN QoS Class.  Based on
    TN QoS Class marking, per-hop behavior for all aggregated 5G QoS
-   Classes from all RFC XXXX Network Slices is executed on provider network transit links.  Provider network
-   transit routers do not evaluate original IP header for QoS
+   Classes from all RFC XXXX Network Slices is executed on the provider network transit links.  Provider network
+   transit routers do not evaluate the original IP header for QoS
    related decisions.  The original DSCP marking retained in the
    original IP header is used at the PE for fine-grained per slice and
    per 5G QoS Class inbound/outbound enforcement on the AC.
 
-   In 5QI-aware model, compared to 5QI-unware model, provider network edge resources are controlled in an even more
+   In the 5QI-aware model, compared to the 5QI-unware model, provider network edge resources are controlled in an even more
    granular, fine-grained manner, with dedicated resource allocation for
    each RFC XXXX Network Slice and dedicated resource allocation for number
    of traffic classes (most commonly up 4 or 8 traffic classes,
@@ -1210,7 +1208,7 @@ to TN QoS Classes may be rather common.
    not only per slice capacity constraints, but may as well enforce the
    constraints per 5G QoS Class within each slice.
 
-   5G slice using multiple 5QIs can potentially specify rates in one of
+   A 5G slice using multiple 5QIs can potentially specify rates in one of
    the following ways:
 
    *  Rates per traffic class (CIR or CIR+PIR), no rate per slice (sum
@@ -1390,18 +1388,17 @@ to TN QoS Classes may be rather common.
 
 #  Transport Planes Mapping Models
 
-   A network operator might define various tunnel groups, where each
-   tunnel group is created with specific optimization criteria and
-   constraints.  This document refers to such tunnel groups as
-   'transport planes'.  For example, a transport plane "A" might represent
-   tunnels optimized for latency, and transport plane "B" might represent tunnels optimized for high capacity.
+   A network operator can define multiple transport planes. A transport plane could be realized in multiple ways, for example
+   * a mesh of TE tunnels created with specific optimization criteria and
+   constraints. E.g., mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.
+   * a flex-algo with a particular metric-type (e.g. latency)
+   * an NRP
+   * a combination of the above
 
+   Detailed realization of transport planes is out of scope for this document. NRPs are discussed in detail in {{?I-D.ietf-teas-ns-ip-mpls}}
    {{figure-23}} depicts an example of a simple network with two transport
-   planes.  These transport planes might be realized via various IP/MPLS
-   techniques, for example Flex-Algo or RSVP/SR traffic engineering
-   tunnels with or without PCE, and with or without bandwidth
+   planes each using a mesh of TE tunnels with or without PCE, and with or without bandwidth
    reservations.
-
    {{sec-capacity-planning}} discusses in detail different bandwidth
    models that can be deployed in the provider network.  However,
    discussion about how to realize or orchestrate transport planes is
@@ -1430,7 +1427,7 @@ to TN QoS Classes may be rather common.
          ●════════▶  Tunnels of Transport Plane A
          ○════════▷  Tunnels of Transport Plane B
 ~~~
-{: #figure-23 title="Transport Planes" artwork-align="center"}
+{: #figure-23 title="Transport Planes example based on TE tunnels" artwork-align="center"}
 
    Note that there could be multiple tunnels within a single transport plane
    between any pair of PEs. {{figure-23}} shows only single
