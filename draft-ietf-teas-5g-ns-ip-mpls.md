@@ -1390,7 +1390,7 @@ to TN QoS Classes may be rather common.
 #  Transport Planes Mapping Models
 
    A network operator can define multiple transport planes. A transport plane could be realized in multiple ways, for example
-   * a mesh of RSVP-TE ({?RFC3209}}) or SR-TE ({{?RFC9256}}) tunels created with specific optimization criteria and
+   * a mesh of RSVP-TE ({?RFC3209}}) or SR-TE ({{?RFC9256}}) tunnels created with specific optimization criteria and
    constraints. E.g., mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.
    * a flex-algo with a particular metric-type (e.g. latency)
    * an NRP
