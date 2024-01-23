@@ -1005,7 +1005,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
 
    *  1r2c (single-rate two-color) rate limiter
 
-      This is the most basic rate limiter, described in Section 2.3 of {{?RFC2475}}
+      This is the most basic rate limiter, described in {{Section 2.3 of ?RFC2475}}
       It meters at the SDP a
       traffic stream of given slice and marks its packets as in-profile
       (below CIR being enforced) or out-of-profile (above CIR being enforced).
