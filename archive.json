@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-01-21T00:31:09.505357+00:00",
+  "timestamp": "2024-01-23T00:28:44.055390+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -1367,9 +1367,17 @@
       ],
       "body": "",
       "createdAt": "2024-01-18T14:30:04Z",
-      "updatedAt": "2024-01-18T14:36:24Z",
+      "updatedAt": "2024-01-22T20:28:43Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "kszarkowicz",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Current text:\r\n\r\n\"One benefit of embedding the S-NSSAI in the IPv6 address is that specific S-NSSAI can be identified as interesting at any place in the TN domain. This might be used, for example, to selectively enable per S-NSSAI monitoring, traffic engineering or any other per S-NSSAI handling, if required.\r\n\r\nHowever, operators using such mapping method should be aware of the implications of any change of S-NSSAI on the addressing plans. It is out of scope of this document to elaborate on these implications.\"\r\n\r\nAlvaro's comments: \r\n\r\n\"this document leaves several important pieces for the\r\nrealization out of scope.  I wonder if some of these are the \"proposed\r\nsolutions\" mentioned in RFC XXXX.  For example: implications of any change of S-NSSAI on the addressing plans\"\r\n\r\n\r\n",
+          "createdAt": "2024-01-22T20:28:41Z",
+          "updatedAt": "2024-01-22T20:28:41Z"
+        }
+      ]
     },
     {
       "number": 118,
@@ -1379,22 +1387,32 @@
       "state": "OPEN",
       "author": "boucadair",
       "authorAssociation": "OWNER",
-      "assignees": [],
+      "assignees": [
+        "robric"
+      ],
       "labels": [
         "directorate-review"
       ],
       "body": "> While inbound slice admission control at the provider network edge is mandatory in the architecture described in this document, outbound provider network edge resource control might not be required in all use cases. Use cases that specifically call for outbound provider network edge resource control are\r\n\r\nFrom Alvaro: \"Note that only one mention of a \"mandatory (function) in the architecture described in this document\" is present in the whole document (Section 5.2.1.2.  Outbound Edge Resource Control) -- making everything else optional and requiring some guidance.\"",
       "createdAt": "2024-01-18T14:31:34Z",
-      "updatedAt": "2024-01-18T14:36:18Z",
+      "updatedAt": "2024-01-22T20:19:39Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "kszarkowicz",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Corrected in Section 5.\r\n\r\nHowever, there are occurrences of 'must' in earlier sections.",
+          "createdAt": "2024-01-22T20:19:37Z",
+          "updatedAt": "2024-01-22T20:19:37Z"
+        }
+      ]
     },
     {
       "number": 119,
       "id": "I_kwDOIw9g6c58equ0",
       "title": "Tunnel group",
       "url": "https://github.com/boucadair/5g-slice-realization/issues/119",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "boucadair",
       "authorAssociation": "OWNER",
       "assignees": [],
@@ -1403,9 +1421,17 @@
       ],
       "body": "Form Alvaro:\r\n\r\n> Speaking of terms only mentioned once, \"tunnel group\" is only used in the first paragraph of Section 6 to introduce \"transport planes\".  Is this indirection necessary?  Also, what is the difference between tunnel groups/transport planes and an NRP?  Even if it is evident to you, it would help readers if it was clarified.",
       "createdAt": "2024-01-18T14:32:13Z",
-      "updatedAt": "2024-01-18T14:36:11Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-01-22T20:12:58Z",
+      "closedAt": "2024-01-22T20:12:57Z",
+      "comments": [
+        {
+          "author": "kszarkowicz",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This has been updated already earlier (tunnel group not used any longer) -> issue can be closed.\r\n\r\n\r\n\r\nA network operator can define multiple transport planes. A transport plane could be realized in multiple ways, for example\r\n\r\na mesh of TE tunnels created with specific optimization criteria and constraints. E.g., mesh \"A\" might represent tunnels optimized for latency, and mesh \"B\" might represent tunnels optimized for high capacity.\r\na flex-algo with a particular metric-type (e.g. latency)\r\nan NRP\r\na combination of the above\r\n",
+          "createdAt": "2024-01-22T20:12:57Z",
+          "updatedAt": "2024-01-22T20:12:57Z"
+        }
+      ]
     },
     {
       "number": 120,
@@ -1433,15 +1459,25 @@
       "state": "OPEN",
       "author": "boucadair",
       "authorAssociation": "OWNER",
-      "assignees": [],
+      "assignees": [
+        "robric"
+      ],
       "labels": [
         "directorate-review"
       ],
       "body": "From Alvaro: `Note that some references are wrong (rfc8754 specifies the SRH; the reference to SRv6 should be rfc8986), and others are missing: I didn't see a reference to where a \"5G Network Slice\" is defined, and there's no reference for \"RSVP-TE or SR-TE LSPs\".  Are there references for 1r2c/2r3c?`",
       "createdAt": "2024-01-18T14:38:43Z",
-      "updatedAt": "2024-01-18T14:38:43Z",
+      "updatedAt": "2024-01-22T20:21:23Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "kszarkowicz",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Updated references for SRv6 (RFC8986), RSVP-TE (RFC3209), SR-TE (RFC9256), 1r2c (RFC2475) and 2r3c (RFC2698/RFC4115).\r\n\r\nDefinition of \"5G Network Slice\" is still required.",
+          "createdAt": "2024-01-22T20:08:27Z",
+          "updatedAt": "2024-01-22T20:08:27Z"
+        }
+      ]
     },
     {
       "number": 122,
@@ -4257,24 +4293,26 @@
       "id": "PR_kwDOIw9g6c5kc4pk",
       "title": "Julian l999 patch 1",
       "url": "https://github.com/boucadair/5g-slice-realization/pull/123",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "boucadair",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-01-18T17:48:32Z",
-      "updatedAt": "2024-01-18T18:01:49Z",
+      "updatedAt": "2024-01-22T09:55:12Z",
       "baseRepository": "boucadair/5g-slice-realization",
       "baseRefName": "main",
       "baseRefOid": "7dbc2054293b783da2e4ac38479cdc5e3f56caab",
       "headRepository": "boucadair/5g-slice-realization",
       "headRefName": "julianL999-patch-1",
-      "headRefOid": "c28ff9a0bf45c5eb0b8bf58bf962f9598a853439",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "dccafc440ba61a8efd013483bf8007f94915681f",
+      "closedAt": "2024-01-22T09:55:11Z",
+      "mergedAt": "2024-01-22T09:55:11Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "56714a73826b4de994c88d78f981d272a9b74657"
+      },
       "comments": [],
       "reviews": [
         {
@@ -4316,6 +4354,26 @@
               "updatedAt": "2024-01-18T17:56:35Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5tcCS-",
+          "commit": {
+            "abbreviatedOid": "c28ff9a"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-01-22T09:51:51Z",
+          "updatedAt": "2024-01-22T09:51:51Z",
+          "comments": [
+            {
+              "originalPosition": 48,
+              "body": "```suggestion\r\nA single 5G Network Slice can be mapped to multiple TN slices (1 to N). For instance, consider the scenario depicted in {{figure-5}}, illustrating the separation of the 5G Control Plane and User Plane in TN slices for a single 5G eMBB network slice. It is important to note that this mapping can serve as an interim step to N:M mapping. In this scenario, a subset of the TN slices can be intended for sharing by multiple 5G network slices (e.g., the Control Plane TN slice is shared by multiple 5G network Slices). Further details about this scheme are described in {#sec-firstslice}.\r\n```",
+              "createdAt": "2024-01-22T09:51:51Z",
+              "updatedAt": "2024-01-22T09:51:51Z"
+            }
+          ]
         }
       ]
     },
@@ -4344,6 +4402,114 @@
       "mergeCommit": {
         "oid": "f76907bed3f1b65ed6269a4bbb58314da49ee28b"
       },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 127,
+      "id": "PR_kwDOIw9g6c5ks3rA",
+      "title": "Add 1-to-n-mapping figures",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/127",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-01-22T09:59:12Z",
+      "updatedAt": "2024-01-22T09:59:46Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "56714a73826b4de994c88d78f981d272a9b74657",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-1-to-n-mapping",
+      "headRefOid": "f326698d5bd4ac738feb45dcb813345b012fa645",
+      "closedAt": "2024-01-22T09:59:46Z",
+      "mergedAt": "2024-01-22T09:59:46Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "a5d4e3ead78dbbda9e9fd81596a01791a4196bb1"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 128,
+      "id": "PR_kwDOIw9g6c5ks4Hj",
+      "title": "ac-api-sync figure (Monodraw addition)",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/128",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-01-22T10:00:16Z",
+      "updatedAt": "2024-01-22T10:00:25Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "a5d4e3ead78dbbda9e9fd81596a01791a4196bb1",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-ac-api-sync-figure-monodraw",
+      "headRefOid": "c2720671f4b2b4fd9e68019b9fabe2a1cd0d6dec",
+      "closedAt": "2024-01-22T10:00:25Z",
+      "mergedAt": "2024-01-22T10:00:25Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "9c76ff6527f4e24c2ad2480b807a45bd00485fa5"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 129,
+      "id": "PR_kwDOIw9g6c5kwv1R",
+      "title": "RFC refernces update (SRv6/RSVP/SR-TE/1r2c/2r3c)",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/129",
+      "state": "OPEN",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Updated references for SRv6 (RFC8986), RSVP-TE (RFC3209), SR-TE (RFC9256), 1r2c (RFC2475) and 2r3c (RFC2698/RFC4115).\r\n\r\nDefinition of \"5G Network Slice\" is still required.",
+      "createdAt": "2024-01-22T20:09:26Z",
+      "updatedAt": "2024-01-22T20:09:26Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "9c76ff6527f4e24c2ad2480b807a45bd00485fa5",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-rfc-refernce",
+      "headRefOid": "d5f9e9d2f803ea067af49ef5490822deadf15019",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 130,
+      "id": "PR_kwDOIw9g6c5kwzVm",
+      "title": "Normative/informative language in Section 5",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/130",
+      "state": "OPEN",
+      "author": "kszarkowicz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Corrected in Section 5.\r\n\r\nHowever, there are occurrences of 'must' in earlier sections.",
+      "createdAt": "2024-01-22T20:20:40Z",
+      "updatedAt": "2024-01-22T20:20:40Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "9c76ff6527f4e24c2ad2480b807a45bd00485fa5",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "kszarkowicz-normative-section-5",
+      "headRefOid": "c4cccc16b0c902a7da53138de12d4715c04a4ca2",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
       "comments": [],
       "reviews": []
     }
