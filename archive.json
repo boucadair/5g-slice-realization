@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-01-23T00:28:44.055390+00:00",
+  "timestamp": "2024-01-25T00:28:45.541836+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -4473,19 +4473,46 @@
       "labels": [],
       "body": "Updated references for SRv6 (RFC8986), RSVP-TE (RFC3209), SR-TE (RFC9256), 1r2c (RFC2475) and 2r3c (RFC2698/RFC4115).\r\n\r\nDefinition of \"5G Network Slice\" is still required.",
       "createdAt": "2024-01-22T20:09:26Z",
-      "updatedAt": "2024-01-22T20:09:26Z",
+      "updatedAt": "2024-01-23T11:04:27Z",
       "baseRepository": "boucadair/5g-slice-realization",
       "baseRefName": "main",
       "baseRefOid": "9c76ff6527f4e24c2ad2480b807a45bd00485fa5",
       "headRepository": "boucadair/5g-slice-realization",
       "headRefName": "kszarkowicz-rfc-refernce",
-      "headRefOid": "d5f9e9d2f803ea067af49ef5490822deadf15019",
+      "headRefOid": "96389cb009b0d5e05b4617e2e97dc7fc5c79d611",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c5tjMTI",
+          "commit": {
+            "abbreviatedOid": "d5f9e9d"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2024-01-23T06:24:45Z",
+          "updatedAt": "2024-01-23T06:25:44Z",
+          "comments": [
+            {
+              "originalPosition": 24,
+              "body": "```suggestion\r\n   * a mesh of RSVP-TE ({?RFC3209}}) or SR-TE ({{?RFC9256}}) tunnels created with specific optimization criteria and\r\n```",
+              "createdAt": "2024-01-23T06:24:46Z",
+              "updatedAt": "2024-01-23T06:25:44Z"
+            },
+            {
+              "originalPosition": 14,
+              "body": "```suggestion\r\n      This is the most basic rate limiter, described in {{Section 2.3 of ?RFC2475}}\r\n```",
+              "createdAt": "2024-01-23T06:25:23Z",
+              "updatedAt": "2024-01-23T06:25:44Z"
+            }
+          ]
+        }
+      ]
     },
     {
       "number": 130,
