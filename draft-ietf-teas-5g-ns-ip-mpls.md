@@ -1111,9 +1111,9 @@ ranges for each slice, and use these ranges for slice identification purposes on
    {{figure-18}} outlines the outbound provider network edge resource control model
    for 5QI-unaware slices.  Each slice is
    assigned a single egress queue.  The sum of slice CIRs, used as the
-   weight in weighted queueing model, must not exceed the physical
+   weight in weighted queueing model, should not exceed the physical
    capacity of the attachment circuit.  Slice requests above this limit
-   must be rejected by the RFC XXXX NSC, unless an already established slice with
+   should be rejected by the RFC XXXX NSC, unless an already established slice with
    lower priority, if such exists, is preempted.
 
 ~~~
@@ -1315,9 +1315,9 @@ to TN QoS Classes may be rather common.
    {{figure-22}} outlines the outbound edge resource control model at the
    transport network layer for 5QI-aware slices.  Each slice is assigned
    multiple egress queues.  The sum of queue weights, which are 5Q QoS
-   queue CIRs within the slice, must not exceed the CIR of the slice
+   queue CIRs within the slice, should not exceed the CIR of the slice
    itself.  And, similarly to the 5QI-aware model, the sum of slice CIRs
-   must not exceed the physical capacity of the attachment circuit.
+   should not exceed the physical capacity of the attachment circuit.
 
 ~~~
    ┌─────────┐        QoS output queues
@@ -1832,7 +1832,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
       facilitates the detection of any mismatch between the view
       maintained by the control/management plane and the actual network
       configuration.  When mismatches are detected, corrective actions
-      must be undertaken accordingly. For example, a provider may rely
+      should be undertaken accordingly. For example, a provider may rely
       upon the L3NM {{?RFC9182}} or the L2NM {{?RFC9291}} to maintain the full
       set of L3VPN/L2VPNs that are used to deliver Network Slice Services.
       The correlation between an LxVPN instance and a Network Slice Service
