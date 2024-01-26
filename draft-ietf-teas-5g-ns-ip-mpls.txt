@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 25 July 2024                                   Juniper Networks
+Expires: 29 July 2024                                   Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                         22 January 2024
+                                                         26 January 2024
 
 
  A Realization of RFC XXXX Network Slices for 5G Networks Using Current
@@ -61,7 +61,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 25 July 2024.
+   This Internet-Draft will expire on 29 July 2024.
 
 Copyright Notice
 
@@ -474,17 +474,16 @@ Table of Contents
 
    While in most cases CEs connect to PEs using IP (e.g., VLANs), a CE
    may also connect to the provider network using MPLS -potentially over
-   IP tunnels- or Segment Routing over IPv6 (SRv6) [RFC8986][RFC8754].
-   The CE has awareness of provider services configuration (e.g.,
-   control plane identifiers such as Route Targets (RTs) and Route
-   Distinguishers (RDs)).  An example of such an AC is depicted in
-   Figure 4.  This is a source of confusion since these configurations
-   are typically enforced on PEs.  Notwithstanding, the reference design
-   based on Orchestration scope prevails: the CE is managed by the
-   customer and the AC is based on MPLS or SRv6 data plane technologies.
-   Note that the complete termination of the AC within the provider
-   network may happen on distinct routers: this is another example of
-   distributed PE.
+   IP tunnels- or Segment Routing over IPv6 (SRv6) [RFC8986].  The CE
+   has awareness of provider services configuration (e.g., control plane
+   identifiers such as Route Targets (RTs) and Route Distinguishers
+   (RDs)).  An example of such an AC is depicted in Figure 4.  This is a
+   source of confusion since these configurations are typically enforced
+   on PEs.  Notwithstanding, the reference design based on Orchestration
+   scope prevails: the CE is managed by the customer and the AC is based
+   on MPLS or SRv6 data plane technologies.  Note that the complete
+   termination of the AC within the provider network may happen on
+   distinct routers: this is another example of distributed PE.
 
           ┌ ─ ─ ─ ─ ─ ─ ─                       ┌ ─ ─ ─ ─ ─ ─ ─ ┐
               Customer   │                          Provider
@@ -1601,18 +1600,18 @@ Table of Contents
 
    *  1r2c (single-rate two-color) rate limiter
 
-      This is the most basic rate limiter, which meters at the SDP a
-      traffic stream of given slice and marks its packets as in-profile
-      (below CIR being enforced) or out-of-profile (above CIR being
-      enforced).  In-profile packets are accepted and forwarded.  Out-of
-      profile packets are either dropped right at the SDP (hard rate
-      limiting), or remarked (with different MPLS TC or DSCP TN
-      markings) to signify 'this packet should be dropped in the first
-      place, if there is a congestion' (soft rate limiting), depending
-      on the business policy of the provider network.  In the second
-      case, while packets above CIR are forwarded at the SDP, they are
-      subject to being dropped during any congestion event at any place
-      in the provider network.
+      This is the most basic rate limiter, described in Section 2.3 of
+      [RFC2475] It meters at the SDP a traffic stream of given slice and
+      marks its packets as in-profile (below CIR being enforced) or out-
+      of-profile (above CIR being enforced).  In-profile packets are
+      accepted and forwarded.  Out-of profile packets are either dropped
+      right at the SDP (hard rate limiting), or remarked (with different
+      MPLS TC or DSCP TN markings) to signify 'this packet should be
+      dropped in the first place, if there is a congestion' (soft rate
+      limiting), depending on the business policy of the provider
+      network.  In the second case, while packets above CIR are
+      forwarded at the SDP, they are subject to being dropped during any
+      congestion event at any place in the provider network.
 
    *  2r3c (two-rate three-color) rate limiter
 
@@ -2052,12 +2051,12 @@ Table of Contents
 6.  Transport Planes Mapping Models
 
    A network operator can define multiple transport planes.  A transport
-   plane could be realized in multiple ways, for example * a mesh of TE
-   tunnels created with specific optimization criteria and constraints.
-   E.g., mesh "A" might represent tunnels optimized for latency, and
-   mesh "B" might represent tunnels optimized for high capacity.  * a
-   flex-algo with a particular metric-type (e.g. latency) * an NRP * a
-   combination of the above
+   plane could be realized in multiple ways, for example * a mesh of
+   RSVP-TE ({?RFC3209}}) or SR-TE ([RFC9256]) tunnels created with
+   specific optimization criteria and constraints.  E.g., mesh "A" might
+   represent tunnels optimized for latency, and mesh "B" might represent
+   tunnels optimized for high capacity.  * a flex-algo with a particular
+   metric-type (e.g. latency) * an NRP * a combination of the above
 
    Detailed realization of transport planes is out of scope for this
    document.  NRPs are discussed in detail in [I-D.ietf-teas-ns-ip-mpls]
@@ -2394,20 +2393,20 @@ Table of Contents
 
 7.2.2.  Scheme 2: TE LSPs with Fixed Bandwidth Reservations
 
-   Scheme 2 uses RSVP-TE [RFC3209] or SR-TE LSPs with fixed bandwidth
-   reservations.  By "fixed", we mean a value that stays constant over
-   time, unless the 5G NSO communicates a change in slice bandwidth
-   requirements, due to the creation or modification of a slice.  Note
-   that the "reservations" would be in the mind of the transport
-   controller - it is not necessary (or indeed possible for SR-TE) to
-   reserve bandwidth at the network layer.  The bandwidth requirement
-   acts as a constraint whenever the controller (re)computes the path of
-   an LSP.  There could be a single mesh of LSPs between endpoints that
-   carry all of the traffic types, or there could be a small handful of
-   meshes, for example one mesh for low-latency traffic that follows the
-   minimum latency path and another mesh for the other traffic that
-   follows the minimum IGP metric path, as described in Section 5.
-   There would be a many-to-one mapping of slices to LSPs.
+   Scheme 2 uses RSVP-TE [RFC3209] or SR-TE LSPs [RFC9256] with fixed
+   bandwidth reservations.  By "fixed", we mean a value that stays
+   constant over time, unless the 5G NSO communicates a change in slice
+   bandwidth requirements, due to the creation or modification of a
+   slice.  Note that the "reservations" would be in the mind of the
+   transport controller - it is not necessary (or indeed possible for
+   SR-TE) to reserve bandwidth at the network layer.  The bandwidth
+   requirement acts as a constraint whenever the controller (re)computes
+   the path of an LSP.  There could be a single mesh of LSPs between
+   endpoints that carry all of the traffic types, or there could be a
+   small handful of meshes, for example one mesh for low-latency traffic
+   that follows the minimum latency path and another mesh for the other
+   traffic that follows the minimum IGP metric path, as described in
+   Section 5.  There would be a many-to-one mapping of slices to LSPs.
 
    The bandwidth requirement from DCi to DCj is the sum of the DCi-DCj
    demands of the individual slices.  For example, if only Slice X and
@@ -2640,9 +2639,9 @@ Table of Contents
               and B. Wu, "YANG Data Models for Bearers and 'Attachment
               Circuits'-as-a-Service (ACaaS)", Work in Progress,
               Internet-Draft, draft-ietf-opsawg-teas-attachment-circuit-
-              04, 14 January 2024,
+              05, 22 January 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-
-              teas-attachment-circuit-04>.
+              teas-attachment-circuit-05>.
 
    [I-D.ietf-teas-5g-network-slice-application]
               Geng, X., Contreras, L. M., Rokui, R., Dong, J., and I.
@@ -2690,6 +2689,11 @@ Table of Contents
               Field) in the IPv4 and IPv6 Headers", RFC 2474,
               DOI 10.17487/RFC2474, December 1998,
               <https://www.rfc-editor.org/rfc/rfc2474>.
+
+   [RFC2475]  Blake, S., Black, D., Carlson, M., Davies, E., Wang, Z.,
+              and W. Weiss, "An Architecture for Differentiated
+              Services", RFC 2475, DOI 10.17487/RFC2475, December 1998,
+              <https://www.rfc-editor.org/rfc/rfc2475>.
 
    [RFC2698]  Heinanen, J. and R. Guerin, "A Two Rate Three Color
               Marker", RFC 2698, DOI 10.17487/RFC2698, September 1999,
@@ -2790,11 +2794,6 @@ Table of Contents
               for Datastore Updates", RFC 8641, DOI 10.17487/RFC8641,
               September 2019, <https://www.rfc-editor.org/rfc/rfc8641>.
 
-   [RFC8754]  Filsfils, C., Ed., Dukes, D., Ed., Previdi, S., Leddy, J.,
-              Matsushima, S., and D. Voyer, "IPv6 Segment Routing Header
-              (SRH)", RFC 8754, DOI 10.17487/RFC8754, March 2020,
-              <https://www.rfc-editor.org/rfc/rfc8754>.
-
    [RFC8969]  Wu, Q., Ed., Boucadair, M., Ed., Lopez, D., Xie, C., and
               L. Geng, "A Framework for Automating Service and Network
               Management with YANG", RFC 8969, DOI 10.17487/RFC8969,
@@ -2810,6 +2809,11 @@ Table of Contents
               Ed., Munoz, L., and A. Aguado, "A YANG Network Data Model
               for Layer 3 VPNs", RFC 9182, DOI 10.17487/RFC9182,
               February 2022, <https://www.rfc-editor.org/rfc/rfc9182>.
+
+   [RFC9256]  Filsfils, C., Talaulikar, K., Ed., Voyer, D., Bogdanov,
+              A., and P. Mattes, "Segment Routing Policy Architecture",
+              RFC 9256, DOI 10.17487/RFC9256, July 2022,
+              <https://www.rfc-editor.org/rfc/rfc9256>.
 
    [RFC9291]  Boucadair, M., Ed., Gonzalez de Dios, O., Ed., Barguil,
               S., and L. Munoz, "A YANG Network Data Model for Layer 2
