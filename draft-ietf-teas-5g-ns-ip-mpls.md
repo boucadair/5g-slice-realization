@@ -1,5 +1,5 @@
 ---
-title: "A Realization of RFC XXXX Network Slices for 5G Networks Using Current IP/MPLS Technologies"
+title: "A Realization of Network Slices for 5G Networks Using Current IP/MPLS Technologies"
 abbrev: "Implementing 5G Transport Slices"
 category: info
 
@@ -234,7 +234,7 @@ The term "Transport Network" is used for disambiguation with 5G network (e.g., I
 
    * 5G Network Slicing:
 
-      Is defined by the 3GPP as an appraoch where logical networks/partitions are created, with appropriate isolation, resources and optimized topology to serve a purpose or service category or customers {{TS-28.530}}. These resources are from the TN, RAN, CN
+      Is defined by the 3GPP as an appraoch where logical networks/partitions are created (called, 5G Network Slices), with appropriate isolation, resources and optimized topology to serve a purpose or service category or customers {{TS-28.530}}. These resources are from the TN, RAN, CN
       Network Functions, and the underlying infrastructure.
 
    * TN Slicing:
