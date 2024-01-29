@@ -1389,16 +1389,18 @@ to TN QoS Classes may be rather common.
 
 #  Transport Planes Mapping Models
 
-   A network operator can define multiple transport planes. A transport plane could be realized in multiple ways, for example
-   * a mesh of RSVP-TE ({?RFC3209}}) or SR-TE ({{?RFC9256}}) tunnels created with specific optimization criteria and
-   constraints. E.g., mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.
-   * a flex-algo with a particular metric-type (e.g. latency)
-   * an NRP
-   * a combination of the above
+   A network operator can define multiple transport planes. A transport plane may be realized in multiple ways such as (but not limited to):
 
-   Detailed realization of transport planes is out of scope for this document. NRPs are discussed in detail in {{?I-D.ietf-teas-ns-ip-mpls}}
+   * A mesh of RSVP-TE {{?RFC3209}} or SR-TE {{?RFC9256}} tunnels created with specific optimization criteria and
+   constraints. For example, mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.
+   * A flex-algo {{?RFC9350}} with a particular metric-type (e.g., latency).
+   * An NRP {{?I-D.ietf-teas-ns-ip-mpls}}
+   * Any combination thereof.
+
+   Detailed realization of transport planes is out of the scope of this document.
+
    {{figure-23}} depicts an example of a simple network with two transport
-   planes each using a mesh of TE tunnels with or without PCE, and with or without bandwidth
+   planes, each using a mesh of TE tunnels with or without Path Computation Element (PCE) {{?RFC5440}}, and with or without bandwidth
    reservations.
    {{sec-capacity-planning}} discusses in detail different bandwidth
    models that can be deployed in the provider network.  However,
@@ -1430,7 +1432,7 @@ to TN QoS Classes may be rather common.
 ~~~
 {: #figure-23 title="Transport Planes example based on TE tunnels" artwork-align="center"}
 
-   Note that there could be multiple tunnels within a single transport plane
+   Note that there might be multiple tunnels within a single transport plane
    between any pair of PEs. {{figure-23}} shows only single
    tunnel per transport plane for (ingress PE, egress PE) pair.
 
