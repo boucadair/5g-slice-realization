@@ -1,5 +1,5 @@
 ---
-title: "A Realization of RFC XXXX Network Slices for 5G Networks Using Current IP/MPLS Technologies"
+title: "A Realization of Network Slices for 5G Networks Using Current IP/MPLS Technologies"
 abbrev: "Implementing 5G Transport Slices"
 category: info
 
@@ -161,44 +161,23 @@ informative:
 
 --- abstract
 
-   Slicing is a feature that was introduced by the 3rd Generation
-   Partnership Project (3GPP) in mobile networks. Realization of 5G slicing implies
-   requirements for all mobile domains, including the Radio Access
-   Network (RAN), Core Network (CN), and Transport Network (TN).
+Slicing is a feature that was introduced by the 3rd Generation Partnership Project (3GPP) in mobile networks. Realization of 5G slicing implies requirements for all mobile domains, including the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN).
 
-   This document describes a basic RFC XXXX Network Slice realization model
-   in IP/MPLS networks with a focus on the Transport Network fulfilling
-   5G slicing connectivity requirements. This realization model reuses many building blocks currently commonly used
-   in service provider networks.
+This document describes a Network Slice realization model for IP/MPLS networks with a focus on the Transport Network fulfilling 5G slicing connectivity and SLAs. The realization model reuses many building blocks currently commonly used in service provider networks.
 
-> Note to the RFC Editor: Please update "RFC XXXX Network Slice"  with the RFC number assigned to I-D.ietf-teas-ietf-network-slices.
 
 --- middle
 
 
 #  Introduction
 
-   {{!I-D.ietf-teas-ietf-network-slices}} defines a framework for
-   network slicing in the context of networks built using IETF
-   technologies.  The RFC XXXX network slicing framework introduces the
-   concept of a Network Resource Partition (NRP), which is a
-   collection of resources identified in the underlay network.  There
-   could be multiple realizations of RFC XXXX Network Slice and
-   NRP concepts, where each realization might be optimized for the
-   different network slicing use cases.
+This document focuses on network slicing for 5G networks, covering the connectivity between network functions across multiple domains such as edge clouds, data centers and the WAN. We describe a Network Slice realization model that fulfills 5G slicing requirements by using existing IP/MPLS technologies to optimally control Service Level Agreements (SLAs) offered for 5G slices.
 
-   This document describes an RFC XXXX Network Slice realization model
-   in IP/MPLS networks, using one or more NRPs and with a focus on
-   fulfilling 5G slicing connectivity requirements.
-   This realization model leverages many building blocks currently
-   commonly used in service provider networks.
+This work is compatible with {{!I-D.ietf-teas-ietf-network-slices}} that defines a generic framework for network slicing built using IETF technologies. The  framework introduces the concept of a Network Resource Partition (NRP), which is a collection of resources identified in the underlay network. In the context of our realization, this framework is best suited for the WAN (provider network), using just one NRP or multiple NRPs.
 
-This document focuses on the technical realization of RFC XXXX Network Slices. The realization is typically triggered by Network Slice Service requests. How a Network Slice Service request is placed for realization, including how it is derived from a 5G Slice Service request, is out of scope. Network Slice Service mapping considerations (e.g., mapping between 3GPP to IETF service parameters) are discussed in {{?I-D.ietf-teas-5g-network-slice-application}}.
+The realization that we propose is typically triggered by Network Slice Service requests. How a Network Slice Service request is placed for realization, including how it is derived from a 5G Slice Service request, is out of scope. Network Slice Service mapping considerations (e.g., mapping between 3GPP to IETF service parameters) are discussed in {{?I-D.ietf-teas-5g-network-slice-application}}.
 
-   Note that 5G slicing can be implemented with or without Transport Network (TN) slicing. However, implementing TN slicing as part of 5G slicing allows operators to better control Service Level Agreements (SLAs). See {{sec-5g}}.
-
-   A brief 5G overview is provided in {{sec-5g-intro}} for readers' convenience. The reader may refer to {{TS-23.501}} or {{5G-Book}} for more
-   details about 3GPP network architectures.
+A brief 5G overview is provided in {{sec-5g-intro}} for the reader's convenience. The reader may refer to {{TS-23.501}} or {{5G-Book}} for more details about 3GPP network architectures.
 
 # Definitions
 
@@ -210,7 +189,7 @@ An extended list of abbreviations used in this document is provided in {{ext-abb
 
 ## Scope of the Transport Network {#sec-scope}
 
-{{sec-5g-intro}} provides an overview of 5G network building blocks: the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN). The Transport Network is defined by the 3GPP as the "part supporting connectivity within and between CN and RAN parts" (Section 1 of {{TS-28.530}}).
+{{sec-5g-overview}} provides an overview of 5G network building blocks: the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN). The Transport Network is defined by the 3GPP as the "part supporting connectivity within and between CN and RAN parts" (Section 1 of {{TS-28.530}}).
 
 As discussed in Section 4.4.1 of {{TS-28.530}}, the 3GPP management system does not directly control the Transport Network: it is considered as a non-3GPP managed system.
 
@@ -2047,7 +2026,7 @@ Active issues can be tracked at: https://github.com/boucadair/5g-slice-realizati
 
    VXLAN: Virtual Extensible Local Area Network
 
-#  An Overview of 5G Networking {#sec-5g-intro}
+#  An Overview of 5G Networking {#sec-5g-overview}
 
    This section provides a brief introduction to 5G mobile networking
    with a perspective on the Transport Network.  This section does not
