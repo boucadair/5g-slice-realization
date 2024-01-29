@@ -171,7 +171,7 @@ This document describes a Network Slice realization model for IP/MPLS networks w
 
 #  Introduction
 
-This document focuses on network slicing for 5G networks, covering the connectivity between network functions across multiple domains such as edge clouds, data centers and the WAN. We describe a Network Slice realization model that fulfills 5G slicing requirements by using existing IP/MPLS technologies to optimally control Service Level Agreements (SLAs) offered for 5G slices.
+This document focuses on network slicing for 5G networks, covering the connectivity between network functions across multiple domains such as edge clouds, data centers, and the WAN.  The document describes a Network Slice realization model that fulfills 5G slicing requirements by using existing IP/MPLS technologies to optimally control Service Level Agreements (SLAs) offered for 5G slices.
 
 This work is compatible with {{!I-D.ietf-teas-ietf-network-slices}} that defines a generic framework for network slicing built using IETF technologies. The  framework introduces the concept of a Network Resource Partition (NRP), which is a collection of resources identified in the underlay network. In the context of our realization, this framework is best suited for the WAN (provider network), using just one NRP or multiple NRPs.
 
