@@ -3770,23 +3770,33 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
       <h2 id="name-transport-planes-mapping-mo">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-transport-planes-mapping-mo" class="section-name selfRef">Transport Planes Mapping Models</a>
       </h2>
-<p id="section-6-1">A network operator can define multiple transport planes. A transport plane could be realized in multiple ways, for example
-   * a mesh of RSVP-TE ({?RFC3209}}) or SR-TE (<span>[<a href="#RFC9256" class="cite xref">RFC9256</a>]</span>) tunnels created with specific optimization criteria and
-   constraints. E.g., mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.
-   * a flex-algo with a particular metric-type (e.g. latency)
-   * an NRP
-   * a combination of the above<a href="#section-6-1" class="pilcrow">¶</a></p>
-<p id="section-6-2">Detailed realization of transport planes is out of scope for this document. NRPs are discussed in detail in <span>[<a href="#I-D.ietf-teas-ns-ip-mpls" class="cite xref">I-D.ietf-teas-ns-ip-mpls</a>]</span>
-        <a href="#_figure-23" class="auto internal xref">Figure 28</a> depicts an example of a simple network with two transport
-   planes each using a mesh of TE tunnels with or without PCE, and with or without bandwidth
+<p id="section-6-1">A network operator can define multiple transport planes. A transport plane may be realized in multiple ways such as (but not limited to):<a href="#section-6-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-6-2.1">
+          <p id="section-6-2.1.1">A mesh of RSVP-TE <span>[<a href="#RFC3209" class="cite xref">RFC3209</a>]</span> or SR-TE <span>[<a href="#RFC9256" class="cite xref">RFC9256</a>]</span> tunnels created with specific optimization criteria and
+   constraints. For example, mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.<a href="#section-6-2.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-6-2.2">
+          <p id="section-6-2.2.1">A flex-algo <span>[<a href="#RFC9350" class="cite xref">RFC9350</a>]</span> with a particular metric-type (e.g., latency).<a href="#section-6-2.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-6-2.3">
+          <p id="section-6-2.3.1">An NRP <span>[<a href="#I-D.ietf-teas-ns-ip-mpls" class="cite xref">I-D.ietf-teas-ns-ip-mpls</a>]</span><a href="#section-6-2.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-6-2.4">
+          <p id="section-6-2.4.1">Any combination thereof.<a href="#section-6-2.4.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="section-6-3">Detailed realization of transport planes is out of the scope of this document.<a href="#section-6-3" class="pilcrow">¶</a></p>
+<p id="section-6-4"><a href="#_figure-23" class="auto internal xref">Figure 28</a> depicts an example of a simple network with two transport
+   planes, each using a mesh of TE tunnels with or without Path Computation Element (PCE) <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>, and with or without bandwidth
    reservations.
    <a href="#sec-capacity-planning" class="auto internal xref">Section 7</a> discusses in detail different bandwidth
    models that can be deployed in the provider network.  However,
    discussion about how to realize or orchestrate transport planes is
-   out of scope for this document.<a href="#section-6-2" class="pilcrow">¶</a></p>
+   out of scope for this document.<a href="#section-6-4" class="pilcrow">¶</a></p>
 <span id="name-transport-planes-example-ba"></span><div id="_figure-23">
 <figure id="figure-28">
-        <div class="alignCenter art-text artwork" id="section-6-3.1">
+        <div class="alignCenter art-text artwork" id="section-6-5.1">
 <pre>
 ┌───────────────┐                                    ┌──────┐
 │  Ingress PE   │   ╔═══════════════════════════════&gt;│ PE-A │
@@ -3815,16 +3825,16 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
 <a href="#name-transport-planes-example-ba" class="selfRef">Transport Planes example based on TE tunnels</a>
         </figcaption></figure>
 </div>
-<p id="section-6-4">Note that there could be multiple tunnels within a single transport plane
+<p id="section-6-6">Note that there might be multiple tunnels within a single transport plane
    between any pair of PEs. <a href="#_figure-23" class="auto internal xref">Figure 28</a> shows only single
-   tunnel per transport plane for (ingress PE, egress PE) pair.<a href="#section-6-4" class="pilcrow">¶</a></p>
-<p id="section-6-5">Similar to the QoS mapping models discussed in <a href="#sec-qos-map" class="auto internal xref">Section 5</a>, for mapping
+   tunnel per transport plane for (ingress PE, egress PE) pair.<a href="#section-6-6" class="pilcrow">¶</a></p>
+<p id="section-6-7">Similar to the QoS mapping models discussed in <a href="#sec-qos-map" class="auto internal xref">Section 5</a>, for mapping
    to transport planes at the ingress PE, both 5QI-unaware and 5QI-aware
    models are defined.  Essentially, entire slices can be mapped to
    transport planes without 5G QoS consideration (5QI-unaware model). For example,
    flows with different 5G QoS Classes, even from same
    slice, can be mapped to different transport planes (5QI-aware
-   model).<a href="#section-6-5" class="pilcrow">¶</a></p>
+   model).<a href="#section-6-7" class="pilcrow">¶</a></p>
 <div id="qi-unaware-model">
 <section id="section-6.1">
         <h3 id="name-5qi-unaware-model-2">
@@ -4451,6 +4461,10 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
 <dt id="RFC5286">[RFC5286]</dt>
         <dd>
 <span class="refAuthor">Atlas, A., Ed.</span> and <span class="refAuthor">A. Zinin, Ed.</span>, <span class="refTitle">"Basic Specification for IP Fast Reroute: Loop-Free Alternates"</span>, <span class="seriesInfo">RFC 5286</span>, <span class="seriesInfo">DOI 10.17487/RFC5286</span>, <time datetime="2008-09" class="refDate">September 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5286">https://www.rfc-editor.org/rfc/rfc5286</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC5440">[RFC5440]</dt>
+        <dd>
+<span class="refAuthor">Vasseur, JP., Ed.</span> and <span class="refAuthor">JL. Le Roux, Ed.</span>, <span class="refTitle">"Path Computation Element (PCE) Communication Protocol (PCEP)"</span>, <span class="seriesInfo">RFC 5440</span>, <span class="seriesInfo">DOI 10.17487/RFC5440</span>, <time datetime="2009-03" class="refDate">March 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5440">https://www.rfc-editor.org/rfc/rfc5440</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC5714">[RFC5714]</dt>
         <dd>
