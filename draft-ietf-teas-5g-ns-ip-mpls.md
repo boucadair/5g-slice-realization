@@ -163,7 +163,7 @@ informative:
 
 Slicing is a feature that was introduced by the 3rd Generation Partnership Project (3GPP) in mobile networks. Realization of 5G slicing implies requirements for all mobile domains, including the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN).
 
-This document describes a Network Slice realization model for IP/MPLS networks with a focus on the Transport Network fulfilling 5G slicing connectivity and SLAs. The realization model reuses many building blocks currently commonly used in service provider networks.
+This document describes a Network Slice realization model for IP/MPLS networks with a focus on the Transport Network fulfilling 5G slicing connectivity service objectives. The realization model reuses many building blocks currently commonly used in service provider networks.
 
 
 --- middle
