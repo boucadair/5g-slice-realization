@@ -177,7 +177,7 @@ This work is compatible with {{!I-D.ietf-teas-ietf-network-slices}} that defines
 
 The realization that we propose is typically triggered by Network Slice Service requests. How a Network Slice Service request is placed for realization, including how it is derived from a 5G Slice Service request, is out of scope. Network Slice Service mapping considerations (e.g., mapping between 3GPP to IETF service parameters) are discussed in {{?I-D.ietf-teas-5g-network-slice-application}}.
 
-A brief 5G overview is provided in {{sec-5g-intro}} for the reader's convenience. The reader may refer to {{TS-23.501}} or {{5G-Book}} for more details about 3GPP network architectures.
+A brief 5G overview is provided in {{sec-5g-overview}} for the reader's convenience. The reader may refer to {{TS-23.501}} or {{5G-Book}} for more details about 3GPP network architectures.
 
 # Definitions
 
