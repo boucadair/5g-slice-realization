@@ -243,10 +243,11 @@ Table of Contents
    *  5G Network Slicing:
 
       Is defined by the 3GPP as an appraoch where logical networks/
-      partitions are created, with appropriate isolation, resources and
-      optimized topology to serve a purpose or service category or
-      customers [TS-28.530].  These resources are from the TN, RAN, CN
-      Network Functions, and the underlying infrastructure.
+      partitions are created (called, 5G Network Slices), with
+      appropriate isolation, resources and optimized topology to serve a
+      purpose or service category or customers [TS-28.530].  These
+      resources are from the TN, RAN, CN Network Functions, and the
+      underlying infrastructure.
 
    *  TN Slicing:
 
@@ -2041,21 +2042,30 @@ Table of Contents
 6.  Transport Planes Mapping Models
 
    A network operator can define multiple transport planes.  A transport
-   plane could be realized in multiple ways, for example * a mesh of
-   RSVP-TE ({?RFC3209}}) or SR-TE ([RFC9256]) tunnels created with
-   specific optimization criteria and constraints.  E.g., mesh "A" might
-   represent tunnels optimized for latency, and mesh "B" might represent
-   tunnels optimized for high capacity.  * a flex-algo with a particular
-   metric-type (e.g. latency) * an NRP * a combination of the above
+   plane may be realized in multiple ways such as (but not limited to):
 
-   Detailed realization of transport planes is out of scope for this
-   document.  NRPs are discussed in detail in [I-D.ietf-teas-ns-ip-mpls]
+   *  A mesh of RSVP-TE [RFC3209] or SR-TE [RFC9256] tunnels created
+      with specific optimization criteria and constraints.  For example,
+      mesh "A" might represent tunnels optimized for latency, and mesh
+      "B" might represent tunnels optimized for high capacity.
+
+   *  A flex-algo [RFC9350] with a particular metric-type (e.g.,
+      latency).
+
+   *  An NRP [I-D.ietf-teas-ns-ip-mpls]
+
+   *  Any combination thereof.
+
+   Detailed realization of transport planes is out of the scope of this
+   document.
+
    Figure 28 depicts an example of a simple network with two transport
-   planes each using a mesh of TE tunnels with or without PCE, and with
-   or without bandwidth reservations.  Section 7 discusses in detail
-   different bandwidth models that can be deployed in the provider
-   network.  However, discussion about how to realize or orchestrate
-   transport planes is out of scope for this document.
+   planes, each using a mesh of TE tunnels with or without Path
+   Computation Element (PCE) [RFC5440], and with or without bandwidth
+   reservations.  Section 7 discusses in detail different bandwidth
+   models that can be deployed in the provider network.  However,
+   discussion about how to realize or orchestrate transport planes is
+   out of scope for this document.
 
        ┌───────────────┐                                    ┌──────┐
        │  Ingress PE   │   ╔═══════════════════════════════>│ PE-A │
@@ -2081,7 +2091,7 @@ Table of Contents
 
           Figure 28: Transport Planes example based on TE tunnels
 
-   Note that there could be multiple tunnels within a single transport
+   Note that there might be multiple tunnels within a single transport
    plane between any pair of PEs.  Figure 28 shows only single tunnel
    per transport plane for (ingress PE, egress PE) pair.
 
@@ -2708,6 +2718,11 @@ Table of Contents
               IP Fast Reroute: Loop-Free Alternates", RFC 5286,
               DOI 10.17487/RFC5286, September 2008,
               <https://www.rfc-editor.org/rfc/rfc5286>.
+
+   [RFC5440]  Vasseur, JP., Ed. and JL. Le Roux, Ed., "Path Computation
+              Element (PCE) Communication Protocol (PCEP)", RFC 5440,
+              DOI 10.17487/RFC5440, March 2009,
+              <https://www.rfc-editor.org/rfc/rfc5440>.
 
    [RFC5714]  Shand, M. and S. Bryant, "IP Fast Reroute Framework",
               RFC 5714, DOI 10.17487/RFC5714, January 2010,
