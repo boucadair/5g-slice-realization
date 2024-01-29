@@ -27,8 +27,8 @@ Abstract
 
    This document describes a Network Slice realization model for IP/MPLS
    networks with a focus on the Transport Network fulfilling 5G slicing
-   connectivity and SLAs.  The realization model reuses many building
-   blocks currently commonly used in service provider networks.
+   connectivity service objectives.  The realization model reuses many
+   building blocks currently commonly used in service provider networks.
 
 Discussion Venues
 
