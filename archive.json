@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-01-28T00:28:47.946237+00:00",
+  "timestamp": "2024-01-30T00:26:23.289128+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -4557,24 +4557,26 @@
       "id": "PR_kwDOIw9g6c5lIsBA",
       "title": "remove RFCXXXX from the title + cite 5G Network Slices under \"5G Netw\u2026",
       "url": "https://github.com/boucadair/5g-slice-realization/pull/131",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "boucadair",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "\u2026ork Slicing\"",
       "createdAt": "2024-01-26T08:06:35Z",
-      "updatedAt": "2024-01-26T08:06:35Z",
+      "updatedAt": "2024-01-29T13:29:25Z",
       "baseRepository": "boucadair/5g-slice-realization",
       "baseRefName": "main",
       "baseRefOid": "9c76ff6527f4e24c2ad2480b807a45bd00485fa5",
       "headRepository": "boucadair/5g-slice-realization",
       "headRefName": "boucadair-patch-1",
       "headRefOid": "4454eca5ae92b4ab7750da3d532e5be6a5f9f7a9",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-01-29T13:29:24Z",
+      "mergedAt": "2024-01-29T13:29:24Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "7bf52d5a727d762f7751b5f2bc20b827380125e9"
+      },
       "comments": [],
       "reviews": []
     },
@@ -4583,26 +4585,108 @@
       "id": "PR_kwDOIw9g6c5lIvsm",
       "title": "Minor fixes in \"transport planes\" section",
       "url": "https://github.com/boucadair/5g-slice-realization/pull/132",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "boucadair",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-01-26T08:20:43Z",
-      "updatedAt": "2024-01-26T08:21:54Z",
+      "updatedAt": "2024-01-29T13:29:48Z",
       "baseRepository": "boucadair/5g-slice-realization",
       "baseRefName": "main",
       "baseRefOid": "42d3410ded23e384b68ab99ef774f1d1df1bd0f5",
       "headRepository": "boucadair/5g-slice-realization",
       "headRefName": "boucadair-patch-4",
       "headRefOid": "4eb2d52dac3ad2fee1012a3357d5080912cbf646",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-01-29T13:29:48Z",
+      "mergedAt": "2024-01-29T13:29:48Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "58e73ed40b5c6f5690a57b29b8f2c9f1b7f866f8"
+      },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 133,
+      "id": "PR_kwDOIw9g6c5lUR1U",
+      "title": "Update draft-ietf-teas-5g-ns-ip-mpls.md",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/133",
+      "state": "MERGED",
+      "author": "julianL999",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Rewrote abstract and introduction. Changed the title.",
+      "createdAt": "2024-01-29T11:57:07Z",
+      "updatedAt": "2024-01-29T16:00:01Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "58e73ed40b5c6f5690a57b29b8f2c9f1b7f866f8",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "julianL999-patch-2",
+      "headRefOid": "5c8cbab6e165c382c5d05306c0a129cb08eacdeb",
+      "closedAt": "2024-01-29T16:00:00Z",
+      "mergedAt": "2024-01-29T16:00:00Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "76f6a4550ae116730a0d5c03a04d61e5aec3864e"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c5uMK_E",
+          "commit": {
+            "abbreviatedOid": "d2866b9"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "CHANGES_REQUESTED",
+          "body": "Thanks Julian. Please find some proposed changes. ",
+          "createdAt": "2024-01-29T13:32:29Z",
+          "updatedAt": "2024-01-29T13:36:49Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "```suggestion\r\nThis document describes a Network Slice realization model for IP/MPLS networks with a focus on the Transport Network fulfilling 5G slicing connectivity service objectives. The realization model reuses many building blocks currently commonly used in service provider networks.\r\n```",
+              "createdAt": "2024-01-29T13:32:30Z",
+              "updatedAt": "2024-01-29T13:36:49Z"
+            },
+            {
+              "originalPosition": 31,
+              "body": "```suggestion\r\nThis document focuses on network slicing for 5G networks, covering the connectivity between network functions across multiple domains such as edge clouds, data centers, and the WAN.  The document describes a Network Slice realization model that fulfills 5G slicing requirements by using existing IP/MPLS technologies to optimally control Service Level Agreements (SLAs) offered for 5G slices.\r\n```",
+              "createdAt": "2024-01-29T13:33:44Z",
+              "updatedAt": "2024-01-29T13:36:49Z"
+            },
+            {
+              "originalPosition": 38,
+              "body": "```suggestion\r\nThis work is compatible with {{!I-D.ietf-teas-ietf-network-slices}} which defines a generic framework for network slicing built using IETF technologies. The  framework introduces the concept of a Network Resource Partition (NRP), which is a collection of resources identified in the underlay network. This framework is best suited for the WAN (provider network), using just one NRP or multiple NRPs.\r\n```",
+              "createdAt": "2024-01-29T13:35:11Z",
+              "updatedAt": "2024-01-29T13:36:49Z"
+            },
+            {
+              "originalPosition": 41,
+              "body": "```suggestion\r\nThe realization approach described in this document is typically triggered by Network Slice Service requests. How a Network Slice Service request is placed for realization, including how it is derived from a 5G Slice Service request, is out of scope. Network Slice Service mapping considerations (e.g., mapping between 3GPP to IETF service parameters) are discussed, e.g., in {{?I-D.ietf-teas-5g-network-slice-application}}.\r\n```",
+              "createdAt": "2024-01-29T13:36:10Z",
+              "updatedAt": "2024-01-29T13:36:49Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5uNhbq",
+          "commit": {
+            "abbreviatedOid": "5c8cbab"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-01-29T15:59:44Z",
+          "updatedAt": "2024-01-29T15:59:44Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
