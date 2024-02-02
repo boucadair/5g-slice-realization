@@ -491,7 +491,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
 ~~~~
 {: #figure-high-level-qos title="Resource Allocation Slicing Model with a Single NRP" artwork-align="center"}
 
-This document does not describe in detail how to manage an L2VPN or L3VPN, as this is already well-documented. 
+This document does not describe in detail how to manage an L2VPN or L3VPN, as this is already well-documented.
 
 #  Hand-off Between Domains {#sec-handoff-domains}
 
