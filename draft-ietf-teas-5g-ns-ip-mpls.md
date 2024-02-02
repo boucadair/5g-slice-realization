@@ -1664,7 +1664,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    be employed in the provider network.  Many variations are possible,
    but each example describes the salient points of the corresponding
    scheme.  Schemes 2 and 3 use TE; other variations on TE are possible
-   as described in {{?I-D.ietf-teas-rfc3272bis}}.
+   as described in {{?RFC9522}}.
 
 ### Scheme 1: Shortest Path Forwarding (SPF)
 
