@@ -177,6 +177,8 @@ This work is compatible with the framework defined in {{!I-D.ietf-teas-ietf-netw
 
 The realization approach described in this document is typically triggered by Network Slice Service requests. How a Network Slice Service request is placed for realization, including how it is derived from a 5G Slice Service request, is out of scope. Network Slice Service mapping considerations (e.g., mapping between 3GPP to IETF service parameters) are discussed, e.g., in {{?I-D.ietf-teas-5g-network-slice-application}}.
 
+Although the document focuses on 5G, the realizations are not fundamentally constrained by the 5G use case. The document is not intended to be a BCP and does not claim to specify mandatory mechanisms to realize network slices. Rather, a key goal of the document is to provide pragmatic implementation approaches by leveraging existing readily-available, widely-deployed techniques. The document is also intended to align the mobile and the IETF perspectives of slicing.
+
 A brief 5G overview is provided in {{sec-5g-overview}} for the reader's convenience. The reader may refer to {{TS-23.501}} or {{5G-Book}} for more details about 3GPP network architectures.
 
 # Definitions
@@ -353,7 +355,7 @@ As depicted in {{fig-end-to-end}}, the realization of an RFC XXXX Network Slice 
 {: #fig-end-to-end title="Segmentation of the Transport Network" artwork-align="center"}
 
 Resource synchronization for AC provisioning:
-: The realization of the Attachment Circuit is made up of TN resources shared between the Customer Site Orchestration and the Provider Network Orchestration (e.g., RFC XXXX NSC).  More precisely, a PE and a CE connected via an AC must be
+: The realization of the Attachment Circuit is made up of TN resources shared between the Customer Site Orchestration and the Provider Network Orchestration (e.g., RFC XXXX NSC).  More precisely, a PE and a CE connected via an AC need to be
 provisioned with consistent data plane and control plane  information (e.g., VLAN-
 IDs, IP addresses/subnets, or BGP  Autonomous System (AS) Number). Hence, the realization of this
 interconnection is technology-specific and requires coordination between the Customer Site Orchestration and an NSC. Automating the provisioning and management of the AC is recommended. Aligned with {{?RFC8969}}, this document assumes that this coordination is based upon standard YANG data models and APIs.
@@ -414,7 +416,7 @@ Specifically, the actual mapping is a design choice of service operators that ma
 ##  First 5G Slice versus Subsequent Slices {#sec-firstslice}
 
 An operational 5G Network Slice incorporates both 5G Control Plane and User Plane capabilities.
-For instance, consider a slice based on split-CU in the RAN, both CU-UP and CU-CP must be deployed along with the associated interfaces E1, F1-c, F1-u, N2, and N3 which are conveyed in the TN. In this regard, the creation of the "first slice" can be subject to a specific logic that does not apply to subsequent slices. Referring to the example in {{figure-7}}, the first 5G slice relies on the deployment of NF-CP and NF-UP functions together with two TN slices for Control and User Planes (INS-CP and INS-UP1). Next, the deployment of a second slice relies solely on the instantiation of a User Plane Function (NF-UP2) together with a dedicated User Plane TN slice (INS-UP2). The Control Plane of the first 5G slice is also updated to integrate the second slice: the TN Slice (INS-CP) and Network Functions (NF-CP) are shared.
+For instance, consider a slice based on split-CU in the RAN, both CU-UP and CU-CP need to be deployed along with the associated interfaces E1, F1-c, F1-u, N2, and N3 which are conveyed in the TN. In this regard, the creation of the "first slice" can be subject to a specific logic that does not apply to subsequent slices. Referring to the example in {{figure-7}}, the first 5G slice relies on the deployment of NF-CP and NF-UP functions together with two TN slices for Control and User Planes (INS-CP and INS-UP1). Next, the deployment of a second slice relies solely on the instantiation of a User Plane Function (NF-UP2) together with a dedicated User Plane TN slice (INS-UP2). The Control Plane of the first 5G slice is also updated to integrate the second slice: the TN Slice (INS-CP) and Network Functions (NF-CP) are shared.
 
    At the time of writing (2023), Section 6.1.2 of {{NG.113}} specifies that the
    eMBB slice (SST=1 and no Slice Differentiator (SD)) should be supported globally.  This 5G
@@ -488,6 +490,8 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
 {::include ./drawings/high-level-qos.txt}
 ~~~~
 {: #figure-high-level-qos title="Resource Allocation Slicing Model with a Single NRP" artwork-align="center"}
+
+This document does not describe in detail how to manage an L2VPN or L3VPN, as this is already well-documented. 
 
 #  Hand-off Between Domains {#sec-handoff-domains}
 
@@ -566,7 +570,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
    a slice on the PE, hence all slices are handled within single service instance.
    The IP and VLAN hand-offs are not mutually exclusive, but instead could be used
    concurrently. Since the TN doesn't recognize S-NSSAI, a mapping table similar to
-   the VLAN Hand-off solution must be utilized {{sec-vlan-handoff}}.
+   the VLAN Hand-off solution should be utilized {{sec-vlan-handoff}}.
 
    The mapping table can be simplified if, for example, IPv6 addressing is used to
    address NFs. An IPv6 address is a 128-bit long field, while the S-NSSAI is a
@@ -682,7 +686,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
    deployments, where at the domain boundaries service prefixes are
    reflected with next-hop self, and new label is dynamically allocated,
    as visible in {{figure-mpls-10b-hand-off}} (e.g., labels A, A', and A" for the first depicted slice).  Therefore, for any slice-specific per-hop
-   behavior at the provider network edge, the PE must be able to determine
+   behavior at the provider network edge, the PE needs to determine
    which label represents which slice.  In the BGP control plane, when
    exchanging service prefixes over attachment circuit, each slice might be represented by a unique BGP community, so
    tracking label assignment to the slice is possible.  For example, in
@@ -710,7 +714,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
 
 Option B relies upon exchanging service prefixes between customer sites
 and the provider network. This may lead to scaling challenges in large
-scale 5G deployments as the PE node must carry all service prefixes.
+scale 5G deployments as the PE node needs to carry all service prefixes.
 To alleviate this scaling challenge, in Option C, service prefixes are
 exchanged between customer sites only. In doing so, the provider network is offloaded from
 carrying, propagating, and programing appropriate forwarding entries
@@ -761,7 +765,7 @@ As a result, a node in a customer site performs hierarchical next-hop resolution
 This architecture requires an end-to-end Label Switched Path (LSP) leading from a packet's
 ingress node inside one customer site to its egress inside another customer
 site, through a provider network. Hence, at the domain (customer site, provider network)
-boundaries NEXT_HOP attribute for IPv4/IPv6 labeled unicast must be modified to "next-hop self" (nhs),
+boundaries NEXT_HOP attribute for IPv4/IPv6 labeled unicast needs to be modified to "next-hop self" (nhs),
 which results in new IPv4/IPv6 labeled unicast label allocation. Appropriate label swap
 forwarding entries for IPv4/IPv6 labeled unicast labels are programmed in the data plane.
 On the attachment circuit there is no additional 'labeled transport' protocol (i.e., no LDP, RSVP, SR, ...).
@@ -769,14 +773,14 @@ On the attachment circuit there is no additional 'labeled transport' protocol (i
 Packets are transmitted over the attachment circuit with the IPv4/IPv6 labeled
 unicast as the top label, with service label deeper in the label stack. In Option C,
 the service label is not used for forwarding lookup on the PE. This significantly
-lowers the scaling pressure on PEs, as PEs must program forwarding entries only for
+lowers the scaling pressure on PEs, as PEs need to program forwarding entries only for
 IPv4/IPv6 labeled unicast host routes, used as NEXT_HOP for service prefixes. Also,
 since one IPv4/IPv6 labeled unicast host route represent one customer site, regardless
 of the number of slices in the customer site, the number of forwarding entries
 on a PE is considerably reduced.
 
 For any slice-specific per-hop behavior at the provider network edge, as described
-in details in {{sec-over-rea-model}}, the PE must be able to determine which label in the packet
+in details in {{sec-over-rea-model}}, the PE need to determine which label in the packet
 represents which slice. This can be achieved, for example, by allocating non-overlapping service label
 ranges for each slice, and use these ranges for slice identification purposes on PE.
 
@@ -1536,7 +1540,7 @@ to TN QoS Classes may be rather common.
 ## Bandwidth Requirements
 
    This section describes the information conveyed by the 5G NSO to the
-   transport controller with respect to slice bandwidth requirements.
+   RFCXXXX NSC with respect to slice bandwidth requirements.
 
    {{figure-multi-DC}} shows three DCs that contain instances of network
    functions.  Also shown are PEs that have links to the DCs.  The PEs
@@ -1547,7 +1551,7 @@ to TN QoS Classes may be rather common.
 
    The 5G NSO is aware of the existence of the network functions and their
    locations.  However, it is not aware of the details of the provider
-   network.  The transport controller has the opposite view - it is
+   network.  The RFCXXXX NSC has the opposite view - it is
    aware of the provider network infrastructure and the links between the PEs
    and the DCs, but is not aware of the individual network functions at customer sites.
 
@@ -1713,7 +1717,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    demands of the individual slices.  For example, if only Slice X and
    Slice Y are present, then the bandwidth requirement from DC1 to DC2
    is 12 units (8 units for Slice X and 4 units for Slice Y).  When the
-   5G NSO requests a new slice, the transport controller, in its mind,
+   5G NSO requests a new slice, the RFCXXXX NSC, in its mind,
    increments the bandwidth requirement according to the requirements of
    the new slice.  For example, in {{figure-multi-DC}}, suppose a new slice is
    instantiated that needs 0.8 Gbps from DC1 to DC2.  The transport
@@ -1722,7 +1726,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    additional expected traffic.
 
    In the example, each DC has two PEs facing it for reasons of
-   resilience.  The transport controller needs to determine how to map
+   resilience.  The RFCXXXX NSC needs to determine how to map
    the DC1 to DC2 bandwidth requirement to bandwidth reservations of TE
    LSPs from DC1 to DC2.  For example, if the routing configuration is
    arranged such that in the absence of any network failure, traffic
@@ -1733,12 +1737,12 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    enters PE1A and is load-balanced across PE2A and PE2B, the controller
    reserves 6.4 Gbps of bandwidth on the LSP from PE1A to PE2A and 6.4
    Gbps of bandwidth on the LSP from PE1A to PE2B.  It might be tricky
-   for the transport controller to be aware of all conditions that
+   for the RFCXXXX NSC to be aware of all conditions that
    change the way traffic lands on the various PEs, and therefore know
    that it needs to change bandwidth reservations of LSPs accordingly.
    For example, there might be an internal failure within DC1 that
    causes traffic from DC1 to land on PE1B, rather than PE1A.  The
-   transport controller may not be aware of the failure and therefore
+   RFCXXXX NSC may not be aware of the failure and therefore
    may not know that it now needs to apply bandwidth reservations to
    LSPs from PE1B to PE2A/PE2B.
 
@@ -1757,7 +1761,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    measured data-plane traffic volumes are used to influence the
    placement of TE LSPs.  One way of achieving this is to use
    distributed RSVP-TE with auto-bandwidth.  Alternatively, the
-   transport controller can use telemetry-driven automatic congestion
+   RFCXXXX NSC can use telemetry-driven automatic congestion
    avoidance.  In this approach, when the actual traffic volume in the
    data plane on given link exceeds a threshold, the controller, knowing
    how much actual data plane traffic is currently travelling along each
@@ -1843,7 +1847,7 @@ The NETCONF access control model {{!RFC8341}} provides the means to restrict acc
 
 Security considerations specific to each of the technologies and protocols listed in the document are discussed in the specification documents of each of these protocols.
 
-Adequate admission control policies should be configured in the edge of the provider network to control access to specific slice resources. Likewise, access to classification and mapping tables must be controlled to prevent misbehaviors (an unauthorized entity may modify the table to bind traffic to a random slice, redirect the traffic, etc.). Network devices must check that a required access privilege is provided before granting access to specific data or performing specific actions.
+Adequate admission control policies should be configured in the edge of the provider network to control access to specific slice resources. Likewise, access to classification and mapping tables have to be controlled to prevent misbehaviors (an unauthorized entity may modify the table to bind traffic to a random slice, redirect the traffic, etc.). Network devices have to check that a required access privilege is provided before granting access to specific data or performing specific actions.
 
 
 --- back
