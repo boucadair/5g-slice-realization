@@ -2368,7 +2368,7 @@ Table of Contents
    be employed in the provider network.  Many variations are possible,
    but each example describes the salient points of the corresponding
    scheme.  Schemes 2 and 3 use TE; other variations on TE are possible
-   as described in [I-D.ietf-teas-rfc3272bis].
+   as described in [RFC9522].
 
 7.2.1.  Scheme 1: Shortest Path Forwarding (SPF)
 
@@ -2676,13 +2676,6 @@ Table of Contents
               2023, <https://datatracker.ietf.org/doc/html/draft-ietf-
               teas-ns-ip-mpls-03>.
 
-   [I-D.ietf-teas-rfc3272bis]
-              Farrel, A., "Overview and Principles of Internet Traffic
-              Engineering", Work in Progress, Internet-Draft, draft-
-              ietf-teas-rfc3272bis-27, 12 August 2023,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-teas-
-              rfc3272bis-27>.
-
    [NG.113]   GSMA, "NG.113: 5GS Roaming Guidelines Version 4.0", May
               2021, <https://www.gsma.com/newsroom/wp-content/
               uploads//NG.113-v4.0.pdf>.
@@ -2865,6 +2858,10 @@ Table of Contents
               Maintenance (OAM) for Service Function Chaining (SFC)",
               RFC 9516, DOI 10.17487/RFC9516, November 2023,
               <https://www.rfc-editor.org/rfc/rfc9516>.
+
+   [RFC9522]  Farrel, A., Ed., "Overview and Principles of Internet
+              Traffic Engineering", RFC 9522, DOI 10.17487/RFC9522,
+              January 2024, <https://www.rfc-editor.org/rfc/rfc9522>.
 
    [TR-GSTR-TN5G]
               ITU-T, "Technical Report GSTR-TN5G", February 2018,
