@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 1 August 2024                                  Juniper Networks
+Expires: 5 August 2024                                  Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                         29 January 2024
+                                                         2 February 2024
 
 
  A Realization of Network Slices for 5G Networks Using Current IP/MPLS
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 1 August 2024.
+   This Internet-Draft will expire on 5 August 2024.
 
 Copyright Notice
 
@@ -139,16 +139,17 @@ Table of Contents
    This document focuses on network slicing for 5G networks, covering
    the connectivity between network functions across multiple domains
    such as edge clouds, data centers, and the WAN.  The document
-   describes a Network Slice realization model that fulfills 5G slicing
-   requirements by using existing IP/MPLS technologies to optimally
-   control Service Level Agreements (SLAs) offered for 5G slices.
+   describes a Network Slice realization approach that fulfills 5G
+   slicing requirements by using existing IP/MPLS technologies to
+   optimally control Service Level Agreements (SLAs) offered for 5G
+   slices.
 
-   This work is compatible with [I-D.ietf-teas-ietf-network-slices]
-   which defines a generic framework for network slicing built using
-   IETF technologies.  The framework introduces the concept of a Network
-   Resource Partition (NRP), which is a collection of resources
-   identified in the underlay network.  This framework is best suited
-   for the WAN (provider network), using just one NRP or multiple NRPs.
+   This work is compatible with the framework defined in
+   [I-D.ietf-teas-ietf-network-slices] which describes network slicing
+   in the context of networks built from IETF technologies.  This
+   framework introduces the concept of a Network Resource Partition
+   (NRP), which is a collection of resources identified in the underlay
+   network.
 
    The realization approach described in this document is typically
    triggered by Network Slice Service requests.  How a Network Slice
