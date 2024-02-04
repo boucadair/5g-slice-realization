@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-01T00:27:48.662368+00:00",
+  "timestamp": "2024-02-04T00:29:08.156552+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -1384,7 +1384,7 @@
       "id": "I_kwDOIw9g6c58eqay",
       "title": "(5.2.1.2. Outbound Edge Resource Control) Check the language",
       "url": "https://github.com/boucadair/5g-slice-realization/issues/118",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "boucadair",
       "authorAssociation": "OWNER",
       "assignees": [
@@ -1395,8 +1395,8 @@
       ],
       "body": "> While inbound slice admission control at the provider network edge is mandatory in the architecture described in this document, outbound provider network edge resource control might not be required in all use cases. Use cases that specifically call for outbound provider network edge resource control are\r\n\r\nFrom Alvaro: \"Note that only one mention of a \"mandatory (function) in the architecture described in this document\" is present in the whole document (Section 5.2.1.2.  Outbound Edge Resource Control) -- making everything else optional and requiring some guidance.\"",
       "createdAt": "2024-01-18T14:31:34Z",
-      "updatedAt": "2024-01-22T20:19:39Z",
-      "closedAt": null,
+      "updatedAt": "2024-02-02T15:04:26Z",
+      "closedAt": "2024-02-02T15:04:26Z",
       "comments": [
         {
           "author": "kszarkowicz",
@@ -1502,7 +1502,7 @@
       "id": "I_kwDOIw9g6c58kZAV",
       "title": "What is transport controller?",
       "url": "https://github.com/boucadair/5g-slice-realization/issues/125",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "boucadair",
       "authorAssociation": "OWNER",
       "assignees": [],
@@ -1511,8 +1511,8 @@
       ],
       "body": "From Yoshi: \r\n  \r\n> Section 7.1\r\n>      what is transport controller? I think the term and its role should be\r\n>      explained more clearly.\r\n",
       "createdAt": "2024-01-19T08:15:51Z",
-      "updatedAt": "2024-01-19T08:15:51Z",
-      "closedAt": null,
+      "updatedAt": "2024-02-02T15:04:36Z",
+      "closedAt": "2024-02-02T15:04:36Z",
       "comments": []
     },
     {
@@ -1520,7 +1520,7 @@
       "id": "I_kwDOIw9g6c58kZV8",
       "title": "Readers expectation",
       "url": "https://github.com/boucadair/5g-slice-realization/issues/126",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "boucadair",
       "authorAssociation": "OWNER",
       "assignees": [],
@@ -1529,8 +1529,8 @@
       ],
       "body": "From Yoshi: \r\n\r\n> This is a fairly long document that contains various information. I think it would be good if it describes which people should read it as well as how to utilize the information in the doc in the introduction. Also, it seems that some information described in the doc is not strongly related to others. Do we expect that the readers of the doc should read entire document or only part of it based on their interests? In the latter case, I think it would be good to describe who should read which sections.",
       "createdAt": "2024-01-19T08:16:29Z",
-      "updatedAt": "2024-01-19T08:16:29Z",
-      "closedAt": null,
+      "updatedAt": "2024-02-02T15:04:53Z",
+      "closedAt": "2024-02-02T15:04:53Z",
       "comments": []
     }
   ],
@@ -4687,6 +4687,129 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 134,
+      "id": "PR_kwDOIw9g6c5ltfz9",
+      "title": "Update draft-ietf-teas-5g-ns-ip-mpls.md",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/134",
+      "state": "MERGED",
+      "author": "robric",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Changed introduction",
+      "createdAt": "2024-02-01T14:42:57Z",
+      "updatedAt": "2024-02-02T14:11:14Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "76f6a4550ae116730a0d5c03a04d61e5aec3864e",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "robric-patch-1-1",
+      "headRefOid": "89a83e88b201ce2457fd253679f90e2af6ee935c",
+      "closedAt": "2024-02-02T14:11:13Z",
+      "mergedAt": "2024-02-02T14:11:13Z",
+      "mergedBy": "julianL999",
+      "mergeCommit": {
+        "oid": "498b6a7bf769fc017d3c1d14d0f6d11adaba89fd"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c5uygwh",
+          "commit": {
+            "abbreviatedOid": "5eb2436"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "CHANGES_REQUESTED",
+          "body": "Thanks Richard. Here is a change proposal and a comment.\r\n\r\n",
+          "createdAt": "2024-02-02T09:12:11Z",
+          "updatedAt": "2024-02-02T09:16:50Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "```suggestion\r\nThis work is compatible with the framework defined in {{!I-D.ietf-teas-ietf-network-slices}} which describes network slicing in the context of networks built from IETF technologies. This framework introduces the concept of a Network Resource Partition (NRP), which is a collection of resources identified in the underlay network.\r\n```\r\n\r\notherwise \"This framework..\" won't be OK in the next sentence.",
+              "createdAt": "2024-02-02T09:12:11Z",
+              "updatedAt": "2024-02-02T09:42:32Z"
+            },
+            {
+              "originalPosition": 9,
+              "body": "I wonder if you can add some text to basically say why the framework is not suitable for the customer scope, for example. Thanks. ",
+              "createdAt": "2024-02-02T09:16:45Z",
+              "updatedAt": "2024-02-02T09:16:50Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5uyzK7",
+          "commit": {
+            "abbreviatedOid": "01b5a39"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-02T09:48:35Z",
+          "updatedAt": "2024-02-02T09:48:35Z",
+          "comments": [
+            {
+              "originalPosition": 9,
+              "body": "```suggestion\r\n```",
+              "createdAt": "2024-02-02T09:48:35Z",
+              "updatedAt": "2024-02-02T09:48:35Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5uyzUA",
+          "commit": {
+            "abbreviatedOid": "01b5a39"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-02T09:48:53Z",
+          "updatedAt": "2024-02-02T09:48:54Z",
+          "comments": [
+            {
+              "originalPosition": 9,
+              "body": "See [I](https://mailarchive.ietf.org/arch/msg/teas/WtZF8AFnubcVUYBxcn7i8COozC0/)",
+              "createdAt": "2024-02-02T09:48:54Z",
+              "updatedAt": "2024-02-02T09:48:54Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 135,
+      "id": "PR_kwDOIw9g6c5l2aeQ",
+      "title": "Update draft-ietf-teas-rfc3272bis to rfc9522",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/135",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-02-02T16:16:39Z",
+      "updatedAt": "2024-02-02T16:17:31Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "755385a233e6c939ab3b069c76916459af85d4b0",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "draft-ietf-teas-rfc3272bis",
+      "headRefOid": "a92c14d2c409e5396af96188517bf5321628f697",
+      "closedAt": "2024-02-02T16:17:31Z",
+      "mergedAt": "2024-02-02T16:17:31Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "25da3056f76495abd9f58f2594842362863c503d"
+      },
+      "comments": [],
+      "reviews": []
     }
   ]
 }
