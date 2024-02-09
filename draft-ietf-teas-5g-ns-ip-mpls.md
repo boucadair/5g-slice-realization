@@ -1376,7 +1376,7 @@ to TN QoS Classes may be rather common.
 
    * A mesh of RSVP-TE {{?RFC3209}} or SR-TE {{?RFC9256}} tunnels created with specific optimization criteria and
    constraints. For example, mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.
-   * A flex-algo {{?RFC9350}} with a particular metric-type (e.g., latency).
+   * A flex-algo {{?RFC9350}} with a particular metric-type (e.g., latency), or one that only uses links with particular properties (e.g. MACsec link), or excludes links that are within a particular geography. 
    * An NRP {{?I-D.ietf-teas-ns-ip-mpls}}
    * Any combination thereof.
 
@@ -1847,7 +1847,7 @@ The NETCONF access control model {{!RFC8341}} provides the means to restrict acc
 
 Security considerations specific to each of the technologies and protocols listed in the document are discussed in the specification documents of each of these protocols.
 
-Adequate admission control policies should be configured in the edge of the provider network to control access to specific slice resources. Likewise, access to classification and mapping tables have to be controlled to prevent misbehaviors (an unauthorized entity may modify the table to bind traffic to a random slice, redirect the traffic, etc.). Network devices have to check that a required access privilege is provided before granting access to specific data or performing specific actions.
+Adequate admission control policies should be configured in the edge of the provider network to control access to specific slice resources. This prevents the possibility of one slice consuming resources at the expense of other slices. Likewise, access to classification and mapping tables have to be controlled to prevent misbehaviors (an unauthorized entity may modify the table to bind traffic to a random slice, redirect the traffic, etc.). Network devices have to check that a required access privilege is provided before granting access to specific data or performing specific actions.
 
 
 --- back
@@ -1860,7 +1860,7 @@ The following issues should be resolved prior to the WGLC:
    - This issue is tracked at https://github.com/boucadair/5g-slice-realization/issues/40.
    - Update: The outcome of the discussion with the authors of the application I-D can be seen at: https://mailarchive.ietf.org/arch/msg/teas/4QifnnGAcnQcCTXRLSJtQ1SArLA/.
 2. Assess whether we need to maintain the "First 5G Slice vs Subsequent Slices" Section:
-   - Unless we explain how this ss important for realization, this section should be deleted (Med)
+   - Unless we explain how this is important for realization, this section should be deleted (Med)
    - The motivation of this section is not clear (from Reza)
    - Need to describe the implications to the realization of RFC XXXX Network Slices (Jie)
    - The issue is tracked at https://github.com/boucadair/5g-slice-realization/issues/19
