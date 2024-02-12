@@ -1376,7 +1376,7 @@ to TN QoS Classes may be rather common.
 
    * A mesh of RSVP-TE {{?RFC3209}} or SR-TE {{?RFC9256}} tunnels created with specific optimization criteria and
    constraints. For example, mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.
-   * A flex-algo {{?RFC9350}} with a particular metric-type (e.g., latency), or one that only uses links with particular properties (e.g. MACsec link), or excludes links that are within a particular geography. 
+   * A flex-algo {{?RFC9350}} with a particular metric-type (e.g., latency), or one that only uses links with particular properties (e.g. MACsec link), or excludes links that are within a particular geography.
    * An NRP {{?I-D.ietf-teas-ns-ip-mpls}}
    * Any combination thereof.
 
@@ -1844,7 +1844,7 @@ RFC XXXX Network Slices security considerations are discussed in {{Section 10 of
 
  * Conformance to security constraints:
    
-      Specific security requests, such as not routing traffic through a particular geographical region can be met by mapping the traffic to a transport plane that avoids that region. 
+      Specific security requests, such as not routing traffic through a particular geographical region can be met by mapping the traffic to a transport plane that avoids that region.
        
  * IETF NSC authentication:
 
