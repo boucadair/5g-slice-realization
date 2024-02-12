@@ -4,41 +4,30 @@
 <meta charset="utf-8">
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
-<title>A Realization of RFC XXXX Network Slices for 5G Networks Using Current IP/MPLS Technologies</title>
+<title>A Realization of Network Slices for 5G Networks Using Current IP/MPLS Technologies</title>
 <meta content="Krzysztof G. Szarkowicz" name="author">
 <meta content="Richard Roberts" name="author">
 <meta content="Julian Lucek" name="author">
 <meta content="Mohamed Boucadair" name="author">
 <meta content="Luis M. Contreras" name="author">
-<meta content='
-       Slicing is a feature that was introduced by the 3rd Generation
-   Partnership Project (3GPP) in mobile networks. Realization of 5G slicing implies
-   requirements for all mobile domains, including the Radio Access
-   Network (RAN), Core Network (CN), and Transport Network (TN). 
-       This document describes a basic RFC XXXX Network Slice realization model
-   in IP/MPLS networks with a focus on the Transport Network fulfilling
-   5G slicing connectivity requirements. This realization model reuses many building blocks currently commonly used
-   in service provider networks. 
-       
-         
-           Note to the RFC Editor: Please update "RFC XXXX Network Slice"  with the RFC number assigned to I-D.ietf-teas-ietf-network-slices. 
-         
-       
-    ' name="description">
-<meta content="xml2rfc 3.19.1" name="generator">
+<meta content="
+       Slicing is a feature that was introduced by the 3rd Generation Partnership Project (3GPP) in mobile networks. Realization of 5G slicing implies requirements for all mobile domains, including the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN). 
+       This document describes a Network Slice realization model for IP/MPLS networks with a focus on the Transport Network fulfilling 5G slicing connectivity service objectives. The realization model reuses many building blocks currently commonly used in service provider networks. 
+    " name="description">
+<meta content="xml2rfc 3.19.2" name="generator">
 <meta content="L3VPN" name="keyword">
 <meta content="L2VPN" name="keyword">
 <meta content="Slice Service" name="keyword">
 <meta content="draft-ietf-teas-5g-ns-ip-mpls-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.19.1
+  xml2rfc 3.19.2
     Python 3.11.6
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
     intervaltree 3.1.0
     Jinja2 3.1.2
     lxml 4.9.3
-    platformdirs 4.1.0
+    platformdirs 4.2.0
     pycountry 22.3.5
     PyYAML 6.0.1
     requests 2.31.0
@@ -1043,11 +1032,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Implementing 5G Transport Slices</td>
-<td class="right">January 2024</td>
+<td class="right">February 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Szarkowicz, et al.</td>
-<td class="center">Expires 25 July 2024</td>
+<td class="center">Expires 15 August 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1060,12 +1049,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-teas-5g-ns-ip-mpls-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-01-22" class="published">22 January 2024</time>
+<time datetime="2024-02-12" class="published">12 February 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-07-25">25 July 2024</time></dd>
+<dd class="expires"><time datetime="2024-08-15">15 August 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1094,22 +1083,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </dd>
 </dl>
 </div>
-<h1 id="title">A Realization of RFC XXXX Network Slices for 5G Networks Using Current IP/MPLS Technologies</h1>
+<h1 id="title">A Realization of Network Slices for 5G Networks Using Current IP/MPLS Technologies</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">Slicing is a feature that was introduced by the 3rd Generation
-   Partnership Project (3GPP) in mobile networks. Realization of 5G slicing implies
-   requirements for all mobile domains, including the Radio Access
-   Network (RAN), Core Network (CN), and Transport Network (TN).<a href="#section-abstract-1" class="pilcrow">¶</a></p>
-<p id="section-abstract-2">This document describes a basic RFC XXXX Network Slice realization model
-   in IP/MPLS networks with a focus on the Transport Network fulfilling
-   5G slicing connectivity requirements. This realization model reuses many building blocks currently commonly used
-   in service provider networks.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
-<ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-abstract-3.1">
-          <p id="section-abstract-3.1.1">Note to the RFC Editor: Please update "RFC XXXX Network Slice"  with the RFC number assigned to I-D.ietf-teas-ietf-network-slices.<a href="#section-abstract-3.1.1" class="pilcrow">¶</a></p>
-</li>
-      </ul>
+<p id="section-abstract-1">Slicing is a feature that was introduced by the 3rd Generation Partnership Project (3GPP) in mobile networks. Realization of 5G slicing implies requirements for all mobile domains, including the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN).<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-2">This document describes a Network Slice realization model for IP/MPLS networks with a focus on the Transport Network fulfilling 5G slicing connectivity service objectives. The realization model reuses many building blocks currently commonly used in service provider networks.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-discussion-venues">
@@ -1141,7 +1119,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 25 July 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 15 August 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1373,23 +1351,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1"><span>[<a href="#I-D.ietf-teas-ietf-network-slices" class="cite xref">I-D.ietf-teas-ietf-network-slices</a>]</span> defines a framework for
-   network slicing in the context of networks built using IETF
-   technologies.  The RFC XXXX network slicing framework introduces the
-   concept of a Network Resource Partition (NRP), which is a
-   collection of resources identified in the underlay network.  There
-   could be multiple realizations of RFC XXXX Network Slice and
-   NRP concepts, where each realization might be optimized for the
-   different network slicing use cases.<a href="#section-1-1" class="pilcrow">¶</a></p>
-<p id="section-1-2">This document describes an RFC XXXX Network Slice realization model
-   in IP/MPLS networks, using one or more NRPs and with a focus on
-   fulfilling 5G slicing connectivity requirements.
-   This realization model leverages many building blocks currently
-   commonly used in service provider networks.<a href="#section-1-2" class="pilcrow">¶</a></p>
-<p id="section-1-3">This document focuses on the technical realization of RFC XXXX Network Slices. The realization is typically triggered by Network Slice Service requests. How a Network Slice Service request is placed for realization, including how it is derived from a 5G Slice Service request, is out of scope. Network Slice Service mapping considerations (e.g., mapping between 3GPP to IETF service parameters) are discussed in <span>[<a href="#I-D.ietf-teas-5g-network-slice-application" class="cite xref">I-D.ietf-teas-5g-network-slice-application</a>]</span>.<a href="#section-1-3" class="pilcrow">¶</a></p>
-<p id="section-1-4">Note that 5G slicing can be implemented with or without Transport Network (TN) slicing. However, implementing TN slicing as part of 5G slicing allows operators to better control Service Level Agreements (SLAs). See <a href="#sec-5g" class="auto internal xref">Section 3</a>.<a href="#section-1-4" class="pilcrow">¶</a></p>
-<p id="section-1-5">A brief 5G overview is provided in <a href="#sec-5g-intro" class="auto internal xref">Appendix C</a> for readers' convenience. The reader may refer to <span>[<a href="#TS-23.501" class="cite xref">TS-23.501</a>]</span> or <span>[<a href="#_5G-Book" class="cite xref">_5G-Book</a>]</span> for more
-   details about 3GPP network architectures.<a href="#section-1-5" class="pilcrow">¶</a></p>
+<p id="section-1-1">This document focuses on network slicing for 5G networks, covering the connectivity between network functions across multiple domains such as edge clouds, data centers, and the WAN.  The document describes a Network Slice realization approach that fulfills 5G slicing requirements by using existing IP/MPLS technologies to optimally control Service Level Agreements (SLAs) offered for 5G slices.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">This work is compatible with the framework defined in <span>[<a href="#I-D.ietf-teas-ietf-network-slices" class="cite xref">I-D.ietf-teas-ietf-network-slices</a>]</span> which describes network slicing in the context of networks built from IETF technologies.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-3">The realization approach described in this document is typically triggered by Network Slice Service requests. How a Network Slice Service request is placed for realization, including how it is derived from a 5G Slice Service request, is out of scope. Network Slice Service mapping considerations (e.g., mapping between 3GPP to IETF service parameters) are discussed, e.g., in <span>[<a href="#I-D.ietf-teas-5g-network-slice-application" class="cite xref">I-D.ietf-teas-5g-network-slice-application</a>]</span>.<a href="#section-1-3" class="pilcrow">¶</a></p>
+<p id="section-1-4">Although the document focuses on 5G, the realizations are not fundamentally constrained by the 5G use case. The document is not intended to be a BCP and does not claim to specify mandatory mechanisms to realize network slices. Rather, a key goal of the document is to provide pragmatic implementation approaches by leveraging existing readily-available, widely-deployed techniques. The document is also intended to align the mobile and the IETF perspectives of slicing.<a href="#section-1-4" class="pilcrow">¶</a></p>
+<p id="section-1-5">A brief 5G overview is provided in <a href="#sec-5g-overview" class="auto internal xref">Appendix C</a> for the reader's convenience. The reader may refer to <span>[<a href="#TS-23.501" class="cite xref">TS-23.501</a>]</span> or <span>[<a href="#_5G-Book" class="cite xref">_5G-Book</a>]</span> for more details about 3GPP network architectures.<a href="#section-1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="definitions">
@@ -1411,7 +1377,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         <h3 id="name-scope-of-the-transport-netw">
 <a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-scope-of-the-transport-netw" class="section-name selfRef">Scope of the Transport Network</a>
         </h3>
-<p id="section-3.1-1"><a href="#sec-5g-intro" class="auto internal xref">Appendix C</a> provides an overview of 5G network building blocks: the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN). The Transport Network is defined by the 3GPP as the "part supporting connectivity within and between CN and RAN parts" (Section 1 of <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span>).<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.1-1"><a href="#sec-5g-overview" class="auto internal xref">Appendix C</a> provides an overview of 5G network building blocks: the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN). The Transport Network is defined by the 3GPP as the "part supporting connectivity within and between CN and RAN parts" (Section 1 of <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span>).<a href="#section-3.1-1" class="pilcrow">¶</a></p>
 <p id="section-3.1-2">As discussed in Section 4.4.1 of <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span>, the 3GPP management system does not directly control the Transport Network: it is considered as a non-3GPP managed system.<a href="#section-3.1-2" class="pilcrow">¶</a></p>
 <ul class="normal ulEmpty">
 <li class="normal ulEmpty" id="section-3.1-3.1">
@@ -1464,7 +1430,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <li class="normal" id="section-3.2-2.1">
             <p id="section-3.2-2.1.1">5G Network Slicing:<a href="#section-3.2-2.1.1" class="pilcrow">¶</a></p>
 <p id="section-3.2-2.1.2">
-Is defined by the 3GPP as an appraoch where logical networks/partitions are created, with appropriate isolation, resources and optimized topology to serve a purpose or service category or customers <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span>. These resources are from the TN, RAN, CN
+Is defined by the 3GPP as an appraoch where logical networks/partitions are created (called, 5G Network Slices), with appropriate isolation, resources and optimized topology to serve a purpose or service category or customers <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span>. These resources are from the TN, RAN, CN
  Network Functions, and the underlying infrastructure.<a href="#section-3.2-2.1.2" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-3.2-2.2">
@@ -1672,7 +1638,7 @@ However, this document does not exclude the instantiation of multiple ACs betwee
           <h4 id="name-service-aware-ce">
 <a href="#section-3.3.3" class="section-number selfRef">3.3.3. </a><a href="#name-service-aware-ce" class="section-name selfRef">Service-aware CE</a>
           </h4>
-<p id="section-3.3.3-1">While in most cases CEs connect to PEs using IP (e.g., VLANs), a CE may also connect to the provider network using MPLS -potentially over IP tunnels- or Segment Routing over IPv6 (SRv6) <span>[<a href="#RFC8754" class="cite xref">RFC8754</a>]</span>. The CE has awareness of provider services configuration (e.g., control plane identifiers such as Route Targets (RTs) and Route Distinguishers (RDs)). An example of such an AC is depicted in <a href="#_figure-51" class="auto internal xref">Figure 4</a>. This is a source of confusion since these configurations are typically enforced on PEs. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE.<a href="#section-3.3.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.3.3-1">While in most cases CEs connect to PEs using IP (e.g., VLANs), a CE may also connect to the provider network using MPLS -potentially over IP tunnels- or Segment Routing over IPv6 (SRv6) <span>[<a href="#RFC8986" class="cite xref">RFC8986</a>]</span>. The CE has awareness of provider services configuration (e.g., control plane identifiers such as Route Targets (RTs) and Route Distinguishers (RDs)). An example of such an AC is depicted in <a href="#_figure-51" class="auto internal xref">Figure 4</a>. This is a source of confusion since these configurations are typically enforced on PEs. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE.<a href="#section-3.3.3-1" class="pilcrow">¶</a></p>
 <span id="name-example-of-mpls-based-attac"></span><div id="_figure-51">
 <figure id="figure-4">
             <div class="alignCenter art-text artwork" id="section-3.3.3-2.1">
@@ -1841,7 +1807,7 @@ CS │NF1├────┤ CE ├──────┤ PE │          │ PE �
 <span class="break"></span><dl class="dlParallel" id="section-3.4.2-5">
             <dt id="section-3.4.2-5.1">Resource synchronization for AC provisioning:</dt>
             <dd style="margin-left: 1.5em" id="section-3.4.2-5.2">
-              <p id="section-3.4.2-5.2.1">The realization of the Attachment Circuit is made up of TN resources shared between the Customer Site Orchestration and the Provider Network Orchestration (e.g., RFC XXXX NSC).  More precisely, a PE and a CE connected via an AC must be
+              <p id="section-3.4.2-5.2.1">The realization of the Attachment Circuit is made up of TN resources shared between the Customer Site Orchestration and the Provider Network Orchestration (e.g., RFC XXXX NSC).  More precisely, a PE and a CE connected via an AC need to be
 provisioned with consistent data plane and control plane  information (e.g., VLAN-
 IDs, IP addresses/subnets, or BGP  Autonomous System (AS) Number). Hence, the realization of this
 interconnection is technology-specific and requires coordination between the Customer Site Orchestration and an NSC. Automating the provisioning and management of the AC is recommended. Aligned with <span>[<a href="#RFC8969" class="cite xref">RFC8969</a>]</span>, this document assumes that this coordination is based upon standard YANG data models and APIs.<a href="#section-3.4.2-5.2.1" class="pilcrow">¶</a></p>
@@ -1998,7 +1964,7 @@ A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For inst
 <a href="#section-3.6" class="section-number selfRef">3.6. </a><a href="#name-first-5g-slice-versus-subse" class="section-name selfRef">First 5G Slice versus Subsequent Slices</a>
         </h3>
 <p id="section-3.6-1">An operational 5G Network Slice incorporates both 5G Control Plane and User Plane capabilities.
-For instance, consider a slice based on split-CU in the RAN, both CU-UP and CU-CP must be deployed along with the associated interfaces E1, F1-c, F1-u, N2, and N3 which are conveyed in the TN. In this regard, the creation of the "first slice" can be subject to a specific logic that does not apply to subsequent slices. Referring to the example in <a href="#_figure-7" class="auto internal xref">Figure 10</a>, the first 5G slice relies on the deployment of NF-CP and NF-UP functions together with two TN slices for Control and User Planes (INS-CP and INS-UP1). Next, the deployment of a second slice relies solely on the instantiation of a User Plane Function (NF-UP2) together with a dedicated User Plane TN slice (INS-UP2). The Control Plane of the first 5G slice is also updated to integrate the second slice: the TN Slice (INS-CP) and Network Functions (NF-CP) are shared.<a href="#section-3.6-1" class="pilcrow">¶</a></p>
+For instance, consider a slice based on split-CU in the RAN, both CU-UP and CU-CP need to be deployed along with the associated interfaces E1, F1-c, F1-u, N2, and N3 which are conveyed in the TN. In this regard, the creation of the "first slice" can be subject to a specific logic that does not apply to subsequent slices. Referring to the example in <a href="#_figure-7" class="auto internal xref">Figure 10</a>, the first 5G slice relies on the deployment of NF-CP and NF-UP functions together with two TN slices for Control and User Planes (INS-CP and INS-UP1). Next, the deployment of a second slice relies solely on the instantiation of a User Plane Function (NF-UP2) together with a dedicated User Plane TN slice (INS-UP2). The Control Plane of the first 5G slice is also updated to integrate the second slice: the TN Slice (INS-CP) and Network Functions (NF-CP) are shared.<a href="#section-3.6-1" class="pilcrow">¶</a></p>
 <p id="section-3.6-2">At the time of writing (2023), Section 6.1.2 of <span>[<a href="#NG.113" class="cite xref">NG.113</a>]</span> specifies that the
    eMBB slice (SST=1 and no Slice Differentiator (SD)) should be supported globally.  This 5G
    slice would be the first slice in any 5G deployment.<a href="#section-3.6-2" class="pilcrow">¶</a></p>
@@ -2532,6 +2498,7 @@ distribution even in non-ECMP friendly network topologies.<a href="#section-3.7-
 <a href="#name-resource-allocation-slicing" class="selfRef">Resource Allocation Slicing Model with a Single NRP</a>
           </figcaption></figure>
 </div>
+<p id="section-3.7-4">This document does not describe in detail how to manage an L2VPN or L3VPN, as this is already well-documented.<a href="#section-3.7-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2668,7 +2635,7 @@ VLANs representing slices           VLANs representing slices
    a slice on the PE, hence all slices are handled within single service instance.
    The IP and VLAN hand-offs are not mutually exclusive, but instead could be used
    concurrently. Since the TN doesn't recognize S-NSSAI, a mapping table similar to
-   the VLAN Hand-off solution must be utilized <a href="#sec-vlan-handoff" class="auto internal xref">Section 4.1</a>.<a href="#section-4.2-6" class="pilcrow">¶</a></p>
+   the VLAN Hand-off solution should be utilized <a href="#sec-vlan-handoff" class="auto internal xref">Section 4.1</a>.<a href="#section-4.2-6" class="pilcrow">¶</a></p>
 <p id="section-4.2-7">The mapping table can be simplified if, for example, IPv6 addressing is used to
    address NFs. An IPv6 address is a 128-bit long field, while the S-NSSAI is a
    32-bit field: Slice/Service Type (SST): 8 bits, Slice Differentiator (SD): 24
@@ -2864,7 +2831,7 @@ representing slices              representing slices    slices
    deployments, where at the domain boundaries service prefixes are
    reflected with next-hop self, and new label is dynamically allocated,
    as visible in <a href="#_figure-mpls-10b-hand-off" class="auto internal xref">Figure 16</a> (e.g., labels A, A', and A" for the first depicted slice).  Therefore, for any slice-specific per-hop
-   behavior at the provider network edge, the PE must be able to determine
+   behavior at the provider network edge, the PE needs to determine
    which label represents which slice.  In the BGP control plane, when
    exchanging service prefixes over attachment circuit, each slice might be represented by a unique BGP community, so
    tracking label assignment to the slice is possible.  For example, in
@@ -2895,7 +2862,7 @@ representing slices              representing slices    slices
           </h4>
 <p id="section-4.3.3-1">Option B relies upon exchanging service prefixes between customer sites
 and the provider network. This may lead to scaling challenges in large
-scale 5G deployments as the PE node must carry all service prefixes.
+scale 5G deployments as the PE node needs to carry all service prefixes.
 To alleviate this scaling challenge, in Option C, service prefixes are
 exchanged between customer sites only. In doing so, the provider network is offloaded from
 carrying, propagating, and programing appropriate forwarding entries
@@ -2950,20 +2917,20 @@ As a result, a node in a customer site performs hierarchical next-hop resolution
 <p id="section-4.3.3-4">This architecture requires an end-to-end Label Switched Path (LSP) leading from a packet's
 ingress node inside one customer site to its egress inside another customer
 site, through a provider network. Hence, at the domain (customer site, provider network)
-boundaries NEXT_HOP attribute for IPv4/IPv6 labeled unicast must be modified to "next-hop self" (nhs),
+boundaries NEXT_HOP attribute for IPv4/IPv6 labeled unicast needs to be modified to "next-hop self" (nhs),
 which results in new IPv4/IPv6 labeled unicast label allocation. Appropriate label swap
 forwarding entries for IPv4/IPv6 labeled unicast labels are programmed in the data plane.
 On the attachment circuit there is no additional 'labeled transport' protocol (i.e., no LDP, RSVP, SR, ...).<a href="#section-4.3.3-4" class="pilcrow">¶</a></p>
 <p id="section-4.3.3-5">Packets are transmitted over the attachment circuit with the IPv4/IPv6 labeled
 unicast as the top label, with service label deeper in the label stack. In Option C,
 the service label is not used for forwarding lookup on the PE. This significantly
-lowers the scaling pressure on PEs, as PEs must program forwarding entries only for
+lowers the scaling pressure on PEs, as PEs need to program forwarding entries only for
 IPv4/IPv6 labeled unicast host routes, used as NEXT_HOP for service prefixes. Also,
 since one IPv4/IPv6 labeled unicast host route represent one customer site, regardless
 of the number of slices in the customer site, the number of forwarding entries
 on a PE is considerably reduced.<a href="#section-4.3.3-5" class="pilcrow">¶</a></p>
 <p id="section-4.3.3-6">For any slice-specific per-hop behavior at the provider network edge, as described
-in details in <a href="#sec-over-rea-model" class="auto internal xref">Section 3.7</a>, the PE must be able to determine which label in the packet
+in details in <a href="#sec-over-rea-model" class="auto internal xref">Section 3.7</a>, the PE need to determine which label in the packet
 represents which slice. This can be achieved, for example, by allocating non-overlapping service label
 ranges for each slice, and use these ranges for slice identification purposes on PE.<a href="#section-4.3.3-6" class="pilcrow">¶</a></p>
 </section>
@@ -3203,7 +3170,7 @@ Fine-grained QoS enforcement   Coarse-grained QoS enforcement
 <p id="section-5.2.1-7">From a QoS perspective, both options are similar.  However, there
    is one difference between the two options.  The MPLS TC is only 3
    bits (8 possible combinations), while DSCP is 6 bits (64 possible
-   combinations).  Hence, SRv6 <span>[<a href="#RFC8754" class="cite xref">RFC8754</a>]</span> provides more flexibility for TN CoS
+   combinations).  Hence, SRv6 provides more flexibility for TN CoS
    design, especially in combination with soft policing with in-profile/
    out-profile traffic, as discussed in <a href="#sec-inbound-edge-resource-control" class="auto internal xref">Section 5.2.1.1</a>.<a href="#section-5.2.1-7" class="pilcrow">¶</a></p>
 <p id="section-5.2.1-8">Provider network edge resources are controlled in a granular, fine-grained
@@ -3244,7 +3211,8 @@ Fine-grained QoS enforcement   Coarse-grained QoS enforcement
 <li class="normal" id="section-5.2.1.1-5.1">
                 <p id="section-5.2.1.1-5.1.1">1r2c (single-rate two-color) rate limiter<a href="#section-5.2.1.1-5.1.1" class="pilcrow">¶</a></p>
 <p id="section-5.2.1.1-5.1.2">
-This is the most basic rate limiter, which meters at the SDP a
+This is the most basic rate limiter, described in <span><a href="https://rfc-editor.org/rfc/rfc2475#section-2.3" class="relref">Section 2.3</a> of [<a href="#RFC2475" class="cite xref">RFC2475</a>]</span>
+It meters at the SDP a
 traffic stream of given slice and marks its packets as in-profile
 (below CIR being enforced) or out-of-profile (above CIR being enforced).
 In-profile packets are accepted and forwarded.  Out-of profile
@@ -3368,9 +3336,9 @@ outbound direction at the provider network edge links.<a href="#section-5.2.1.2-
 <p id="section-5.2.1.2-4"><a href="#_figure-18" class="auto internal xref">Figure 22</a> outlines the outbound provider network edge resource control model
    for 5QI-unaware slices.  Each slice is
    assigned a single egress queue.  The sum of slice CIRs, used as the
-   weight in weighted queueing model, must not exceed the physical
+   weight in weighted queueing model, should not exceed the physical
    capacity of the attachment circuit.  Slice requests above this limit
-   must be rejected by the RFC XXXX NSC, unless an already established slice with
+   should be rejected by the RFC XXXX NSC, unless an already established slice with
    lower priority, if such exists, is preempted.<a href="#section-5.2.1.2-4" class="pilcrow">¶</a></p>
 <span id="name-ingress-slice-admission-cont"></span><div id="_figure-18">
 <figure id="figure-22">
@@ -3676,9 +3644,9 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
 <p id="section-5.2.2.2-1"><a href="#_figure-22" class="auto internal xref">Figure 27</a> outlines the outbound edge resource control model at the
    transport network layer for 5QI-aware slices.  Each slice is assigned
    multiple egress queues.  The sum of queue weights, which are 5Q QoS
-   queue CIRs within the slice, must not exceed the CIR of the slice
+   queue CIRs within the slice, should not exceed the CIR of the slice
    itself.  And, similarly to the 5QI-aware model, the sum of slice CIRs
-   must not exceed the physical capacity of the attachment circuit.<a href="#section-5.2.2.2-1" class="pilcrow">¶</a></p>
+   should not exceed the physical capacity of the attachment circuit.<a href="#section-5.2.2.2-1" class="pilcrow">¶</a></p>
 <span id="name-egress-slice-admission-cont"></span><div id="_figure-22">
 <figure id="figure-27">
               <div class="alignCenter art-text artwork" id="section-5.2.2.2-2.1">
@@ -3764,28 +3732,38 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
 </div>
 </section>
 </div>
-<div id="transport-planes-mapping-models">
+<div id="transport-plane-mapping-models">
 <section id="section-6">
       <h2 id="name-transport-planes-mapping-mo">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-transport-planes-mapping-mo" class="section-name selfRef">Transport Planes Mapping Models</a>
       </h2>
-<p id="section-6-1">A network operator can define multiple transport planes. A transport plane could be realized in multiple ways, for example
-   * a mesh of TE tunnels created with specific optimization criteria and
-   constraints. E.g., mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.
-   * a flex-algo with a particular metric-type (e.g. latency)
-   * an NRP
-   * a combination of the above<a href="#section-6-1" class="pilcrow">¶</a></p>
-<p id="section-6-2">Detailed realization of transport planes is out of scope for this document. NRPs are discussed in detail in <span>[<a href="#I-D.ietf-teas-ns-ip-mpls" class="cite xref">I-D.ietf-teas-ns-ip-mpls</a>]</span>
-        <a href="#_figure-23" class="auto internal xref">Figure 28</a> depicts an example of a simple network with two transport
-   planes each using a mesh of TE tunnels with or without PCE, and with or without bandwidth
+<p id="section-6-1">A network operator can define multiple transport planes. A transport plane may be realized in multiple ways such as (but not limited to):<a href="#section-6-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-6-2.1">
+          <p id="section-6-2.1.1">A mesh of RSVP-TE <span>[<a href="#RFC3209" class="cite xref">RFC3209</a>]</span> or SR-TE <span>[<a href="#RFC9256" class="cite xref">RFC9256</a>]</span> tunnels created with specific optimization criteria and
+   constraints. For example, mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.<a href="#section-6-2.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-6-2.2">
+          <p id="section-6-2.2.1">A flex-algo <span>[<a href="#RFC9350" class="cite xref">RFC9350</a>]</span> with a particular metric-type (e.g., latency), or one that only uses links with particular properties (e.g. MACsec link), or excludes links that are within a particular geography.<a href="#section-6-2.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-6-2.3">
+          <p id="section-6-2.3.1">An NRP <span>[<a href="#I-D.ietf-teas-ns-ip-mpls" class="cite xref">I-D.ietf-teas-ns-ip-mpls</a>]</span><a href="#section-6-2.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-6-2.4">
+          <p id="section-6-2.4.1">Any combination thereof.<a href="#section-6-2.4.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="section-6-3">Detailed realization of transport planes is out of the scope of this document.<a href="#section-6-3" class="pilcrow">¶</a></p>
+<p id="section-6-4"><a href="#_figure-23" class="auto internal xref">Figure 28</a> depicts an example of a simple network with two transport
+   planes, each using a mesh of TE tunnels with or without Path Computation Element (PCE) <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>, and with or without bandwidth
    reservations.
    <a href="#sec-capacity-planning" class="auto internal xref">Section 7</a> discusses in detail different bandwidth
    models that can be deployed in the provider network.  However,
    discussion about how to realize or orchestrate transport planes is
-   out of scope for this document.<a href="#section-6-2" class="pilcrow">¶</a></p>
+   out of scope for this document.<a href="#section-6-4" class="pilcrow">¶</a></p>
 <span id="name-transport-planes-example-ba"></span><div id="_figure-23">
 <figure id="figure-28">
-        <div class="alignCenter art-text artwork" id="section-6-3.1">
+        <div class="alignCenter art-text artwork" id="section-6-5.1">
 <pre>
 ┌───────────────┐                                    ┌──────┐
 │  Ingress PE   │   ╔═══════════════════════════════&gt;│ PE-A │
@@ -3814,16 +3792,16 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
 <a href="#name-transport-planes-example-ba" class="selfRef">Transport Planes example based on TE tunnels</a>
         </figcaption></figure>
 </div>
-<p id="section-6-4">Note that there could be multiple tunnels within a single transport plane
+<p id="section-6-6">Note that there might be multiple tunnels within a single transport plane
    between any pair of PEs. <a href="#_figure-23" class="auto internal xref">Figure 28</a> shows only single
-   tunnel per transport plane for (ingress PE, egress PE) pair.<a href="#section-6-4" class="pilcrow">¶</a></p>
-<p id="section-6-5">Similar to the QoS mapping models discussed in <a href="#sec-qos-map" class="auto internal xref">Section 5</a>, for mapping
+   tunnel per transport plane for (ingress PE, egress PE) pair.<a href="#section-6-6" class="pilcrow">¶</a></p>
+<p id="section-6-7">Similar to the QoS mapping models discussed in <a href="#sec-qos-map" class="auto internal xref">Section 5</a>, for mapping
    to transport planes at the ingress PE, both 5QI-unaware and 5QI-aware
    models are defined.  Essentially, entire slices can be mapped to
    transport planes without 5G QoS consideration (5QI-unaware model). For example,
    flows with different 5G QoS Classes, even from same
    slice, can be mapped to different transport planes (5QI-aware
-   model).<a href="#section-6-5" class="pilcrow">¶</a></p>
+   model).<a href="#section-6-7" class="pilcrow">¶</a></p>
 <div id="qi-unaware-model">
 <section id="section-6.1">
         <h3 id="name-5qi-unaware-model-2">
@@ -3963,7 +3941,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
 <a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-bandwidth-requirements" class="section-name selfRef">Bandwidth Requirements</a>
         </h3>
 <p id="section-7.1-1">This section describes the information conveyed by the 5G NSO to the
-   transport controller with respect to slice bandwidth requirements.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
+   RFCXXXX NSC with respect to slice bandwidth requirements.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
 <p id="section-7.1-2"><a href="#_figure-multi-DC" class="auto internal xref">Figure 31</a> shows three DCs that contain instances of network
    functions.  Also shown are PEs that have links to the DCs.  The PEs
    belong to the provider network.  Other details of the provider
@@ -3972,7 +3950,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    shown.<a href="#section-7.1-2" class="pilcrow">¶</a></p>
 <p id="section-7.1-3">The 5G NSO is aware of the existence of the network functions and their
    locations.  However, it is not aware of the details of the provider
-   network.  The transport controller has the opposite view - it is
+   network.  The RFCXXXX NSC has the opposite view - it is
    aware of the provider network infrastructure and the links between the PEs
    and the DCs, but is not aware of the individual network functions at customer sites.<a href="#section-7.1-3" class="pilcrow">¶</a></p>
 <span id="name-an-example-of-multi-dc-arch"></span><div id="_figure-multi-DC">
@@ -4119,7 +4097,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    be employed in the provider network.  Many variations are possible,
    but each example describes the salient points of the corresponding
    scheme.  Schemes 2 and 3 use TE; other variations on TE are possible
-   as described in <span>[<a href="#I-D.ietf-teas-rfc3272bis" class="cite xref">I-D.ietf-teas-rfc3272bis</a>]</span>.<a href="#section-7.2-1" class="pilcrow">¶</a></p>
+   as described in <span>[<a href="#RFC9522" class="cite xref">RFC9522</a>]</span>.<a href="#section-7.2-1" class="pilcrow">¶</a></p>
 <div id="scheme-1-shortest-path-forwarding-spf">
 <section id="section-7.2.1">
           <h4 id="name-scheme-1-shortest-path-forw">
@@ -4156,7 +4134,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
           <h4 id="name-scheme-2-te-lsps-with-fixed">
 <a href="#section-7.2.2" class="section-number selfRef">7.2.2. </a><a href="#name-scheme-2-te-lsps-with-fixed" class="section-name selfRef">Scheme 2: TE LSPs with Fixed Bandwidth Reservations</a>
           </h4>
-<p id="section-7.2.2-1">Scheme 2 uses RSVP-TE or SR-TE LSPs with fixed bandwidth
+<p id="section-7.2.2-1">Scheme 2 uses RSVP-TE <span>[<a href="#RFC3209" class="cite xref">RFC3209</a>]</span> or SR-TE LSPs <span>[<a href="#RFC9256" class="cite xref">RFC9256</a>]</span> with fixed bandwidth
    reservations.  By "fixed", we mean a value that stays constant over
    time, unless the 5G NSO communicates a change in slice bandwidth
    requirements, due to the creation or modification of a slice.  Note
@@ -4174,7 +4152,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    demands of the individual slices.  For example, if only Slice X and
    Slice Y are present, then the bandwidth requirement from DC1 to DC2
    is 12 units (8 units for Slice X and 4 units for Slice Y).  When the
-   5G NSO requests a new slice, the transport controller, in its mind,
+   5G NSO requests a new slice, the RFCXXXX NSC, in its mind,
    increments the bandwidth requirement according to the requirements of
    the new slice.  For example, in <a href="#_figure-multi-DC" class="auto internal xref">Figure 31</a>, suppose a new slice is
    instantiated that needs 0.8 Gbps from DC1 to DC2.  The transport
@@ -4182,7 +4160,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    from DC1 to DC2 from 12 Gbps to 12.8 Gbps to accommodate the
    additional expected traffic.<a href="#section-7.2.2-2" class="pilcrow">¶</a></p>
 <p id="section-7.2.2-3">In the example, each DC has two PEs facing it for reasons of
-   resilience.  The transport controller needs to determine how to map
+   resilience.  The RFCXXXX NSC needs to determine how to map
    the DC1 to DC2 bandwidth requirement to bandwidth reservations of TE
    LSPs from DC1 to DC2.  For example, if the routing configuration is
    arranged such that in the absence of any network failure, traffic
@@ -4193,12 +4171,12 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    enters PE1A and is load-balanced across PE2A and PE2B, the controller
    reserves 6.4 Gbps of bandwidth on the LSP from PE1A to PE2A and 6.4
    Gbps of bandwidth on the LSP from PE1A to PE2B.  It might be tricky
-   for the transport controller to be aware of all conditions that
+   for the RFCXXXX NSC to be aware of all conditions that
    change the way traffic lands on the various PEs, and therefore know
    that it needs to change bandwidth reservations of LSPs accordingly.
    For example, there might be an internal failure within DC1 that
    causes traffic from DC1 to land on PE1B, rather than PE1A.  The
-   transport controller may not be aware of the failure and therefore
+   RFCXXXX NSC may not be aware of the failure and therefore
    may not know that it now needs to apply bandwidth reservations to
    LSPs from PE1B to PE2A/PE2B.<a href="#section-7.2.2-3" class="pilcrow">¶</a></p>
 </section>
@@ -4220,7 +4198,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    measured data-plane traffic volumes are used to influence the
    placement of TE LSPs.  One way of achieving this is to use
    distributed RSVP-TE with auto-bandwidth.  Alternatively, the
-   transport controller can use telemetry-driven automatic congestion
+   RFCXXXX NSC can use telemetry-driven automatic congestion
    avoidance.  In this approach, when the actual traffic volume in the
    data plane on given link exceeds a threshold, the controller, knowing
    how much actual data plane traffic is currently travelling along each
@@ -4295,7 +4273,7 @@ are enabled within its network. Such dynamic discovery capability
 facilitates the detection of any mismatch between the view
 maintained by the control/management plane and the actual network
 configuration.  When mismatches are detected, corrective actions
-must be undertaken accordingly. For example, a provider may rely
+should be undertaken accordingly. For example, a provider may rely
 upon the L3NM <span>[<a href="#RFC9182" class="cite xref">RFC9182</a>]</span> or the L2NM <span>[<a href="#RFC9291" class="cite xref">RFC9291</a>]</span> to maintain the full
 set of L3VPN/L2VPNs that are used to deliver Network Slice Services.
 The correlation between an LxVPN instance and a Network Slice Service
@@ -4329,11 +4307,32 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
       <h2 id="name-security-considerations">
 <a href="#section-10" class="section-number selfRef">10. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-10-1">RFC XXXX Network Slices considerations are discussed in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slices-25#section-6" class="relref">Section 6</a> of [<a href="#I-D.ietf-teas-ietf-network-slices" class="cite xref">I-D.ietf-teas-ietf-network-slices</a>]</span>.<a href="#section-10-1" class="pilcrow">¶</a></p>
-<p id="section-10-2">Many of the YANG modules cited in this document define schema for data that is designed to be accessed via network management protocols such as NETCONF <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> or RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>. The lowest NETCONF layer is the secure transport layer, and the mandatory-to-implement secure transport is Secure Shell (SSH) <span>[<a href="#RFC6242" class="cite xref">RFC6242</a>]</span>. The lowest RESTCONF layer is HTTPS, and the mandatory-to-implement secure transport is TLS <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>.<a href="#section-10-2" class="pilcrow">¶</a></p>
-<p id="section-10-3">The NETCONF access control model <span>[<a href="#RFC8341" class="cite xref">RFC8341</a>]</span> provides the means to restrict access for particular NETCONF or RESTCONF users to a preconfigured subset of all available NETCONF or RESTCONF protocol operations and content.<a href="#section-10-3" class="pilcrow">¶</a></p>
-<p id="section-10-4">Security considerations specific to each of the technologies and protocols listed in the document are discussed in the specification documents of each of these protocols.<a href="#section-10-4" class="pilcrow">¶</a></p>
-<p id="section-10-5">Adequate admission control policies should be configured in the edge of the provider network to control access to specific slice resources. Likewise, access to classification and mapping tables must be controlled to prevent misbehaviors (an unauthorized entity may modify the table to bind traffic to a random slice, redirect the traffic, etc.). Network devices must check that a required access privilege is provided before granting access to specific data or performing specific actions.<a href="#section-10-5" class="pilcrow">¶</a></p>
+<p id="section-10-1">RFC XXXX Network Slices security considerations are discussed in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slices-25#section-10" class="relref">Section 10</a> of [<a href="#I-D.ietf-teas-ietf-network-slices" class="cite xref">I-D.ietf-teas-ietf-network-slices</a>]</span>. In particular, it discusses the following considerations:<a href="#section-10-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-10-2.1">
+          <p id="section-10-2.1.1">Conformance to security constraints:<a href="#section-10-2.1.1" class="pilcrow">¶</a></p>
+<p id="section-10-2.1.2">
+Specific security requests, such as not routing traffic through a particular geographical region can be met by mapping the traffic to a transport plane that avoids that region.<a href="#section-10-2.1.2" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-10-2.2">
+          <p id="section-10-2.2.1">IETF NSC authentication:<a href="#section-10-2.2.1" class="pilcrow">¶</a></p>
+<p id="section-10-2.2.2">
+This is out of scope for this document. It should be addressed in documents that describe IETF NSC realization.<a href="#section-10-2.2.2" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-10-2.3">
+          <p id="section-10-2.3.1">Specific isolation criteria:<a href="#section-10-2.3.1" class="pilcrow">¶</a></p>
+<p id="section-10-2.3.2">
+Adequate admission control policies, for example policers as described in <a href="#sec-inbound-edge-resource-control" class="auto internal xref">Section 5.2.1.1</a>, should be configured in the edge of the provider network to control access to specific slice resources. This prevents the possibility of one slice consuming resources at the expense of other slices. Likewise, access to classification and mapping tables have to be controlled to prevent misbehaviors (an unauthorized entity may modify the table to bind traffic to a random slice, redirect the traffic, etc.). Network devices have to check that a required access privilege is provided before granting access to specific data or performing specific actions.<a href="#section-10-2.3.2" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-10-2.4">
+          <p id="section-10-2.4.1">Data Confidentiality and Integrity of an IETF Network Slice:<a href="#section-10-2.4.1" class="pilcrow">¶</a></p>
+<p id="section-10-2.4.2">
+As described in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slices-25#section-5.1.2.1" class="relref">Section 5.1.2.1</a> of [<a href="#I-D.ietf-teas-ietf-network-slices" class="cite xref">I-D.ietf-teas-ietf-network-slices</a>]</span>, the customer might request an SLE that mandates encryption. As described in {#transport-plane-mapping-models}, this can be achieved by mapping the traffic to a transport plane that uses only MACsec-encrypted links.<a href="#section-10-2.4.2" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="section-10-3">Many of the YANG modules cited in this document define schema for data that is designed to be accessed via network management protocols such as NETCONF <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> or RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>. The lowest NETCONF layer is the secure transport layer, and the mandatory-to-implement secure transport is Secure Shell (SSH) <span>[<a href="#RFC6242" class="cite xref">RFC6242</a>]</span>. The lowest RESTCONF layer is HTTPS, and the mandatory-to-implement secure transport is TLS <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>.<a href="#section-10-3" class="pilcrow">¶</a></p>
+<p id="section-10-4">The NETCONF access control model <span>[<a href="#RFC8341" class="cite xref">RFC8341</a>]</span> provides the means to restrict access for particular NETCONF or RESTCONF users to a preconfigured subset of all available NETCONF or RESTCONF protocol operations and content.<a href="#section-10-4" class="pilcrow">¶</a></p>
+<p id="section-10-5">Security considerations specific to each of the technologies and protocols listed in the document are discussed in the specification documents of each of these protocols.<a href="#section-10-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <section id="section-11">
@@ -4393,11 +4392,11 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
 <dd class="break"></dd>
 <dt id="I-D.ietf-opsawg-ntw-attachment-circuit">[I-D.ietf-opsawg-ntw-attachment-circuit]</dt>
         <dd>
-<span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Roberts, R.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, and <span class="refAuthor">B. Wu</span>, <span class="refTitle">"A Network YANG Data Model for Attachment Circuits"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-opsawg-ntw-attachment-circuit-04</span>, <time datetime="2023-12-14" class="refDate">14 December 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-ntw-attachment-circuit-04">https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-ntw-attachment-circuit-04</a>&gt;</span>. </dd>
+<span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Roberts, R.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, and <span class="refAuthor">B. Wu</span>, <span class="refTitle">"A Network YANG Data Model for Attachment Circuits"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-opsawg-ntw-attachment-circuit-05</span>, <time datetime="2024-02-09" class="refDate">9 February 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-ntw-attachment-circuit-05">https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-ntw-attachment-circuit-05</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-opsawg-teas-attachment-circuit">[I-D.ietf-opsawg-teas-attachment-circuit]</dt>
         <dd>
-<span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Roberts, R.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, and <span class="refAuthor">B. Wu</span>, <span class="refTitle">"YANG Data Models for Bearers and 'Attachment Circuits'-as-a-Service (ACaaS)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-opsawg-teas-attachment-circuit-04</span>, <time datetime="2024-01-14" class="refDate">14 January 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-teas-attachment-circuit-04">https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-teas-attachment-circuit-04</a>&gt;</span>. </dd>
+<span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Roberts, R.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, and <span class="refAuthor">B. Wu</span>, <span class="refTitle">"YANG Data Models for Bearers and 'Attachment Circuits'-as-a-Service (ACaaS)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-opsawg-teas-attachment-circuit-06</span>, <time datetime="2024-02-09" class="refDate">9 February 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-teas-attachment-circuit-06">https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-teas-attachment-circuit-06</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-teas-5g-network-slice-application">[I-D.ietf-teas-5g-network-slice-application]</dt>
         <dd>
@@ -4411,10 +4410,6 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
         <dd>
 <span class="refAuthor">Saad, T.</span>, <span class="refAuthor">Beeram, V. P.</span>, <span class="refAuthor">Dong, J.</span>, <span class="refAuthor">Wen, B.</span>, <span class="refAuthor">Ceccarelli, D.</span>, <span class="refAuthor">Halpern, J. M.</span>, <span class="refAuthor">Peng, S.</span>, <span class="refAuthor">Chen, R.</span>, <span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Contreras, L. M.</span>, <span class="refAuthor">Rokui, R.</span>, and <span class="refAuthor">L. Jalil</span>, <span class="refTitle">"Realizing Network Slices in IP/MPLS Networks"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-ns-ip-mpls-03</span>, <time datetime="2023-11-26" class="refDate">26 November 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-ip-mpls-03">https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-ip-mpls-03</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="I-D.ietf-teas-rfc3272bis">[I-D.ietf-teas-rfc3272bis]</dt>
-        <dd>
-<span class="refAuthor">Farrel, A.</span>, <span class="refTitle">"Overview and Principles of Internet Traffic Engineering"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-rfc3272bis-27</span>, <time datetime="2023-08-12" class="refDate">12 August 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-rfc3272bis-27">https://datatracker.ietf.org/doc/html/draft-ietf-teas-rfc3272bis-27</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="NG.113">[NG.113]</dt>
         <dd>
 <span class="refAuthor">GSMA</span>, <span class="refTitle">"NG.113: 5GS Roaming Guidelines Version 4.0"</span>, <time datetime="2021-05" class="refDate">May 2021</time>, <span>&lt;<a href="https://www.gsma.com/newsroom/wp-content/uploads//NG.113-v4.0.pdf">https://www.gsma.com/newsroom/wp-content/uploads//NG.113-v4.0.pdf</a>&gt;</span>. </dd>
@@ -4427,9 +4422,17 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
         <dd>
 <span class="refAuthor">Nichols, K.</span>, <span class="refAuthor">Blake, S.</span>, <span class="refAuthor">Baker, F.</span>, and <span class="refAuthor">D. Black</span>, <span class="refTitle">"Definition of the Differentiated Services Field (DS Field) in the IPv4 and IPv6 Headers"</span>, <span class="seriesInfo">RFC 2474</span>, <span class="seriesInfo">DOI 10.17487/RFC2474</span>, <time datetime="1998-12" class="refDate">December 1998</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2474">https://www.rfc-editor.org/rfc/rfc2474</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC2475">[RFC2475]</dt>
+        <dd>
+<span class="refAuthor">Blake, S.</span>, <span class="refAuthor">Black, D.</span>, <span class="refAuthor">Carlson, M.</span>, <span class="refAuthor">Davies, E.</span>, <span class="refAuthor">Wang, Z.</span>, and <span class="refAuthor">W. Weiss</span>, <span class="refTitle">"An Architecture for Differentiated Services"</span>, <span class="seriesInfo">RFC 2475</span>, <span class="seriesInfo">DOI 10.17487/RFC2475</span>, <time datetime="1998-12" class="refDate">December 1998</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2475">https://www.rfc-editor.org/rfc/rfc2475</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC2698">[RFC2698]</dt>
         <dd>
 <span class="refAuthor">Heinanen, J.</span> and <span class="refAuthor">R. Guerin</span>, <span class="refTitle">"A Two Rate Three Color Marker"</span>, <span class="seriesInfo">RFC 2698</span>, <span class="seriesInfo">DOI 10.17487/RFC2698</span>, <time datetime="1999-09" class="refDate">September 1999</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2698">https://www.rfc-editor.org/rfc/rfc2698</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC3209">[RFC3209]</dt>
+        <dd>
+<span class="refAuthor">Awduche, D.</span>, <span class="refAuthor">Berger, L.</span>, <span class="refAuthor">Gan, D.</span>, <span class="refAuthor">Li, T.</span>, <span class="refAuthor">Srinivasan, V.</span>, and <span class="refAuthor">G. Swallow</span>, <span class="refTitle">"RSVP-TE: Extensions to RSVP for LSP Tunnels"</span>, <span class="seriesInfo">RFC 3209</span>, <span class="seriesInfo">DOI 10.17487/RFC3209</span>, <time datetime="2001-12" class="refDate">December 2001</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc3209">https://www.rfc-editor.org/rfc/rfc3209</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC4115">[RFC4115]</dt>
         <dd>
@@ -4442,6 +4445,10 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
 <dt id="RFC5286">[RFC5286]</dt>
         <dd>
 <span class="refAuthor">Atlas, A., Ed.</span> and <span class="refAuthor">A. Zinin, Ed.</span>, <span class="refTitle">"Basic Specification for IP Fast Reroute: Loop-Free Alternates"</span>, <span class="seriesInfo">RFC 5286</span>, <span class="seriesInfo">DOI 10.17487/RFC5286</span>, <time datetime="2008-09" class="refDate">September 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5286">https://www.rfc-editor.org/rfc/rfc5286</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC5440">[RFC5440]</dt>
+        <dd>
+<span class="refAuthor">Vasseur, JP., Ed.</span> and <span class="refAuthor">JL. Le Roux, Ed.</span>, <span class="refTitle">"Path Computation Element (PCE) Communication Protocol (PCEP)"</span>, <span class="seriesInfo">RFC 5440</span>, <span class="seriesInfo">DOI 10.17487/RFC5440</span>, <time datetime="2009-03" class="refDate">March 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5440">https://www.rfc-editor.org/rfc/rfc5440</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC5714">[RFC5714]</dt>
         <dd>
@@ -4503,17 +4510,21 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
         <dd>
 <span class="refAuthor">Clemm, A.</span> and <span class="refAuthor">E. Voit</span>, <span class="refTitle">"Subscription to YANG Notifications for Datastore Updates"</span>, <span class="seriesInfo">RFC 8641</span>, <span class="seriesInfo">DOI 10.17487/RFC8641</span>, <time datetime="2019-09" class="refDate">September 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8641">https://www.rfc-editor.org/rfc/rfc8641</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="RFC8754">[RFC8754]</dt>
-        <dd>
-<span class="refAuthor">Filsfils, C., Ed.</span>, <span class="refAuthor">Dukes, D., Ed.</span>, <span class="refAuthor">Previdi, S.</span>, <span class="refAuthor">Leddy, J.</span>, <span class="refAuthor">Matsushima, S.</span>, and <span class="refAuthor">D. Voyer</span>, <span class="refTitle">"IPv6 Segment Routing Header (SRH)"</span>, <span class="seriesInfo">RFC 8754</span>, <span class="seriesInfo">DOI 10.17487/RFC8754</span>, <time datetime="2020-03" class="refDate">March 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8754">https://www.rfc-editor.org/rfc/rfc8754</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="RFC8969">[RFC8969]</dt>
         <dd>
 <span class="refAuthor">Wu, Q., Ed.</span>, <span class="refAuthor">Boucadair, M., Ed.</span>, <span class="refAuthor">Lopez, D.</span>, <span class="refAuthor">Xie, C.</span>, and <span class="refAuthor">L. Geng</span>, <span class="refTitle">"A Framework for Automating Service and Network Management with YANG"</span>, <span class="seriesInfo">RFC 8969</span>, <span class="seriesInfo">DOI 10.17487/RFC8969</span>, <time datetime="2021-01" class="refDate">January 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8969">https://www.rfc-editor.org/rfc/rfc8969</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC8986">[RFC8986]</dt>
+        <dd>
+<span class="refAuthor">Filsfils, C., Ed.</span>, <span class="refAuthor">Camarillo, P., Ed.</span>, <span class="refAuthor">Leddy, J.</span>, <span class="refAuthor">Voyer, D.</span>, <span class="refAuthor">Matsushima, S.</span>, and <span class="refAuthor">Z. Li</span>, <span class="refTitle">"Segment Routing over IPv6 (SRv6) Network Programming"</span>, <span class="seriesInfo">RFC 8986</span>, <span class="seriesInfo">DOI 10.17487/RFC8986</span>, <time datetime="2021-02" class="refDate">February 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8986">https://www.rfc-editor.org/rfc/rfc8986</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC9182">[RFC9182]</dt>
         <dd>
 <span class="refAuthor">Barguil, S.</span>, <span class="refAuthor">Gonzalez de Dios, O., Ed.</span>, <span class="refAuthor">Boucadair, M., Ed.</span>, <span class="refAuthor">Munoz, L.</span>, and <span class="refAuthor">A. Aguado</span>, <span class="refTitle">"A YANG Network Data Model for Layer 3 VPNs"</span>, <span class="seriesInfo">RFC 9182</span>, <span class="seriesInfo">DOI 10.17487/RFC9182</span>, <time datetime="2022-02" class="refDate">February 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9182">https://www.rfc-editor.org/rfc/rfc9182</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9256">[RFC9256]</dt>
+        <dd>
+<span class="refAuthor">Filsfils, C.</span>, <span class="refAuthor">Talaulikar, K., Ed.</span>, <span class="refAuthor">Voyer, D.</span>, <span class="refAuthor">Bogdanov, A.</span>, and <span class="refAuthor">P. Mattes</span>, <span class="refTitle">"Segment Routing Policy Architecture"</span>, <span class="seriesInfo">RFC 9256</span>, <span class="seriesInfo">DOI 10.17487/RFC9256</span>, <time datetime="2022-07" class="refDate">July 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9256">https://www.rfc-editor.org/rfc/rfc9256</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9291">[RFC9291]</dt>
         <dd>
@@ -4542,6 +4553,10 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
 <dt id="RFC9516">[RFC9516]</dt>
         <dd>
 <span class="refAuthor">Mirsky, G.</span>, <span class="refAuthor">Meng, W.</span>, <span class="refAuthor">Ao, T.</span>, <span class="refAuthor">Khasnabish, B.</span>, <span class="refAuthor">Leung, K.</span>, and <span class="refAuthor">G. Mishra</span>, <span class="refTitle">"Active Operations, Administration, and Maintenance (OAM) for Service Function Chaining (SFC)"</span>, <span class="seriesInfo">RFC 9516</span>, <span class="seriesInfo">DOI 10.17487/RFC9516</span>, <time datetime="2023-11" class="refDate">November 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9516">https://www.rfc-editor.org/rfc/rfc9516</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9522">[RFC9522]</dt>
+        <dd>
+<span class="refAuthor">Farrel, A., Ed.</span>, <span class="refTitle">"Overview and Principles of Internet Traffic Engineering"</span>, <span class="seriesInfo">RFC 9522</span>, <span class="seriesInfo">DOI 10.17487/RFC9522</span>, <time datetime="2024-01" class="refDate">January 2024</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9522">https://www.rfc-editor.org/rfc/rfc9522</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="TR-GSTR-TN5G">[TR-GSTR-TN5G]</dt>
         <dd>
@@ -4585,7 +4600,7 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
           <p id="appendix-A-2.2.1">Assess whether we need to maintain the "First 5G Slice vs Subsequent Slices" Section:<a href="#appendix-A-2.2.1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-A-2.2.2.1">
-              <p id="appendix-A-2.2.2.1.1">Unless we explain how this ss important for realization, this section should be deleted (Med)<a href="#appendix-A-2.2.2.1.1" class="pilcrow">¶</a></p>
+              <p id="appendix-A-2.2.2.1.1">Unless we explain how this is important for realization, this section should be deleted (Med)<a href="#appendix-A-2.2.2.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="appendix-A-2.2.2.2">
               <p id="appendix-A-2.2.2.2.1">The motivation of this section is not clear (from Reza)<a href="#appendix-A-2.2.2.2.1" class="pilcrow">¶</a></p>
@@ -4712,7 +4727,7 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
 <p id="appendix-B-78">VXLAN: Virtual Extensible Local Area Network<a href="#appendix-B-78" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="sec-5g-intro">
+<div id="sec-5g-overview">
 <section id="appendix-C">
       <h2 id="name-an-overview-of-5g-networkin">
 <a href="#appendix-C" class="section-number selfRef">Appendix C. </a><a href="#name-an-overview-of-5g-networkin" class="section-name selfRef">An Overview of 5G Networking</a>
@@ -5075,6 +5090,8 @@ is also encapsulated in IP.<a href="#appendix-C.4-2.3.1" class="pilcrow">¶</a><
 <p id="appendix-D-1">The authors would like to thank Adrian Farrel, Joel Halpern, Tarek
    Saad, Jie Dong, Greg Mirsky, Rüdiger Geib, and Nicklous D. Morris for
    their review of this document and for providing valuable comments.<a href="#appendix-D-1" class="pilcrow">¶</a></p>
+<p id="appendix-D-2">Thanks to Alvaro Retana for the rtg-dir review and
+   Yoshifumi Nishida for the tsv-art review.<a href="#appendix-D-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="contributors">
