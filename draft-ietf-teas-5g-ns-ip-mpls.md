@@ -1843,19 +1843,19 @@ RFC XXXX Network Slices security considerations are discussed in {{Section 10 of
 
 
  * Conformance to security constraints:
-   
+
       Specific security requests, such as not routing traffic through a particular geographical region can be met by mapping the traffic to a transport plane that avoids that region.
-       
+
  * IETF NSC authentication:
 
       This is out of scope for this document. It should be addressed in documents that describe IETF NSC realization.
-    
+
  * Specific isolation criteria:
 
       Adequate admission control policies, for example policers as described in {{sec-inbound-edge-resource-control}}, should be configured in the edge of the provider network to control access to specific slice resources. This prevents the possibility of one slice consuming resources at the expense of other slices. Likewise, access to classification and mapping tables have to be controlled to prevent misbehaviors (an unauthorized entity may modify the table to bind traffic to a random slice, redirect the traffic, etc.). Network devices have to check that a required access privilege is provided before granting access to specific data or performing specific actions.
 
  * Data Confidentiality and Integrity of an IETF Network Slice:
-   
+
      As described in {{Section 5.1.2.1 of !I-D.ietf-teas-ietf-network-slices}}, the customer might request an SLE that mandates encryption. As described in {#transport-plane-mapping-models}, this can be achieved by mapping the traffic to a transport plane that uses only MACsec-encrypted links.
 
 Many of the YANG modules cited in this document define schema for data that is designed to be accessed via network management protocols such as NETCONF {{!RFC6241}} or RESTCONF {{!RFC8040}}. The lowest NETCONF layer is the secure transport layer, and the mandatory-to-implement secure transport is Secure Shell (SSH) {{!RFC6242}}. The lowest RESTCONF layer is HTTPS, and the mandatory-to-implement secure transport is TLS {{!RFC8446}}.
