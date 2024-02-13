@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-11T00:29:13.695780+00:00",
+  "timestamp": "2024-02-13T00:27:03.463579+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -4810,6 +4810,85 @@
       },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 136,
+      "id": "PR_kwDOIw9g6c5modDE",
+      "title": "Julian l999 patch 1",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/136",
+      "state": "CLOSED",
+      "author": "julianL999",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "To address Issues 120 and 122 (Alvaro's security comments)",
+      "createdAt": "2024-02-12T12:46:20Z",
+      "updatedAt": "2024-02-12T12:53:11Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "25da3056f76495abd9f58f2594842362863c503d",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "julianL999-patch-1",
+      "headRefOid": "8793d7d7b8d40a8b1ceea6723ce4bc49ae79746f",
+      "closedAt": "2024-02-12T12:53:11Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 137,
+      "id": "PR_kwDOIw9g6c5mof64",
+      "title": "Julian l999 patch 1",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/137",
+      "state": "OPEN",
+      "author": "julianL999",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "To address Issues 120 and 122 (Alvaro's security comments)",
+      "createdAt": "2024-02-12T12:54:09Z",
+      "updatedAt": "2024-02-12T13:02:39Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "25da3056f76495abd9f58f2594842362863c503d",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "julianL999-patch-1",
+      "headRefOid": "8793d7d7b8d40a8b1ceea6723ce4bc49ae79746f",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c5vxRdY",
+          "commit": {
+            "abbreviatedOid": "8793d7d"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "CHANGES_REQUESTED",
+          "body": "Thanks Julian",
+          "createdAt": "2024-02-12T13:00:11Z",
+          "updatedAt": "2024-02-12T13:02:39Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "```suggestion\r\n   * A flex-algo {{?RFC9350}} with a particular metric-type (e.g., latency), or one that only uses links with particular properties (e.g., MACsec links), or excludes links that are within a particular geography.\r\n```\r\n\r\nI would add a new ref entry for MACsec: \r\n\r\nIEEE, \"802.1AE: MAC Security (MACsec)\", https://1.ieee802.org/security/802-1ae/\r\n",
+              "createdAt": "2024-02-12T13:00:12Z",
+              "updatedAt": "2024-02-12T13:02:39Z"
+            },
+            {
+              "originalPosition": 30,
+              "body": "```suggestion\r\n      This is out of the scope for this document. It should be addressed in documents that describe IETF NSC realization (e.g., {{?I-D.ietf-teas-ns-controller-models}}).\r\n```",
+              "createdAt": "2024-02-12T13:01:39Z",
+              "updatedAt": "2024-02-12T13:02:39Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
