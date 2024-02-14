@@ -159,6 +159,13 @@ informative:
           date: 28 May 2021
           target: https://www.gsma.com/newsroom/wp-content/uploads//NG.113-v4.0.pdf
 
+   802.1AE:
+          title: "802.1AE: MAC Security (MACsec)"
+          author:
+           org: IEEE
+          target: https://1.ieee802.org/security/802-1ae/
+
+
 --- abstract
 
 Slicing is a feature that was introduced by the 3rd Generation Partnership Project (3GPP) in mobile networks. Realization of 5G slicing implies requirements for all mobile domains, including the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN).
@@ -1370,13 +1377,13 @@ to TN QoS Classes may be rather common.
    only occur in traffic that was de-prioritized by ingress admission control {{sec-inbound-edge-resource-control}} or in non-premium (best-effort) classes.  Capacity planning and management, as described in {{sec-capacity-planning}}, ensures that enough
    capacity is available to fulfill all approved slice requests.
 
-#  Transport Planes Mapping Models
+#  Transport Planes Mapping Models {#transport-plane-mapping-models}
 
    A network operator can define multiple transport planes. A transport plane may be realized in multiple ways such as (but not limited to):
 
    * A mesh of RSVP-TE {{?RFC3209}} or SR-TE {{?RFC9256}} tunnels created with specific optimization criteria and
    constraints. For example, mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.
-   * A flex-algo {{?RFC9350}} with a particular metric-type (e.g., latency).
+   * A flex-algo {{?RFC9350}} with a particular metric-type (e.g., latency), or one that only uses links with particular properties (e.g., MACsec link {{802.1AE}}), or excludes links that are within a particular geography.
    * An NRP {{?I-D.ietf-teas-ns-ip-mpls}}
    * Any combination thereof.
 
@@ -1839,7 +1846,24 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
 
 #  Security Considerations
 
-RFC XXXX Network Slices considerations are discussed in {{Section 6 of !I-D.ietf-teas-ietf-network-slices}}.
+RFC XXXX Network Slices security considerations are discussed in {{Section 10 of !I-D.ietf-teas-ietf-network-slices}}. In particular, it discusses the following considerations:
+
+
+ * Conformance to security constraints:
+
+      Specific security requests, such as not routing traffic through a particular geographical region can be met by mapping the traffic to a transport plane that avoids that region.
+
+ * IETF NSC authentication:
+
+      This is out of the scope for this document. It should be addressed in documents that describe IETF NSC realization (e.g., {{?I-D.ietf-teas-ns-controller-models}}).
+
+ * Specific isolation criteria:
+
+      Adequate admission control policies, for example policers as described in {{sec-inbound-edge-resource-control}}, should be configured in the edge of the provider network to control access to specific slice resources. This prevents the possibility of one slice consuming resources at the expense of other slices. Likewise, access to classification and mapping tables have to be controlled to prevent misbehaviors (an unauthorized entity may modify the table to bind traffic to a random slice, redirect the traffic, etc.). Network devices have to check that a required access privilege is provided before granting access to specific data or performing specific actions.
+
+ * Data Confidentiality and Integrity of an IETF Network Slice:
+
+     As described in {{Section 5.1.2.1 of !I-D.ietf-teas-ietf-network-slices}}, the customer might request an SLE that mandates encryption. As described in {#transport-plane-mapping-models}, this can be achieved by mapping the traffic to a transport plane that uses only MACsec-encrypted links.
 
 Many of the YANG modules cited in this document define schema for data that is designed to be accessed via network management protocols such as NETCONF {{!RFC6241}} or RESTCONF {{!RFC8040}}. The lowest NETCONF layer is the secure transport layer, and the mandatory-to-implement secure transport is Secure Shell (SSH) {{!RFC6242}}. The lowest RESTCONF layer is HTTPS, and the mandatory-to-implement secure transport is TLS {{!RFC8446}}.
 
@@ -1847,7 +1871,18 @@ The NETCONF access control model {{!RFC8341}} provides the means to restrict acc
 
 Security considerations specific to each of the technologies and protocols listed in the document are discussed in the specification documents of each of these protocols.
 
-Adequate admission control policies should be configured in the edge of the provider network to control access to specific slice resources. Likewise, access to classification and mapping tables have to be controlled to prevent misbehaviors (an unauthorized entity may modify the table to bind traffic to a random slice, redirect the traffic, etc.). Network devices have to check that a required access privilege is provided before granting access to specific data or performing specific actions.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 --- back
@@ -1860,7 +1895,7 @@ The following issues should be resolved prior to the WGLC:
    - This issue is tracked at https://github.com/boucadair/5g-slice-realization/issues/40.
    - Update: The outcome of the discussion with the authors of the application I-D can be seen at: https://mailarchive.ietf.org/arch/msg/teas/4QifnnGAcnQcCTXRLSJtQ1SArLA/.
 2. Assess whether we need to maintain the "First 5G Slice vs Subsequent Slices" Section:
-   - Unless we explain how this ss important for realization, this section should be deleted (Med)
+   - Unless we explain how this is important for realization, this section should be deleted (Med)
    - The motivation of this section is not clear (from Reza)
    - Need to describe the implications to the realization of RFC XXXX Network Slices (Jie)
    - The issue is tracked at https://github.com/boucadair/5g-slice-realization/issues/19
