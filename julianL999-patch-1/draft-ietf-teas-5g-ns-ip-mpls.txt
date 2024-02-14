@@ -2060,7 +2060,7 @@ Table of Contents
 
    *  A flex-algo [RFC9350] with a particular metric-type (e.g.,
       latency), or one that only uses links with particular properties
-      (e.g.  MACsec link [_802.1AE]), or excludes links that are within
+      (e.g., MACsec link [_802.1AE]), or excludes links that are within
       a particular geography.
 
    *  An NRP [I-D.ietf-teas-ns-ip-mpls]
