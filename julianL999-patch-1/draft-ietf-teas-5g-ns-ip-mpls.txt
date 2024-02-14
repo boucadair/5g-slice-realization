@@ -2566,8 +2566,9 @@ Table of Contents
 
    *  IETF NSC authentication:
 
-      This is out of scope for this document.  It should be addressed in
-      documents that describe IETF NSC realization.
+      This is out of the scope for this document.  It should be
+      addressed in documents that describe IETF NSC realization (e.g.,
+      [I-D.ietf-teas-ns-controller-models]).
 
    *  Specific isolation criteria:
 
@@ -2693,6 +2694,15 @@ Table of Contents
               network-slice-nbi-yang-08, 23 October 2023,
               <https://datatracker.ietf.org/doc/html/draft-ietf-teas-
               ietf-network-slice-nbi-yang-08>.
+
+   [I-D.ietf-teas-ns-controller-models]
+              Contreras, L. M., Rokui, R., Tantsura, J., Wu, B., Liu,
+              X., Dhody, D., and S. Belotti, "IETF Network Slice
+              Controller and its associated data models", Work in
+              Progress, Internet-Draft, draft-ietf-teas-ns-controller-
+              models-01, 23 October 2023,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-
+              controller-models-01>.
 
    [I-D.ietf-teas-ns-ip-mpls]
               Saad, T., Beeram, V. P., Dong, J., Wen, B., Ceccarelli,
