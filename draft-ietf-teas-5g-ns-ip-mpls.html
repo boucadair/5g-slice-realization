@@ -14,20 +14,20 @@
        Slicing is a feature that was introduced by the 3rd Generation Partnership Project (3GPP) in mobile networks. Realization of 5G slicing implies requirements for all mobile domains, including the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN). 
        This document describes a Network Slice realization model for IP/MPLS networks with a focus on the Transport Network fulfilling 5G slicing connectivity service objectives. The realization model reuses many building blocks currently commonly used in service provider networks. 
     " name="description">
-<meta content="xml2rfc 3.19.1" name="generator">
+<meta content="xml2rfc 3.19.2" name="generator">
 <meta content="L3VPN" name="keyword">
 <meta content="L2VPN" name="keyword">
 <meta content="Slice Service" name="keyword">
 <meta content="draft-ietf-teas-5g-ns-ip-mpls-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.19.1
+  xml2rfc 3.19.2
     Python 3.11.6
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
     intervaltree 3.1.0
     Jinja2 3.1.2
     lxml 4.9.3
-    platformdirs 4.1.0
+    platformdirs 4.2.0
     pycountry 22.3.5
     PyYAML 6.0.1
     requests 2.31.0
@@ -1036,7 +1036,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Szarkowicz, et al.</td>
-<td class="center">Expires 5 August 2024</td>
+<td class="center">Expires 17 August 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1049,12 +1049,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-teas-5g-ns-ip-mpls-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-02-02" class="published">2 February 2024</time>
+<time datetime="2024-02-14" class="published">14 February 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-08-05">5 August 2024</time></dd>
+<dd class="expires"><time datetime="2024-08-17">17 August 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1119,7 +1119,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 5 August 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 17 August 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -3732,7 +3732,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
 </div>
 </section>
 </div>
-<div id="transport-planes-mapping-models">
+<div id="transport-plane-mapping-models">
 <section id="section-6">
       <h2 id="name-transport-planes-mapping-mo">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-transport-planes-mapping-mo" class="section-name selfRef">Transport Planes Mapping Models</a>
@@ -3744,7 +3744,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    constraints. For example, mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.<a href="#section-6-2.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-6-2.2">
-          <p id="section-6-2.2.1">A flex-algo <span>[<a href="#RFC9350" class="cite xref">RFC9350</a>]</span> with a particular metric-type (e.g., latency).<a href="#section-6-2.2.1" class="pilcrow">¶</a></p>
+          <p id="section-6-2.2.1">A flex-algo <span>[<a href="#RFC9350" class="cite xref">RFC9350</a>]</span> with a particular metric-type (e.g., latency), or one that only uses links with particular properties (e.g., MACsec link <span>[<a href="#_802.1AE" class="cite xref">_802.1AE</a>]</span>), or excludes links that are within a particular geography.<a href="#section-6-2.2.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-6-2.3">
           <p id="section-6-2.3.1">An NRP <span>[<a href="#I-D.ietf-teas-ns-ip-mpls" class="cite xref">I-D.ietf-teas-ns-ip-mpls</a>]</span><a href="#section-6-2.3.1" class="pilcrow">¶</a></p>
@@ -4307,11 +4307,32 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
       <h2 id="name-security-considerations">
 <a href="#section-10" class="section-number selfRef">10. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-10-1">RFC XXXX Network Slices considerations are discussed in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slices-25#section-6" class="relref">Section 6</a> of [<a href="#I-D.ietf-teas-ietf-network-slices" class="cite xref">I-D.ietf-teas-ietf-network-slices</a>]</span>.<a href="#section-10-1" class="pilcrow">¶</a></p>
-<p id="section-10-2">Many of the YANG modules cited in this document define schema for data that is designed to be accessed via network management protocols such as NETCONF <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> or RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>. The lowest NETCONF layer is the secure transport layer, and the mandatory-to-implement secure transport is Secure Shell (SSH) <span>[<a href="#RFC6242" class="cite xref">RFC6242</a>]</span>. The lowest RESTCONF layer is HTTPS, and the mandatory-to-implement secure transport is TLS <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>.<a href="#section-10-2" class="pilcrow">¶</a></p>
-<p id="section-10-3">The NETCONF access control model <span>[<a href="#RFC8341" class="cite xref">RFC8341</a>]</span> provides the means to restrict access for particular NETCONF or RESTCONF users to a preconfigured subset of all available NETCONF or RESTCONF protocol operations and content.<a href="#section-10-3" class="pilcrow">¶</a></p>
-<p id="section-10-4">Security considerations specific to each of the technologies and protocols listed in the document are discussed in the specification documents of each of these protocols.<a href="#section-10-4" class="pilcrow">¶</a></p>
-<p id="section-10-5">Adequate admission control policies should be configured in the edge of the provider network to control access to specific slice resources. Likewise, access to classification and mapping tables have to be controlled to prevent misbehaviors (an unauthorized entity may modify the table to bind traffic to a random slice, redirect the traffic, etc.). Network devices have to check that a required access privilege is provided before granting access to specific data or performing specific actions.<a href="#section-10-5" class="pilcrow">¶</a></p>
+<p id="section-10-1">RFC XXXX Network Slices security considerations are discussed in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slices-25#section-10" class="relref">Section 10</a> of [<a href="#I-D.ietf-teas-ietf-network-slices" class="cite xref">I-D.ietf-teas-ietf-network-slices</a>]</span>. In particular, it discusses the following considerations:<a href="#section-10-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-10-2.1">
+          <p id="section-10-2.1.1">Conformance to security constraints:<a href="#section-10-2.1.1" class="pilcrow">¶</a></p>
+<p id="section-10-2.1.2">
+Specific security requests, such as not routing traffic through a particular geographical region can be met by mapping the traffic to a transport plane that avoids that region.<a href="#section-10-2.1.2" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-10-2.2">
+          <p id="section-10-2.2.1">IETF NSC authentication:<a href="#section-10-2.2.1" class="pilcrow">¶</a></p>
+<p id="section-10-2.2.2">
+This is out of the scope for this document. It should be addressed in documents that describe IETF NSC realization (e.g., <span>[<a href="#I-D.ietf-teas-ns-controller-models" class="cite xref">I-D.ietf-teas-ns-controller-models</a>]</span>).<a href="#section-10-2.2.2" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-10-2.3">
+          <p id="section-10-2.3.1">Specific isolation criteria:<a href="#section-10-2.3.1" class="pilcrow">¶</a></p>
+<p id="section-10-2.3.2">
+Adequate admission control policies, for example policers as described in <a href="#sec-inbound-edge-resource-control" class="auto internal xref">Section 5.2.1.1</a>, should be configured in the edge of the provider network to control access to specific slice resources. This prevents the possibility of one slice consuming resources at the expense of other slices. Likewise, access to classification and mapping tables have to be controlled to prevent misbehaviors (an unauthorized entity may modify the table to bind traffic to a random slice, redirect the traffic, etc.). Network devices have to check that a required access privilege is provided before granting access to specific data or performing specific actions.<a href="#section-10-2.3.2" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-10-2.4">
+          <p id="section-10-2.4.1">Data Confidentiality and Integrity of an IETF Network Slice:<a href="#section-10-2.4.1" class="pilcrow">¶</a></p>
+<p id="section-10-2.4.2">
+As described in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slices-25#section-5.1.2.1" class="relref">Section 5.1.2.1</a> of [<a href="#I-D.ietf-teas-ietf-network-slices" class="cite xref">I-D.ietf-teas-ietf-network-slices</a>]</span>, the customer might request an SLE that mandates encryption. As described in {#transport-plane-mapping-models}, this can be achieved by mapping the traffic to a transport plane that uses only MACsec-encrypted links.<a href="#section-10-2.4.2" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="section-10-3">Many of the YANG modules cited in this document define schema for data that is designed to be accessed via network management protocols such as NETCONF <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> or RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>. The lowest NETCONF layer is the secure transport layer, and the mandatory-to-implement secure transport is Secure Shell (SSH) <span>[<a href="#RFC6242" class="cite xref">RFC6242</a>]</span>. The lowest RESTCONF layer is HTTPS, and the mandatory-to-implement secure transport is TLS <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>.<a href="#section-10-3" class="pilcrow">¶</a></p>
+<p id="section-10-4">The NETCONF access control model <span>[<a href="#RFC8341" class="cite xref">RFC8341</a>]</span> provides the means to restrict access for particular NETCONF or RESTCONF users to a preconfigured subset of all available NETCONF or RESTCONF protocol operations and content.<a href="#section-10-4" class="pilcrow">¶</a></p>
+<p id="section-10-5">Security considerations specific to each of the technologies and protocols listed in the document are discussed in the specification documents of each of these protocols.<a href="#section-10-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <section id="section-11">
@@ -4371,11 +4392,11 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
 <dd class="break"></dd>
 <dt id="I-D.ietf-opsawg-ntw-attachment-circuit">[I-D.ietf-opsawg-ntw-attachment-circuit]</dt>
         <dd>
-<span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Roberts, R.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, and <span class="refAuthor">B. Wu</span>, <span class="refTitle">"A Network YANG Data Model for Attachment Circuits"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-opsawg-ntw-attachment-circuit-04</span>, <time datetime="2023-12-14" class="refDate">14 December 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-ntw-attachment-circuit-04">https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-ntw-attachment-circuit-04</a>&gt;</span>. </dd>
+<span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Roberts, R.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, and <span class="refAuthor">B. Wu</span>, <span class="refTitle">"A Network YANG Data Model for Attachment Circuits"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-opsawg-ntw-attachment-circuit-05</span>, <time datetime="2024-02-09" class="refDate">9 February 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-ntw-attachment-circuit-05">https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-ntw-attachment-circuit-05</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-opsawg-teas-attachment-circuit">[I-D.ietf-opsawg-teas-attachment-circuit]</dt>
         <dd>
-<span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Roberts, R.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, and <span class="refAuthor">B. Wu</span>, <span class="refTitle">"YANG Data Models for Bearers and 'Attachment Circuits'-as-a-Service (ACaaS)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-opsawg-teas-attachment-circuit-05</span>, <time datetime="2024-01-22" class="refDate">22 January 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-teas-attachment-circuit-05">https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-teas-attachment-circuit-05</a>&gt;</span>. </dd>
+<span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Roberts, R.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, and <span class="refAuthor">B. Wu</span>, <span class="refTitle">"YANG Data Models for Bearers and 'Attachment Circuits'-as-a-Service (ACaaS)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-opsawg-teas-attachment-circuit-06</span>, <time datetime="2024-02-09" class="refDate">9 February 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-teas-attachment-circuit-06">https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-teas-attachment-circuit-06</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-teas-5g-network-slice-application">[I-D.ietf-teas-5g-network-slice-application]</dt>
         <dd>
@@ -4384,6 +4405,10 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
 <dt id="I-D.ietf-teas-ietf-network-slice-nbi-yang">[I-D.ietf-teas-ietf-network-slice-nbi-yang]</dt>
         <dd>
 <span class="refAuthor">Wu, B.</span>, <span class="refAuthor">Dhody, D.</span>, <span class="refAuthor">Rokui, R.</span>, <span class="refAuthor">Saad, T.</span>, and <span class="refAuthor">J. Mullooly</span>, <span class="refTitle">"A YANG Data Model for the IETF Network Slice Service"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-ietf-network-slice-nbi-yang-08</span>, <time datetime="2023-10-23" class="refDate">23 October 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slice-nbi-yang-08">https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slice-nbi-yang-08</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-teas-ns-controller-models">[I-D.ietf-teas-ns-controller-models]</dt>
+        <dd>
+<span class="refAuthor">Contreras, L. M.</span>, <span class="refAuthor">Rokui, R.</span>, <span class="refAuthor">Tantsura, J.</span>, <span class="refAuthor">Wu, B.</span>, <span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Dhody, D.</span>, and <span class="refAuthor">S. Belotti</span>, <span class="refTitle">"IETF Network Slice Controller and its associated data models"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-ns-controller-models-01</span>, <time datetime="2023-10-23" class="refDate">23 October 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-controller-models-01">https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-controller-models-01</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-teas-ns-ip-mpls">[I-D.ietf-teas-ns-ip-mpls]</dt>
         <dd>
@@ -4550,8 +4575,12 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
 <span class="refAuthor">3GPP</span>, <span class="refTitle">"TS 23.530: Management and orchestration; Concepts, use cases and requirements)"</span>, <time datetime="2023" class="refDate">2023</time>, <span>&lt;<a href="https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3273">https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3273</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="_5G-Book">[_5G-Book]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Peterson, L.</span>, <span class="refAuthor">Sunay, O.</span>, and <span class="refAuthor">B. Davie</span>, <span class="refTitle">"5G Mobile Networks: A Systems Approach"</span>, <time datetime="2022" class="refDate">2022</time>, <span>&lt;<a href="https://5g.systemsapproach.org/">https://5g.systemsapproach.org/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="_802.1AE">[_802.1AE]</dt>
+      <dd>
+<span class="refAuthor">IEEE</span>, <span class="refTitle">"802.1AE: MAC Security (MACsec)"</span>, <span>n.d.</span>, <span>&lt;<a href="https://1.ieee802.org/security/802-1ae/">https://1.ieee802.org/security/802-1ae/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -4579,7 +4608,7 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
           <p id="appendix-A-2.2.1">Assess whether we need to maintain the "First 5G Slice vs Subsequent Slices" Section:<a href="#appendix-A-2.2.1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-A-2.2.2.1">
-              <p id="appendix-A-2.2.2.1.1">Unless we explain how this ss important for realization, this section should be deleted (Med)<a href="#appendix-A-2.2.2.1.1" class="pilcrow">¶</a></p>
+              <p id="appendix-A-2.2.2.1.1">Unless we explain how this is important for realization, this section should be deleted (Med)<a href="#appendix-A-2.2.2.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="appendix-A-2.2.2.2">
               <p id="appendix-A-2.2.2.2.1">The motivation of this section is not clear (from Reza)<a href="#appendix-A-2.2.2.2.1" class="pilcrow">¶</a></p>

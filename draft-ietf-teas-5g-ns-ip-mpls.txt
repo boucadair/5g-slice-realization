@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 5 August 2024                                  Juniper Networks
+Expires: 17 August 2024                                 Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                         2 February 2024
+                                                        14 February 2024
 
 
  A Realization of Network Slices for 5G Networks Using Current IP/MPLS
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 August 2024.
+   This Internet-Draft will expire on 17 August 2024.
 
 Copyright Notice
 
@@ -2059,7 +2059,9 @@ Table of Contents
       "B" might represent tunnels optimized for high capacity.
 
    *  A flex-algo [RFC9350] with a particular metric-type (e.g.,
-      latency).
+      latency), or one that only uses links with particular properties
+      (e.g., MACsec link [_802.1AE]), or excludes links that are within
+      a particular geography.
 
    *  An NRP [I-D.ietf-teas-ns-ip-mpls]
 
@@ -2552,8 +2554,43 @@ Table of Contents
 
 10.  Security Considerations
 
-   RFC XXXX Network Slices considerations are discussed in Section 6 of
-   [I-D.ietf-teas-ietf-network-slices].
+   RFC XXXX Network Slices security considerations are discussed in
+   Section 10 of [I-D.ietf-teas-ietf-network-slices].  In particular, it
+   discusses the following considerations:
+
+   *  Conformance to security constraints:
+
+      Specific security requests, such as not routing traffic through a
+      particular geographical region can be met by mapping the traffic
+      to a transport plane that avoids that region.
+
+   *  IETF NSC authentication:
+
+      This is out of the scope for this document.  It should be
+      addressed in documents that describe IETF NSC realization (e.g.,
+      [I-D.ietf-teas-ns-controller-models]).
+
+   *  Specific isolation criteria:
+
+      Adequate admission control policies, for example policers as
+      described in Section 5.2.1.1, should be configured in the edge of
+      the provider network to control access to specific slice
+      resources.  This prevents the possibility of one slice consuming
+      resources at the expense of other slices.  Likewise, access to
+      classification and mapping tables have to be controlled to prevent
+      misbehaviors (an unauthorized entity may modify the table to bind
+      traffic to a random slice, redirect the traffic, etc.).  Network
+      devices have to check that a required access privilege is provided
+      before granting access to specific data or performing specific
+      actions.
+
+   *  Data Confidentiality and Integrity of an IETF Network Slice:
+
+      As described in Section 5.1.2.1 of
+      [I-D.ietf-teas-ietf-network-slices], the customer might request an
+      SLE that mandates encryption.  As described in {#transport-plane-
+      mapping-models}, this can be achieved by mapping the traffic to a
+      transport plane that uses only MACsec-encrypted links.
 
    Many of the YANG modules cited in this document define schema for
    data that is designed to be accessed via network management protocols
@@ -2571,15 +2608,6 @@ Table of Contents
    Security considerations specific to each of the technologies and
    protocols listed in the document are discussed in the specification
    documents of each of these protocols.
-
-   Adequate admission control policies should be configured in the edge
-   of the provider network to control access to specific slice
-   resources.  Likewise, access to classification and mapping tables
-   have to be controlled to prevent misbehaviors (an unauthorized entity
-   may modify the table to bind traffic to a random slice, redirect the
-   traffic, etc.).  Network devices have to check that a required access
-   privilege is provided before granting access to specific data or
-   performing specific actions.
 
 11.  References
 
@@ -2638,18 +2666,18 @@ Table of Contents
               Boucadair, M., Roberts, R., de Dios, O. G., Barguil, S.,
               and B. Wu, "A Network YANG Data Model for Attachment
               Circuits", Work in Progress, Internet-Draft, draft-ietf-
-              opsawg-ntw-attachment-circuit-04, 14 December 2023,
+              opsawg-ntw-attachment-circuit-05, 9 February 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-
-              ntw-attachment-circuit-04>.
+              ntw-attachment-circuit-05>.
 
    [I-D.ietf-opsawg-teas-attachment-circuit]
               Boucadair, M., Roberts, R., de Dios, O. G., Barguil, S.,
               and B. Wu, "YANG Data Models for Bearers and 'Attachment
               Circuits'-as-a-Service (ACaaS)", Work in Progress,
               Internet-Draft, draft-ietf-opsawg-teas-attachment-circuit-
-              05, 22 January 2024,
+              06, 9 February 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-
-              teas-attachment-circuit-05>.
+              teas-attachment-circuit-06>.
 
    [I-D.ietf-teas-5g-network-slice-application]
               Geng, X., Contreras, L. M., Rokui, R., Dong, J., and I.
@@ -2666,6 +2694,15 @@ Table of Contents
               network-slice-nbi-yang-08, 23 October 2023,
               <https://datatracker.ietf.org/doc/html/draft-ietf-teas-
               ietf-network-slice-nbi-yang-08>.
+
+   [I-D.ietf-teas-ns-controller-models]
+              Contreras, L. M., Rokui, R., Tantsura, J., Wu, B., Liu,
+              X., Dhody, D., and S. Belotti, "IETF Network Slice
+              Controller and its associated data models", Work in
+              Progress, Internet-Draft, draft-ietf-teas-ns-controller-
+              models-01, 23 October 2023,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-
+              controller-models-01>.
 
    [I-D.ietf-teas-ns-ip-mpls]
               Saad, T., Beeram, V. P., Dong, J., Wen, B., Ceccarelli,
@@ -2884,6 +2921,9 @@ Table of Contents
               Networks: A Systems Approach", 2022,
               <https://5g.systemsapproach.org/>.
 
+   [_802.1AE] IEEE, "802.1AE: MAC Security (MACsec)", n.d.,
+              <https://1.ieee802.org/security/802-1ae/>.
+
 Appendix A.  Open Issues & Resolution
 
    The following issues should be resolved prior to the WGLC:
@@ -2904,7 +2944,7 @@ Appendix A.  Open Issues & Resolution
    2.  Assess whether we need to maintain the "First 5G Slice vs
        Subsequent Slices" Section:
 
-       *  Unless we explain how this ss important for realization, this
+       *  Unless we explain how this is important for realization, this
           section should be deleted (Med)
 
        *  The motivation of this section is not clear (from Reza)
