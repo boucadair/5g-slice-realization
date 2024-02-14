@@ -159,6 +159,13 @@ informative:
           date: 28 May 2021
           target: https://www.gsma.com/newsroom/wp-content/uploads//NG.113-v4.0.pdf
 
+   802.1AE:
+          title: "802.1AE: MAC Security (MACsec)"
+          author:
+           org: IEEE
+          target: https://1.ieee802.org/security/802-1ae/
+
+
 --- abstract
 
 Slicing is a feature that was introduced by the 3rd Generation Partnership Project (3GPP) in mobile networks. Realization of 5G slicing implies requirements for all mobile domains, including the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN).
@@ -1376,7 +1383,7 @@ to TN QoS Classes may be rather common.
 
    * A mesh of RSVP-TE {{?RFC3209}} or SR-TE {{?RFC9256}} tunnels created with specific optimization criteria and
    constraints. For example, mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.
-   * A flex-algo {{?RFC9350}} with a particular metric-type (e.g., latency), or one that only uses links with particular properties (e.g. MACsec link), or excludes links that are within a particular geography.
+   * A flex-algo {{?RFC9350}} with a particular metric-type (e.g., latency), or one that only uses links with particular properties (e.g. MACsec link {{802.1AE}}), or excludes links that are within a particular geography.
    * An NRP {{?I-D.ietf-teas-ns-ip-mpls}}
    * Any combination thereof.
 
