@@ -1855,7 +1855,7 @@ RFC XXXX Network Slices security considerations are discussed in {{Section 10 of
 
  * IETF NSC authentication:
 
-      This is out of scope for this document. It should be addressed in documents that describe IETF NSC realization.
+      This is out of the scope for this document. It should be addressed in documents that describe IETF NSC realization (e.g., {{?I-D.ietf-teas-ns-controller-models}}).
 
  * Specific isolation criteria:
 
