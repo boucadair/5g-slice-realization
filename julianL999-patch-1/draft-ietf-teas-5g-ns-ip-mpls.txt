@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 15 August 2024                                 Juniper Networks
+Expires: 17 August 2024                                 Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                        12 February 2024
+                                                        14 February 2024
 
 
  A Realization of Network Slices for 5G Networks Using Current IP/MPLS
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 15 August 2024.
+   This Internet-Draft will expire on 17 August 2024.
 
 Copyright Notice
 
@@ -2060,8 +2060,8 @@ Table of Contents
 
    *  A flex-algo [RFC9350] with a particular metric-type (e.g.,
       latency), or one that only uses links with particular properties
-      (e.g.  MACsec link), or excludes links that are within a
-      particular geography.
+      (e.g.  MACsec link [_802.1AE]), or excludes links that are within
+      a particular geography.
 
    *  An NRP [I-D.ietf-teas-ns-ip-mpls]
 
@@ -2910,6 +2910,9 @@ Table of Contents
    [_5G-Book] Peterson, L., Sunay, O., and B. Davie, "5G Mobile
               Networks: A Systems Approach", 2022,
               <https://5g.systemsapproach.org/>.
+
+   [_802.1AE] IEEE, "802.1AE: MAC Security (MACsec)", n.d.,
+              <https://1.ieee802.org/security/802-1ae/>.
 
 Appendix A.  Open Issues & Resolution
 
