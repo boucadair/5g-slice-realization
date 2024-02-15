@@ -1864,7 +1864,7 @@ RFC XXXX Network Slices security considerations are discussed in {{Section 10 of
 
  * Data Confidentiality and Integrity of an IETF Network Slice:
 
-     As described in {{Section 5.1.2.1 of !I-D.ietf-teas-ietf-network-slices}}, the customer might request an SLE that mandates encryption. As described in {#transport-plane-mapping-models}, this can be achieved by mapping the traffic to a transport plane that uses only MACsec-encrypted links.
+     As described in {{Section 5.1.2.1 of !I-D.ietf-teas-ietf-network-slices}}, the customer might request an SLE that mandates encryption. As described in {{transport-plane-mapping-models}}, this can be achieved by mapping the traffic to a transport plane that uses only MACsec-encrypted links.
 
 Many of the YANG modules cited in this document define schema for data that is designed to be accessed via network management protocols such as NETCONF {{!RFC6241}} or RESTCONF {{!RFC8040}}. The lowest NETCONF layer is the secure transport layer, and the mandatory-to-implement secure transport is Secure Shell (SSH) {{!RFC6242}}. The lowest RESTCONF layer is HTTPS, and the mandatory-to-implement secure transport is TLS {{!RFC8446}}.
 
