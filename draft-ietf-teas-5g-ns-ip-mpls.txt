@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 17 August 2024                                 Juniper Networks
+Expires: 18 August 2024                                 Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                        14 February 2024
+                                                        15 February 2024
 
 
  A Realization of Network Slices for 5G Networks Using Current IP/MPLS
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 17 August 2024.
+   This Internet-Draft will expire on 18 August 2024.
 
 Copyright Notice
 
@@ -974,7 +974,7 @@ Table of Contents
    transport domain by mapping to explicit Layer 2 or Layer 3
    identifiers, such as VLAN-IDs, IP addresses, or Differentiated
    Services Code Point (DSCP).  The realization of the mapping between
-   customer site and provider network is commonly refered to as the
+   customer sites and provider networks is commonly refered to as the
    "hand-off".
 
    More details about the mapping between 3GPP and RFC XXXX Network
@@ -1601,9 +1601,9 @@ Table of Contents
    *  1r2c (single-rate two-color) rate limiter
 
       This is the most basic rate limiter, described in Section 2.3 of
-      [RFC2475] It meters at the SDP a traffic stream of given slice and
-      marks its packets as in-profile (below CIR being enforced) or out-
-      of-profile (above CIR being enforced).  In-profile packets are
+      [RFC2475].  It meters at the SDP a traffic stream of given slice
+      and marks its packets as in-profile (below CIR being enforced) or
+      out-of-profile (above CIR being enforced).  In-profile packets are
       accepted and forwarded.  Out-of profile packets are either dropped
       right at the SDP (hard rate limiting), or remarked (with different
       MPLS TC or DSCP TN markings) to signify 'this packet should be
