@@ -159,7 +159,7 @@ informative:
           date: 28 May 2021
           target: https://www.gsma.com/newsroom/wp-content/uploads//NG.113-v4.0.pdf
 
-   802.1AE:
+   IEEE802.1AE:
           title: "802.1AE: MAC Security (MACsec)"
           author:
            org: IEEE
@@ -516,11 +516,11 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
 ##  VLAN Hand-off {#sec-vlan-handoff}
 
    In this option, the RFC XXXX Network Slice, fulfilling connectivity
-   requirements between NFs of some 5G slice, is represented at the Service Demarcation Point (SDP)
+   requirements between NFs that belong to a 5G slice, is represented at the Service Demarcation Point (SDP)
    by a VLAN ID (or double VLAN IDs, commonly known as QinQ), as depicted in {{figure-vlan-hand-off}}.  Each VLAN
    represents a distinct logical interface on the attachment circuits,
    hence it provides the possibility to place these logical interfaces
-   in distinct L2 or L3 service instances and implement separation
+   in distinct Layer 2 or Layer 3 service instances and implement separation
    between slices via service instances.  Since the 5G interfaces are IP
    based interfaces (the only exception could be the F2 fronthaul-
    interface, where eCPRI with Ethernet encapsulation is used), this
@@ -591,7 +591,8 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    redefining IPv6 semantics. IP forwarding is not altered by this method and is
    still achieved following BCP 198 {{!RFC7608}}. Different IPv6 address allocation
    schemes following this approach may be used, with one example allocation shown
-   in {{figure-11}}.
+   in {{figure-11}}. Note that modifications of the S-NSSAIs in-use will require
+   updating the IP addresses used by NFs involved in the associated slices.
 
    Note that this addressing scheme is local to an ingress or egress NF; intermediary
    TN nodes are not required to associate any additional semantic with IPv6 address.
@@ -1383,7 +1384,7 @@ to TN QoS Classes may be rather common.
 
    * A mesh of RSVP-TE {{?RFC3209}} or SR-TE {{?RFC9256}} tunnels created with specific optimization criteria and
    constraints. For example, mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.
-   * A flex-algo {{?RFC9350}} with a particular metric-type (e.g., latency), or one that only uses links with particular properties (e.g., MACsec link {{802.1AE}}), or excludes links that are within a particular geography.
+   * A flex-algo {{?RFC9350}} with a particular metric-type (e.g., latency), or one that only uses links with particular properties (e.g., MACsec link {{IEEE802.1AE}}), or excludes links that are within a particular geography.
    * An NRP {{?I-D.ietf-teas-ns-ip-mpls}}
    * Any combination thereof.
 
