@@ -2523,11 +2523,11 @@ distribution even in non-ECMP friendly network topologies.<a href="#section-3.7-
 <a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-vlan-hand-off" class="section-name selfRef">VLAN Hand-off</a>
         </h3>
 <p id="section-4.1-1">In this option, the RFC XXXX Network Slice, fulfilling connectivity
-   requirements between NFs of some 5G slice, is represented at the Service Demarcation Point (SDP)
+   requirements between NFs that belong to a 5G slice, is represented at the Service Demarcation Point (SDP)
    by a VLAN ID (or double VLAN IDs, commonly known as QinQ), as depicted in <a href="#_figure-vlan-hand-off" class="auto internal xref">Figure 12</a>.  Each VLAN
    represents a distinct logical interface on the attachment circuits,
    hence it provides the possibility to place these logical interfaces
-   in distinct L2 or L3 service instances and implement separation
+   in distinct Layer 2 or Layer 3 service instances and implement separation
    between slices via service instances.  Since the 5G interfaces are IP
    based interfaces (the only exception could be the F2 fronthaul-
    interface, where eCPRI with Ethernet encapsulation is used), this
@@ -2648,7 +2648,8 @@ VLANs representing slices           VLANs representing slices
    redefining IPv6 semantics. IP forwarding is not altered by this method and is
    still achieved following BCP 198 <span>[<a href="#RFC7608" class="cite xref">RFC7608</a>]</span>. Different IPv6 address allocation
    schemes following this approach may be used, with one example allocation shown
-   in <a href="#_figure-11" class="auto internal xref">Figure 14</a>.<a href="#section-4.2-7" class="pilcrow">¶</a></p>
+   in <a href="#_figure-11" class="auto internal xref">Figure 14</a>. Note that modifications of the S-NSSAIs in-use will require
+   updating the IP addresses used by NFs involved in the associated slices.<a href="#section-4.2-7" class="pilcrow">¶</a></p>
 <p id="section-4.2-8">Note that this addressing scheme is local to an ingress or egress NF; intermediary
    TN nodes are not required to associate any additional semantic with IPv6 address.<a href="#section-4.2-8" class="pilcrow">¶</a></p>
 <p id="section-4.2-9">One benefit of embedding the S-NSSAI in the IPv6 address is that specific S-NSSAI
@@ -3744,7 +3745,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    constraints. For example, mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.<a href="#section-6-2.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-6-2.2">
-          <p id="section-6-2.2.1">A flex-algo <span>[<a href="#RFC9350" class="cite xref">RFC9350</a>]</span> with a particular metric-type (e.g., latency), or one that only uses links with particular properties (e.g., MACsec link <span>[<a href="#_802.1AE" class="cite xref">_802.1AE</a>]</span>), or excludes links that are within a particular geography.<a href="#section-6-2.2.1" class="pilcrow">¶</a></p>
+          <p id="section-6-2.2.1">A flex-algo <span>[<a href="#RFC9350" class="cite xref">RFC9350</a>]</span> with a particular metric-type (e.g., latency), or one that only uses links with particular properties (e.g., MACsec link <span>[<a href="#IEEE802.1AE" class="cite xref">IEEE802.1AE</a>]</span>), or excludes links that are within a particular geography.<a href="#section-6-2.2.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-6-2.3">
           <p id="section-6-2.3.1">An NRP <span>[<a href="#I-D.ietf-teas-ns-ip-mpls" class="cite xref">I-D.ietf-teas-ns-ip-mpls</a>]</span><a href="#section-6-2.3.1" class="pilcrow">¶</a></p>
@@ -4414,6 +4415,10 @@ As described in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-
         <dd>
 <span class="refAuthor">Saad, T.</span>, <span class="refAuthor">Beeram, V. P.</span>, <span class="refAuthor">Dong, J.</span>, <span class="refAuthor">Wen, B.</span>, <span class="refAuthor">Ceccarelli, D.</span>, <span class="refAuthor">Halpern, J. M.</span>, <span class="refAuthor">Peng, S.</span>, <span class="refAuthor">Chen, R.</span>, <span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Contreras, L. M.</span>, <span class="refAuthor">Rokui, R.</span>, and <span class="refAuthor">L. Jalil</span>, <span class="refTitle">"Realizing Network Slices in IP/MPLS Networks"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-ns-ip-mpls-03</span>, <time datetime="2023-11-26" class="refDate">26 November 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-ip-mpls-03">https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-ip-mpls-03</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="IEEE802.1AE">[IEEE802.1AE]</dt>
+        <dd>
+<span class="refAuthor">IEEE</span>, <span class="refTitle">"802.1AE: MAC Security (MACsec)"</span>, <span>n.d.</span>, <span>&lt;<a href="https://1.ieee802.org/security/802-1ae/">https://1.ieee802.org/security/802-1ae/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="NG.113">[NG.113]</dt>
         <dd>
 <span class="refAuthor">GSMA</span>, <span class="refTitle">"NG.113: 5GS Roaming Guidelines Version 4.0"</span>, <time datetime="2021-05" class="refDate">May 2021</time>, <span>&lt;<a href="https://www.gsma.com/newsroom/wp-content/uploads//NG.113-v4.0.pdf">https://www.gsma.com/newsroom/wp-content/uploads//NG.113-v4.0.pdf</a>&gt;</span>. </dd>
@@ -4575,12 +4580,8 @@ As described in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-
 <span class="refAuthor">3GPP</span>, <span class="refTitle">"TS 23.530: Management and orchestration; Concepts, use cases and requirements)"</span>, <time datetime="2023" class="refDate">2023</time>, <span>&lt;<a href="https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3273">https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3273</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="_5G-Book">[_5G-Book]</dt>
-        <dd>
-<span class="refAuthor">Peterson, L.</span>, <span class="refAuthor">Sunay, O.</span>, and <span class="refAuthor">B. Davie</span>, <span class="refTitle">"5G Mobile Networks: A Systems Approach"</span>, <time datetime="2022" class="refDate">2022</time>, <span>&lt;<a href="https://5g.systemsapproach.org/">https://5g.systemsapproach.org/</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="_802.1AE">[_802.1AE]</dt>
       <dd>
-<span class="refAuthor">IEEE</span>, <span class="refTitle">"802.1AE: MAC Security (MACsec)"</span>, <span>n.d.</span>, <span>&lt;<a href="https://1.ieee802.org/security/802-1ae/">https://1.ieee802.org/security/802-1ae/</a>&gt;</span>. </dd>
+<span class="refAuthor">Peterson, L.</span>, <span class="refAuthor">Sunay, O.</span>, and <span class="refAuthor">B. Davie</span>, <span class="refTitle">"5G Mobile Networks: A Systems Approach"</span>, <time datetime="2022" class="refDate">2022</time>, <span>&lt;<a href="https://5g.systemsapproach.org/">https://5g.systemsapproach.org/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
