@@ -508,7 +508,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    So instead, 5G network functions can expose the 5G slices to the transport
    domain by mapping to explicit Layer 2 or Layer 3 identifiers, such as VLAN-IDs, IP
    addresses, or Differentiated Services Code Point (DSCP). The realization of the mapping
-   between customer site and provider network is commonly refered to as the "hand-off".
+   between customer sites and provider networks is commonly refered to as the "hand-off".
 
    More details about the mapping
    between 3GPP and RFC XXXX Network Slices is provided in {{?I-D.ietf-teas-5g-network-slice-application}}.
@@ -995,7 +995,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
 
    *  1r2c (single-rate two-color) rate limiter
 
-      This is the most basic rate limiter, described in {{Section 2.3 of ?RFC2475}}
+      This is the most basic rate limiter, described in {{Section 2.3 of ?RFC2475}}.
       It meters at the SDP a
       traffic stream of given slice and marks its packets as in-profile
       (below CIR being enforced) or out-of-profile (above CIR being enforced).
