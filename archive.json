@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-13T00:27:03.463579+00:00",
+  "timestamp": "2024-02-15T00:26:17.167702+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -1438,7 +1438,7 @@
       "id": "I_kwDOIw9g6c58es8m",
       "title": "Security Considerations",
       "url": "https://github.com/boucadair/5g-slice-realization/issues/120",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "boucadair",
       "authorAssociation": "OWNER",
       "assignees": [],
@@ -1447,9 +1447,17 @@
       ],
       "body": "Security Considerations\r\n\r\nI-D.ietf-teas-ietf-network-slices points to specific issues that need to be addressed in actual implementations or deployments:\r\n\r\n   Conformance to security constraints\r\n   IETF NSC authentication\r\n   Specific isolation criteria\r\n   Data Confidentiality and Integrity of an IETF Network Slice\r\n\r\n...but none of these are addressed here.\r\n",
       "createdAt": "2024-01-18T14:36:46Z",
-      "updatedAt": "2024-01-18T14:36:46Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-02-14T14:54:42Z",
+      "closedAt": "2024-02-14T14:54:42Z",
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "see #137 ",
+          "createdAt": "2024-02-14T14:54:42Z",
+          "updatedAt": "2024-02-14T14:54:42Z"
+        }
+      ]
     },
     {
       "number": 121,
@@ -4842,24 +4850,26 @@
       "id": "PR_kwDOIw9g6c5mof64",
       "title": "Julian l999 patch 1",
       "url": "https://github.com/boucadair/5g-slice-realization/pull/137",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "julianL999",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "To address Issues 120 and 122 (Alvaro's security comments)",
       "createdAt": "2024-02-12T12:54:09Z",
-      "updatedAt": "2024-02-12T13:02:39Z",
+      "updatedAt": "2024-02-14T14:54:06Z",
       "baseRepository": "boucadair/5g-slice-realization",
       "baseRefName": "main",
       "baseRefOid": "25da3056f76495abd9f58f2594842362863c503d",
       "headRepository": "boucadair/5g-slice-realization",
       "headRefName": "julianL999-patch-1",
-      "headRefOid": "8793d7d7b8d40a8b1ceea6723ce4bc49ae79746f",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "2ba825fb4213fa4936e9d7a526bfbaf4de734714",
+      "closedAt": "2024-02-14T14:54:05Z",
+      "mergedAt": "2024-02-14T14:54:05Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "95d563485935b696def8443dcbee796aee0af559"
+      },
       "comments": [],
       "reviews": [
         {
@@ -4887,6 +4897,39 @@
               "updatedAt": "2024-02-12T13:02:39Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5wFif7",
+          "commit": {
+            "abbreviatedOid": "8793d7d"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-14T14:52:13Z",
+          "updatedAt": "2024-02-14T14:52:13Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "The ref is now added: [e52ce33](https://github.com/boucadair/5g-slice-realization/pull/137/commits/e52ce33136c606a306c2652c2363d1399afbe4df)",
+              "createdAt": "2024-02-14T14:52:13Z",
+              "updatedAt": "2024-02-14T14:52:13Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c5wFkKh",
+          "commit": {
+            "abbreviatedOid": "2ba825f"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-02-14T14:53:23Z",
+          "updatedAt": "2024-02-14T14:53:23Z",
+          "comments": []
         }
       ]
     }
