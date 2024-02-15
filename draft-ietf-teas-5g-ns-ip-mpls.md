@@ -1847,7 +1847,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
 
 #  Security Considerations
 
-RFC XXXX Network Slices security considerations are discussed in {{Section 10 of !I-D.ietf-teas-ietf-network-slices}}. In particular, it discusses the following considerations:
+{{Section 10 of !I-D.ietf-teas-ietf-network-slices}} discusses generic security considerations that are applicable to network slicing, with a focus on the following considerations:
 
 
  * Conformance to security constraints:
