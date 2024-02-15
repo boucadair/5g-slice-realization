@@ -983,27 +983,27 @@ Table of Contents
 4.1.  VLAN Hand-off
 
    In this option, the RFC XXXX Network Slice, fulfilling connectivity
-   requirements between NFs of some 5G slice, is represented at the
-   Service Demarcation Point (SDP) by a VLAN ID (or double VLAN IDs,
+   requirements between NFs that belong to a 5G slice, is represented at
+   the Service Demarcation Point (SDP) by a VLAN ID (or double VLAN IDs,
    commonly known as QinQ), as depicted in Figure 12.  Each VLAN
    represents a distinct logical interface on the attachment circuits,
    hence it provides the possibility to place these logical interfaces
-   in distinct L2 or L3 service instances and implement separation
-   between slices via service instances.  Since the 5G interfaces are IP
-   based interfaces (the only exception could be the F2 fronthaul-
-   interface, where eCPRI with Ethernet encapsulation is used), this
-   VLAN is typically not transported across the provider network.
-   Typically, it has only local significance at a particular SDP.  For
-   simplification it is recommended to rely on the same VLAN identifier
-   for all ACs, when possible.  However, SDPs for a same slice at
-   different locations may also use different VLAN values.  Therefore, a
-   VLAN to RFC XXXX Network Slice mapping table is maintained for each
-   AC, and the VLAN allocation is coordinated between customer
-   orchestration and provider orchestration.  Thus, while VLAN hand-off
-   is simple from the NF point of view, it adds complexity due to the
-   requirement of maintaining mapping tables for each SDP and requires a
-   configuration task of new VLAN and IP subnet for every slice on every
-   attachment circuit.
+   in distinct Layer 2 or Layer 3 service instances and implement
+   separation between slices via service instances.  Since the 5G
+   interfaces are IP based interfaces (the only exception could be the
+   F2 fronthaul- interface, where eCPRI with Ethernet encapsulation is
+   used), this VLAN is typically not transported across the provider
+   network.  Typically, it has only local significance at a particular
+   SDP.  For simplification it is recommended to rely on the same VLAN
+   identifier for all ACs, when possible.  However, SDPs for a same
+   slice at different locations may also use different VLAN values.
+   Therefore, a VLAN to RFC XXXX Network Slice mapping table is
+   maintained for each AC, and the VLAN allocation is coordinated
+   between customer orchestration and provider orchestration.  Thus,
+   while VLAN hand-off is simple from the NF point of view, it adds
+   complexity due to the requirement of maintaining mapping tables for
+   each SDP and requires a configuration task of new VLAN and IP subnet
+   for every slice on every attachment circuit.
 
    VLANs representing slices           VLANs representing slices
 
@@ -1099,7 +1099,9 @@ Table of Contents
    forwarding is not altered by this method and is still achieved
    following BCP 198 [RFC7608].  Different IPv6 address allocation
    schemes following this approach may be used, with one example
-   allocation shown in Figure 14.
+   allocation shown in Figure 14.  Note that modifications of the
+   S-NSSAIs in-use will require updating the IP addresses used by NFs
+   involved in the associated slices.
 
    Note that this addressing scheme is local to an ingress or egress NF;
    intermediary TN nodes are not required to associate any additional
@@ -2060,8 +2062,8 @@ Table of Contents
 
    *  A flex-algo [RFC9350] with a particular metric-type (e.g.,
       latency), or one that only uses links with particular properties
-      (e.g., MACsec link [_802.1AE]), or excludes links that are within
-      a particular geography.
+      (e.g., MACsec link [IEEE802.1AE]), or excludes links that are
+      within a particular geography.
 
    *  An NRP [I-D.ietf-teas-ns-ip-mpls]
 
@@ -2713,6 +2715,10 @@ Table of Contents
               2023, <https://datatracker.ietf.org/doc/html/draft-ietf-
               teas-ns-ip-mpls-03>.
 
+   [IEEE802.1AE]
+              IEEE, "802.1AE: MAC Security (MACsec)", n.d.,
+              <https://1.ieee802.org/security/802-1ae/>.
+
    [NG.113]   GSMA, "NG.113: 5GS Roaming Guidelines Version 4.0", May
               2021, <https://www.gsma.com/newsroom/wp-content/
               uploads//NG.113-v4.0.pdf>.
@@ -2920,9 +2926,6 @@ Table of Contents
    [_5G-Book] Peterson, L., Sunay, O., and B. Davie, "5G Mobile
               Networks: A Systems Approach", 2022,
               <https://5g.systemsapproach.org/>.
-
-   [_802.1AE] IEEE, "802.1AE: MAC Security (MACsec)", n.d.,
-              <https://1.ieee802.org/security/802-1ae/>.
 
 Appendix A.  Open Issues & Resolution
 
