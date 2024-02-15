@@ -2556,9 +2556,9 @@ Table of Contents
 
 10.  Security Considerations
 
-   RFC XXXX Network Slices security considerations are discussed in
-   Section 10 of [I-D.ietf-teas-ietf-network-slices].  In particular, it
-   discusses the following considerations:
+   Section 10 of [I-D.ietf-teas-ietf-network-slices] discusses generic
+   security considerations that are applicable to network slicing, with
+   a focus on the following considerations:
 
    *  Conformance to security constraints:
 
@@ -2590,9 +2590,9 @@ Table of Contents
 
       As described in Section 5.1.2.1 of
       [I-D.ietf-teas-ietf-network-slices], the customer might request an
-      SLE that mandates encryption.  As described in {#transport-plane-
-      mapping-models}, this can be achieved by mapping the traffic to a
-      transport plane that uses only MACsec-encrypted links.
+      SLE that mandates encryption.  As described in Section 6, this can
+      be achieved by mapping the traffic to a transport plane that uses
+      only MACsec-encrypted links.
 
    Many of the YANG modules cited in this document define schema for
    data that is designed to be accessed via network management protocols
