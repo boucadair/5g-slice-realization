@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-15T00:26:17.167702+00:00",
+  "timestamp": "2024-02-18T00:28:36.118962+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -1297,9 +1297,17 @@
       "labels": [],
       "body": "- Title of section 4 is not representative of the content \r\n- Need to modify text in 4.2 to have non IP headers identifiers that not IP address: DSCP-based slice identification, label, ports...\r\n- Titles 3.4.2 and 3.5 (fsee answer to Daniele feedback)\r\n",
       "createdAt": "2023-12-04T11:02:59Z",
-      "updatedAt": "2023-12-04T11:04:03Z",
+      "updatedAt": "2024-02-15T14:22:35Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "kszarkowicz",
+          "authorAssociation": "COLLABORATOR",
+          "body": "4.2 still requires fixing (4 and 3.4.2 and 3.5 already fixed)",
+          "createdAt": "2024-02-15T14:22:34Z",
+          "updatedAt": "2024-02-15T14:22:34Z"
+        }
+      ]
     },
     {
       "number": 114,
@@ -1322,7 +1330,7 @@
       "id": "I_kwDOIw9g6c55Vv-c",
       "title": "Request early directorate reviews (deadline 08/01/2024)",
       "url": "https://github.com/boucadair/5g-slice-realization/issues/115",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "boucadair",
       "authorAssociation": "OWNER",
       "assignees": [],
@@ -1331,8 +1339,8 @@
       ],
       "body": "\r\n2023-12-11 | 02 | Requested Early review by TSVART\r\n-- | -- | --\r\n2023-12-11 | 02 | Requested Early review by RTGDIR\r\n2023-12-11 | 02 | Requested Early review by OPSDIR\r\n2023-12-11 | 02 | Requested Early review by INTDIR\r\n",
       "createdAt": "2023-12-11T13:58:20Z",
-      "updatedAt": "2023-12-11T13:59:09Z",
-      "closedAt": null,
+      "updatedAt": "2024-02-15T12:46:02Z",
+      "closedAt": "2024-02-15T12:46:02Z",
       "comments": []
     },
     {
@@ -1358,7 +1366,7 @@
       "id": "I_kwDOIw9g6c58epr7",
       "title": "Implication of change of S-NSSAI on IP/VLAN Addressing",
       "url": "https://github.com/boucadair/5g-slice-realization/issues/117",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "boucadair",
       "authorAssociation": "OWNER",
       "assignees": [],
@@ -1367,8 +1375,8 @@
       ],
       "body": "",
       "createdAt": "2024-01-18T14:30:04Z",
-      "updatedAt": "2024-01-22T20:28:43Z",
-      "closedAt": null,
+      "updatedAt": "2024-02-15T12:51:28Z",
+      "closedAt": "2024-02-15T12:51:28Z",
       "comments": [
         {
           "author": "kszarkowicz",
@@ -1492,7 +1500,7 @@
       "id": "I_kwDOIw9g6c58ewE1",
       "title": "Add Risk/Mitigation in the security cons section:",
       "url": "https://github.com/boucadair/5g-slice-realization/issues/122",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "boucadair",
       "authorAssociation": "OWNER",
       "assignees": [],
@@ -1501,9 +1509,17 @@
       ],
       "body": "From Alvaro: \r\n\r\n> Thus, without careful planning or traffic\r\n>    policing, it may be possible to attack an IETF Network Slice Service\r\n>    simply by increasing the traffic on another service in the network.\r\n\r\nThe realization requires understanding the potential risks/mitigations that are slice-specific.  This document mentions that resources can be shared between slices and even suggests a mechanism that can result in per S-NSSAI monitoring.  These issues need to be highlighted in this section.",
       "createdAt": "2024-01-18T14:43:17Z",
-      "updatedAt": "2024-01-18T14:43:18Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-02-15T14:16:42Z",
+      "closedAt": "2024-02-15T14:16:42Z",
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "I think this one is covered by this text:\r\n\r\n\"Adequate admission control policies, for example policers as described in {{sec-inbound-edge-resource-control}}, should be configured in the edge of the provider network to control access to specific slice resources. This prevents the possibility of one slice consuming resources at the expense of other slices. Likewise, access to classification and mapping tables have to be controlled to prevent misbehaviors (an unauthorized entity may modify the table to bind traffic to a random slice, redirect the traffic, etc.). Network devices have to check that a required access privilege is provided before granting access to specific data or performing specific actions.\"",
+          "createdAt": "2024-02-15T12:50:56Z",
+          "updatedAt": "2024-02-15T12:50:56Z"
+        }
+      ]
     },
     {
       "number": 125,
@@ -4932,6 +4948,62 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 138,
+      "id": "PR_kwDOIw9g6c5m-Kz5",
+      "title": "implication of modifying NSSAIs",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/138",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-02-15T12:43:32Z",
+      "updatedAt": "2024-02-15T12:51:28Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "6e706f86852c1de16602463b549a2b4b5b758344",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-1",
+      "headRefOid": "f8ea846fe0c9a8c8687ea3b93290a9fa1402a40e",
+      "closedAt": "2024-02-15T12:51:27Z",
+      "mergedAt": "2024-02-15T12:51:27Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "f17a6d73b4ce07ea387616ac28162c915b40c523"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 139,
+      "id": "PR_kwDOIw9g6c5m-2-7",
+      "title": "sec  reword",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/139",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-02-15T14:10:24Z",
+      "updatedAt": "2024-02-15T14:10:42Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "6a4d82198c3ba282e2713bbc92814e38ebdad364",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-1",
+      "headRefOid": "8d88a7ad337aee8a86667ff1152e82aaa8139bb8",
+      "closedAt": "2024-02-15T14:10:41Z",
+      "mergedAt": "2024-02-15T14:10:41Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "ec25ec9f8bebcde98f8aef6c53b3b9c163ba8ffa"
+      },
+      "comments": [],
+      "reviews": []
     }
   ]
 }
