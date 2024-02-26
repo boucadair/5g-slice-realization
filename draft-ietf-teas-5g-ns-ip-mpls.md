@@ -543,7 +543,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
 {: #figure-vlan-hand-off title="5G Slice with VLAN Hand-off" artwork-align="center"}
 
 
-##  IP Hand-off
+##  IP Hand-off {#sec-ip-hof}
 
    In this option, an explicit mapping between source/destination IP addresses and
    slice's specific S-NSSAI is used. The mapping can have either local (e.g.,
@@ -587,22 +587,22 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    instead of using 2 full octets from the 8 octets in an IPv6 address, a provider
    could build a mapping table that uses only one octet or parts of an octet to
    represent utilized S-NSSAI. This mapping is a local allocation method to
-   allocate IPv6 addresses to NF in order to be representative of the S-NSSAI without
-   redefining IPv6 semantics. IP forwarding is not altered by this method and is
+   allocate IPv6 addresses to NFs in order to be representative of the S-NSSAI without
+   redefining IPv6 semantic. IP forwarding is not altered by this method and is
    still achieved following BCP 198 {{!RFC7608}}. Different IPv6 address allocation
    schemes following this approach may be used, with one example allocation shown
-   in {{figure-11}}. Note that modifications of the S-NSSAIs in-use will require
+   in {{figure-11}}. Modifications of the S-NSSAIs in-use will require
    updating the IP addresses used by NFs involved in the associated slices.
 
-   Note that this addressing scheme is local to an ingress or egress NF; intermediary
+   > Note that this addressing scheme is local to an ingress or egress NF; intermediary
    TN nodes are not required to associate any additional semantic with IPv6 address.
 
-   One benefit of embedding the S-NSSAI in the IPv6 address is that specific S-NSSAI
-   can be identified as interesting at any place in the TN domain. This might be used,
-   for example, to selectively enable per S-NSSAI monitoring, traffic engineering or any
+   One benefit of embedding the S-NSSAI in the IPv6 address is that a specific S-NSSAI
+   can be identified as needed at any place in the TN domain. This might be used,
+   for example, to selectively enable per S-NSSAI monitoring, traffic engineering, or any
    other per S-NSSAI handling, if required.
 
-   However, operators using such mapping method should be aware of the implications
+   However, operators using such mapping methods should be aware of the implications
    of any change of S-NSSAI on the addressing plans. It is out of scope of this document
    to elaborate on these implications.
 
@@ -631,10 +631,10 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    points with per-slice IP addresses allocated from 2001:db8:b:0::/96. This example shows
    two slices: customer A eMBB (SST=01, SD=00001) and customer B MIoT (SST=03, SD=00003).
    Therefore, for customer A eMBB the tunnel IP addresses are auto-derived (without the need
-   for an explicit mapping table) as the IP's {2001:db8:a::100:1, 2001:db8:b::100:1},
-   where {:0100:0001} are used as the last two octets, and for customer B MIoT (SST=3,
-   SD=00003) tunnel uses the IP's {2001:db8:a::300:3, 2001:db8:b::300:3} and simply
-   adds {:0300:0003} as the last two octets. Leading zeros are not represented in IPv6 addresses as per {{?RFC5952}}.
+   for an explicit mapping table) as the IP addresses {2001:db8:a::100:1, 2001:db8:b::100:1},
+   where {:0100:0001} is used as the last two octets, and for customer B MIoT (SST=3,
+   SD=00003) tunnel uses the IP addresses {2001:db8:a::300:3, 2001:db8:b::300:3} and simply
+   adds {:0300:0003} as the last two octets. Leading zeros are not represented in the resulting IPv6 addresses as per {{?RFC5952}}.
 
 ~~~~
 {::include ./drawings/S-NSSAI-deployment.txt}
@@ -1870,45 +1870,19 @@ Many of the YANG modules cited in this document define schema for data that is d
 
 The NETCONF access control model {{!RFC8341}} provides the means to restrict access for particular NETCONF or RESTCONF users to a preconfigured subset of all available NETCONF or RESTCONF protocol operations and content.
 
+In order to avoid the need for a mapping table to associate source/destination IP
+addresses and slices’ specific S-NSSAIs, {{sec-ip-hof}} describes an approach where some or all S-NSSAI bits
+are embedded in an IPv6 address using an algorithm approach. An attacker from within the transport network
+who has access to the mapping configuration may infer the slices to which belong a packet. It may also
+alter these bits which may lead to steering the packet via a distinct network slice, and thus lead to
+service disruption. Note that such an on-path attacker may make more damage (e.g., randomly drop packets).
+
 Security considerations specific to each of the technologies and protocols listed in the document are discussed in the specification documents of each of these protocols.
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 --- back
-
-# Open Issues & Resolution
-
-The following issues should be resolved prior to the WGLC:
-
-1. Assess which/whether some of the material in the "5G Slice to RFC XXXX Network Slice Mapping" Section should be maintained in this draft or moved to {{?I-D.ietf-teas-5g-network-slice-application}} (Adrian)
-   - This issue is tracked at https://github.com/boucadair/5g-slice-realization/issues/40.
-   - Update: The outcome of the discussion with the authors of the application I-D can be seen at: https://mailarchive.ietf.org/arch/msg/teas/4QifnnGAcnQcCTXRLSJtQ1SArLA/.
-2. Assess whether we need to maintain the "First 5G Slice vs Subsequent Slices" Section:
-   - Unless we explain how this is important for realization, this section should be deleted (Med)
-   - The motivation of this section is not clear (from Reza)
-   - Need to describe the implications to the realization of RFC XXXX Network Slices (Jie)
-   - The issue is tracked at https://github.com/boucadair/5g-slice-realization/issues/19
-   - Update: The fix can be seen at https://mailarchive.ietf.org/arch/msg/teas/wADS6r8syhPsYl9rgZYjVE4Ii9U/
-3. Clarify the use of inter-AS option B/C to model the AC between CE and PE (Jie)
-   - The issue is tracked at https://github.com/boucadair/5g-slice-realization/issues/52
-   - Update: The fix can be seen at https://mailarchive.ietf.org/arch/msg/teas/bBSAY7-GBJsECCrkgfrrrvoKGgM/.
-4. Further discuss whether the TN slice in the customer site is covered or is out of the scope of RFC XXXX Network Slice (Jie)
-   - The issue is tracked at https://github.com/boucadair/5g-slice-realization/issues/53
-   - Update: The fix can be seen at https://mailarchive.ietf.org/arch/msg/teas/WtZF8AFnubcVUYBxcn7i8COozC0/.
-
-Active issues can be tracked at: https://github.com/boucadair/5g-slice-realization/issues
 
 # Acronyms and Abbreviations {#ext-abbr}
 
@@ -2359,5 +2333,5 @@ User Plane          ╱     │           │         ╲
    Saad, Jie Dong, Greg Mirsky, Rüdiger Geib, and Nicklous D. Morris for
    their review of this document and for providing valuable comments.
 
-   Thanks to Alvaro Retana for the rtg-dir review and
-   Yoshifumi Nishida for the tsv-art review.
+   Thanks to Alvaro Retana for the rtg-dir review, Yoshifumi Nishida for
+   the tsv-art review, and Timothy Winters for the int-dir review.
