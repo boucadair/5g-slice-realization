@@ -89,7 +89,7 @@ Table of Contents
        3.4.2.  Transport Network Segments and Network Slice
                Instantiation
        3.4.3.  Additional Segmentation and Domains
-     3.5.  Mapping Schemes between 5G Network Slices and Transport
+     3.5.  Mapping Schemes Between 5G Network Slices and Transport
            Network Slices
      3.6.  First 5G Slice versus Subsequent Slices
      3.7.  Overview of the Transport Network Realization Model
@@ -700,7 +700,7 @@ Table of Contents
    in terms of segmentation (provider/customer) and stitching (AC) can
    be reused for the integration of more complex integrations.
 
-3.5.  Mapping Schemes between 5G Network Slices and Transport Network
+3.5.  Mapping Schemes Between 5G Network Slices and Transport Network
       Slices
 
    There are multiple options for mapping 5G Network Slices to TN
@@ -714,8 +714,7 @@ Table of Contents
       to N:M mapping.  In this scenario, a subset of the TN slices can
       be intended for sharing by multiple 5G network slices (e.g., the
       Control Plane TN slice is shared by multiple 5G network Slices).
-      Further details about this scheme are described in {#sec-
-      firstslice}.
+      Further details about this scheme are described in Section 3.6.
 
    *  M to 1: Multiple 5G Network Slices may rely upon the same TN
       slice.  In such a case, the Service Level Agreement (SLA)
