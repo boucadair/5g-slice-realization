@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 18 August 2024                                 Juniper Networks
+Expires: 29 August 2024                                 Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                        15 February 2024
+                                                        26 February 2024
 
 
  A Realization of Network Slices for 5G Networks Using Current IP/MPLS
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 18 August 2024.
+   This Internet-Draft will expire on 29 August 2024.
 
 Copyright Notice
 
@@ -123,13 +123,12 @@ Table of Contents
    11. References
      11.1.  Normative References
      11.2.  Informative References
-   Appendix A.  Open Issues & Resolution
-   Appendix B.  Acronyms and Abbreviations
-   Appendix C.  An Overview of 5G Networking
-     C.1.  Key Building Blocks
-     C.2.  Core Network (CN)
-     C.3.  Radio Access Network (RAN)
-     C.4.  Transport Network (TN)
+   Appendix A.  Acronyms and Abbreviations
+   Appendix B.  An Overview of 5G Networking
+     B.1.  Key Building Blocks
+     B.2.  Core Network (CN)
+     B.3.  Radio Access Network (RAN)
+     B.4.  Transport Network (TN)
    Acknowledgments
    Contributors
    Authors' Addresses
@@ -165,7 +164,7 @@ Table of Contents
    The document is also intended to align the mobile and the IETF
    perspectives of slicing.
 
-   A brief 5G overview is provided in Appendix C for the reader's
+   A brief 5G overview is provided in Appendix B for the reader's
    convenience.  The reader may refer to [TS-23.501] or [_5G-Book] for
    more details about 3GPP network architectures.
 
@@ -176,13 +175,13 @@ Table of Contents
    contextualization of some of these terms.
 
    An extended list of abbreviations used in this document is provided
-   in Appendix B.
+   in Appendix A.
 
 3.  5G Network Slicing Integration in Transport Networks
 
 3.1.  Scope of the Transport Network
 
-   Appendix C provides an overview of 5G network building blocks: the
+   Appendix B provides an overview of 5G network building blocks: the
    Radio Access Network (RAN), Core Network (CN), and Transport Network
    (TN).  The Transport Network is defined by the 3GPP as the "part
    supporting connectivity within and between CN and RAN parts"
@@ -1094,26 +1093,26 @@ Table of Contents
    using 2 full octets from the 8 octets in an IPv6 address, a provider
    could build a mapping table that uses only one octet or parts of an
    octet to represent utilized S-NSSAI.  This mapping is a local
-   allocation method to allocate IPv6 addresses to NF in order to be
-   representative of the S-NSSAI without redefining IPv6 semantics.  IP
+   allocation method to allocate IPv6 addresses to NFs in order to be
+   representative of the S-NSSAI without redefining IPv6 semantic.  IP
    forwarding is not altered by this method and is still achieved
    following BCP 198 [RFC7608].  Different IPv6 address allocation
    schemes following this approach may be used, with one example
-   allocation shown in Figure 14.  Note that modifications of the
-   S-NSSAIs in-use will require updating the IP addresses used by NFs
-   involved in the associated slices.
+   allocation shown in Figure 14.  Modifications of the S-NSSAIs in-use
+   will require updating the IP addresses used by NFs involved in the
+   associated slices.
 
-   Note that this addressing scheme is local to an ingress or egress NF;
-   intermediary TN nodes are not required to associate any additional
-   semantic with IPv6 address.
+      Note that this addressing scheme is local to an ingress or egress
+      NF; intermediary TN nodes are not required to associate any
+      additional semantic with IPv6 address.
 
-   One benefit of embedding the S-NSSAI in the IPv6 address is that
-   specific S-NSSAI can be identified as interesting at any place in the
-   TN domain.  This might be used, for example, to selectively enable
-   per S-NSSAI monitoring, traffic engineering or any other per S-NSSAI
+   One benefit of embedding the S-NSSAI in the IPv6 address is that a
+   specific S-NSSAI can be identified as needed at any place in the TN
+   domain.  This might be used, for example, to selectively enable per
+   S-NSSAI monitoring, traffic engineering, or any other per S-NSSAI
    handling, if required.
 
-   However, operators using such mapping method should be aware of the
+   However, operators using such mapping methods should be aware of the
    implications of any change of S-NSSAI on the addressing plans.  It is
    out of scope of this document to elaborate on these implications.
 
@@ -1144,12 +1143,12 @@ Table of Contents
    shows two slices: customer A eMBB (SST=01, SD=00001) and customer B
    MIoT (SST=03, SD=00003).  Therefore, for customer A eMBB the tunnel
    IP addresses are auto-derived (without the need for an explicit
-   mapping table) as the IP's {2001:db8:a::100:1, 2001:db8:b::100:1},
-   where {:0100:0001} are used as the last two octets, and for customer
-   B MIoT (SST=3, SD=00003) tunnel uses the IP's {2001:db8:a::300:3,
-   2001:db8:b::300:3} and simply adds {:0300:0003} as the last two
-   octets.  Leading zeros are not represented in IPv6 addresses as per
-   [RFC5952].
+   mapping table) as the IP addresses {2001:db8:a::100:1,
+   2001:db8:b::100:1}, where {:0100:0001} is used as the last two
+   octets, and for customer B MIoT (SST=3, SD=00003) tunnel uses the IP
+   addresses {2001:db8:a::300:3, 2001:db8:b::300:3} and simply adds
+   {:0300:0003} as the last two octets.  Leading zeros are not
+   represented in the resulting IPv6 addresses as per [RFC5952].
 
     2001:db8:a::/96 (NF-A)                      2001:db8:b::/96 (NF-B)
 
@@ -2607,6 +2606,16 @@ Table of Contents
    preconfigured subset of all available NETCONF or RESTCONF protocol
    operations and content.
 
+   In order to avoid the need for a mapping table to associate source/
+   destination IP addresses and slices’ specific S-NSSAIs, Section 4.2
+   describes an approach where some or all S-NSSAI bits are embedded in
+   an IPv6 address using an algorithm approach.  An attacker from within
+   the transport network who has access to the mapping configuration may
+   infer the slices to which belong a packet.  It may also alter these
+   bits which may lead to steering the packet via a distinct network
+   slice, and thus lead to service disruption.  Note that such an on-
+   path attacker may make more damage (e.g., randomly drop packets).
+
    Security considerations specific to each of the technologies and
    protocols listed in the document are discussed in the specification
    documents of each of these protocols.
@@ -2691,11 +2700,11 @@ Table of Contents
 
    [I-D.ietf-teas-ietf-network-slice-nbi-yang]
               Wu, B., Dhody, D., Rokui, R., Saad, T., and J. Mullooly,
-              "A YANG Data Model for the IETF Network Slice Service",
-              Work in Progress, Internet-Draft, draft-ietf-teas-ietf-
-              network-slice-nbi-yang-08, 23 October 2023,
+              "A YANG Data Model for the RFC AAAA Network Slice
+              Service", Work in Progress, Internet-Draft, draft-ietf-
+              teas-ietf-network-slice-nbi-yang-09, 17 February 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-teas-
-              ietf-network-slice-nbi-yang-08>.
+              ietf-network-slice-nbi-yang-09>.
 
    [I-D.ietf-teas-ns-controller-models]
               Contreras, L. M., Rokui, R., Tantsura, J., Wu, B., Liu,
@@ -2927,65 +2936,7 @@ Table of Contents
               Networks: A Systems Approach", 2022,
               <https://5g.systemsapproach.org/>.
 
-Appendix A.  Open Issues & Resolution
-
-   The following issues should be resolved prior to the WGLC:
-
-   1.  Assess which/whether some of the material in the "5G Slice to RFC
-       XXXX Network Slice Mapping" Section should be maintained in this
-       draft or moved to [I-D.ietf-teas-5g-network-slice-application]
-       (Adrian)
-
-       *  This issue is tracked at https://github.com/boucadair/5g-
-          slice-realization/issues/40.
-
-       *  Update: The outcome of the discussion with the authors of the
-          application I-D can be seen at:
-          https://mailarchive.ietf.org/arch/msg/
-          teas/4QifnnGAcnQcCTXRLSJtQ1SArLA/.
-
-   2.  Assess whether we need to maintain the "First 5G Slice vs
-       Subsequent Slices" Section:
-
-       *  Unless we explain how this is important for realization, this
-          section should be deleted (Med)
-
-       *  The motivation of this section is not clear (from Reza)
-
-       *  Need to describe the implications to the realization of RFC
-          XXXX Network Slices (Jie)
-
-       *  The issue is tracked at https://github.com/boucadair/5g-slice-
-          realization/issues/19
-
-       *  Update: The fix can be seen at
-          https://mailarchive.ietf.org/arch/msg/teas/
-          wADS6r8syhPsYl9rgZYjVE4Ii9U/
-
-   3.  Clarify the use of inter-AS option B/C to model the AC between CE
-       and PE (Jie)
-
-       *  The issue is tracked at https://github.com/boucadair/5g-slice-
-          realization/issues/52
-
-       *  Update: The fix can be seen at
-          https://mailarchive.ietf.org/arch/msg/teas/
-          bBSAY7-GBJsECCrkgfrrrvoKGgM/.
-
-   4.  Further discuss whether the TN slice in the customer site is
-       covered or is out of the scope of RFC XXXX Network Slice (Jie)
-
-       *  The issue is tracked at https://github.com/boucadair/5g-slice-
-          realization/issues/53
-
-       *  Update: The fix can be seen at
-          https://mailarchive.ietf.org/arch/msg/teas/
-          WtZF8AFnubcVUYBxcn7i8COozC0/.
-
-   Active issues can be tracked at: https://github.com/boucadair/5g-
-   slice-realization/issues
-
-Appendix B.  Acronyms and Abbreviations
+Appendix A.  Acronyms and Abbreviations
 
    3GPP: 3rd Generation Partnership Project
 
@@ -3143,7 +3094,7 @@ Appendix B.  Acronyms and Abbreviations
 
    VXLAN: Virtual Extensible Local Area Network
 
-Appendix C.  An Overview of 5G Networking
+Appendix B.  An Overview of 5G Networking
 
    This section provides a brief introduction to 5G mobile networking
    with a perspective on the Transport Network.  This section does not
@@ -3152,7 +3103,7 @@ Appendix C.  An Overview of 5G Networking
    background.  For more comprehensive information, refer to
    [TS-23.501].
 
-C.1.  Key Building Blocks
+B.1.  Key Building Blocks
 
    [TS-23.501] defines the Network Functions (UPF, AMF, etc.) that
    compose the 5G System (5GS) Architecture together with related
@@ -3241,7 +3192,7 @@ C.1.  Key Building Blocks
         Figure 34: Building Blocks of 5G Architecture (A High-Level
                               Representation)
 
-C.2.  Core Network (CN)
+B.2.  Core Network (CN)
 
    The 5G Core Network (5GC) is made up of a set of NFs which fall into
    two main categories (Figure 35):
@@ -3290,7 +3241,7 @@ C.2.  Core Network (CN)
 
                       Figure 35: 5G Core Network (CN)
 
-C.3.  Radio Access Network (RAN)
+B.3.  Radio Access Network (RAN)
 
    The RAN connects cellular wireless devices to a mobile Core Network.
    The RAN is made up of three components, which form the Radio Base
@@ -3359,7 +3310,7 @@ C.3.  Radio Access Network (RAN)
 
                        Figure 36: RAN Disaggregation
 
-C.4.  Transport Network (TN)
+B.4.  Transport Network (TN)
 
    The 5G transport architecture defines three main segments for the
    Transport Network, which are commonly referred to as Fronthaul (FH),
@@ -3430,8 +3381,8 @@ Acknowledgments
    for their review of this document and for providing valuable
    comments.
 
-   Thanks to Alvaro Retana for the rtg-dir review and Yoshifumi Nishida
-   for the tsv-art review.
+   Thanks to Alvaro Retana for the rtg-dir review, Yoshifumi Nishida for
+   the tsv-art review, and Timothy Winters for the int-dir review.
 
 Contributors
 
