@@ -258,15 +258,15 @@ Customer:
 : An entity that is responsible for managing and orchestrating the end-to-end 5G Mobile Network, notably RANs and CNs.
 
 Customer Sites:
-: A customer manages and deploys 5G NFs (RAN and CN) in customer sitess. On top of 5G NFs (e.g., gNodeB (gNB), 5G Core (5GC)), a customer may manage additional TN elements (e.g., servers, routers, or switches) within a customer sites. A customer sites can be either a physical or a virtual location. Examples of customer sitess are a customer private locations (Point of Presence (PoP), DC), a VPC in a Public Cloud, or servers hosted within the provider network or colocation service.
-: The Orchestration of the TN within customer sitess involves a set of controllers for automation purposes (e.g., Network Functions Virtualization Infrastructure (NFVI), Enhanced Container Network Interface (CNI), Fabric Managers, or Public Cloud APIs). It is out of the scope of this document to document how these controllers are implemented.
+: A customer manages and deploys 5G NFs (RAN and CN) in customer sites. On top of 5G NFs (e.g., gNodeB (gNB), 5G Core (5GC)), a customer may manage additional TN elements (e.g., servers, routers, or switches) within a customer sites. A customer sites can be either a physical or a virtual location. Examples of customer sites are a customer private locations (Point of Presence (PoP), DC), a VPC in a Public Cloud, or servers hosted within the provider network or colocation service.
+: The Orchestration of the TN within customer sites involves a set of controllers for automation purposes (e.g., Network Functions Virtualization Infrastructure (NFVI), Enhanced Container Network Interface (CNI), Fabric Managers, or Public Cloud APIs). It is out of the scope of this document to document how these controllers are implemented.
 
 Provider:
-: An entity responsible for interconnecting customer sitess.
+: An entity responsible for interconnecting customer sites.
 : The provider orchestrates and manages a provider network.
 
 Provider Network:
-: A provider uses a provider network to interconnect customer sitess. This document assumes that the provider network is based on IP or MPLS.
+: A provider uses a provider network to interconnect customer sites. This document assumes that the provider network is based on IP or MPLS.
 
 Customer Edge (CE):
 : A device that provides logical connectivity to the provider network. The logical connectivity is enforced at Layer 2 and/or Layer 3 and is denominated an Attachment Circuit (AC). Examples of CEs include TN components (e.g., router, switch, or firewalls) and also 5G NFs (i.e., an element of the 5G domain such as Centralized Unit (CU), Distributed Unit (DU), or User Plane Function (UPF)).
@@ -334,7 +334,7 @@ Provider Network Orchestration domain:
 : As defined in {{!I-D.ietf-teas-ietf-network-slices}}, the provider relies on an RFC XXXX Network Slice Controller (NSC) to manage and orchestrate RFC XXXX Network Slices in the provider network. This framework permits to manage connectivity together with SLOs.
 
 Customer Site Orchestration domain:
-: The Orchestration of TN elements of the customer sitess relies upon a variety of  controllers (e.g., Fabric Manager, Element Management System, or VIM). The realization of this segment does not involve the Transport Network Orchestration.
+: The Orchestration of TN elements of the customer sites relies upon a variety of  controllers (e.g., Fabric Manager, Element Management System, or VIM). The realization of this segment does not involve the Transport Network Orchestration.
 
 A TN slice relies upon resources that can involve both the provider and customer TN domains. More details are provided in {{sec-tn-nsi}}.
 
