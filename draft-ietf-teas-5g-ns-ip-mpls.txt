@@ -984,6 +984,10 @@ Table of Contents
 
    More details about the mapping between 3GPP and RFC XXXX Network
    Slices is provided in [I-D.ietf-teas-5g-network-slice-application].
+   That document includes additional methods for mapping 5G slices to TN
+   slices (e.g., source UDP port number), but these methods are not
+   reproduced here because of the intrinsic shortcomings of these
+   methods.
 
 4.1.  VLAN Hand-off
 
