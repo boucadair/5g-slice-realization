@@ -519,6 +519,8 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    between customer sites and provider networks is commonly refered to as the "hand-off".
 
    More details about the mapping between 3GPP and RFC XXXX Network Slices is provided in {{?I-D.ietf-teas-5g-network-slice-application}}.
+   That document includes additional methods for mapping 5G slices to TN slices (e.g., source UDP port number), but these
+   methods are not reproduced here because of the intrinsic shortcomings of these methods.
 
 ##  VLAN Hand-off {#sec-vlan-handoff}
 
