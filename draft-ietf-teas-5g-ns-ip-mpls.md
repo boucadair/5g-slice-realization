@@ -518,7 +518,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    addresses, or Differentiated Services Code Point (DSCP). The realization of the mapping
    between customer sites and provider networks is commonly refered to as the "hand-off".
 
-   More details about the mapping between 3GPP and RFC XXXX Network Slices is provided in {{?I-D.ietf-teas-5g-network-slice-application}}.  
+   More details about the mapping between 3GPP and RFC XXXX Network Slices is provided in {{?I-D.ietf-teas-5g-network-slice-application}}.
 
 ##  VLAN Hand-off {#sec-vlan-handoff}
 
@@ -2339,7 +2339,7 @@ User Plane          ╱     │           │         ╲
 {:numbered="false"}
 
    The authors would like to thank Adrian Farrel, Joel Halpern, Tarek
-   Saad, Jie Dong, Greg Mirsky, Rüdiger Geib, and Nicklous D. Morris for
+   Saad, Jie Dong, Greg Mirsky, Rüdiger Geib, Nicklous D. Morris, 	Daniele Ceccarelli, and Bo Wu for
    their review of this document and for providing valuable comments.
 
    Thanks to Alvaro Retana for the rtg-dir review, Yoshifumi Nishida for
