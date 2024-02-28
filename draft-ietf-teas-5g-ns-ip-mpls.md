@@ -250,16 +250,16 @@ The term "Transport Network" is used for disambiguation with 5G network (e.g., I
 ~~~~
 {::include ./drawings/pe-ce-ac.txt}
 ~~~~
-{: #fig-tn-arch title="Reference Design: Customer Sites and Provider Network" artwork-align="center"}
+{: #fig-tn-arch title="Reference Design: customer site and Provider Network" artwork-align="center"}
 
 The description of the main components shown in {{fig-tn-arch}} are:
 
 Customer:
 : An entity that is responsible for managing and orchestrating the end-to-end 5G Mobile Network, notably RANs and CNs.
 
-Customer Sites:
-: A customer manages and deploys 5G NFs (RAN and CN) in customer sites. On top of 5G NFs (e.g., gNodeB (gNB), 5G Core (5GC)), a customer may manage additional TN elements (e.g., servers, routers, or switches) within a customer sites. A customer sites can be either a physical or a virtual location. Examples of customer sites are a customer private locations (Point of Presence (PoP), DC), a VPC in a Public Cloud, or servers hosted within the provider network or colocation service.
-: The Orchestration of the TN within customer sites involves a set of controllers for automation purposes (e.g., Network Functions Virtualization Infrastructure (NFVI), Enhanced Container Network Interface (CNI), Fabric Managers, or Public Cloud APIs). It is out of the scope of this document to document how these controllers are implemented.
+customer site:
+: A customer manages and deploys 5G NFs (RAN and CN) in customer sites. On top of 5G NFs (e.g., gNodeB (gNB), 5G Core (5GC)), a customer may manage additional TN elements (e.g., servers, routers, or switches) within a customer site. A customer site can be either a physical or a virtual location. Examples of customer sites are a customer private locations (Point of Presence (PoP), DC), a VPC in a Public Cloud, or servers hosted within the provider network or colocation service.
+: The Orchestration of the TN within a customer site involves a set of controllers for automation purposes (e.g., Network Functions Virtualization Infrastructure (NFVI), Enhanced Container Network Interface (CNI), Fabric Managers, or Public Cloud APIs). It is out of the scope of this document to document how these controllers are implemented.
 
 Provider:
 : An entity responsible for interconnecting customer sites.
@@ -351,7 +351,7 @@ A TN slice relies upon resources that can involve both the provider and customer
 In reference to the architecture depicted in {{sec-5g-sli-arch}}, the connectivity between NFs can be decomposed into three main types of segments that are shown in {{fig-end-to-end}}.
 
 Customer Site:
-: Either connects two NFs located in the same customer sites (e.g., NF1-NF2) or connects a NF to a CE (e.g., NF1-CE). This segment may not be present if the NF is the CE (e.g., NF3): in this case the AC connects the NF to the PE.
+: Either connects two NFs located in the same customer site (e.g., NF1-NF2) or connects a NF to a CE (e.g., NF1-CE). This segment may not be present if the NF is the CE (e.g., NF3): in this case the AC connects the NF to the PE.
 : The realization of this segment is driven by the 5G Network Orchestration and potentially the Customer Site Orchestration. The realization of this segment does not involve the Transport Network Orchestration.
 
 Provider Network:
@@ -362,7 +362,7 @@ Attachment Circuit:
 
 
 As depicted in {{fig-end-to-end}}, the realization of an RFC XXXX Network Slice (i.e., connectivity with
-   performance commitments) involves the provider network and partially the AC (the PE-side of the AC). Note that the provisioning of a new Network Slice may rely on a partial or full pre-provisioned segment (e.g., a new Network Slice may rely on an existing AC). The customer sites segment is considered as an extension of the connectivity of the RAN/CN domain without complex slice-specific performances requirements: the customer sites infrastructure is usually over-provisioned and involves short distances (low latency) where basic QoS/Scheduling logic is sufficient to comply with the target SLOs. In other words, the main focus for the enforcement of end-to-end SLOs is managed at the Network Slice between PE interfaces connected to the AC.
+   performance commitments) involves the provider network and partially the AC (the PE-side of the AC). Note that the provisioning of a new Network Slice may rely on a partial or full pre-provisioned segment (e.g., a new Network Slice may rely on an existing AC). The customer site segment is considered as an extension of the connectivity of the RAN/CN domain without complex slice-specific performances requirements: the customer site infrastructure is usually over-provisioned and involves short distances (low latency) where basic QoS/Scheduling logic is sufficient to comply with the target SLOs. In other words, the main focus for the enforcement of end-to-end SLOs is managed at the Network Slice between PE interfaces connected to the AC.
 
 ~~~~
 {::include ./drawings/tn-sections.txt}
