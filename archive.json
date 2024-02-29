@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-27T00:26:21.248335+00:00",
+  "timestamp": "2024-02-29T00:26:22.282708+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -1290,15 +1290,15 @@
       "id": "I_kwDOIw9g6c54nYsK",
       "title": "list of update - https://datatracker.ietf.org/doc/draft-ietf-teas-5g-ns-ip-mpls/",
       "url": "https://github.com/boucadair/5g-slice-realization/issues/113",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "robric",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "- Title of section 4 is not representative of the content \r\n- Need to modify text in 4.2 to have non IP headers identifiers that not IP address: DSCP-based slice identification, label, ports...\r\n- Titles 3.4.2 and 3.5 (fsee answer to Daniele feedback)\r\n",
       "createdAt": "2023-12-04T11:02:59Z",
-      "updatedAt": "2024-02-15T14:22:35Z",
-      "closedAt": null,
+      "updatedAt": "2024-02-28T12:30:55Z",
+      "closedAt": "2024-02-28T12:30:55Z",
       "comments": [
         {
           "author": "kszarkowicz",
@@ -1306,6 +1306,13 @@
           "body": "4.2 still requires fixing (4 and 3.4.2 and 3.5 already fixed)",
           "createdAt": "2024-02-15T14:22:34Z",
           "updatedAt": "2024-02-15T14:22:34Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "Added DSCP mention to 4.2. the text in 4 is OK",
+          "createdAt": "2024-02-28T12:30:55Z",
+          "updatedAt": "2024-02-28T12:30:55Z"
         }
       ]
     },
