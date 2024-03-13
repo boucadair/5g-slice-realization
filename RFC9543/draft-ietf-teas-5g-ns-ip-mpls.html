@@ -14,20 +14,20 @@
        Slicing is a feature that was introduced by the 3rd Generation Partnership Project (3GPP) in mobile networks. Realization of 5G slicing implies requirements for all mobile domains, including the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN). 
        This document describes a Network Slice realization model for IP/MPLS networks with a focus on the Transport Network fulfilling 5G slicing connectivity service objectives. The realization model reuses many building blocks currently commonly used in service provider networks. 
     " name="description">
-<meta content="xml2rfc 3.19.1" name="generator">
+<meta content="xml2rfc 3.20.0" name="generator">
 <meta content="L3VPN" name="keyword">
 <meta content="L2VPN" name="keyword">
 <meta content="Slice Service" name="keyword">
 <meta content="draft-ietf-teas-5g-ns-ip-mpls-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.19.1
-    Python 3.11.6
+  xml2rfc 3.20.0
+    Python 3.11.8
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
     intervaltree 3.1.0
     Jinja2 3.1.2
     lxml 4.9.3
-    platformdirs 4.1.0
+    platformdirs 4.2.0
     pycountry 22.3.5
     PyYAML 6.0.1
     requests 2.31.0
@@ -1032,11 +1032,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Implementing 5G Transport Slices</td>
-<td class="right">February 2024</td>
+<td class="right">March 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Szarkowicz, et al.</td>
-<td class="center">Expires 5 August 2024</td>
+<td class="center">Expires 14 September 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1049,12 +1049,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-teas-5g-ns-ip-mpls-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-02-02" class="published">2 February 2024</time>
+<time datetime="2024-03-13" class="published">13 March 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-08-05">5 August 2024</time></dd>
+<dd class="expires"><time datetime="2024-09-14">14 September 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1119,7 +1119,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 5 August 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 14 September 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1192,7 +1192,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
                 </ul>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.5">
-                <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="auto internal xref">3.5</a>.  <a href="#name-mapping-schemes-between-5g-" class="internal xref">Mapping Schemes between 5G Network Slices and Transport Network Slices</a></p>
+                <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="auto internal xref">3.5</a>.  <a href="#name-mapping-schemes-between-5g-" class="internal xref">Mapping Schemes Between 5G Network Slices and Transport Network Slices</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.6">
                 <p id="section-toc.1-1.3.2.6.1"><a href="#section-3.6" class="auto internal xref">3.6</a>.  <a href="#name-first-5g-slice-versus-subse" class="internal xref">First 5G Slice versus Subsequent Slices</a></p>
@@ -1311,36 +1311,33 @@ svg :is([fill="white"], [fill^="#fff"]) {
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
-            <p id="section-toc.1-1.12.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-open-issues-resolution" class="internal xref">Open Issues &amp; Resolution</a></p>
+            <p id="section-toc.1-1.12.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-acronyms-and-abbreviations" class="internal xref">Acronyms and Abbreviations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
-            <p id="section-toc.1-1.13.1"><a href="#appendix-B" class="auto internal xref">Appendix B</a>.  <a href="#name-acronyms-and-abbreviations" class="internal xref">Acronyms and Abbreviations</a></p>
-</li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
-            <p id="section-toc.1-1.14.1"><a href="#appendix-C" class="auto internal xref">Appendix C</a>.  <a href="#name-an-overview-of-5g-networkin" class="internal xref">An Overview of 5G Networking</a></p>
+            <p id="section-toc.1-1.13.1"><a href="#appendix-B" class="auto internal xref">Appendix B</a>.  <a href="#name-an-overview-of-5g-networkin" class="internal xref">An Overview of 5G Networking</a></p>
 <ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.1">
-                <p id="section-toc.1-1.14.2.1.1"><a href="#appendix-C.1" class="auto internal xref">C.1</a>.  <a href="#name-key-building-blocks" class="internal xref">Key Building Blocks</a></p>
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13.2.1">
+                <p id="section-toc.1-1.13.2.1.1"><a href="#appendix-B.1" class="auto internal xref">B.1</a>.  <a href="#name-key-building-blocks" class="internal xref">Key Building Blocks</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.2">
-                <p id="section-toc.1-1.14.2.2.1"><a href="#appendix-C.2" class="auto internal xref">C.2</a>.  <a href="#name-core-network-cn" class="internal xref">Core Network (CN)</a></p>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13.2.2">
+                <p id="section-toc.1-1.13.2.2.1"><a href="#appendix-B.2" class="auto internal xref">B.2</a>.  <a href="#name-core-network-cn" class="internal xref">Core Network (CN)</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.3">
-                <p id="section-toc.1-1.14.2.3.1"><a href="#appendix-C.3" class="auto internal xref">C.3</a>.  <a href="#name-radio-access-network-ran" class="internal xref">Radio Access Network (RAN)</a></p>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13.2.3">
+                <p id="section-toc.1-1.13.2.3.1"><a href="#appendix-B.3" class="auto internal xref">B.3</a>.  <a href="#name-radio-access-network-ran" class="internal xref">Radio Access Network (RAN)</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.4">
-                <p id="section-toc.1-1.14.2.4.1"><a href="#appendix-C.4" class="auto internal xref">C.4</a>.  <a href="#name-transport-network-tn" class="internal xref">Transport Network (TN)</a></p>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13.2.4">
+                <p id="section-toc.1-1.13.2.4.1"><a href="#appendix-B.4" class="auto internal xref">B.4</a>.  <a href="#name-transport-network-tn" class="internal xref">Transport Network (TN)</a></p>
 </li>
             </ul>
 </li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
+            <p id="section-toc.1-1.14.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+</li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
-            <p id="section-toc.1-1.15.1"><a href="#appendix-D" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+            <p id="section-toc.1-1.15.1"><a href="#appendix-D" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16">
-            <p id="section-toc.1-1.16.1"><a href="#appendix-E" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
-</li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.17">
-            <p id="section-toc.1-1.17.1"><a href="#appendix-F" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.16.1"><a href="#appendix-E" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1351,11 +1348,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">This document focuses on network slicing for 5G networks, covering the connectivity between network functions across multiple domains such as edge clouds, data centers, and the WAN.  The document describes a Network Slice realization approach that fulfills 5G slicing requirements by using existing IP/MPLS technologies to optimally control Service Level Agreements (SLAs) offered for 5G slices.<a href="#section-1-1" class="pilcrow">¶</a></p>
-<p id="section-1-2">This work is compatible with the framework defined in <span>[<a href="#I-D.ietf-teas-ietf-network-slices" class="cite xref">I-D.ietf-teas-ietf-network-slices</a>]</span> which describes network slicing in the context of networks built from IETF technologies.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-1">This document focuses on network slicing for 5G networks, covering the connectivity between Network Functions (NFs) across multiple domains such as edge clouds, data centers, and the Wide Area Network (WAN).  The document describes a Network Slice realization approach that fulfills 5G slicing requirements by using existing IP/MPLS technologies to optimally control Service Level Agreements (SLAs) offered for 5G slices.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">This work is compatible with the framework defined in <span>[<a href="#RFC9543" class="cite xref">RFC9543</a>]</span> which describes network slicing in the context of networks built from IETF technologies.<a href="#section-1-2" class="pilcrow">¶</a></p>
 <p id="section-1-3">The realization approach described in this document is typically triggered by Network Slice Service requests. How a Network Slice Service request is placed for realization, including how it is derived from a 5G Slice Service request, is out of scope. Network Slice Service mapping considerations (e.g., mapping between 3GPP to IETF service parameters) are discussed, e.g., in <span>[<a href="#I-D.ietf-teas-5g-network-slice-application" class="cite xref">I-D.ietf-teas-5g-network-slice-application</a>]</span>.<a href="#section-1-3" class="pilcrow">¶</a></p>
-<p id="section-1-4">Although the document focuses on 5G, the realizations are not fundamentally constrained by the 5G use case. The document is not intended to be a BCP and does not claim to specify mandatory mechanisms to realize network slices. Rather, a key goal of the document is to provide pragmatic implementation approaches by leveraging existing readily-available, widely-deployed techniques. The document is also intended to align the mobile and the IETF perspectives of slicing.<a href="#section-1-4" class="pilcrow">¶</a></p>
-<p id="section-1-5">A brief 5G overview is provided in <a href="#sec-5g-overview" class="auto internal xref">Appendix C</a> for the reader's convenience. The reader may refer to <span>[<a href="#TS-23.501" class="cite xref">TS-23.501</a>]</span> or <span>[<a href="#_5G-Book" class="cite xref">_5G-Book</a>]</span> for more details about 3GPP network architectures.<a href="#section-1-5" class="pilcrow">¶</a></p>
+<p id="section-1-4">Although this document focuses on 5G, the realizations are not fundamentally constrained by the 5G use case. The document is not intended to be a BCP and does not claim to specify mandatory mechanisms to realize network slices. Rather, a key goal of the document is to provide pragmatic implementation approaches by leveraging existing readily-available, widely-deployed techniques. The document is also intended to align the mobile and the IETF perspectives of slicing.<a href="#section-1-4" class="pilcrow">¶</a></p>
+<p id="section-1-5">A brief 5G overview is provided in <a href="#sec-5g-overview" class="auto internal xref">Appendix B</a> for the reader's convenience. The reader may refer to <span>[<a href="#TS-23.501" class="cite xref">TS-23.501</a>]</span> or <span>[<a href="#_5G-Book" class="cite xref">_5G-Book</a>]</span> for more details about 3GPP network architectures.<a href="#section-1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="definitions">
@@ -1363,8 +1360,8 @@ svg :is([fill="white"], [fill^="#fff"]) {
       <h2 id="name-definitions">
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-definitions" class="section-name selfRef">Definitions</a>
       </h2>
-<p id="section-2-1">The document uses the terms defined in <span>[<a href="#I-D.ietf-teas-ietf-network-slices" class="cite xref">I-D.ietf-teas-ietf-network-slices</a>]</span>. See <a href="#sec-ref-design" class="auto internal xref">Section 3.3</a> for the contextualization of some of these terms.<a href="#section-2-1" class="pilcrow">¶</a></p>
-<p id="section-2-2">An extended list of abbreviations used in this document is provided in <a href="#ext-abbr" class="auto internal xref">Appendix B</a>.<a href="#section-2-2" class="pilcrow">¶</a></p>
+<p id="section-2-1">The document uses the terms defined in <span>[<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>. See <a href="#sec-ref-design" class="auto internal xref">Section 3.3</a> for the contextualization of some of these terms.<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-2">An extended list of abbreviations used in this document is provided in <a href="#ext-abbr" class="auto internal xref">Appendix A</a>.<a href="#section-2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-5g">
@@ -1377,14 +1374,14 @@ svg :is([fill="white"], [fill^="#fff"]) {
         <h3 id="name-scope-of-the-transport-netw">
 <a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-scope-of-the-transport-netw" class="section-name selfRef">Scope of the Transport Network</a>
         </h3>
-<p id="section-3.1-1"><a href="#sec-5g-overview" class="auto internal xref">Appendix C</a> provides an overview of 5G network building blocks: the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN). The Transport Network is defined by the 3GPP as the "part supporting connectivity within and between CN and RAN parts" (Section 1 of <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span>).<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.1-1"><a href="#sec-5g-overview" class="auto internal xref">Appendix B</a> provides an overview of 5G network building blocks: the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN). The Transport Network is defined by the 3GPP as the "part supporting connectivity within and between CN and RAN parts" (Section 1 of <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span>).<a href="#section-3.1-1" class="pilcrow">¶</a></p>
 <p id="section-3.1-2">As discussed in Section 4.4.1 of <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span>, the 3GPP management system does not directly control the Transport Network: it is considered as a non-3GPP managed system.<a href="#section-3.1-2" class="pilcrow">¶</a></p>
 <ul class="normal ulEmpty">
 <li class="normal ulEmpty" id="section-3.1-3.1">
             <p id="section-3.1-3.1.1">'The non-3GPP part includes TN parts. The 3GPP management system provides the network slice requirements to the corresponding management systems of those non-3GPP parts, e.g. the TN part supports connectivity within and between CN and AN parts.' (Section 4.4.1 of <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span>)<a href="#section-3.1-3.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-3.1-4">In practice, the TN may not map to a monolithic architecture and management domain. It is frequently segmented, non-uniform, and managed by different entities. For example, <a href="#fig-1" class="auto internal xref">Figure 1</a> depicts a Network Function (NF) instance that is deployed in an edge data center (DC) connected to a NF located in a Public Cloud via a Wide Area Network (WAN) (e.g., MPLS-VPN service). In this example, the TN can be seen as an abstraction representing an end-to-end connectivity based upon three distinct domains: DC, WAN, and Public Cloud. A model for the Transport Network based on orchestration domains is introduced in <a href="#sec-orch" class="auto internal xref">Section 3.4</a>. This model permits to define more precisely where the RFC XXXX Network Slices apply.<a href="#section-3.1-4" class="pilcrow">¶</a></p>
+<p id="section-3.1-4">In practice, the TN may not map to a monolithic architecture and management domain. It is frequently segmented, non-uniform, and managed by different entities. For example, <a href="#fig-1" class="auto internal xref">Figure 1</a> depicts a NF instance that is deployed in an edge data center (DC) connected to a NF located in a Public Cloud via a WAN (e.g., MPLS-VPN service). In this example, the TN can be seen as an abstraction representing an end-to-end connectivity based upon three distinct domains: DC, WAN, and Public Cloud. A model for the Transport Network based on orchestration domains is introduced in <a href="#sec-orch" class="auto internal xref">Section 3.4</a>. This model permits to define more precisely where the RFC 9543 Network Slices apply.<a href="#section-3.1-4" class="pilcrow">¶</a></p>
 <span id="name-an-example-of-transport-net"></span><div id="fig-1">
 <figure id="figure-1">
           <div class="alignCenter art-text artwork" id="section-3.1-5.1">
@@ -1436,7 +1433,7 @@ Is defined by the 3GPP as an appraoch where logical networks/partitions are crea
           <li class="normal" id="section-3.2-2.2">
             <p id="section-3.2-2.2.1">TN Slicing:<a href="#section-3.2-2.2.1" class="pilcrow">¶</a></p>
 <p id="section-3.2-2.2.2">
-The term "TN Slice" is used in this document to
+The term "TN slice" is used in this document to
  refer to a slice in the Transport Network domain of the overall 5G
  architecture.<a href="#section-3.2-2.2.2" class="pilcrow">¶</a></p>
 <p id="section-3.2-2.2.3">
@@ -1484,54 +1481,64 @@ There are different options to implement TN slices based upon
 </pre>
 </div>
 <figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
-<a href="#name-reference-design-customer-s" class="selfRef">Reference Design: Customer Sites and Provider Network</a>
+<a href="#name-reference-design-customer-s" class="selfRef">Reference Design: customer site and Provider Network</a>
           </figcaption></figure>
 </div>
 <p id="section-3.3-3">The description of the main components shown in <a href="#fig-tn-arch" class="auto internal xref">Figure 2</a> are:<a href="#section-3.3-3" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-3.3-4">
           <dt id="section-3.3-4.1">Customer:</dt>
           <dd style="margin-left: 1.5em" id="section-3.3-4.2">
-            <p id="section-3.3-4.2.1">An entity that is responsible for managing and orchestrating the End-to-End 5G Mobile Network, notably RANs and CNs.<a href="#section-3.3-4.2.1" class="pilcrow">¶</a></p>
+            <p id="section-3.3-4.2.1">An entity that is responsible for managing and orchestrating the end-to-end 5G Mobile Network, notably RANs and CNs.<a href="#section-3.3-4.2.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-3.3-4.3">Customer Sites:</dt>
+<dt id="section-3.3-4.3">customer site:</dt>
           <dd style="margin-left: 1.5em" id="section-3.3-4.4">
-            <p id="section-3.3-4.4.1">A customer manages and deploys 5G Network Functions (RAN and CN) in Customer Sites. On top of 5G Network Functions (e.g., gNodeB (gNB), 5G Core (5GC)), a customer may manage additional TN elements (e.g., servers, routers, switches, or VPC Gateways) within a Customer Site. A Customer Site can be either a physical or a virtual location. Examples of Customer Sites are a customer private locations (Point of Presence (PoP), DC), a VPC in a Public Cloud, or servers hosted within provider or colocation service.<a href="#section-3.3-4.4.1" class="pilcrow">¶</a></p>
+            <p id="section-3.3-4.4.1">A customer manages and deploys 5G NFs (RAN and CN) in customer sites. On top of 5G NFs (e.g., gNodeB (gNB), 5G Core (5GC)), a customer may manage additional TN elements (e.g., servers, routers, or switches) within a customer site. A customer site can be either a physical or a virtual location. Examples of customer sites are a customer private locations (Point of Presence (PoP), DC), a VPC in a Public Cloud, or servers hosted within the provider network or colocation service.<a href="#section-3.3-4.4.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 <dt id="section-3.3-4.5"></dt>
           <dd style="margin-left: 1.5em" id="section-3.3-4.6">
-            <p id="section-3.3-4.6.1">The Orchestration of the TN within Customer Sites involves a set of controllers for automation purposes (e.g., Network Functions Virtualization Infrastructure (NFVI), Enhanced Container Network Interface (CNI), Fabric Managers, or Public Cloud APIs). The detail of these controllers is out of the scope of this document.<a href="#section-3.3-4.6.1" class="pilcrow">¶</a></p>
+            <p id="section-3.3-4.6.1">The Orchestration of the TN within a customer site involves a set of controllers for automation purposes (e.g., Network Functions Virtualization Infrastructure (NFVI), Enhanced Container Network Interface (CNI), Fabric Managers, or Public Cloud APIs). It is out of the scope of this document to document how these controllers are implemented.<a href="#section-3.3-4.6.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 <dt id="section-3.3-4.7">Provider:</dt>
           <dd style="margin-left: 1.5em" id="section-3.3-4.8">
-            <p id="section-3.3-4.8.1">An entity responsible for interconnecting Customer Sites. The provider orchestrates and manages a provider network.<a href="#section-3.3-4.8.1" class="pilcrow">¶</a></p>
+            <p id="section-3.3-4.8.1">An entity responsible for interconnecting customer sites.<a href="#section-3.3-4.8.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-3.3-4.9">Provider Network:</dt>
+<dt id="section-3.3-4.9"></dt>
           <dd style="margin-left: 1.5em" id="section-3.3-4.10">
-            <p id="section-3.3-4.10.1">A provider uses a provider network to interconnect Customer Sites. This document assumes that the provider network is based on IP or MPLS.<a href="#section-3.3-4.10.1" class="pilcrow">¶</a></p>
+            <p id="section-3.3-4.10.1">The provider orchestrates and manages a provider network.<a href="#section-3.3-4.10.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-3.3-4.11">Customer Edge (CE):</dt>
+<dt id="section-3.3-4.11">Provider Network:</dt>
           <dd style="margin-left: 1.5em" id="section-3.3-4.12">
-            <p id="section-3.3-4.12.1">A device that provides logical connectivity to the provider network. The logical connectivity is enforced at Layer 2 and/or Layer 3 and is denominated an Attachment Circuit (AC). Examples of CEs include TN components (e.g., router, switch, or firewalls) and also 5G Network Functions (i.e., an element of 5G domain such as Centralized Unit (CU), Distributed Unit (DU), or User Plane Function (UPF)). This document generalizes the definition of a CE with the introduction of Distributed CEs in <a href="#sec-distributed" class="auto internal xref">Section 3.3.1</a>.<a href="#section-3.3-4.12.1" class="pilcrow">¶</a></p>
+            <p id="section-3.3-4.12.1">A provider uses a provider network to interconnect customer sites. This document assumes that the provider network is based on IP or MPLS.<a href="#section-3.3-4.12.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-3.3-4.13">Provider Edge (PE):</dt>
+<dt id="section-3.3-4.13">Customer Edge (CE):</dt>
           <dd style="margin-left: 1.5em" id="section-3.3-4.14">
-            <p id="section-3.3-4.14.1">A device managed by a provider that is connected to a CE. The connectivity between a CE and a PE is achieved using one or multiple Attachment Circuit. This document generalizes the PE definition with the introduction of Distributed PEs in <a href="#sec-distributed" class="auto internal xref">Section 3.3.1</a>.<a href="#section-3.3-4.14.1" class="pilcrow">¶</a></p>
+            <p id="section-3.3-4.14.1">A device that provides logical connectivity to the provider network. The logical connectivity is enforced at Layer 2 and/or Layer 3 and is denominated an Attachment Circuit (AC). Examples of CEs include TN components (e.g., router, switch, or firewalls) and also 5G NFs (i.e., an element of the 5G domain such as Centralized Unit (CU), Distributed Unit (DU), or User Plane Function (UPF)).<a href="#section-3.3-4.14.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-3.3-4.15">Attachment Circuit (AC):</dt>
+<dt id="section-3.3-4.15"></dt>
           <dd style="margin-left: 1.5em" id="section-3.3-4.16">
-            <p id="section-3.3-4.16.1">The logical connection that attaches a CE to a PE. A CE is connected to a PE via one or multiple ACs. An AC is technology-specific. For consistency with the AC data models terminology (e.g., <span>[<a href="#I-D.ietf-opsawg-teas-attachment-circuit" class="cite xref">I-D.ietf-opsawg-teas-attachment-circuit</a>]</span> and <span>[<a href="#I-D.ietf-opsawg-ntw-attachment-circuit" class="cite xref">I-D.ietf-opsawg-ntw-attachment-circuit</a>]</span>), this document assumes that an AC is configured on a "bearer", which represents the underlying connectivity.<a href="#section-3.3-4.16.1" class="pilcrow">¶</a></p>
+            <p id="section-3.3-4.16.1">This document generalizes the definition of a CE with the introduction of Distributed CEs in <a href="#sec-distributed" class="auto internal xref">Section 3.3.1</a>.<a href="#section-3.3-4.16.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-3.3-4.17"></dt>
+<dt id="section-3.3-4.17">Provider Edge (PE):</dt>
           <dd style="margin-left: 1.5em" id="section-3.3-4.18">
-            <p id="section-3.3-4.18.1">Examples of ACs are Virtual Local Area Networks (VLANs) (AC) configured on a physical interface (bearer) or an Overlay VXLAN EVI (AC) configured on an IP underlay (bearer).<a href="#section-3.3-4.18.1" class="pilcrow">¶</a></p>
+            <p id="section-3.3-4.18.1">A device managed by a provider that is connected to a CE. The connectivity between a CE and a PE is achieved using one or multiple Attachment Circuit. This document generalizes the PE definition with the introduction of Distributed PEs in <a href="#sec-distributed" class="auto internal xref">Section 3.3.1</a>.<a href="#section-3.3-4.18.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-3.3-4.19">Attachment Circuit (AC):</dt>
+          <dd style="margin-left: 1.5em" id="section-3.3-4.20">
+            <p id="section-3.3-4.20.1">The logical connection that attaches a CE to a PE. A CE is connected to a PE via one or multiple ACs. An AC is technology-specific. For consistency with the AC data models terminology (e.g., <span>[<a href="#I-D.ietf-opsawg-teas-attachment-circuit" class="cite xref">I-D.ietf-opsawg-teas-attachment-circuit</a>]</span> and <span>[<a href="#I-D.ietf-opsawg-ntw-attachment-circuit" class="cite xref">I-D.ietf-opsawg-ntw-attachment-circuit</a>]</span>), this document assumes that an AC is configured on a "bearer", which represents the underlying connectivity.<a href="#section-3.3-4.20.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-3.3-4.21"></dt>
+          <dd style="margin-left: 1.5em" id="section-3.3-4.22">
+            <p id="section-3.3-4.22.1">Examples of ACs are Virtual Local Area Networks (VLANs) (AC) configured on a physical interface (bearer) or an Overlay VXLAN EVI (AC) configured on an IP underlay (bearer).<a href="#section-3.3-4.22.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -1546,16 +1553,26 @@ However, this document does not exclude the instantiation of multiple ACs betwee
           <h4 id="name-distributed-pe-and-ce">
 <a href="#section-3.3.1" class="section-number selfRef">3.3.1. </a><a href="#name-distributed-pe-and-ce" class="section-name selfRef">Distributed PE and CE</a>
           </h4>
-<p id="section-3.3.1-1">This document uses the concept of distributed CEs and PEs (e.g., <span><a href="https://rfc-editor.org/rfc/rfc4664#section-3.4.3" class="relref">Section 3.4.3</a> of [<a href="#RFC4664" class="cite xref">RFC4664</a>]</span>). This approach consolidates a definition of CE/AC/PE that is consistent with the orchestration perimeters. The CEs and PEs delimit respectively the customer and provider orchestration domains, while the AC interconnects these domains.<a href="#section-3.3.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.3.1-1">This document uses the concept of distributed CEs and PEs (e.g., <span><a href="https://rfc-editor.org/rfc/rfc4664#section-3.4.3" class="relref">Section 3.4.3</a> of [<a href="#RFC4664" class="cite xref">RFC4664</a>]</span>). This approach consolidates a CE/AC/PE definition that is consistent with the orchestration perimeters. The CEs and PEs delimit respectively the customer and provider orchestration domains, while the AC interconnects these domains.<a href="#section-3.3.1-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-3.3.1-2">
             <dt id="section-3.3.1-2.1">Distributed CE:</dt>
             <dd style="margin-left: 1.5em" id="section-3.3.1-2.2">
-              <p id="section-3.3.1-2.2.1">The logical connectivity is realized by configuring multiple devices in the customer domain. The CE function is distributed. An example of such a distribution is the realization of an interconnection using a L3VPN service based on a distributed CE composed of a switch (Layer 2) and a router (Layer 3) (case (ii) in <a href="#fig-50" class="auto internal xref">Figure 3</a>).<a href="#section-3.3.1-2.2.1" class="pilcrow">¶</a></p>
+              <p id="section-3.3.1-2.2.1">The logical connectivity is realized by configuring multiple devices in the customer domain. The CE function is distributed.<a href="#section-3.3.1-2.2.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
-<dt id="section-3.3.1-2.3">Distributed PE:</dt>
+<dt id="section-3.3.1-2.3"></dt>
             <dd style="margin-left: 1.5em" id="section-3.3.1-2.4">
-              <p id="section-3.3.1-2.4.1">The logical connectivity is realized by configuring  multiple devices in the Transport Network (provider orchestration domain). The PE function is distributed. An example of a distributed PE is the "Managed CE service". For example, a provider delivers VPN services using CEs and PEs which are both managed by the provider (case (iii) in <a href="#fig-50" class="auto internal xref">Figure 3</a>). The managed CE can also be a Data Center Gateway as depicted in the example (iv) of <a href="#fig-50" class="auto internal xref">Figure 3</a>. A provider-managed CE may attach to CEs of multiple customers. However, this device is part of the provider network.<a href="#section-3.3.1-2.4.1" class="pilcrow">¶</a></p>
+              <p id="section-3.3.1-2.4.1">An example of a distributed CE is the realization of an interconnection using a L3VPN service based on a distributed CE composed of a switch (Layer 2) and a router (Layer 3) (case (ii) in <a href="#fig-50" class="auto internal xref">Figure 3</a>).<a href="#section-3.3.1-2.4.1" class="pilcrow">¶</a></p>
+</dd>
+            <dd class="break"></dd>
+<dt id="section-3.3.1-2.5">Distributed PE:</dt>
+            <dd style="margin-left: 1.5em" id="section-3.3.1-2.6">
+              <p id="section-3.3.1-2.6.1">The logical connectivity is realized by configuring  multiple devices in the Transport Network (provider orchestration domain). The PE function is distributed.<a href="#section-3.3.1-2.6.1" class="pilcrow">¶</a></p>
+</dd>
+            <dd class="break"></dd>
+<dt id="section-3.3.1-2.7"></dt>
+            <dd style="margin-left: 1.5em" id="section-3.3.1-2.8">
+              <p id="section-3.3.1-2.8.1">An example of a distributed PE is the "Managed CE service". For example, a provider delivers VPN services using CEs and PEs which are both managed by the provider (case (iii) in <a href="#fig-50" class="auto internal xref">Figure 3</a>). The managed CE can also be a Data Center Gateway as depicted in the example (iv) of <a href="#fig-50" class="auto internal xref">Figure 3</a>. A provider-managed CE may attach to CEs of multiple customers. However, this device is part of the provider network.<a href="#section-3.3.1-2.8.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 </dl>
@@ -1630,7 +1647,7 @@ However, this document does not exclude the instantiation of multiple ACs betwee
           <h4 id="name-co-managed-ce">
 <a href="#section-3.3.2" class="section-number selfRef">3.3.2. </a><a href="#name-co-managed-ce" class="section-name selfRef">Co-Managed CE</a>
           </h4>
-<p id="section-3.3.2-1">A co-managed CE is orchestrated by both the customer and the provider. In this case, the customer and provider usually have control on distinct device configuration perimeters (e.g., the customer is responsible for the LAN interfaces, while the provider is responsible for the WAN interfaces (including routing/forwarding policies)). Considering the generic model, a co-managed CE has both PE and CE functions and there is no strict AC connection, although we may consider that the AC stitching logic happens internally within the CE device itself. The provider manages the AC between the CE and the PE.<a href="#section-3.3.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.3.2-1">A co-managed CE is orchestrated by both the customer and the provider. In this case, the customer and provider usually have control on distinct device configuration perimeters. For example, the customer is responsible for the LAN interfaces, while the provider is responsible for the WAN interfaces (including routing/forwarding policies). Considering the generic model, a co-managed CE has both PE and CE functions and there is no strict AC connection, although one may consider that the AC stitching logic happens internally within the CE itself. The provider manages the AC between the CE and the PE.<a href="#section-3.3.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="service-aware-ce">
@@ -1676,22 +1693,26 @@ However, this document does not exclude the instantiation of multiple ACs betwee
           <h4 id="name-end-to-end-5g-slice-orchest">
 <a href="#section-3.4.1" class="section-number selfRef">3.4.1. </a><a href="#name-end-to-end-5g-slice-orchest" class="section-name selfRef">End-to-End 5G Slice Orchestration Architecture</a>
           </h4>
-<p id="section-3.4.1-1">This section introduces a global framework for the orchestration of an end-to-end 5G Slice with a zoom on TN parts. This framework helps to delimit the realization scope of RFC XXXX Network Slices and identify interactions that are required for the realization of such slices.<a href="#section-3.4.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.4.1-1">This section introduces a global framework for the orchestration of an end-to-end 5G slice with a zoom on TN parts. This framework helps to delimit the realization scope of RFC 9543 Network Slices and identify interactions that are required for the realization of such slices.<a href="#section-3.4.1-1" class="pilcrow">¶</a></p>
 <ul class="normal ulEmpty">
 <li class="normal ulEmpty" id="section-3.4.1-2.1">
               <p id="section-3.4.1-2.1.1">This framework is consistent with the management coordination example shown in Figure 4.7.1 of <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span>.<a href="#section-3.4.1-2.1.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
-<p id="section-3.4.1-3">In reference to <a href="#_figure-orch" class="auto internal xref">Figure 5</a>, an end-to-end 5G Network Slice Orchestrator (5G NSO) is responsible for orchestrating end-to-end 5G Slices. The details of the 5G NSO is out of the scope of this document. The realization of the end-to-end 5G Slice spans RAN, CN, and TN. As mentioned in <a href="#sec-scope" class="auto internal xref">Section 3.1</a>, the RAN and CN are under the responsibility of the 3GPP Management System, while the TN is not. The orchestration of the TN is split into two sub-domains in conformance with the reference design in {#sec-ref-design}:<a href="#section-3.4.1-3" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-3.4.1-4.1">
-              <p id="section-3.4.1-4.1.1">Provider Network Orchestration domain: as defined in <span>[<a href="#I-D.ietf-teas-ietf-network-slices" class="cite xref">I-D.ietf-teas-ietf-network-slices</a>]</span>, the provider relies on an RFC XXXX Network Slice Controller (NSC) to manage and orchestrate RFC XXXX Network Slices in the provider network. This framework permits to manage connectivity together with SLOs.<a href="#section-3.4.1-4.1.1" class="pilcrow">¶</a></p>
-</li>
-            <li class="normal" id="section-3.4.1-4.2">
-              <p id="section-3.4.1-4.2.1">Customer Site Orchestration domain: the Orchestration of TN elements of the Customer Sites relies upon a variety of  controllers (e.g., Fabric Manager, Element Management System, or VIM). The realization of this segment does not involve the Transport Network Orchestration.<a href="#section-3.4.1-4.2.1" class="pilcrow">¶</a></p>
-</li>
-          </ul>
-<p id="section-3.4.1-5">A TN Slice relies upon resources that can involve both the provider and customer TN domains. More details are provided in <a href="#sec-tn-nsi" class="auto internal xref">Section 3.4.2</a>.<a href="#section-3.4.1-5" class="pilcrow">¶</a></p>
+<p id="section-3.4.1-3">In reference to <a href="#_figure-orch" class="auto internal xref">Figure 5</a>, an end-to-end 5G Network Slice Orchestrator (5G NSO) is responsible for orchestrating end-to-end 5G slices. The details of the 5G NSO is out of the scope of this document. The realization of the end-to-end 5G slice spans RAN, CN, and TN. As mentioned in <a href="#sec-scope" class="auto internal xref">Section 3.1</a>, the RAN and CN are under the responsibility of the 3GPP Management System, while the TN is not. The orchestration of the TN is split into two sub-domains in conformance with the reference design in {#sec-ref-design}:<a href="#section-3.4.1-3" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-3.4.1-4">
+            <dt id="section-3.4.1-4.1">Provider Network Orchestration domain:</dt>
+            <dd style="margin-left: 1.5em" id="section-3.4.1-4.2">
+              <p id="section-3.4.1-4.2.1">As defined in <span>[<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>, the provider relies on a Network Slice Controller (NSC) to manage and orchestrate RFC 9543 Network Slices in the provider network. This framework permits to manage connectivity together with SLOs.<a href="#section-3.4.1-4.2.1" class="pilcrow">¶</a></p>
+</dd>
+            <dd class="break"></dd>
+<dt id="section-3.4.1-4.3">Customer Site Orchestration domain:</dt>
+            <dd style="margin-left: 1.5em" id="section-3.4.1-4.4">
+              <p id="section-3.4.1-4.4.1">The Orchestration of TN elements of the customer sites relies upon a variety of  controllers (e.g., Fabric Manager, Element Management System, or VIM). The realization of this segment does not involve the Transport Network Orchestration.<a href="#section-3.4.1-4.4.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+</dl>
+<p id="section-3.4.1-5">A TN slice relies upon resources that can involve both the provider and customer TN domains. More details are provided in <a href="#sec-tn-nsi" class="auto internal xref">Section 3.4.2</a>.<a href="#section-3.4.1-5" class="pilcrow">¶</a></p>
 <span id="name-end-to-end-5g-slice-orchestr"></span><div id="_figure-orch">
 <figure id="figure-5">
             <div class="alignCenter art-text artwork" id="section-3.4.1-6.1">
@@ -1754,20 +1775,31 @@ However, this document does not exclude the instantiation of multiple ACs betwee
           <h4 id="name-transport-network-segments-">
 <a href="#section-3.4.2" class="section-number selfRef">3.4.2. </a><a href="#name-transport-network-segments-" class="section-name selfRef">Transport Network Segments and Network Slice Instantiation</a>
           </h4>
-<p id="section-3.4.2-1">In reference to the architecture depicted in <a href="#sec-5g-sli-arch" class="auto internal xref">Section 3.4.1</a>, the connectivity between NFs can be decomposed into three main types of segments that are shown in <a href="#fig-end-to-end" class="auto internal xref">Figure 6</a>:<a href="#section-3.4.2-1" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-3.4.2-2.1">
-              <p id="section-3.4.2-2.1.1">Customer Site: Either connects two NFs located in the same Customer Site (e.g., NF1-NF2) or connects a NF to a CE (e.g., NF1-CE). This segment may not be present if the NF is the CE (e.g., NF3): in this case the AC connects the NF to the PE. The realization of this segment is driven by the 5G Network Orchestration and potentially the Customer Site Orchestration. The realization of this segment does not involve the Transport Network Orchestration.<a href="#section-3.4.2-2.1.1" class="pilcrow">¶</a></p>
-</li>
-            <li class="normal" id="section-3.4.2-2.2">
-              <p id="section-3.4.2-2.2.1">Provider Network: Represents the connectivity between two PEs (e.g., PE1-PE2). The realization of this segment is controlled by an RFC XXXX NSC.<a href="#section-3.4.2-2.2.1" class="pilcrow">¶</a></p>
-</li>
-            <li class="normal" id="section-3.4.2-2.3">
-              <p id="section-3.4.2-2.3.1">Attachment Circuit: Represents the connectivity between CEs and PEs (e.g., CE-PE1 and PE2-NF3). The orchestration of this segment relies partially upon an RFC XXXX NSC for the configuration of the AC on the PE customer-facing interfaces and the Customer Site Orchestration for the configuration of the AC on the CE.<a href="#section-3.4.2-2.3.1" class="pilcrow">¶</a></p>
-</li>
-          </ul>
-<p id="section-3.4.2-3">As depicted in <a href="#fig-end-to-end" class="auto internal xref">Figure 6</a>, the realization of an RFC XXXX Network Slice (i.e., connectivity with
-   performance commitments) involves the provider network and partially the AC (the PE-side of the AC). Note that the provisioning of a new Network Slice may rely on a partial or full pre-provisioned segment (e.g., a new Network Slice may rely on an existing AC). The Customer Site segment is considered as an extension of the connectivity of the RAN/CN domain without complex slice-specific performances requirements: the Customer Site infrastructure is usually over-provisioned and involves short distances (low latency) where basic QoS/Scheduling logic is sufficient to comply with the target SLOs. In other words, the main focus for the enforcement of end-to-end SLOs is managed at the Network Slice between PE interfaces connected to the AC.<a href="#section-3.4.2-3" class="pilcrow">¶</a></p>
+<p id="section-3.4.2-1">In reference to the architecture depicted in <a href="#sec-5g-sli-arch" class="auto internal xref">Section 3.4.1</a>, the connectivity between NFs can be decomposed into three main types of segments that are shown in <a href="#fig-end-to-end" class="auto internal xref">Figure 6</a>.<a href="#section-3.4.2-1" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-3.4.2-2">
+            <dt id="section-3.4.2-2.1">Customer Site:</dt>
+            <dd style="margin-left: 1.5em" id="section-3.4.2-2.2">
+              <p id="section-3.4.2-2.2.1">Either connects two NFs located in the same customer site (e.g., NF1-NF2) or connects a NF to a CE (e.g., NF1-CE). This segment may not be present if the NF is the CE (e.g., NF3): in this case the AC connects the NF to the PE.<a href="#section-3.4.2-2.2.1" class="pilcrow">¶</a></p>
+</dd>
+            <dd class="break"></dd>
+<dt id="section-3.4.2-2.3"></dt>
+            <dd style="margin-left: 1.5em" id="section-3.4.2-2.4">
+              <p id="section-3.4.2-2.4.1">The realization of this segment is driven by the 5G Network Orchestration and potentially the Customer Site Orchestration. The realization of this segment does not involve the Transport Network Orchestration.<a href="#section-3.4.2-2.4.1" class="pilcrow">¶</a></p>
+</dd>
+            <dd class="break"></dd>
+<dt id="section-3.4.2-2.5">Provider Network:</dt>
+            <dd style="margin-left: 1.5em" id="section-3.4.2-2.6">
+              <p id="section-3.4.2-2.6.1">Represents the connectivity between two PEs (e.g., PE1-PE2). The realization of this segment is controlled by an RFC 9543 NSC.<a href="#section-3.4.2-2.6.1" class="pilcrow">¶</a></p>
+</dd>
+            <dd class="break"></dd>
+<dt id="section-3.4.2-2.7">Attachment Circuit:</dt>
+            <dd style="margin-left: 1.5em" id="section-3.4.2-2.8">
+              <p id="section-3.4.2-2.8.1">Represents the connectivity between CEs and PEs (e.g., CE-PE1 and PE2-NF3). The orchestration of this segment relies partially upon an RFC 9543 NSC for the configuration of the AC on the PE customer-facing interfaces and the Customer Site Orchestration for the configuration of the AC on the CE.<a href="#section-3.4.2-2.8.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+</dl>
+<p id="section-3.4.2-3">As depicted in <a href="#fig-end-to-end" class="auto internal xref">Figure 6</a>, the realization of an RFC 9543 Network Slice (i.e., connectivity with
+   performance commitments) involves the provider network and partially the AC (the PE-side of the AC). Note that the provisioning of a new Network Slice may rely on a partial or full pre-provisioned segment (e.g., a new Network Slice may rely on an existing AC). The customer site segment is considered as an extension of the connectivity of the RAN/CN domain without complex slice-specific performances requirements: the customer site infrastructure is usually over-provisioned and involves short distances (low latency) where basic QoS/Scheduling logic is sufficient to comply with the target SLOs. In other words, the main focus for the enforcement of end-to-end SLOs is managed at the Network Slice between PE interfaces connected to the AC.<a href="#section-3.4.2-3" class="pilcrow">¶</a></p>
 <span id="name-segmentation-of-the-transpo"></span><div id="fig-end-to-end">
 <figure id="figure-6">
             <div class="alignCenter art-text artwork" id="section-3.4.2-4.1">
@@ -1807,7 +1839,7 @@ CS │NF1├────┤ CE ├──────┤ PE │          │ PE �
 <span class="break"></span><dl class="dlParallel" id="section-3.4.2-5">
             <dt id="section-3.4.2-5.1">Resource synchronization for AC provisioning:</dt>
             <dd style="margin-left: 1.5em" id="section-3.4.2-5.2">
-              <p id="section-3.4.2-5.2.1">The realization of the Attachment Circuit is made up of TN resources shared between the Customer Site Orchestration and the Provider Network Orchestration (e.g., RFC XXXX NSC).  More precisely, a PE and a CE connected via an AC need to be
+              <p id="section-3.4.2-5.2.1">The realization of the Attachment Circuit is made up of TN resources shared between the Customer Site Orchestration and the Provider Network Orchestration (e.g., RFC 9543 NSC).  More precisely, a PE and a CE connected via an AC need to be
 provisioned with consistent data plane and control plane  information (e.g., VLAN-
 IDs, IP addresses/subnets, or BGP  Autonomous System (AS) Number). Hence, the realization of this
 interconnection is technology-specific and requires coordination between the Customer Site Orchestration and an NSC. Automating the provisioning and management of the AC is recommended. Aligned with <span>[<a href="#RFC8969" class="cite xref">RFC8969</a>]</span>, this document assumes that this coordination is based upon standard YANG data models and APIs.<a href="#section-3.4.2-5.2.1" class="pilcrow">¶</a></p>
@@ -1817,7 +1849,7 @@ interconnection is technology-specific and requires coordination between the Cus
             <dd style="margin-left: 1.5em" id="section-3.4.2-5.4">
               <p id="section-3.4.2-5.4.1"><a href="#_figure-4" class="auto internal xref">Figure 7</a> is a basic example of a Layer 3 CE-PE link realization
 with shared network resources (such as VLAN-IDs and IP prefixes) which
-are passed between Orchestrators via a dedicated interface, e.g., the RFC XXXX Network Slice Service Interface <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="cite xref">I-D.ietf-teas-ietf-network-slice-nbi-yang</a>]</span> or the Attachment Circuit Service Interface (<span>[<a href="#I-D.ietf-opsawg-teas-attachment-circuit" class="cite xref">I-D.ietf-opsawg-teas-attachment-circuit</a>]</span>.<a href="#section-3.4.2-5.4.1" class="pilcrow">¶</a></p>
+are passed between Orchestrators via a dedicated interface, e.g., the RFC 9543 Network Slice Service Interface <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="cite xref">I-D.ietf-teas-ietf-network-slice-nbi-yang</a>]</span> or the Attachment Circuit Service Interface (<span>[<a href="#I-D.ietf-opsawg-teas-attachment-circuit" class="cite xref">I-D.ietf-opsawg-teas-attachment-circuit</a>]</span>.<a href="#section-3.4.2-5.4.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 </dl>
@@ -1864,13 +1896,13 @@ are passed between Orchestrators via a dedicated interface, e.g., the RFC XXXX N
 <div id="sec-mapping">
 <section id="section-3.5">
         <h3 id="name-mapping-schemes-between-5g-">
-<a href="#section-3.5" class="section-number selfRef">3.5. </a><a href="#name-mapping-schemes-between-5g-" class="section-name selfRef">Mapping Schemes between 5G Network Slices and Transport Network Slices</a>
+<a href="#section-3.5" class="section-number selfRef">3.5. </a><a href="#name-mapping-schemes-between-5g-" class="section-name selfRef">Mapping Schemes Between 5G Network Slices and Transport Network Slices</a>
         </h3>
 <p id="section-3.5-1">There are multiple options for mapping 5G Network Slices to TN slices:<a href="#section-3.5-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-3.5-2.1">
             <p id="section-3.5-2.1.1">1 to N:
-A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For instance, consider the scenario depicted in <a href="#_figure-5" class="auto internal xref">Figure 8</a>, illustrating the separation of the 5G Control Plane and User Plane in TN slices for a single 5G eMBB network slice. It is important to note that this mapping can serve as an interim step to N:M mapping. In this scenario, a subset of the TN slices can be intended for sharing by multiple 5G network slices (e.g., the Control Plane TN slice is shared by multiple 5G network Slices). Further details about this scheme are described in {#sec-firstslice}.<a href="#section-3.5-2.1.1" class="pilcrow">¶</a></p>
+A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For instance, consider the scenario depicted in <a href="#_figure-5" class="auto internal xref">Figure 8</a>, illustrating the separation of the 5G Control Plane and User Plane in TN slices for a single 5G eMBB network slice. It is important to note that this mapping can serve as an interim step to N:M mapping. In this scenario, a subset of the TN slices can be intended for sharing by multiple 5G network slices (e.g., the Control Plane TN slice is shared by multiple 5G network Slices). Further details about this scheme are described in <a href="#sec-firstslice" class="auto internal xref">Section 3.6</a>.<a href="#section-3.5-2.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-3.5-2.2">
             <p id="section-3.5-2.2.1">M to 1:
@@ -1889,7 +1921,7 @@ A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For inst
 </li>
         </ul>
 <p id="section-3.5-3">In practice, for operational and scaling reasons, typically M to N would be used, with M &gt;&gt; N.<a href="#section-3.5-3" class="pilcrow">¶</a></p>
-<span id="name-1-5g-slice-to-n-rfc-xxxx-ne"></span><div id="_figure-5">
+<span id="name-1-5g-slice-to-n-rfc-9543-ne"></span><div id="_figure-5">
 <figure id="figure-8">
           <div class="alignCenter art-text artwork" id="section-3.5-4.1">
 <pre>
@@ -1915,10 +1947,10 @@ A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For inst
 </pre>
 </div>
 <figcaption><a href="#figure-8" class="selfRef">Figure 8</a>:
-<a href="#name-1-5g-slice-to-n-rfc-xxxx-ne" class="selfRef">1 (5G Slice) to N (RFC XXXX Network Slice) Mapping</a>
+<a href="#name-1-5g-slice-to-n-rfc-9543-ne" class="selfRef">1 (5G Slice) to N (RFC 9543 Network Slice) Mapping</a>
           </figcaption></figure>
 </div>
-<span id="name-n-5g-slice-to-1-rfc-xxxx-ne"></span><div id="_figure-6">
+<span id="name-n-5g-slice-to-1-rfc-9543-ne"></span><div id="_figure-6">
 <figure id="figure-9">
           <div class="alignCenter art-text artwork" id="section-3.5-5.1">
 <pre>
@@ -1948,7 +1980,7 @@ A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For inst
 </pre>
 </div>
 <figcaption><a href="#figure-9" class="selfRef">Figure 9</a>:
-<a href="#name-n-5g-slice-to-1-rfc-xxxx-ne" class="selfRef">N (5G Slice) to 1 (RFC XXXX Network Slice) Mapping</a>
+<a href="#name-n-5g-slice-to-1-rfc-9543-ne" class="selfRef">N (5G Slice) to 1 (RFC 9543 Network Slice) Mapping</a>
           </figcaption></figure>
 </div>
 <p id="section-3.5-6">Note that the actual realization of the mapping depends on several
@@ -1964,7 +1996,7 @@ A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For inst
 <a href="#section-3.6" class="section-number selfRef">3.6. </a><a href="#name-first-5g-slice-versus-subse" class="section-name selfRef">First 5G Slice versus Subsequent Slices</a>
         </h3>
 <p id="section-3.6-1">An operational 5G Network Slice incorporates both 5G Control Plane and User Plane capabilities.
-For instance, consider a slice based on split-CU in the RAN, both CU-UP and CU-CP need to be deployed along with the associated interfaces E1, F1-c, F1-u, N2, and N3 which are conveyed in the TN. In this regard, the creation of the "first slice" can be subject to a specific logic that does not apply to subsequent slices. Referring to the example in <a href="#_figure-7" class="auto internal xref">Figure 10</a>, the first 5G slice relies on the deployment of NF-CP and NF-UP functions together with two TN slices for Control and User Planes (INS-CP and INS-UP1). Next, the deployment of a second slice relies solely on the instantiation of a User Plane Function (NF-UP2) together with a dedicated User Plane TN slice (INS-UP2). The Control Plane of the first 5G slice is also updated to integrate the second slice: the TN Slice (INS-CP) and Network Functions (NF-CP) are shared.<a href="#section-3.6-1" class="pilcrow">¶</a></p>
+For instance, consider a slice based on split-CU in the RAN, both CU-UP and CU-CP need to be deployed along with the associated interfaces E1, F1-c, F1-u, N2, and N3 which are conveyed in the TN. In this regard, the creation of the "first slice" can be subject to a specific logic that does not apply to subsequent slices. Referring to the example in <a href="#_figure-7" class="auto internal xref">Figure 10</a>, the first 5G slice relies on the deployment of NF-CP and NF-UP functions together with two TN slices for Control and User Planes (INS-CP and INS-UP1). Next, the deployment of a second slice relies solely on the instantiation of a User Plane Function (NF-UP2) together with a dedicated User Plane TN slice (INS-UP2). The Control Plane of the first 5G slice is also updated to integrate the second slice: the TN slice (INS-CP) and Network Functions (NF-CP) are shared.<a href="#section-3.6-1" class="pilcrow">¶</a></p>
 <p id="section-3.6-2">At the time of writing (2023), Section 6.1.2 of <span>[<a href="#NG.113" class="cite xref">NG.113</a>]</span> specifies that the
    eMBB slice (SST=1 and no Slice Differentiator (SD)) should be supported globally.  This 5G
    slice would be the first slice in any 5G deployment.<a href="#section-3.6-2" class="pilcrow">¶</a></p>
@@ -2510,41 +2542,42 @@ distribution even in non-ECMP friendly network topologies.<a href="#section-3.7-
       </h2>
 <p id="section-4-1">The 5G control plane relies upon the Single Network Slice
    Selection Assistance Information (S-NSSAI) 32-bit slice identifier for slice
-   identification.  The S-NSSAI is not visible to the transport domain.
+   identification. The S-NSSAI is not visible to the transport domain.
    So instead, 5G network functions can expose the 5G slices to the transport
    domain by mapping to explicit Layer 2 or Layer 3 identifiers, such as VLAN-IDs, IP
    addresses, or Differentiated Services Code Point (DSCP). The realization of the mapping
-   between customer site and provider network is commonly refered to as the "hand-off".<a href="#section-4-1" class="pilcrow">¶</a></p>
-<p id="section-4-2">More details about the mapping
-   between 3GPP and RFC XXXX Network Slices is provided in <span>[<a href="#I-D.ietf-teas-5g-network-slice-application" class="cite xref">I-D.ietf-teas-5g-network-slice-application</a>]</span>.<a href="#section-4-2" class="pilcrow">¶</a></p>
+   between customer sites and provider networks is commonly refered to as the "hand-off".<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-2">More details about the mapping between 3GPP and RFC 9543 Network Slices is provided in <span>[<a href="#I-D.ietf-teas-5g-network-slice-application" class="cite xref">I-D.ietf-teas-5g-network-slice-application</a>]</span>.
+   That document includes additional methods for mapping 5G slices to TN slices (e.g., source UDP port number), but these
+   methods are not reproduced here because of the intrinsic shortcomings of these methods.<a href="#section-4-2" class="pilcrow">¶</a></p>
 <div id="sec-vlan-handoff">
 <section id="section-4.1">
         <h3 id="name-vlan-hand-off">
 <a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-vlan-hand-off" class="section-name selfRef">VLAN Hand-off</a>
         </h3>
-<p id="section-4.1-1">In this option, the RFC XXXX Network Slice, fulfilling connectivity
-   requirements between NFs of some 5G slice, is represented at the Service Demarcation Point (SDP)
-   by a VLAN ID (or double VLAN IDs, commonly known as QinQ), as depicted in <a href="#_figure-vlan-hand-off" class="auto internal xref">Figure 12</a>.  Each VLAN
-   represents a distinct logical interface on the attachment circuits,
+<p id="section-4.1-1">In this option, the RFC 9543 Network Slice, fulfilling connectivity
+   requirements between NFs that belong to a 5G slice, is represented at the Service Demarcation Point (SDP)
+   by a VLAN ID (or double VLAN IDs, commonly known as QinQ), as depicted in <a href="#_figure-vlan-hand-off" class="auto internal xref">Figure 12</a>.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.1-2">Each VLAN
+   represents a distinct logical interface on the ACs;
    hence it provides the possibility to place these logical interfaces
-   in distinct L2 or L3 service instances and implement separation
-   between slices via service instances.  Since the 5G interfaces are IP
-   based interfaces (the only exception could be the F2 fronthaul-
-   interface, where eCPRI with Ethernet encapsulation is used), this
+   in distinct Layer 2 or Layer 3 service instances and implement separation
+   between slices via service instances.  Since the 5G interfaces are IP-based
+   interfaces (the only exception could be the F2 fronthaul-interface, where eCPRI with Ethernet encapsulation is used), this
    VLAN is typically not transported across the provider network.  Typically,
    it has only local significance at a particular SDP.  For
    simplification it is recommended to rely on the same VLAN identifier
    for all ACs, when possible.  However, SDPs for a same slice at
    different locations may also use different VLAN values.  Therefore, a
-   VLAN to RFC XXXX Network Slice mapping table is maintained for each
+   VLAN to RFC 9543 Network Slice mapping table is maintained for each
    AC, and the VLAN allocation is coordinated between customer orchestration and
-   provider orchestration.  Thus, while VLAN hand-off is simple from
-   the NF point of view, it adds complexity due to the requirement of maintaining
-   mapping tables for each SDP and requires a configuration task of new VLAN and
-   IP subnet for every slice on every attachment circuit.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+   provider orchestration.  Thus, while VLAN hand-off is simple for
+   NFs, it adds complexity due to the requirement of maintaining
+   mapping tables for each SDP and requires a configuration task of new VLANs and
+   IP subnet for every slice on every AC.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
 <span id="name-5g-slice-with-vlan-hand-off"></span><div id="_figure-vlan-hand-off">
 <figure id="figure-12">
-          <div class="alignCenter art-text artwork" id="section-4.1-2.1">
+          <div class="alignCenter art-text artwork" id="section-4.1-3.1">
 <pre>
 VLANs representing slices           VLANs representing slices
 
@@ -2571,7 +2604,7 @@ VLANs representing slices           VLANs representing slices
 </div>
 </section>
 </div>
-<div id="ip-hand-off">
+<div id="sec-ip-hof">
 <section id="section-4.2">
         <h3 id="name-ip-hand-off">
 <a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-ip-hand-off" class="section-name selfRef">IP Hand-off</a>
@@ -2591,7 +2624,10 @@ VLANs representing slices           VLANs representing slices
             <p id="section-4.2-2.3.1">S-NSSAI to a subset of bits of an IP address<a href="#section-4.2-2.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-4.2-2.4">
-            <p id="section-4.2-2.4.1">Use a deterministic algorithm to map S-NSAAI to an IP subnet, prefix, or pools. For example, adaptations to the algorithm defined in <span>[<a href="#RFC7422" class="cite xref">RFC7422</a>]</span> may be considered.<a href="#section-4.2-2.4.1" class="pilcrow">¶</a></p>
+            <p id="section-4.2-2.4.1">S-NSSAI to a DSCP value<a href="#section-4.2-2.4.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.2-2.5">
+            <p id="section-4.2-2.5.1">Use a deterministic algorithm to map S-NSAAI to an IP subnet, prefix, or pools. For example, adaptations to the algorithm defined in <span>[<a href="#RFC7422" class="cite xref">RFC7422</a>]</span> may be considered.<a href="#section-4.2-2.5.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <p id="section-4.2-3">Mapping S-NSSAI to IP addresses makes IP addresses an identifier for eventual
@@ -2644,23 +2680,28 @@ VLANs representing slices           VLANs representing slices
    instead of using 2 full octets from the 8 octets in an IPv6 address, a provider
    could build a mapping table that uses only one octet or parts of an octet to
    represent utilized S-NSSAI. This mapping is a local allocation method to
-   allocate IPv6 addresses to NF in order to be representative of the S-NSSAI without
-   redefining IPv6 semantics. IP forwarding is not altered by this method and is
-   still achieved following BCP 198 <span>[<a href="#RFC7608" class="cite xref">RFC7608</a>]</span>. Different IPv6 address allocation
+   allocate IPv6 addresses to NFs in order to be representative of the S-NSSAI without
+   redefining IPv6 semantic. IP forwarding is not altered by this method and is
+   still achieved following BCP 198 <span>[<a href="#RFC7608" class="cite xref">RFC7608</a>]</span>.<a href="#section-4.2-7" class="pilcrow">¶</a></p>
+<p id="section-4.2-8">Different IPv6 address allocation
    schemes following this approach may be used, with one example allocation shown
-   in <a href="#_figure-11" class="auto internal xref">Figure 14</a>.<a href="#section-4.2-7" class="pilcrow">¶</a></p>
-<p id="section-4.2-8">Note that this addressing scheme is local to an ingress or egress NF; intermediary
-   TN nodes are not required to associate any additional semantic with IPv6 address.<a href="#section-4.2-8" class="pilcrow">¶</a></p>
-<p id="section-4.2-9">One benefit of embedding the S-NSSAI in the IPv6 address is that specific S-NSSAI
-   can be identified as interesting at any place in the TN domain. This might be used,
-   for example, to selectively enable per S-NSSAI monitoring, traffic engineering or any
-   other per S-NSSAI handling, if required.<a href="#section-4.2-9" class="pilcrow">¶</a></p>
-<p id="section-4.2-10">However, operators using such mapping method should be aware of the implications
-   of any change of S-NSSAI on the addressing plans. It is out of scope of this document
-   to elaborate on these implications.<a href="#section-4.2-10" class="pilcrow">¶</a></p>
+   in <a href="#_figure-11" class="auto internal xref">Figure 14</a>.<a href="#section-4.2-8" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-4.2-9.1">
+            <p id="section-4.2-9.1.1">Note that this addressing scheme is local to an ingress or egress NF; intermediary
+   TN nodes are not required to associate any additional semantic with IPv6 address.<a href="#section-4.2-9.1.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<p id="section-4.2-10">One benefit of embedding the S-NSSAI in the IPv6 address is that a specific S-NSSAI
+   can be identified as needed at any place in the TN domain. This might be used,
+   for example, to selectively enable per S-NSSAI monitoring, traffic engineering, or any
+   other per S-NSSAI handling, if required.<a href="#section-4.2-10" class="pilcrow">¶</a></p>
+<p id="section-4.2-11">However, operators using such mapping methods should be aware of the implications
+   of any change of S-NSSAI on the addressing plans. For example, modifications of the S-NSSAIs in-use will require
+   updating the IP addresses used by NFs involved in the associated slices.<a href="#section-4.2-11" class="pilcrow">¶</a></p>
 <span id="name-an-example-of-s-nssai-embed"></span><div id="_figure-11">
 <figure id="figure-14">
-          <div class="alignCenter art-text artwork" id="section-4.2-11.1">
+          <div class="alignCenter art-text artwork" id="section-4.2-12.1">
 <pre>
              NF specific          reserved
         (not slice specific)     for S-NSSAI
@@ -2676,25 +2717,24 @@ VLANs representing slices           VLANs representing slices
 <a href="#name-an-example-of-s-nssai-embed" class="selfRef">An Example of S-NSSAI Embedded into IPv6</a>
           </figcaption></figure>
 </div>
-<p id="section-4.2-12">In the example shown in <a href="#_figure-11" class="auto internal xref">Figure 14</a>, the most significant 96 bits of the IPv6 address
-   are unique to the NF, but do not carry any slice-specific information, while the least
-   significant 32 bits are used to embed the S-NSSAI information. The 96-bit part of the
-   address may then be engineered/architected by the provider, for example, on the
-   geographical location or the DC identification.<a href="#section-4.2-12" class="pilcrow">¶</a></p>
-<p id="section-4.2-13"><a href="#_figure-s-nssai-deployment" class="auto internal xref">Figure 15</a> uses the example from <a href="#_figure-11" class="auto internal xref">Figure 14</a> to demonstrate a
+<p id="section-4.2-13">In the example shown in <a href="#_figure-11" class="auto internal xref">Figure 14</a>, the most significant 96 bits of the IPv6 address
+   are unique to the NF, but do not carry any slice-specific information. The S-NSSAI information is embedded in the least
+   significant 32 bits. The 96-bit part of the address may be structured by the provider, for example, on the
+   geographical location or the DC identification.<a href="#section-4.2-13" class="pilcrow">¶</a></p>
+<p id="section-4.2-14"><a href="#_figure-s-nssai-deployment" class="auto internal xref">Figure 15</a> uses the example from <a href="#_figure-11" class="auto internal xref">Figure 14</a> to demonstrate a
    slicing deployment, where the entire S-NSSAI is embedded into IPv6 addresses used by
    NFs. NF-A has a set of tunnel termination points, with unique per-slice IP addresses
    allocated from the 2001:db8:a:0::/96 prefix, while NF-B uses a set of tunnel termination
    points with per-slice IP addresses allocated from 2001:db8:b:0::/96. This example shows
    two slices: customer A eMBB (SST=01, SD=00001) and customer B MIoT (SST=03, SD=00003).
    Therefore, for customer A eMBB the tunnel IP addresses are auto-derived (without the need
-   for an explicit mapping table) as the IP's {2001:db8:a::100:1, 2001:db8:b::100:1},
-   where {:0100:0001} are used as the last two octets, and for customer B MIoT (SST=3,
-   SD=00003) tunnel uses the IP's {2001:db8:a::300:3, 2001:db8:b::300:3} and simply
-   adds {:0300:0003} as the last two octets. Leading zeros are not represented in IPv6 addresses as per <span>[<a href="#RFC5952" class="cite xref">RFC5952</a>]</span>.<a href="#section-4.2-13" class="pilcrow">¶</a></p>
+   for an explicit mapping table) as the IP addresses {2001:db8:a::100:1, 2001:db8:b::100:1},
+   where {:0100:0001} is used as the last two octets, and for customer B MIoT (SST=3,
+   SD=00003) tunnel uses the IP addresses {2001:db8:a::300:3, 2001:db8:b::300:3} and simply
+   adds {:0300:0003} as the last two octets. Leading zeros are not represented in the resulting IPv6 addresses as per <span>[<a href="#RFC5952" class="cite xref">RFC5952</a>]</span>.<a href="#section-4.2-14" class="pilcrow">¶</a></p>
 <span id="name-deployment-example-with-s-n"></span><div id="_figure-s-nssai-deployment">
 <figure id="figure-15">
-          <div class="alignCenter art-text artwork" id="section-4.2-14.1">
+          <div class="alignCenter art-text artwork" id="section-4.2-15.1">
 <pre>
  2001:db8:a::/96 (NF-A)                      2001:db8:b::/96 (NF-B)
 
@@ -2740,33 +2780,25 @@ VLANs representing slices           VLANs representing slices
    of the customer site, with the service label depicting
    the slice.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
 <p id="section-4.3-2">There are three major methods (based upon <span><a href="https://rfc-editor.org/rfc/rfc4364#section-10" class="relref">Section 10</a> of [<a href="#RFC4364" class="cite xref">RFC4364</a>]</span>) for interconnecting MPLS services over multiple service domains:<a href="#section-4.3-2" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-4.3-3.1">
-            <span class="break"></span><dl class="dlParallel" id="section-4.3-3.1.1">
-              <dt id="section-4.3-3.1.1.1">Option A (<a href="#sec-10a" class="auto internal xref">Section 4.3.1</a>):</dt>
-              <dd style="margin-left: 1.5em" id="section-4.3-3.1.1.2">
-                <p id="section-4.3-3.1.1.2.1">VRF-to-VRF connections.<a href="#section-4.3-3.1.1.2.1" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-4.3-3">
+          <dt id="section-4.3-3.1">Option A (<a href="#sec-10a" class="auto internal xref">Section 4.3.1</a>):</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-3.2">
+            <p id="section-4.3-3.2.1">VRF-to-VRF connections.<a href="#section-4.3-3.2.1" class="pilcrow">¶</a></p>
 </dd>
-            <dd class="break"></dd>
+        <dd class="break"></dd>
 </dl>
-</li>
-          <li class="normal" id="section-4.3-3.2">
-            <p id="section-4.3-3.2.1">Option B (<a href="#sec-10b" class="auto internal xref">Section 4.3.2</a>):
+<p id="section-4.3-4">Option B (<a href="#sec-10b" class="auto internal xref">Section 4.3.2</a>):
      : redistribution of labeled VPN routes with next-hop
-change at domain boundaries.<a href="#section-4.3-3.2.1" class="pilcrow">¶</a></p>
-</li>
-          <li class="normal" id="section-4.3-3.3">
-            <span class="break"></span><dl class="dlParallel" id="section-4.3-3.3.1">
-              <dt id="section-4.3-3.3.1.1">Option C (<a href="#sec-10c" class="auto internal xref">Section 4.3.3</a>):</dt>
-              <dd style="margin-left: 1.5em" id="section-4.3-3.3.1.2">
-                <p id="section-4.3-3.3.1.2.1">redistribution of labeled VPN routes without next-hop
-change and redistribution of labeled transport routes with next-hop
-change at domain boundaries.<a href="#section-4.3-3.3.1.2.1" class="pilcrow">¶</a></p>
+      change at domain boundaries.<a href="#section-4.3-4" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-4.3-5">
+          <dt id="section-4.3-5.1">Option C (<a href="#sec-10c" class="auto internal xref">Section 4.3.3</a>):</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-5.2">
+            <p id="section-4.3-5.2.1">redistribution of labeled VPN routes without next-hop
+    change and redistribution of labeled transport routes with next-hop
+    change at domain boundaries.<a href="#section-4.3-5.2.1" class="pilcrow">¶</a></p>
 </dd>
-            <dd class="break"></dd>
+        <dd class="break"></dd>
 </dl>
-</li>
-        </ul>
 <div id="sec-10a">
 <section id="section-4.3.1">
           <h4 id="name-option-a">
@@ -2987,9 +3019,9 @@ ranges for each slice, and use these ranges for slice identification purposes on
 <p id="section-5.1.2-1">Control of the TN resources on provider network transit links, as well as traffic
    scheduling/prioritization on provider network transit links, is based on a flat
    (non-hierarchical) QoS model in this Network Slice
-   realization.  That is, RFC XXXX Network Slices are assigned dedicated
+   realization.  That is, RFC 9543 Network Slices are assigned dedicated
    resources (e.g., QoS queues) at the edge of the provider network (at
-   SDPs), while all RFC XXXX Network Slices are sharing resources (sharing
+   SDPs), while all RFC 9543 Network Slices are sharing resources (sharing
    QoS queues) on the transit links of the provider network.  Typical router
    hardware can support up to 8 traffic queues per port, therefore
    the document assumes 8 traffic queues per port support in
@@ -3033,17 +3065,17 @@ ranges for each slice, and use these ranges for slice identification purposes on
           </h4>
 <p id="section-5.2.1-1">In 5QI-unaware mode, the DSCP values in the packets received from NF
    at SDP are ignored.  In the provider network, there is no QoS
-   differentiation at the 5G QoS Class level.  The entire RFC XXXX Network
+   differentiation at the 5G QoS Class level.  The entire RFC 9543 Network
    Slice is mapped to a single TN QoS Class, and, therefore, to a single
    QoS queue on the routers in the provider network.  With a small number of
    deployed 5G slices (for example, only two 5G slices: eMBB and MIoT),
    it is possible to dedicate a separate QoS queue for each slice on
    transit routers in the provider network.  However, with the introduction of private/enterprises
-   slices, as the number of 5G slices (and thus corresponding RFC XXXX
+   slices, as the number of 5G slices (and thus corresponding RFC 9543
    Network Slices) increases, a single QoS queue on transit links in the provider network serves
    multiple slices with similar characteristics.  QoS enforcement on
    transit links is fully coarse-grained (single NRP, sharing resources among
-   all RFC XXXX Network Slices), as displayed in <a href="#_figure-QoS-5QI-unaware" class="auto internal xref">Figure 18</a>.<a href="#section-5.2.1-1" class="pilcrow">¶</a></p>
+   all RFC 9543 Network Slices), as displayed in <a href="#_figure-QoS-5QI-unaware" class="auto internal xref">Figure 18</a>.<a href="#section-5.2.1-1" class="pilcrow">¶</a></p>
 <span id="name-slice-to-tn-qos-mapping-5qi"></span><div id="_figure-QoS-5QI-unaware">
 <figure id="figure-18">
             <div class="alignCenter art-text artwork" id="section-5.2.1-2.1">
@@ -3100,7 +3132,7 @@ Fine-grained QoS enforcement   Coarse-grained QoS enforcement
    5QI-unaware model), while the new header (MPLS or IPv6) carries QoS
    marking (MPLS Traffic Class bits for MPLS encapsulation, or DSCP for
    SRv6/IPv6 encapsulation) related to TN CoS.  Based on TN CoS
-   marking, per-hop behavior for all RFC XXXX Network Slices is executed on
+   marking, per-hop behavior for all RFC 9543 Network Slices is executed on
    provider network transit links.  Provider network transit routers do not evaluate the original IP
    header for QoS-related decisions.  This model is outlined in
    <a href="#_figure-15" class="auto internal xref">Figure 19</a> for MPLS encapsulation, and in <a href="#_figure-16" class="auto internal xref">Figure 20</a> for SRv6
@@ -3174,7 +3206,7 @@ Fine-grained QoS enforcement   Coarse-grained QoS enforcement
    design, especially in combination with soft policing with in-profile/
    out-profile traffic, as discussed in <a href="#sec-inbound-edge-resource-control" class="auto internal xref">Section 5.2.1.1</a>.<a href="#section-5.2.1-7" class="pilcrow">¶</a></p>
 <p id="section-5.2.1-8">Provider network edge resources are controlled in a granular, fine-grained
-   manner, with dedicated resource allocation for each RFC XXXX Network
+   manner, with dedicated resource allocation for each RFC 9543 Network
    Slice.  The resource control/enforcement happens at each SDP in two
    directions: inbound and outbound.<a href="#section-5.2.1-8" class="pilcrow">¶</a></p>
 <div id="sec-inbound-edge-resource-control">
@@ -3204,14 +3236,14 @@ Fine-grained QoS enforcement   Coarse-grained QoS enforcement
 </li>
             </ul>
 <p id="section-5.2.1.1-4">These parameters define the traffic characteristics of the slice and
-   are part of SLO parameter set provided by the 5G NSO to RFC XXXX NSC.  Based
+   are part of SLO parameter set provided by the 5G NSO to RFC 9543 NSC.  Based
    on these parameters the provider network inbound policy can be implemented using one
    of following options:<a href="#section-5.2.1.1-4" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-5.2.1.1-5.1">
                 <p id="section-5.2.1.1-5.1.1">1r2c (single-rate two-color) rate limiter<a href="#section-5.2.1.1-5.1.1" class="pilcrow">¶</a></p>
 <p id="section-5.2.1.1-5.1.2">
-This is the most basic rate limiter, described in <span><a href="https://rfc-editor.org/rfc/rfc2475#section-2.3" class="relref">Section 2.3</a> of [<a href="#RFC2475" class="cite xref">RFC2475</a>]</span>
+This is the most basic rate limiter, described in <span><a href="https://rfc-editor.org/rfc/rfc2475#section-2.3" class="relref">Section 2.3</a> of [<a href="#RFC2475" class="cite xref">RFC2475</a>]</span>.
 It meters at the SDP a
 traffic stream of given slice and marks its packets as in-profile
 (below CIR being enforced) or out-of-profile (above CIR being enforced).
@@ -3338,7 +3370,7 @@ outbound direction at the provider network edge links.<a href="#section-5.2.1.2-
    assigned a single egress queue.  The sum of slice CIRs, used as the
    weight in weighted queueing model, should not exceed the physical
    capacity of the attachment circuit.  Slice requests above this limit
-   should be rejected by the RFC XXXX NSC, unless an already established slice with
+   should be rejected by the RFC 9543 NSC, unless an already established slice with
    lower priority, if such exists, is preempted.<a href="#section-5.2.1.2-4" class="pilcrow">¶</a></p>
 <span id="name-ingress-slice-admission-cont"></span><div id="_figure-18">
 <figure id="figure-22">
@@ -3500,16 +3532,16 @@ to TN QoS Classes may be rather common.<a href="#section-5.2.2-6" class="pilcrow
    marking corresponding to 5QI (5G QoS Class), while the new header
    (MPLS or IPv6) carries QoS marking related to TN QoS Class.  Based on
    TN QoS Class marking, per-hop behavior for all aggregated 5G QoS
-   Classes from all RFC XXXX Network Slices is executed on the provider network transit links.  Provider network
+   Classes from all RFC 9543 Network Slices is executed on the provider network transit links.  Provider network
    transit routers do not evaluate the original IP header for QoS
    related decisions.  The original DSCP marking retained in the
    original IP header is used at the PE for fine-grained per slice and
    per 5G QoS Class inbound/outbound enforcement on the AC.<a href="#section-5.2.2-7" class="pilcrow">¶</a></p>
 <p id="section-5.2.2-8">In the 5QI-aware model, compared to the 5QI-unware model, provider network edge resources are controlled in an even more
    granular, fine-grained manner, with dedicated resource allocation for
-   each RFC XXXX Network Slice and dedicated resource allocation for number
+   each RFC 9543 Network Slice and dedicated resource allocation for number
    of traffic classes (most commonly up 4 or 8 traffic classes,
-   depending on the HW capability of the equipment) within each RFC XXXX
+   depending on the HW capability of the equipment) within each RFC 9543
    Network Slice.<a href="#section-5.2.2-8" class="pilcrow">¶</a></p>
 <div id="inbound-edge-resource-control">
 <section id="section-5.2.2.1">
@@ -3732,7 +3764,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
 </div>
 </section>
 </div>
-<div id="transport-planes-mapping-models">
+<div id="transport-plane-mapping-models">
 <section id="section-6">
       <h2 id="name-transport-planes-mapping-mo">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-transport-planes-mapping-mo" class="section-name selfRef">Transport Planes Mapping Models</a>
@@ -3744,7 +3776,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    constraints. For example, mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.<a href="#section-6-2.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-6-2.2">
-          <p id="section-6-2.2.1">A flex-algo <span>[<a href="#RFC9350" class="cite xref">RFC9350</a>]</span> with a particular metric-type (e.g., latency).<a href="#section-6-2.2.1" class="pilcrow">¶</a></p>
+          <p id="section-6-2.2.1">A flex-algo <span>[<a href="#RFC9350" class="cite xref">RFC9350</a>]</span> with a particular metric-type (e.g., latency), or one that only uses links with particular properties (e.g., MACsec link <span>[<a href="#IEEE802.1AE" class="cite xref">IEEE802.1AE</a>]</span>), or excludes links that are within a particular geography.<a href="#section-6-2.2.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-6-2.3">
           <p id="section-6-2.3.1">An NRP <span>[<a href="#I-D.ietf-teas-ns-ip-mpls" class="cite xref">I-D.ietf-teas-ns-ip-mpls</a>]</span><a href="#section-6-2.3.1" class="pilcrow">¶</a></p>
@@ -3988,11 +4020,11 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
 <a href="#name-an-example-of-multi-dc-arch" class="selfRef">An Example of Multi-DC Architecture</a>
           </figcaption></figure>
 </div>
-<p id="section-7.1-5">Let us consider 5G Slice "X" that uses some of the network functions in
+<p id="section-7.1-5">Let us consider 5G slice "X" that uses some of the network functions in
    the three DCs.  If this slice has latency requirements, the 5G NSO will
    have taken those into account when deciding which NF instances
    in which DC are to be invoked for this slice.  As a result of such a
-   placement decision, the three DCs shown are involved in 5G Slice "X",
+   placement decision, the three DCs shown are involved in 5G slice "X",
    rather than other DCs.  For its decision-making, the 5G NSO
    needs information from the NSC about the observed latency between DCs.
    Preferably, the NSC would present the topology in an abstracted form,
@@ -4010,7 +4042,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    associated demands into one value.  For example, NF1A and NF1B in DC1
    might be sending traffic to multiple NFs in DC2, but this is
    expressed as one value in the traffic matrix: the total bandwidth
-   required for 5G Slice X from DC1 to DC2 (8 units).  Each row in the
+   required for 5G slice X from DC1 to DC2 (8 units).  Each row in the
    right-most column in the traffic matrix shows the total amount of
    traffic going from a given DC into the transport network, regardless
    of the destination DC.  Note that this number can be less than the
@@ -4054,7 +4086,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
           </figcaption></figure>
 </div>
 <p id="section-7.1-8"><span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="cite xref">I-D.ietf-teas-ietf-network-slice-nbi-yang</a>]</span> can be used to convey all
-   of the information in the traffic matrix to the RFC XXXX NSC.  The RFC XXXX
+   of the information in the traffic matrix to the RFC 9543 NSC.  The RFC 9543
    NSC applies policers corresponding to the last column in the traffic
    matrix to the appropriate PE routers, in order to enforce the
    bandwidth contract.  For example, it applies a policer of 11 units to
@@ -4067,9 +4099,9 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
 <p id="section-7.1-9">Depending on the bandwidth model used in the provider network (<a href="#sec-bw" class="auto internal xref">Section 7.2</a>),
    the other values in the matrix, i.e., the DC-to-DC demands, may not
    be directly applied to the provider network.  Even so, the
-   information may be useful to the RFC XXXX NSC for capacity planning and
+   information may be useful to the RFC 9543 NSC for capacity planning and
    failure simulation purposes.  If, on the other hand, the DC-to-DC
-   demand information is not used by the RFC XXXX NSC, the IETF YANG Data
+   demand information is not used by the RFC 9543 NSC, the IETF YANG Data
    Model for L3VPN Service Delivery <span>[<a href="#RFC8299" class="cite xref">RFC8299</a>]</span> or the IETF YANG Data
    Model for L2VPN Service Delivery <span>[<a href="#RFC8466" class="cite xref">RFC8466</a>]</span> could be used instead of
    <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="cite xref">I-D.ietf-teas-ietf-network-slice-nbi-yang</a>]</span>, as they support
@@ -4307,11 +4339,38 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
       <h2 id="name-security-considerations">
 <a href="#section-10" class="section-number selfRef">10. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-10-1">RFC XXXX Network Slices considerations are discussed in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slices-25#section-6" class="relref">Section 6</a> of [<a href="#I-D.ietf-teas-ietf-network-slices" class="cite xref">I-D.ietf-teas-ietf-network-slices</a>]</span>.<a href="#section-10-1" class="pilcrow">¶</a></p>
-<p id="section-10-2">Many of the YANG modules cited in this document define schema for data that is designed to be accessed via network management protocols such as NETCONF <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> or RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>. The lowest NETCONF layer is the secure transport layer, and the mandatory-to-implement secure transport is Secure Shell (SSH) <span>[<a href="#RFC6242" class="cite xref">RFC6242</a>]</span>. The lowest RESTCONF layer is HTTPS, and the mandatory-to-implement secure transport is TLS <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>.<a href="#section-10-2" class="pilcrow">¶</a></p>
-<p id="section-10-3">The NETCONF access control model <span>[<a href="#RFC8341" class="cite xref">RFC8341</a>]</span> provides the means to restrict access for particular NETCONF or RESTCONF users to a preconfigured subset of all available NETCONF or RESTCONF protocol operations and content.<a href="#section-10-3" class="pilcrow">¶</a></p>
-<p id="section-10-4">Security considerations specific to each of the technologies and protocols listed in the document are discussed in the specification documents of each of these protocols.<a href="#section-10-4" class="pilcrow">¶</a></p>
-<p id="section-10-5">Adequate admission control policies should be configured in the edge of the provider network to control access to specific slice resources. Likewise, access to classification and mapping tables have to be controlled to prevent misbehaviors (an unauthorized entity may modify the table to bind traffic to a random slice, redirect the traffic, etc.). Network devices have to check that a required access privilege is provided before granting access to specific data or performing specific actions.<a href="#section-10-5" class="pilcrow">¶</a></p>
+<p id="section-10-1"><span><a href="https://rfc-editor.org/rfc/rfc9543#section-10" class="relref">Section 10</a> of [<a href="#RFC9543" class="cite xref">RFC9543</a>]</span> discusses generic security considerations that are applicable to network slicing, with a focus on the following considerations:<a href="#section-10-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-10-2.1">
+          <p id="section-10-2.1.1">Conformance to security constraints:<a href="#section-10-2.1.1" class="pilcrow">¶</a></p>
+<p id="section-10-2.1.2">
+Specific security requests, such as not routing traffic through a particular geographical region can be met by mapping the traffic to a transport plane that avoids that region.<a href="#section-10-2.1.2" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-10-2.2">
+          <p id="section-10-2.2.1">IETF NSC authentication:<a href="#section-10-2.2.1" class="pilcrow">¶</a></p>
+<p id="section-10-2.2.2">
+This is out of the scope for this document. It should be addressed in documents that describe IETF NSC realization (e.g., <span>[<a href="#I-D.ietf-teas-ns-controller-models" class="cite xref">I-D.ietf-teas-ns-controller-models</a>]</span>).<a href="#section-10-2.2.2" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-10-2.3">
+          <p id="section-10-2.3.1">Specific isolation criteria:<a href="#section-10-2.3.1" class="pilcrow">¶</a></p>
+<p id="section-10-2.3.2">
+Adequate admission control policies, for example policers as described in <a href="#sec-inbound-edge-resource-control" class="auto internal xref">Section 5.2.1.1</a>, should be configured in the edge of the provider network to control access to specific slice resources. This prevents the possibility of one slice consuming resources at the expense of other slices. Likewise, access to classification and mapping tables have to be controlled to prevent misbehaviors (an unauthorized entity may modify the table to bind traffic to a random slice, redirect the traffic, etc.). Network devices have to check that a required access privilege is provided before granting access to specific data or performing specific actions.<a href="#section-10-2.3.2" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-10-2.4">
+          <p id="section-10-2.4.1">Data Confidentiality and Integrity of an IETF Network Slice:<a href="#section-10-2.4.1" class="pilcrow">¶</a></p>
+<p id="section-10-2.4.2">
+As described in <span><a href="https://rfc-editor.org/rfc/rfc9543#section-5.1.2.1" class="relref">Section 5.1.2.1</a> of [<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>, the customer might request an SLE that mandates encryption. As described in <a href="#transport-plane-mapping-models" class="auto internal xref">Section 6</a>, this can be achieved, e.g., by mapping the traffic to a transport plane that uses only MACsec-encrypted links.<a href="#section-10-2.4.2" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="section-10-3">Many of the YANG modules cited in this document define schema for data that is designed to be accessed via network management protocols such as NETCONF <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> or RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>. The lowest NETCONF layer is the secure transport layer, and the mandatory-to-implement secure transport is Secure Shell (SSH) <span>[<a href="#RFC6242" class="cite xref">RFC6242</a>]</span>. The lowest RESTCONF layer is HTTPS, and the mandatory-to-implement secure transport is TLS <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>.<a href="#section-10-3" class="pilcrow">¶</a></p>
+<p id="section-10-4">The NETCONF access control model <span>[<a href="#RFC8341" class="cite xref">RFC8341</a>]</span> provides the means to restrict access for particular NETCONF or RESTCONF users to a preconfigured subset of all available NETCONF or RESTCONF protocol operations and content.<a href="#section-10-4" class="pilcrow">¶</a></p>
+<p id="section-10-5">In order to avoid the need for a mapping table to associate source/destination IP
+addresses and slices’ specific S-NSSAIs, <a href="#sec-ip-hof" class="auto internal xref">Section 4.2</a> describes an approach where some or all S-NSSAI bits
+are embedded in an IPv6 address using an algorithm approach. An attacker from within the transport network
+who has access to the mapping configuration may infer the slices to which belong a packet. It may also
+alter these bits which may lead to steering the packet via a distinct network slice, and thus lead to
+service disruption. Note that such an on-path attacker may make more damage (e.g., randomly drop packets).<a href="#section-10-5" class="pilcrow">¶</a></p>
+<p id="section-10-6">Security considerations specific to each of the technologies and protocols listed in the document are discussed in the specification documents of each of these protocols.<a href="#section-10-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <section id="section-11">
@@ -4324,10 +4383,6 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
 <a href="#section-11.1" class="section-number selfRef">11.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
-<dt id="I-D.ietf-teas-ietf-network-slices">[I-D.ietf-teas-ietf-network-slices]</dt>
-        <dd>
-<span class="refAuthor">Farrel, A.</span>, <span class="refAuthor">Drake, J.</span>, <span class="refAuthor">Rokui, R.</span>, <span class="refAuthor">Homma, S.</span>, <span class="refAuthor">Makhijani, K.</span>, <span class="refAuthor">Contreras, L. M.</span>, and <span class="refAuthor">J. Tantsura</span>, <span class="refTitle">"A Framework for Network Slices in Networks Built from IETF Technologies"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-ietf-network-slices-25</span>, <time datetime="2023-09-14" class="refDate">14 September 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slices-25">https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slices-25</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="RFC4364">[RFC4364]</dt>
         <dd>
 <span class="refAuthor">Rosen, E.</span> and <span class="refAuthor">Y. Rekhter</span>, <span class="refTitle">"BGP/MPLS IP Virtual Private Networks (VPNs)"</span>, <span class="seriesInfo">RFC 4364</span>, <span class="seriesInfo">DOI 10.17487/RFC4364</span>, <time datetime="2006-02" class="refDate">February 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4364">https://www.rfc-editor.org/rfc/rfc4364</a>&gt;</span>. </dd>
@@ -4353,8 +4408,12 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
 <span class="refAuthor">Bierman, A.</span> and <span class="refAuthor">M. Bjorklund</span>, <span class="refTitle">"Network Configuration Access Control Model"</span>, <span class="seriesInfo">STD 91</span>, <span class="seriesInfo">RFC 8341</span>, <span class="seriesInfo">DOI 10.17487/RFC8341</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8341">https://www.rfc-editor.org/rfc/rfc8341</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8446">[RFC8446]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 8446</span>, <span class="seriesInfo">DOI 10.17487/RFC8446</span>, <time datetime="2018-08" class="refDate">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8446">https://www.rfc-editor.org/rfc/rfc8446</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9543">[RFC9543]</dt>
+      <dd>
+<span class="refAuthor">Farrel, A., Ed.</span>, <span class="refAuthor">Drake, J., Ed.</span>, <span class="refAuthor">Rokui, R.</span>, <span class="refAuthor">Homma, S.</span>, <span class="refAuthor">Makhijani, K.</span>, <span class="refAuthor">Contreras, L.</span>, and <span class="refAuthor">J. Tantsura</span>, <span class="refTitle">"A Framework for Network Slices in Networks Built from IETF Technologies"</span>, <span class="seriesInfo">RFC 9543</span>, <span class="seriesInfo">DOI 10.17487/RFC9543</span>, <time datetime="2024-03" class="refDate">March 2024</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9543">https://www.rfc-editor.org/rfc/rfc9543</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -4371,11 +4430,11 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
 <dd class="break"></dd>
 <dt id="I-D.ietf-opsawg-ntw-attachment-circuit">[I-D.ietf-opsawg-ntw-attachment-circuit]</dt>
         <dd>
-<span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Roberts, R.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, and <span class="refAuthor">B. Wu</span>, <span class="refTitle">"A Network YANG Data Model for Attachment Circuits"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-opsawg-ntw-attachment-circuit-04</span>, <time datetime="2023-12-14" class="refDate">14 December 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-ntw-attachment-circuit-04">https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-ntw-attachment-circuit-04</a>&gt;</span>. </dd>
+<span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Roberts, R.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, and <span class="refAuthor">B. Wu</span>, <span class="refTitle">"A Network YANG Data Model for Attachment Circuits"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-opsawg-ntw-attachment-circuit-05</span>, <time datetime="2024-02-09" class="refDate">9 February 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-ntw-attachment-circuit-05">https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-ntw-attachment-circuit-05</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-opsawg-teas-attachment-circuit">[I-D.ietf-opsawg-teas-attachment-circuit]</dt>
         <dd>
-<span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Roberts, R.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, and <span class="refAuthor">B. Wu</span>, <span class="refTitle">"YANG Data Models for Bearers and 'Attachment Circuits'-as-a-Service (ACaaS)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-opsawg-teas-attachment-circuit-05</span>, <time datetime="2024-01-22" class="refDate">22 January 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-teas-attachment-circuit-05">https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-teas-attachment-circuit-05</a>&gt;</span>. </dd>
+<span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Roberts, R.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, and <span class="refAuthor">B. Wu</span>, <span class="refTitle">"YANG Data Models for Bearers and 'Attachment Circuits'-as-a-Service (ACaaS)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-opsawg-teas-attachment-circuit-07</span>, <time datetime="2024-03-04" class="refDate">4 March 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-teas-attachment-circuit-07">https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-teas-attachment-circuit-07</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-teas-5g-network-slice-application">[I-D.ietf-teas-5g-network-slice-application]</dt>
         <dd>
@@ -4383,11 +4442,19 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
 <dd class="break"></dd>
 <dt id="I-D.ietf-teas-ietf-network-slice-nbi-yang">[I-D.ietf-teas-ietf-network-slice-nbi-yang]</dt>
         <dd>
-<span class="refAuthor">Wu, B.</span>, <span class="refAuthor">Dhody, D.</span>, <span class="refAuthor">Rokui, R.</span>, <span class="refAuthor">Saad, T.</span>, and <span class="refAuthor">J. Mullooly</span>, <span class="refTitle">"A YANG Data Model for the IETF Network Slice Service"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-ietf-network-slice-nbi-yang-08</span>, <time datetime="2023-10-23" class="refDate">23 October 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slice-nbi-yang-08">https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slice-nbi-yang-08</a>&gt;</span>. </dd>
+<span class="refAuthor">Wu, B.</span>, <span class="refAuthor">Dhody, D.</span>, <span class="refAuthor">Rokui, R.</span>, <span class="refAuthor">Saad, T.</span>, and <span class="refAuthor">J. Mullooly</span>, <span class="refTitle">"A YANG Data Model for the RFC AAAA Network Slice Service"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-ietf-network-slice-nbi-yang-09</span>, <time datetime="2024-02-17" class="refDate">17 February 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slice-nbi-yang-09">https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slice-nbi-yang-09</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-teas-ns-controller-models">[I-D.ietf-teas-ns-controller-models]</dt>
+        <dd>
+<span class="refAuthor">Contreras, L. M.</span>, <span class="refAuthor">Rokui, R.</span>, <span class="refAuthor">Tantsura, J.</span>, <span class="refAuthor">Wu, B.</span>, <span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Dhody, D.</span>, and <span class="refAuthor">S. Belotti</span>, <span class="refTitle">"IETF Network Slice Controller and its associated data models"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-ns-controller-models-01</span>, <time datetime="2023-10-23" class="refDate">23 October 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-controller-models-01">https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-controller-models-01</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-teas-ns-ip-mpls">[I-D.ietf-teas-ns-ip-mpls]</dt>
         <dd>
 <span class="refAuthor">Saad, T.</span>, <span class="refAuthor">Beeram, V. P.</span>, <span class="refAuthor">Dong, J.</span>, <span class="refAuthor">Wen, B.</span>, <span class="refAuthor">Ceccarelli, D.</span>, <span class="refAuthor">Halpern, J. M.</span>, <span class="refAuthor">Peng, S.</span>, <span class="refAuthor">Chen, R.</span>, <span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Contreras, L. M.</span>, <span class="refAuthor">Rokui, R.</span>, and <span class="refAuthor">L. Jalil</span>, <span class="refTitle">"Realizing Network Slices in IP/MPLS Networks"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-ns-ip-mpls-03</span>, <time datetime="2023-11-26" class="refDate">26 November 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-ip-mpls-03">https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-ip-mpls-03</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="IEEE802.1AE">[IEEE802.1AE]</dt>
+        <dd>
+<span class="refAuthor">IEEE</span>, <span class="refTitle">"802.1AE: MAC Security (MACsec)"</span>, <span>n.d.</span>, <span>&lt;<a href="https://1.ieee802.org/security/802-1ae/">https://1.ieee802.org/security/802-1ae/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="NG.113">[NG.113]</dt>
         <dd>
@@ -4557,179 +4624,115 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
 </section>
 </div>
 </section>
-<div id="open-issues-resolution">
-<section id="appendix-A">
-      <h2 id="name-open-issues-resolution">
-<a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-open-issues-resolution" class="section-name selfRef">Open Issues &amp; Resolution</a>
-      </h2>
-<p id="appendix-A-1">The following issues should be resolved prior to the WGLC:<a href="#appendix-A-1" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="appendix-A-2">
-<li id="appendix-A-2.1">
-          <p id="appendix-A-2.1.1">Assess which/whether some of the material in the "5G Slice to RFC XXXX Network Slice Mapping" Section should be maintained in this draft or moved to <span>[<a href="#I-D.ietf-teas-5g-network-slice-application" class="cite xref">I-D.ietf-teas-5g-network-slice-application</a>]</span> (Adrian)<a href="#appendix-A-2.1.1" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="appendix-A-2.1.2.1">
-              <p id="appendix-A-2.1.2.1.1">This issue is tracked at https://github.com/boucadair/5g-slice-realization/issues/40.<a href="#appendix-A-2.1.2.1.1" class="pilcrow">¶</a></p>
-</li>
-            <li class="normal" id="appendix-A-2.1.2.2">
-              <p id="appendix-A-2.1.2.2.1">Update: The outcome of the discussion with the authors of the application I-D can be seen at: https://mailarchive.ietf.org/arch/msg/teas/4QifnnGAcnQcCTXRLSJtQ1SArLA/.<a href="#appendix-A-2.1.2.2.1" class="pilcrow">¶</a></p>
-</li>
-          </ul>
-</li>
-        <li id="appendix-A-2.2">
-          <p id="appendix-A-2.2.1">Assess whether we need to maintain the "First 5G Slice vs Subsequent Slices" Section:<a href="#appendix-A-2.2.1" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="appendix-A-2.2.2.1">
-              <p id="appendix-A-2.2.2.1.1">Unless we explain how this ss important for realization, this section should be deleted (Med)<a href="#appendix-A-2.2.2.1.1" class="pilcrow">¶</a></p>
-</li>
-            <li class="normal" id="appendix-A-2.2.2.2">
-              <p id="appendix-A-2.2.2.2.1">The motivation of this section is not clear (from Reza)<a href="#appendix-A-2.2.2.2.1" class="pilcrow">¶</a></p>
-</li>
-            <li class="normal" id="appendix-A-2.2.2.3">
-              <p id="appendix-A-2.2.2.3.1">Need to describe the implications to the realization of RFC XXXX Network Slices (Jie)<a href="#appendix-A-2.2.2.3.1" class="pilcrow">¶</a></p>
-</li>
-            <li class="normal" id="appendix-A-2.2.2.4">
-              <p id="appendix-A-2.2.2.4.1">The issue is tracked at https://github.com/boucadair/5g-slice-realization/issues/19<a href="#appendix-A-2.2.2.4.1" class="pilcrow">¶</a></p>
-</li>
-            <li class="normal" id="appendix-A-2.2.2.5">
-              <p id="appendix-A-2.2.2.5.1">Update: The fix can be seen at https://mailarchive.ietf.org/arch/msg/teas/wADS6r8syhPsYl9rgZYjVE4Ii9U/<a href="#appendix-A-2.2.2.5.1" class="pilcrow">¶</a></p>
-</li>
-          </ul>
-</li>
-        <li id="appendix-A-2.3">
-          <p id="appendix-A-2.3.1">Clarify the use of inter-AS option B/C to model the AC between CE and PE (Jie)<a href="#appendix-A-2.3.1" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="appendix-A-2.3.2.1">
-              <p id="appendix-A-2.3.2.1.1">The issue is tracked at https://github.com/boucadair/5g-slice-realization/issues/52<a href="#appendix-A-2.3.2.1.1" class="pilcrow">¶</a></p>
-</li>
-            <li class="normal" id="appendix-A-2.3.2.2">
-              <p id="appendix-A-2.3.2.2.1">Update: The fix can be seen at https://mailarchive.ietf.org/arch/msg/teas/bBSAY7-GBJsECCrkgfrrrvoKGgM/.<a href="#appendix-A-2.3.2.2.1" class="pilcrow">¶</a></p>
-</li>
-          </ul>
-</li>
-        <li id="appendix-A-2.4">
-          <p id="appendix-A-2.4.1">Further discuss whether the TN slice in the customer site is covered or is out of the scope of RFC XXXX Network Slice (Jie)<a href="#appendix-A-2.4.1" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="appendix-A-2.4.2.1">
-              <p id="appendix-A-2.4.2.1.1">The issue is tracked at https://github.com/boucadair/5g-slice-realization/issues/53<a href="#appendix-A-2.4.2.1.1" class="pilcrow">¶</a></p>
-</li>
-            <li class="normal" id="appendix-A-2.4.2.2">
-              <p id="appendix-A-2.4.2.2.1">Update: The fix can be seen at https://mailarchive.ietf.org/arch/msg/teas/WtZF8AFnubcVUYBxcn7i8COozC0/.<a href="#appendix-A-2.4.2.2.1" class="pilcrow">¶</a></p>
-</li>
-          </ul>
-</li>
-      </ol>
-<p id="appendix-A-3">Active issues can be tracked at: https://github.com/boucadair/5g-slice-realization/issues<a href="#appendix-A-3" class="pilcrow">¶</a></p>
-</section>
-</div>
 <div id="ext-abbr">
-<section id="appendix-B">
+<section id="appendix-A">
       <h2 id="name-acronyms-and-abbreviations">
-<a href="#appendix-B" class="section-number selfRef">Appendix B. </a><a href="#name-acronyms-and-abbreviations" class="section-name selfRef">Acronyms and Abbreviations</a>
+<a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-acronyms-and-abbreviations" class="section-name selfRef">Acronyms and Abbreviations</a>
       </h2>
-<p id="appendix-B-1">3GPP: 3rd Generation Partnership Project<a href="#appendix-B-1" class="pilcrow">¶</a></p>
-<p id="appendix-B-2">5GC: 5G Core<a href="#appendix-B-2" class="pilcrow">¶</a></p>
-<p id="appendix-B-3">5QI: 5G QoS Indicator<a href="#appendix-B-3" class="pilcrow">¶</a></p>
-<p id="appendix-B-4">A2A: Any-to-Any<a href="#appendix-B-4" class="pilcrow">¶</a></p>
-<p id="appendix-B-5">AC: Attachment Circuit<a href="#appendix-B-5" class="pilcrow">¶</a></p>
-<p id="appendix-B-6">AMF: Access and Mobility Management Function<a href="#appendix-B-6" class="pilcrow">¶</a></p>
-<p id="appendix-B-7">AUSF: Authentication Server Function<a href="#appendix-B-7" class="pilcrow">¶</a></p>
-<p id="appendix-B-8">BBU: Baseband Unit<a href="#appendix-B-8" class="pilcrow">¶</a></p>
-<p id="appendix-B-9">BH: Backhaul<a href="#appendix-B-9" class="pilcrow">¶</a></p>
-<p id="appendix-B-10">BS: Base Station<a href="#appendix-B-10" class="pilcrow">¶</a></p>
-<p id="appendix-B-11">CE: Customer Edge<a href="#appendix-B-11" class="pilcrow">¶</a></p>
-<p id="appendix-B-12">CIR: Committed Information Rate<a href="#appendix-B-12" class="pilcrow">¶</a></p>
-<p id="appendix-B-13">CN: Core Network<a href="#appendix-B-13" class="pilcrow">¶</a></p>
-<p id="appendix-B-14">CoS: Class of Service<a href="#appendix-B-14" class="pilcrow">¶</a></p>
-<p id="appendix-B-15">CP: Control Plane<a href="#appendix-B-15" class="pilcrow">¶</a></p>
-<p id="appendix-B-16">CSP: Communication Service Provider<a href="#appendix-B-16" class="pilcrow">¶</a></p>
-<p id="appendix-B-17">CU: Centralized Unit<a href="#appendix-B-17" class="pilcrow">¶</a></p>
-<p id="appendix-B-18">CU-CP: Centralized Unit Control Plane<a href="#appendix-B-18" class="pilcrow">¶</a></p>
-<p id="appendix-B-19">CU-UP: Centralized Unit User Plane<a href="#appendix-B-19" class="pilcrow">¶</a></p>
-<p id="appendix-B-20">DC: Data Center<a href="#appendix-B-20" class="pilcrow">¶</a></p>
-<p id="appendix-B-21">DDoS: Distributed Denial of Services<a href="#appendix-B-21" class="pilcrow">¶</a></p>
-<p id="appendix-B-22">DN: Data Network<a href="#appendix-B-22" class="pilcrow">¶</a></p>
-<p id="appendix-B-23">DSCP: Differentiated Services Code Point<a href="#appendix-B-23" class="pilcrow">¶</a></p>
-<p id="appendix-B-24">DU: Distributed Unit<a href="#appendix-B-24" class="pilcrow">¶</a></p>
-<p id="appendix-B-25">eCPRI: enhanced Common Public Radio Interface<a href="#appendix-B-25" class="pilcrow">¶</a></p>
-<p id="appendix-B-26">FH: Fronthaul<a href="#appendix-B-26" class="pilcrow">¶</a></p>
-<p id="appendix-B-27">FIB: Forwarding Information Base<a href="#appendix-B-27" class="pilcrow">¶</a></p>
-<p id="appendix-B-28">GPRS: Generic Packet Radio Service<a href="#appendix-B-28" class="pilcrow">¶</a></p>
-<p id="appendix-B-29">gNB: gNodeB<a href="#appendix-B-29" class="pilcrow">¶</a></p>
-<p id="appendix-B-30">GTP: GPRS Tunneling Protocol<a href="#appendix-B-30" class="pilcrow">¶</a></p>
-<p id="appendix-B-31">GTP-U: GPRS Tunneling Protocol User plane<a href="#appendix-B-31" class="pilcrow">¶</a></p>
-<p id="appendix-B-32">HW: Hardware<a href="#appendix-B-32" class="pilcrow">¶</a></p>
-<p id="appendix-B-33">ID: Identifier<a href="#appendix-B-33" class="pilcrow">¶</a></p>
-<p id="appendix-B-34">IGP: Interior Gateway Protocol<a href="#appendix-B-34" class="pilcrow">¶</a></p>
-<p id="appendix-B-35">L2VPN: Layer 2 Virtual Private Network<a href="#appendix-B-35" class="pilcrow">¶</a></p>
-<p id="appendix-B-36">L3VPN: Layer 3 Virtual Private Network<a href="#appendix-B-36" class="pilcrow">¶</a></p>
-<p id="appendix-B-37">LSP: Label Switched Path<a href="#appendix-B-37" class="pilcrow">¶</a></p>
-<p id="appendix-B-38">MH: Midhaul<a href="#appendix-B-38" class="pilcrow">¶</a></p>
-<p id="appendix-B-39">MIoT: Massive Internet of Things<a href="#appendix-B-39" class="pilcrow">¶</a></p>
-<p id="appendix-B-40">MPLS: Multiprotocol Label Switching<a href="#appendix-B-40" class="pilcrow">¶</a></p>
-<p id="appendix-B-41">NF: Network Function<a href="#appendix-B-41" class="pilcrow">¶</a></p>
-<p id="appendix-B-42">NR: New Radio<a href="#appendix-B-42" class="pilcrow">¶</a></p>
-<p id="appendix-B-43">NRF: Network Function Repository<a href="#appendix-B-43" class="pilcrow">¶</a></p>
-<p id="appendix-B-44">NRP: Network Resource Partition<a href="#appendix-B-44" class="pilcrow">¶</a></p>
-<p id="appendix-B-45">NSC: Network Slice Controller<a href="#appendix-B-45" class="pilcrow">¶</a></p>
-<p id="appendix-B-46">PE: Provider Edge<a href="#appendix-B-46" class="pilcrow">¶</a></p>
-<p id="appendix-B-47">PIR: Peak Information Rate<a href="#appendix-B-47" class="pilcrow">¶</a></p>
-<p id="appendix-B-48">PLMN: Public Land Mobile Network<a href="#appendix-B-48" class="pilcrow">¶</a></p>
-<p id="appendix-B-49">PSTN: Public Switched Telephony Network<a href="#appendix-B-49" class="pilcrow">¶</a></p>
-<p id="appendix-B-50">QoS: Quality of Service<a href="#appendix-B-50" class="pilcrow">¶</a></p>
-<p id="appendix-B-51">RAN: Radio Access Network<a href="#appendix-B-51" class="pilcrow">¶</a></p>
-<p id="appendix-B-52">RF: Radio Frequency<a href="#appendix-B-52" class="pilcrow">¶</a></p>
-<p id="appendix-B-53">RIB: Routing Information Base<a href="#appendix-B-53" class="pilcrow">¶</a></p>
-<p id="appendix-B-54">RSVP: Resource Reservation Protocol<a href="#appendix-B-54" class="pilcrow">¶</a></p>
-<p id="appendix-B-55">RU: Radio Unit<a href="#appendix-B-55" class="pilcrow">¶</a></p>
-<p id="appendix-B-56">SD: Slice Differentiator<a href="#appendix-B-56" class="pilcrow">¶</a></p>
-<p id="appendix-B-57">SDP: Service Demarcation Point<a href="#appendix-B-57" class="pilcrow">¶</a></p>
-<p id="appendix-B-58">SLA: Service Level Agreement<a href="#appendix-B-58" class="pilcrow">¶</a></p>
-<p id="appendix-B-59">SLO: Service Level Objective<a href="#appendix-B-59" class="pilcrow">¶</a></p>
-<p id="appendix-B-60">SMF: Session Management Function<a href="#appendix-B-60" class="pilcrow">¶</a></p>
-<p id="appendix-B-61">S-NSSAI: Single Network Slice Selection Assistance Information<a href="#appendix-B-61" class="pilcrow">¶</a></p>
-<p id="appendix-B-62">SST: Slice/Service Type<a href="#appendix-B-62" class="pilcrow">¶</a></p>
-<p id="appendix-B-63">SR: Segment Routing<a href="#appendix-B-63" class="pilcrow">¶</a></p>
-<p id="appendix-B-64">SRv6: Segment Routing version 6<a href="#appendix-B-64" class="pilcrow">¶</a></p>
-<p id="appendix-B-65">TC: Traffic Class<a href="#appendix-B-65" class="pilcrow">¶</a></p>
-<p id="appendix-B-66">TE: Traffic Engineering<a href="#appendix-B-66" class="pilcrow">¶</a></p>
-<p id="appendix-B-67">TN: Transport Network<a href="#appendix-B-67" class="pilcrow">¶</a></p>
-<p id="appendix-B-68">TS: Technical Specification<a href="#appendix-B-68" class="pilcrow">¶</a></p>
-<p id="appendix-B-69">UDM: Unified Data Management<a href="#appendix-B-69" class="pilcrow">¶</a></p>
-<p id="appendix-B-70">UE: User Equipment<a href="#appendix-B-70" class="pilcrow">¶</a></p>
-<p id="appendix-B-71">UP: User Plane<a href="#appendix-B-71" class="pilcrow">¶</a></p>
-<p id="appendix-B-72">UPF: User Plane Function<a href="#appendix-B-72" class="pilcrow">¶</a></p>
-<p id="appendix-B-73">URLLC: Ultra Reliable Low Latency Communication<a href="#appendix-B-73" class="pilcrow">¶</a></p>
-<p id="appendix-B-74">VLAN: Virtual Local Area Network<a href="#appendix-B-74" class="pilcrow">¶</a></p>
-<p id="appendix-B-75">VNF: Virtual Network Function<a href="#appendix-B-75" class="pilcrow">¶</a></p>
-<p id="appendix-B-76">VPN: Virtual Private Network<a href="#appendix-B-76" class="pilcrow">¶</a></p>
-<p id="appendix-B-77">VRF: Virtual Routing and Forwarding<a href="#appendix-B-77" class="pilcrow">¶</a></p>
-<p id="appendix-B-78">VXLAN: Virtual Extensible Local Area Network<a href="#appendix-B-78" class="pilcrow">¶</a></p>
+<p id="appendix-A-1">3GPP: 3rd Generation Partnership Project<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-A-2">5GC: 5G Core<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+<p id="appendix-A-3">5QI: 5G QoS Indicator<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+<p id="appendix-A-4">A2A: Any-to-Any<a href="#appendix-A-4" class="pilcrow">¶</a></p>
+<p id="appendix-A-5">AC: Attachment Circuit<a href="#appendix-A-5" class="pilcrow">¶</a></p>
+<p id="appendix-A-6">AMF: Access and Mobility Management Function<a href="#appendix-A-6" class="pilcrow">¶</a></p>
+<p id="appendix-A-7">AUSF: Authentication Server Function<a href="#appendix-A-7" class="pilcrow">¶</a></p>
+<p id="appendix-A-8">BBU: Baseband Unit<a href="#appendix-A-8" class="pilcrow">¶</a></p>
+<p id="appendix-A-9">BH: Backhaul<a href="#appendix-A-9" class="pilcrow">¶</a></p>
+<p id="appendix-A-10">BS: Base Station<a href="#appendix-A-10" class="pilcrow">¶</a></p>
+<p id="appendix-A-11">CE: Customer Edge<a href="#appendix-A-11" class="pilcrow">¶</a></p>
+<p id="appendix-A-12">CIR: Committed Information Rate<a href="#appendix-A-12" class="pilcrow">¶</a></p>
+<p id="appendix-A-13">CN: Core Network<a href="#appendix-A-13" class="pilcrow">¶</a></p>
+<p id="appendix-A-14">CoS: Class of Service<a href="#appendix-A-14" class="pilcrow">¶</a></p>
+<p id="appendix-A-15">CP: Control Plane<a href="#appendix-A-15" class="pilcrow">¶</a></p>
+<p id="appendix-A-16">CSP: Communication Service Provider<a href="#appendix-A-16" class="pilcrow">¶</a></p>
+<p id="appendix-A-17">CU: Centralized Unit<a href="#appendix-A-17" class="pilcrow">¶</a></p>
+<p id="appendix-A-18">CU-CP: Centralized Unit Control Plane<a href="#appendix-A-18" class="pilcrow">¶</a></p>
+<p id="appendix-A-19">CU-UP: Centralized Unit User Plane<a href="#appendix-A-19" class="pilcrow">¶</a></p>
+<p id="appendix-A-20">DC: Data Center<a href="#appendix-A-20" class="pilcrow">¶</a></p>
+<p id="appendix-A-21">DDoS: Distributed Denial of Services<a href="#appendix-A-21" class="pilcrow">¶</a></p>
+<p id="appendix-A-22">DN: Data Network<a href="#appendix-A-22" class="pilcrow">¶</a></p>
+<p id="appendix-A-23">DSCP: Differentiated Services Code Point<a href="#appendix-A-23" class="pilcrow">¶</a></p>
+<p id="appendix-A-24">DU: Distributed Unit<a href="#appendix-A-24" class="pilcrow">¶</a></p>
+<p id="appendix-A-25">eCPRI: enhanced Common Public Radio Interface<a href="#appendix-A-25" class="pilcrow">¶</a></p>
+<p id="appendix-A-26">FH: Fronthaul<a href="#appendix-A-26" class="pilcrow">¶</a></p>
+<p id="appendix-A-27">FIB: Forwarding Information Base<a href="#appendix-A-27" class="pilcrow">¶</a></p>
+<p id="appendix-A-28">GPRS: Generic Packet Radio Service<a href="#appendix-A-28" class="pilcrow">¶</a></p>
+<p id="appendix-A-29">gNB: gNodeB<a href="#appendix-A-29" class="pilcrow">¶</a></p>
+<p id="appendix-A-30">GTP: GPRS Tunneling Protocol<a href="#appendix-A-30" class="pilcrow">¶</a></p>
+<p id="appendix-A-31">GTP-U: GPRS Tunneling Protocol User plane<a href="#appendix-A-31" class="pilcrow">¶</a></p>
+<p id="appendix-A-32">HW: Hardware<a href="#appendix-A-32" class="pilcrow">¶</a></p>
+<p id="appendix-A-33">ID: Identifier<a href="#appendix-A-33" class="pilcrow">¶</a></p>
+<p id="appendix-A-34">IGP: Interior Gateway Protocol<a href="#appendix-A-34" class="pilcrow">¶</a></p>
+<p id="appendix-A-35">L2VPN: Layer 2 Virtual Private Network<a href="#appendix-A-35" class="pilcrow">¶</a></p>
+<p id="appendix-A-36">L3VPN: Layer 3 Virtual Private Network<a href="#appendix-A-36" class="pilcrow">¶</a></p>
+<p id="appendix-A-37">LSP: Label Switched Path<a href="#appendix-A-37" class="pilcrow">¶</a></p>
+<p id="appendix-A-38">MH: Midhaul<a href="#appendix-A-38" class="pilcrow">¶</a></p>
+<p id="appendix-A-39">MIoT: Massive Internet of Things<a href="#appendix-A-39" class="pilcrow">¶</a></p>
+<p id="appendix-A-40">MPLS: Multiprotocol Label Switching<a href="#appendix-A-40" class="pilcrow">¶</a></p>
+<p id="appendix-A-41">NF: Network Function<a href="#appendix-A-41" class="pilcrow">¶</a></p>
+<p id="appendix-A-42">NR: New Radio<a href="#appendix-A-42" class="pilcrow">¶</a></p>
+<p id="appendix-A-43">NRF: Network Function Repository<a href="#appendix-A-43" class="pilcrow">¶</a></p>
+<p id="appendix-A-44">NRP: Network Resource Partition<a href="#appendix-A-44" class="pilcrow">¶</a></p>
+<p id="appendix-A-45">NSC: Network Slice Controller<a href="#appendix-A-45" class="pilcrow">¶</a></p>
+<p id="appendix-A-46">PE: Provider Edge<a href="#appendix-A-46" class="pilcrow">¶</a></p>
+<p id="appendix-A-47">PIR: Peak Information Rate<a href="#appendix-A-47" class="pilcrow">¶</a></p>
+<p id="appendix-A-48">PLMN: Public Land Mobile Network<a href="#appendix-A-48" class="pilcrow">¶</a></p>
+<p id="appendix-A-49">PSTN: Public Switched Telephony Network<a href="#appendix-A-49" class="pilcrow">¶</a></p>
+<p id="appendix-A-50">QoS: Quality of Service<a href="#appendix-A-50" class="pilcrow">¶</a></p>
+<p id="appendix-A-51">RAN: Radio Access Network<a href="#appendix-A-51" class="pilcrow">¶</a></p>
+<p id="appendix-A-52">RF: Radio Frequency<a href="#appendix-A-52" class="pilcrow">¶</a></p>
+<p id="appendix-A-53">RIB: Routing Information Base<a href="#appendix-A-53" class="pilcrow">¶</a></p>
+<p id="appendix-A-54">RSVP: Resource Reservation Protocol<a href="#appendix-A-54" class="pilcrow">¶</a></p>
+<p id="appendix-A-55">RU: Radio Unit<a href="#appendix-A-55" class="pilcrow">¶</a></p>
+<p id="appendix-A-56">SD: Slice Differentiator<a href="#appendix-A-56" class="pilcrow">¶</a></p>
+<p id="appendix-A-57">SDP: Service Demarcation Point<a href="#appendix-A-57" class="pilcrow">¶</a></p>
+<p id="appendix-A-58">SLA: Service Level Agreement<a href="#appendix-A-58" class="pilcrow">¶</a></p>
+<p id="appendix-A-59">SLO: Service Level Objective<a href="#appendix-A-59" class="pilcrow">¶</a></p>
+<p id="appendix-A-60">SMF: Session Management Function<a href="#appendix-A-60" class="pilcrow">¶</a></p>
+<p id="appendix-A-61">S-NSSAI: Single Network Slice Selection Assistance Information<a href="#appendix-A-61" class="pilcrow">¶</a></p>
+<p id="appendix-A-62">SST: Slice/Service Type<a href="#appendix-A-62" class="pilcrow">¶</a></p>
+<p id="appendix-A-63">SR: Segment Routing<a href="#appendix-A-63" class="pilcrow">¶</a></p>
+<p id="appendix-A-64">SRv6: Segment Routing version 6<a href="#appendix-A-64" class="pilcrow">¶</a></p>
+<p id="appendix-A-65">TC: Traffic Class<a href="#appendix-A-65" class="pilcrow">¶</a></p>
+<p id="appendix-A-66">TE: Traffic Engineering<a href="#appendix-A-66" class="pilcrow">¶</a></p>
+<p id="appendix-A-67">TN: Transport Network<a href="#appendix-A-67" class="pilcrow">¶</a></p>
+<p id="appendix-A-68">TS: Technical Specification<a href="#appendix-A-68" class="pilcrow">¶</a></p>
+<p id="appendix-A-69">UDM: Unified Data Management<a href="#appendix-A-69" class="pilcrow">¶</a></p>
+<p id="appendix-A-70">UE: User Equipment<a href="#appendix-A-70" class="pilcrow">¶</a></p>
+<p id="appendix-A-71">UP: User Plane<a href="#appendix-A-71" class="pilcrow">¶</a></p>
+<p id="appendix-A-72">UPF: User Plane Function<a href="#appendix-A-72" class="pilcrow">¶</a></p>
+<p id="appendix-A-73">URLLC: Ultra Reliable Low Latency Communication<a href="#appendix-A-73" class="pilcrow">¶</a></p>
+<p id="appendix-A-74">VLAN: Virtual Local Area Network<a href="#appendix-A-74" class="pilcrow">¶</a></p>
+<p id="appendix-A-75">VNF: Virtual Network Function<a href="#appendix-A-75" class="pilcrow">¶</a></p>
+<p id="appendix-A-76">VPN: Virtual Private Network<a href="#appendix-A-76" class="pilcrow">¶</a></p>
+<p id="appendix-A-77">VRF: Virtual Routing and Forwarding<a href="#appendix-A-77" class="pilcrow">¶</a></p>
+<p id="appendix-A-78">VXLAN: Virtual Extensible Local Area Network<a href="#appendix-A-78" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-5g-overview">
-<section id="appendix-C">
+<section id="appendix-B">
       <h2 id="name-an-overview-of-5g-networkin">
-<a href="#appendix-C" class="section-number selfRef">Appendix C. </a><a href="#name-an-overview-of-5g-networkin" class="section-name selfRef">An Overview of 5G Networking</a>
+<a href="#appendix-B" class="section-number selfRef">Appendix B. </a><a href="#name-an-overview-of-5g-networkin" class="section-name selfRef">An Overview of 5G Networking</a>
       </h2>
-<p id="appendix-C-1">This section provides a brief introduction to 5G mobile networking
+<p id="appendix-B-1">This section provides a brief introduction to 5G mobile networking
    with a perspective on the Transport Network.  This section does not
    intend to replace or define 3GPP architecture, instead its objective is to provide an
    overview for readers that do not have a mobile background.  For
-   more comprehensive information, refer to <span>[<a href="#TS-23.501" class="cite xref">TS-23.501</a>]</span>.<a href="#appendix-C-1" class="pilcrow">¶</a></p>
+   more comprehensive information, refer to <span>[<a href="#TS-23.501" class="cite xref">TS-23.501</a>]</span>.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
 <div id="key-building-blocks">
-<section id="appendix-C.1">
+<section id="appendix-B.1">
         <h3 id="name-key-building-blocks">
-<a href="#appendix-C.1" class="section-number selfRef">C.1. </a><a href="#name-key-building-blocks" class="section-name selfRef">Key Building Blocks</a>
+<a href="#appendix-B.1" class="section-number selfRef">B.1. </a><a href="#name-key-building-blocks" class="section-name selfRef">Key Building Blocks</a>
         </h3>
-<p id="appendix-C.1-1"><span>[<a href="#TS-23.501" class="cite xref">TS-23.501</a>]</span> defines the Network Functions (UPF, AMF, etc.) that
+<p id="appendix-B.1-1"><span>[<a href="#TS-23.501" class="cite xref">TS-23.501</a>]</span> defines the Network Functions (UPF, AMF, etc.) that
    compose the 5G System (5GS) Architecture together with related
    interfaces (e.g., N1, N2).  This architecture has native Control
    and User Plane separation, and the Control Plane leverages a service-
    based architecture.  <a href="#_figure-28" class="auto internal xref">Figure 33</a> outlines an example 5GS architecture
-   with a subset of possible network functions and network interfaces.<a href="#appendix-C.1-1" class="pilcrow">¶</a></p>
+   with a subset of possible network functions and network interfaces.<a href="#appendix-B.1-1" class="pilcrow">¶</a></p>
 <span id="name-5gs-architecture-and-servic"></span><div id="_figure-28">
 <figure id="figure-33">
-          <div class="alignCenter art-text artwork" id="appendix-C.1-2.1">
+          <div class="alignCenter art-text artwork" id="appendix-B.1-2.1">
 <pre>
   ┌─────┐  ┌─────┐  ┌─────┐    ┌─────┐  ┌─────┐  ┌─────┐
   │NSSF │  │ NEF │  │ NRF │    │ PCF │  │ UDM │  │ AF  │
@@ -4753,46 +4756,46 @@ User Plane          ╱     │           │         ╲
 <a href="#name-5gs-architecture-and-servic" class="selfRef">5GS Architecture and Service-based Interfaces</a>
           </figcaption></figure>
 </div>
-<p id="appendix-C.1-3">Similar to previous versions of 3GPP mobile networks <span>[<a href="#RFC6459" class="cite xref">RFC6459</a>]</span>, a 5G mobile network is split
-   into the following four major domains (<a href="#_figure-29" class="auto internal xref">Figure 34</a>):<a href="#appendix-C.1-3" class="pilcrow">¶</a></p>
+<p id="appendix-B.1-3">Similar to previous versions of 3GPP mobile networks <span>[<a href="#RFC6459" class="cite xref">RFC6459</a>]</span>, a 5G mobile network is split
+   into the following four major domains (<a href="#_figure-29" class="auto internal xref">Figure 34</a>):<a href="#appendix-B.1-3" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-C.1-4.1">
-            <p id="appendix-C.1-4.1.1">UE, MS, MN, and Mobile:<a href="#appendix-C.1-4.1.1" class="pilcrow">¶</a></p>
-<p id="appendix-C.1-4.1.2">
+<li class="normal" id="appendix-B.1-4.1">
+            <p id="appendix-B.1-4.1.1">UE, MS, MN, and Mobile:<a href="#appendix-B.1-4.1.1" class="pilcrow">¶</a></p>
+<p id="appendix-B.1-4.1.2">
 The terms UE (User Equipment), MS (Mobile Station), MN (Mobile
 Node), and mobile refer to the devices that are hosts with the
 ability to obtain Internet connectivity via a 3GPP network.  An MS
 is comprised of the Terminal Equipment (TE) and a Mobile Terminal
 (MT).  The terms UE, MS, MN, and mobile are used interchangeably
-within this document.<a href="#appendix-C.1-4.1.2" class="pilcrow">¶</a></p>
+within this document.<a href="#appendix-B.1-4.1.2" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="appendix-C.1-4.2">
-            <p id="appendix-C.1-4.2.1">Radio Access Network (RAN):<a href="#appendix-C.1-4.2.1" class="pilcrow">¶</a></p>
-<p id="appendix-C.1-4.2.2">
+          <li class="normal" id="appendix-B.1-4.2">
+            <p id="appendix-B.1-4.2.1">Radio Access Network (RAN):<a href="#appendix-B.1-4.2.1" class="pilcrow">¶</a></p>
+<p id="appendix-B.1-4.2.2">
 Provides wireless connectivity to the UE devices via radio.  It is
 made up of the Antenna that transmits and receives signals to the
 UE and the Base Station that digitizes the signal and converts the
-RF data stream to IP packets.<a href="#appendix-C.1-4.2.2" class="pilcrow">¶</a></p>
+RF data stream to IP packets.<a href="#appendix-B.1-4.2.2" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="appendix-C.1-4.3">
-            <p id="appendix-C.1-4.3.1">Core Network (CN):<a href="#appendix-C.1-4.3.1" class="pilcrow">¶</a></p>
-<p id="appendix-C.1-4.3.2">
+          <li class="normal" id="appendix-B.1-4.3">
+            <p id="appendix-B.1-4.3.1">Core Network (CN):<a href="#appendix-B.1-4.3.1" class="pilcrow">¶</a></p>
+<p id="appendix-B.1-4.3.2">
 Controls the CP of the RAN and provides connectivity to the Data
 Network (e.g., the Internet or a private VPN).  The Core Network
 hosts dozens of services such as authentication, phone registry,
-charging, access to PSTN and handover.<a href="#appendix-C.1-4.3.2" class="pilcrow">¶</a></p>
+charging, access to PSTN and handover.<a href="#appendix-B.1-4.3.2" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="appendix-C.1-4.4">
-            <p id="appendix-C.1-4.4.1">Transport Network (TN):<a href="#appendix-C.1-4.4.1" class="pilcrow">¶</a></p>
-<p id="appendix-C.1-4.4.2">
+          <li class="normal" id="appendix-B.1-4.4">
+            <p id="appendix-B.1-4.4.1">Transport Network (TN):<a href="#appendix-B.1-4.4.1" class="pilcrow">¶</a></p>
+<p id="appendix-B.1-4.4.2">
 Provides connectivity between 5G Network Functions.  The TN may provide connectivity from the RAN to the Core
 Network, as well as  within the RAN or within the CN.  The
-traffic generated by NFs is - mostly - based on IP or Ethernet.<a href="#appendix-C.1-4.4.2" class="pilcrow">¶</a></p>
+traffic generated by NFs is - mostly - based on IP or Ethernet.<a href="#appendix-B.1-4.4.2" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <span id="name-building-blocks-of-5g-archi"></span><div id="_figure-29">
 <figure id="figure-34">
-          <div class="alignCenter art-text artwork" id="appendix-C.1-5.1">
+          <div class="alignCenter art-text artwork" id="appendix-B.1-5.1">
 <pre>
 ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
                                                │
@@ -4826,43 +4829,43 @@ traffic generated by NFs is - mostly - based on IP or Ethernet.<a href="#appendi
 </section>
 </div>
 <div id="core-network-cn">
-<section id="appendix-C.2">
+<section id="appendix-B.2">
         <h3 id="name-core-network-cn">
-<a href="#appendix-C.2" class="section-number selfRef">C.2. </a><a href="#name-core-network-cn" class="section-name selfRef">Core Network (CN)</a>
+<a href="#appendix-B.2" class="section-number selfRef">B.2. </a><a href="#name-core-network-cn" class="section-name selfRef">Core Network (CN)</a>
         </h3>
-<p id="appendix-C.2-1">The 5G Core Network (5GC) is made up of a set of NFs which fall into two main categories (<a href="#_figure-30" class="auto internal xref">Figure 35</a>):<a href="#appendix-C.2-1" class="pilcrow">¶</a></p>
+<p id="appendix-B.2-1">The 5G Core Network (5GC) is made up of a set of NFs which fall into two main categories (<a href="#_figure-30" class="auto internal xref">Figure 35</a>):<a href="#appendix-B.2-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-C.2-2.1">
-            <p id="appendix-C.2-2.1.1">5GC User Plane:<a href="#appendix-C.2-2.1.1" class="pilcrow">¶</a></p>
-<p id="appendix-C.2-2.1.2">
+<li class="normal" id="appendix-B.2-2.1">
+            <p id="appendix-B.2-2.1.1">5GC User Plane:<a href="#appendix-B.2-2.1.1" class="pilcrow">¶</a></p>
+<p id="appendix-B.2-2.1.2">
 The User Plane Function (UPF) is the interconnect
 point between the mobile infrastructure and the Data Network (DN).
 It interfaces with the RAN via the N3 interface by encapsulating/
 decapsulating the User Plane Traffic in GTP Tunnels (aka GTP-U or
-Mobile User Plane).<a href="#appendix-C.2-2.1.2" class="pilcrow">¶</a></p>
+Mobile User Plane).<a href="#appendix-B.2-2.1.2" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="appendix-C.2-2.2">
-            <p id="appendix-C.2-2.2.1">5GC Control Plane:<a href="#appendix-C.2-2.2.1" class="pilcrow">¶</a></p>
-<p id="appendix-C.2-2.2.2">
+          <li class="normal" id="appendix-B.2-2.2">
+            <p id="appendix-B.2-2.2.1">5GC Control Plane:<a href="#appendix-B.2-2.2.1" class="pilcrow">¶</a></p>
+<p id="appendix-B.2-2.2.2">
 The 5G Control Plane is made up of a
 comprehensive set of Network Functions.  An exhaustive list and
 description of these entities is out of the scope of this
 document.  The following NFs and interfaces are worth mentioning,
-since their connectivity may rely on the Transport Network:<a href="#appendix-C.2-2.2.2" class="pilcrow">¶</a></p>
+since their connectivity may rely on the Transport Network:<a href="#appendix-B.2-2.2.2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-C.2-2.2.3.1">
-                <p id="appendix-C.2-2.2.3.1.1">the AMF (Access and Mobility Function) connects with the RAN
-control plane over the N2 interface<a href="#appendix-C.2-2.2.3.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-B.2-2.2.3.1">
+                <p id="appendix-B.2-2.2.3.1.1">the AMF (Access and Mobility Function) connects with the RAN
+control plane over the N2 interface<a href="#appendix-B.2-2.2.3.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="normal" id="appendix-C.2-2.2.3.2">
-                <p id="appendix-C.2-2.2.3.2.1">the SMF controls the 5GC UPF via the N4 interface<a href="#appendix-C.2-2.2.3.2.1" class="pilcrow">¶</a></p>
+              <li class="normal" id="appendix-B.2-2.2.3.2">
+                <p id="appendix-B.2-2.2.3.2.1">the SMF controls the 5GC UPF via the N4 interface<a href="#appendix-B.2-2.2.3.2.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
         </ul>
 <span id="name-5g-core-network-cn"></span><div id="_figure-30">
 <figure id="figure-35">
-          <div class="alignCenter art-text artwork" id="appendix-C.2-3.1">
+          <div class="alignCenter art-text artwork" id="appendix-B.2-3.1">
 <pre>
   ┌ ─ ─ ─ ─ ┐    ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
       RAN               5G Core (5GC)
@@ -4893,41 +4896,41 @@ control plane over the N2 interface<a href="#appendix-C.2-2.2.3.1.1" class="pilc
 </section>
 </div>
 <div id="radio-access-network-ran">
-<section id="appendix-C.3">
+<section id="appendix-B.3">
         <h3 id="name-radio-access-network-ran">
-<a href="#appendix-C.3" class="section-number selfRef">C.3. </a><a href="#name-radio-access-network-ran" class="section-name selfRef">Radio Access Network (RAN)</a>
+<a href="#appendix-B.3" class="section-number selfRef">B.3. </a><a href="#name-radio-access-network-ran" class="section-name selfRef">Radio Access Network (RAN)</a>
         </h3>
-<p id="appendix-C.3-1">The RAN connects cellular wireless devices to
+<p id="appendix-B.3-1">The RAN connects cellular wireless devices to
    a mobile Core Network.  The RAN is made up of three components,
-   which form the Radio Base Station:<a href="#appendix-C.3-1" class="pilcrow">¶</a></p>
+   which form the Radio Base Station:<a href="#appendix-B.3-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-C.3-2.1">
-            <p id="appendix-C.3-2.1.1">The Baseband Unit (BBU) provides the interface between the Core
+<li class="normal" id="appendix-B.3-2.1">
+            <p id="appendix-B.3-2.1.1">The Baseband Unit (BBU) provides the interface between the Core
 Network and the Radio Network.  It connects to the Radio Unit and
-is responsible for the baseband signal processing to packet.<a href="#appendix-C.3-2.1.1" class="pilcrow">¶</a></p>
+is responsible for the baseband signal processing to packet.<a href="#appendix-B.3-2.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="appendix-C.3-2.2">
-            <p id="appendix-C.3-2.2.1">The Radio Unit (RU) is located close to the Antenna and controlled
+          <li class="normal" id="appendix-B.3-2.2">
+            <p id="appendix-B.3-2.2.1">The Radio Unit (RU) is located close to the Antenna and controlled
 by the BBU.  It converts the Baseband signal received from the BBU
-to a Radio frequency signal.<a href="#appendix-C.3-2.2.1" class="pilcrow">¶</a></p>
+to a Radio frequency signal.<a href="#appendix-B.3-2.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="appendix-C.3-2.3">
-            <p id="appendix-C.3-2.3.1">The Antenna converts the electric signal received from the RU to
-radio waves<a href="#appendix-C.3-2.3.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="appendix-B.3-2.3">
+            <p id="appendix-B.3-2.3.1">The Antenna converts the electric signal received from the RU to
+radio waves<a href="#appendix-B.3-2.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="appendix-C.3-3">The 5G RAN Base Station is called a gNodeB (gNB).  It connects to the
+<p id="appendix-B.3-3">The 5G RAN Base Station is called a gNodeB (gNB).  It connects to the
    Core Network via the N3 (User Plane) and N2 (Control Plane)
-   interfaces.<a href="#appendix-C.3-3" class="pilcrow">¶</a></p>
-<p id="appendix-C.3-4">The 5G RAN architecture supports RAN disaggregation in various ways.
+   interfaces.<a href="#appendix-B.3-3" class="pilcrow">¶</a></p>
+<p id="appendix-B.3-4">The 5G RAN architecture supports RAN disaggregation in various ways.
    Notably, the BBU can be split into a DU (Distributed Unit) for
    digital signal processing and a CU (Centralized Unit) for RAN Layer 3
    processing.  Furthermore, the CU can be itself split into Control
-   Plane (CU-CP) and User Plane (CU-UP).<a href="#appendix-C.3-4" class="pilcrow">¶</a></p>
-<p id="appendix-C.3-5"><a href="#_figure-31" class="auto internal xref">Figure 36</a> depicts a disaggregated RAN with NFs and interfaces.<a href="#appendix-C.3-5" class="pilcrow">¶</a></p>
+   Plane (CU-CP) and User Plane (CU-UP).<a href="#appendix-B.3-4" class="pilcrow">¶</a></p>
+<p id="appendix-B.3-5"><a href="#_figure-31" class="auto internal xref">Figure 36</a> depicts a disaggregated RAN with NFs and interfaces.<a href="#appendix-B.3-5" class="pilcrow">¶</a></p>
 <span id="name-ran-disaggregation"></span><div id="_figure-31">
 <figure id="figure-36">
-          <div class="alignCenter art-text artwork" id="appendix-C.3-6.1">
+          <div class="alignCenter art-text artwork" id="appendix-B.3-6.1">
 <pre>
             ┌─────────────────────────────────┐    ┌ ─ ─ ─ ─ ─ ┐
             │                                 │ N3
@@ -4975,36 +4978,36 @@ radio waves<a href="#appendix-C.3-2.3.1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="transport-network-tn">
-<section id="appendix-C.4">
+<section id="appendix-B.4">
         <h3 id="name-transport-network-tn">
-<a href="#appendix-C.4" class="section-number selfRef">C.4. </a><a href="#name-transport-network-tn" class="section-name selfRef">Transport Network (TN)</a>
+<a href="#appendix-B.4" class="section-number selfRef">B.4. </a><a href="#name-transport-network-tn" class="section-name selfRef">Transport Network (TN)</a>
         </h3>
-<p id="appendix-C.4-1">The 5G transport architecture defines three main segments for the
+<p id="appendix-B.4-1">The 5G transport architecture defines three main segments for the
    Transport Network, which are commonly referred to as Fronthaul (FH),
-   Midhaul (MH), and Backhaul (BH) <span>[<a href="#TR-GSTR-TN5G" class="cite xref">TR-GSTR-TN5G</a>]</span>:<a href="#appendix-C.4-1" class="pilcrow">¶</a></p>
+   Midhaul (MH), and Backhaul (BH) <span>[<a href="#TR-GSTR-TN5G" class="cite xref">TR-GSTR-TN5G</a>]</span>:<a href="#appendix-B.4-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-C.4-2.1">
-            <p id="appendix-C.4-2.1.1">Fronthaul happens before the BBU processing.  In 5G, this
+<li class="normal" id="appendix-B.4-2.1">
+            <p id="appendix-B.4-2.1.1">Fronthaul happens before the BBU processing.  In 5G, this
 interface is based on eCPRI (Enhanced CPRI) with native Ethernet
-or IP encapsulation.<a href="#appendix-C.4-2.1.1" class="pilcrow">¶</a></p>
+or IP encapsulation.<a href="#appendix-B.4-2.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="appendix-C.4-2.2">
-            <p id="appendix-C.4-2.2.1">Midhaul is optional: this segment is introduced in the BBU split
+          <li class="normal" id="appendix-B.4-2.2">
+            <p id="appendix-B.4-2.2.1">Midhaul is optional: this segment is introduced in the BBU split
 presented in Appendix B.3, where Midhaul network refers to the DU-
 CU interconnection (i.e., F1 interface).  At this level, all
-traffic is encapsulated in IP (signaling and user plane).<a href="#appendix-C.4-2.2.1" class="pilcrow">¶</a></p>
+traffic is encapsulated in IP (signaling and user plane).<a href="#appendix-B.4-2.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="appendix-C.4-2.3">
-            <p id="appendix-C.4-2.3.1">Backhaul happens after BBU processing.  Therefore, it maps to the
+          <li class="normal" id="appendix-B.4-2.3">
+            <p id="appendix-B.4-2.3.1">Backhaul happens after BBU processing.  Therefore, it maps to the
 interconnection between the RAN and the Core Network.  All traffic
-is also encapsulated in IP.<a href="#appendix-C.4-2.3.1" class="pilcrow">¶</a></p>
+is also encapsulated in IP.<a href="#appendix-B.4-2.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="appendix-C.4-3"><a href="#_figure-32" class="auto internal xref">Figure 37</a> illustrates the different segments of the Transport Network
-   with the relevant Network Functions.<a href="#appendix-C.4-3" class="pilcrow">¶</a></p>
+<p id="appendix-B.4-3"><a href="#_figure-32" class="auto internal xref">Figure 37</a> illustrates the different segments of the Transport Network
+   with the relevant Network Functions.<a href="#appendix-B.4-3" class="pilcrow">¶</a></p>
 <span id="name-5g-transport-segments"></span><div id="_figure-32">
 <figure id="figure-37">
-          <div class="alignCenter art-text artwork" id="appendix-C.4-4.1">
+          <div class="alignCenter art-text artwork" id="appendix-B.4-4.1">
 <pre>
 ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
 │                         Transport Network               │
@@ -5023,15 +5026,15 @@ is also encapsulated in IP.<a href="#appendix-C.4-2.3.1" class="pilcrow">¶</a><
 <a href="#name-5g-transport-segments" class="selfRef">5G Transport Segments</a>
           </figcaption></figure>
 </div>
-<p id="appendix-C.4-5">It is worth mentioning that a given part of the transport network can
+<p id="appendix-B.4-5">It is worth mentioning that a given part of the transport network can
    carry several 5G transport segments concurrently, as outlined in
    <a href="#_figure-33" class="auto internal xref">Figure 38</a>.  This is because different types of 5G network functions
    might be placed in the same location (e.g., the UPF from one slice
    might be placed in the same location as the CU-UP from another
-   slice).<a href="#appendix-C.4-5" class="pilcrow">¶</a></p>
+   slice).<a href="#appendix-B.4-5" class="pilcrow">¶</a></p>
 <span id="name-concurrent-5g-transport-seg"></span><div id="_figure-33">
 <figure id="figure-38">
-          <div class="alignCenter art-text artwork" id="appendix-C.4-6.1">
+          <div class="alignCenter art-text artwork" id="appendix-B.4-6.1">
 <pre>
 ┌ ─ ─ ─ ─ ┐
  ┌────┐     Colocated
@@ -5062,19 +5065,19 @@ is also encapsulated in IP.<a href="#appendix-C.4-2.3.1" class="pilcrow">¶</a><
 </section>
 </div>
 <div id="acknowledgments">
-<section id="appendix-D">
+<section id="appendix-C">
       <h2 id="name-acknowledgments">
 <a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
       </h2>
-<p id="appendix-D-1">The authors would like to thank Adrian Farrel, Joel Halpern, Tarek
-   Saad, Jie Dong, Greg Mirsky, Rüdiger Geib, and Nicklous D. Morris for
-   their review of this document and for providing valuable comments.<a href="#appendix-D-1" class="pilcrow">¶</a></p>
-<p id="appendix-D-2">Thanks to Alvaro Retana for the rtg-dir review and
-   Yoshifumi Nishida for the tsv-art review.<a href="#appendix-D-2" class="pilcrow">¶</a></p>
+<p id="appendix-C-1">The authors would like to thank Adrian Farrel, Joel Halpern, Tarek
+   Saad, Jie Dong, Greg Mirsky, Rüdiger Geib, Nicklous D. Morris,       Daniele Ceccarelli, and Bo Wu for
+   their review of this document and for providing valuable comments.<a href="#appendix-C-1" class="pilcrow">¶</a></p>
+<p id="appendix-C-2">Thanks to Alvaro Retana for the rtg-dir review, Yoshifumi Nishida for
+   the tsv-art review, and Timothy Winters for the int-dir review.<a href="#appendix-C-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="contributors">
-<section id="appendix-E">
+<section id="appendix-D">
       <h2 id="name-contributors">
 <a href="#name-contributors" class="section-name selfRef">Contributors</a>
       </h2>
@@ -5156,7 +5159,7 @@ is also encapsulated in IP.<a href="#appendix-C.4-2.3.1" class="pilcrow">¶</a><
 </section>
 </div>
 <div id="authors-addresses">
-<section id="appendix-F">
+<section id="appendix-E">
       <h2 id="name-authors-addresses">
 <a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>
