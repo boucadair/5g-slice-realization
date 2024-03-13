@@ -180,7 +180,7 @@ This document describes a Network Slice realization model for IP/MPLS networks w
 
 This document focuses on network slicing for 5G networks, covering the connectivity between Network Functions (NFs) across multiple domains such as edge clouds, data centers, and the Wide Area Network (WAN).  The document describes a Network Slice realization approach that fulfills 5G slicing requirements by using existing IP/MPLS technologies to optimally control Service Level Agreements (SLAs) offered for 5G slices.
 
-This work is compatible with the framework defined in {{!I-D.ietf-teas-ietf-network-slices}} which describes network slicing in the context of networks built from IETF technologies.
+This work is compatible with the framework defined in {{!RFC9543}} which describes network slicing in the context of networks built from IETF technologies.
 
 The realization approach described in this document is typically triggered by Network Slice Service requests. How a Network Slice Service request is placed for realization, including how it is derived from a 5G Slice Service request, is out of scope. Network Slice Service mapping considerations (e.g., mapping between 3GPP to IETF service parameters) are discussed, e.g., in {{?I-D.ietf-teas-5g-network-slice-application}}.
 
@@ -190,7 +190,7 @@ A brief 5G overview is provided in {{sec-5g-overview}} for the reader's convenie
 
 # Definitions
 
-The document uses the terms defined in {{!I-D.ietf-teas-ietf-network-slices}}. See {{sec-ref-design}} for the contextualization of some of these terms.
+The document uses the terms defined in {{!RFC9543}}. See {{sec-ref-design}} for the contextualization of some of these terms.
 
 An extended list of abbreviations used in this document is provided in {{ext-abbr}}.
 
@@ -204,7 +204,7 @@ As discussed in Section 4.4.1 of {{TS-28.530}}, the 3GPP management system does 
 
 > 'The non-3GPP part includes TN parts. The 3GPP management system provides the network slice requirements to the corresponding management systems of those non-3GPP parts, e.g. the TN part supports connectivity within and between CN and AN parts.' (Section 4.4.1 of {{TS-28.530}})
 
-In practice, the TN may not map to a monolithic architecture and management domain. It is frequently segmented, non-uniform, and managed by different entities. For example, {{fig-1}} depicts a NF instance that is deployed in an edge data center (DC) connected to a NF located in a Public Cloud via a WAN (e.g., MPLS-VPN service). In this example, the TN can be seen as an abstraction representing an end-to-end connectivity based upon three distinct domains: DC, WAN, and Public Cloud. A model for the Transport Network based on orchestration domains is introduced in {{sec-orch}}. This model permits to define more precisely where the RFC XXXX Network Slices apply.
+In practice, the TN may not map to a monolithic architecture and management domain. It is frequently segmented, non-uniform, and managed by different entities. For example, {{fig-1}} depicts a NF instance that is deployed in an edge data center (DC) connected to a NF located in a Public Cloud via a WAN (e.g., MPLS-VPN service). In this example, the TN can be seen as an abstraction representing an end-to-end connectivity based upon three distinct domains: DC, WAN, and Public Cloud. A model for the Transport Network based on orchestration domains is introduced in {{sec-orch}}. This model permits to define more precisely where the RFC 9543 Network Slices apply.
 
 ~~~~
 {::include ./drawings/TN-abstraction.txt}
@@ -324,14 +324,14 @@ This use case is also referred to in {{sec-10b}} and {{sec-10c}}.
 
 ###  End-to-End 5G Slice Orchestration Architecture {#sec-5g-sli-arch}
 
-This section introduces a global framework for the orchestration of an end-to-end 5G slice with a zoom on TN parts. This framework helps to delimit the realization scope of RFC XXXX Network Slices and identify interactions that are required for the realization of such slices.
+This section introduces a global framework for the orchestration of an end-to-end 5G slice with a zoom on TN parts. This framework helps to delimit the realization scope of RFC 9543 Network Slices and identify interactions that are required for the realization of such slices.
 
 > This framework is consistent with the management coordination example shown in Figure 4.7.1 of {{TS-28.530}}.
 
 In reference to {{figure-orch}}, an end-to-end 5G Network Slice Orchestrator (5G NSO) is responsible for orchestrating end-to-end 5G slices. The details of the 5G NSO is out of the scope of this document. The realization of the end-to-end 5G slice spans RAN, CN, and TN. As mentioned in {{sec-scope}}, the RAN and CN are under the responsibility of the 3GPP Management System, while the TN is not. The orchestration of the TN is split into two sub-domains in conformance with the reference design in {#sec-ref-design}:
 
 Provider Network Orchestration domain:
-: As defined in {{!I-D.ietf-teas-ietf-network-slices}}, the provider relies on an RFC XXXX Network Slice Controller (NSC) to manage and orchestrate RFC XXXX Network Slices in the provider network. This framework permits to manage connectivity together with SLOs.
+: As defined in {{!RFC9543}}, the provider relies on a Network Slice Controller (NSC) to manage and orchestrate RFC 9543 Network Slices in the provider network. This framework permits to manage connectivity together with SLOs.
 
 Customer Site Orchestration domain:
 : The Orchestration of TN elements of the customer sites relies upon a variety of  controllers (e.g., Fabric Manager, Element Management System, or VIM). The realization of this segment does not involve the Transport Network Orchestration.
@@ -355,13 +355,13 @@ Customer Site:
 : The realization of this segment is driven by the 5G Network Orchestration and potentially the Customer Site Orchestration. The realization of this segment does not involve the Transport Network Orchestration.
 
 Provider Network:
-: Represents the connectivity between two PEs (e.g., PE1-PE2). The realization of this segment is controlled by an RFC XXXX NSC.
+: Represents the connectivity between two PEs (e.g., PE1-PE2). The realization of this segment is controlled by an RFC 9543 NSC.
 
 Attachment Circuit:
-: Represents the connectivity between CEs and PEs (e.g., CE-PE1 and PE2-NF3). The orchestration of this segment relies partially upon an RFC XXXX NSC for the configuration of the AC on the PE customer-facing interfaces and the Customer Site Orchestration for the configuration of the AC on the CE.
+: Represents the connectivity between CEs and PEs (e.g., CE-PE1 and PE2-NF3). The orchestration of this segment relies partially upon an RFC 9543 NSC for the configuration of the AC on the PE customer-facing interfaces and the Customer Site Orchestration for the configuration of the AC on the CE.
 
 
-As depicted in {{fig-end-to-end}}, the realization of an RFC XXXX Network Slice (i.e., connectivity with
+As depicted in {{fig-end-to-end}}, the realization of an RFC 9543 Network Slice (i.e., connectivity with
    performance commitments) involves the provider network and partially the AC (the PE-side of the AC). Note that the provisioning of a new Network Slice may rely on a partial or full pre-provisioned segment (e.g., a new Network Slice may rely on an existing AC). The customer site segment is considered as an extension of the connectivity of the RAN/CN domain without complex slice-specific performances requirements: the customer site infrastructure is usually over-provisioned and involves short distances (low latency) where basic QoS/Scheduling logic is sufficient to comply with the target SLOs. In other words, the main focus for the enforcement of end-to-end SLOs is managed at the Network Slice between PE interfaces connected to the AC.
 
 ~~~~
@@ -370,14 +370,14 @@ As depicted in {{fig-end-to-end}}, the realization of an RFC XXXX Network Slice 
 {: #fig-end-to-end title="Segmentation of the Transport Network" artwork-align="center"}
 
 Resource synchronization for AC provisioning:
-: The realization of the Attachment Circuit is made up of TN resources shared between the Customer Site Orchestration and the Provider Network Orchestration (e.g., RFC XXXX NSC).  More precisely, a PE and a CE connected via an AC need to be
+: The realization of the Attachment Circuit is made up of TN resources shared between the Customer Site Orchestration and the Provider Network Orchestration (e.g., RFC 9543 NSC).  More precisely, a PE and a CE connected via an AC need to be
 provisioned with consistent data plane and control plane  information (e.g., VLAN-
 IDs, IP addresses/subnets, or BGP  Autonomous System (AS) Number). Hence, the realization of this
 interconnection is technology-specific and requires coordination between the Customer Site Orchestration and an NSC. Automating the provisioning and management of the AC is recommended. Aligned with {{?RFC8969}}, this document assumes that this coordination is based upon standard YANG data models and APIs.
 
 : {{figure-4}} is a basic example of a Layer 3 CE-PE link realization
 with shared network resources (such as VLAN-IDs and IP prefixes) which
-are passed between Orchestrators via a dedicated interface, e.g., the RFC XXXX Network Slice Service Interface {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}} or the Attachment Circuit Service Interface ({{?I-D.ietf-opsawg-teas-attachment-circuit}}.
+are passed between Orchestrators via a dedicated interface, e.g., the RFC 9543 Network Slice Service Interface {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}} or the Attachment Circuit Service Interface ({{?I-D.ietf-opsawg-teas-attachment-circuit}}.
 
 
 ~~~~
@@ -414,12 +414,12 @@ In practice, for operational and scaling reasons, typically M to N would be used
 ~~~
 {::include ./drawings/1-to-n-mapping.txt}
 ~~~
-{: #figure-5 title="1 (5G Slice) to N (RFC XXXX Network Slice) Mapping" artwork-align="center"}
+{: #figure-5 title="1 (5G Slice) to N (RFC 9543 Network Slice) Mapping" artwork-align="center"}
 
 ~~~
 {::include ./drawings/n-to-1-mapping.txt}
 ~~~
-{: #figure-6 title="N (5G Slice) to 1 (RFC XXXX Network Slice) Mapping" artwork-align="center"}
+{: #figure-6 title="N (5G Slice) to 1 (RFC 9543 Network Slice) Mapping" artwork-align="center"}
 
    Note that the actual realization of the mapping depends on several
    factors, such as the actual business cases, the NF vendor
@@ -518,13 +518,13 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    addresses, or Differentiated Services Code Point (DSCP). The realization of the mapping
    between customer sites and provider networks is commonly refered to as the "hand-off".
 
-   More details about the mapping between 3GPP and RFC XXXX Network Slices is provided in {{?I-D.ietf-teas-5g-network-slice-application}}.
+   More details about the mapping between 3GPP and RFC 9543 Network Slices is provided in {{?I-D.ietf-teas-5g-network-slice-application}}.
    That document includes additional methods for mapping 5G slices to TN slices (e.g., source UDP port number), but these
    methods are not reproduced here because of the intrinsic shortcomings of these methods.
 
 ##  VLAN Hand-off {#sec-vlan-handoff}
 
-   In this option, the RFC XXXX Network Slice, fulfilling connectivity
+   In this option, the RFC 9543 Network Slice, fulfilling connectivity
    requirements between NFs that belong to a 5G slice, is represented at the Service Demarcation Point (SDP)
    by a VLAN ID (or double VLAN IDs, commonly known as QinQ), as depicted in {{figure-vlan-hand-off}}.
 
@@ -539,7 +539,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    simplification it is recommended to rely on the same VLAN identifier
    for all ACs, when possible.  However, SDPs for a same slice at
    different locations may also use different VLAN values.  Therefore, a
-   VLAN to RFC XXXX Network Slice mapping table is maintained for each
+   VLAN to RFC 9543 Network Slice mapping table is maintained for each
    AC, and the VLAN allocation is coordinated between customer orchestration and
    provider orchestration.  Thus, while VLAN hand-off is simple for
    NFs, it adds complexity due to the requirement of maintaining
@@ -842,9 +842,9 @@ ranges for each slice, and use these ranges for slice identification purposes on
    Control of the TN resources on provider network transit links, as well as traffic
    scheduling/prioritization on provider network transit links, is based on a flat
    (non-hierarchical) QoS model in this Network Slice
-   realization.  That is, RFC XXXX Network Slices are assigned dedicated
+   realization.  That is, RFC 9543 Network Slices are assigned dedicated
    resources (e.g., QoS queues) at the edge of the provider network (at
-   SDPs), while all RFC XXXX Network Slices are sharing resources (sharing
+   SDPs), while all RFC 9543 Network Slices are sharing resources (sharing
    QoS queues) on the transit links of the provider network.  Typical router
    hardware can support up to 8 traffic queues per port, therefore
    the document assumes 8 traffic queues per port support in
@@ -883,17 +883,17 @@ ranges for each slice, and use these ranges for slice identification purposes on
 
    In 5QI-unaware mode, the DSCP values in the packets received from NF
    at SDP are ignored.  In the provider network, there is no QoS
-   differentiation at the 5G QoS Class level.  The entire RFC XXXX Network
+   differentiation at the 5G QoS Class level.  The entire RFC 9543 Network
    Slice is mapped to a single TN QoS Class, and, therefore, to a single
    QoS queue on the routers in the provider network.  With a small number of
    deployed 5G slices (for example, only two 5G slices: eMBB and MIoT),
    it is possible to dedicate a separate QoS queue for each slice on
    transit routers in the provider network.  However, with the introduction of private/enterprises
-   slices, as the number of 5G slices (and thus corresponding RFC XXXX
+   slices, as the number of 5G slices (and thus corresponding RFC 9543
    Network Slices) increases, a single QoS queue on transit links in the provider network serves
    multiple slices with similar characteristics.  QoS enforcement on
    transit links is fully coarse-grained (single NRP, sharing resources among
-   all RFC XXXX Network Slices), as displayed in {{figure-QoS-5QI-unaware}}.
+   all RFC 9543 Network Slices), as displayed in {{figure-QoS-5QI-unaware}}.
 
 ~~~~
 {::include ./drawings/QoS-5QI-unaware.txt}
@@ -910,7 +910,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
    5QI-unaware model), while the new header (MPLS or IPv6) carries QoS
    marking (MPLS Traffic Class bits for MPLS encapsulation, or DSCP for
    SRv6/IPv6 encapsulation) related to TN CoS.  Based on TN CoS
-   marking, per-hop behavior for all RFC XXXX Network Slices is executed on
+   marking, per-hop behavior for all RFC 9543 Network Slices is executed on
    provider network transit links.  Provider network transit routers do not evaluate the original IP
    header for QoS-related decisions.  This model is outlined in
    {{figure-15}} for MPLS encapsulation, and in {{figure-16}} for SRv6
@@ -974,7 +974,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
    out-profile traffic, as discussed in {{sec-inbound-edge-resource-control}}.
 
    Provider network edge resources are controlled in a granular, fine-grained
-   manner, with dedicated resource allocation for each RFC XXXX Network
+   manner, with dedicated resource allocation for each RFC 9543 Network
    Slice.  The resource control/enforcement happens at each SDP in two
    directions: inbound and outbound.
 
@@ -1001,7 +1001,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
    *  PIR: Peak Information Rate (i.e., maximum bandwidth)
 
    These parameters define the traffic characteristics of the slice and
-   are part of SLO parameter set provided by the 5G NSO to RFC XXXX NSC.  Based
+   are part of SLO parameter set provided by the 5G NSO to RFC 9543 NSC.  Based
    on these parameters the provider network inbound policy can be implemented using one
    of following options:
 
@@ -1115,7 +1115,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
    assigned a single egress queue.  The sum of slice CIRs, used as the
    weight in weighted queueing model, should not exceed the physical
    capacity of the attachment circuit.  Slice requests above this limit
-   should be rejected by the RFC XXXX NSC, unless an already established slice with
+   should be rejected by the RFC 9543 NSC, unless an already established slice with
    lower priority, if such exists, is preempted.
 
 ~~~
@@ -1191,7 +1191,7 @@ to TN QoS Classes may be rather common.
    marking corresponding to 5QI (5G QoS Class), while the new header
    (MPLS or IPv6) carries QoS marking related to TN QoS Class.  Based on
    TN QoS Class marking, per-hop behavior for all aggregated 5G QoS
-   Classes from all RFC XXXX Network Slices is executed on the provider network transit links.  Provider network
+   Classes from all RFC 9543 Network Slices is executed on the provider network transit links.  Provider network
    transit routers do not evaluate the original IP header for QoS
    related decisions.  The original DSCP marking retained in the
    original IP header is used at the PE for fine-grained per slice and
@@ -1199,9 +1199,9 @@ to TN QoS Classes may be rather common.
 
    In the 5QI-aware model, compared to the 5QI-unware model, provider network edge resources are controlled in an even more
    granular, fine-grained manner, with dedicated resource allocation for
-   each RFC XXXX Network Slice and dedicated resource allocation for number
+   each RFC 9543 Network Slice and dedicated resource allocation for number
    of traffic classes (most commonly up 4 or 8 traffic classes,
-   depending on the HW capability of the equipment) within each RFC XXXX
+   depending on the HW capability of the equipment) within each RFC 9543
    Network Slice.
 
 ####  Inbound Edge Resource Control
@@ -1642,7 +1642,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
 {: #figure-27 title="Inter-DC Traffic Demand Matrix" artwork-align="center"}
 
    {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}} can be used to convey all
-   of the information in the traffic matrix to the RFC XXXX NSC.  The RFC XXXX
+   of the information in the traffic matrix to the RFC 9543 NSC.  The RFC 9543
    NSC applies policers corresponding to the last column in the traffic
    matrix to the appropriate PE routers, in order to enforce the
    bandwidth contract.  For example, it applies a policer of 11 units to
@@ -1656,9 +1656,9 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    Depending on the bandwidth model used in the provider network ({{sec-bw}}),
    the other values in the matrix, i.e., the DC-to-DC demands, may not
    be directly applied to the provider network.  Even so, the
-   information may be useful to the RFC XXXX NSC for capacity planning and
+   information may be useful to the RFC 9543 NSC for capacity planning and
    failure simulation purposes.  If, on the other hand, the DC-to-DC
-   demand information is not used by the RFC XXXX NSC, the IETF YANG Data
+   demand information is not used by the RFC 9543 NSC, the IETF YANG Data
    Model for L3VPN Service Delivery {{?RFC8299}} or the IETF YANG Data
    Model for L2VPN Service Delivery {{?RFC8466}} could be used instead of
    {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}}, as they support
@@ -1858,7 +1858,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
 
 #  Security Considerations
 
-{{Section 10 of !I-D.ietf-teas-ietf-network-slices}} discusses generic security considerations that are applicable to network slicing, with a focus on the following considerations:
+{{Section 10 of !RFC9543}} discusses generic security considerations that are applicable to network slicing, with a focus on the following considerations:
 
 
  * Conformance to security constraints:
@@ -1875,7 +1875,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
 
  * Data Confidentiality and Integrity of an IETF Network Slice:
 
-     As described in {{Section 5.1.2.1 of !I-D.ietf-teas-ietf-network-slices}}, the customer might request an SLE that mandates encryption. As described in {{transport-plane-mapping-models}}, this can be achieved, e.g., by mapping the traffic to a transport plane that uses only MACsec-encrypted links.
+     As described in {{Section 5.1.2.1 of !RFC9543}}, the customer might request an SLE that mandates encryption. As described in {{transport-plane-mapping-models}}, this can be achieved, e.g., by mapping the traffic to a transport plane that uses only MACsec-encrypted links.
 
 Many of the YANG modules cited in this document define schema for data that is designed to be accessed via network management protocols such as NETCONF {{!RFC6241}} or RESTCONF {{!RFC8040}}. The lowest NETCONF layer is the secure transport layer, and the mandatory-to-implement secure transport is Secure Shell (SSH) {{!RFC6242}}. The lowest RESTCONF layer is HTTPS, and the mandatory-to-implement secure transport is TLS {{!RFC8446}}.
 
