@@ -65,7 +65,7 @@ contributor:
    organization: Juniper Networks
    city: Sunnyvale
    country: United States of America
-   email: jdrake@juniper.net
+   email: je_drake@yahoo.com
 
  -
    fullname: Ivan Bykov
@@ -100,7 +100,7 @@ contributor:
    organization: Rakuten
    city: Bangalore
    country: India
-   email: amit.dhamija@rakuten.com
+   email: amitd@arrcus.com
 
  -
    fullname: Mojdeh Amani
