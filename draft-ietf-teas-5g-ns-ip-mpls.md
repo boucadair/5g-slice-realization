@@ -828,7 +828,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
 
    The exact mapping between 5QI and
    DSCP is out of scope for this document.  Mapping recommendations
-   are documented, e.g., in {{?I-D.henry-tsvwg-diffserv-to-qci}}.
+   are documented, e.g., in {{?I-D.cbs-teas-5qi-to-dscp-mapping}}.
 
    Each slice service might have flows with multiple 5QIs. 5QIs (or, more precisely,
    corresponding DSCP values) are visible to the provider network at SDPs
