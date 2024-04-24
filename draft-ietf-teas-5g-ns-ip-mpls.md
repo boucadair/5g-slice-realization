@@ -343,7 +343,7 @@ A TN slice relies upon resources that can involve both the provider and customer
 ~~~~
 {: #figure-orch title="End-to-end 5G Slice Orchestration with TN" artwork-align="center"}
 
-> The various orchestration depicted in the figure encompass the 3GPP's Network Slice Subnet Management Function (NSSMF) mentionned, e.g., in Figure 5 of {{?I-D.ietf-teas-5g-network-slice-application}}.
+> The various orchestration depicted in the figure encompass the 3GPP's Network Slice Subnet Management Function (NSSMF) mentioned, e.g., in Figure 5 of {{?I-D.ietf-teas-5g-network-slice-application}}.
 
 
 ### Transport Network Segments and Network Slice Instantiation {#sec-tn-nsi}
