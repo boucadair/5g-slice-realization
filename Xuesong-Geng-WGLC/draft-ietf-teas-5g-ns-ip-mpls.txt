@@ -582,9 +582,8 @@ Table of Contents
             Figure 5: End-to-end 5G Slice Orchestration with TN
 
       The various orchestration depicted in the figure encompass the
-      3GPP's Network Slice Subnet Management Function (NSSMF)
-      mentionned, e.g., in Figure 5 of
-      [I-D.ietf-teas-5g-network-slice-application].
+      3GPP's Network Slice Subnet Management Function (NSSMF) mentioned,
+      e.g., in Figure 5 of [I-D.ietf-teas-5g-network-slice-application].
 
 3.4.2.  Transport Network Segments and Network Slice Instantiation
 
