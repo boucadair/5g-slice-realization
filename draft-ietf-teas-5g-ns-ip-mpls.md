@@ -182,9 +182,9 @@ This document focuses on network slicing for 5G networks, covering the connectiv
 
 This work is compatible with the framework defined in {{!RFC9543}} which describes network slicing in the context of networks built from IETF technologies.
 
-The realization approach described in this document is typically triggered by Network Slice Service requests. How a Network Slice Service request is placed for realization, including how it is derived from a 5G Slice Service request, is out of scope. Network Slice Service mapping considerations (e.g., mapping between 3GPP to IETF service parameters) are discussed, e.g., in {{?I-D.ietf-teas-5g-network-slice-application}}.
+The realization approach described in this document is typically triggered by Network Slice Service requests. How a Network Slice Service request is placed for realization, including how it is derived from a 5G Slice Service request, is out of scope. Mapping considerations between 3GPP and IETF Network Slice Service (e.g., mapping of service parameters) are discussed, e.g., in {{?I-D.ietf-teas-5g-network-slice-application}}.
 
-Although this document focuses on 5G, the realizations are not fundamentally constrained by the 5G use case. The document is not intended to be a BCP and does not claim to specify mandatory mechanisms to realize network slices. Rather, a key goal of the document is to provide pragmatic implementation approaches by leveraging existing readily-available, widely-deployed techniques. The document is also intended to align the mobile and the IETF perspectives of slicing.
+Although this document focuses on 5G, the realizations are not fundamentally constrained by the 5G use case. The document is not intended to be a BCP and does not claim to specify mandatory mechanisms to realize network slices. Rather, a key goal of the document is to provide pragmatic implementation approaches by leveraging existing readily-available, widely-deployed techniques. The document is also intended to align the mobile and the IETF perspectives of slicing from a realization perspective.
 
 A brief 5G overview is provided in {{sec-5g-overview}} for the reader's convenience. The reader may refer to {{TS-23.501}} or {{5G-Book}} for more details about 3GPP network architectures.
 
@@ -343,7 +343,7 @@ A TN slice relies upon resources that can involve both the provider and customer
 ~~~~
 {: #figure-orch title="End-to-end 5G Slice Orchestration with TN" artwork-align="center"}
 
-> The various orchestration depicted in the figure encompass the 3GPP's Network Slice Subnet Management Function (NSSMF).
+> The various orchestration depicted in the figure encompass the 3GPP's Network Slice Subnet Management Function (NSSMF) mentionned, e.g., in Figure 5 of {{?I-D.ietf-teas-5g-network-slice-application}}.
 
 
 ### Transport Network Segments and Network Slice Instantiation {#sec-tn-nsi}
@@ -2341,7 +2341,7 @@ User Plane          ╱     │           │         ╲
 {:numbered="false"}
 
    The authors would like to thank Adrian Farrel, Joel Halpern, Tarek
-   Saad, Jie Dong, Greg Mirsky, Rüdiger Geib, Nicklous D. Morris, 	Daniele Ceccarelli, and Bo Wu for
+   Saad, Jie Dong, Greg Mirsky, Rüdiger Geib, Nicklous D. Morris, 	Daniele Ceccarelli, Bo Wu, and Xuesong Geng for
    their review of this document and for providing valuable comments.
 
    Thanks to Alvaro Retana for the rtg-dir review, Yoshifumi Nishida for
