@@ -588,7 +588,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    a slice on the PE, hence all slices are handled within single service instance.
    The IP and VLAN hand-offs are not mutually exclusive, but instead could be used
    concurrently. Since the TN doesn't recognize S-NSSAI, a mapping table similar to
-   the VLAN Hand-off solution should be utilized {{sec-vlan-handoff}}.
+   the VLAN Hand-off solution should be utilized ({{sec-vlan-handoff}}).
 
    The mapping table can be simplified if, for example, IPv6 addressing is used to
    address NFs. An IPv6 address is a 128-bit long field, while the S-NSSAI is a
