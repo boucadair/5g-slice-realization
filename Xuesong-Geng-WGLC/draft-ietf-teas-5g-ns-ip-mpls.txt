@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 21 September 2024                              Juniper Networks
+Expires: 26 October 2024                                Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                           20 March 2024
+                                                           24 April 2024
 
 
  A Realization of Network Slices for 5G Networks Using Current IP/MPLS
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 21 September 2024.
+   This Internet-Draft will expire on 26 October 2024.
 
 Copyright Notice
 
@@ -150,9 +150,9 @@ Table of Contents
    The realization approach described in this document is typically
    triggered by Network Slice Service requests.  How a Network Slice
    Service request is placed for realization, including how it is
-   derived from a 5G Slice Service request, is out of scope.  Network
-   Slice Service mapping considerations (e.g., mapping between 3GPP to
-   IETF service parameters) are discussed, e.g., in
+   derived from a 5G Slice Service request, is out of scope.  Mapping
+   considerations between 3GPP and IETF Network Slice Service (e.g.,
+   mapping of service parameters) are discussed, e.g., in
    [I-D.ietf-teas-5g-network-slice-application].
 
    Although this document focuses on 5G, the realizations are not
@@ -162,7 +162,7 @@ Table of Contents
    document is to provide pragmatic implementation approaches by
    leveraging existing readily-available, widely-deployed techniques.
    The document is also intended to align the mobile and the IETF
-   perspectives of slicing.
+   perspectives of slicing from a realization perspective.
 
    A brief 5G overview is provided in Appendix B for the reader's
    convenience.  The reader may refer to [TS-23.501] or [_5G-Book] for
@@ -582,7 +582,9 @@ Table of Contents
             Figure 5: End-to-end 5G Slice Orchestration with TN
 
       The various orchestration depicted in the figure encompass the
-      3GPP's Network Slice Subnet Management Function (NSSMF).
+      3GPP's Network Slice Subnet Management Function (NSSMF)
+      mentionned, e.g., in Figure 5 of
+      [I-D.ietf-teas-5g-network-slice-application].
 
 3.4.2.  Transport Network Segments and Network Slice Instantiation
 
@@ -1397,7 +1399,7 @@ Table of Contents
 
    The exact mapping between 5QI and DSCP is out of scope for this
    document.  Mapping recommendations are documented, e.g., in
-   [I-D.henry-tsvwg-diffserv-to-qci].
+   [I-D.cbs-teas-5qi-to-dscp-mapping].
 
    Each slice service might have flows with multiple 5QIs. 5QIs (or,
    more precisely, corresponding DSCP values) are visible to the
@@ -2673,28 +2675,29 @@ Table of Contents
 
 11.2.  Informative References
 
-   [I-D.henry-tsvwg-diffserv-to-qci]
-              Henry, J., Szigeti, T., and L. M. Contreras, "Diffserv to
-              QCI Mapping", Work in Progress, Internet-Draft, draft-
-              henry-tsvwg-diffserv-to-qci-04, 13 April 2020,
-              <https://datatracker.ietf.org/doc/html/draft-henry-tsvwg-
-              diffserv-to-qci-04>.
+   [I-D.cbs-teas-5qi-to-dscp-mapping]
+              Contreras, L. M., Bykov, I., and K. G. Szarkowicz, "5QI to
+              DiffServ DSCP Mapping Example for Enforcement of 5G End-
+              to-End Network Slice QoS", Work in Progress, Internet-
+              Draft, draft-cbs-teas-5qi-to-dscp-mapping-00, 4 March
+              2024, <https://datatracker.ietf.org/doc/html/draft-cbs-
+              teas-5qi-to-dscp-mapping-00>.
 
    [I-D.ietf-opsawg-ntw-attachment-circuit]
               Boucadair, M., Roberts, R., de Dios, O. G., Barguil, S.,
               and B. Wu, "A Network YANG Data Model for Attachment
               Circuits", Work in Progress, Internet-Draft, draft-ietf-
-              opsawg-ntw-attachment-circuit-05, 9 February 2024,
+              opsawg-ntw-attachment-circuit-09, 19 April 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-
-              ntw-attachment-circuit-05>.
+              ntw-attachment-circuit-09>.
 
    [I-D.ietf-opsawg-teas-attachment-circuit]
               Boucadair, M., Roberts, R., de Dios, O. G., Barguil, S.,
               and B. Wu, "YANG Data Models for Bearers and 'Attachment
               Circuits'-as-a-Service (ACaaS)", Work in Progress,
               Internet-Draft, draft-ietf-opsawg-teas-attachment-circuit-
-              08, 16 March 2024, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-opsawg-teas-attachment-circuit-08>.
+              11, 19 April 2024, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-opsawg-teas-attachment-circuit-11>.
 
    [I-D.ietf-teas-5g-network-slice-application]
               Geng, X., Contreras, L. M., Rokui, R., Dong, J., and I.
@@ -2708,9 +2711,9 @@ Table of Contents
               Wu, B., Dhody, D., Rokui, R., Saad, T., and J. Mullooly,
               "A YANG Data Model for the RFC 9543 Network Slice
               Service", Work in Progress, Internet-Draft, draft-ietf-
-              teas-ietf-network-slice-nbi-yang-10, 16 March 2024,
+              teas-ietf-network-slice-nbi-yang-11, 24 April 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-teas-
-              ietf-network-slice-nbi-yang-10>.
+              ietf-network-slice-nbi-yang-11>.
 
    [I-D.ietf-teas-ns-controller-models]
               Contreras, L. M., Rokui, R., Tantsura, J., Wu, B., Liu,
@@ -3384,8 +3387,8 @@ Acknowledgments
 
    The authors would like to thank Adrian Farrel, Joel Halpern, Tarek
    Saad, Jie Dong, Greg Mirsky, Rüdiger Geib, Nicklous D.  Morris,
-   Daniele Ceccarelli, and Bo Wu for their review of this document and
-   for providing valuable comments.
+   Daniele Ceccarelli, Bo Wu, and Xuesong Geng for their review of this
+   document and for providing valuable comments.
 
    Thanks to Alvaro Retana for the rtg-dir review, Yoshifumi Nishida for
    the tsv-art review, and Timothy Winters for the int-dir review.
@@ -3396,7 +3399,7 @@ Contributors
    Juniper Networks
    Sunnyvale,
    United States of America
-   Email: jdrake@juniper.net
+   Email: je_drake@yahoo.com
 
 
    Ivan Bykov
@@ -3431,7 +3434,7 @@ Contributors
    Rakuten
    Bangalore
    India
-   Email: amit.dhamija@rakuten.com
+   Email: amitd@arrcus.com
 
 
    Mojdeh Amani
