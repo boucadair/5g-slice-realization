@@ -653,7 +653,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
 {: #figure-s-nssai-deployment title="Deployment Example with S-NSSAI Embedded into IPv6 Addresses" artwork-align="center"}
 
 
-##  MPLS Label Hand-off {#sec-ho}
+##  MPLS Label Hand-off {#sec-mpls-ho}
 
    In this option, the service instances representing different slices
    are created directly on the NF, or within the customer site
