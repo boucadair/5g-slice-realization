@@ -256,8 +256,9 @@ The description of the main components shown in {{fig-tn-arch}} are:
 
 Customer:
 : An entity that is responsible for managing and orchestrating the end-to-end 5G Mobile Network, notably RANs, and CNs.
+: This entity is distinct from the customer of a 5G Network Slice Service.
 
-customer site:
+Customer site:
 : A customer manages and deploys 5G NFs (RAN and CN) in customer sites. On top of 5G NFs (e.g., gNodeB (gNB), 5G Core (5GC)), a customer may manage additional TN elements (e.g., servers, routers, or switches) within a customer site. A customer site can be either a physical or a virtual location. Examples of customer sites are a customer private locations (Point of Presence (PoP), DC), a VPC in a Public Cloud, or servers hosted within the provider network or colocation service.
 : The Orchestration of the TN within a customer site involves a set of controllers for automation purposes (e.g., Network Functions Virtualization Infrastructure (NFVI), Enhanced Container Network Interface (CNI), Fabric Managers, or Public Cloud APIs). It is out of the scope of this document to document how these controllers are implemented.
 
@@ -497,7 +498,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
       capacity can be utilized without causing any bottlenecks.  The
       toolset used here can range from careful network planning, to
       ensure a more or less equal traffic distribution (i.e., equal cost load
-      balancing), to advanced traffic engineering techniques, with or
+      balancing), to advanced TE techniques, with or
       without bandwidth reservations, to force more consistent load
       distribution even in non-ECMP friendly network topologies. See also {{Section 8 of ?RFC9522}}}.
 
@@ -611,7 +612,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
 
    One benefit of embedding the S-NSSAI in the IPv6 address is that a specific S-NSSAI
    can be identified as needed at any place in the TN domain. This might be used,
-   for example, to selectively enable per S-NSSAI monitoring, traffic engineering, or any
+   for example, to selectively enable per S-NSSAI monitoring, TE, or any
    other per S-NSSAI handling, if required.
 
    However, operators using such mapping methods should be aware of the implications
@@ -1710,7 +1711,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    While Scheme 1 is technically feasible, it is vulnerable to
    unexpected changes in traffic patterns and/or network element
    failures resulting in congestion.  This is because, unlike Schemes 2
-   and 3 that employ TE, traffic cannot be diverted from the shortest
+   and 3 which employ TE, traffic cannot be diverted from the shortest
    path.
 
 ###  Scheme 2: TE LSPs with Fixed Bandwidth Reservations
