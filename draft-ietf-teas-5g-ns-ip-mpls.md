@@ -698,7 +698,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
 ~~~~
 {::include ./drawings/mpls-10b-hand-off.txt}
 ~~~~
-{: #figure-10b-hand-off title="MPLS Hand-off: Option B" artwork-align="center"}
+{: #figure-mpls-10b-hand-off title="MPLS Hand-off: Option B" artwork-align="center"}
 
 
    MPLS labels are allocated dynamically in Option B
