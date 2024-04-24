@@ -240,7 +240,7 @@ The term "Transport Network" is used for disambiguation with 5G network (e.g., I
       There are different options to implement TN slices based upon
       mechanisms such as Virtual Routing and Forwarding instances (VRFs)
       for logical separation, Quality of Service (QoS), and Traffic
-      Engineering (TE). Whether all or a subset of these options are enabled is a deployemnt choice.
+      Engineering (TE). Whether all or a subset of these options are enabled is a deployment choice.
 
 
 ## Transport Network Reference Design {#sec-ref-design}
@@ -2339,8 +2339,10 @@ User Plane          ╱     │           │         ╲
 {:numbered="false"}
 
    The authors would like to thank Adrian Farrel, Joel Halpern, Tarek
-   Saad, Jie Dong, Greg Mirsky, Rüdiger Geib, Nicklous D. Morris, 	Daniele Ceccarelli, and Bo Wu for
+   Saad, Greg Mirsky, Rüdiger Geib, Nicklous D. Morris, 	Daniele Ceccarelli, and Bo Wu for
    their review of this document and for providing valuable comments.
+
+   Special thanks to Jie Dong for the detailed and carefull reviews.
 
    Thanks to Alvaro Retana for the rtg-dir review, Yoshifumi Nishida for
    the tsv-art review, and Timothy Winters for the int-dir review.
