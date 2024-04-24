@@ -1396,7 +1396,6 @@ to TN QoS Classes may be rather common.
    * A mesh of RSVP-TE {{?RFC3209}} or SR-TE {{?RFC9256}} tunnels created with specific optimization criteria and
    constraints. For example, mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.
    * A flex-algo {{?RFC9350}} with a particular metric-type (e.g., latency), or one that only uses links with particular properties (e.g., MACsec link {{IEEE802.1AE}}), or excludes links that are within a particular geography.
-   * Any combination thereof.
 
    Detailed realization of transport planes is out of the scope of this document.
 
