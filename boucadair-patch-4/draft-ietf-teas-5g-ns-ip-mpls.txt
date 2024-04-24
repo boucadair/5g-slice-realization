@@ -1093,7 +1093,7 @@ Table of Contents
    single service instance.  The IP and VLAN hand-offs are not mutually
    exclusive, but instead could be used concurrently.  Since the TN
    doesn't recognize S-NSSAI, a mapping table similar to the VLAN Hand-
-   off solution should be utilized Section 4.1.
+   off solution should be utilized (Section 4.1).
 
    The mapping table can be simplified if, for example, IPv6 addressing
    is used to address NFs.  An IPv6 address is a 128-bit long field,
