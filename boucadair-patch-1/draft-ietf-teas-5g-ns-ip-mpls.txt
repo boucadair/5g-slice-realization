@@ -279,7 +279,7 @@ Table of Contents
       mechanisms such as Virtual Routing and Forwarding instances (VRFs)
       for logical separation, Quality of Service (QoS), and Traffic
       Engineering (TE).  Whether all or a subset of these options are
-      enabled is a deployemnt choice.
+      enabled is a deployment choice.
 
 3.3.  Transport Network Reference Design
 
@@ -3374,9 +3374,11 @@ B.4.  Transport Network (TN)
 Acknowledgments
 
    The authors would like to thank Adrian Farrel, Joel Halpern, Tarek
-   Saad, Jie Dong, Greg Mirsky, Rüdiger Geib, Nicklous D.  Morris,
-   Daniele Ceccarelli, and Bo Wu for their review of this document and
-   for providing valuable comments.
+   Saad, Greg Mirsky, Rüdiger Geib, Nicklous D.  Morris, Daniele
+   Ceccarelli, and Bo Wu for their review of this document and for
+   providing valuable comments.
+
+   Special thanks to Jie Dong for the detailed and carefull reviews.
 
    Thanks to Alvaro Retana for the rtg-dir review, Yoshifumi Nishida for
    the tsv-art review, and Timothy Winters for the int-dir review.
