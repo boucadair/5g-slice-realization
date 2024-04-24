@@ -312,7 +312,10 @@ Table of Contents
       orchestrating the end-to-end 5G Mobile Network, notably RANs, and
       CNs.
 
-   customer site:  A customer manages and deploys 5G NFs (RAN and CN) in
+      This entity is distinct from the customer of a 5G Network Slice
+      Service.
+
+   Customer site:  A customer manages and deploys 5G NFs (RAN and CN) in
       customer sites.  On top of 5G NFs (e.g., gNodeB (gNB), 5G Core
       (5GC)), a customer may manage additional TN elements (e.g.,
       servers, routers, or switches) within a customer site.  A customer
@@ -946,10 +949,10 @@ Table of Contents
       capacity can be utilized without causing any bottlenecks.  The
       toolset used here can range from careful network planning, to
       ensure a more or less equal traffic distribution (i.e., equal cost
-      load balancing), to advanced traffic engineering techniques, with
-      or without bandwidth reservations, to force more consistent load
-      distribution even in non-ECMP friendly network topologies.  See
-      also Section 8 of [RFC9522]}.
+      load balancing), to advanced TE techniques, with or without
+      bandwidth reservations, to force more consistent load distribution
+      even in non-ECMP friendly network topologies.  See also Section 8
+      of [RFC9522]}.
 
               ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
         ┌──────────┐               base NRP               ┌──────────┐
@@ -1125,8 +1128,8 @@ Table of Contents
    One benefit of embedding the S-NSSAI in the IPv6 address is that a
    specific S-NSSAI can be identified as needed at any place in the TN
    domain.  This might be used, for example, to selectively enable per
-   S-NSSAI monitoring, traffic engineering, or any other per S-NSSAI
-   handling, if required.
+   S-NSSAI monitoring, TE, or any other per S-NSSAI handling, if
+   required.
 
    However, operators using such mapping methods should be aware of the
    implications of any change of S-NSSAI on the addressing plans.  For
@@ -2413,7 +2416,7 @@ Table of Contents
    While Scheme 1 is technically feasible, it is vulnerable to
    unexpected changes in traffic patterns and/or network element
    failures resulting in congestion.  This is because, unlike Schemes 2
-   and 3 that employ TE, traffic cannot be diverted from the shortest
+   and 3 which employ TE, traffic cannot be diverted from the shortest
    path.
 
 7.2.2.  Scheme 2: TE LSPs with Fixed Bandwidth Reservations
