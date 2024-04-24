@@ -653,7 +653,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
 {: #figure-s-nssai-deployment title="Deployment Example with S-NSSAI Embedded into IPv6 Addresses" artwork-align="center"}
 
 
-##  MPLS Label Hand-off {#sec-mpls-ho}
+##  MPLS Label Hand-off {#sec-ho}
 
    In this option, the service instances representing different slices
    are created directly on the NF, or within the customer site
@@ -686,9 +686,9 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    In this option, L3VPN service instances are instantiated outside the
    provider network.  These L3VPN service instances
    are instantiated in the customer site, which could be for example either on the compute, hosting mobile network
-   functions ({{figure-mpls-10b-hand-off}}, left hand side), or within the DC/cloud
+   functions ({{figure-10b-hand-off}}, left hand side), or within the DC/cloud
    infrastructure itself (e.g., on the top of the rack or leaf switch
-   within cloud IP fabric ({{figure-mpls-10b-hand-off}}, right hand side)). On the
+   within cloud IP fabric ({{figure-10b-hand-off}}, right hand side)). On the
    attachment circuit connected to PE, packets are already MPLS
    encapsulated (or MPLS-in-UDP/MPLS-in-IP encapsulated, if cloud or compute
    infrastructure don’t support native MPLS encapsulation). Therefore,
@@ -698,7 +698,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
 ~~~~
 {::include ./drawings/mpls-10b-hand-off.txt}
 ~~~~
-{: #figure-mpls-10b-hand-off title="MPLS Hand-off: Option B" artwork-align="center"}
+{: #figure-10b-hand-off title="MPLS Hand-off: Option B" artwork-align="center"}
 
 
    MPLS labels are allocated dynamically in Option B
