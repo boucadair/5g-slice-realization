@@ -1559,7 +1559,7 @@ to TN QoS Classes may be rather common.
 ## Bandwidth Requirements
 
    This section describes the information conveyed by the 5G NSO to the
-   RFCXXXX NSC with respect to slice bandwidth requirements.
+   NSC with respect to slice bandwidth requirements.
 
    {{figure-multi-DC}} shows three DCs that contain instances of network
    functions.  Also shown are PEs that have links to the DCs.  The PEs
@@ -1570,7 +1570,7 @@ to TN QoS Classes may be rather common.
 
    The 5G NSO is aware of the existence of the network functions and their
    locations.  However, it is not aware of the details of the provider
-   network.  The RFCXXXX NSC has the opposite view - it is
+   network.  The NSC has the opposite view - it is
    aware of the provider network infrastructure and the links between the PEs
    and the DCs, but is not aware of the individual network functions at customer sites.
 
@@ -1736,7 +1736,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    demands of the individual slices.  For example, if only Slice X and
    Slice Y are present, then the bandwidth requirement from DC1 to DC2
    is 12 units (8 units for Slice X and 4 units for Slice Y).  When the
-   5G NSO requests a new slice, the RFCXXXX NSC, in its mind,
+   5G NSO requests a new slice, the NSC, in its mind,
    increments the bandwidth requirement according to the requirements of
    the new slice.  For example, in {{figure-multi-DC}}, suppose a new slice is
    instantiated that needs 0.8 Gbps from DC1 to DC2.  The transport
@@ -1745,7 +1745,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    additional expected traffic.
 
    In the example, each DC has two PEs facing it for reasons of
-   resilience.  The RFCXXXX NSC needs to determine how to map
+   resilience.  The NSC needs to determine how to map
    the DC1 to DC2 bandwidth requirement to bandwidth reservations of TE
    LSPs from DC1 to DC2.  For example, if the routing configuration is
    arranged such that in the absence of any network failure, traffic
@@ -1756,12 +1756,12 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    enters PE1A and is load-balanced across PE2A and PE2B, the controller
    reserves 6.4 Gbps of bandwidth on the LSP from PE1A to PE2A and 6.4
    Gbps of bandwidth on the LSP from PE1A to PE2B.  It might be tricky
-   for the RFCXXXX NSC to be aware of all conditions that
+   for the NSC to be aware of all conditions that
    change the way traffic lands on the various PEs, and therefore know
    that it needs to change bandwidth reservations of LSPs accordingly.
    For example, there might be an internal failure within DC1 that
    causes traffic from DC1 to land on PE1B, rather than PE1A.  The
-   RFCXXXX NSC may not be aware of the failure and therefore
+   NSC may not be aware of the failure and therefore
    may not know that it now needs to apply bandwidth reservations to
    LSPs from PE1B to PE2A/PE2B.
 
@@ -1780,7 +1780,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    measured data-plane traffic volumes are used to influence the
    placement of TE LSPs.  One way of achieving this is to use
    distributed RSVP-TE with auto-bandwidth.  Alternatively, the
-   RFCXXXX NSC can use telemetry-driven automatic congestion
+   NSC can use telemetry-driven automatic congestion
    avoidance.  In this approach, when the actual traffic volume in the
    data plane on given link exceeds a threshold, the controller, knowing
    how much actual data plane traffic is currently travelling along each
