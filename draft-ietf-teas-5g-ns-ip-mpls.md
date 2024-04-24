@@ -686,9 +686,9 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    In this option, L3VPN service instances are instantiated outside the
    provider network.  These L3VPN service instances
    are instantiated in the customer site, which could be for example either on the compute, hosting mobile network
-   functions ({{figure-10b-hand-off}}, left hand side), or within the DC/cloud
+   functions ({{figure-mpls-10b-hand-off}}, left hand side), or within the DC/cloud
    infrastructure itself (e.g., on the top of the rack or leaf switch
-   within cloud IP fabric ({{figure-10b-hand-off}}, right hand side)). On the
+   within cloud IP fabric ({{figure-mpls-10b-hand-off}}, right hand side)). On the
    attachment circuit connected to PE, packets are already MPLS
    encapsulated (or MPLS-in-UDP/MPLS-in-IP encapsulated, if cloud or compute
    infrastructure don’t support native MPLS encapsulation). Therefore,
