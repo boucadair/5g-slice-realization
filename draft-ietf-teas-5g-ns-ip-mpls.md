@@ -401,7 +401,7 @@ A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For inst
       would be entirely controlled at 5G Control Plane, for example, with
       appropriate placement strategies: this use case is represented in
       {{figure-6}}, where a User Plane Function (UPF) for the URLLC slice is
-      instantiated at the edge cloud close to the gNB CU-UP User Plane for
+      instantiated at the edge cloud close to the gNB Centralized Unit User Plane (CU-UP) for
       better latency/jitter control, while the 5G Control Plane and the UPF
       for eMBB slice are instantiated in the regional cloud.
 
@@ -431,9 +431,9 @@ Specifically, the actual mapping is a design choice of service operators that ma
 ##  First 5G Slice versus Subsequent Slices {#sec-firstslice}
 
 An operational 5G Network Slice incorporates both 5G Control Plane and User Plane capabilities.
-For instance, consider a slice based on split-CU in the RAN, both CU-UP and CU-CP need to be deployed along with the associated interfaces E1, F1-c, F1-u, N2, and N3 which are conveyed in the TN. In this regard, the creation of the "first slice" can be subject to a specific logic that does not apply to subsequent slices. Referring to the example in {{figure-7}}, the first 5G slice relies on the deployment of NF-CP and NF-UP functions together with two TN slices for Control and User Planes (INS-CP and INS-UP1). Next, the deployment of a second slice relies solely on the instantiation of a User Plane Function (NF-UP2) together with a dedicated User Plane TN slice (INS-UP2). The Control Plane of the first 5G slice is also updated to integrate the second slice: the TN slice (INS-CP) and Network Functions (NF-CP) are shared.
+For instance, consider a slice based on split-CU in the RAN, both CU-UP and Centralized Unit Control Plane (CU-CP) need to be deployed along with the associated interfaces E1, F1-c, F1-u, N2, and N3 which are conveyed in the TN. In this regard, the creation of the "first slice" can be subject to a specific logic that does not apply to subsequent slices. For illustrating this deployment, let us consider the example depicted in in {{figure-7}} where the first 5G slice relies on the deployment of NF-CP and NF-UP functions together with two TN slices for Control and User Planes (INS-CP and INS-UP1). Next, the deployment of a second slice relies solely on the instantiation of a User Plane Function (NF-UP2) together with a dedicated User Plane TN slice (INS-UP2). In this example, the Control Plane of the first 5G slice is also updated to integrate the second slice: the TN slice (INS-CP) and Network Functions (NF-CP) are shared.
 
-   At the time of writing (2023), Section 6.1.2 of {{NG.113}} specifies that the
+   At the time of writing (2024), Section 6.1.2 of {{NG.113}} specifies that the
    eMBB slice (SST=1 and no Slice Differentiator (SD)) should be supported globally.  This 5G
    slice would be the first slice in any 5G deployment.
 
@@ -2342,7 +2342,7 @@ User Plane          ╱     │           │         ╲
    Saad, Greg Mirsky, Rüdiger Geib, Nicklous D. Morris, 	Daniele Ceccarelli, and Bo Wu for
    their review of this document and for providing valuable comments.
 
-   Special thanks to Jie Dong for the detailed and carefull reviews.
+   Special thanks to Jie Dong for the detailed and careful reviews.
 
    Thanks to Alvaro Retana for the rtg-dir review, Yoshifumi Nishida for
    the tsv-art review, and Timothy Winters for the int-dir review.
