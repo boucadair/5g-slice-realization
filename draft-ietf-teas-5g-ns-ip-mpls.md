@@ -499,7 +499,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
       ensure a more or less equal traffic distribution (i.e., equal cost load
       balancing), to advanced traffic engineering techniques, with or
       without bandwidth reservations, to force more consistent load
-      distribution even in non-ECMP friendly network topologies.
+      distribution even in non-ECMP friendly network topologies. See also {{Section 8 of ?RFC9522}}}.
 
 ~~~~
 {::include ./drawings/high-level-qos.txt}
