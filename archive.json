@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-04-23T00:27:39.043394+00:00",
+  "timestamp": "2024-04-25T00:29:09.139317+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -5065,6 +5065,214 @@
       "mergeCommit": {
         "oid": "6735692faa074bf666057c7319b0f407eee0b29a"
       },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 142,
+      "id": "PR_kwDOIw9g6c5tl77E",
+      "title": "WGLCs from Xuesong Geng",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/142",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-04-24T11:48:30Z",
+      "updatedAt": "2024-04-24T15:49:16Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "80e6d2849e38fc969a196948111cadb3ddd31cbc",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "Xuesong-Geng-WGLC",
+      "headRefOid": "690c350c53c0d31a6620a3abf1e067fd2a22b618",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "\r\nThanks. Fixed: [690c350](https://github.com/boucadair/5g-slice-realization/pull/142/commits/690c350c53c0d31a6620a3abf1e067fd2a22b618)",
+          "createdAt": "2024-04-24T14:31:09Z",
+          "updatedAt": "2024-04-24T14:31:09Z"
+        },
+        {
+          "author": "kszarkowicz",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Looks good. Thanks Med.",
+          "createdAt": "2024-04-24T15:45:38Z",
+          "updatedAt": "2024-04-24T15:45:38Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c54Z2gb",
+          "commit": {
+            "abbreviatedOid": "a6c3796"
+          },
+          "author": "julianL999",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "Looks good, except typo \"mentionned\"",
+          "createdAt": "2024-04-24T14:27:18Z",
+          "updatedAt": "2024-04-24T14:27:18Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOIw9g6c54Z4cc",
+          "commit": {
+            "abbreviatedOid": "a6c3796"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-24T14:30:19Z",
+          "updatedAt": "2024-04-24T14:30:19Z",
+          "comments": [
+            {
+              "originalPosition": 17,
+              "body": "```suggestion\r\n> The various orchestration depicted in the figure encompass the 3GPP's Network Slice Subnet Management Function (NSSMF) mentioned, e.g., in Figure 5 of {{?I-D.ietf-teas-5g-network-slice-application}}.\r\n```",
+              "createdAt": "2024-04-24T14:30:19Z",
+              "updatedAt": "2024-04-24T14:30:19Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c54auMF",
+          "commit": {
+            "abbreviatedOid": "690c350"
+          },
+          "author": "kszarkowicz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Looks good. Thanks Med.",
+          "createdAt": "2024-04-24T15:49:16Z",
+          "updatedAt": "2024-04-24T15:49:16Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 143,
+      "id": "PR_kwDOIw9g6c5tmjHH",
+      "title": "Jie's review",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/143",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-04-24T13:18:00Z",
+      "updatedAt": "2024-04-24T13:39:12Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "80e6d2849e38fc969a196948111cadb3ddd31cbc",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "Jie's-review",
+      "headRefOid": "93b9ccf81e18609a57ad204261d812762ffa40bb",
+      "closedAt": "2024-04-24T13:39:12Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 144,
+      "id": "PR_kwDOIw9g6c5tmtd9",
+      "title": "Jie's comment",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/144",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-04-24T13:38:20Z",
+      "updatedAt": "2024-04-24T18:10:33Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "80e6d2849e38fc969a196948111cadb3ddd31cbc",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-1",
+      "headRefOid": "ceed18f8aa5d633f121824bd75018c3a79df3d44",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "body": "> Looks good, except typo: is a deployemnt choice\r\n\r\nThanks. Already fixed in https://github.com/boucadair/5g-slice-realization/pull/144/commits/ecc99a66db9ae7d934d76a470bb82d5943d997c2.",
+          "createdAt": "2024-04-24T14:26:32Z",
+          "updatedAt": "2024-04-24T14:26:32Z"
+        },
+        {
+          "author": "kszarkowicz",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Looks good. Thanks Med.",
+          "createdAt": "2024-04-24T15:46:45Z",
+          "updatedAt": "2024-04-24T15:46:45Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c54Z0H9",
+          "commit": {
+            "abbreviatedOid": "ecc99a6"
+          },
+          "author": "julianL999",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "Looks good, except typo: is a deployemnt choice",
+          "createdAt": "2024-04-24T14:23:37Z",
+          "updatedAt": "2024-04-24T14:23:37Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOIw9g6c54atl3",
+          "commit": {
+            "abbreviatedOid": "54578d3"
+          },
+          "author": "kszarkowicz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "Looks good. Thanks Med.",
+          "createdAt": "2024-04-24T15:48:08Z",
+          "updatedAt": "2024-04-24T15:48:08Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 145,
+      "id": "PR_kwDOIw9g6c5tm5VH",
+      "title": "stale RFCXXXX",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/145",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-04-24T14:02:03Z",
+      "updatedAt": "2024-04-24T14:04:33Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "80e6d2849e38fc969a196948111cadb3ddd31cbc",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-4",
+      "headRefOid": "b8fffcec42a2c3263a38ea8775d3405b75091394",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
       "comments": [],
       "reviews": []
     }
