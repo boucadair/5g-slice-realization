@@ -22,4 +22,4 @@
                                        └────┘              └──────┘ │
                          └ ─ ─ ─ ─ ─ ─ ─ ─ ┘   └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ 
                                                                      
-  ■ - SDP, with fine-grained QoS (dedicated resources per RFC XXXX NS)   
+  ■ - SDP, with fine-grained QoS (dedicated resources per RFC 9543 NS)   
