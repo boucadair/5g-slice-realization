@@ -34,4 +34,4 @@
  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
 Fine-grained QoS enforcement   Coarse-grained QoS enforcement 
   (dedicated resources per     (resources shared by multiple  
-   RFC XXXX Network Slice)       RFC XXXX Network Slices)            
+   RFC 9543 Network Slice)       RFC 9543 Network Slices)            
