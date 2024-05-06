@@ -97,7 +97,7 @@ contributor:
 
  -
    fullname: Amit Dhamija
-   organization: Rakuten
+   organization: Arrcus
    city: Bangalore
    country: India
    email: amitd@arrcus.com
