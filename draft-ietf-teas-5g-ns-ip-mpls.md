@@ -165,6 +165,11 @@ informative:
            org: IEEE
           target: https://1.ieee802.org/security/802-1ae/
 
+   ECPRI:
+              title: "Common Public Radio Interface: eCPRI Interface Specification"
+              author:
+                org: Common Public Radio Interface
+              target: http://www.cpri.info/downloads/eCPRI_v_2.0_2019_05_10c.pdf
 
 --- abstract
 
@@ -456,7 +461,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
       This realization model of transport for 5G slices assumes Layer 3
       delivery for midhaul and backhaul transport connections, and a
       Layer 2 or Layer 3 for
-      fronthaul connections. Enhanced Common Public Radio Interface (eCPRI) supports both delivery models. L2VPN/L3VPN service instances might be
+      fronthaul connections. Enhanced Common Public Radio Interface (eCPRI) {{ECPRI}} supports both delivery models. L2VPN/L3VPN service instances might be
       used as a basic form of logical slice separation.  Furthermore, using
       service instances results in an additional outer header (as packets
       are encapsulated/decapsulated at the nodes hosting service instances) providing clean discrimination between 5G QoS and TN
