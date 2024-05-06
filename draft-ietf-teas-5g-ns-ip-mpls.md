@@ -659,7 +659,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    In this option, the service instances representing different slices
    are created directly on the NF, or within the customer site
    hosting the NF, and attached to the provider network.  Therefore, the packet
-   is MPLS encapsulated outside the provider network with native MPLS
+   is MPLS encapsulated outside the provider network with MPLS
    encapsulation, or MPLS-in-UDP encapsulation {{?RFC7510}}, depending on the capability
    of the customer site, with the service label depicting
    the slice.
@@ -692,7 +692,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    within cloud IP fabric ({{figure-mpls-10b-hand-off}}, right hand side)). On the
    attachment circuit connected to PE, packets are already MPLS
    encapsulated (or MPLS-in-UDP/MPLS-in-IP encapsulated, if cloud or compute
-   infrastructure don’t support native MPLS encapsulation). Therefore,
+   infrastructure don’t support MPLS encapsulation). Therefore,
    the PE uses neither a VLAN nor an IP address for slice
    identification at the SDP, but instead uses the MPLS label.
 
@@ -2048,7 +2048,7 @@ Security considerations specific to each of the technologies and protocols liste
 
    {{TS-23.501}} defines the Network Functions (UPF, Access and Mobility Function (AMF), etc.) that
    compose the 5G System (5GS) Architecture together with related
-   interfaces (e.g., N1 and N2).  This architecture has native Control
+   interfaces (e.g., N1 and N2).  This architecture has built-in Control
    and User Plane separation, and the Control Plane leverages a service-
    based architecture.  {{figure-28}} outlines an example 5GS architecture
    with a subset of possible network functions and network interfaces.
@@ -2261,7 +2261,7 @@ User Plane          ╱     │           │         ╲
    Midhaul (MH), and Backhaul (BH) {{TR-GSTR-TN5G}}:
 
    *  Fronthaul happens before the BBU processing.  In 5G, this
-      interface is based on eCPRI (Enhanced CPRI) with native Ethernet
+      interface is based on eCPRI (Enhanced CPRI) with Ethernet
       or IP encapsulation.
 
    *  Midhaul is optional: this segment is introduced in the BBU split
