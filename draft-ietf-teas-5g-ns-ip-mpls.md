@@ -462,6 +462,8 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
       are encapsulated/decapsulated at the nodes hosting service instances) providing clean discrimination between 5G QoS and TN
       QoS, as explained in {{sec-qos-map}}.
 
+      The use of VPNs for is briefly described in Appendix A.4 of {{!RFC9543}}.
+
    *  Fine-grained resource control at the PE:
 
       This is sometimes called 'admission control' or 'traffic
