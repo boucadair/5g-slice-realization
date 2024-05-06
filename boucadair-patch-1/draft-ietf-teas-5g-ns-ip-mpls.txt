@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 28 October 2024                                Juniper Networks
+Expires: 7 November 2024                                Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                           26 April 2024
+                                                              6 May 2024
 
 
  A Realization of Network Slices for 5G Networks Using Current IP/MPLS
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 28 October 2024.
+   This Internet-Draft will expire on 7 November 2024.
 
 Copyright Notice
 
@@ -546,41 +546,41 @@ Table of Contents
    and customer TN domains.  More details are provided in Section 3.4.2.
 
                               ┌───────────┐
-                              │  5G NSO   │
+                              |  5G NSO   |
                               └───────────┘
-                                 │   │
-                                 │   │
-                                 ▼   │
-                   ┌───────────────┐ │
-                   │ 3GPP domains  │ │
-       ┌───────────│ Orchestration │────────────────────────────┐
-       │           │ (RAN and CN)  │ │                          │
-       │           └───────────────┘ │                          │
-       │                             │                          │
-       │    ┏ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━│━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ┓   │
-       │     TN Orchestration        │                          │
-       │    ┃        ┌───────────────┼──────────────┐       ┃   │
-       │             ▼               ▼              ▼           │
-       │    ┃┌───────────────┐┌───────────┐┌───────────────┐┃   │
-       │     │ Customer Site ││RFCXXXX NSC││ Customer Site │    │
-       │    ┃│ Orchestration ││           ││ Orchestration │┃   │
-       │     └──┬────────────┘└─────┬─────┘└──────────────┬┘    │
-       │    ┗ ━ ╋ ━ ━ ━ ━ ━ ━ ━ ━ ━ ╋ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ╋ ┛   │
-       │        │                   │                     │     │
-       │        │                   │                     │     │
-       │        │                   │                     │     │
-       │        ▼                   ▼                     ▼     │
-     ┌ ┼ ─ ─ ─ ─ ─ ┐         ┌ ─ ─ ─ ─ ─ ─ ─ ─ ┐         ┌ ─ ─ ─│─ ─
-       │                          Provider                      │   │
-     │ ▼           │       ┌─┴──┐  Network  ┌──┴─┐      ┌┴───┐  │
-      ┌──┐     ┌────┐  AC  │    │           │    │  AC  │ NF │◀─┘   │
-     ││NF◍ ─ ─ ┤ CE ├ ─ ─ ─■ PE │           │ PE ■ ─ ─ ─◍(CE)│
-      └──┘     └────┘      │    │           │    │      └────┘      │
-     │             │       └─┬──┘           └──┬─┘       │
-        Customer                                           Customer │
-     │    Site     │         │                 │         │   Site
+                                 |   |
+                                 |   |
+                                 ▼   |
+                   ┌───────────────┐ |
+                   | 3GPP domains  | |
+       ┌───────────| Orchestration |────────────────────────────┐
+       |           | (RAN and CN)  | |                          |
+       |           └───────────────┘ |                          |
+       |                             |                          |
+       |    ┏ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━|━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ┓   |
+       |     TN Orchestration        |                          |
+       |    ┃        ┌───────────────┼──────────────┐       ┃   |
+       |             ▼               ▼              ▼           |
+       |    ┃┌───────────────┐┌───────────┐┌───────────────┐┃   |
+       |     | Customer Site ||RFC9543 NSC|| Customer Site |    |
+       |    ┃| Orchestration ||           || Orchestration |┃   |
+       |     └──┬────────────┘└─────┬─────┘└──────────────┬┘    |
+       |    ┗ ━ ╋ ━ ━ ━ ━ ━ ━ ━ ━ ━ ╋ ━ ━ ━ ━ ━ ━ ━ ━ ━ ━ ╋ ┛   |
+       |        |                   |                     |     |
+       |        |                   |                     |     |
+       |        |                   |                     |     |
+       |        ▼                   ▼                     ▼     |
+     ┌ ┼ ─ ─ ─ ─ ─ ┐         ┌ ─ ─ ─ ─ ─ ─ ─ ─ ┐         ┌ ─ ─ ─|─ ─
+       |                          Provider                      |   |
+     | ▼           |       ┌─┴──┐  Network  ┌──┴─┐      ┌┴───┐  |
+      ┌──┐     ┌────┐  AC  |    |           |    |  AC  | NF |◀─┘   |
+     ||NF◍ ─ ─ ┤ CE ├ ─ ─ ─■ PE |           | PE ■ ─ ─ ─◍(CE)|
+      └──┘     └────┘      |    |           |    |      └────┘      |
+     |             |       └─┬──┘           └──┬─┘       |
+        Customer                                           Customer |
+     |    Site     |         |                 |         |   Site
       ─ ─ ─ ─ ─ ─ ─           ─ ─ ─ ─ ─ ─ ─ ─ ─           ─ ─ ─ ─ ─ ┘
-                                   RFC XXXX
+                                   RFC 9543
                            ■─────Network Slice───■
 
          ◍───────────────────TN Slice───────────────────◍
@@ -633,24 +633,24 @@ Table of Contents
 
            ├───────────────────────TN Slice─────────────┤
 
-                             ○─────RFC XXXX ─────○
-                             │   Network Slice   │
-                             │                   │
-                             │                   │
+                             ○─────RFC 9543 ─────○
+                             |   Network Slice   |
+                             |                   |
+                             |                   |
                              ▼                   ▼
            ○──CS───□ □───AC──○ □──────PN───────□ ○──AC──○
        ┌ ─ ─ ─ ─ ─ ─           ┌ ─ ─ ─ ─ ─ ─ ─ ┐         ┌ ─ ─ ─ ─ ─
-          Customer  │               Provider               Customer │
-       │   Site 1              │    Network    │         │  Site 2
-                    │        ┌────┐          ┌────┐                 │
-       │┌───┐    ┌────┐  AC  │    │          │    │ AC ┌─┴─┐
-     CS │NF1├────┤ CE ├──────┤ PE │          │ PE ├────┤NF3│        │
-     □ │└─┬─┘    └────┘      │    │          │    │    └─┬─┘
-     │    │         │        └────┘          └────┘                 │
-     │ │  │                    │               │         │
-     □  ┌─┴─┐       │                                               │
-       ││NF2│                  │               │         │
-        └───┘       │                                               │
+          Customer  |               Provider               Customer |
+       |   Site 1              |    Network    |         |  Site 2
+                    |        ┌────┐          ┌────┐                 |
+       |┌───┐    ┌────┐  AC  |    |          |    | AC ┌─┴─┐
+     CS |NF1├────┤ CE ├──────┤ PE |          | PE ├────┤NF3|        |
+     □ |└─┬─┘    └────┘      |    |          |    |    └─┬─┘
+     |    |         |        └────┘          └────┘                 |
+     | |  |                    |               |         |
+     □  ┌─┴─┐       |                                               |
+       ||NF2|                  |               |         |
+        └───┘       |                                               |
        └ ─ ─ ─ ─ ─ ─           └ ─ ─ ─ ─ ─ ─ ─ ┘         └ ─ ─ ─ ─ ─
 
                    □──────□  TN segments:
@@ -683,20 +683,20 @@ Table of Contents
       ([I-D.ietf-opsawg-teas-attachment-circuit].
 
           ┌ ─ ─ ─ ─ ─ ─ ─ ┐                   ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─
-                                                  RFCXXXX NSC    │
-          │ Customer Site │                   │
-            Orchestration      IETF APIs/DM    (Provider Network │
-          │               │◀─────────────────▶│  Orchestration)
+                                                  RFC9543 NSC    |
+          | Customer Site |                   |
+            Orchestration      IETF APIs/DM    (Provider Network |
+          |               |◀────────────────▶|  Orchestration)
            ─ ─ ─ ─ ─ ─ ─ ─                     ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
-                        │                        │
-                        │                        │
+                        |                        |
+                        |                        |
         ┌ ─ ─ ─ ─ ─ ─ ─ ┼ ┐                    ┌ ┼ ─ ─ ─ ─ ─ ─ ─ ┐
                         ▼                        ▼
-        │ ┌──┐      ┌──┐.1│    192.0.2.0/31    │.0┌──┐           │
-          │NF├──────┤CE├──────────────────────────┤PE│
-        │ └──┘      └──┘  │      VLAN 100      │  └──┘           │
+        | ┌──┐      ┌──┐.1|    192.0.2.0/31    |.0┌──┐           |
+          |NF├──────┤CE├──────────────────────────┤PE|
+        | └──┘      └──┘  |      VLAN 100      |  └──┘           |
              Customer                                Provider
-        │      Site       │                    │     Network     │
+        |      Site       |                    |     Network     |
          ─ ─ ─ ─ ─ ─ ─ ─ ─                      ─ ─ ─ ─ ─ ─ ─ ─ ─
 
                        └─────────── AC ──────────┘
@@ -746,21 +746,21 @@ Table of Contents
 
      ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
 
-     │                        5G Slice eMBB                          │
+     |                        5G Slice eMBB                          |
 
-     │            ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐            │
+     |            ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐            |
        ┌─────┐ N3   ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐   N3 ┌─────┐
-     │ │CU-UP├─────── RFC XXXX Network Slice UP_eMBB  ───────┤ UPF │ │
+     | |CU-UP├─────── RFC 9543 Network Slice UP_eMBB  ───────┤ UPF | |
        └─────┘      └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘      └─────┘
-     │            │                                     │            │
+     |            |                                     |            |
        ┌─────┐ N2   ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐   N2 ┌─────┐
-     │ │CU-CP├───────    RFC XXXX Network Slice CP    ───────┤ AMF │ │
+     | |CU-CP├───────    RFC 9543 Network Slice CP    ───────┤ AMF | |
        └─────┘      └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘      └─────┘
-     └ ─ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ┘
+     └ ─ ─ ─ ─ ─ ─|─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─|─ ─ ─ ─ ─ ─ ┘
 
-                  │                                     │
+                  |                                     |
                             Transport Network
-                  │                                     │
+                  |                                     |
 
                   └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
 
@@ -768,26 +768,26 @@ Table of Contents
 
                       ┌ ─ ─ ─ ─ ─ ─ ┐
                          Edge Cloud
-                      │             │
+                      |             |
                         ┌─────────┐
-                      │ │UPF_URLLC│ │
+                      | |UPF_URLLC| |
                         └─────┬───┘
-                      └ ─ ─ ─ │ ─ ─ ┘
-    ┌ ─ ─ ─ ─ ─ ─ ─ ┐ ┌ ─ ─ ─ │ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
-                        ┌ ─ ─ ┴ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  │ ┌ ─ ─ ─ ─ ─ ─ ─
-    │   Cell Site   │ │                            │                  │
-                        │                            │ │   Regional
-    │ ┌───────────┐ │ │                            │         Cloud    │
-      │CU-UP_URLLC├─────┤                            │ │ ┌──────────┐
-    │ └───────────┘ │ │       RFC XXXX Network     ├─────┤  5GC CP  │ │
-                        │        Slice ALL           │ │ └──────────┘
-    │ ┌───────────┐ │ │                            │                  │
-      │CU-UP_eMBB ├─────┤                            │ │ ┌──────────┐
-    │ └───────────┘ │ │                            ├─────┤ UPF_eMBB │ │
-     ─ ─ ─ ─ ─ ─ ─ ─    │                            │ │ └──────────┘
-                      │  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘                  │
-                                                     │ └ ─ ─ ─ ─ ─ ─ ─
-                      │      Transport Network
+                      └ ─ ─ ─ | ─ ─ ┘
+    ┌ ─ ─ ─ ─ ─ ─ ─ ┐ ┌ ─ ─ ─ | ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+                        ┌ ─ ─ ┴ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  | ┌ ─ ─ ─ ─ ─ ─ ─
+    |   Cell Site   | |                            |                  |
+                        |                            | |   Regional
+    | ┌───────────┐ | |                            |         Cloud    |
+      |CU-UP_URLLC├─────┤                            | | ┌──────────┐
+    | └───────────┘ | |       RFC 9543 Network     ├─────┤  5GC CP  | |
+                        |        Slice ALL           | | └──────────┘
+    | ┌───────────┐ | |                            |                  |
+      |CU-UP_eMBB ├─────┤                            | | ┌──────────┐
+    | └───────────┘ | |                            ├─────┤ UPF_eMBB | |
+     ─ ─ ─ ─ ─ ─ ─ ─    |                            | | └──────────┘
+                      |  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘                  |
+                                                     | └ ─ ─ ─ ─ ─ ─ ─
+                      |      Transport Network
                        ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
 
         Figure 9: N (5G Slice) to 1 (RFC 9543 Network Slice) Mapping
@@ -957,17 +957,17 @@ Table of Contents
 
               ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
         ┌──────────┐               base NRP               ┌──────────┐
-        │    PE    │                                      │    PE    │
-      ┌ ┼ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─│─
-        ■<───┐│    │       RFC XXXX Network Slice 1       │    ┌┼───>■ │
-      │ │    │     │        ┌─────┐        ┌─────┐        │    │     │
-        ■<───┤│    │        │  P  │        │  P  │        │    ├┼───>■ │
-      ├ ┼ ─ ─├────>□<──────>□<───>□<──────>□────>□<──────>□<───┤─ ─ ─│─
-        ■<───┤│    │        │     │        │     │        │    ├┼───>■ │
-      │ │    │     │        └─────┘        └─────┘        │    │     │
-        ■<───┘│    │       RFC XXXX Network Slice 2       │    └┼───>■ │
-      └ ┼ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─│─
-        │     │    │                                      │     │    │
+        |    PE    |                                      |    PE    |
+      ┌ ┼ ─ ─ ─ ─ ─|─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─|─
+        ■<───┐|    |       RFC 9543 Network Slice 1       |    ┌┼───>■ |
+      | |    |     |        ┌─────┐        ┌─────┐        |    |     |
+        ■<───┤|    |        |  P  |        |  P  |        |    ├┼───>■ |
+      ├ ┼ ─ ─├────>□<──────>□<───>□<──────>□────>□<──────>□<───┤─ ─ ─|─
+        ■<───┤|    |        |     |        |     |        |    ├┼───>■ |
+      | |    |     |        └─────┘        └─────┘        |    |     |
+        ■<───┘|    |       RFC 9543 Network Slice 2       |    └┼───>■ |
+      └ ┼ ─ ─ ─ ─ ─|─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─|─
+        |     |    |                                      |     |    |
         └──────────┘                                      └──────────┘
               └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
    ■ - SDP, with fine-grained QoS (dedicated resources per TN slice)
@@ -1025,14 +1025,14 @@ Table of Contents
 
    VLANs representing slices           VLANs representing slices
 
-              │     ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─      │             │
-              │                        │     │             │
+              |     ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─      |             |
+              |                        |     |             |
    ┌──────┐   ▼   ┌─┴───┐ Provider ┌─────┐   ▼   ┌─────┐   ▼   ┌──────┐
-   │      ●───────●■    │          │    ■●───────●     ●───────●      │
-   │ NF   ●───────●■ PE │          │ PE ■●───────●L2/L3●───────●   NF │
-   │      ●───────●■    │          │    ■●───────●     ●───────●      │
+   |      ●───────●■    |          |    ■●───────●     ●───────●      |
+   | NF   ●───────●■ PE |          | PE ■●───────●L2/L3●───────●   NF |
+   |      ●───────●■    |          |    ■●───────●     ●───────●      |
    └──────┘       └─┬───┘  Network └─────┘       └─────┘       └──────┘
-                                       │
+                                       |
                     └ ─ ─ ─ ─ ─ ─ ─ ─ ─
          └────────┘└────────────────────┘└────────┘ └───────────┘
          Attachment   Provider Network   Attachment Customer Site
@@ -1103,7 +1103,7 @@ Table of Contents
    single service instance.  The IP and VLAN hand-offs are not mutually
    exclusive, but instead could be used concurrently.  Since the TN
    doesn't recognize S-NSSAI, a mapping table similar to the VLAN Hand-
-   off solution should be utilized Section 4.1.
+   off solution should be utilized (Section 4.1).
 
    The mapping table can be simplified if, for example, IPv6 addressing
    is used to address NFs.  An IPv6 address is a 128-bit long field,
@@ -1511,7 +1511,7 @@ Table of Contents
        ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
       Fine-grained QoS enforcement   Coarse-grained QoS enforcement
         (dedicated resources per     (resources shared by multiple
-         RFC XXXX Network Slice)       RFC XXXX Network Slices)
+         RFC 9543 Network Slice)       RFC 9543 Network Slices)
 
            Figure 18: Slice to TN QoS Mapping (5QI-unaware Model)
 
@@ -1809,7 +1809,7 @@ Table of Contents
         ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
        Fine-grained QoS enforcement   Coarse-grained QoS enforcement
          (dedicated resources per     (resources shared by multiple
-          RFC XXXX Network Slice)        RFC XXXX Network Slices)
+          RFC 9543 Network Slice)        RFC 9543 Network Slices)
 
         Figure 23: Slice 5Q QoS to TN QoS Mapping (5QI-aware Model)
 
@@ -2241,7 +2241,7 @@ Table of Contents
 7.1.  Bandwidth Requirements
 
    This section describes the information conveyed by the 5G NSO to the
-   RFCXXXX NSC with respect to slice bandwidth requirements.
+   NSC with respect to slice bandwidth requirements.
 
    Figure 31 shows three DCs that contain instances of network
    functions.  Also shown are PEs that have links to the DCs.  The PEs
@@ -2252,10 +2252,10 @@ Table of Contents
 
    The 5G NSO is aware of the existence of the network functions and
    their locations.  However, it is not aware of the details of the
-   provider network.  The RFCXXXX NSC has the opposite view - it is
-   aware of the provider network infrastructure and the links between
-   the PEs and the DCs, but is not aware of the individual network
-   functions at customer sites.
+   provider network.  The NSC has the opposite view - it is aware of the
+   provider network infrastructure and the links between the PEs and the
+   DCs, but is not aware of the individual network functions at customer
+   sites.
 
   ┌ ─ ─ ─ ─ DC 1─ ─ ─ ─    ┌ ─ ─ ─ ─ ─ ─ ─ ─ ┐   ┌ ─ ─ ─ ─ DC 2─ ─ ─ ─
     ┌──────┐           │  ┌────┐         ┌────┐              ┌──────┐ │
@@ -2281,7 +2281,7 @@ Table of Contents
                                          └────┘              └──────┘ │
                            └ ─ ─ ─ ─ ─ ─ ─ ─ ┘   └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
 
-    ■ - SDP, with fine-grained QoS (dedicated resources per RFC XXXX NS)
+    ■ - SDP, with fine-grained QoS (dedicated resources per RFC 9543 NS)
 
               Figure 31: An Example of Multi-DC Architecture
 
@@ -2441,32 +2441,31 @@ Table of Contents
    demands of the individual slices.  For example, if only Slice X and
    Slice Y are present, then the bandwidth requirement from DC1 to DC2
    is 12 units (8 units for Slice X and 4 units for Slice Y).  When the
-   5G NSO requests a new slice, the RFCXXXX NSC, in its mind, increments
-   the bandwidth requirement according to the requirements of the new
-   slice.  For example, in Figure 31, suppose a new slice is
-   instantiated that needs 0.8 Gbps from DC1 to DC2.  The transport
-   controller would increase its notion of the bandwidth requirement
-   from DC1 to DC2 from 12 Gbps to 12.8 Gbps to accommodate the
-   additional expected traffic.
+   5G NSO requests a new slice, the NSC, in its mind, increments the
+   bandwidth requirement according to the requirements of the new slice.
+   For example, in Figure 31, suppose a new slice is instantiated that
+   needs 0.8 Gbps from DC1 to DC2.  The transport controller would
+   increase its notion of the bandwidth requirement from DC1 to DC2 from
+   12 Gbps to 12.8 Gbps to accommodate the additional expected traffic.
 
    In the example, each DC has two PEs facing it for reasons of
-   resilience.  The RFCXXXX NSC needs to determine how to map the DC1 to
-   DC2 bandwidth requirement to bandwidth reservations of TE LSPs from
-   DC1 to DC2.  For example, if the routing configuration is arranged
-   such that in the absence of any network failure, traffic from DC1 to
-   DC2 always enters PE1A and goes to PE2A, the controller reserves 12.8
+   resilience.  The NSC needs to determine how to map the DC1 to DC2
+   bandwidth requirement to bandwidth reservations of TE LSPs from DC1
+   to DC2.  For example, if the routing configuration is arranged such
+   that in the absence of any network failure, traffic from DC1 to DC2
+   always enters PE1A and goes to PE2A, the controller reserves 12.8
    Gbps of bandwidth on the LSP from PE1A to PE2A.  If, on the other
    hand, the routing configuration is arranged such that in the absence
    of any network failure, traffic from DC1 to DC2 always enters PE1A
    and is load-balanced across PE2A and PE2B, the controller reserves
    6.4 Gbps of bandwidth on the LSP from PE1A to PE2A and 6.4 Gbps of
    bandwidth on the LSP from PE1A to PE2B.  It might be tricky for the
-   RFCXXXX NSC to be aware of all conditions that change the way traffic
-   lands on the various PEs, and therefore know that it needs to change
+   NSC to be aware of all conditions that change the way traffic lands
+   on the various PEs, and therefore know that it needs to change
    bandwidth reservations of LSPs accordingly.  For example, there might
    be an internal failure within DC1 that causes traffic from DC1 to
-   land on PE1B, rather than PE1A.  The RFCXXXX NSC may not be aware of
-   the failure and therefore may not know that it now needs to apply
+   land on PE1B, rather than PE1A.  The NSC may not be aware of the
+   failure and therefore may not know that it now needs to apply
    bandwidth reservations to LSPs from PE1B to PE2A/PE2B.
 
 7.2.3.  Scheme 3: TE LSPs without Bandwidth Reservation
@@ -2483,8 +2482,8 @@ Table of Contents
    not have fixed bandwidth reservations for the LSPs.  Instead, actual
    measured data-plane traffic volumes are used to influence the
    placement of TE LSPs.  One way of achieving this is to use
-   distributed RSVP-TE with auto-bandwidth.  Alternatively, the RFCXXXX
-   NSC can use telemetry-driven automatic congestion avoidance.  In this
+   distributed RSVP-TE with auto-bandwidth.  Alternatively, the NSC can
+   use telemetry-driven automatic congestion avoidance.  In this
    approach, when the actual traffic volume in the data plane on given
    link exceeds a threshold, the controller, knowing how much actual
    data plane traffic is currently travelling along each RSVP or SR-TE
@@ -3393,7 +3392,6 @@ Acknowledgments
 Contributors
 
    John Drake
-   Juniper Networks
    Sunnyvale,
    United States of America
    Email: je_drake@yahoo.com
