@@ -395,13 +395,13 @@ More complex scenarios can happen with extra segmentation of the TN and addition
    There are multiple options for mapping 5G Network Slices to TN slices:
 
    * 1 to N:
-A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For instance, consider the scenario depicted in {{figure-5}}, illustrating the separation of the 5G Control Plane and User Plane in TN slices for a single 5G eMBB network slice. It is important to note that this mapping can serve as an interim step to N:M mapping. In this scenario, a subset of the TN slices can be intended for sharing by multiple 5G network slices (e.g., the Control Plane TN slice is shared by multiple 5G network Slices). Further details about this scheme are described in {{sec-firstslice}}.
+A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For instance, consider the scenario depicted in {{figure-5}}, illustrating the separation of the 5G Control Plane and User Plane in TN slices for a single 5G Enhanced Mobile Broadband (eMBB) network slice. It is important to note that this mapping can serve as an interim step to N:M mapping. In this scenario, a subset of the TN slices can be intended for sharing by multiple 5G network slices (e.g., the Control Plane TN slice is shared by multiple 5G network Slices). Further details about this scheme are described in {{sec-firstslice}}.
 
    * M to 1:
       Multiple 5G Network Slices may rely upon the same TN slice.  In such a case, the Service Level Agreement (SLA) differentiation of slices
       would be entirely controlled at 5G Control Plane, for example, with
       appropriate placement strategies: this use case is represented in
-      {{figure-6}}, where a User Plane Function (UPF) for the URLLC slice is
+      {{figure-6}}, where a User Plane Function (UPF) for the Ultra Reliable Low Latency Communication (URLLC) slice is
       instantiated at the edge cloud close to the gNB Centralized Unit User Plane (CU-UP) for
       better latency/jitter control, while the 5G Control Plane and the UPF
       for eMBB slice are instantiated in the regional cloud.
@@ -485,7 +485,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
       and other part of the admission control is implemented on the PE.
 
    *  Coarse-grained resource control at the transit (non-attachment
-      circuits) links in the provider network, using a single NRP, spanning the entire provider network.
+      circuits) links in the provider network, using a single Network Resource Partition (NRP), spanning the entire provider network.
       Transit nodes in the provider network do not maintain any state of individual slices.
       Instead, only a flat (non-hierarchical) QoS model is used on
       transit links in the provider network, with up to 8 traffic classes.  At the PE,
@@ -641,7 +641,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    NFs. NF-A has a set of tunnel termination points, with unique per-slice IP addresses
    allocated from the 2001:db8:a:0::/96 prefix, while NF-B uses a set of tunnel termination
    points with per-slice IP addresses allocated from 2001:db8:b:0::/96. This example shows
-   two slices: customer A eMBB (SST=01, SD=00001) and customer B MIoT (SST=03, SD=00003).
+   two slices: customer A eMBB (SST=01, SD=00001) and customer B Massive Internet of Things (MIoT) (SST=03, SD=00003).
    Therefore, for customer A eMBB the tunnel IP addresses are auto-derived (without the need
    for an explicit mapping table) as the IP addresses {2001:db8:a::100:1, 2001:db8:b::100:1},
    where {:0100:0001} is used as the last two octets, and for customer B MIoT (SST=3,
@@ -910,7 +910,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
    The original IP header retains the DCSP marking (which is ignored in
    5QI-unaware model), while the new header (MPLS or IPv6) carries QoS
    marking (MPLS Traffic Class bits for MPLS encapsulation, or DSCP for
-   SRv6/IPv6 encapsulation) related to TN CoS.  Based on TN CoS
+   SRv6/IPv6 encapsulation) related to TN Class of Service (CoS).  Based on TN CoS
    marking, per-hop behavior for all RFC 9543 Network Slices is executed on
    provider network transit links.  Provider network transit routers do not evaluate the original IP
    header for QoS-related decisions.  This model is outlined in
@@ -1202,7 +1202,7 @@ to TN QoS Classes may be rather common.
    granular, fine-grained manner, with dedicated resource allocation for
    each RFC 9543 Network Slice and dedicated resource allocation for number
    of traffic classes (most commonly up 4 or 8 traffic classes,
-   depending on the HW capability of the equipment) within each RFC 9543
+   depending on the Hardware capability of the equipment) within each RFC 9543
    Network Slice.
 
 ####  Inbound Edge Resource Control
@@ -1926,8 +1926,6 @@ Security considerations specific to each of the technologies and protocols liste
 
    CP: Control Plane
 
-   CSP: Communication Service Provider
-
    CU: Centralized Unit
 
    CU-CP: Centralized Unit Control Plane
@@ -1958,10 +1956,6 @@ Security considerations specific to each of the technologies and protocols liste
 
    GTP-U: GPRS Tunneling Protocol User plane
 
-   HW: Hardware
-
-   ID: Identifier
-
    IGP: Interior Gateway Protocol
 
    L2VPN: Layer 2 Virtual Private Network
@@ -1978,8 +1972,6 @@ Security considerations specific to each of the technologies and protocols liste
 
    NF: Network Function
 
-   NR: New Radio
-
    NRF: Network Function Repository
 
    NRP: Network Resource Partition
@@ -1990,15 +1982,9 @@ Security considerations specific to each of the technologies and protocols liste
 
    PIR: Peak Information Rate
 
-   PLMN: Public Land Mobile Network
-
-   PSTN: Public Switched Telephony Network
-
    QoS: Quality of Service
 
    RAN: Radio Access Network
-
-   RF: Radio Frequency
 
    RIB: Routing Information Base
 
@@ -2030,8 +2016,6 @@ Security considerations specific to each of the technologies and protocols liste
 
    TN: Transport Network
 
-   TS: Technical Specification
-
    UDM: Unified Data Management
 
    UE: User Equipment
@@ -2062,9 +2046,9 @@ Security considerations specific to each of the technologies and protocols liste
 
 ##  Key Building Blocks
 
-   {{TS-23.501}} defines the Network Functions (UPF, AMF, etc.) that
+   {{TS-23.501}} defines the Network Functions (UPF, Access and Mobility Function (AMF), etc.) that
    compose the 5G System (5GS) Architecture together with related
-   interfaces (e.g., N1, N2).  This architecture has native Control
+   interfaces (e.g., N1 and N2).  This architecture has native Control
    and User Plane separation, and the Control Plane leverages a service-
    based architecture.  {{figure-28}} outlines an example 5GS architecture
    with a subset of possible network functions and network interfaces.
@@ -2107,14 +2091,14 @@ User Plane          ╱     │           │         ╲
       Provides wireless connectivity to the UE devices via radio.  It is
       made up of the Antenna that transmits and receives signals to the
       UE and the Base Station that digitizes the signal and converts the
-      RF data stream to IP packets.
+      Radio Frequency (RF) data stream to IP packets.
 
    *  Core Network (CN):
 
       Controls the CP of the RAN and provides connectivity to the Data
       Network (e.g., the Internet or a private VPN).  The Core Network
       hosts dozens of services such as authentication, phone registry,
-      charging, access to PSTN and handover.
+      charging, access to Public Switched Telephony Network (PSTN) and handover.
 
    *  Transport Network (TN):
 
@@ -2169,7 +2153,7 @@ User Plane          ╱     │           │         ╲
       document.  The following NFs and interfaces are worth mentioning,
       since their connectivity may rely on the Transport Network:
 
-      -  the AMF (Access and Mobility Function) connects with the RAN
+      -  the AMF connects with the RAN
          control plane over the N2 interface
 
       -  the SMF controls the 5GC UPF via the N4 interface
