@@ -215,10 +215,10 @@ The term "Transport Network" is used for disambiguation with 5G network (e.g., I
 
 ##  5G Network Slicing versus Transport Network Slicing {#sec-5gtn}
 
-   Network slicing has a different meaning in the 3GPP mobile and transport
-   worlds.  Hence, for the sake of precision and without seeking to be exhaustive, this section provides a
-   brief description of the objectives of 5G Network Slicing and
-   Transport Network Slicing:
+   Network slicing has a different meaning in the 3GPP mobile world and transport
+   world. This difference can be seen from the descriptions below that set out
+   the objectives of 5G Network Slicing and Transport Network
+   Slicing. These descriptions are not intended to be exhaustive.
 
    * 5G Network Slicing:
 
@@ -227,8 +227,7 @@ The term "Transport Network" is used for disambiguation with 5G network (e.g., I
 
    * TN Slicing:
 
-      The term "TN slice" is used in this document to
-      refer to a slice in the Transport Network domain of the overall 5G
+      The term "TN slice" refers to a slice in the Transport Network domain of the overall 5G
       architecture.
 
       The objective of TN Slicing is to isolate,
