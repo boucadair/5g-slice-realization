@@ -374,7 +374,7 @@ Resource synchronization for AC provisioning:
 : The realization of the Attachment Circuit is made up of TN resources shared between the Customer Site Orchestration and the Provider Network Orchestration (e.g., RFC 9543 NSC).  More precisely, a PE and a CE connected via an AC need to be
 provisioned with consistent data plane and control plane  information (e.g., VLAN-
 IDs, IP addresses/subnets, or BGP  Autonomous System (AS) Number). Hence, the realization of this
-interconnection is technology-specific and requires coordination between the Customer Site Orchestration and an NSC. Automating the provisioning and management of the AC is recommended. Aligned with {{?RFC8969}}, this document assumes that this coordination is based upon standard YANG data models and APIs.
+interconnection is technology-specific and requires coordination between the Customer Site Orchestration and an NSC. Automating the provisioning and management of the AC is thus key the automate the overall service provisioning. Aligned with {{?RFC8969}}, this document assumes that this coordination is based upon standard YANG data models and APIs.
 
 : {{figure-4}} is a basic example of a Layer 3 CE-PE link realization
 with shared network resources (such as VLAN-IDs and IP prefixes) which
