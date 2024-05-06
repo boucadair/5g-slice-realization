@@ -386,7 +386,7 @@ are passed between Orchestrators via a dedicated interface, e.g., the RFC 9543 N
 ~~~~
 {: #figure-4 title="Coordination of Transport Network Resources for the AC Provisioning" artwork-align="center"}
 
-### Additional Segmentation and Domains
+### Additional Segmentation and Domains {#sec-add-seg-domains}
 
 More complex scenarios can happen with extra segmentation of the TN and additional TN Orchestration domains. It is not realistic to describe any design flavor, however the main concepts presented here in terms of segmentation (provider/customer) and stitching (AC) can be reused for the integration of more complex integrations.
 
@@ -395,11 +395,11 @@ More complex scenarios can happen with extra segmentation of the TN and addition
    There are multiple options for mapping 5G Network Slices to TN slices:
 
    * 1 to N:
-A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For instance, consider the scenario depicted in {{figure-5}}, illustrating the separation of the 5G Control Plane and User Plane in TN slices for a single 5G eMBB network slice. It is important to note that this mapping can serve as an interim step to N:M mapping. In this scenario, a subset of the TN slices can be intended for sharing by multiple 5G network slices (e.g., the Control Plane TN slice is shared by multiple 5G network Slices). Further details about this scheme are described in {{sec-firstslice}}.
+A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For instance, consider the scenario depicted in {{figure-5}}, illustrating the separation of the 5G Control Plane and User Plane in TN slices for a single 5G eMBB network slice. It is important to note that this mapping can serve as an interim step to N:M mapping. In this scenario, a subset of the TN slices can be intended for sharing by multiple 5G network slices (e.g., the Control Plane TN slice is shared by multiple 5G Network Slices). Further details about this scheme are described in {{sec-firstslice}}.
 
    * M to 1:
       Multiple 5G Network Slices may rely upon the same TN slice.  In such a case, the Service Level Agreement (SLA) differentiation of slices
-      would be entirely controlled at 5G Control Plane, for example, with
+      would be entirely controlled at the 5G Control Plane, for example, with
       appropriate placement strategies: this use case is represented in
       {{figure-6}}, where a User Plane Function (UPF) for the URLLC slice is
       instantiated at the edge cloud close to the gNB Centralized Unit User Plane (CU-UP) for
@@ -427,7 +427,11 @@ In practice, for operational and scaling reasons, typically M to N would be used
    capabilities, the NF vendor reference designs, as well as service
    provider or even legal requirements.
 
-Specifically, the actual mapping is a design choice of service operators that may be a function of, e.g., the number of instantiated slices, requested services, or local engineering capabilities and guidelines. However, operators should carefully consider means to ease slice migration strategies. For example, a provider may initially adopt a 1-to-1 mapping if it has to instantiate just a few Network Slices and accommodate the need of only a few customers. That provider may decide to move to a N-to-1 mapping for aggregation/scalability purposes if sustained increased slice demand is observed. Putting in place adequate automation means to realize Network Slices (including the adjustment of slice services to Network Slices mapping) would ease slice migration operations.
+## Scalability Implications {#sec-sca-impli}
+
+The actual mapping (see {{sec-mapping}}) is a design choice of service operators that may be a function of, e.g., the number of instantiated slices, requested services, or local engineering capabilities and guidelines. However, operators should carefully consider means to ease slice migration strategies. For example, a provider may initially adopt a 1-to-1 mapping if it has to instantiate just a few Network Slices and accommodate the need of only a few customers. That provider may decide to move to a N-to-1 mapping for aggregation/scalability purposes if sustained increased slice demand is observed.
+
+Putting in place adequate automation means to realize Network Slices (including the adjustment of Slice Services to Network Slices mapping) would ease slice migration operations.
 
 ##  First 5G Slice versus Subsequent Slices {#sec-firstslice}
 
@@ -508,6 +512,8 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
 {: #figure-high-level-qos title="Resource Allocation Slicing Model with a Single NRP" artwork-align="center"}
 
 This document does not describe in detail how to manage an L2VPN or L3VPN, as this is already well-documented.
+
+The realization model described in the document inherits the scalability properties of the underlying L2VPN and L3VPN technologies. Readers may refer, for example, to {{Section 13 of ?RFC4365}} or {{Section 1.2.5 of ?RFC6624}} for a scalability assessment of some of these technologies. Per {{sec-sca-impli}}, providers may adjust the mapping model to better handle local scalability constraints.
 
 #  Hand-off Between Domains {#sec-handoff-domains}
 
