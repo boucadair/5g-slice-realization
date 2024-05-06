@@ -709,7 +709,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    behavior at the provider network edge, the PE needs to determine
    which label represents which slice.  In the BGP control plane, when
    exchanging service prefixes over attachment circuit, each slice might be represented by a unique BGP community, so
-   tracking label assignment to the slice is possible.  For example, in
+   tracking label assignment to the slice might be possible.  For example, in
    {{figure-mpls-10b-hand-off}}, for the slice identified with COM=1, the PE advertises a
    dynamically allocated label A".  Since, based on the community, the
    label to slice association is known, the PE can use this dynamically
