@@ -521,7 +521,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
 
    More details about the mapping between 3GPP and RFC 9543 Network Slices is provided in {{?I-D.ietf-teas-5g-network-slice-application}}.
    That document includes additional methods for mapping 5G slices to TN slices (e.g., source UDP port number), but these
-   methods are not reproduced here because of the intrinsic shortcomings of these methods.
+   methods are not discussed here because of the shortcomings of these methods (e.g., load balancing, NAT).
 
 ##  VLAN Hand-off {#sec-vlan-handoff}
 
