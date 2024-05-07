@@ -331,9 +331,9 @@ This use case is also referred to in {{sec-10b}} and {{sec-10c}}.
 
 This section introduces a global framework for the orchestration of a 5G end-to-end slice (a.k.a. 5G Network Slice) with a zoom on TN parts. This framework helps to delimit the realization scope of RFC 9543 Network Slices and identify interactions that are required for the realization of such slices.
 
-> This framework is consistent with the management coordination example shown in Figure 4.7.1 of {{TS-28.530}}.
+This framework is consistent with the management coordination example shown in Figure 4.7.1 of {{TS-28.530}}.
 
-In reference to {{figure-orch}}, a 5G End-to-End Network Slice Orchestrator (5G NSO) is responsible for orchestrating 5G Network Slices end-to-end. The details of the 5G NSO is out of the scope of this document. The realization of the 5G Network Slices spans RAN, CN, and TN. As mentioned in {{sec-scope}}, the RAN and CN are under the responsibility of the 3GPP Management System, while the TN is not. The orchestration of the TN is split into two sub-domains in conformance with the reference design in {#sec-ref-design}:
+In reference to {{figure-orch}}, a 5G End-to-End Network Slice Orchestrator (5G NSO) is responsible for orchestrating 5G Network Slices end-to-end. The details of the 5G NSO is out of the scope of this document. The realization of the 5G Network Slices spans RAN, CN, and TN. As mentioned in {{sec-scope}}, the RAN and CN are under the responsibility of the 3GPP Management System, while the TN is not. The orchestration of the TN is split into two sub-domains in conformance with the reference design in {{sec-ref-design}}:
 
 Provider Network Orchestration domain:
 : As defined in {{!RFC9543}}, the provider relies on a Network Slice Controller (NSC) to manage and orchestrate RFC 9543 Network Slices in the provider network. This framework permits to manage connectivity together with SLOs.
