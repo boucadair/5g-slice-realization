@@ -981,7 +981,8 @@ Table of Contents
       Figure 11: Resource Allocation Slicing Model with a Single NRP
 
    This document does not describe in detail how to manage an L2VPN or
-   L3VPN, as this is already well-documented.
+   L3VPN, as this is already well-documented.  For example, the reader
+   may refer to [RFC4176] and [RFC6136] for such details.
 
 4.  Hand-off Between Domains
 
@@ -2766,6 +2767,12 @@ Table of Contents
               in-Profile Traffic", RFC 4115, DOI 10.17487/RFC4115, July
               2005, <https://www.rfc-editor.org/rfc/rfc4115>.
 
+   [RFC4176]  El Mghazli, Y., Ed., Nadeau, T., Boucadair, M., Chan, K.,
+              and A. Gonguet, "Framework for Layer 3 Virtual Private
+              Networks (L3VPN) Operations and Management", RFC 4176,
+              DOI 10.17487/RFC4176, October 2005,
+              <https://www.rfc-editor.org/rfc/rfc4176>.
+
    [RFC4664]  Andersson, L., Ed. and E. Rosen, Ed., "Framework for Layer
               2 Virtual Private Networks (L2VPNs)", RFC 4664,
               DOI 10.17487/RFC4664, September 2006,
@@ -2789,6 +2796,12 @@ Table of Contents
               Address Text Representation", RFC 5952,
               DOI 10.17487/RFC5952, August 2010,
               <https://www.rfc-editor.org/rfc/rfc5952>.
+
+   [RFC6136]  Sajassi, A., Ed. and D. Mohan, Ed., "Layer 2 Virtual
+              Private Network (L2VPN) Operations, Administration, and
+              Maintenance (OAM) Requirements and Framework", RFC 6136,
+              DOI 10.17487/RFC6136, March 2011,
+              <https://www.rfc-editor.org/rfc/rfc6136>.
 
    [RFC6291]  Andersson, L., van Helvoort, H., Bonica, R., Romascanu,
               D., and S. Mansfield, "Guidelines for the Use of the "OAM"
