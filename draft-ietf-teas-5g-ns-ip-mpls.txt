@@ -282,9 +282,9 @@ Table of Contents
 
 3.3.  Transport Network Reference Design
 
-   Figure 2 depicts the reference design used for modelling the
-   Transport Network based on management perimeters (Customer vs.
-   Provider).
+   Figure 2 depicts the reference design used in this document for
+   modelling the Transport Network based on management perimeters
+   (Customer vs. Provider).
 
 
  Customer Orch.               Provider Orch.              Customer Orch.
