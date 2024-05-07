@@ -62,7 +62,6 @@ contributor:
 
  -
    fullname: John Drake
-   organization: Juniper Networks
    city: Sunnyvale
    country: United States of America
    email: je_drake@yahoo.com
@@ -165,6 +164,11 @@ informative:
            org: IEEE
           target: https://1.ieee802.org/security/802-1ae/
 
+   ECPRI:
+              title: "Common Public Radio Interface: eCPRI Interface Specification"
+              author:
+                org: Common Public Radio Interface
+              target: http://www.cpri.info/downloads/eCPRI_v_2.0_2019_05_10c.pdf
 
 --- abstract
 
@@ -395,13 +399,13 @@ More complex scenarios can happen with extra segmentation of the TN and addition
    There are multiple options for mapping 5G Network Slices to TN slices:
 
    * 1 to N:
-A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For instance, consider the scenario depicted in {{figure-5}}, illustrating the separation of the 5G Control Plane and User Plane in TN slices for a single 5G eMBB network slice. It is important to note that this mapping can serve as an interim step to N:M mapping. In this scenario, a subset of the TN slices can be intended for sharing by multiple 5G network slices (e.g., the Control Plane TN slice is shared by multiple 5G network Slices). Further details about this scheme are described in {{sec-firstslice}}.
+A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For instance, consider the scenario depicted in {{figure-5}}, illustrating the separation of the 5G Control Plane and User Plane in TN slices for a single 5G Enhanced Mobile Broadband (eMBB) network slice. It is important to note that this mapping can serve as an interim step to N:M mapping. In this scenario, a subset of the TN slices can be intended for sharing by multiple 5G network slices (e.g., the Control Plane TN slice is shared by multiple 5G network Slices). Further details about this scheme are described in {{sec-firstslice}}.
 
    * M to 1:
       Multiple 5G Network Slices may rely upon the same TN slice.  In such a case, the Service Level Agreement (SLA) differentiation of slices
       would be entirely controlled at 5G Control Plane, for example, with
       appropriate placement strategies: this use case is represented in
-      {{figure-6}}, where a User Plane Function (UPF) for the URLLC slice is
+      {{figure-6}}, where a User Plane Function (UPF) for the Ultra Reliable Low Latency Communication (URLLC) slice is
       instantiated at the edge cloud close to the gNB Centralized Unit User Plane (CU-UP) for
       better latency/jitter control, while the 5G Control Plane and the UPF
       for eMBB slice are instantiated in the regional cloud.
@@ -456,11 +460,13 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
       This realization model of transport for 5G slices assumes Layer 3
       delivery for midhaul and backhaul transport connections, and a
       Layer 2 or Layer 3 delivery for
-      fronthaul connections. Enhanced Common Public Radio Interface (eCPRI) supports both delivery models. L2VPN/L3VPN service instances might be
+      fronthaul connections. Enhanced Common Public Radio Interface (eCPRI) {{ECPRI}} supports both delivery models. L2VPN/L3VPN service instances might be
       used as a basic form of logical slice separation.  Furthermore, using
       service instances results in an additional outer header (as packets
       are encapsulated/decapsulated at the nodes hosting service instances) providing clean discrimination between 5G QoS and TN
       QoS, as explained in {{sec-qos-map}}.
+
+      The use of VPNs for is briefly described in Appendix A.4 of {{!RFC9543}}.
 
    *  Fine-grained resource control at the PE:
 
@@ -485,7 +491,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
       and other part of the admission control is implemented on the PE.
 
    *  Coarse-grained resource control at the transit (non-attachment
-      circuits) links in the provider network, using a single NRP, spanning the entire provider network.
+      circuits) links in the provider network, using a single Network Resource Partition (NRP), spanning the entire provider network.
       Transit nodes in the provider network do not maintain any state of individual slices.
       Instead, only a flat (non-hierarchical) QoS model is used on
       transit links in the provider network, with up to 8 traffic classes.  At the PE,
@@ -496,7 +502,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
 
       The role of capacity management is to ensure the provider network
       capacity can be utilized without causing any bottlenecks.  The
-      toolset used here can range from careful network planning, to
+      methods used here can range from careful network planning, to
       ensure a more or less equal traffic distribution (i.e., equal cost load
       balancing), to advanced TE techniques, with or
       without bandwidth reservations, to force more consistent load
@@ -507,7 +513,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
 ~~~~
 {: #figure-high-level-qos title="Resource Allocation Slicing Model with a Single NRP" artwork-align="center"}
 
-This document does not describe in detail how to manage an L2VPN or L3VPN, as this is already well-documented.
+This document does not describe in detail how to manage an L2VPN or L3VPN, as this is already well-documented. For example, the reader may refer to {{?RFC4176}} and {{?RFC6136}} for such details.
 
 #  Hand-off Between Domains {#sec-handoff-domains}
 
@@ -521,7 +527,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
 
    More details about the mapping between 3GPP and RFC 9543 Network Slices is provided in {{?I-D.ietf-teas-5g-network-slice-application}}.
    That document includes additional methods for mapping 5G slices to TN slices (e.g., source UDP port number), but these
-   methods are not reproduced here because of the intrinsic shortcomings of these methods.
+   methods are not discussed here because of the shortcomings of these methods (e.g., load balancing, NAT).
 
 ##  VLAN Hand-off {#sec-vlan-handoff}
 
@@ -624,14 +630,14 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
         (not slice specific)     for S-NSSAI
     <───────────────────────────> <───────>
    ┌────┬────┬────┬────┬────┬────┬────┬────┐
-   │2001:0db8:xxxx:xxxx:xxxx:xxxx:ttdd:dddd│
+   │xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:ttdd:dddd│
    └─────────┴─────────┴─────────┴─────────┘
     tt     - SST (8 bits)
     dddddd - SD (24 bits)
 ~~~
-{: #figure-11 title="An Example of S-NSSAI Embedded into IPv6" artwork-align="center"}
+{: #figure-11 title="An Example of S-NSSAI Embedded into an IPv6 Address" artwork-align="center"}
 
-   In the example shown in {{figure-11}}, the most significant 96 bits of the IPv6 address
+   In reference to {{figure-11}}, the most significant 96 bits of the IPv6 address
    are unique to the NF, but do not carry any slice-specific information. The S-NSSAI information is embedded in the least
    significant 32 bits. The 96-bit part of the address may be structured by the provider, for example, on the
    geographical location or the DC identification.
@@ -641,7 +647,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    NFs. NF-A has a set of tunnel termination points, with unique per-slice IP addresses
    allocated from the 2001:db8:a:0::/96 prefix, while NF-B uses a set of tunnel termination
    points with per-slice IP addresses allocated from 2001:db8:b:0::/96. This example shows
-   two slices: customer A eMBB (SST=01, SD=00001) and customer B MIoT (SST=03, SD=00003).
+   two slices: customer A eMBB (SST=01, SD=00001) and customer B Massive Internet of Things (MIoT) (SST=03, SD=00003).
    Therefore, for customer A eMBB the tunnel IP addresses are auto-derived (without the need
    for an explicit mapping table) as the IP addresses {2001:db8:a::100:1, 2001:db8:b::100:1},
    where {:0100:0001} is used as the last two octets, and for customer B MIoT (SST=3,
@@ -659,7 +665,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    In this option, the service instances representing different slices
    are created directly on the NF, or within the customer site
    hosting the NF, and attached to the provider network.  Therefore, the packet
-   is MPLS encapsulated outside the provider network with native MPLS
+   is MPLS encapsulated outside the provider network with MPLS
    encapsulation, or MPLS-in-UDP encapsulation {{?RFC7510}}, depending on the capability
    of the customer site, with the service label depicting
    the slice.
@@ -692,7 +698,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    within cloud IP fabric ({{figure-mpls-10b-hand-off}}, right hand side)). On the
    attachment circuit connected to PE, packets are already MPLS
    encapsulated (or MPLS-in-UDP/MPLS-in-IP encapsulated, if cloud or compute
-   infrastructure don’t support native MPLS encapsulation). Therefore,
+   infrastructure don’t support MPLS encapsulation). Therefore,
    the PE uses neither a VLAN nor an IP address for slice
    identification at the SDP, but instead uses the MPLS label.
 
@@ -709,7 +715,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    behavior at the provider network edge, the PE needs to determine
    which label represents which slice.  In the BGP control plane, when
    exchanging service prefixes over attachment circuit, each slice might be represented by a unique BGP community, so
-   tracking label assignment to the slice is possible.  For example, in
+   tracking label assignment to the slice might be possible.  For example, in
    {{figure-mpls-10b-hand-off}}, for the slice identified with COM=1, the PE advertises a
    dynamically allocated label A".  Since, based on the community, the
    label to slice association is known, the PE can use this dynamically
@@ -910,7 +916,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
    The original IP header retains the DCSP marking (which is ignored in
    5QI-unaware model), while the new header (MPLS or IPv6) carries QoS
    marking (MPLS Traffic Class bits for MPLS encapsulation, or DSCP for
-   SRv6/IPv6 encapsulation) related to TN CoS.  Based on TN CoS
+   SRv6/IPv6 encapsulation) related to TN Class of Service (CoS).  Based on TN CoS
    marking, per-hop behavior for all RFC 9543 Network Slices is executed on
    provider network transit links.  Provider network transit routers do not evaluate the original IP
    header for QoS-related decisions.  This model is outlined in
@@ -1002,8 +1008,8 @@ ranges for each slice, and use these ranges for slice identification purposes on
    *  PIR: Peak Information Rate (i.e., maximum bandwidth)
 
    These parameters define the traffic characteristics of the slice and
-   are part of SLO parameter set provided by the 5G NSO to RFC 9543 NSC.  Based
-   on these parameters the provider network inbound policy can be implemented using one
+   are part of SLO parameter set provided by the 5G NSO to an NSC.  Based
+   on these parameters, the provider network's inbound policy can be implemented using one
    of following options:
 
    *  1r2c (single-rate two-color) rate limiter
@@ -1202,7 +1208,7 @@ to TN QoS Classes may be rather common.
    granular, fine-grained manner, with dedicated resource allocation for
    each RFC 9543 Network Slice and dedicated resource allocation for number
    of traffic classes (most commonly up 4 or 8 traffic classes,
-   depending on the HW capability of the equipment) within each RFC 9543
+   depending on the Hardware capability of the equipment) within each RFC 9543
    Network Slice.
 
 ####  Inbound Edge Resource Control
@@ -1714,9 +1720,9 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    and 3 which employ TE, traffic cannot be diverted from the shortest
    path.
 
-###  Scheme 2: TE LSPs with Fixed Bandwidth Reservations
+###  Scheme 2: TE Paths with Fixed Bandwidth Reservations
 
-   Scheme 2 uses RSVP-TE {{?RFC3209}} or SR-TE LSPs {{?RFC9256}} with fixed bandwidth
+   Scheme 2 uses RSVP-TE {{?RFC3209}} or SR-TE paths {{?RFC9256}} with fixed bandwidth
    reservations.  By "fixed", we mean a value that stays constant over
    time, unless the 5G NSO communicates a change in slice bandwidth
    requirements, due to the creation or modification of a slice.  Note
@@ -1764,9 +1770,9 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    may not know that it now needs to apply bandwidth reservations to
    LSPs from PE1B to PE2A/PE2B.
 
-### Scheme 3: TE LSPs without Bandwidth Reservation
+### Scheme 3: TE Paths without Bandwidth Reservation
 
-   Like Scheme 2, Scheme 3 uses RSVP-TE or SR-TE LSPs.  There could be a
+   Like Scheme 2, Scheme 3 uses RSVP-TE or SR-TE paths.  There could be a
    single mesh of LSPs between endpoints that carry all of the traffic
    types, or there could be a small handful of meshes, for example one
    mesh for low-latency traffic that follows the minimum latency path
@@ -1816,12 +1822,6 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
       tools. These technology-specific tools can be reused in the context
       of network slicing. Providers that deploy network slicing
       capabilities should be able to select whatever OAM technology or specific feature that would address their needs.
-
-      SFC OAM {{?RFC9451}} should also be supported
-      for slices that make uses of service function chaining
-      {{?RFC7665}}. An example of SFC OAM technique to Continuity
-      Check, Connectivity Verification, or tracing service functions
-      is specified in {{?RFC9516}}.
 
    *  Providers may want to enable differentiated failure
       detect and repair features for a subset of network
@@ -1926,8 +1926,6 @@ Security considerations specific to each of the technologies and protocols liste
 
    CP: Control Plane
 
-   CSP: Communication Service Provider
-
    CU: Centralized Unit
 
    CU-CP: Centralized Unit Control Plane
@@ -1958,10 +1956,6 @@ Security considerations specific to each of the technologies and protocols liste
 
    GTP-U: GPRS Tunneling Protocol User plane
 
-   HW: Hardware
-
-   ID: Identifier
-
    IGP: Interior Gateway Protocol
 
    L2VPN: Layer 2 Virtual Private Network
@@ -1978,8 +1972,6 @@ Security considerations specific to each of the technologies and protocols liste
 
    NF: Network Function
 
-   NR: New Radio
-
    NRF: Network Function Repository
 
    NRP: Network Resource Partition
@@ -1990,15 +1982,9 @@ Security considerations specific to each of the technologies and protocols liste
 
    PIR: Peak Information Rate
 
-   PLMN: Public Land Mobile Network
-
-   PSTN: Public Switched Telephony Network
-
    QoS: Quality of Service
 
    RAN: Radio Access Network
-
-   RF: Radio Frequency
 
    RIB: Routing Information Base
 
@@ -2030,8 +2016,6 @@ Security considerations specific to each of the technologies and protocols liste
 
    TN: Transport Network
 
-   TS: Technical Specification
-
    UDM: Unified Data Management
 
    UE: User Equipment
@@ -2062,9 +2046,9 @@ Security considerations specific to each of the technologies and protocols liste
 
 ##  Key Building Blocks
 
-   {{TS-23.501}} defines the Network Functions (UPF, AMF, etc.) that
+   {{TS-23.501}} defines the Network Functions (UPF, Access and Mobility Function (AMF), etc.) that
    compose the 5G System (5GS) Architecture together with related
-   interfaces (e.g., N1, N2).  This architecture has native Control
+   interfaces (e.g., N1 and N2).  This architecture has built-in Control
    and User Plane separation, and the Control Plane leverages a service-
    based architecture.  {{figure-28}} outlines an example 5GS architecture
    with a subset of possible network functions and network interfaces.
@@ -2107,14 +2091,14 @@ User Plane          ╱     │           │         ╲
       Provides wireless connectivity to the UE devices via radio.  It is
       made up of the Antenna that transmits and receives signals to the
       UE and the Base Station that digitizes the signal and converts the
-      RF data stream to IP packets.
+      Radio Frequency (RF) data stream to IP packets.
 
    *  Core Network (CN):
 
       Controls the CP of the RAN and provides connectivity to the Data
       Network (e.g., the Internet or a private VPN).  The Core Network
       hosts dozens of services such as authentication, phone registry,
-      charging, access to PSTN and handover.
+      charging, access to Public Switched Telephony Network (PSTN) and handover.
 
    *  Transport Network (TN):
 
@@ -2169,7 +2153,7 @@ User Plane          ╱     │           │         ╲
       document.  The following NFs and interfaces are worth mentioning,
       since their connectivity may rely on the Transport Network:
 
-      -  the AMF (Access and Mobility Function) connects with the RAN
+      -  the AMF connects with the RAN
          control plane over the N2 interface
 
       -  the SMF controls the 5GC UPF via the N4 interface
@@ -2277,7 +2261,7 @@ User Plane          ╱     │           │         ╲
    Midhaul (MH), and Backhaul (BH) {{TR-GSTR-TN5G}}:
 
    *  Fronthaul happens before the BBU processing.  In 5G, this
-      interface is based on eCPRI (Enhanced CPRI) with native Ethernet
+      interface is based on eCPRI (Enhanced CPRI) with Ethernet
       or IP encapsulation.
 
    *  Midhaul is optional: this segment is introduced in the BBU split
