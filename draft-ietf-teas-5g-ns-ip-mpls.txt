@@ -156,6 +156,10 @@ Table of Contents
    mapping of service parameters) are discussed, e.g., in
    [I-D.ietf-teas-5g-network-slice-application].
 
+   The realization model described in this document uses a single
+   Network Resource Partition (NRP) (Section 7.1 of [RFC9543]).  The
+   applicability to multiple NRPs is out of scope.
+
    Although this document focuses on 5G, the realizations are not
    fundamentally constrained by the 5G use case.  The document is not
    intended to be a BCP and does not claim to specify mandatory
@@ -952,14 +956,14 @@ Table of Contents
       on the PE.
 
    *  Coarse-grained resource control at the transit (non-attachment
-      circuits) links in the provider network, using a single Network
-      Resource Partition (NRP), spanning the entire provider network.
-      Transit nodes in the provider network do not maintain any state of
-      individual slices.  Instead, only a flat (non-hierarchical) QoS
-      model is used on transit links in the provider network, with up to
-      8 traffic classes.  At the PE, traffic-flows from multiple slice
-      services are mapped to the limited number of traffic classes used
-      on provider network transit links.
+      circuits) links in the provider network, using a single NRP
+      (called "base NRP" in Figure 11), spanning the entire provider
+      network.  Transit nodes in the provider network do not maintain
+      any state of individual slices.  Instead, only a flat (non-
+      hierarchical) QoS model is used on transit links in the provider
+      network, with up to 8 traffic classes.  At the PE, traffic-flows
+      from multiple slice services are mapped to the limited number of
+      traffic classes used on provider network transit links.
 
    *  Capacity planning/management for efficient usage of provider
       network resources:
@@ -971,7 +975,7 @@ Table of Contents
       load balancing), to advanced TE techniques, with or without
       bandwidth reservations, to force more consistent load distribution
       even in non-ECMP friendly network topologies.  See also Section 8
-      of [RFC9522]}.
+      of [RFC9522]).
 
               ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
         ┌──────────┐               base NRP               ┌──────────┐
