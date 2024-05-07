@@ -262,7 +262,8 @@ Customer:
 : This entity is distinct from the customer of a 5G Network Slice Service.
 
 Customer site:
-: A customer manages and deploys 5G NFs (RAN and CN) in customer sites. On top of 5G NFs (e.g., gNodeB (gNB), 5G Core (5GC)), a customer may manage additional TN elements (e.g., servers, routers, or switches) within a customer site. A customer site can be either a physical or a virtual location. Examples of customer sites are a customer private locations (Point of Presence (PoP), DC), a VPC in a Public Cloud, or servers hosted within the provider network or colocation service.
+: A customer manages and deploys 5G NFs (RAN and CN) in customer sites. On top of 5G NFs (e.g., gNodeB (gNB) and 5G Core (5GC)), a customer may manage additional TN elements (e.g., servers, routers, and switches) within a customer site. A customer site can be either a physical or a virtual location. Examples of customer sites are a customer private locations (Point of Presence (PoP), DC), a VPC in a Public Cloud, or servers hosted within the provider network or colocation service.
+: NFs may be hosted on a CE, directly connected to a CE, or be located multiple IP hops from a CE.
 : The Orchestration of the TN within a customer site involves a set of controllers for automation purposes (e.g., Network Functions Virtualization Infrastructure (NFVI), Enhanced Container Network Interface (CNI), Fabric Managers, or Public Cloud APIs). It is out of the scope of this document to document how these controllers are implemented.
 
 Provider:
@@ -273,11 +274,12 @@ Provider Network:
 : A provider uses a provider network to interconnect customer sites. This document assumes that the provider network is based on IP or MPLS.
 
 Customer Edge (CE):
-: A device that provides logical connectivity to the provider network. The logical connectivity is enforced at Layer 2 and/or Layer 3 and is denominated an Attachment Circuit (AC). Examples of CEs include TN components (e.g., router, switch, or firewalls) and also 5G NFs (i.e., an element of the 5G domain such as Centralized Unit (CU), Distributed Unit (DU), or User Plane Function (UPF)).
+: A device that provides logical connectivity to the provider network. The logical connectivity is enforced at Layer 2 and/or Layer 3 and is denominated an Attachment Circuit (AC). Examples of CEs include TN components (e.g., router, switch, and firewalls) and also 5G NFs (i.e., an element of the 5G domain such as Centralized Unit (CU), Distributed Unit (DU), or User Plane Function (UPF)).
 : This document generalizes the definition of a CE with the introduction of Distributed CEs in {{sec-distributed}}.
 
 Provider Edge (PE):
-: A device managed by a provider that is connected to a CE. The connectivity between a CE and a PE is achieved using one or multiple Attachment Circuit. This document generalizes the PE definition with the introduction of Distributed PEs in {{sec-distributed}}.
+: A device managed by a provider that is connected to a CE. The connectivity between a CE and a PE is achieved using one or multiple Attachment Circuits.
+: This document generalizes the PE definition with the introduction of Distributed PEs in {{sec-distributed}}.
 
 Attachment Circuit (AC):
 : The logical connection that attaches a CE to a PE. A CE is connected to a PE via one or multiple ACs. An AC is technology-specific. For consistency with the AC data models terminology (e.g., {{?I-D.ietf-opsawg-teas-attachment-circuit}} and {{?I-D.ietf-opsawg-ntw-attachment-circuit}}), this document assumes that an AC is configured on a "bearer", which represents the underlying connectivity.
