@@ -182,9 +182,9 @@ This document describes a Network Slice realization model for IP/MPLS networks w
 
 #  Introduction
 
-This document focuses on network slicing for 5G networks, covering the connectivity between Network Functions (NFs) across multiple domains such as edge clouds, data centers, and the Wide Area Network (WAN). The document describes a Network Slice realization approach that fulfills 5G slicing requirements by using existing IP/MPLS technologies to optimally control connectivity Service Level Agreements (SLAs) offered for 5G slices.
+This document focuses on network slicing for 5G networks, covering the connectivity between Network Functions (NFs) across multiple domains such as edge clouds, data centers, and the Wide Area Network (WAN). The document describes a Network Slice realization approach that fulfills 5G slicing requirements by using existing IP/MPLS technologies to optimally control connectivity Service Level Agreements (SLAs) offered for 5G slices. To that aim, this document clarifies the scope of the Transport Network in 5G architectures ({{sec-scope}}), disambiguates 5G Network Slicing versus Transport Network Slicing ({{sec-5gtn}}), draws the perimeter of the various orchestration domains to realize slices ({{sec-orch}}), and identifies the required coordination between these orchestration domains for adequate setup of Attachment Circuits (ACs) ({{sec-tn-nsi}}).
 
-This work is compatible with the framework defined in {{!RFC9543}} which describes network slicing in the context of networks built from IETF technologies.
+This work is compatible with the framework defined in {{!RFC9543}} which describes network slicing in the context of networks built from IETF technologies. Specifically, the document describes how RFC 9543 Network Slices are realized within provider networks and how such slices are stitched to Transport Network resources in a customer site in the context of Transport Network Slice.
 
 The realization approach described in this document is typically triggered by Network Slice Service requests. How a Network Slice Service request is placed for realization, including how it is derived from a 5G Slice Service request, is out of scope. Mapping considerations between 3GPP and IETF Network Slice Service (e.g., mapping of service parameters) are discussed, e.g., in {{?I-D.ietf-teas-5g-network-slice-application}}.
 
@@ -280,7 +280,7 @@ Customer Edge (CE):
 : This document generalizes the definition of a CE with the introduction of Distributed CEs in {{sec-distributed}}.
 
 Provider Edge (PE):
-: A device managed by a provider that is connected to a CE. The connectivity between a CE and a PE is achieved using one or multiple Attachment Circuits.
+: A device managed by a provider that is connected to a CE. The connectivity between a CE and a PE is achieved using one or multiple ACs.
 : This document generalizes the PE definition with the introduction of Distributed PEs in {{sec-distributed}}.
 
 Attachment Circuit (AC):
@@ -381,7 +381,7 @@ As depicted in {{fig-end-to-end}}, the realization of an RFC 9543 Network Slice 
 {: #fig-end-to-end title="Segmentation of the Transport Network" artwork-align="center"}
 
 Resource synchronization for AC provisioning:
-: The realization of the Attachment Circuit is made up of TN resources shared between the Customer Site Orchestration and the Provider Network Orchestration (e.g., RFC 9543 NSC).  More precisely, a PE and a CE connected via an AC need to be
+: The realization of the AC is made up of TN resources shared between the Customer Site Orchestration and the Provider Network Orchestration (e.g., RFC 9543 NSC).  More precisely, a PE and a CE connected via an AC need to be
 provisioned with consistent data plane and control plane  information (e.g., VLAN-
 IDs, IP addresses/subnets, or BGP  Autonomous System (AS) Number). Hence, the realization of this
 interconnection is technology-specific and requires coordination between the Customer Site Orchestration and an NSC. Automating the provisioning and management of the AC is thus key to automate the overall service provisioning. Aligned with {{?RFC8969}}, this document assumes that this coordination is based upon standard YANG data models and APIs.
@@ -534,8 +534,8 @@ The realization model described in the document inherits the scalability propert
    identification. The S-NSSAI is not visible to the transport domain.
    So instead, 5G network functions can expose the 5G slices to the transport
    domain by mapping to explicit Layer 2 or Layer 3 identifiers, such as VLAN-IDs, IP
-   addresses, or Differentiated Services Code Point (DSCP). The realization of the mapping
-   between customer sites and provider networks is commonly refered to as the "hand-off".
+   addresses, or Differentiated Services Code Point (DSCP) values. The realization of the mapping
+   between customer sites and provider networks is refered to as the "hand-off".
 
    More details about the mapping between 3GPP and RFC 9543 Network Slices is provided in {{?I-D.ietf-teas-5g-network-slice-application}}.
    That document includes additional methods for mapping 5G slices to TN slices (e.g., source UDP port number), but these
@@ -708,7 +708,7 @@ The realization model described in the document inherits the scalability propert
    functions ({{figure-mpls-10b-hand-off}}, left hand side), or within the DC/cloud
    infrastructure itself (e.g., on the top of the rack or leaf switch
    within cloud IP fabric ({{figure-mpls-10b-hand-off}}, right hand side)). On the
-   attachment circuit connected to PE, packets are already MPLS
+   AC connected to PE, packets are already MPLS
    encapsulated (or MPLS-in-UDP/MPLS-in-IP encapsulated, if cloud or compute
    infrastructure don’t support MPLS encapsulation). Therefore,
    the PE uses neither a VLAN nor an IP address for slice
@@ -726,7 +726,7 @@ The realization model described in the document inherits the scalability propert
    as visible in {{figure-mpls-10b-hand-off}} (e.g., labels A, A', and A" for the first depicted slice).  Therefore, for any slice-specific per-hop
    behavior at the provider network edge, the PE needs to determine
    which label represents which slice.  In the BGP control plane, when
-   exchanging service prefixes over attachment circuit, each slice might be represented by a unique BGP community, so
+   exchanging service prefixes over an AC, each slice might be represented by a unique BGP community, so
    tracking label assignment to the slice might be possible.  For example, in
    {{figure-mpls-10b-hand-off}}, for the slice identified with COM=1, the PE advertises a
    dynamically allocated label A".  Since, based on the community, the
@@ -806,9 +806,9 @@ site, through a provider network. Hence, at the domain (customer site, provider 
 boundaries NEXT_HOP attribute for IPv4/IPv6 labeled unicast needs to be modified to "next-hop self" (nhs),
 which results in new IPv4/IPv6 labeled unicast label allocation. Appropriate label swap
 forwarding entries for IPv4/IPv6 labeled unicast labels are programmed in the data plane.
-On the attachment circuit there is no additional 'labeled transport' protocol (i.e., no LDP, RSVP, SR, ...).
+On the AC there is no additional 'labeled transport' protocol (i.e., no LDP, RSVP, SR, ...).
 
-Packets are transmitted over the attachment circuit with the IPv4/IPv6 labeled
+Packets are transmitted over the AC with the IPv4/IPv6 labeled
 unicast as the top label, with service label deeper in the label stack. In Option C,
 the service label is not used for forwarding lookup on the PE. This significantly
 lowers the scaling pressure on PEs, as PEs need to program forwarding entries only for
@@ -919,7 +919,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
 ~~~~
 {: #figure-QoS-5QI-unaware title="Slice to TN QoS Mapping (5QI-unaware Model)" artwork-align="center"}
 
-   When the IP traffic is handed over at the SDP from the attachment circuit to the provider network, the PE encapsulates the
+   When the IP traffic is handed over at the SDP from the AC to the provider network, the PE encapsulates the
    traffic into MPLS (if MPLS transport is used in the provider network), or
    IPv6 - optionally with some additional headers (if SRv6 transport is
    used in the provider network), and sends out the packets on the provider network transit
@@ -1110,10 +1110,10 @@ ranges for each slice, and use these ranges for slice identification purposes on
    outbound provider network edge resource control are:
 
    *  Slices use both CIR and PIR parameters, and provider network edge links
-      (attachment circuits) are dimensioned to fulfil the aggregate of
+      (ACs) are dimensioned to fulfil the aggregate of
       slice CIRs.  If at any given time, some slices send the traffic
       above CIR, congestion in outbound direction on the provider network edge
-      link (attachment circuit) might happen.  Therefore, fine-grained resource control to
+      link (AC) might happen.  Therefore, fine-grained resource control to
       guarantee at least CIR for each slice is required.
 
    *  Any-to-Any (A2A) connectivity constructs are deployed, again
@@ -1133,7 +1133,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
    for 5QI-unaware slices.  Each slice is
    assigned a single egress queue.  The sum of slice CIRs, used as the
    weight in weighted queueing model, should not exceed the physical
-   capacity of the attachment circuit.  Slice requests above this limit
+   capacity of the AC.  Slice requests above this limit
    should be rejected by the RFC 9543 NSC, unless an already established slice with
    lower priority, if such exists, is preempted.
 
@@ -1338,7 +1338,7 @@ to TN QoS Classes may be rather common.
    multiple egress queues.  The sum of queue weights, which are 5Q QoS
    queue CIRs within the slice, should not exceed the CIR of the slice
    itself.  And, similarly to the 5QI-aware model, the sum of slice CIRs
-   should not exceed the physical capacity of the attachment circuit.
+   should not exceed the physical capacity of the AC.
 
 ~~~
    ┌─────────┐        QoS output queues
