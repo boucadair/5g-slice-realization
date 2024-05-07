@@ -1685,7 +1685,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    The provider network may be implemented in such a way that it has
    various types of paths, for example low-latency traffic might be
    mapped onto a different transport path to other traffic (for example
-   a particular flex-algo, a particular set of TE LSPs, or a specific queue {{?RFC9330}}), as discussed
+   a particular flex-algo, a particular set of TE paths, or a specific queue {{?RFC9330}}), as discussed
    in {{sec-qos-map}}.  The 5G NSO can use
    {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}} to request low-latency
    transport for a given slice if required.  However, {{?RFC8299}} or
@@ -1740,13 +1740,12 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    that the "reservations" would be in the mind of the transport
    controller - it is not necessary (or indeed possible for SR-TE) to
    reserve bandwidth at the network layer.  The bandwidth requirement
-   acts as a constraint whenever the controller (re)computes the path of
-   an LSP.  There could be a single mesh of LSPs between endpoints that
+   acts as a constraint whenever the controller (re)computes a path.  There could be a single mesh of paths between endpoints that
    carry all of the traffic types, or there could be a small handful of
    meshes, for example one mesh for low-latency traffic that follows the
    minimum latency path and another mesh for the other traffic that
    follows the minimum IGP metric path, as described in {{sec-qos-map}}.
-   There would be a many-to-one mapping of slices to LSPs.
+   There would be a many-to-one mapping of slices to paths.
 
    The bandwidth requirement from DCi to DCj is the sum of the DCi-DCj
    demands of the individual slices.  For example, if only Slice X and
@@ -1766,49 +1765,48 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    LSPs from DC1 to DC2.  For example, if the routing configuration is
    arranged such that in the absence of any network failure, traffic
    from DC1 to DC2 always enters PE1A and goes to PE2A, the controller
-   reserves 12.8 Gbps of bandwidth on the LSP from PE1A to PE2A.  If, on
+   reserves 12.8 Gbps of bandwidth on the path from PE1A to PE2A.  If, on
    the other hand, the routing configuration is arranged such that in
    the absence of any network failure, traffic from DC1 to DC2 always
    enters PE1A and is load-balanced across PE2A and PE2B, the controller
-   reserves 6.4 Gbps of bandwidth on the LSP from PE1A to PE2A and 6.4
-   Gbps of bandwidth on the LSP from PE1A to PE2B.  It might be tricky
+   reserves 6.4 Gbps of bandwidth on the path from PE1A to PE2A and 6.4
+   Gbps of bandwidth on the path from PE1A to PE2B.  It might be tricky
    for the NSC to be aware of all conditions that
    change the way traffic lands on the various PEs, and therefore know
-   that it needs to change bandwidth reservations of LSPs accordingly.
+   that it needs to change bandwidth reservations of paths accordingly.
    For example, there might be an internal failure within DC1 that
    causes traffic from DC1 to land on PE1B, rather than PE1A.  The
    NSC may not be aware of the failure and therefore
    may not know that it now needs to apply bandwidth reservations to
-   LSPs from PE1B to PE2A/PE2B.
+   paths from PE1B to PE2A/PE2B.
 
 ### Scheme 3: TE Paths without Bandwidth Reservation
 
    Like Scheme 2, Scheme 3 uses RSVP-TE or SR-TE paths.  There could be a
-   single mesh of LSPs between endpoints that carry all of the traffic
+   single mesh of paths between endpoints that carry all of the traffic
    types, or there could be a small handful of meshes, for example one
    mesh for low-latency traffic that follows the minimum latency path
    and another mesh for the other traffic that follows the minimum IGP
    metric path, as described in {{sec-qos-map}}.  There would be a many-to-one
-   mapping of slices to LSPs.
+   mapping of slices to paths.
 
    The difference between Scheme 2 and Scheme 3 is that Scheme 3 does
-   not have fixed bandwidth reservations for the LSPs.  Instead, actual
+   not have fixed bandwidth reservations for the paths.  Instead, actual
    measured data-plane traffic volumes are used to influence the
-   placement of TE LSPs.  One way of achieving this is to use
+   placement of TE paths.  One way of achieving this is to use
    distributed RSVP-TE with auto-bandwidth.  Alternatively, the
    NSC can use telemetry-driven automatic congestion
    avoidance.  In this approach, when the actual traffic volume in the
    data plane on given link exceeds a threshold, the controller, knowing
    how much actual data plane traffic is currently travelling along each
-   RSVP or SR-TE LSP, can tune the paths of one or more LSPs using the
+   RSVP or SR-TE path, can tune the paths of one or more paths using the
    link such that they avoid that link. This approach is similar to that described in {{Section 4.3.1 of ?RFC9522}}.
 
-   It would be undesirable to move a minimum-latency LSP rather than
-   another type of LSP in order to ease the congestion, as the new path
-   will typically have a higher latency, if the minimum-latency LSP is
-   currently following the minimum-latency path.  This can be avoided by
+   It would be undesirable to move a path that has latency as its cost function, rather than
+   another type of path, in order to ease the congestion, as the altered path
+   will typically have a higher latency.  This can be avoided by
    designing the algorithms described in the previous paragraph such
-   that they avoid moving minimum-latency LSPs unless there is no
+   that they avoid moving minimum-latency paths unless there is no
    alternative.
 
 # Network Slicing OAM
