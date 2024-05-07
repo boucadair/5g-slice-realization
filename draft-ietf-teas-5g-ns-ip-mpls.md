@@ -625,14 +625,14 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
         (not slice specific)     for S-NSSAI
     <───────────────────────────> <───────>
    ┌────┬────┬────┬────┬────┬────┬────┬────┐
-   │2001:0db8:xxxx:xxxx:xxxx:xxxx:ttdd:dddd│
+   │xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:ttdd:dddd│
    └─────────┴─────────┴─────────┴─────────┘
     tt     - SST (8 bits)
     dddddd - SD (24 bits)
 ~~~
-{: #figure-11 title="An Example of S-NSSAI Embedded into IPv6" artwork-align="center"}
+{: #figure-11 title="An Example of S-NSSAI Embedded into an IPv6 Address" artwork-align="center"}
 
-   In the example shown in {{figure-11}}, the most significant 96 bits of the IPv6 address
+   In reference to {{figure-11}}, the most significant 96 bits of the IPv6 address
    are unique to the NF, but do not carry any slice-specific information. The S-NSSAI information is embedded in the least
    significant 32 bits. The 96-bit part of the address may be structured by the provider, for example, on the
    geographical location or the DC identification.
