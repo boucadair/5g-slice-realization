@@ -546,6 +546,10 @@ Table of Contents
    A TN slice relies upon resources that can involve both the provider
    and customer TN domains.  More details are provided in Section 3.4.2.
 
+      A TN slice might be considered as a variant of horizontal
+      composition of Network Slices mentioned in Appendix A.6 of
+      [RFC9543].
+
                               ┌───────────┐
                               |  5G NSO   |
                               └───────────┘
