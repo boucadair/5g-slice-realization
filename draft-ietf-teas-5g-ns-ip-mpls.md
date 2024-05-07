@@ -1715,9 +1715,9 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    and 3 which employ TE, traffic cannot be diverted from the shortest
    path.
 
-###  Scheme 2: TE LSPs with Fixed Bandwidth Reservations
+###  Scheme 2: TE Paths with Fixed Bandwidth Reservations
 
-   Scheme 2 uses RSVP-TE {{?RFC3209}} or SR-TE LSPs {{?RFC9256}} with fixed bandwidth
+   Scheme 2 uses RSVP-TE {{?RFC3209}} or SR-TE paths {{?RFC9256}} with fixed bandwidth
    reservations.  By "fixed", we mean a value that stays constant over
    time, unless the 5G NSO communicates a change in slice bandwidth
    requirements, due to the creation or modification of a slice.  Note
@@ -1765,9 +1765,9 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    may not know that it now needs to apply bandwidth reservations to
    LSPs from PE1B to PE2A/PE2B.
 
-### Scheme 3: TE LSPs without Bandwidth Reservation
+### Scheme 3: TE Paths without Bandwidth Reservation
 
-   Like Scheme 2, Scheme 3 uses RSVP-TE or SR-TE LSPs.  There could be a
+   Like Scheme 2, Scheme 3 uses RSVP-TE or SR-TE paths.  There could be a
    single mesh of LSPs between endpoints that carry all of the traffic
    types, or there could be a small handful of meshes, for example one
    mesh for low-latency traffic that follows the minimum latency path
