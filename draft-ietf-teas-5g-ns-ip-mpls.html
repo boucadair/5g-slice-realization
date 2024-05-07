@@ -1662,10 +1662,11 @@ However, this document does not exclude the instantiation of multiple ACs betwee
           <h4 id="name-service-aware-ce">
 <a href="#section-3.3.3" class="section-number selfRef">3.3.3. </a><a href="#name-service-aware-ce" class="section-name selfRef">Service-aware CE</a>
           </h4>
-<p id="section-3.3.3-1">While in most cases CEs connect to PEs using IP (e.g., VLANs subinterface on a Layer 3 interface), a CE may also connect to the provider network using MPLS -potentially over IP tunnels- or Segment Routing over IPv6 (SRv6) <span>[<a href="#RFC8986" class="cite xref">RFC8986</a>]</span>. The CE has awareness of provider services configuration (e.g., control plane identifiers such as Route Targets (RTs) and Route Distinguishers (RDs)). An example of such an AC is depicted in <a href="#_figure-51" class="auto internal xref">Figure 4</a>. This is a source of confusion since these configurations are typically enforced on PEs. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE.<a href="#section-3.3.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.3.3-1">While in most cases CEs connect to PEs using IP (e.g., VLANs subinterface on a Layer 3 interface), a CE may also connect to the provider network using other technologies such as MPLS -potentially over IP tunnels- or Segment Routing over IPv6 (SRv6) <span>[<a href="#RFC8986" class="cite xref">RFC8986</a>]</span>. The CE has thus awareness of provider services configuration (e.g., control plane identifiers such as Route Targets (RTs) and Route Distinguishers (RDs)). An example of such an AC is depicted in <a href="#_figure-51" class="auto internal xref">Figure 4</a>.<a href="#section-3.3.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.3.3-2">This deployment is a source of confusion since service configurations are typically enforced on PEs. Notwithstanding, the reference design based on the orchestration scopes prevails: the CE is managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE.<a href="#section-3.3.3-2" class="pilcrow">¶</a></p>
 <span id="name-example-of-mpls-based-attac"></span><div id="_figure-51">
 <figure id="figure-4">
-            <div class="alignCenter art-text artwork" id="section-3.3.3-2.1">
+            <div class="alignCenter art-text artwork" id="section-3.3.3-3.1">
 <pre>
 ┌ ─ ─ ─ ─ ─ ─ ─                       ┌ ─ ─ ─ ─ ─ ─ ─ ┐
     Customer   │                          Provider
@@ -1685,7 +1686,7 @@ However, this document does not exclude the instantiation of multiple ACs betwee
 <a href="#name-example-of-mpls-based-attac" class="selfRef">Example of MPLS-based Attachment Circuit</a>
             </figcaption></figure>
 </div>
-<p id="section-3.3.3-3">This use case is also referred to in <a href="#sec-10b" class="auto internal xref">Section 4.3.2</a> and <a href="#sec-10c" class="auto internal xref">Section 4.3.3</a>.<a href="#section-3.3.3-3" class="pilcrow">¶</a></p>
+<p id="section-3.3.3-4">Service-aware CEs are used, for example, in the deployment discussed in Sections <a href="#sec-10b" class="auto internal xref">4.3.2</a> and <a href="#sec-10c" class="auto internal xref">4.3.3</a>.<a href="#section-3.3.3-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2804,17 +2805,18 @@ VLANs representing slices           VLANs representing slices
           <dd style="margin-left: 1.5em" id="section-4.3-3.2">
             <p id="section-4.3-3.2.1">VRF-to-VRF connections.<a href="#section-4.3-3.2.1" class="pilcrow">¶</a></p>
 </dd>
-        <dd class="break"></dd>
-</dl>
-<p id="section-4.3-4">Option B (<a href="#sec-10b" class="auto internal xref">Section 4.3.2</a>):
-     : redistribution of labeled VPN routes with next-hop
-      change at domain boundaries.<a href="#section-4.3-4" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlParallel" id="section-4.3-5">
-          <dt id="section-4.3-5.1">Option C (<a href="#sec-10c" class="auto internal xref">Section 4.3.3</a>):</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-5.2">
-            <p id="section-4.3-5.2.1">redistribution of labeled VPN routes without next-hop
+          <dd class="break"></dd>
+<dt id="section-4.3-3.3">Option B (<a href="#sec-10b" class="auto internal xref">Section 4.3.2</a>):</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-3.4">
+            <p id="section-4.3-3.4.1">redistribution of labeled VPN routes with next-hop
+change at domain boundaries.<a href="#section-4.3-3.4.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-3.5">Option C (<a href="#sec-10c" class="auto internal xref">Section 4.3.3</a>):</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-3.6">
+            <p id="section-4.3-3.6.1">redistribution of labeled VPN routes without next-hop
     change and redistribution of labeled transport routes with next-hop
-    change at domain boundaries.<a href="#section-4.3-5.2.1" class="pilcrow">¶</a></p>
+    change at domain boundaries.<a href="#section-4.3-3.6.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
