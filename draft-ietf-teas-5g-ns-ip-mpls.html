@@ -1922,7 +1922,7 @@ are passed between Orchestrators via a dedicated interface, e.g., the RFC 9543 N
 <ul class="normal">
 <li class="normal" id="section-3.5-2.1">
             <p id="section-3.5-2.1.1">1 to N:
-A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For instance, consider the scenario depicted in <a href="#_figure-5" class="auto internal xref">Figure 8</a>, illustrating the separation of the 5G Control Plane and User Plane in TN slices for a single 5G Enhanced Mobile Broadband (eMBB) network slice. It is important to note that this mapping can serve as an interim step to N:M mapping. In this scenario, a subset of the TN slices can be intended for sharing by multiple 5G network slices (e.g., the Control Plane TN slice is shared by multiple 5G network Slices). Further details about this scheme are described in <a href="#sec-firstslice" class="auto internal xref">Section 3.7</a>.<a href="#section-3.5-2.1.1" class="pilcrow">¶</a></p>
+A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For instance, consider the scenario depicted in <a href="#_figure-5" class="auto internal xref">Figure 8</a>, illustrating the separation of the 5G Control Plane and User Plane in TN slices for a single 5G Enhanced Mobile Broadband (eMBB) network slice. It is important to note that this mapping can serve as an interim step to M to N mapping. Further details about this scheme are described in <a href="#sec-firstslice" class="auto internal xref">Section 3.7</a>.<a href="#section-3.5-2.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-3.5-2.2">
             <p id="section-3.5-2.2.1">M to 1:
@@ -1938,12 +1938,15 @@ A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For inst
             <p id="section-3.5-2.3.1">M to N:
  The 5G to TN slice mapping combines both
  approaches with a mix of shared and dedicated associations.<a href="#section-3.5-2.3.1" class="pilcrow">¶</a></p>
+<p id="section-3.5-2.3.2">
+In this scenario, a subset of the TN slices can be intended for sharing by multiple 5G Network Slices (e.g., the Control Plane TN slice is shared by multiple 5G network Slices).<a href="#section-3.5-2.3.2" class="pilcrow">¶</a></p>
+<p id="section-3.5-2.3.3">
+In practice, for operational and scaling reasons, typically M to N would be used, with M &gt;&gt; N.<a href="#section-3.5-2.3.3" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-3.5-3">In practice, for operational and scaling reasons, typically M to N would be used, with M &gt;&gt; N.<a href="#section-3.5-3" class="pilcrow">¶</a></p>
 <span id="name-1-5g-slice-to-n-rfc-9543-ne"></span><div id="_figure-5">
 <figure id="figure-8">
-          <div class="alignCenter art-text artwork" id="section-3.5-4.1">
+          <div class="alignCenter art-text artwork" id="section-3.5-3.1">
 <pre>
 ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
 
@@ -1972,7 +1975,7 @@ A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For inst
 </div>
 <span id="name-n-5g-slice-to-1-rfc-9543-ne"></span><div id="_figure-6">
 <figure id="figure-9">
-          <div class="alignCenter art-text artwork" id="section-3.5-5.1">
+          <div class="alignCenter art-text artwork" id="section-3.5-4.1">
 <pre>
                   ┌ ─ ─ ─ ─ ─ ─ ┐
                      Edge Cloud
@@ -2003,10 +2006,10 @@ A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For inst
 <a href="#name-n-5g-slice-to-1-rfc-9543-ne" class="selfRef">N (5G Slice) to 1 (RFC 9543 Network Slice) Mapping</a>
           </figcaption></figure>
 </div>
-<p id="section-3.5-6">Note that the actual realization of the mapping depends on several
+<p id="section-3.5-5">Note that the actual realization of the mapping depends on several
    factors, such as the actual business cases, the NF vendor
    capabilities, the NF vendor reference designs, as well as service
-   provider or even legal requirements.<a href="#section-3.5-6" class="pilcrow">¶</a></p>
+   provider or even legal requirements.<a href="#section-3.5-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-sca-impli">
