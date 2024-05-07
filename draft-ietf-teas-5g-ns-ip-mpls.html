@@ -1907,14 +1907,14 @@ are passed between Orchestrators via a dedicated interface, e.g., the RFC 9543 N
 <ul class="normal">
 <li class="normal" id="section-3.5-2.1">
             <p id="section-3.5-2.1.1">1 to N:
-A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For instance, consider the scenario depicted in <a href="#_figure-5" class="auto internal xref">Figure 8</a>, illustrating the separation of the 5G Control Plane and User Plane in TN slices for a single 5G eMBB network slice. It is important to note that this mapping can serve as an interim step to N:M mapping. In this scenario, a subset of the TN slices can be intended for sharing by multiple 5G network slices (e.g., the Control Plane TN slice is shared by multiple 5G network Slices). Further details about this scheme are described in <a href="#sec-firstslice" class="auto internal xref">Section 3.6</a>.<a href="#section-3.5-2.1.1" class="pilcrow">¶</a></p>
+A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For instance, consider the scenario depicted in <a href="#_figure-5" class="auto internal xref">Figure 8</a>, illustrating the separation of the 5G Control Plane and User Plane in TN slices for a single 5G Enhanced Mobile Broadband (eMBB) network slice. It is important to note that this mapping can serve as an interim step to N:M mapping. In this scenario, a subset of the TN slices can be intended for sharing by multiple 5G network slices (e.g., the Control Plane TN slice is shared by multiple 5G network Slices). Further details about this scheme are described in <a href="#sec-firstslice" class="auto internal xref">Section 3.6</a>.<a href="#section-3.5-2.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-3.5-2.2">
             <p id="section-3.5-2.2.1">M to 1:
  Multiple 5G Network Slices may rely upon the same TN slice.  In such a case, the Service Level Agreement (SLA) differentiation of slices
  would be entirely controlled at 5G Control Plane, for example, with
  appropriate placement strategies: this use case is represented in
- <a href="#_figure-6" class="auto internal xref">Figure 9</a>, where a User Plane Function (UPF) for the URLLC slice is
+ <a href="#_figure-6" class="auto internal xref">Figure 9</a>, where a User Plane Function (UPF) for the Ultra Reliable Low Latency Communication (URLLC) slice is
  instantiated at the edge cloud close to the gNB Centralized Unit User Plane (CU-UP) for
  better latency/jitter control, while the 5G Control Plane and the UPF
  for eMBB slice are instantiated in the regional cloud.<a href="#section-3.5-2.2.1" class="pilcrow">¶</a></p>
@@ -2491,7 +2491,7 @@ and other part of the admission control is implemented on the PE.<a href="#secti
 </li>
           <li class="normal" id="section-3.7-2.3">
             <p id="section-3.7-2.3.1">Coarse-grained resource control at the transit (non-attachment
-circuits) links in the provider network, using a single NRP, spanning the entire provider network.
+circuits) links in the provider network, using a single Network Resource Partition (NRP), spanning the entire provider network.
 Transit nodes in the provider network do not maintain any state of individual slices.
 Instead, only a flat (non-hierarchical) QoS model is used on
 transit links in the provider network, with up to 8 traffic classes.  At the PE,
@@ -2733,7 +2733,7 @@ VLANs representing slices           VLANs representing slices
    NFs. NF-A has a set of tunnel termination points, with unique per-slice IP addresses
    allocated from the 2001:db8:a:0::/96 prefix, while NF-B uses a set of tunnel termination
    points with per-slice IP addresses allocated from 2001:db8:b:0::/96. This example shows
-   two slices: customer A eMBB (SST=01, SD=00001) and customer B MIoT (SST=03, SD=00003).
+   two slices: customer A eMBB (SST=01, SD=00001) and customer B Massive Internet of Things (MIoT) (SST=03, SD=00003).
    Therefore, for customer A eMBB the tunnel IP addresses are auto-derived (without the need
    for an explicit mapping table) as the IP addresses {2001:db8:a::100:1, 2001:db8:b::100:1},
    where {:0100:0001} is used as the last two octets, and for customer B MIoT (SST=3,
@@ -2782,7 +2782,7 @@ VLANs representing slices           VLANs representing slices
 <p id="section-4.3-1">In this option, the service instances representing different slices
    are created directly on the NF, or within the customer site
    hosting the NF, and attached to the provider network.  Therefore, the packet
-   is MPLS encapsulated outside the provider network with native MPLS
+   is MPLS encapsulated outside the provider network with MPLS
    encapsulation, or MPLS-in-UDP encapsulation <span>[<a href="#RFC7510" class="cite xref">RFC7510</a>]</span>, depending on the capability
    of the customer site, with the service label depicting
    the slice.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
@@ -2827,7 +2827,7 @@ VLANs representing slices           VLANs representing slices
    within cloud IP fabric (<a href="#_figure-mpls-10b-hand-off" class="auto internal xref">Figure 16</a>, right hand side)). On the
    attachment circuit connected to PE, packets are already MPLS
    encapsulated (or MPLS-in-UDP/MPLS-in-IP encapsulated, if cloud or compute
-   infrastructure don’t support native MPLS encapsulation). Therefore,
+   infrastructure don’t support MPLS encapsulation). Therefore,
    the PE uses neither a VLAN nor an IP address for slice
    identification at the SDP, but instead uses the MPLS label.<a href="#section-4.3.2-1" class="pilcrow">¶</a></p>
 <span id="name-mpls-hand-off-option-b"></span><div id="_figure-mpls-10b-hand-off">
@@ -3138,7 +3138,7 @@ Fine-grained QoS enforcement   Coarse-grained QoS enforcement
 <p id="section-5.2.1-4">The original IP header retains the DCSP marking (which is ignored in
    5QI-unaware model), while the new header (MPLS or IPv6) carries QoS
    marking (MPLS Traffic Class bits for MPLS encapsulation, or DSCP for
-   SRv6/IPv6 encapsulation) related to TN CoS.  Based on TN CoS
+   SRv6/IPv6 encapsulation) related to TN Class of Service (CoS).  Based on TN CoS
    marking, per-hop behavior for all RFC 9543 Network Slices is executed on
    provider network transit links.  Provider network transit routers do not evaluate the original IP
    header for QoS-related decisions.  This model is outlined in
@@ -3548,7 +3548,7 @@ to TN QoS Classes may be rather common.<a href="#section-5.2.2-6" class="pilcrow
    granular, fine-grained manner, with dedicated resource allocation for
    each RFC 9543 Network Slice and dedicated resource allocation for number
    of traffic classes (most commonly up 4 or 8 traffic classes,
-   depending on the HW capability of the equipment) within each RFC 9543
+   depending on the Hardware capability of the equipment) within each RFC 9543
    Network Slice.<a href="#section-5.2.2-8" class="pilcrow">¶</a></p>
 <div id="inbound-edge-resource-control">
 <section id="section-5.2.2.1">
@@ -4641,69 +4641,61 @@ service disruption. Note that such an on-path attacker may make more damage (e.g
 <p id="appendix-A-13">CN: Core Network<a href="#appendix-A-13" class="pilcrow">¶</a></p>
 <p id="appendix-A-14">CoS: Class of Service<a href="#appendix-A-14" class="pilcrow">¶</a></p>
 <p id="appendix-A-15">CP: Control Plane<a href="#appendix-A-15" class="pilcrow">¶</a></p>
-<p id="appendix-A-16">CSP: Communication Service Provider<a href="#appendix-A-16" class="pilcrow">¶</a></p>
-<p id="appendix-A-17">CU: Centralized Unit<a href="#appendix-A-17" class="pilcrow">¶</a></p>
-<p id="appendix-A-18">CU-CP: Centralized Unit Control Plane<a href="#appendix-A-18" class="pilcrow">¶</a></p>
-<p id="appendix-A-19">CU-UP: Centralized Unit User Plane<a href="#appendix-A-19" class="pilcrow">¶</a></p>
-<p id="appendix-A-20">DC: Data Center<a href="#appendix-A-20" class="pilcrow">¶</a></p>
-<p id="appendix-A-21">DDoS: Distributed Denial of Services<a href="#appendix-A-21" class="pilcrow">¶</a></p>
-<p id="appendix-A-22">DN: Data Network<a href="#appendix-A-22" class="pilcrow">¶</a></p>
-<p id="appendix-A-23">DSCP: Differentiated Services Code Point<a href="#appendix-A-23" class="pilcrow">¶</a></p>
-<p id="appendix-A-24">DU: Distributed Unit<a href="#appendix-A-24" class="pilcrow">¶</a></p>
-<p id="appendix-A-25">eCPRI: enhanced Common Public Radio Interface<a href="#appendix-A-25" class="pilcrow">¶</a></p>
-<p id="appendix-A-26">FH: Fronthaul<a href="#appendix-A-26" class="pilcrow">¶</a></p>
-<p id="appendix-A-27">FIB: Forwarding Information Base<a href="#appendix-A-27" class="pilcrow">¶</a></p>
-<p id="appendix-A-28">GPRS: Generic Packet Radio Service<a href="#appendix-A-28" class="pilcrow">¶</a></p>
-<p id="appendix-A-29">gNB: gNodeB<a href="#appendix-A-29" class="pilcrow">¶</a></p>
-<p id="appendix-A-30">GTP: GPRS Tunneling Protocol<a href="#appendix-A-30" class="pilcrow">¶</a></p>
-<p id="appendix-A-31">GTP-U: GPRS Tunneling Protocol User plane<a href="#appendix-A-31" class="pilcrow">¶</a></p>
-<p id="appendix-A-32">HW: Hardware<a href="#appendix-A-32" class="pilcrow">¶</a></p>
-<p id="appendix-A-33">ID: Identifier<a href="#appendix-A-33" class="pilcrow">¶</a></p>
-<p id="appendix-A-34">IGP: Interior Gateway Protocol<a href="#appendix-A-34" class="pilcrow">¶</a></p>
-<p id="appendix-A-35">L2VPN: Layer 2 Virtual Private Network<a href="#appendix-A-35" class="pilcrow">¶</a></p>
-<p id="appendix-A-36">L3VPN: Layer 3 Virtual Private Network<a href="#appendix-A-36" class="pilcrow">¶</a></p>
-<p id="appendix-A-37">LSP: Label Switched Path<a href="#appendix-A-37" class="pilcrow">¶</a></p>
-<p id="appendix-A-38">MH: Midhaul<a href="#appendix-A-38" class="pilcrow">¶</a></p>
-<p id="appendix-A-39">MIoT: Massive Internet of Things<a href="#appendix-A-39" class="pilcrow">¶</a></p>
-<p id="appendix-A-40">MPLS: Multiprotocol Label Switching<a href="#appendix-A-40" class="pilcrow">¶</a></p>
-<p id="appendix-A-41">NF: Network Function<a href="#appendix-A-41" class="pilcrow">¶</a></p>
-<p id="appendix-A-42">NR: New Radio<a href="#appendix-A-42" class="pilcrow">¶</a></p>
-<p id="appendix-A-43">NRF: Network Function Repository<a href="#appendix-A-43" class="pilcrow">¶</a></p>
-<p id="appendix-A-44">NRP: Network Resource Partition<a href="#appendix-A-44" class="pilcrow">¶</a></p>
-<p id="appendix-A-45">NSC: Network Slice Controller<a href="#appendix-A-45" class="pilcrow">¶</a></p>
-<p id="appendix-A-46">PE: Provider Edge<a href="#appendix-A-46" class="pilcrow">¶</a></p>
-<p id="appendix-A-47">PIR: Peak Information Rate<a href="#appendix-A-47" class="pilcrow">¶</a></p>
-<p id="appendix-A-48">PLMN: Public Land Mobile Network<a href="#appendix-A-48" class="pilcrow">¶</a></p>
-<p id="appendix-A-49">PSTN: Public Switched Telephony Network<a href="#appendix-A-49" class="pilcrow">¶</a></p>
-<p id="appendix-A-50">QoS: Quality of Service<a href="#appendix-A-50" class="pilcrow">¶</a></p>
-<p id="appendix-A-51">RAN: Radio Access Network<a href="#appendix-A-51" class="pilcrow">¶</a></p>
-<p id="appendix-A-52">RF: Radio Frequency<a href="#appendix-A-52" class="pilcrow">¶</a></p>
-<p id="appendix-A-53">RIB: Routing Information Base<a href="#appendix-A-53" class="pilcrow">¶</a></p>
-<p id="appendix-A-54">RSVP: Resource Reservation Protocol<a href="#appendix-A-54" class="pilcrow">¶</a></p>
-<p id="appendix-A-55">RU: Radio Unit<a href="#appendix-A-55" class="pilcrow">¶</a></p>
-<p id="appendix-A-56">SD: Slice Differentiator<a href="#appendix-A-56" class="pilcrow">¶</a></p>
-<p id="appendix-A-57">SDP: Service Demarcation Point<a href="#appendix-A-57" class="pilcrow">¶</a></p>
-<p id="appendix-A-58">SLA: Service Level Agreement<a href="#appendix-A-58" class="pilcrow">¶</a></p>
-<p id="appendix-A-59">SLO: Service Level Objective<a href="#appendix-A-59" class="pilcrow">¶</a></p>
-<p id="appendix-A-60">SMF: Session Management Function<a href="#appendix-A-60" class="pilcrow">¶</a></p>
-<p id="appendix-A-61">S-NSSAI: Single Network Slice Selection Assistance Information<a href="#appendix-A-61" class="pilcrow">¶</a></p>
-<p id="appendix-A-62">SST: Slice/Service Type<a href="#appendix-A-62" class="pilcrow">¶</a></p>
-<p id="appendix-A-63">SR: Segment Routing<a href="#appendix-A-63" class="pilcrow">¶</a></p>
-<p id="appendix-A-64">SRv6: Segment Routing version 6<a href="#appendix-A-64" class="pilcrow">¶</a></p>
-<p id="appendix-A-65">TC: Traffic Class<a href="#appendix-A-65" class="pilcrow">¶</a></p>
-<p id="appendix-A-66">TE: Traffic Engineering<a href="#appendix-A-66" class="pilcrow">¶</a></p>
-<p id="appendix-A-67">TN: Transport Network<a href="#appendix-A-67" class="pilcrow">¶</a></p>
-<p id="appendix-A-68">TS: Technical Specification<a href="#appendix-A-68" class="pilcrow">¶</a></p>
-<p id="appendix-A-69">UDM: Unified Data Management<a href="#appendix-A-69" class="pilcrow">¶</a></p>
-<p id="appendix-A-70">UE: User Equipment<a href="#appendix-A-70" class="pilcrow">¶</a></p>
-<p id="appendix-A-71">UP: User Plane<a href="#appendix-A-71" class="pilcrow">¶</a></p>
-<p id="appendix-A-72">UPF: User Plane Function<a href="#appendix-A-72" class="pilcrow">¶</a></p>
-<p id="appendix-A-73">URLLC: Ultra Reliable Low Latency Communication<a href="#appendix-A-73" class="pilcrow">¶</a></p>
-<p id="appendix-A-74">VLAN: Virtual Local Area Network<a href="#appendix-A-74" class="pilcrow">¶</a></p>
-<p id="appendix-A-75">VNF: Virtual Network Function<a href="#appendix-A-75" class="pilcrow">¶</a></p>
-<p id="appendix-A-76">VPN: Virtual Private Network<a href="#appendix-A-76" class="pilcrow">¶</a></p>
-<p id="appendix-A-77">VRF: Virtual Routing and Forwarding<a href="#appendix-A-77" class="pilcrow">¶</a></p>
-<p id="appendix-A-78">VXLAN: Virtual Extensible Local Area Network<a href="#appendix-A-78" class="pilcrow">¶</a></p>
+<p id="appendix-A-16">CU: Centralized Unit<a href="#appendix-A-16" class="pilcrow">¶</a></p>
+<p id="appendix-A-17">CU-CP: Centralized Unit Control Plane<a href="#appendix-A-17" class="pilcrow">¶</a></p>
+<p id="appendix-A-18">CU-UP: Centralized Unit User Plane<a href="#appendix-A-18" class="pilcrow">¶</a></p>
+<p id="appendix-A-19">DC: Data Center<a href="#appendix-A-19" class="pilcrow">¶</a></p>
+<p id="appendix-A-20">DDoS: Distributed Denial of Services<a href="#appendix-A-20" class="pilcrow">¶</a></p>
+<p id="appendix-A-21">DN: Data Network<a href="#appendix-A-21" class="pilcrow">¶</a></p>
+<p id="appendix-A-22">DSCP: Differentiated Services Code Point<a href="#appendix-A-22" class="pilcrow">¶</a></p>
+<p id="appendix-A-23">DU: Distributed Unit<a href="#appendix-A-23" class="pilcrow">¶</a></p>
+<p id="appendix-A-24">eCPRI: enhanced Common Public Radio Interface<a href="#appendix-A-24" class="pilcrow">¶</a></p>
+<p id="appendix-A-25">FH: Fronthaul<a href="#appendix-A-25" class="pilcrow">¶</a></p>
+<p id="appendix-A-26">FIB: Forwarding Information Base<a href="#appendix-A-26" class="pilcrow">¶</a></p>
+<p id="appendix-A-27">GPRS: Generic Packet Radio Service<a href="#appendix-A-27" class="pilcrow">¶</a></p>
+<p id="appendix-A-28">gNB: gNodeB<a href="#appendix-A-28" class="pilcrow">¶</a></p>
+<p id="appendix-A-29">GTP: GPRS Tunneling Protocol<a href="#appendix-A-29" class="pilcrow">¶</a></p>
+<p id="appendix-A-30">GTP-U: GPRS Tunneling Protocol User plane<a href="#appendix-A-30" class="pilcrow">¶</a></p>
+<p id="appendix-A-31">IGP: Interior Gateway Protocol<a href="#appendix-A-31" class="pilcrow">¶</a></p>
+<p id="appendix-A-32">L2VPN: Layer 2 Virtual Private Network<a href="#appendix-A-32" class="pilcrow">¶</a></p>
+<p id="appendix-A-33">L3VPN: Layer 3 Virtual Private Network<a href="#appendix-A-33" class="pilcrow">¶</a></p>
+<p id="appendix-A-34">LSP: Label Switched Path<a href="#appendix-A-34" class="pilcrow">¶</a></p>
+<p id="appendix-A-35">MH: Midhaul<a href="#appendix-A-35" class="pilcrow">¶</a></p>
+<p id="appendix-A-36">MIoT: Massive Internet of Things<a href="#appendix-A-36" class="pilcrow">¶</a></p>
+<p id="appendix-A-37">MPLS: Multiprotocol Label Switching<a href="#appendix-A-37" class="pilcrow">¶</a></p>
+<p id="appendix-A-38">NF: Network Function<a href="#appendix-A-38" class="pilcrow">¶</a></p>
+<p id="appendix-A-39">NRF: Network Function Repository<a href="#appendix-A-39" class="pilcrow">¶</a></p>
+<p id="appendix-A-40">NRP: Network Resource Partition<a href="#appendix-A-40" class="pilcrow">¶</a></p>
+<p id="appendix-A-41">NSC: Network Slice Controller<a href="#appendix-A-41" class="pilcrow">¶</a></p>
+<p id="appendix-A-42">PE: Provider Edge<a href="#appendix-A-42" class="pilcrow">¶</a></p>
+<p id="appendix-A-43">PIR: Peak Information Rate<a href="#appendix-A-43" class="pilcrow">¶</a></p>
+<p id="appendix-A-44">QoS: Quality of Service<a href="#appendix-A-44" class="pilcrow">¶</a></p>
+<p id="appendix-A-45">RAN: Radio Access Network<a href="#appendix-A-45" class="pilcrow">¶</a></p>
+<p id="appendix-A-46">RIB: Routing Information Base<a href="#appendix-A-46" class="pilcrow">¶</a></p>
+<p id="appendix-A-47">RSVP: Resource Reservation Protocol<a href="#appendix-A-47" class="pilcrow">¶</a></p>
+<p id="appendix-A-48">RU: Radio Unit<a href="#appendix-A-48" class="pilcrow">¶</a></p>
+<p id="appendix-A-49">SD: Slice Differentiator<a href="#appendix-A-49" class="pilcrow">¶</a></p>
+<p id="appendix-A-50">SDP: Service Demarcation Point<a href="#appendix-A-50" class="pilcrow">¶</a></p>
+<p id="appendix-A-51">SLA: Service Level Agreement<a href="#appendix-A-51" class="pilcrow">¶</a></p>
+<p id="appendix-A-52">SLO: Service Level Objective<a href="#appendix-A-52" class="pilcrow">¶</a></p>
+<p id="appendix-A-53">SMF: Session Management Function<a href="#appendix-A-53" class="pilcrow">¶</a></p>
+<p id="appendix-A-54">S-NSSAI: Single Network Slice Selection Assistance Information<a href="#appendix-A-54" class="pilcrow">¶</a></p>
+<p id="appendix-A-55">SST: Slice/Service Type<a href="#appendix-A-55" class="pilcrow">¶</a></p>
+<p id="appendix-A-56">SR: Segment Routing<a href="#appendix-A-56" class="pilcrow">¶</a></p>
+<p id="appendix-A-57">SRv6: Segment Routing version 6<a href="#appendix-A-57" class="pilcrow">¶</a></p>
+<p id="appendix-A-58">TC: Traffic Class<a href="#appendix-A-58" class="pilcrow">¶</a></p>
+<p id="appendix-A-59">TE: Traffic Engineering<a href="#appendix-A-59" class="pilcrow">¶</a></p>
+<p id="appendix-A-60">TN: Transport Network<a href="#appendix-A-60" class="pilcrow">¶</a></p>
+<p id="appendix-A-61">UDM: Unified Data Management<a href="#appendix-A-61" class="pilcrow">¶</a></p>
+<p id="appendix-A-62">UE: User Equipment<a href="#appendix-A-62" class="pilcrow">¶</a></p>
+<p id="appendix-A-63">UP: User Plane<a href="#appendix-A-63" class="pilcrow">¶</a></p>
+<p id="appendix-A-64">UPF: User Plane Function<a href="#appendix-A-64" class="pilcrow">¶</a></p>
+<p id="appendix-A-65">URLLC: Ultra Reliable Low Latency Communication<a href="#appendix-A-65" class="pilcrow">¶</a></p>
+<p id="appendix-A-66">VLAN: Virtual Local Area Network<a href="#appendix-A-66" class="pilcrow">¶</a></p>
+<p id="appendix-A-67">VNF: Virtual Network Function<a href="#appendix-A-67" class="pilcrow">¶</a></p>
+<p id="appendix-A-68">VPN: Virtual Private Network<a href="#appendix-A-68" class="pilcrow">¶</a></p>
+<p id="appendix-A-69">VRF: Virtual Routing and Forwarding<a href="#appendix-A-69" class="pilcrow">¶</a></p>
+<p id="appendix-A-70">VXLAN: Virtual Extensible Local Area Network<a href="#appendix-A-70" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-5g-overview">
@@ -4721,9 +4713,9 @@ service disruption. Note that such an on-path attacker may make more damage (e.g
         <h3 id="name-key-building-blocks">
 <a href="#appendix-B.1" class="section-number selfRef">B.1. </a><a href="#name-key-building-blocks" class="section-name selfRef">Key Building Blocks</a>
         </h3>
-<p id="appendix-B.1-1"><span>[<a href="#TS-23.501" class="cite xref">TS-23.501</a>]</span> defines the Network Functions (UPF, AMF, etc.) that
+<p id="appendix-B.1-1"><span>[<a href="#TS-23.501" class="cite xref">TS-23.501</a>]</span> defines the Network Functions (UPF, Access and Mobility Function (AMF), etc.) that
    compose the 5G System (5GS) Architecture together with related
-   interfaces (e.g., N1, N2).  This architecture has native Control
+   interfaces (e.g., N1 and N2).  This architecture has built-in Control
    and User Plane separation, and the Control Plane leverages a service-
    based architecture.  <a href="#_figure-28" class="auto internal xref">Figure 33</a> outlines an example 5GS architecture
    with a subset of possible network functions and network interfaces.<a href="#appendix-B.1-1" class="pilcrow">¶</a></p>
@@ -4772,7 +4764,7 @@ within this document.<a href="#appendix-B.1-4.1.2" class="pilcrow">¶</a></p>
 Provides wireless connectivity to the UE devices via radio.  It is
 made up of the Antenna that transmits and receives signals to the
 UE and the Base Station that digitizes the signal and converts the
-RF data stream to IP packets.<a href="#appendix-B.1-4.2.2" class="pilcrow">¶</a></p>
+Radio Frequency (RF) data stream to IP packets.<a href="#appendix-B.1-4.2.2" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-B.1-4.3">
             <p id="appendix-B.1-4.3.1">Core Network (CN):<a href="#appendix-B.1-4.3.1" class="pilcrow">¶</a></p>
@@ -4780,7 +4772,7 @@ RF data stream to IP packets.<a href="#appendix-B.1-4.2.2" class="pilcrow">¶</a
 Controls the CP of the RAN and provides connectivity to the Data
 Network (e.g., the Internet or a private VPN).  The Core Network
 hosts dozens of services such as authentication, phone registry,
-charging, access to PSTN and handover.<a href="#appendix-B.1-4.3.2" class="pilcrow">¶</a></p>
+charging, access to Public Switched Telephony Network (PSTN) and handover.<a href="#appendix-B.1-4.3.2" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-B.1-4.4">
             <p id="appendix-B.1-4.4.1">Transport Network (TN):<a href="#appendix-B.1-4.4.1" class="pilcrow">¶</a></p>
@@ -4851,7 +4843,7 @@ document.  The following NFs and interfaces are worth mentioning,
 since their connectivity may rely on the Transport Network:<a href="#appendix-B.2-2.2.2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B.2-2.2.3.1">
-                <p id="appendix-B.2-2.2.3.1.1">the AMF (Access and Mobility Function) connects with the RAN
+                <p id="appendix-B.2-2.2.3.1.1">the AMF connects with the RAN
 control plane over the N2 interface<a href="#appendix-B.2-2.2.3.1.1" class="pilcrow">¶</a></p>
 </li>
               <li class="normal" id="appendix-B.2-2.2.3.2">
@@ -4985,7 +4977,7 @@ radio waves<a href="#appendix-B.3-2.3.1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B.4-2.1">
             <p id="appendix-B.4-2.1.1">Fronthaul happens before the BBU processing.  In 5G, this
-interface is based on eCPRI (Enhanced CPRI) with native Ethernet
+interface is based on eCPRI (Enhanced CPRI) with Ethernet
 or IP encapsulation.<a href="#appendix-B.4-2.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-B.4-2.2">
