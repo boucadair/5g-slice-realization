@@ -245,7 +245,7 @@ The term "Transport Network" is used for disambiguation with 5G network (e.g., I
 
 ## Transport Network Reference Design {#sec-ref-design}
 
-{{fig-tn-arch}} depicts the reference design used for modelling the Transport Network based on management perimeters (Customer vs. Provider).
+{{fig-tn-arch}} depicts the reference design used in this document for modelling the Transport Network based on management perimeters (Customer vs. Provider).
 
 ~~~~
 {::include ./drawings/pe-ce-ac.txt}
