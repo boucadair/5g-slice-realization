@@ -2338,7 +2338,7 @@ User Plane          ╱     │           │         ╲
    Saad, Greg Mirsky, Rüdiger Geib, Nicklous D. Morris, 	Daniele Ceccarelli, Bo Wu, and Xuesong Geng for
    their review of this document and for providing valuable comments.
 
-   Special thanks to Jie Dong for the detailed and careful reviews.
+   Special thanks to Jie Dong and Adrian Farrel for the detailed and careful reviews.
 
    Thanks to Alvaro Retana for the rtg-dir review, Yoshifumi Nishida for
    the tsv-art review, and Timothy Winters for the int-dir review.
