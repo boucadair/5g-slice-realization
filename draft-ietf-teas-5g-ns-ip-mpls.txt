@@ -391,8 +391,8 @@ Table of Contents
       in Figure 3).
 
    Distributed PE:  The logical connectivity is realized by configuring
-      multiple devices in the Transport Network (provider orchestration
-      domain).  The PE function is distributed.
+      multiple devices in the provider network (i.e., provider
+      orchestration domain).  The PE function is distributed.
 
       An example of a distributed PE is the "Managed CE service".  For
       example, a provider delivers VPN services using CEs and PEs which
@@ -402,8 +402,10 @@ Table of Contents
       of multiple customers.  However, this device is part of the
       provider network.
 
-   Figure 3 depicts the reference model together with examples of
-   distributed CEs and PEs.
+   Figure 3 depicts examples of distributed CEs and PEs.  Deployment
+   cases where the AC is also managed by the provider are not discussed
+   here because the setup of such an AC does not require any
+   coordination between the customer and provider orchestration domains.
 
           ┌ ─ ─ ─ ─ ─ ─ ─                       ┌ ─ ─ ─ ─ ─ ─ ─ ┐
               Customer   │                          Provider
