@@ -606,9 +606,8 @@ Table of Contents
       in this case the AC connects the NF to the PE.
 
       The realization of this segment is driven by the 5G Network
-      Orchestration and potentially the Customer Site Orchestration.
-      The realization of this segment does not involve the Transport
-      Network Orchestration.
+      Orchestration (e.g., NFs instantiation) and the Customer Site
+      Orchestration for the TN part.
 
    Provider Network:  Represents the connectivity between two PEs (e.g.,
       PE1-PE2).  The realization of this segment is controlled by an RFC
