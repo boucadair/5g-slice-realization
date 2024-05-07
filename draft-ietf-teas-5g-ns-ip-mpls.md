@@ -1003,8 +1003,8 @@ ranges for each slice, and use these ranges for slice identification purposes on
    *  PIR: Peak Information Rate (i.e., maximum bandwidth)
 
    These parameters define the traffic characteristics of the slice and
-   are part of SLO parameter set provided by the 5G NSO to RFC 9543 NSC.  Based
-   on these parameters the provider network inbound policy can be implemented using one
+   are part of SLO parameter set provided by the 5G NSO to an NSC.  Based
+   on these parameters, the provider network's inbound policy can be implemented using one
    of following options:
 
    *  1r2c (single-rate two-color) rate limiter
