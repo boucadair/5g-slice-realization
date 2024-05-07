@@ -669,10 +669,10 @@ Table of Contents
       or BGP Autonomous System (AS) Number).  Hence, the realization of
       this interconnection is technology-specific and requires
       coordination between the Customer Site Orchestration and an NSC.
-      Automating the provisioning and management of the AC is
-      recommended.  Aligned with [RFC8969], this document assumes that
-      this coordination is based upon standard YANG data models and
-      APIs.
+      Automating the provisioning and management of the AC is thus key
+      to automate the overall service provisioning.  Aligned with
+      [RFC8969], this document assumes that this coordination is based
+      upon standard YANG data models and APIs.
 
       Figure 7 is a basic example of a Layer 3 CE-PE link realization
       with shared network resources (such as VLAN-IDs and IP prefixes)
