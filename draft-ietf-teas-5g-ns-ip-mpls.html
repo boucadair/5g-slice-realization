@@ -2714,17 +2714,17 @@ VLANs representing slices           VLANs representing slices
         (not slice specific)     for S-NSSAI
     &lt;───────────────────────────&gt; &lt;───────&gt;
    ┌────┬────┬────┬────┬────┬────┬────┬────┐
-   │2001:0db8:xxxx:xxxx:xxxx:xxxx:ttdd:dddd│
+   │xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:ttdd:dddd│
    └─────────┴─────────┴─────────┴─────────┘
     tt     - SST (8 bits)
     dddddd - SD (24 bits)
 </pre>
 </div>
 <figcaption><a href="#figure-14" class="selfRef">Figure 14</a>:
-<a href="#name-an-example-of-s-nssai-embed" class="selfRef">An Example of S-NSSAI Embedded into IPv6</a>
+<a href="#name-an-example-of-s-nssai-embed" class="selfRef">An Example of S-NSSAI Embedded into an IPv6 Address</a>
           </figcaption></figure>
 </div>
-<p id="section-4.2-13">In the example shown in <a href="#_figure-11" class="auto internal xref">Figure 14</a>, the most significant 96 bits of the IPv6 address
+<p id="section-4.2-13">In reference to <a href="#_figure-11" class="auto internal xref">Figure 14</a>, the most significant 96 bits of the IPv6 address
    are unique to the NF, but do not carry any slice-specific information. The S-NSSAI information is embedded in the least
    significant 32 bits. The 96-bit part of the address may be structured by the provider, for example, on the
    geographical location or the DC identification.<a href="#section-4.2-13" class="pilcrow">¶</a></p>
