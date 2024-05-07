@@ -3808,7 +3808,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    constraints. For example, mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.<a href="#section-6-2.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-6-2.2">
-          <p id="section-6-2.2.1">A flex-algo <span>[<a href="#RFC9350" class="cite xref">RFC9350</a>]</span> with a particular metric-type (e.g., latency), or one that only uses links with particular properties (e.g., MACsec link <span>[<a href="#IEEE802.1AE" class="cite xref">IEEE802.1AE</a>]</span>), or excludes links that are within a particular geography.<a href="#section-6-2.2.1" class="pilcrow">¶</a></p>
+          <p id="section-6-2.2.1">A Flex-Algorithm <span>[<a href="#RFC9350" class="cite xref">RFC9350</a>]</span> with a particular metric-type (e.g., latency), or one that only uses links with particular properties (e.g., MACsec link <span>[<a href="#IEEE802.1AE" class="cite xref">IEEE802.1AE</a>]</span>), or excludes links that are within a particular geography.<a href="#section-6-2.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="section-6-3">Detailed realization of transport planes is out of the scope of this document.<a href="#section-6-3" class="pilcrow">¶</a></p>
@@ -4136,7 +4136,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
 <p id="section-7.1-10">The provider network may be implemented in such a way that it has
    various types of paths, for example low-latency traffic might be
    mapped onto a different transport path to other traffic (for example
-   a particular flex-algo, a particular set of TE paths, or a specific queue <span>[<a href="#RFC9330" class="cite xref">RFC9330</a>]</span>), as discussed
+   a particular Flex-Algorithm, a particular set of TE paths, or a specific queue <span>[<a href="#RFC9330" class="cite xref">RFC9330</a>]</span>), as discussed
    in <a href="#sec-qos-map" class="auto internal xref">Section 5</a>.  The 5G NSO can use
    <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="cite xref">I-D.ietf-teas-ietf-network-slice-nbi-yang</a>]</span> to request low-latency
    transport for a given slice if required.  However, <span>[<a href="#RFC8299" class="cite xref">RFC8299</a>]</span> or
@@ -4176,9 +4176,9 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    business VPN deployments, in that bandwidth guarantees are provided
    to the customers but are not explicitly underpinned end to end across
    the provider network.<a href="#section-7.2.1-2" class="pilcrow">¶</a></p>
-<p id="section-7.2.1-3">A variation on the scheme is that Flex-Algo <span>[<a href="#RFC9350" class="cite xref">RFC9350</a>]</span> is used. For example one Flex-Algo could
-   use latency-based metrics and another Flex-Algo could use the IGP
-   metric. There would be a many-to-one mapping of Network Slices to Flex-Algos.<a href="#section-7.2.1-3" class="pilcrow">¶</a></p>
+<p id="section-7.2.1-3">A variation on the scheme is that Flex-Algorithm <span>[<a href="#RFC9350" class="cite xref">RFC9350</a>]</span> is used. For example, one Flex-Algorithm could
+   use latency-based metrics and another Flex-Algorithm could use the IGP
+   metric. There would be a many-to-one mapping of Network Slices to Flex-Algorithms.<a href="#section-7.2.1-3" class="pilcrow">¶</a></p>
 <p id="section-7.2.1-4">While Scheme 1 is technically feasible, it is vulnerable to
    unexpected changes in traffic patterns and/or network element
    failures resulting in congestion.  This is because, unlike Schemes 2
