@@ -295,7 +295,7 @@ Table of Contents
 │      Site 1           │                     │       │      Site 2
            ┌────┐│       ┌────┐         ┌────┐         ┌────┐          │
 │┌──┐      │    │   AC  ││    │         │    ││  AC   ││ NF │
- │┌─┴┐─ ─ ─│ CE ├│─ ─ ─ ─│ PE │         │ PE │─ ─ ─ ─ ─│(CE)│          │
+ │┌─┴┐.....│ CE ├│─ ─ ─ ─│ PE │         │ PE │─ ─ ─ ─ ─│(CE)│          │
 │└┤┌─┴┐    │    │       ││    │         │    ││       ││    │
   └┤NF│    └────┘│       └────┘         └────┘         └────┘          │
 │  └──┘                 │                     │       │
@@ -315,13 +315,16 @@ Table of Contents
       Service.
 
    Customer site:  A customer manages and deploys 5G NFs (RAN and CN) in
-      customer sites.  On top of 5G NFs (e.g., gNodeB (gNB), 5G Core
+      customer sites.  On top of 5G NFs (e.g., gNodeB (gNB) and 5G Core
       (5GC)), a customer may manage additional TN elements (e.g.,
-      servers, routers, or switches) within a customer site.  A customer
-      site can be either a physical or a virtual location.  Examples of
-      customer sites are a customer private locations (Point of Presence
-      (PoP), DC), a VPC in a Public Cloud, or servers hosted within the
-      provider network or colocation service.
+      servers, routers, and switches) within a customer site.  A
+      customer site can be either a physical or a virtual location.
+      Examples of customer sites are a customer private locations (Point
+      of Presence (PoP), DC), a VPC in a Public Cloud, or servers hosted
+      within the provider network or colocation service.
+
+      NFs may be hosted on a CE, directly connected to a CE, or be
+      located multiple IP hops from a CE.
 
       The Orchestration of the TN within a customer site involves a set
       of controllers for automation purposes (e.g., Network Functions
@@ -342,7 +345,7 @@ Table of Contents
       the provider network.  The logical connectivity is enforced at
       Layer 2 and/or Layer 3 and is denominated an Attachment Circuit
       (AC).  Examples of CEs include TN components (e.g., router,
-      switch, or firewalls) and also 5G NFs (i.e., an element of the 5G
+      switch, and firewalls) and also 5G NFs (i.e., an element of the 5G
       domain such as Centralized Unit (CU), Distributed Unit (DU), or
       User Plane Function (UPF)).
 
@@ -351,9 +354,10 @@ Table of Contents
 
    Provider Edge (PE):  A device managed by a provider that is connected
       to a CE.  The connectivity between a CE and a PE is achieved using
-      one or multiple Attachment Circuit.  This document generalizes the
-      PE definition with the introduction of Distributed PEs in
-      Section 3.3.1.
+      one or multiple Attachment Circuits.
+
+      This document generalizes the PE definition with the introduction
+      of Distributed PEs in Section 3.3.1.
 
    Attachment Circuit (AC):  The logical connection that attaches a CE
       to a PE.  A CE is connected to a PE via one or multiple ACs.  An
