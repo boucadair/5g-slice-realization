@@ -1796,7 +1796,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    data plane on given link exceeds a threshold, the controller, knowing
    how much actual data plane traffic is currently travelling along each
    RSVP or SR-TE LSP, can tune the paths of one or more LSPs using the
-   link such that they avoid that link.
+   link such that they avoid that link. This approach is similar to that described in {{Section 4.3.1 of ?RFC9522}}.
 
    It would be undesirable to move a minimum-latency LSP rather than
    another type of LSP in order to ease the congestion, as the new path
