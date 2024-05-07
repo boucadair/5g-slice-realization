@@ -227,7 +227,7 @@ The term "Transport Network" is used for disambiguation with 5G network (e.g., I
 
    * TN Slicing:
 
-      The term "TN slice" refers to a slice in the Transport Network domain of the overall 5G
+      The term "TN slice" refers to a slice in the Transport Network domain of the 5G
       architecture.
 
       The objective of TN Slicing is to isolate,
