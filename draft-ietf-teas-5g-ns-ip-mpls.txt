@@ -115,8 +115,8 @@ Table of Contents
      7.1.  Bandwidth Requirements
      7.2.  Bandwidth Models
        7.2.1.  Scheme 1: Shortest Path Forwarding (SPF)
-       7.2.2.  Scheme 2: TE LSPs with Fixed Bandwidth Reservations
-       7.2.3.  Scheme 3: TE LSPs without Bandwidth Reservation
+       7.2.2.  Scheme 2: TE Paths with Fixed Bandwidth Reservations
+       7.2.3.  Scheme 3: TE Paths without Bandwidth Reservation
    8.  Network Slicing OAM
    9.  IANA Considerations
    10. Security Considerations
@@ -2425,9 +2425,9 @@ Table of Contents
    and 3 which employ TE, traffic cannot be diverted from the shortest
    path.
 
-7.2.2.  Scheme 2: TE LSPs with Fixed Bandwidth Reservations
+7.2.2.  Scheme 2: TE Paths with Fixed Bandwidth Reservations
 
-   Scheme 2 uses RSVP-TE [RFC3209] or SR-TE LSPs [RFC9256] with fixed
+   Scheme 2 uses RSVP-TE [RFC3209] or SR-TE paths [RFC9256] with fixed
    bandwidth reservations.  By "fixed", we mean a value that stays
    constant over time, unless the 5G NSO communicates a change in slice
    bandwidth requirements, due to the creation or modification of a
@@ -2473,10 +2473,10 @@ Table of Contents
    failure and therefore may not know that it now needs to apply
    bandwidth reservations to LSPs from PE1B to PE2A/PE2B.
 
-7.2.3.  Scheme 3: TE LSPs without Bandwidth Reservation
+7.2.3.  Scheme 3: TE Paths without Bandwidth Reservation
 
-   Like Scheme 2, Scheme 3 uses RSVP-TE or SR-TE LSPs.  There could be a
-   single mesh of LSPs between endpoints that carry all of the traffic
+   Like Scheme 2, Scheme 3 uses RSVP-TE or SR-TE paths.  There could be
+   a single mesh of LSPs between endpoints that carry all of the traffic
    types, or there could be a small handful of meshes, for example one
    mesh for low-latency traffic that follows the minimum latency path
    and another mesh for the other traffic that follows the minimum IGP

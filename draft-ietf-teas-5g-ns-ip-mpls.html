@@ -1281,10 +1281,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
                     <p id="section-toc.1-1.7.2.2.2.1.1"><a href="#section-7.2.1" class="auto internal xref">7.2.1</a>.  <a href="#name-scheme-1-shortest-path-forw" class="internal xref">Scheme 1: Shortest Path Forwarding (SPF)</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2.2.2">
-                    <p id="section-toc.1-1.7.2.2.2.2.1"><a href="#section-7.2.2" class="auto internal xref">7.2.2</a>.  <a href="#name-scheme-2-te-lsps-with-fixed" class="internal xref">Scheme 2: TE LSPs with Fixed Bandwidth Reservations</a></p>
+                    <p id="section-toc.1-1.7.2.2.2.2.1"><a href="#section-7.2.2" class="auto internal xref">7.2.2</a>.  <a href="#name-scheme-2-te-paths-with-fixe" class="internal xref">Scheme 2: TE Paths with Fixed Bandwidth Reservations</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2.2.3">
-                    <p id="section-toc.1-1.7.2.2.2.3.1"><a href="#section-7.2.3" class="auto internal xref">7.2.3</a>.  <a href="#name-scheme-3-te-lsps-without-ba" class="internal xref">Scheme 3: TE LSPs without Bandwidth Reservation</a></p>
+                    <p id="section-toc.1-1.7.2.2.2.3.1"><a href="#section-7.2.3" class="auto internal xref">7.2.3</a>.  <a href="#name-scheme-3-te-paths-without-b" class="internal xref">Scheme 3: TE Paths without Bandwidth Reservation</a></p>
 </li>
                 </ul>
 </li>
@@ -4162,12 +4162,12 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    path.<a href="#section-7.2.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="scheme-2-te-lsps-with-fixed-bandwidth-reservations">
+<div id="scheme-2-te-paths-with-fixed-bandwidth-reservations">
 <section id="section-7.2.2">
-          <h4 id="name-scheme-2-te-lsps-with-fixed">
-<a href="#section-7.2.2" class="section-number selfRef">7.2.2. </a><a href="#name-scheme-2-te-lsps-with-fixed" class="section-name selfRef">Scheme 2: TE LSPs with Fixed Bandwidth Reservations</a>
+          <h4 id="name-scheme-2-te-paths-with-fixe">
+<a href="#section-7.2.2" class="section-number selfRef">7.2.2. </a><a href="#name-scheme-2-te-paths-with-fixe" class="section-name selfRef">Scheme 2: TE Paths with Fixed Bandwidth Reservations</a>
           </h4>
-<p id="section-7.2.2-1">Scheme 2 uses RSVP-TE <span>[<a href="#RFC3209" class="cite xref">RFC3209</a>]</span> or SR-TE LSPs <span>[<a href="#RFC9256" class="cite xref">RFC9256</a>]</span> with fixed bandwidth
+<p id="section-7.2.2-1">Scheme 2 uses RSVP-TE <span>[<a href="#RFC3209" class="cite xref">RFC3209</a>]</span> or SR-TE paths <span>[<a href="#RFC9256" class="cite xref">RFC9256</a>]</span> with fixed bandwidth
    reservations.  By "fixed", we mean a value that stays constant over
    time, unless the 5G NSO communicates a change in slice bandwidth
    requirements, due to the creation or modification of a slice.  Note
@@ -4214,12 +4214,12 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    LSPs from PE1B to PE2A/PE2B.<a href="#section-7.2.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="scheme-3-te-lsps-without-bandwidth-reservation">
+<div id="scheme-3-te-paths-without-bandwidth-reservation">
 <section id="section-7.2.3">
-          <h4 id="name-scheme-3-te-lsps-without-ba">
-<a href="#section-7.2.3" class="section-number selfRef">7.2.3. </a><a href="#name-scheme-3-te-lsps-without-ba" class="section-name selfRef">Scheme 3: TE LSPs without Bandwidth Reservation</a>
+          <h4 id="name-scheme-3-te-paths-without-b">
+<a href="#section-7.2.3" class="section-number selfRef">7.2.3. </a><a href="#name-scheme-3-te-paths-without-b" class="section-name selfRef">Scheme 3: TE Paths without Bandwidth Reservation</a>
           </h4>
-<p id="section-7.2.3-1">Like Scheme 2, Scheme 3 uses RSVP-TE or SR-TE LSPs.  There could be a
+<p id="section-7.2.3-1">Like Scheme 2, Scheme 3 uses RSVP-TE or SR-TE paths.  There could be a
    single mesh of LSPs between endpoints that carry all of the traffic
    types, or there could be a small handful of meshes, for example one
    mesh for low-latency traffic that follows the minimum latency path
