@@ -459,7 +459,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
 
       This realization model of transport for 5G slices assumes Layer 3
       delivery for midhaul and backhaul transport connections, and a
-      Layer 2 or Layer 3 for
+      Layer 2 or Layer 3 delivery for
       fronthaul connections. Enhanced Common Public Radio Interface (eCPRI) {{ECPRI}} supports both delivery models. L2VPN/L3VPN service instances might be
       used as a basic form of logical slice separation.  Furthermore, using
       service instances results in an additional outer header (as packets
