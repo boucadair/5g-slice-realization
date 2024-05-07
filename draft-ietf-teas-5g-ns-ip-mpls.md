@@ -353,7 +353,7 @@ In reference to the architecture depicted in {{sec-5g-sli-arch}}, the connectivi
 
 Customer Site:
 : Either connects two NFs located in the same customer site (e.g., NF1-NF2) or connects a NF to a CE (e.g., NF1-CE). This segment may not be present if the NF is the CE (e.g., NF3): in this case the AC connects the NF to the PE.
-: The realization of this segment is driven by the 5G Network Orchestration and potentially the Customer Site Orchestration. The realization of this segment does not involve the Transport Network Orchestration.
+: The realization of this segment is driven by the 5G Network Orchestration (e.g., NFs instantiation) and the Customer Site Orchestration for the TN part.
 
 Provider Network:
 : Represents the connectivity between two PEs (e.g., PE1-PE2). The realization of this segment is controlled by an RFC 9543 NSC.
