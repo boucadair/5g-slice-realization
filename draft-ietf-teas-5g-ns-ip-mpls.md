@@ -405,7 +405,7 @@ More complex scenarios can happen with extra segmentation of the TN and addition
    There are multiple options for mapping 5G Network Slices to TN slices:
 
    * 1 to N:
-A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For instance, consider the scenario depicted in {{figure-5}}, illustrating the separation of the 5G Control Plane and User Plane in TN slices for a single 5G Enhanced Mobile Broadband (eMBB) network slice. It is important to note that this mapping can serve as an interim step to N:M mapping. In this scenario, a subset of the TN slices can be intended for sharing by multiple 5G network slices (e.g., the Control Plane TN slice is shared by multiple 5G network Slices). Further details about this scheme are described in {{sec-firstslice}}.
+A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For instance, consider the scenario depicted in {{figure-5}}, illustrating the separation of the 5G Control Plane and User Plane in TN slices for a single 5G Enhanced Mobile Broadband (eMBB) network slice. It is important to note that this mapping can serve as an interim step to M to N mapping. Further details about this scheme are described in {{sec-firstslice}}.
 
    * M to 1:
       Multiple 5G Network Slices may rely upon the same TN slice.  In such a case, the Service Level Agreement (SLA) differentiation of slices
@@ -420,7 +420,9 @@ A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For inst
       The 5G to TN slice mapping combines both
       approaches with a mix of shared and dedicated associations.
 
-In practice, for operational and scaling reasons, typically M to N would be used, with M >> N.
+      In this scenario, a subset of the TN slices can be intended for sharing by multiple 5G Network Slices (e.g., the Control Plane TN slice is shared by multiple 5G network Slices).
+
+      In practice, for operational and scaling reasons, typically M to N would be used, with M >> N.
 
 ~~~
 {::include ./drawings/1-to-n-mapping.txt}
