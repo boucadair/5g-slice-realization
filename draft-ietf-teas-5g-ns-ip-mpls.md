@@ -314,15 +314,16 @@ A co-managed CE is orchestrated by both the customer and the provider. In this c
 
 ### Service-aware CE
 
-While in most cases CEs connect to PEs using IP (e.g., VLANs subinterface on a Layer 3 interface), a CE may also connect to the provider network using MPLS -potentially over IP tunnels- or Segment Routing over IPv6 (SRv6) {{?RFC8986}}. The CE has awareness of provider services configuration (e.g., control plane identifiers such as Route Targets (RTs) and Route Distinguishers (RDs)). An example of such an AC is depicted in {{figure-51}}. This is a source of confusion since these configurations are typically enforced on PEs. Notwithstanding, the reference design based on Orchestration scope prevails: the CE is managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE.
+While in most cases CEs connect to PEs using IP (e.g., VLANs subinterface on a Layer 3 interface), a CE may also connect to the provider network using other technologies such as MPLS -potentially over IP tunnels- or Segment Routing over IPv6 (SRv6) {{?RFC8986}}. The CE has thus awareness of provider services configuration (e.g., control plane identifiers such as Route Targets (RTs) and Route Distinguishers (RDs)). An example of such an AC is depicted in {{figure-51}}.
+
+This deployment is a source of confusion since service configurations are typically enforced on PEs. Notwithstanding, the reference design based on the orchestration scopes prevails: the CE is managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE.
 
 ~~~~
 {::include ./drawings/mpls-ac.txt}
 ~~~~
 {: #figure-51 title="Example of MPLS-based Attachment Circuit" artwork-align="center"}
 
-This use case is also referred to in {{sec-10b}} and {{sec-10c}}.
-
+Service-aware CEs are used, for example, in the deployment discussed in Sections {{<sec-10b}} and {{<sec-10c}}.
 
 ##  Orchestration Overview {#sec-orch}
 
@@ -683,8 +684,8 @@ The realization model described in the document inherits the scalability propert
    : VRF-to-VRF connections.
 
    Option B ({{sec-10b}}):
-     : redistribution of labeled VPN routes with next-hop
-      change at domain boundaries.
+   : redistribution of labeled VPN routes with next-hop
+     change at domain boundaries.
 
    Option C ({{sec-10c}}):
    :  redistribution of labeled VPN routes without next-hop
