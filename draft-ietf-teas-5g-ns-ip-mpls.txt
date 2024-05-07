@@ -2534,11 +2534,6 @@ Table of Contents
       should be able to select whatever OAM technology or specific
       feature that would address their needs.
 
-      SFC OAM [RFC9451] should also be supported for slices that make
-      uses of service function chaining [RFC7665].  An example of SFC
-      OAM technique to Continuity Check, Connectivity Verification, or
-      tracing service functions is specified in [RFC9516].
-
    *  Providers may want to enable differentiated failure detect and
       repair features for a subset of network slices.  For example, a
       given Network Slice may require fast detect and repair mechanisms,
@@ -2823,11 +2818,6 @@ Table of Contents
               DOI 10.17487/RFC7510, April 2015,
               <https://www.rfc-editor.org/rfc/rfc7510>.
 
-   [RFC7665]  Halpern, J., Ed. and C. Pignataro, Ed., "Service Function
-              Chaining (SFC) Architecture", RFC 7665,
-              DOI 10.17487/RFC7665, October 2015,
-              <https://www.rfc-editor.org/rfc/rfc7665>.
-
    [RFC7799]  Morton, A., "Active and Passive Metrics and Methods (with
               Hybrid Types In-Between)", RFC 7799, DOI 10.17487/RFC7799,
               May 2016, <https://www.rfc-editor.org/rfc/rfc7799>.
@@ -2907,17 +2897,6 @@ Table of Contents
               Q., and V. Lopez, "A YANG Network Data Model for Service
               Attachment Points (SAPs)", RFC 9408, DOI 10.17487/RFC9408,
               June 2023, <https://www.rfc-editor.org/rfc/rfc9408>.
-
-   [RFC9451]  Boucadair, M., "Operations, Administration, and
-              Maintenance (OAM) Packet and Behavior in the Network
-              Service Header (NSH)", RFC 9451, DOI 10.17487/RFC9451,
-              August 2023, <https://www.rfc-editor.org/rfc/rfc9451>.
-
-   [RFC9516]  Mirsky, G., Meng, W., Ao, T., Khasnabish, B., Leung, K.,
-              and G. Mishra, "Active Operations, Administration, and
-              Maintenance (OAM) for Service Function Chaining (SFC)",
-              RFC 9516, DOI 10.17487/RFC9516, November 2023,
-              <https://www.rfc-editor.org/rfc/rfc9516>.
 
    [RFC9522]  Farrel, A., Ed., "Overview and Principles of Internet
               Traffic Engineering", RFC 9522, DOI 10.17487/RFC9522,
