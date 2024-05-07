@@ -1281,12 +1281,13 @@ Table of Contents
    network edge, the PE needs to determine which label represents which
    slice.  In the BGP control plane, when exchanging service prefixes
    over attachment circuit, each slice might be represented by a unique
-   BGP community, so tracking label assignment to the slice is possible.
-   For example, in Figure 16, for the slice identified with COM=1, the
-   PE advertises a dynamically allocated label A".  Since, based on the
-   community, the label to slice association is known, the PE can use
-   this dynamically allocated label A" to identify incoming packets as
-   belonging to slice 1, and execute appropriate edge per-hop behavior.
+   BGP community, so tracking label assignment to the slice might be
+   possible.  For example, in Figure 16, for the slice identified with
+   COM=1, the PE advertises a dynamically allocated label A".  Since,
+   based on the community, the label to slice association is known, the
+   PE can use this dynamically allocated label A" to identify incoming
+   packets as belonging to slice 1, and execute appropriate edge per-hop
+   behavior.
 
    It is worth noting that slice identification in the BGP control plane
    might be with per-prefix granularity.  In the extreme case, each
