@@ -929,8 +929,8 @@ Table of Contents
       instances) providing clean discrimination between 5G QoS and TN
       QoS, as explained in Section 5.
 
-      The use of VPNs for is briefly described in Appendix A.4 of
-      [RFC9543].
+      The use of VPNs for realizing Network Slices is briefly described
+      in Appendix A.4 of [RFC9543].
 
    *  Fine-grained resource control at the PE:
 
