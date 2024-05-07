@@ -1414,7 +1414,7 @@ to TN QoS Classes may be rather common.
 
    * A mesh of RSVP-TE {{?RFC3209}} or SR-TE {{?RFC9256}} tunnels created with specific optimization criteria and
    constraints. For example, mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.
-   * A flex-algo {{?RFC9350}} with a particular metric-type (e.g., latency), or one that only uses links with particular properties (e.g., MACsec link {{IEEE802.1AE}}), or excludes links that are within a particular geography.
+   * A Flex-Algorithm {{?RFC9350}} with a particular metric-type (e.g., latency), or one that only uses links with particular properties (e.g., MACsec link {{IEEE802.1AE}}), or excludes links that are within a particular geography.
 
    Detailed realization of transport planes is out of the scope of this document.
 
@@ -1685,7 +1685,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    The provider network may be implemented in such a way that it has
    various types of paths, for example low-latency traffic might be
    mapped onto a different transport path to other traffic (for example
-   a particular flex-algo, a particular set of TE paths, or a specific queue {{?RFC9330}}), as discussed
+   a particular Flex-Algorithm, a particular set of TE paths, or a specific queue {{?RFC9330}}), as discussed
    in {{sec-qos-map}}.  The 5G NSO can use
    {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}} to request low-latency
    transport for a given slice if required.  However, {{?RFC8299}} or
@@ -1721,9 +1721,9 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    to the customers but are not explicitly underpinned end to end across
    the provider network.
 
-   A variation on the scheme is that Flex-Algo {{?RFC9350}} is used. For example one Flex-Algo could
-   use latency-based metrics and another Flex-Algo could use the IGP
-   metric. There would be a many-to-one mapping of Network Slices to Flex-Algos.
+   A variation on the scheme is that Flex-Algorithm {{?RFC9350}} is used. For example, one Flex-Algorithm could
+   use latency-based metrics and another Flex-Algorithm could use the IGP
+   metric. There would be a many-to-one mapping of Network Slices to Flex-Algorithms.
 
    While Scheme 1 is technically feasible, it is vulnerable to
    unexpected changes in traffic patterns and/or network element
