@@ -188,6 +188,8 @@ This work is compatible with the framework defined in {{!RFC9543}} which describ
 
 The realization approach described in this document is typically triggered by Network Slice Service requests. How a Network Slice Service request is placed for realization, including how it is derived from a 5G Slice Service request, is out of scope. Mapping considerations between 3GPP and IETF Network Slice Service (e.g., mapping of service parameters) are discussed, e.g., in {{?I-D.ietf-teas-5g-network-slice-application}}.
 
+The realization model described in this document uses a single Network Resource Partition (NRP) ({{Section 7.1 of !RFC9543}}). The applicability to multiple NRPs is out of scope.
+
 Although this document focuses on 5G, the realizations are not fundamentally constrained by the 5G use case. The document is not intended to be a BCP and does not claim to specify mandatory mechanisms to realize network slices. Rather, a key goal of the document is to provide pragmatic implementation approaches by leveraging existing readily-available, widely-deployed techniques. The document is also intended to align the mobile and the IETF perspectives of slicing from a realization perspective.
 
 A brief 5G overview is provided in {{sec-5g-overview}} for the reader's convenience. The reader may refer to {{TS-23.501}} or {{5G-Book}} for more details about 3GPP network architectures.
@@ -499,7 +501,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
       and other part of the admission control is implemented on the PE.
 
    *  Coarse-grained resource control at the transit (non-attachment
-      circuits) links in the provider network, using a single Network Resource Partition (NRP), spanning the entire provider network.
+      circuits) links in the provider network, using a single NRP (called "base NRP" in {{figure-high-level-qos}}), spanning the entire provider network.
       Transit nodes in the provider network do not maintain any state of individual slices.
       Instead, only a flat (non-hierarchical) QoS model is used on
       transit links in the provider network, with up to 8 traffic classes.  At the PE,
@@ -514,7 +516,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
       ensure a more or less equal traffic distribution (i.e., equal cost load
       balancing), to advanced TE techniques, with or
       without bandwidth reservations, to force more consistent load
-      distribution even in non-ECMP friendly network topologies. See also {{Section 8 of ?RFC9522}}}.
+      distribution even in non-ECMP friendly network topologies. See also {{Section 8 of ?RFC9522}}).
 
 ~~~~
 {::include ./drawings/high-level-qos.txt}
