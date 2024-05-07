@@ -342,6 +342,8 @@ Customer Site Orchestration domain:
 
 A TN slice relies upon resources that can involve both the provider and customer TN domains. More details are provided in {{sec-tn-nsi}}.
 
+> A TN slice might be considered as a variant of horizontal composition of Network Slices mentioned in Appendix A.6 of {{!RFC9543}}.
+
 ~~~~
 {::include ./drawings/tn-orchestration.txt}
 ~~~~
