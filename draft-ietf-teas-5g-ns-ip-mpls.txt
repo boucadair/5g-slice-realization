@@ -91,8 +91,9 @@ Table of Contents
        3.4.3.  Additional Segmentation and Domains
      3.5.  Mapping Schemes Between 5G Network Slices and Transport
            Network Slices
-     3.6.  First 5G Slice versus Subsequent Slices
-     3.7.  Overview of the Transport Network Realization Model
+     3.6.  Scalability Implications
+     3.7.  First 5G Slice versus Subsequent Slices
+     3.8.  Overview of the Transport Network Realization Model
    4.  Hand-off Between Domains
      4.1.  VLAN Hand-off
      4.2.  IP Hand-off
@@ -727,11 +728,11 @@ Table of Contents
       subset of the TN slices can be intended for sharing by multiple 5G
       network slices (e.g., the Control Plane TN slice is shared by
       multiple 5G network Slices).  Further details about this scheme
-      are described in Section 3.6.
+      are described in Section 3.7.
 
    *  M to 1: Multiple 5G Network Slices may rely upon the same TN
       slice.  In such a case, the Service Level Agreement (SLA)
-      differentiation of slices would be entirely controlled at 5G
+      differentiation of slices would be entirely controlled at the 5G
       Control Plane, for example, with appropriate placement strategies:
       this use case is represented in Figure 9, where a User Plane
       Function (UPF) for the Ultra Reliable Low Latency Communication
@@ -799,7 +800,9 @@ Table of Contents
    capabilities, the NF vendor reference designs, as well as service
    provider or even legal requirements.
 
-   Specifically, the actual mapping is a design choice of service
+3.6.  Scalability Implications
+
+   The actual mapping (see Section 3.5) is a design choice of service
    operators that may be a function of, e.g., the number of instantiated
    slices, requested services, or local engineering capabilities and
    guidelines.  However, operators should carefully consider means to
@@ -808,11 +811,12 @@ Table of Contents
    Network Slices and accommodate the need of only a few customers.
    That provider may decide to move to a N-to-1 mapping for aggregation/
    scalability purposes if sustained increased slice demand is observed.
+
    Putting in place adequate automation means to realize Network Slices
-   (including the adjustment of slice services to Network Slices
+   (including the adjustment of Slice Services to Network Slices
    mapping) would ease slice migration operations.
 
-3.6.  First 5G Slice versus Subsequent Slices
+3.7.  First 5G Slice versus Subsequent Slices
 
    An operational 5G Network Slice incorporates both 5G Control Plane
    and User Plane capabilities.  For instance, consider a slice based on
@@ -892,7 +896,7 @@ Table of Contents
    slices and minimize the realization delay that might be induced by
    extra cycles to seek for operator validation.
 
-3.7.  Overview of the Transport Network Realization Model
+3.8.  Overview of the Transport Network Realization Model
 
    The realization model described in this document is depicted in
    Figure 11.  The following building blocks are used:
@@ -983,6 +987,13 @@ Table of Contents
    This document does not describe in detail how to manage an L2VPN or
    L3VPN, as this is already well-documented.  For example, the reader
    may refer to [RFC4176] and [RFC6136] for such details.
+
+   The realization model described in the document inherits the
+   scalability properties of the underlying L2VPN and L3VPN
+   technologies.  Readers may refer, for example, to Section 13 of
+   [RFC4365] or Section 1.2.5 of [RFC6624] for a scalability assessment
+   of some of these technologies.  Per Section 3.6, providers may adjust
+   the mapping model to better handle local scalability constraints.
 
 4.  Hand-off Between Domains
 
@@ -1380,7 +1391,7 @@ Table of Contents
    considerably reduced.
 
    For any slice-specific per-hop behavior at the provider network edge,
-   as described in details in Section 3.7, the PE need to determine
+   as described in details in Section 3.8, the PE need to determine
    which label in the packet represents which slice.  This can be
    achieved, for example, by allocating non-overlapping service label
    ranges for each slice, and use these ranges for slice identification
@@ -2778,6 +2789,11 @@ Table of Contents
               DOI 10.17487/RFC4176, October 2005,
               <https://www.rfc-editor.org/rfc/rfc4176>.
 
+   [RFC4365]  Rosen, E., "Applicability Statement for BGP/MPLS IP
+              Virtual Private Networks (VPNs)", RFC 4365,
+              DOI 10.17487/RFC4365, February 2006,
+              <https://www.rfc-editor.org/rfc/rfc4365>.
+
    [RFC4664]  Andersson, L., Ed. and E. Rosen, Ed., "Framework for Layer
               2 Virtual Private Networks (L2VPNs)", RFC 4664,
               DOI 10.17487/RFC4664, September 2006,
@@ -2819,6 +2835,11 @@ Table of Contents
               Partnership Project (3GPP) Evolved Packet System (EPS)",
               RFC 6459, DOI 10.17487/RFC6459, January 2012,
               <https://www.rfc-editor.org/rfc/rfc6459>.
+
+   [RFC6624]  Kompella, K., Kothari, B., and R. Cherukuri, "Layer 2
+              Virtual Private Networks Using BGP for Auto-Discovery and
+              Signaling", RFC 6624, DOI 10.17487/RFC6624, May 2012,
+              <https://www.rfc-editor.org/rfc/rfc6624>.
 
    [RFC7276]  Mizrahi, T., Sprecher, N., Bellagamba, E., and Y.
               Weingarten, "An Overview of Operations, Administration,

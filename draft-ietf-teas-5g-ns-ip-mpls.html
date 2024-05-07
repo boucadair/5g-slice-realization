@@ -1195,10 +1195,13 @@ svg :is([fill="white"], [fill^="#fff"]) {
                 <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="auto internal xref">3.5</a>.  <a href="#name-mapping-schemes-between-5g-" class="internal xref">Mapping Schemes Between 5G Network Slices and Transport Network Slices</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.6">
-                <p id="section-toc.1-1.3.2.6.1"><a href="#section-3.6" class="auto internal xref">3.6</a>.  <a href="#name-first-5g-slice-versus-subse" class="internal xref">First 5G Slice versus Subsequent Slices</a></p>
+                <p id="section-toc.1-1.3.2.6.1"><a href="#section-3.6" class="auto internal xref">3.6</a>.  <a href="#name-scalability-implications" class="internal xref">Scalability Implications</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.7">
-                <p id="section-toc.1-1.3.2.7.1"><a href="#section-3.7" class="auto internal xref">3.7</a>.  <a href="#name-overview-of-the-transport-n" class="internal xref">Overview of the Transport Network Realization Model</a></p>
+                <p id="section-toc.1-1.3.2.7.1"><a href="#section-3.7" class="auto internal xref">3.7</a>.  <a href="#name-first-5g-slice-versus-subse" class="internal xref">First 5G Slice versus Subsequent Slices</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.8">
+                <p id="section-toc.1-1.3.2.8.1"><a href="#section-3.8" class="auto internal xref">3.8</a>.  <a href="#name-overview-of-the-transport-n" class="internal xref">Overview of the Transport Network Realization Model</a></p>
 </li>
             </ul>
 </li>
@@ -1883,7 +1886,7 @@ are passed between Orchestrators via a dedicated interface, e.g., the RFC 9543 N
 </div>
 </section>
 </div>
-<div id="additional-segmentation-and-domains">
+<div id="sec-add-seg-domains">
 <section id="section-3.4.3">
           <h4 id="name-additional-segmentation-and">
 <a href="#section-3.4.3" class="section-number selfRef">3.4.3. </a><a href="#name-additional-segmentation-and" class="section-name selfRef">Additional Segmentation and Domains</a>
@@ -1902,12 +1905,12 @@ are passed between Orchestrators via a dedicated interface, e.g., the RFC 9543 N
 <ul class="normal">
 <li class="normal" id="section-3.5-2.1">
             <p id="section-3.5-2.1.1">1 to N:
-A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For instance, consider the scenario depicted in <a href="#_figure-5" class="auto internal xref">Figure 8</a>, illustrating the separation of the 5G Control Plane and User Plane in TN slices for a single 5G Enhanced Mobile Broadband (eMBB) network slice. It is important to note that this mapping can serve as an interim step to N:M mapping. In this scenario, a subset of the TN slices can be intended for sharing by multiple 5G network slices (e.g., the Control Plane TN slice is shared by multiple 5G network Slices). Further details about this scheme are described in <a href="#sec-firstslice" class="auto internal xref">Section 3.6</a>.<a href="#section-3.5-2.1.1" class="pilcrow">¶</a></p>
+A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For instance, consider the scenario depicted in <a href="#_figure-5" class="auto internal xref">Figure 8</a>, illustrating the separation of the 5G Control Plane and User Plane in TN slices for a single 5G Enhanced Mobile Broadband (eMBB) network slice. It is important to note that this mapping can serve as an interim step to N:M mapping. In this scenario, a subset of the TN slices can be intended for sharing by multiple 5G network slices (e.g., the Control Plane TN slice is shared by multiple 5G network Slices). Further details about this scheme are described in <a href="#sec-firstslice" class="auto internal xref">Section 3.7</a>.<a href="#section-3.5-2.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-3.5-2.2">
             <p id="section-3.5-2.2.1">M to 1:
  Multiple 5G Network Slices may rely upon the same TN slice.  In such a case, the Service Level Agreement (SLA) differentiation of slices
- would be entirely controlled at 5G Control Plane, for example, with
+ would be entirely controlled at the 5G Control Plane, for example, with
  appropriate placement strategies: this use case is represented in
  <a href="#_figure-6" class="auto internal xref">Figure 9</a>, where a User Plane Function (UPF) for the Ultra Reliable Low Latency Communication (URLLC) slice is
  instantiated at the edge cloud close to the gNB Centralized Unit User Plane (CU-UP) for
@@ -1987,23 +1990,31 @@ A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For inst
    factors, such as the actual business cases, the NF vendor
    capabilities, the NF vendor reference designs, as well as service
    provider or even legal requirements.<a href="#section-3.5-6" class="pilcrow">¶</a></p>
-<p id="section-3.5-7">Specifically, the actual mapping is a design choice of service operators that may be a function of, e.g., the number of instantiated slices, requested services, or local engineering capabilities and guidelines. However, operators should carefully consider means to ease slice migration strategies. For example, a provider may initially adopt a 1-to-1 mapping if it has to instantiate just a few Network Slices and accommodate the need of only a few customers. That provider may decide to move to a N-to-1 mapping for aggregation/scalability purposes if sustained increased slice demand is observed. Putting in place adequate automation means to realize Network Slices (including the adjustment of slice services to Network Slices mapping) would ease slice migration operations.<a href="#section-3.5-7" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="sec-sca-impli">
+<section id="section-3.6">
+        <h3 id="name-scalability-implications">
+<a href="#section-3.6" class="section-number selfRef">3.6. </a><a href="#name-scalability-implications" class="section-name selfRef">Scalability Implications</a>
+        </h3>
+<p id="section-3.6-1">The actual mapping (see <a href="#sec-mapping" class="auto internal xref">Section 3.5</a>) is a design choice of service operators that may be a function of, e.g., the number of instantiated slices, requested services, or local engineering capabilities and guidelines. However, operators should carefully consider means to ease slice migration strategies. For example, a provider may initially adopt a 1-to-1 mapping if it has to instantiate just a few Network Slices and accommodate the need of only a few customers. That provider may decide to move to a N-to-1 mapping for aggregation/scalability purposes if sustained increased slice demand is observed.<a href="#section-3.6-1" class="pilcrow">¶</a></p>
+<p id="section-3.6-2">Putting in place adequate automation means to realize Network Slices (including the adjustment of Slice Services to Network Slices mapping) would ease slice migration operations.<a href="#section-3.6-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-firstslice">
-<section id="section-3.6">
+<section id="section-3.7">
         <h3 id="name-first-5g-slice-versus-subse">
-<a href="#section-3.6" class="section-number selfRef">3.6. </a><a href="#name-first-5g-slice-versus-subse" class="section-name selfRef">First 5G Slice versus Subsequent Slices</a>
+<a href="#section-3.7" class="section-number selfRef">3.7. </a><a href="#name-first-5g-slice-versus-subse" class="section-name selfRef">First 5G Slice versus Subsequent Slices</a>
         </h3>
-<p id="section-3.6-1">An operational 5G Network Slice incorporates both 5G Control Plane and User Plane capabilities.
-For instance, consider a slice based on split-CU in the RAN, both CU-UP and Centralized Unit Control Plane (CU-CP) need to be deployed along with the associated interfaces E1, F1-c, F1-u, N2, and N3 which are conveyed in the TN. In this regard, the creation of the "first slice" can be subject to a specific logic that does not apply to subsequent slices. Let us consider the example depicted in <a href="#_figure-7" class="auto internal xref">Figure 10</a> to illustrate this deploloyment. In this example, the first 5G slice relies on the deployment of NF-CP and NF-UP functions together with two TN slices for Control and User Planes (INS-CP and INS-UP1). Next, the deployment of a second slice relies solely on the instantiation of a User Plane Function (NF-UP2) together with a dedicated User Plane TN slice (INS-UP2). In this example, the Control Plane of the first 5G slice is also updated to integrate the second slice: the TN slice (INS-CP) and Network Functions (NF-CP) are shared.<a href="#section-3.6-1" class="pilcrow">¶</a></p>
-<p id="section-3.6-2">At the time of writing (2024), Section 6.1.2 of <span>[<a href="#NG.113" class="cite xref">NG.113</a>]</span> specifies that the
+<p id="section-3.7-1">An operational 5G Network Slice incorporates both 5G Control Plane and User Plane capabilities.
+For instance, consider a slice based on split-CU in the RAN, both CU-UP and Centralized Unit Control Plane (CU-CP) need to be deployed along with the associated interfaces E1, F1-c, F1-u, N2, and N3 which are conveyed in the TN. In this regard, the creation of the "first slice" can be subject to a specific logic that does not apply to subsequent slices. Let us consider the example depicted in <a href="#_figure-7" class="auto internal xref">Figure 10</a> to illustrate this deploloyment. In this example, the first 5G slice relies on the deployment of NF-CP and NF-UP functions together with two TN slices for Control and User Planes (INS-CP and INS-UP1). Next, the deployment of a second slice relies solely on the instantiation of a User Plane Function (NF-UP2) together with a dedicated User Plane TN slice (INS-UP2). In this example, the Control Plane of the first 5G slice is also updated to integrate the second slice: the TN slice (INS-CP) and Network Functions (NF-CP) are shared.<a href="#section-3.7-1" class="pilcrow">¶</a></p>
+<p id="section-3.7-2">At the time of writing (2024), Section 6.1.2 of <span>[<a href="#NG.113" class="cite xref">NG.113</a>]</span> specifies that the
    eMBB slice (SST=1 and no Slice Differentiator (SD)) should be supported globally.  This 5G
-   slice would be the first slice in any 5G deployment.<a href="#section-3.6-2" class="pilcrow">¶</a></p>
+   slice would be the first slice in any 5G deployment.<a href="#section-3.7-2" class="pilcrow">¶</a></p>
 <span id="name-first-and-subsequent-slice-"></span><div id="_figure-7">
 <figure id="figure-10">
-          <div id="section-3.6-3.1">
-            <div class="alignCenter art-svg artwork" id="section-3.6-3.1.1">
+          <div id="section-3.7-3.1">
+            <div class="alignCenter art-svg artwork" id="section-3.7-3.1.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="768" width="528" viewBox="0 0 528 768" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
                 <path d="M 268,328 L 276,344" fill="none" stroke="black"></path>
                 <path d="M 276,344 L 284,360" fill="none" stroke="black"></path>
@@ -2429,27 +2440,27 @@ For instance, consider a slice based on split-CU in the RAN, both CU-UP and Cent
                   <text x="432" y="756">Control</text>
                   <text x="488" y="756">Plane</text>
                 </g>
-              </svg><a href="#section-3.6-3.1.1" class="pilcrow">¶</a>
+              </svg><a href="#section-3.7-3.1.1" class="pilcrow">¶</a>
 </div>
 </div>
 <figcaption><a href="#figure-10" class="selfRef">Figure 10</a>:
 <a href="#name-first-and-subsequent-slice-" class="selfRef">First and Subsequent Slice Deployment</a>
           </figcaption></figure>
 </div>
-<p id="section-3.6-4">Overall, policies might be provided by an operator (e.g., to Network Slice Controllers) to indicate whether the same or dedicated CP NFs are allowed when processing a new slice creation request. Providing such a policy is meant to better automate the realization of 5G slices and minimize the realization delay that might be induced by extra cycles to seek for operator validation.<a href="#section-3.6-4" class="pilcrow">¶</a></p>
+<p id="section-3.7-4">Overall, policies might be provided by an operator (e.g., to Network Slice Controllers) to indicate whether the same or dedicated CP NFs are allowed when processing a new slice creation request. Providing such a policy is meant to better automate the realization of 5G slices and minimize the realization delay that might be induced by extra cycles to seek for operator validation.<a href="#section-3.7-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-over-rea-model">
-<section id="section-3.7">
+<section id="section-3.8">
         <h3 id="name-overview-of-the-transport-n">
-<a href="#section-3.7" class="section-number selfRef">3.7. </a><a href="#name-overview-of-the-transport-n" class="section-name selfRef">Overview of the Transport Network Realization Model</a>
+<a href="#section-3.8" class="section-number selfRef">3.8. </a><a href="#name-overview-of-the-transport-n" class="section-name selfRef">Overview of the Transport Network Realization Model</a>
         </h3>
-<p id="section-3.7-1">The realization model described in this document is depicted in
-   <a href="#_figure-high-level-qos" class="auto internal xref">Figure 11</a>. The following building blocks are used:<a href="#section-3.7-1" class="pilcrow">¶</a></p>
+<p id="section-3.8-1">The realization model described in this document is depicted in
+   <a href="#_figure-high-level-qos" class="auto internal xref">Figure 11</a>. The following building blocks are used:<a href="#section-3.8-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-3.7-2.1">
-            <p id="section-3.7-2.1.1">Layer 2 Virtual Private Network (L2VPN) <span>[<a href="#RFC4664" class="cite xref">RFC4664</a>]</span> and/or Layer 3 Virtual Private Network (L3VPN) <span>[<a href="#RFC4364" class="cite xref">RFC4364</a>]</span> service instances for logical separation:<a href="#section-3.7-2.1.1" class="pilcrow">¶</a></p>
-<p id="section-3.7-2.1.2">
+<li class="normal" id="section-3.8-2.1">
+            <p id="section-3.8-2.1.1">Layer 2 Virtual Private Network (L2VPN) <span>[<a href="#RFC4664" class="cite xref">RFC4664</a>]</span> and/or Layer 3 Virtual Private Network (L3VPN) <span>[<a href="#RFC4364" class="cite xref">RFC4364</a>]</span> service instances for logical separation:<a href="#section-3.8-2.1.1" class="pilcrow">¶</a></p>
+<p id="section-3.8-2.1.2">
 This realization model of transport for 5G slices assumes Layer 3
 delivery for midhaul and backhaul transport connections, and a
 Layer 2 or Layer 3 delivery for
@@ -2457,19 +2468,19 @@ fronthaul connections. Enhanced Common Public Radio Interface (eCPRI) <span>[<a 
 used as a basic form of logical slice separation.  Furthermore, using
 service instances results in an additional outer header (as packets
 are encapsulated/decapsulated at the nodes hosting service instances) providing clean discrimination between 5G QoS and TN
-QoS, as explained in <a href="#sec-qos-map" class="auto internal xref">Section 5</a>.<a href="#section-3.7-2.1.2" class="pilcrow">¶</a></p>
-<p id="section-3.7-2.1.3">
-The use of VPNs for is briefly described in Appendix A.4 of <span>[<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>.<a href="#section-3.7-2.1.3" class="pilcrow">¶</a></p>
+QoS, as explained in <a href="#sec-qos-map" class="auto internal xref">Section 5</a>.<a href="#section-3.8-2.1.2" class="pilcrow">¶</a></p>
+<p id="section-3.8-2.1.3">
+The use of VPNs for is briefly described in Appendix A.4 of <span>[<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>.<a href="#section-3.8-2.1.3" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.7-2.2">
-            <p id="section-3.7-2.2.1">Fine-grained resource control at the PE:<a href="#section-3.7-2.2.1" class="pilcrow">¶</a></p>
-<p id="section-3.7-2.2.2">
+          <li class="normal" id="section-3.8-2.2">
+            <p id="section-3.8-2.2.1">Fine-grained resource control at the PE:<a href="#section-3.8-2.2.1" class="pilcrow">¶</a></p>
+<p id="section-3.8-2.2.2">
 This is sometimes called 'admission control' or 'traffic
 conditioning'.  The main purpose is the enforcement of the
 bandwidth contract for the slice right at the edge of the
 provider network where the traffic is handed-off between the
-customer site and the provider network.<a href="#section-3.7-2.2.2" class="pilcrow">¶</a></p>
-<p id="section-3.7-2.2.3">
+customer site and the provider network.<a href="#section-3.8-2.2.2" class="pilcrow">¶</a></p>
+<p id="section-3.8-2.2.3">
 The toolset used here is granular ingress policing (rate limiting)
 to enforce contracted bandwidths per slice and, potentially, per
 traffic class within the slice.  Traffic above the enforced rate might be
@@ -2478,36 +2489,36 @@ which is more likely to be dropped somewhere inside the provider network if
 congestion occurs.  In the egress direction at the PE node,
 hierarchical schedulers/shapers can be deployed,
 providing guaranteed rates per slice, as well as guarantees per
-traffic class within each slice.<a href="#section-3.7-2.2.3" class="pilcrow">¶</a></p>
-<p id="section-3.7-2.2.4">
+traffic class within each slice.<a href="#section-3.8-2.2.3" class="pilcrow">¶</a></p>
+<p id="section-3.8-2.2.4">
 For managed CEs, edge admission control can be distributed between CEs
 and PEs, where a part of the admission control is implemented on the CE
-and other part of the admission control is implemented on the PE.<a href="#section-3.7-2.2.4" class="pilcrow">¶</a></p>
+and other part of the admission control is implemented on the PE.<a href="#section-3.8-2.2.4" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.7-2.3">
-            <p id="section-3.7-2.3.1">Coarse-grained resource control at the transit (non-attachment
+          <li class="normal" id="section-3.8-2.3">
+            <p id="section-3.8-2.3.1">Coarse-grained resource control at the transit (non-attachment
 circuits) links in the provider network, using a single Network Resource Partition (NRP), spanning the entire provider network.
 Transit nodes in the provider network do not maintain any state of individual slices.
 Instead, only a flat (non-hierarchical) QoS model is used on
 transit links in the provider network, with up to 8 traffic classes.  At the PE,
 traffic-flows from multiple slice services are mapped
-to the limited number of traffic classes used on provider network transit links.<a href="#section-3.7-2.3.1" class="pilcrow">¶</a></p>
+to the limited number of traffic classes used on provider network transit links.<a href="#section-3.8-2.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.7-2.4">
-            <p id="section-3.7-2.4.1">Capacity planning/management for efficient usage of provider network resources:<a href="#section-3.7-2.4.1" class="pilcrow">¶</a></p>
-<p id="section-3.7-2.4.2">
+          <li class="normal" id="section-3.8-2.4">
+            <p id="section-3.8-2.4.1">Capacity planning/management for efficient usage of provider network resources:<a href="#section-3.8-2.4.1" class="pilcrow">¶</a></p>
+<p id="section-3.8-2.4.2">
 The role of capacity management is to ensure the provider network
 capacity can be utilized without causing any bottlenecks.  The
 methods used here can range from careful network planning, to
 ensure a more or less equal traffic distribution (i.e., equal cost load
 balancing), to advanced TE techniques, with or
 without bandwidth reservations, to force more consistent load
-distribution even in non-ECMP friendly network topologies. See also <span><a href="https://rfc-editor.org/rfc/rfc9522#section-8" class="relref">Section 8</a> of [<a href="#RFC9522" class="cite xref">RFC9522</a>]</span>}.<a href="#section-3.7-2.4.2" class="pilcrow">¶</a></p>
+distribution even in non-ECMP friendly network topologies. See also <span><a href="https://rfc-editor.org/rfc/rfc9522#section-8" class="relref">Section 8</a> of [<a href="#RFC9522" class="cite xref">RFC9522</a>]</span>}.<a href="#section-3.8-2.4.2" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <span id="name-resource-allocation-slicing"></span><div id="_figure-high-level-qos">
 <figure id="figure-11">
-          <div class="alignCenter art-text artwork" id="section-3.7-3.1">
+          <div class="alignCenter art-text artwork" id="section-3.8-3.1">
 <pre>
             ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
       ┌──────────┐               base NRP               ┌──────────┐
@@ -2532,7 +2543,8 @@ distribution even in non-ECMP friendly network topologies. See also <span><a hre
 <a href="#name-resource-allocation-slicing" class="selfRef">Resource Allocation Slicing Model with a Single NRP</a>
           </figcaption></figure>
 </div>
-<p id="section-3.7-4">This document does not describe in detail how to manage an L2VPN or L3VPN, as this is already well-documented. For example, the reader may refer to <span>[<a href="#RFC4176" class="cite xref">RFC4176</a>]</span> and <span>[<a href="#RFC6136" class="cite xref">RFC6136</a>]</span> for such details.<a href="#section-3.7-4" class="pilcrow">¶</a></p>
+<p id="section-3.8-4">This document does not describe in detail how to manage an L2VPN or L3VPN, as this is already well-documented. For example, the reader may refer to <span>[<a href="#RFC4176" class="cite xref">RFC4176</a>]</span> and <span>[<a href="#RFC6136" class="cite xref">RFC6136</a>]</span> for such details.<a href="#section-3.8-4" class="pilcrow">¶</a></p>
+<p id="section-3.8-5">The realization model described in the document inherits the scalability properties of the underlying L2VPN and L3VPN technologies. Readers may refer, for example, to <span><a href="https://rfc-editor.org/rfc/rfc4365#section-13" class="relref">Section 13</a> of [<a href="#RFC4365" class="cite xref">RFC4365</a>]</span> or <span><a href="https://rfc-editor.org/rfc/rfc6624#section-1.2.5" class="relref">Section 1.2.5</a> of [<a href="#RFC6624" class="cite xref">RFC6624</a>]</span> for a scalability assessment of some of these technologies. Per <a href="#sec-sca-impli" class="auto internal xref">Section 3.6</a>, providers may adjust the mapping model to better handle local scalability constraints.<a href="#section-3.8-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2964,7 +2976,7 @@ since one IPv4/IPv6 labeled unicast host route represent one customer site, rega
 of the number of slices in the customer site, the number of forwarding entries
 on a PE is considerably reduced.<a href="#section-4.3.3-5" class="pilcrow">¶</a></p>
 <p id="section-4.3.3-6">For any slice-specific per-hop behavior at the provider network edge, as described
-in details in <a href="#sec-over-rea-model" class="auto internal xref">Section 3.7</a>, the PE need to determine which label in the packet
+in details in <a href="#sec-over-rea-model" class="auto internal xref">Section 3.8</a>, the PE need to determine which label in the packet
 represents which slice. This can be achieved, for example, by allocating non-overlapping service label
 ranges for each slice, and use these ranges for slice identification purposes on PE.<a href="#section-4.3.3-6" class="pilcrow">¶</a></p>
 </section>
@@ -4478,6 +4490,10 @@ service disruption. Note that such an on-path attacker may make more damage (e.g
         <dd>
 <span class="refAuthor">El Mghazli, Y., Ed.</span>, <span class="refAuthor">Nadeau, T.</span>, <span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Chan, K.</span>, and <span class="refAuthor">A. Gonguet</span>, <span class="refTitle">"Framework for Layer 3 Virtual Private Networks (L3VPN) Operations and Management"</span>, <span class="seriesInfo">RFC 4176</span>, <span class="seriesInfo">DOI 10.17487/RFC4176</span>, <time datetime="2005-10" class="refDate">October 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4176">https://www.rfc-editor.org/rfc/rfc4176</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC4365">[RFC4365]</dt>
+        <dd>
+<span class="refAuthor">Rosen, E.</span>, <span class="refTitle">"Applicability Statement for BGP/MPLS IP Virtual Private Networks (VPNs)"</span>, <span class="seriesInfo">RFC 4365</span>, <span class="seriesInfo">DOI 10.17487/RFC4365</span>, <time datetime="2006-02" class="refDate">February 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4365">https://www.rfc-editor.org/rfc/rfc4365</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC4664">[RFC4664]</dt>
         <dd>
 <span class="refAuthor">Andersson, L., Ed.</span> and <span class="refAuthor">E. Rosen, Ed.</span>, <span class="refTitle">"Framework for Layer 2 Virtual Private Networks (L2VPNs)"</span>, <span class="seriesInfo">RFC 4664</span>, <span class="seriesInfo">DOI 10.17487/RFC4664</span>, <time datetime="2006-09" class="refDate">September 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4664">https://www.rfc-editor.org/rfc/rfc4664</a>&gt;</span>. </dd>
@@ -4509,6 +4525,10 @@ service disruption. Note that such an on-path attacker may make more damage (e.g
 <dt id="RFC6459">[RFC6459]</dt>
         <dd>
 <span class="refAuthor">Korhonen, J., Ed.</span>, <span class="refAuthor">Soininen, J.</span>, <span class="refAuthor">Patil, B.</span>, <span class="refAuthor">Savolainen, T.</span>, <span class="refAuthor">Bajko, G.</span>, and <span class="refAuthor">K. Iisakkila</span>, <span class="refTitle">"IPv6 in 3rd Generation Partnership Project (3GPP) Evolved Packet System (EPS)"</span>, <span class="seriesInfo">RFC 6459</span>, <span class="seriesInfo">DOI 10.17487/RFC6459</span>, <time datetime="2012-01" class="refDate">January 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6459">https://www.rfc-editor.org/rfc/rfc6459</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6624">[RFC6624]</dt>
+        <dd>
+<span class="refAuthor">Kompella, K.</span>, <span class="refAuthor">Kothari, B.</span>, and <span class="refAuthor">R. Cherukuri</span>, <span class="refTitle">"Layer 2 Virtual Private Networks Using BGP for Auto-Discovery and Signaling"</span>, <span class="seriesInfo">RFC 6624</span>, <span class="seriesInfo">DOI 10.17487/RFC6624</span>, <time datetime="2012-05" class="refDate">May 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6624">https://www.rfc-editor.org/rfc/rfc6624</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC7276">[RFC7276]</dt>
         <dd>
