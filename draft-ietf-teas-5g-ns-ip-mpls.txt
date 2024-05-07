@@ -305,7 +305,7 @@ Table of Contents
 
       ◀─────────────────Transport Network────────────────▶
 
-    Figure 2: Reference Design: customer site and Provider Network
+  Figure 2: Reference Design with Customer Site and Provider Network
 
    The description of the main components shown in Figure 2 are:
 
@@ -1058,7 +1058,8 @@ Table of Contents
     ● – Logical interface represented by a VLAN on a physical interface
     ■ - Service Demarcation Point
 
-                   Figure 12: 5G Slice with VLAN Hand-off
+      Figure 12: Example of 5G Slice with VLAN Hand-off Providing End-
+                            to-End Connectivity
 
 4.2.  IP Hand-off
 
@@ -1113,7 +1114,8 @@ Table of Contents
              ○ – tunnel (IPsec, GTP-U, ...) termination point
              ■ - Service Demarcation Point
 
-                    Figure 13: 5G Slice with IP Hand-off
+    Figure 13: Example of 5G Slice with IP Hand-off Providing End-to-End
+                                Connectivity
 
    As opposed to the VLAN hand-off case, there is no logical interface
    representing a slice on the PE, hence all slices are handled within
@@ -1283,7 +1285,7 @@ Table of Contents
      ◙ - Service instances (with unique MPLS labels)
      ■ - Service Demarcation Point
 
-                     Figure 16: MPLS Hand-off: Option B
+             Figure 16: Example of MPLS Hand-off with Option B
 
    MPLS labels are allocated dynamically in Option B deployments, where
    at the domain boundaries service prefixes are reflected with next-hop
@@ -1366,7 +1368,7 @@ Table of Contents
      ◙ - service instances (with unique MPLS label)
      ■ - Service Demarcation Point
 
-                    Figure 17: MPLS Hand-off: Option C
+                  Figure 17: MPLS Hand-off with Option C
 
    This architecture requires an end-to-end Label Switched Path (LSP)
    leading from a packet's ingress node inside one customer site to its
@@ -2136,7 +2138,7 @@ Table of Contents
                 ●════════▶  Tunnels of Transport Plane A
                 ○════════▷  Tunnels of Transport Plane B
 
-          Figure 28: Transport Planes example based on TE tunnels
+        Figure 28: Example of Transport Planes Relying on TE Tunnels
 
    Note that there might be multiple tunnels within a single transport
    plane between any pair of PEs.  Figure 28 shows only single tunnel
@@ -2195,7 +2197,8 @@ Table of Contents
                  ┗━━━━━━━━━━━━━━━━━┛                        │
                  └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
 
-      Figure 29: Slice to Transport Plane Mapping (5QI-unaware Model)
+      Figure 29: Network Slice to Transport Plane Mapping (5QI-unaware
+                                   Model)
 
    It is worth noting that TN QoS Classes and Transport Planes are
    orthogonal.  The TN domain can be operated with e.g., 8 TN QoS
@@ -2252,7 +2255,7 @@ Table of Contents
                  ┗━━━━━━━━━━━━━━━━━┛
                  └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
 
-       Figure 30: Slice to Transport Plane mapping (5QI-aware Model)
+   Figure 30: Network Slice to Transport Plane mapping (5QI-aware Model)
 
 7.  Capacity Planning/Management
 
@@ -2430,7 +2433,7 @@ Table of Contents
    A variation on the scheme is that Flex-Algo [RFC9350] is used.  For
    example one Flex-Algo could use latency-based metrics and another
    Flex-Algo could use the IGP metric.  There would be a many-to-one
-   mapping of Network Slices to Flex- Algos.
+   mapping of Network Slices to Flex-Algos.
 
    While Scheme 1 is technically feasible, it is vulnerable to
    unexpected changes in traffic patterns and/or network element

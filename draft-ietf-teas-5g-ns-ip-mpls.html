@@ -1459,7 +1459,7 @@ There are different options to implement TN slices based upon
 <a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-transport-network-reference" class="section-name selfRef">Transport Network Reference Design</a>
         </h3>
 <p id="section-3.3-1"><a href="#fig-tn-arch" class="auto internal xref">Figure 2</a> depicts the reference design used for modelling the Transport Network based on management perimeters (Customer vs. Provider).<a href="#section-3.3-1" class="pilcrow">¶</a></p>
-<span id="name-reference-design-customer-s"></span><div id="fig-tn-arch">
+<span id="name-reference-design-with-custo"></span><div id="fig-tn-arch">
 <figure id="figure-2">
           <div class="alignCenter art-text artwork" id="section-3.3-2.1">
 <pre>
@@ -1483,7 +1483,7 @@ There are different options to implement TN slices based upon
 </pre>
 </div>
 <figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
-<a href="#name-reference-design-customer-s" class="selfRef">Reference Design: customer site and Provider Network</a>
+<a href="#name-reference-design-with-custo" class="selfRef">Reference Design with Customer Site and Provider Network</a>
           </figcaption></figure>
 </div>
 <p id="section-3.3-3">The description of the main components shown in <a href="#fig-tn-arch" class="auto internal xref">Figure 2</a> are:<a href="#section-3.3-3" class="pilcrow">¶</a></p>
@@ -2589,7 +2589,7 @@ distribution even in non-ECMP friendly network topologies. See also <span><a hre
    NFs, it adds complexity due to the requirement of maintaining
    mapping tables for each SDP and requires a configuration task of new VLANs and
    IP subnet for every slice on every AC.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
-<span id="name-5g-slice-with-vlan-hand-off"></span><div id="_figure-vlan-hand-off">
+<span id="name-example-of-5g-slice-with-vl"></span><div id="_figure-vlan-hand-off">
 <figure id="figure-12">
           <div class="alignCenter art-text artwork" id="section-4.1-3.1">
 <pre>
@@ -2613,7 +2613,7 @@ VLANs representing slices           VLANs representing slices
 </pre>
 </div>
 <figcaption><a href="#figure-12" class="selfRef">Figure 12</a>:
-<a href="#name-5g-slice-with-vlan-hand-off" class="selfRef">5G Slice with VLAN Hand-off</a>
+<a href="#name-example-of-5g-slice-with-vl" class="selfRef">Example of 5G Slice with VLAN Hand-off Providing End-to-End Connectivity</a>
           </figcaption></figure>
 </div>
 </section>
@@ -2654,7 +2654,7 @@ VLANs representing slices           VLANs representing slices
    typical 5G slice contains many NFs - especially DUs and CUs. If a shared NF (i.e.,
    an NF that serves multiple slices, for example a shared DU) is deployed, multiple
    tunnels from shared NF are established, each tunnel representing a single slice.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
-<span id="name-5g-slice-with-ip-hand-off"></span><div id="_figure-ip-hand-off">
+<span id="name-example-of-5g-slice-with-ip"></span><div id="_figure-ip-hand-off">
 <figure id="figure-13">
           <div class="alignCenter art-text artwork" id="section-4.2-5.1">
 <pre>
@@ -2678,7 +2678,7 @@ VLANs representing slices           VLANs representing slices
 </pre>
 </div>
 <figcaption><a href="#figure-13" class="selfRef">Figure 13</a>:
-<a href="#name-5g-slice-with-ip-hand-off" class="selfRef">5G Slice with IP Hand-off</a>
+<a href="#name-example-of-5g-slice-with-ip" class="selfRef">Example of 5G Slice with IP Hand-off Providing End-to-End Connectivity</a>
           </figcaption></figure>
 </div>
 <p id="section-4.2-6">As opposed to the VLAN hand-off case, there is no logical interface representing
@@ -2837,7 +2837,7 @@ VLANs representing slices           VLANs representing slices
    infrastructure don’t support MPLS encapsulation). Therefore,
    the PE uses neither a VLAN nor an IP address for slice
    identification at the SDP, but instead uses the MPLS label.<a href="#section-4.3.2-1" class="pilcrow">¶</a></p>
-<span id="name-mpls-hand-off-option-b"></span><div id="_figure-mpls-10b-hand-off">
+<span id="name-example-of-mpls-hand-off-wi"></span><div id="_figure-mpls-10b-hand-off">
 <figure id="figure-16">
             <div class="alignCenter art-text artwork" id="section-4.3.2-2.1">
 <pre>
@@ -2870,7 +2870,7 @@ representing slices              representing slices    slices
 </pre>
 </div>
 <figcaption><a href="#figure-16" class="selfRef">Figure 16</a>:
-<a href="#name-mpls-hand-off-option-b" class="selfRef">MPLS Hand-off: Option B</a>
+<a href="#name-example-of-mpls-hand-off-wi" class="selfRef">Example of MPLS Hand-off with Option B</a>
             </figcaption></figure>
 </div>
 <p id="section-4.3.2-3">MPLS labels are allocated dynamically in Option B
@@ -2919,7 +2919,7 @@ Additionally, IPv4/IPv6 labeled unicast (SAFI=4) host routes, used as NEXT_HOP
 for service prefixes, are exchanged via direct single-hop BGP sessions between
 adjacent nodes in a customer site and a provider network, as depicted in <a href="#_figure-mpls-10c-hand-off" class="auto internal xref">Figure 17</a>.
 As a result, a node in a customer site performs hierarchical next-hop resolution.<a href="#section-4.3.3-2" class="pilcrow">¶</a></p>
-<span id="name-mpls-hand-off-option-c"></span><div id="_figure-mpls-10c-hand-off">
+<span id="name-mpls-hand-off-with-option-c"></span><div id="_figure-mpls-10c-hand-off">
 <figure id="figure-17">
             <div class="alignCenter art-text artwork" id="section-4.3.3-3.1">
 <pre>
@@ -2957,7 +2957,7 @@ As a result, a node in a customer site performs hierarchical next-hop resolution
 </pre>
 </div>
 <figcaption><a href="#figure-17" class="selfRef">Figure 17</a>:
-<a href="#name-mpls-hand-off-option-c" class="selfRef">MPLS Hand-off: Option C</a>
+<a href="#name-mpls-hand-off-with-option-c" class="selfRef">MPLS Hand-off with Option C</a>
             </figcaption></figure>
 </div>
 <p id="section-4.3.3-4">This architecture requires an end-to-end Label Switched Path (LSP) leading from a packet's
@@ -3801,7 +3801,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    models that can be deployed in the provider network.  However,
    discussion about how to realize or orchestrate transport planes is
    out of scope for this document.<a href="#section-6-4" class="pilcrow">¶</a></p>
-<span id="name-transport-planes-example-ba"></span><div id="_figure-23">
+<span id="name-example-of-transport-planes"></span><div id="_figure-23">
 <figure id="figure-28">
         <div class="alignCenter art-text artwork" id="section-6-5.1">
 <pre>
@@ -3829,7 +3829,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
 </pre>
 </div>
 <figcaption><a href="#figure-28" class="selfRef">Figure 28</a>:
-<a href="#name-transport-planes-example-ba" class="selfRef">Transport Planes example based on TE tunnels</a>
+<a href="#name-example-of-transport-planes" class="selfRef">Example of Transport Planes Relying on TE Tunnels</a>
         </figcaption></figure>
 </div>
 <p id="section-6-6">Note that there might be multiple tunnels within a single transport plane
@@ -3854,7 +3854,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    Similarly, in 5QI-unaware transport plane mapping model, the entire
    slice is mapped to a single transport plane, as depicted in
    <a href="#_figure-24" class="auto internal xref">Figure 29</a>.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
-<span id="name-slice-to-transport-plane-ma"></span><div id="_figure-24">
+<span id="name-network-slice-to-transport-"></span><div id="_figure-24">
 <figure id="figure-29">
           <div class="alignCenter art-text artwork" id="section-6.1-2.1">
 <pre>
@@ -3896,7 +3896,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
 </pre>
 </div>
 <figcaption><a href="#figure-29" class="selfRef">Figure 29</a>:
-<a href="#name-slice-to-transport-plane-ma" class="selfRef">Slice to Transport Plane Mapping (5QI-unaware Model)</a>
+<a href="#name-network-slice-to-transport-" class="selfRef">Network Slice to Transport Plane Mapping (5QI-unaware Model)</a>
           </figcaption></figure>
 </div>
 <p id="section-6.1-3">It is worth noting that TN QoS Classes and Transport Planes are
@@ -3921,7 +3921,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    transport planes is limited, packets from multiple 5G QoS Classes
    with similar characteristics are mapped to a common transport plane,
    as depicted in <a href="#_figure-25" class="auto internal xref">Figure 30</a>.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
-<span id="name-slice-to-transport-plane-map"></span><div id="_figure-25">
+<span id="name-network-slice-to-transport-p"></span><div id="_figure-25">
 <figure id="figure-30">
           <div class="alignCenter art-text artwork" id="section-6.2-2.1">
 <pre>
@@ -3963,7 +3963,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
 </pre>
 </div>
 <figcaption><a href="#figure-30" class="selfRef">Figure 30</a>:
-<a href="#name-slice-to-transport-plane-map" class="selfRef">Slice to Transport Plane mapping (5QI-aware Model)</a>
+<a href="#name-network-slice-to-transport-p" class="selfRef">Network Slice to Transport Plane mapping (5QI-aware Model)</a>
           </figcaption></figure>
 </div>
 </section>
@@ -4160,8 +4160,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    the provider network.<a href="#section-7.2.1-2" class="pilcrow">¶</a></p>
 <p id="section-7.2.1-3">A variation on the scheme is that Flex-Algo <span>[<a href="#RFC9350" class="cite xref">RFC9350</a>]</span> is used. For example one Flex-Algo could
    use latency-based metrics and another Flex-Algo could use the IGP
-   metric. There would be a many-to-one mapping of Network Slices to Flex-
-   Algos.<a href="#section-7.2.1-3" class="pilcrow">¶</a></p>
+   metric. There would be a many-to-one mapping of Network Slices to Flex-Algos.<a href="#section-7.2.1-3" class="pilcrow">¶</a></p>
 <p id="section-7.2.1-4">While Scheme 1 is technically feasible, it is vulnerable to
    unexpected changes in traffic patterns and/or network element
    failures resulting in congestion.  This is because, unlike Schemes 2
