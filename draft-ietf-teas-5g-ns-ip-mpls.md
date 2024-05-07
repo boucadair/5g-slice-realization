@@ -62,7 +62,6 @@ contributor:
 
  -
    fullname: John Drake
-   organization: Juniper Networks
    city: Sunnyvale
    country: United States of America
    email: je_drake@yahoo.com
