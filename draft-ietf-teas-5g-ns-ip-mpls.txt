@@ -205,9 +205,7 @@ Table of Contents
    this example, the TN can be seen as an abstraction representing an
    end-to-end connectivity based upon three distinct domains: DC, WAN,
    and Public Cloud.  A model for the Transport Network based on
-   orchestration domains is introduced in Section 3.4.  This model
-   permits to define more precisely where the RFC 9543 Network Slices
-   apply.
+   orchestration domains is introduced in Section 3.4.
 
                    ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
               ┌─────      5G RAN or CORE Network      ├────┐
@@ -539,9 +537,7 @@ Table of Contents
 
    Customer Site Orchestration domain:  The Orchestration of TN elements
       of the customer sites relies upon a variety of controllers (e.g.,
-      Fabric Manager, Element Management System, or VIM).  The
-      realization of this segment does not involve the Transport Network
-      Orchestration.
+      Fabric Manager, Element Management System, or VIM).
 
    A TN slice relies upon resources that can involve both the provider
    and customer TN domains.  More details are provided in Section 3.4.2.

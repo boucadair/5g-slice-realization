@@ -1384,7 +1384,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-3.1-3.1.1">'The non-3GPP part includes TN parts. The 3GPP management system provides the network slice requirements to the corresponding management systems of those non-3GPP parts, e.g. the TN part supports connectivity within and between CN and AN parts.' (Section 4.4.1 of <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span>)<a href="#section-3.1-3.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-3.1-4">In practice, the TN may not map to a monolithic architecture and management domain. It is frequently segmented, non-uniform, and managed by different entities. For example, <a href="#fig-1" class="auto internal xref">Figure 1</a> depicts a NF instance that is deployed in an edge data center (DC) connected to a NF located in a Public Cloud via a WAN (e.g., MPLS-VPN service). In this example, the TN can be seen as an abstraction representing an end-to-end connectivity based upon three distinct domains: DC, WAN, and Public Cloud. A model for the Transport Network based on orchestration domains is introduced in <a href="#sec-orch" class="auto internal xref">Section 3.4</a>. This model permits to define more precisely where the RFC 9543 Network Slices apply.<a href="#section-3.1-4" class="pilcrow">¶</a></p>
+<p id="section-3.1-4">In practice, the TN may not map to a monolithic architecture and management domain. It is frequently segmented, non-uniform, and managed by different entities. For example, <a href="#fig-1" class="auto internal xref">Figure 1</a> depicts a NF instance that is deployed in an edge data center (DC) connected to a NF located in a Public Cloud via a WAN (e.g., MPLS-VPN service). In this example, the TN can be seen as an abstraction representing an end-to-end connectivity based upon three distinct domains: DC, WAN, and Public Cloud. A model for the Transport Network based on orchestration domains is introduced in <a href="#sec-orch" class="auto internal xref">Section 3.4</a>.<a href="#section-3.1-4" class="pilcrow">¶</a></p>
 <span id="name-an-example-of-transport-net"></span><div id="fig-1">
 <figure id="figure-1">
           <div class="alignCenter art-text artwork" id="section-3.1-5.1">
@@ -1711,7 +1711,7 @@ However, this document does not exclude the instantiation of multiple ACs betwee
             <dd class="break"></dd>
 <dt id="section-3.4.1-4.3">Customer Site Orchestration domain:</dt>
             <dd style="margin-left: 1.5em" id="section-3.4.1-4.4">
-              <p id="section-3.4.1-4.4.1">The Orchestration of TN elements of the customer sites relies upon a variety of  controllers (e.g., Fabric Manager, Element Management System, or VIM). The realization of this segment does not involve the Transport Network Orchestration.<a href="#section-3.4.1-4.4.1" class="pilcrow">¶</a></p>
+              <p id="section-3.4.1-4.4.1">The Orchestration of TN elements of the customer sites relies upon a variety of  controllers (e.g., Fabric Manager, Element Management System, or VIM).<a href="#section-3.4.1-4.4.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 </dl>
