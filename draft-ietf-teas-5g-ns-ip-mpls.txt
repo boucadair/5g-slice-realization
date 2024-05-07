@@ -519,8 +519,8 @@ Table of Contents
    9543 Network Slices and identify interactions that are required for
    the realization of such slices.
 
-      This framework is consistent with the management coordination
-      example shown in Figure 4.7.1 of [TS-28.530].
+   This framework is consistent with the management coordination example
+   shown in Figure 4.7.1 of [TS-28.530].
 
    In reference to Figure 5, a 5G End-to-End Network Slice Orchestrator
    (5G NSO) is responsible for orchestrating 5G Network Slices end-to-
@@ -529,7 +529,7 @@ Table of Contents
    mentioned in Section 3.1, the RAN and CN are under the responsibility
    of the 3GPP Management System, while the TN is not.  The
    orchestration of the TN is split into two sub-domains in conformance
-   with the reference design in {#sec-ref-design}:
+   with the reference design in Section 3.3:
 
    Provider Network Orchestration domain:  As defined in [RFC9543], the
       provider relies on a Network Slice Controller (NSC) to manage and

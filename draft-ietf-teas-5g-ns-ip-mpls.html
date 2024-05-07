@@ -1699,12 +1699,8 @@ However, this document does not exclude the instantiation of multiple ACs betwee
 <a href="#section-3.4.1" class="section-number selfRef">3.4.1. </a><a href="#name-5g-end-to-end-slice-orchest" class="section-name selfRef">5G End-to-End Slice Orchestration Architecture</a>
           </h4>
 <p id="section-3.4.1-1">This section introduces a global framework for the orchestration of a 5G end-to-end slice (a.k.a. 5G Network Slice) with a zoom on TN parts. This framework helps to delimit the realization scope of RFC 9543 Network Slices and identify interactions that are required for the realization of such slices.<a href="#section-3.4.1-1" class="pilcrow">¶</a></p>
-<ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-3.4.1-2.1">
-              <p id="section-3.4.1-2.1.1">This framework is consistent with the management coordination example shown in Figure 4.7.1 of <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span>.<a href="#section-3.4.1-2.1.1" class="pilcrow">¶</a></p>
-</li>
-          </ul>
-<p id="section-3.4.1-3">In reference to <a href="#_figure-orch" class="auto internal xref">Figure 5</a>, a 5G End-to-End Network Slice Orchestrator (5G NSO) is responsible for orchestrating 5G Network Slices end-to-end. The details of the 5G NSO is out of the scope of this document. The realization of the 5G Network Slices spans RAN, CN, and TN. As mentioned in <a href="#sec-scope" class="auto internal xref">Section 3.1</a>, the RAN and CN are under the responsibility of the 3GPP Management System, while the TN is not. The orchestration of the TN is split into two sub-domains in conformance with the reference design in {#sec-ref-design}:<a href="#section-3.4.1-3" class="pilcrow">¶</a></p>
+<p id="section-3.4.1-2">This framework is consistent with the management coordination example shown in Figure 4.7.1 of <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span>.<a href="#section-3.4.1-2" class="pilcrow">¶</a></p>
+<p id="section-3.4.1-3">In reference to <a href="#_figure-orch" class="auto internal xref">Figure 5</a>, a 5G End-to-End Network Slice Orchestrator (5G NSO) is responsible for orchestrating 5G Network Slices end-to-end. The details of the 5G NSO is out of the scope of this document. The realization of the 5G Network Slices spans RAN, CN, and TN. As mentioned in <a href="#sec-scope" class="auto internal xref">Section 3.1</a>, the RAN and CN are under the responsibility of the 3GPP Management System, while the TN is not. The orchestration of the TN is split into two sub-domains in conformance with the reference design in <a href="#sec-ref-design" class="auto internal xref">Section 3.3</a>:<a href="#section-3.4.1-3" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-3.4.1-4">
             <dt id="section-3.4.1-4.1">Provider Network Orchestration domain:</dt>
             <dd style="margin-left: 1.5em" id="section-3.4.1-4.2">
