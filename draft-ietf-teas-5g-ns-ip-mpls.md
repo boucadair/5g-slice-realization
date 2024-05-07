@@ -250,7 +250,7 @@ The term "Transport Network" is used for disambiguation with 5G network (e.g., I
 ~~~~
 {::include ./drawings/pe-ce-ac.txt}
 ~~~~
-{: #fig-tn-arch title="Reference Design: customer site and Provider Network" artwork-align="center"}
+{: #fig-tn-arch title="Reference Design with Customer Site and Provider Network" artwork-align="center"}
 
 The description of the main components shown in {{fig-tn-arch}} are:
 
@@ -553,7 +553,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
 ~~~~
 {::include ./drawings/vlan-hand-off.txt}
 ~~~~
-{: #figure-vlan-hand-off title="5G Slice with VLAN Hand-off" artwork-align="center"}
+{: #figure-vlan-hand-off title="Example of 5G Slice with VLAN Hand-off Providing End-to-End Connectivity" artwork-align="center"}
 
 
 ##  IP Hand-off {#sec-ip-hof}
@@ -584,7 +584,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
 ~~~~
 {::include ./drawings/ip-hand-off.txt}
 ~~~~
-{: #figure-ip-hand-off title="5G Slice with IP Hand-off" artwork-align="center"}
+{: #figure-ip-hand-off title="Example of 5G Slice with IP Hand-off Providing End-to-End Connectivity" artwork-align="center"}
 
 
    As opposed to the VLAN hand-off case, there is no logical interface representing
@@ -701,7 +701,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
 ~~~~
 {::include ./drawings/mpls-10b-hand-off.txt}
 ~~~~
-{: #figure-mpls-10b-hand-off title="MPLS Hand-off: Option B" artwork-align="center"}
+{: #figure-mpls-10b-hand-off title="Example of MPLS Hand-off with Option B" artwork-align="center"}
 
 
    MPLS labels are allocated dynamically in Option B
@@ -782,7 +782,7 @@ As a result, a node in a customer site performs hierarchical next-hop resolution
    ◙ - service instances (with unique MPLS label)
    ■ - Service Demarcation Point
 ~~~~
-{: #figure-mpls-10c-hand-off title="MPLS Hand-off: Option C" artwork-align="center"}
+{: #figure-mpls-10c-hand-off title="MPLS Hand-off with Option C" artwork-align="center"}
 
 This architecture requires an end-to-end Label Switched Path (LSP) leading from a packet's
 ingress node inside one customer site to its egress inside another customer
@@ -1433,7 +1433,7 @@ to TN QoS Classes may be rather common.
          ●════════▶  Tunnels of Transport Plane A
          ○════════▷  Tunnels of Transport Plane B
 ~~~
-{: #figure-23 title="Transport Planes example based on TE tunnels" artwork-align="center"}
+{: #figure-23 title="Example of Transport Planes Relying on TE Tunnels" artwork-align="center"}
 
    Note that there might be multiple tunnels within a single transport plane
    between any pair of PEs. {{figure-23}} shows only single
@@ -1494,7 +1494,7 @@ to TN QoS Classes may be rather common.
    ┗━━━━━━━━━━━━━━━━━┛                        │
    └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
 ~~~
-{: #figure-24 title="Slice to Transport Plane Mapping (5QI-unaware Model)" artwork-align="center"}
+{: #figure-24 title="Network Slice to Transport Plane Mapping (5QI-unaware Model)" artwork-align="center"}
 
    It is worth noting that TN QoS Classes and Transport Planes are
    orthogonal.  The TN domain can be operated with
@@ -1553,7 +1553,7 @@ to TN QoS Classes may be rather common.
      ┗━━━━━━━━━━━━━━━━━┛
      └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
 ~~~
-{: #figure-25 title="Slice to Transport Plane mapping (5QI-aware Model)" artwork-align="center"}
+{: #figure-25 title="Network Slice to Transport Plane mapping (5QI-aware Model)" artwork-align="center"}
 
 #  Capacity Planning/Management {#sec-capacity-planning}
 
@@ -1707,8 +1707,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
 
    A variation on the scheme is that Flex-Algo {{?RFC9350}} is used. For example one Flex-Algo could
    use latency-based metrics and another Flex-Algo could use the IGP
-   metric. There would be a many-to-one mapping of Network Slices to Flex-
-   Algos.
+   metric. There would be a many-to-one mapping of Network Slices to Flex-Algos.
 
    While Scheme 1 is technically feasible, it is vulnerable to
    unexpected changes in traffic patterns and/or network element
