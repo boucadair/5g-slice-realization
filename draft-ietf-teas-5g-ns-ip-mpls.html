@@ -2458,7 +2458,7 @@ For instance, consider a slice based on split-CU in the RAN, both CU-UP and Cent
 This realization model of transport for 5G slices assumes Layer 3
 delivery for midhaul and backhaul transport connections, and a
 Layer 2 or Layer 3 for
-fronthaul connections. Enhanced Common Public Radio Interface (eCPRI) supports both delivery models. L2VPN/L3VPN service instances might be
+fronthaul connections. Enhanced Common Public Radio Interface (eCPRI) <span>[<a href="#ECPRI" class="cite xref">ECPRI</a>]</span> supports both delivery models. L2VPN/L3VPN service instances might be
 used as a basic form of logical slice separation.  Furthermore, using
 service instances results in an additional outer header (as packets
 are encapsulated/decapsulated at the nodes hosting service instances) providing clean discrimination between 5G QoS and TN
@@ -4419,6 +4419,10 @@ service disruption. Note that such an on-path attacker may make more damage (e.g
 <a href="#section-11.2" class="section-number selfRef">11.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
+<dt id="ECPRI">[ECPRI]</dt>
+        <dd>
+<span class="refAuthor">Common Public Radio Interface</span>, <span class="refTitle">"Common Public Radio Interface: eCPRI Interface Specification"</span>, <span>n.d.</span>, <span>&lt;<a href="http://www.cpri.info/downloads/eCPRI_v_2.0_2019_05_10c.pdf">http://www.cpri.info/downloads/eCPRI_v_2.0_2019_05_10c.pdf</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="I-D.cbs-teas-5qi-to-dscp-mapping">[I-D.cbs-teas-5qi-to-dscp-mapping]</dt>
         <dd>
 <span class="refAuthor">Contreras, L. M.</span>, <span class="refAuthor">Bykov, I.</span>, and <span class="refAuthor">K. G. Szarkowicz</span>, <span class="refTitle">"5QI to DiffServ DSCP Mapping Example for Enforcement of 5G End-to-End Network Slice QoS"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-cbs-teas-5qi-to-dscp-mapping-00</span>, <time datetime="2024-03-04" class="refDate">4 March 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-cbs-teas-5qi-to-dscp-mapping-00">https://datatracker.ietf.org/doc/html/draft-cbs-teas-5qi-to-dscp-mapping-00</a>&gt;</span>. </dd>
