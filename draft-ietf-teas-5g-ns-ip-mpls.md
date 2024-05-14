@@ -352,7 +352,7 @@ Customer Site Orchestration domain:
 
 A TN slice relies upon resources that can involve both the provider and customer TN domains. More details are provided in {{sec-tn-nsi}}.
 
-> A TN slice might be considered as a variant of horizontal composition of Network Slices mentioned in Appendix A.6 of {{!RFC9543}}.
+A TN slice might be considered as a variant of horizontal composition of Network Slices mentioned in Appendix A.6 of {{!RFC9543}}.
 
 ~~~~
 {::include ./drawings/tn-orchestration.txt}
@@ -391,7 +391,7 @@ interconnection is technology-specific and requires coordination between the Cus
 
 : {{figure-4}} is a basic example of a Layer 3 CE-PE link realization
 with shared network resources (such as VLAN-IDs and IP prefixes) which
-are passed between Orchestrators via a dedicated interface, e.g., the RFC 9543 Network Slice Service Interface {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}} or the Attachment Circuit Service Interface ({{?I-D.ietf-opsawg-teas-attachment-circuit}}.
+are passed between Orchestrators via a dedicated interface, e.g., the Network Slice Service Model (NSSM) {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}} or the Attachment Circuit-as-a-Service (ACaaS) {{?I-D.ietf-opsawg-teas-attachment-circuit}}.
 
 
 ~~~~
