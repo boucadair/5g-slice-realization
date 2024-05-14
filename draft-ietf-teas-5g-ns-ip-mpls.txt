@@ -89,8 +89,7 @@ Table of Contents
        3.4.2.  Transport Network Segments and Network Slice
                Instantiation
        3.4.3.  Additional Segmentation and Domains
-     3.5.  Mapping Schemes Between 5G Network Slices and Transport
-           Network Slices
+     3.5.  Mapping 5G Network Slices to Transport Network Slices
      3.6.  Scalability Implications
      3.7.  First 5G Slice versus Subsequent Slices
      3.8.  Overview of the Transport Network Realization Model
@@ -729,8 +728,7 @@ Table of Contents
    in terms of segmentation (provider/customer) and stitching (AC) can
    be reused for the integration of more complex integrations.
 
-3.5.  Mapping Schemes Between 5G Network Slices and Transport Network
-      Slices
+3.5.  Mapping 5G Network Slices to Transport Network Slices
 
    There are multiple options for mapping 5G Network Slices to TN
    slices:
