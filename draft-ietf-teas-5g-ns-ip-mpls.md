@@ -484,7 +484,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
       provider network where the traffic is handed-off between the
       customer site and the provider network.
 
-      The toolset used here is granular ingress policing (rate limiting)
+      The method used here is granular ingress policing (rate limiting)
       to enforce contracted bandwidths per slice and, potentially, per
       traffic class within the slice.  Traffic above the enforced rate might be
       immediately dropped, or marked as high drop-probability traffic,
