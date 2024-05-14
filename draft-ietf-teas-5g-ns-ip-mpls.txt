@@ -154,8 +154,8 @@ Table of Contents
    technologies.  Specifically, the document describes how RFC 9543
    Network Slices are realized within provider networks and how such
    slices are stitched to Transport Network resources in a customer site
-   in the context of Transport Network Slices.  Concretely, the
-   realization of an RFC 9543 Network Slice (i.e., connectivity with
+   in the context of Transport Network Slices (Figure 1).  Concretely,
+   the realization of an RFC 9543 Network Slice (i.e., connectivity with
    performance commitments) involves the provider network and partially
    the AC (the PE-side of the AC).  The provisioning of a new Network
    Slice may rely on new or existing ACs.  In this document, the
@@ -164,6 +164,35 @@ Table of Contents
    provisioned and involves short distances (low latency) where basic
    QoS/scheduling logic is sufficient to comply with the target Service
    Level Objectives (SLOs).
+
+           ├───────────────────────TN Slice─────────────┤
+
+                             ○─────RFC 9543 ─────○
+                             |   Network Slice   |
+                             |                   |
+                             |                   |
+                             ▼                   ▼
+           ○──CS───□ □───AC──○ □──────PN───────□ ○──AC──○
+       ┌ ─ ─ ─ ─ ─ ─           ┌ ─ ─ ─ ─ ─ ─ ─ ┐         ┌ ─ ─ ─ ─ ─
+          Customer  |               Provider               Customer |
+       |   Site 1              |    Network    |         |  Site 2
+                    |        ┌────┐          ┌────┐                 |
+       |┌───┐    ┌────┐  AC  |    |          |    | AC ┌─┴─┐
+     CS |NF1├────┤ CE ├──────┤ PE |          | PE ├────┤NF3|        |
+     □ |└─┬─┘    └────┘      |    |          |    |    └─┬─┘
+     |    |         |        └────┘          └────┘                 |
+     | |  |                    |               |         |
+     □  ┌─┴─┐       |                                               |
+       ||NF2|                  |               |         |
+        └───┘       |                                               |
+       └ ─ ─ ─ ─ ─ ─           └ ─ ─ ─ ─ ─ ─ ─ ┘         └ ─ ─ ─ ─ ─
+
+                   □──────□  TN segments:
+                               CS = Customer Segment
+                               AC = Attachment Circuit
+                               PN = Provider Network
+
+              Figure 1: Segmentation of the Transport Network
 
    The 5G control plane relies upon the Single Network Slice Selection
    Assistance Information (S-NSSAI) identifier for slice identification
@@ -230,7 +259,7 @@ Table of Contents
 
    In practice, the TN may not map to a monolithic architecture and
    management domain.  It is frequently segmented, non-uniform, and
-   managed by different entities.  For example, Figure 1 depicts a NF
+   managed by different entities.  For example, Figure 2 depicts a NF
    instance that is deployed in an edge data center (DC) connected to a
    NF located in a Public Cloud via a WAN (e.g., MPLS-VPN service).  In
    this example, the TN can be seen as an abstraction representing an
@@ -258,7 +287,7 @@ Table of Contents
                 └──┘└──┘└──┘└──┘│ └──┘      └─┬┘          │
                └ ─ ─ ─ ─ ─ ─ ─ ─   └ ─ ─ ─ ─ ─   └ ─ ─ ─ ─
 
-          Figure 1: An Example of Transport Network Decomposition
+          Figure 2: An Example of Transport Network Decomposition
 
 3.2.  5G Network Slicing versus Transport Network Slicing
 
@@ -307,7 +336,7 @@ Table of Contents
 
 3.3.  Transport Network Reference Design
 
-   Figure 2 depicts the reference design used in this document for
+   Figure 3 depicts the reference design used in this document for
    modelling the Transport Network based on management perimeters
    (Customer vs. Provider).
 
@@ -328,9 +357,9 @@ Table of Contents
 
       ◀─────────────────Transport Network────────────────▶
 
-  Figure 2: Reference Design with Customer Site and Provider Network
+  Figure 3: Reference Design with Customer Site and Provider Network
 
-   The description of the main components shown in Figure 2 are:
+   The description of the main components shown in Figure 3 are:
 
    Customer:  An entity that is responsible for managing and
       orchestrating the end-to-end 5G Mobile Network, notably RANs and
@@ -419,7 +448,7 @@ Table of Contents
       An example of a distributed CE is the realization of an
       interconnection using a L3VPN service based on a distributed CE
       composed of a switch (Layer 2) and a router (Layer 3) (case (ii)
-      in Figure 3).
+      in Figure 4).
 
    Distributed PE:  The logical connectivity is realized by configuring
       multiple devices in the provider network (i.e., provider
@@ -427,13 +456,13 @@ Table of Contents
 
       An example of a distributed PE is the "Managed CE service".  For
       example, a provider delivers VPN services using CEs and PEs which
-      are both managed by the provider (case (iii) in Figure 3).  The
+      are both managed by the provider (case (iii) in Figure 4).  The
       managed CE can also be a Data Center Gateway as depicted in the
-      example (iv) of Figure 3.  A provider-managed CE may attach to CEs
+      example (iv) of Figure 4.  A provider-managed CE may attach to CEs
       of multiple customers.  However, this device is part of the
       provider network.
 
-   Figure 3 depicts examples of distributed CEs and PEs.  Deployment
+   Figure 4 depicts examples of distributed CEs and PEs.  Deployment
    cases where the AC is also managed by the provider are not discussed
    here because the setup of such an AC does not require any
    coordination between the customer and provider orchestration domains.
@@ -490,7 +519,7 @@ Table of Contents
                             iv) Distributed PE
                                   and CE
 
-              Figure 3: Generic Model vs Distributed CE and PE
+              Figure 4: Generic Model vs Distributed CE and PE
 
    In subsequent sections of this document, the terms CE and PE are used
    for both single and distributed devices.
@@ -517,7 +546,7 @@ Table of Contents
    CE has thus awareness of provider services configuration (e.g.,
    control plane identifiers such as Route Targets (RTs) and Route
    Distinguishers (RDs)).  An example of such an AC is depicted in
-   Figure 4.
+   Figure 5.
 
    This deployment is a source of confusion since service configurations
    are typically enforced on PEs.  Notwithstanding, the reference design
@@ -540,7 +569,7 @@ Table of Contents
           │        ┃ VRF foo  ┃               └─┬──┘            │
            ─ ─ ─ ─ ┻━━━━━━━━━━┛                  ─ ─ ─ ─ ─ ─ ─ ─
 
-             Figure 4: Example of MPLS-based Attachment Circuit
+             Figure 5: Example of MPLS-based Attachment Circuit
 
    Service-aware CEs are used, for example, in the deployment discussed
    in Sections 4.3.2 and 4.3.3.
@@ -558,7 +587,7 @@ Table of Contents
    This framework is consistent with the management coordination example
    shown in Figure 4.7.1 of [TS-28.530].
 
-   In reference to Figure 5, a 5G End-to-End Network Slice Orchestrator
+   In reference to Figure 6, a 5G End-to-End Network Slice Orchestrator
    (5G NSO) is responsible for orchestrating 5G Network Slices end-to-
    end.  The details of the 5G NSO are out of the scope of this
    document.  The realization of the 5G Network Slices spans RAN, CN,
@@ -622,9 +651,9 @@ Table of Contents
 
          ◍───────────────────TN Slice───────────────────◍
 
-            Figure 5: 5G End-to-End Slice Orchestration with TN
+            Figure 6: 5G End-to-End Slice Orchestration with TN
 
-   The various orchestration depicted in Figure 5 encompass the 3GPP's
+   The various orchestration depicted in Figure 6 encompass the 3GPP's
    Network Slice Subnet Management Function (NSSMF) mentioned, e.g., in
    Figure 5 of [I-D.ietf-teas-5g-network-slice-application].
 
@@ -632,7 +661,7 @@ Table of Contents
 
    In reference to the architecture depicted in Section 3.4.1, the
    connectivity between NFs can be decomposed into three main segment
-   types that are shown in Figure 6:
+   types that are shown in Figure 1:
 
    Customer Site:  Either connects NFs located in the same customer site
       (e.g., NF1-NF2) or connects a NF to a CE (e.g., NF1-CE).  This
@@ -655,35 +684,6 @@ Table of Contents
 
    This document focuses on deployments where the Service Demarcation
    Points (SDPs) are located per Types 3 and 4 of Figure 1 of [RFC9543].
-
-           ├───────────────────────TN Slice─────────────┤
-
-                             ○─────RFC 9543 ─────○
-                             |   Network Slice   |
-                             |                   |
-                             |                   |
-                             ▼                   ▼
-           ○──CS───□ □───AC──○ □──────PN───────□ ○──AC──○
-       ┌ ─ ─ ─ ─ ─ ─           ┌ ─ ─ ─ ─ ─ ─ ─ ┐         ┌ ─ ─ ─ ─ ─
-          Customer  |               Provider               Customer |
-       |   Site 1              |    Network    |         |  Site 2
-                    |        ┌────┐          ┌────┐                 |
-       |┌───┐    ┌────┐  AC  |    |          |    | AC ┌─┴─┐
-     CS |NF1├────┤ CE ├──────┤ PE |          | PE ├────┤NF3|        |
-     □ |└─┬─┘    └────┘      |    |          |    |    └─┬─┘
-     |    |         |        └────┘          └────┘                 |
-     | |  |                    |               |         |
-     □  ┌─┴─┐       |                                               |
-       ||NF2|                  |               |         |
-        └───┘       |                                               |
-       └ ─ ─ ─ ─ ─ ─           └ ─ ─ ─ ─ ─ ─ ─ ┘         └ ─ ─ ─ ─ ─
-
-                   □──────□  TN segments:
-                               CS = Customer Segment
-                               AC = Attachment Circuit
-                               PN = Provider Network
-
-              Figure 6: Segmentation of the Transport Network
 
    Resource synchronization for AC provisioning:  The realization of the
       AC is made up of TN resources shared between the Customer Site
