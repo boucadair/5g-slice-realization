@@ -1408,6 +1408,7 @@ to TN QoS Classes may be rather common.
 
 #  Transport Planes Mapping Models {#transport-plane-mapping-models}
 
+   A transport plane refers to a specific forwarding behavior between PEs in order to provide packet delivery that is consistent with the corresponding SLOs. 
    A network operator can define multiple transport planes. A transport plane may be realized in multiple ways such as (but not limited to):
 
    * A mesh of RSVP-TE {{?RFC3209}} or SR-TE {{?RFC9256}} tunnels created with specific optimization criteria and
