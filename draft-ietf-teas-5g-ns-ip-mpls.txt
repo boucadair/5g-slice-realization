@@ -1271,15 +1271,15 @@ Table of Contents
 
    In this option, L3VPN service instances are instantiated outside the
    provider network.  These L3VPN service instances are instantiated in
-   the customer site, which could be for example either on the compute,
-   hosting mobile network functions (Figure 16, left hand side), or
-   within the DC/cloud infrastructure itself (e.g., on the top of the
-   rack or leaf switch within cloud IP fabric (Figure 16, right hand
-   side)).  On the AC connected to PE, packets are already MPLS
-   encapsulated (or MPLS-in-UDP/MPLS-in-IP encapsulated, if cloud or
-   compute infrastructure don’t support MPLS encapsulation).  Therefore,
-   the PE uses neither a VLAN nor an IP address for slice identification
-   at the SDP, but instead uses the MPLS label.
+   the customer site, which could be, for example, either on the compute
+   that hosts mobile NFs (Figure 16, left hand side) or within the DC/
+   cloud infrastructure itself (e.g., on the top of the rack or leaf
+   switch within cloud IP fabric (Figure 16, right hand side)).  On the
+   AC connected to a PE, packets are already MPLS encapsulated (or MPLS-
+   in-UDP/MPLS-in-IP encapsulated, if cloud or compute infrastructure
+   don’t support MPLS encapsulation).  Therefore, the PE uses neither a
+   VLAN nor an IP address for slice identification at the SDP, but
+   instead uses the MPLS label.
 
         <──────        <──────        <──────
         BGP VPN        BGP VPN        BGP VPN
@@ -1312,8 +1312,8 @@ Table of Contents
 
    MPLS labels are allocated dynamically in Option B deployments, where
    at the domain boundaries service prefixes are reflected with next-hop
-   self, and new label is dynamically allocated, as visible in Figure 16
-   (e.g., labels A, A', and A" for the first depicted slice).
+   self, and a new label is dynamically allocated, as visible in
+   Figure 16 (e.g., labels A, A', and A" for the first depicted slice).
    Therefore, for any slice-specific per-hop behavior at the provider
    network edge, the PE needs to determine which label represents which
    slice.  In the BGP control plane, when exchanging service prefixes
