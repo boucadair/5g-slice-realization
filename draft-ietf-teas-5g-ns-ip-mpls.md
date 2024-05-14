@@ -396,7 +396,7 @@ are passed between Orchestrators via a dedicated interface, e.g., the RFC 9543 N
 
 More complex scenarios can happen with extra segmentation of the TN and additional TN Orchestration domains. It is not realistic to describe any design flavor, however the main concepts presented here in terms of segmentation (provider/customer) and stitching (AC) can be reused for the integration of more complex integrations.
 
-## Mapping Schemes Between 5G Network Slices and Transport Network Slices {#sec-mapping}
+## Mapping 5G Network Slices to Transport Network Slices {#sec-mapping}
 
    There are multiple options for mapping 5G Network Slices to TN slices:
 
