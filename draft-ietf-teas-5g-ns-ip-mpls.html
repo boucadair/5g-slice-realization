@@ -1352,7 +1352,8 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
 <p id="section-1-1">This document focuses on network slicing for 5G networks, covering the connectivity between Network Functions (NFs) across multiple domains such as edge clouds, data centers, and the Wide Area Network (WAN). The document describes a Network Slice realization approach that fulfills 5G slicing requirements by using existing IP/MPLS technologies to optimally control connectivity Service Level Agreements (SLAs) offered for 5G slices. To that aim, this document describes the scope of the Transport Network in 5G architectures (<a href="#sec-scope" class="auto internal xref">Section 3.1</a>), disambiguates 5G Network Slicing versus Transport Network Slicing (<a href="#sec-5gtn" class="auto internal xref">Section 3.2</a>), draws the perimeter of the various orchestration domains to realize slices (<a href="#sec-orch" class="auto internal xref">Section 3.4</a>), and identifies the required coordination between these orchestration domains for adequate setup of Attachment Circuits (ACs) (<a href="#sec-tn-nsi" class="auto internal xref">Section 3.4.2</a>).<a href="#section-1-1" class="pilcrow">¶</a></p>
-<p id="section-1-2">This work is compatible with the framework defined in <span>[<a href="#RFC9543" class="cite xref">RFC9543</a>]</span> which describes network slicing in the context of networks built from IETF technologies. Specifically, the document describes how RFC 9543 Network Slices are realized within provider networks and how such slices are stitched to Transport Network resources in a customer site in the context of Transport Network Slice.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-2">This work is compatible with the framework defined in <span>[<a href="#RFC9543" class="cite xref">RFC9543</a>]</span> which describes network slicing in the context of networks built from IETF technologies. Specifically, the document describes how RFC 9543 Network Slices are realized within provider networks and how such slices are stitched to Transport Network resources in a customer site in the context of Transport Network Slice.
+Concretely, the realization of an RFC 9543 Network Slice (i.e., connectivity with performance commitments) involves the provider network and partially the AC (the PE-side of the AC). Note that the provisioning of a new Network Slice may rely on a partial or full pre-provisioned segment (e.g., a new Network Slice may rely on an existing AC). In this document, the customer site segment is considered as an extension of the connectivity of the Radio Access Network (RAN) / Core Network (CN) domain without complex slice-specific performances requirements: the customer site infrastructure is usually over-provisioned and involves short distances (low latency) where basic QoS/scheduling logic is sufficient to comply with the target Service Level Objectives (SLOs.) In other words, the main focus for the enforcement of end-to-end SLOs is managed at the Network Slice between Provider Edge (PE) interfaces connected to the AC.<a href="#section-1-2" class="pilcrow">¶</a></p>
 <p id="section-1-3">The realization approach described in this document is typically triggered by Network Slice Service requests. How a Network Slice Service request is placed for realization, including how it is derived from a 5G Slice Service request, is out of scope. Mapping considerations between 3GPP and IETF Network Slice Service (e.g., mapping of service parameters) are discussed, e.g., in <span>[<a href="#I-D.ietf-teas-5g-network-slice-application" class="cite xref">I-D.ietf-teas-5g-network-slice-application</a>]</span>.<a href="#section-1-3" class="pilcrow">¶</a></p>
 <p id="section-1-4">The realization model described in this document uses a single Network Resource Partition (NRP) (<span><a href="https://rfc-editor.org/rfc/rfc9543#section-7.1" class="relref">Section 7.1</a> of [<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>). The applicability to multiple NRPs is out of scope.<a href="#section-1-4" class="pilcrow">¶</a></p>
 <p id="section-1-5">Although this document focuses on 5G, the realizations are not fundamentally constrained by the 5G use case. The document is not intended to be a BCP and does not claim to specify mandatory mechanisms to realize network slices. Rather, a key goal of the document is to provide pragmatic implementation approaches by leveraging existing readily-available, widely-deployed techniques. The document is also intended to align the mobile and the IETF perspectives of slicing from a realization perspective.<a href="#section-1-5" class="pilcrow">¶</a></p>
@@ -1817,11 +1818,9 @@ However, this document does not exclude the instantiation of multiple ACs betwee
 </dd>
           <dd class="break"></dd>
 </dl>
-<p id="section-3.4.2-3">As depicted in <a href="#fig-end-to-end" class="auto internal xref">Figure 6</a>, the realization of an RFC 9543 Network Slice (i.e., connectivity with
-   performance commitments) involves the provider network and partially the AC (the PE-side of the AC). Note that the provisioning of a new Network Slice may rely on a partial or full pre-provisioned segment (e.g., a new Network Slice may rely on an existing AC). The customer site segment is considered as an extension of the connectivity of the RAN/CN domain without complex slice-specific performances requirements: the customer site infrastructure is usually over-provisioned and involves short distances (low latency) where basic QoS/Scheduling logic is sufficient to comply with the target SLOs. In other words, the main focus for the enforcement of end-to-end SLOs is managed at the Network Slice between PE interfaces connected to the AC.<a href="#section-3.4.2-3" class="pilcrow">¶</a></p>
 <span id="name-segmentation-of-the-transpo"></span><div id="fig-end-to-end">
 <figure id="figure-6">
-            <div class="alignCenter art-text artwork" id="section-3.4.2-4.1">
+            <div class="alignCenter art-text artwork" id="section-3.4.2-3.1">
 <pre>
       ├───────────────────────TN Slice─────────────┤
 
@@ -1855,26 +1854,26 @@ CS |NF1├────┤ CE ├──────┤ PE |          | PE ├─�
 <a href="#name-segmentation-of-the-transpo" class="selfRef">Segmentation of the Transport Network</a>
             </figcaption></figure>
 </div>
-<span class="break"></span><dl class="dlParallel" id="section-3.4.2-5">
-            <dt id="section-3.4.2-5.1">Resource synchronization for AC provisioning:</dt>
-            <dd style="margin-left: 1.5em" id="section-3.4.2-5.2">
-              <p id="section-3.4.2-5.2.1">The realization of the AC is made up of TN resources shared between the Customer Site Orchestration and the Provider Network Orchestration (e.g., RFC 9543 NSC).  More precisely, a PE and a CE connected via an AC need to be
+<span class="break"></span><dl class="dlParallel" id="section-3.4.2-4">
+            <dt id="section-3.4.2-4.1">Resource synchronization for AC provisioning:</dt>
+            <dd style="margin-left: 1.5em" id="section-3.4.2-4.2">
+              <p id="section-3.4.2-4.2.1">The realization of the AC is made up of TN resources shared between the Customer Site Orchestration and the Provider Network Orchestration (e.g., RFC 9543 NSC).  More precisely, a PE and a CE connected via an AC need to be
 provisioned with consistent data plane and control plane  information (e.g., VLAN-
 IDs, IP addresses/subnets, or BGP  Autonomous System (AS) Number). Hence, the realization of this
-interconnection is technology-specific and requires coordination between the Customer Site Orchestration and an NSC. Automating the provisioning and management of the AC is thus key to automate the overall service provisioning. Aligned with <span>[<a href="#RFC8969" class="cite xref">RFC8969</a>]</span>, this document assumes that this coordination is based upon standard YANG data models and APIs.<a href="#section-3.4.2-5.2.1" class="pilcrow">¶</a></p>
+interconnection is technology-specific and requires coordination between the Customer Site Orchestration and an NSC. Automating the provisioning and management of the AC is thus key to automate the overall service provisioning. Aligned with <span>[<a href="#RFC8969" class="cite xref">RFC8969</a>]</span>, this document assumes that this coordination is based upon standard YANG data models and APIs.<a href="#section-3.4.2-4.2.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
-<dt id="section-3.4.2-5.3"></dt>
-            <dd style="margin-left: 1.5em" id="section-3.4.2-5.4">
-              <p id="section-3.4.2-5.4.1"><a href="#_figure-4" class="auto internal xref">Figure 7</a> is a basic example of a Layer 3 CE-PE link realization
+<dt id="section-3.4.2-4.3"></dt>
+            <dd style="margin-left: 1.5em" id="section-3.4.2-4.4">
+              <p id="section-3.4.2-4.4.1"><a href="#_figure-4" class="auto internal xref">Figure 7</a> is a basic example of a Layer 3 CE-PE link realization
 with shared network resources (such as VLAN-IDs and IP prefixes) which
-are passed between Orchestrators via a dedicated interface, e.g., the RFC 9543 Network Slice Service Interface <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="cite xref">I-D.ietf-teas-ietf-network-slice-nbi-yang</a>]</span> or the Attachment Circuit Service Interface (<span>[<a href="#I-D.ietf-opsawg-teas-attachment-circuit" class="cite xref">I-D.ietf-opsawg-teas-attachment-circuit</a>]</span>.<a href="#section-3.4.2-5.4.1" class="pilcrow">¶</a></p>
+are passed between Orchestrators via a dedicated interface, e.g., the RFC 9543 Network Slice Service Interface <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="cite xref">I-D.ietf-teas-ietf-network-slice-nbi-yang</a>]</span> or the Attachment Circuit Service Interface (<span>[<a href="#I-D.ietf-opsawg-teas-attachment-circuit" class="cite xref">I-D.ietf-opsawg-teas-attachment-circuit</a>]</span>.<a href="#section-3.4.2-4.4.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 </dl>
 <span id="name-coordination-of-transport-n"></span><div id="_figure-4">
 <figure id="figure-7">
-            <div class="alignCenter art-text artwork" id="section-3.4.2-6.1">
+            <div class="alignCenter art-text artwork" id="section-3.4.2-5.1">
 <pre>
   ┌ ─ ─ ─ ─ ─ ─ ─ ┐                   ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─
                                           RFC9543 NSC    |
