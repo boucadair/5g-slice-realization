@@ -661,7 +661,7 @@ Table of Contents
 
    In reference to the architecture depicted in Section 3.4.1, the
    connectivity between NFs can be decomposed into three main segment
-   types that are shown in Figure 1:
+   types that are as follows:
 
    Customer Site:  Either connects NFs located in the same customer site
       (e.g., NF1-NF2) or connects a NF to a CE (e.g., NF1-CE).  This
