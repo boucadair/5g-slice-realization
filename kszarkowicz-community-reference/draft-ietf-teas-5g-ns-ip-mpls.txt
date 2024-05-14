@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 9 November 2024                                Juniper Networks
+Expires: 15 November 2024                               Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                              8 May 2024
+                                                             14 May 2024
 
 
  A Realization of Network Slices for 5G Networks Using Current IP/MPLS
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 November 2024.
+   This Internet-Draft will expire on 15 November 2024.
 
 Copyright Notice
 
@@ -2681,10 +2681,6 @@ Table of Contents
               Attribute", RFC 1997, DOI 10.17487/RFC1997, August 1996,
               <https://www.rfc-editor.org/rfc/rfc1997>.
 
-   [RFC4360]  Sangli, S., Tappan, D., and Y. Rekhter, "BGP Extended
-              Communities Attribute", RFC 4360, DOI 10.17487/RFC4360,
-              February 2006, <https://www.rfc-editor.org/rfc/rfc4360>.
-
    [RFC4364]  Rosen, E. and Y. Rekhter, "BGP/MPLS IP Virtual Private
               Networks (VPNs)", RFC 4364, DOI 10.17487/RFC4364, February
               2006, <https://www.rfc-editor.org/rfc/rfc4364>.
@@ -2765,9 +2761,9 @@ Table of Contents
               Wu, B., Dhody, D., Rokui, R., Saad, T., and J. Mullooly,
               "A YANG Data Model for the RFC 9543 Network Slice
               Service", Work in Progress, Internet-Draft, draft-ietf-
-              teas-ietf-network-slice-nbi-yang-12, 25 April 2024,
+              teas-ietf-network-slice-nbi-yang-13, 9 May 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-teas-
-              ietf-network-slice-nbi-yang-12>.
+              ietf-network-slice-nbi-yang-13>.
 
    [I-D.ietf-teas-ns-controller-models]
               Contreras, L. M., Rokui, R., Tantsura, J., Wu, B., Liu,
@@ -2821,6 +2817,10 @@ Table of Contents
               Networks (L3VPN) Operations and Management", RFC 4176,
               DOI 10.17487/RFC4176, October 2005,
               <https://www.rfc-editor.org/rfc/rfc4176>.
+
+   [RFC4360]  Sangli, S., Tappan, D., and Y. Rekhter, "BGP Extended
+              Communities Attribute", RFC 4360, DOI 10.17487/RFC4360,
+              February 2006, <https://www.rfc-editor.org/rfc/rfc4360>.
 
    [RFC4365]  Rosen, E., "Applicability Statement for BGP/MPLS IP
               Virtual Private Networks (VPNs)", RFC 4365,
