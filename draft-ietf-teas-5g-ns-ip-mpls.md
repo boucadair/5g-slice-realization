@@ -184,8 +184,13 @@ This document describes a Network Slice realization model for IP/MPLS networks w
 
 This document focuses on network slicing for 5G networks, covering the connectivity between Network Functions (NFs) across multiple domains such as edge clouds, data centers, and the Wide Area Network (WAN). The document describes a Network Slice realization approach that fulfills 5G slicing requirements by using existing IP/MPLS technologies to optimally control connectivity Service Level Agreements (SLAs) offered for 5G slices. To that aim, this document describes the scope of the Transport Network in 5G architectures ({{sec-scope}}), disambiguates 5G Network Slicing versus Transport Network Slicing ({{sec-5gtn}}), draws the perimeter of the various orchestration domains to realize slices ({{sec-orch}}), and identifies the required coordination between these orchestration domains for adequate setup of Attachment Circuits (ACs) ({{sec-tn-nsi}}).
 
-This work is compatible with the framework defined in {{!RFC9543}} which describes network slicing in the context of networks built from IETF technologies. Specifically, the document describes how RFC 9543 Network Slices are realized within provider networks and how such slices are stitched to Transport Network resources in a customer site in the context of Transport Network Slices.
+This work is compatible with the framework defined in {{!RFC9543}} which describes network slicing in the context of networks built from IETF technologies. Specifically, the document describes how RFC 9543 Network Slices are realized within provider networks and how such slices are stitched to Transport Network resources in a customer site in the context of Transport Network Slices ({{fig-end-to-end}}).
 Concretely, the realization of an RFC 9543 Network Slice (i.e., connectivity with performance commitments) involves the provider network and partially the AC (the PE-side of the AC). The provisioning of a new Network Slice may rely on new or existing ACs. In this document, the customer site is assumed without complex slice-specific performances requirements: the customer site infrastructure is usually over-provisioned and involves short distances (low latency) where basic QoS/scheduling logic is sufficient to comply with the target Service Level Objectives (SLOs).
+
+~~~~
+{::include ./drawings/tn-sections.txt}
+~~~~
+{: #fig-end-to-end title="Segmentation of the Transport Network" artwork-align="center"}
 
 The 5G control plane relies upon the Single Network Slice Selection Assistance Information (S-NSSAI) identifier for slice
 identification {{TS-23.501}}. Because S-NSSAIs are not visible to the transport domain, 5G Network Functions can expose the 5G slices to the transport
@@ -377,11 +382,6 @@ Attachment Circuit:
 : Represents the connectivity between CEs and PEs (e.g., CE-PE1 and PE2-NF3). The orchestration of this segment relies partially upon an RFC 9543 NSC for the configuration of the AC on the PE customer-facing interfaces and the Customer Site Orchestration for the configuration of the AC on the CE.
 
 This document focuses on deployments where the Service Demarcation Points (SDPs) are located per Types 3 and 4 of Figure 1 of {{!RFC9543}}.
-
-~~~~
-{::include ./drawings/tn-sections.txt}
-~~~~
-{: #fig-end-to-end title="Segmentation of the Transport Network" artwork-align="center"}
 
 Resource synchronization for AC provisioning:
 : The realization of the AC is made up of TN resources shared between the Customer Site Orchestration and the Provider Network Orchestration (e.g., RFC 9543 NSC).  More precisely, a PE and a CE connected via an AC need to be
