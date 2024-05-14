@@ -369,7 +369,7 @@ The various orchestration depicted in {{figure-orch}} encompass the 3GPP's Netwo
 
 ### Transport Network Segments and Network Slice Instantiation {#sec-tn-nsi}
 
-In reference to the architecture depicted in {{sec-5g-sli-arch}}, the connectivity between NFs can be decomposed into three main segment types that are shown in {{fig-end-to-end}}:
+In reference to the architecture depicted in {{sec-5g-sli-arch}}, the connectivity between NFs can be decomposed into three main segment types that are as follows:
 
 Customer Site:
 : Either connects NFs located in the same customer site (e.g., NF1-NF2) or connects a NF to a CE (e.g., NF1-CE). This segment may not be present if the NF is the CE (e.g., NF3): in this case the AC connects the NF to a PE.
