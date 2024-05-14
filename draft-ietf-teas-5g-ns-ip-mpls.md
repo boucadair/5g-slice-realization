@@ -708,11 +708,10 @@ The realization model described in the document inherits the scalability propert
 
    In this option, L3VPN service instances are instantiated outside the
    provider network.  These L3VPN service instances
-   are instantiated in the customer site, which could be for example either on the compute, hosting mobile network
-   functions ({{figure-mpls-10b-hand-off}}, left hand side), or within the DC/cloud
+   are instantiated in the customer site, which could be, for example, either on the compute that hosts mobile NFs ({{figure-mpls-10b-hand-off}}, left hand side) or within the DC/cloud
    infrastructure itself (e.g., on the top of the rack or leaf switch
    within cloud IP fabric ({{figure-mpls-10b-hand-off}}, right hand side)). On the
-   AC connected to PE, packets are already MPLS
+   AC connected to a PE, packets are already MPLS
    encapsulated (or MPLS-in-UDP/MPLS-in-IP encapsulated, if cloud or compute
    infrastructure don’t support MPLS encapsulation). Therefore,
    the PE uses neither a VLAN nor an IP address for slice
@@ -726,7 +725,7 @@ The realization model described in the document inherits the scalability propert
 
    MPLS labels are allocated dynamically in Option B
    deployments, where at the domain boundaries service prefixes are
-   reflected with next-hop self, and new label is dynamically allocated,
+   reflected with next-hop self, and a new label is dynamically allocated,
    as visible in {{figure-mpls-10b-hand-off}} (e.g., labels A, A', and A" for the first depicted slice).  Therefore, for any slice-specific per-hop
    behavior at the provider network edge, the PE needs to determine
    which label represents which slice.  In the BGP control plane, when
