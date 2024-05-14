@@ -2677,10 +2677,6 @@ Table of Contents
 
 11.1.  Normative References
 
-   [RFC1997]  Chandra, R., Traina, P., and T. Li, "BGP Communities
-              Attribute", RFC 1997, DOI 10.17487/RFC1997, August 1996,
-              <https://www.rfc-editor.org/rfc/rfc1997>.
-
    [RFC4364]  Rosen, E. and Y. Rekhter, "BGP/MPLS IP Virtual Private
               Networks (VPNs)", RFC 4364, DOI 10.17487/RFC4364, February
               2006, <https://www.rfc-editor.org/rfc/rfc4364>.
@@ -2786,6 +2782,10 @@ Table of Contents
               O-RAN Alliance, "O-RAN.WG9.XPSAAS: O-RAN WG9 Xhaul Packet
               Switched Architectures and Solutions Version 04.00", March
               2023, <https://www.o-ran.org/specifications>.
+
+   [RFC1997]  Chandra, R., Traina, P., and T. Li, "BGP Communities
+              Attribute", RFC 1997, DOI 10.17487/RFC1997, August 1996,
+              <https://www.rfc-editor.org/rfc/rfc1997>.
 
    [RFC2474]  Nichols, K., Blake, S., Baker, F., and D. Black,
               "Definition of the Differentiated Services Field (DS
