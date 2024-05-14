@@ -143,7 +143,7 @@ Table of Contents
    that fulfills 5G slicing requirements by using existing IP/MPLS
    technologies to optimally control connectivity Service Level
    Agreements (SLAs) offered for 5G slices.  To that aim, this document
-   clarifies the scope of the Transport Network in 5G architectures
+   describes the scope of the Transport Network in 5G architectures
    (Section 3.1), disambiguates 5G Network Slicing versus Transport
    Network Slicing (Section 3.2), draws the perimeter of the various
    orchestration domains to realize slices (Section 3.4), and identifies
