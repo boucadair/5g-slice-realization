@@ -741,10 +741,10 @@ The realization model described in the document inherits the scalability propert
    different community representing a different slice.  Depending on the
    business requirements, each slice could be represented by a different
    service instance, as outlined in {{figure-mpls-10b-hand-off}}.  In that case, the route
-   target extended community might be used as slice differentiator.  In
+   target extended community ({{Section 4 of ?RFC4360}}) might be used as slice differentiator.  In
    other deployments, all prefixes (representing different slices)
    might be handled by a single 'mobile' service instance, and some other
-   BGP attribute (e.g., a standard community) might be used for slice
+   BGP attribute (e.g., a standard community - {{?RFC1997}}) might be used for slice
    differentiation.  There could be also a deployment option that groups multiple
    slices together into a single service instance, resulting in a
    handful of service instances.  In any case, fine-grained per-hop
