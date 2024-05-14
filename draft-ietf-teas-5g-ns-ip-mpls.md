@@ -193,7 +193,7 @@ The realization model described in this document uses a single Network Resource 
 
 Although this document focuses on 5G, the realizations are not fundamentally constrained by the 5G use case. The document is not intended to be a BCP and does not claim to specify mandatory mechanisms to realize network slices. Rather, a key goal of the document is to provide pragmatic implementation approaches by leveraging existing readily-available, widely-deployed techniques. The document is also intended to align the mobile and the IETF perspectives of slicing from a realization perspective.
 
-A brief 5G overview is provided in {{sec-5g-overview}} for the reader's convenience. The reader may refer to {{TS-23.501}} or {{5G-Book}} for more details about 3GPP network architectures.
+A brief 5G overview is provided in {{sec-5g-overview}} for the reader's convenience. For a definitive description of 3GPP network architectures, the reader should refer to {{TS-23.501}}. More  details can be found in {{5G-Book}}.
 
 # Definitions
 
