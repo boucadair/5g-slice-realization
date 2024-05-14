@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 8 November 2024                                Juniper Networks
+Expires: 15 November 2024                               Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                              7 May 2024
+                                                             14 May 2024
 
 
  A Realization of Network Slices for 5G Networks Using Current IP/MPLS
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 November 2024.
+   This Internet-Draft will expire on 15 November 2024.
 
 Copyright Notice
 
@@ -1331,15 +1331,15 @@ Table of Contents
    prefix can have different community representing a different slice.
    Depending on the business requirements, each slice could be
    represented by a different service instance, as outlined in
-   Figure 16.  In that case, the route target extended community might
-   be used as slice differentiator.  In other deployments, all prefixes
-   (representing different slices) might be handled by a single 'mobile'
-   service instance, and some other BGP attribute (e.g., a standard
-   community) might be used for slice differentiation.  There could be
-   also a deployment option that groups multiple slices together into a
-   single service instance, resulting in a handful of service instances.
-   In any case, fine-grained per-hop behavior at the edge of provider
-   network is possible.
+   Figure 16.  In that case, the route target extended community
+   (Section 4 of [RFC4360]) might be used as slice differentiator.  In
+   other deployments, all prefixes (representing different slices) might
+   be handled by a single 'mobile' service instance, and some other BGP
+   attribute (e.g., a standard community - [RFC1997]) might be used for
+   slice differentiation.  There could be also a deployment option that
+   groups multiple slices together into a single service instance,
+   resulting in a handful of service instances.  In any case, fine-
+   grained per-hop behavior at the edge of provider network is possible.
 
 4.3.3.  Option C
 
@@ -2757,9 +2757,9 @@ Table of Contents
               Wu, B., Dhody, D., Rokui, R., Saad, T., and J. Mullooly,
               "A YANG Data Model for the RFC 9543 Network Slice
               Service", Work in Progress, Internet-Draft, draft-ietf-
-              teas-ietf-network-slice-nbi-yang-12, 25 April 2024,
+              teas-ietf-network-slice-nbi-yang-13, 9 May 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-teas-
-              ietf-network-slice-nbi-yang-12>.
+              ietf-network-slice-nbi-yang-13>.
 
    [I-D.ietf-teas-ns-controller-models]
               Contreras, L. M., Rokui, R., Tantsura, J., Wu, B., Liu,
@@ -2782,6 +2782,10 @@ Table of Contents
               O-RAN Alliance, "O-RAN.WG9.XPSAAS: O-RAN WG9 Xhaul Packet
               Switched Architectures and Solutions Version 04.00", March
               2023, <https://www.o-ran.org/specifications>.
+
+   [RFC1997]  Chandra, R., Traina, P., and T. Li, "BGP Communities
+              Attribute", RFC 1997, DOI 10.17487/RFC1997, August 1996,
+              <https://www.rfc-editor.org/rfc/rfc1997>.
 
    [RFC2474]  Nichols, K., Blake, S., Baker, F., and D. Black,
               "Definition of the Differentiated Services Field (DS
@@ -2813,6 +2817,10 @@ Table of Contents
               Networks (L3VPN) Operations and Management", RFC 4176,
               DOI 10.17487/RFC4176, October 2005,
               <https://www.rfc-editor.org/rfc/rfc4176>.
+
+   [RFC4360]  Sangli, S., Tappan, D., and Y. Rekhter, "BGP Extended
+              Communities Attribute", RFC 4360, DOI 10.17487/RFC4360,
+              February 2006, <https://www.rfc-editor.org/rfc/rfc4360>.
 
    [RFC4365]  Rosen, E., "Applicability Statement for BGP/MPLS IP
               Virtual Private Networks (VPNs)", RFC 4365,
