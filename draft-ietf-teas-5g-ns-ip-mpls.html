@@ -1389,12 +1389,12 @@ CS |NF1├────┤ CE ├──────┤ PE |          | PE ├─�
 <a href="#name-segmentation-of-the-transpo" class="selfRef">Segmentation of the Transport Network</a>
         </figcaption></figure>
 </div>
-<p id="section-1-4">The 5G control plane relies upon the Single Network Slice Selection Assistance Information (S-NSSAI) identifier for slice
+<p id="section-1-4">The realization approach described in this document is typically triggered by Network Slice Service requests. How a Network Slice Service request is placed for realization, including how it is derived from a 5G Slice Service request, is out of scope. Mapping considerations between 3GPP and IETF Network Slice Service (e.g., mapping of service parameters) are discussed, e.g., in <span>[<a href="#I-D.ietf-teas-5g-network-slice-application" class="cite xref">I-D.ietf-teas-5g-network-slice-application</a>]</span>.<a href="#section-1-4" class="pilcrow">¶</a></p>
+<p id="section-1-5">The 5G control plane relies upon the Single Network Slice Selection Assistance Information (S-NSSAI) identifier for slice
 identification <span>[<a href="#TS-23.501" class="cite xref">TS-23.501</a>]</span>. Because S-NSSAIs are not visible to the transport domain, 5G Network Functions can expose the 5G slices to the transport
-domain by mapping to explicit Layer 2 or Layer 3 identifiers. The realization of the mapping between customer sites and provider networks is refered to as the "hand-off". <a href="#sec-handoff-domains" class="auto internal xref">Section 4</a> lists a set of such hand-off methods.<a href="#section-1-4" class="pilcrow">¶</a></p>
-<p id="section-1-5">The realization approach described in this document is typically triggered by Network Slice Service requests. How a Network Slice Service request is placed for realization, including how it is derived from a 5G Slice Service request, is out of scope. Mapping considerations between 3GPP and IETF Network Slice Service (e.g., mapping of service parameters) are discussed, e.g., in <span>[<a href="#I-D.ietf-teas-5g-network-slice-application" class="cite xref">I-D.ietf-teas-5g-network-slice-application</a>]</span>.<a href="#section-1-5" class="pilcrow">¶</a></p>
-<p id="section-1-6">The realization model described in this document uses a single Network Resource Partition (NRP) (Section 7.1 of <span>[<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>). The applicability to multiple NRPs is out of scope.<a href="#section-1-6" class="pilcrow">¶</a></p>
-<p id="section-1-7">The realization model described in this document uses the following building blocks are used:<a href="#section-1-7" class="pilcrow">¶</a></p>
+domain by mapping to explicit Layer 2 or Layer 3 identifiers. The realization of the mapping between customer sites and provider networks is refered to as the "hand-off". <a href="#sec-handoff-domains" class="auto internal xref">Section 4</a> lists a set of such hand-off methods.<a href="#section-1-5" class="pilcrow">¶</a></p>
+<p id="section-1-6">This document assumes one single Network Resource Partition (NRP) (Section 7.1 of <span>[<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>) in a provider network. The applicability to multiple NRPs is out of scope.<a href="#section-1-6" class="pilcrow">¶</a></p>
+<p id="section-1-7">The realization model uses the following building blocks within a provider network:<a href="#section-1-7" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-1-8.1">
           <p id="section-1-8.1.1">Layer 2 Virtual Private Network (L2VPN) <span>[<a href="#RFC4664" class="cite xref">RFC4664</a>]</span> and/or Layer 3 Virtual Private Network (L3VPN) <span>[<a href="#RFC4364" class="cite xref">RFC4364</a>]</span> service instances for logical separation:<a href="#section-1-8.1.1" class="pilcrow">¶</a></p>
@@ -1411,7 +1411,7 @@ QoS, as explained in <a href="#sec-qos-map" class="auto internal xref">Section 5
 The use of VPNs for realizing Network Slices is briefly described in Appendix A.4 of <span>[<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>.<a href="#section-1-8.1.3" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-1-8.2">
-          <p id="section-1-8.2.1">Fine-grained resource control at the PE:<a href="#section-1-8.2.1" class="pilcrow">¶</a></p>
+          <p id="section-1-8.2.1">Fine-grained resource control at the Provider Edge (PE):<a href="#section-1-8.2.1" class="pilcrow">¶</a></p>
 <p id="section-1-8.2.2">
 This is sometimes called 'admission control' or 'traffic
 conditioning'.  The main purpose is the enforcement of the
@@ -1424,7 +1424,7 @@ to enforce contracted bandwidths per slice and, potentially, per
 traffic class within the slice.  Traffic above the enforced rate might be
 immediately dropped, or marked as high drop-probability traffic,
 which is more likely to be dropped somewhere inside the provider network if
-congestion occurs.  In the egress direction at the Provider Edge (PE),
+congestion occurs.  In the egress direction at the PE,
 hierarchical schedulers/shapers can be deployed,
 providing guaranteed rates per slice, as well as guarantees per
 traffic class within each slice.<a href="#section-1-8.2.3" class="pilcrow">¶</a></p>
