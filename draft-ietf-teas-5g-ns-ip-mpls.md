@@ -621,18 +621,17 @@ The realization model described in the document inherits the scalability propert
    S-NSSAI, which makes an IP to Slice mapping table unnecessary.
 
    The S-NSSAI/IPv6 mapping is a local IPv6 address allocation method to NFs not disclosed to on-path nodes. IP forwarding is not altered by this method and is
-   still achieved following BCP 198 {{!RFC7608}}.
+   still achieved following BCP 198 {{!RFC7608}}. Concretely, intermediary TN nodes are not required to associate any additional semantic with IPv6 address.
 
-   Different IPv6 address allocation
-   schemes following this approach may be used, with one example allocation shown
-   in {{figure-11}}.
-
-   > Note that this addressing scheme is local to an ingress or egress NF; intermediary
-   TN nodes are not required to associate any additional semantic with IPv6 address.
-
-   Operators using such mapping methods should be aware of the implications
+   However, operators using such mapping methods should be aware of the implications
    of any change of S-NSSAI on the IPv6 addressing plans. For example, modifications of the S-NSSAIs in-use will require
    updating the IP addresses used by NFs involved in the associated slices.
+
+### An Example of Local IPv6 Addressing Plan for Network Functions
+
+   Different IPv6 address allocation
+   schemes following the above approach may be used, with one example allocation shown
+   in {{figure-11}}.
 
 ~~~
              NF specific          reserved
@@ -645,8 +644,6 @@ The realization model described in the document inherits the scalability propert
     dddddd - SD (24 bits)
 ~~~
 {: #figure-11 title="An Example of S-NSSAI Embedded into an IPv6 Address" artwork-align="center"}
-
-### An Example of Local IPv6 Addressing Plan for Network Functions
 
    In reference to {{figure-11}}, the most significant 96 bits of the IPv6 address
    are unique to the NF, but do not carry any slice-specific information. The S-NSSAI information is embedded in the least
@@ -675,8 +672,8 @@ The realization model described in the document inherits the scalability propert
    In this option, the service instances representing different slices
    are created directly on the NF, or within the customer site
    hosting the NF, and attached to the provider network.  Therefore, the packet
-   is MPLS encapsulated outside the provider network with MPLS
-   encapsulation, or MPLS-in-UDP encapsulation {{?RFC7510}}, depending on the capability
+   is encapsulated outside the provider network with MPLS
+   encapsulation or MPLS-in-UDP encapsulation {{?RFC7510}}, depending on the capability
    of the customer site, with the service label depicting
    the slice.
 
