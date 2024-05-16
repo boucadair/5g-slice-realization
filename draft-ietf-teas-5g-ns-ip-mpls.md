@@ -597,7 +597,7 @@ The realization model described in the document inherits the scalability propert
    traffic steering, bandwidth allocation, security policies, or monitoring).
 
    One example of the realization is the arrangement, where the slices in the TN
-   domain are instantiated using IP tunnels (for example, IPsec or GTP-U tunnels)
+   domain are instantiated using IP tunnels (e.g., IPsec or GTP-U tunnels)
    established between NFs, as depicted in {{figure-ip-hand-off}}. The transport for
    a single 5G slice might be constructed with multiple such tunnels, since a
    typical 5G slice contains many NFs - especially DUs and CUs. If a shared NF (i.e.,
@@ -609,22 +609,19 @@ The realization model described in the document inherits the scalability propert
 ~~~~
 {: #figure-ip-hand-off title="Example of 5G Slice with IP Hand-off Providing End-to-End Connectivity" artwork-align="center"}
 
-
    As opposed to the VLAN hand-off case, there is no logical interface representing
    a slice on the PE, hence all slices are handled within single service instance.
    The IP and VLAN hand-offs are not mutually exclusive, but instead could be used
-   concurrently. Since the TN doesn't recognize S-NSSAI, a mapping table similar to
+   concurrently. Since the TN doesn't recognize S-NSSAIs, a mapping table similar to
    the VLAN Hand-off solution should be utilized ({{sec-vlan-handoff}}).
 
    The mapping table can be simplified if, for example, IPv6 addressing is used to
    address NFs. An IPv6 address is a 128-bit long field, while the S-NSSAI is a
    32-bit field: Slice/Service Type (SST): 8 bits, Slice Differentiator (SD): 24
    bits. 32 bits, out of 128 bits of the IPv6 address, may be used to encode the
-   S-NSSAI, which makes an IP to Slice mapping table unnecessary. Alternatively,
-   instead of using 2 full octets from the 8 octets in an IPv6 address, a provider
-   could build a mapping table that uses only one octet or parts of an octet to
-   represent utilized S-NSSAI. This mapping is a local IPv6 addresses allocation method to NFs in order to be representative of the S-NSSAI without
-   redefining IPv6 semantic. IP forwarding is not altered by this method and is
+   S-NSSAI, which makes an IP to Slice mapping table unnecessary.
+
+   The S-NSSAI/IPv6 mapping is a local IPv6 address allocation method to NFs not disclosed to on-path nodes. IP forwarding is not altered by this method and is
    still achieved following BCP 198 {{!RFC7608}}.
 
    Different IPv6 address allocation
@@ -634,13 +631,13 @@ The realization model described in the document inherits the scalability propert
    > Note that this addressing scheme is local to an ingress or egress NF; intermediary
    TN nodes are not required to associate any additional semantic with IPv6 address.
 
-   One benefit of embedding the S-NSSAI in the IPv6 address is that a specific S-NSSAI
+   One benefit of embedding the S-NSSAI in an IPv6 address is that a specific S-NSSAI
    can be identified as needed at any place in the TN domain. This might be used,
    for example, to selectively enable per S-NSSAI monitoring, TE, or any
    other per S-NSSAI handling, if required.
 
-   However, operators using such mapping methods should be aware of the implications
-   of any change of S-NSSAI on the addressing plans. For example, modifications of the S-NSSAIs in-use will require
+   Operators using such mapping methods should be aware of the implications
+   of any change of S-NSSAI on the IPv6 addressing plans. For example, modifications of the S-NSSAIs in-use will require
    updating the IP addresses used by NFs involved in the associated slices.
 
 ~~~
@@ -658,17 +655,16 @@ The realization model described in the document inherits the scalability propert
    In reference to {{figure-11}}, the most significant 96 bits of the IPv6 address
    are unique to the NF, but do not carry any slice-specific information. The S-NSSAI information is embedded in the least
    significant 32 bits. The 96-bit part of the address may be structured by the provider, for example, on the
-   geographical location or the DC identification.
+   geographical location or the DC identification. Refer to {{Section 2.1. of ?RFC9099}} for a discussion on the benefits of structuring an address plan for more structured security policies   in a network.
 
    {{figure-s-nssai-deployment}} uses the example from {{figure-11}} to demonstrate a
    slicing deployment, where the entire S-NSSAI is embedded into IPv6 addresses used by
-   NFs. NF-A has a set of tunnel termination points, with unique per-slice IP addresses
-   allocated from the 2001:db8:a:0::/96 prefix, while NF-B uses a set of tunnel termination
+   NFs. Let us consider that "NF-A" has a set of tunnel termination points with unique per-slice IP addresses
+   allocated from 2001:db8:a:0::/96, while "NF-B" uses a set of tunnel termination
    points with per-slice IP addresses allocated from 2001:db8:b:0::/96. This example shows
-   two slices: customer A eMBB (SST=01, SD=00001) and customer B Massive Internet of Things (MIoT) (SST=03, SD=00003).
-   Therefore, for customer A eMBB the tunnel IP addresses are auto-derived (without the need
-   for an explicit mapping table) as the IP addresses {2001:db8:a::100:1, 2001:db8:b::100:1},
-   where {:0100:0001} is used as the last two octets, and for customer B MIoT (SST=3,
+   two slices: "customer A eMBB" (SST=01, SD=00001) and "customer B Massive Internet of Things (MIoT)" (SST=03, SD=00003).
+   For "customer A eMBB" slice, the tunnel IP addresses are auto-derived as the IP addresses {2001:db8:a::100:1, 2001:db8:b::100:1},
+   where {:0100:0001} is used as the last two octets. "customer B MIoT" slice (SST=3,
    SD=00003) tunnel uses the IP addresses {2001:db8:a::300:3, 2001:db8:b::300:3} and simply
    adds {:0300:0003} as the last two octets. Leading zeros are not represented in the resulting IPv6 addresses as per {{?RFC5952}}.
 
@@ -2339,7 +2335,7 @@ User Plane          ╱     │           │         ╲
 {:numbered="false"}
 
    The authors would like to thank Adrian Farrel, Joel Halpern, Tarek
-   Saad, Greg Mirsky, Rüdiger Geib, Nicklous D. Morris, 	Daniele Ceccarelli, Bo Wu, and Xuesong Geng for
+   Saad, Greg Mirsky, Rüdiger Geib, Nicklous D. Morris, 	Daniele Ceccarelli, Bo Wu, Xuesong Geng, and Deborah Brungard for
    their review of this document and for providing valuable comments.
 
    Special thanks to Jie Dong and Adrian Farrel for the detailed and careful reviews.
