@@ -198,7 +198,66 @@ domain by mapping to explicit Layer 2 or Layer 3 identifiers. The realization of
 
 The realization approach described in this document is typically triggered by Network Slice Service requests. How a Network Slice Service request is placed for realization, including how it is derived from a 5G Slice Service request, is out of scope. Mapping considerations between 3GPP and IETF Network Slice Service (e.g., mapping of service parameters) are discussed, e.g., in {{?I-D.ietf-teas-5g-network-slice-application}}.
 
-The realization model described in this document uses a single Network Resource Partition (NRP) ({{Section 7.1 of !RFC9543}}). The applicability to multiple NRPs is out of scope.
+The realization model described in this document uses a single Network Resource Partition (NRP) (Section 7.1 of {{!RFC9543}}). The applicability to multiple NRPs is out of scope.
+
+The realization model described in this document uses the following building blocks are used:
+
+   *  Layer 2 Virtual Private Network (L2VPN) {{?RFC4664}} and/or Layer 3 Virtual Private Network (L3VPN) {{?RFC4364}} service instances for logical separation:
+
+      This realization model of transport for 5G slices assumes Layer 3
+      delivery for midhaul and backhaul transport connections, and a
+      Layer 2 or Layer 3 delivery for
+      fronthaul connections. Enhanced Common Public Radio Interface (eCPRI) {{ECPRI}} supports both delivery models. L2VPN/L3VPN service instances might be
+      used as a basic form of logical slice separation.  Furthermore, using
+      service instances results in an additional outer header (as packets
+      are encapsulated/decapsulated at the nodes hosting service instances) providing clean discrimination between 5G QoS and TN
+      QoS, as explained in {{sec-qos-map}}.
+
+      The use of VPNs for realizing Network Slices is briefly described in Appendix A.4 of {{!RFC9543}}.
+
+   *  Fine-grained resource control at the PE:
+
+      This is sometimes called 'admission control' or 'traffic
+      conditioning'.  The main purpose is the enforcement of the
+      bandwidth contract for the slice right at the edge of the
+      provider network where the traffic is handed-off between the
+      customer site and the provider network.
+
+      The method used here is granular ingress policing (rate limiting)
+      to enforce contracted bandwidths per slice and, potentially, per
+      traffic class within the slice.  Traffic above the enforced rate might be
+      immediately dropped, or marked as high drop-probability traffic,
+      which is more likely to be dropped somewhere inside the provider network if
+      congestion occurs.  In the egress direction at the Provider Edge (PE),
+      hierarchical schedulers/shapers can be deployed,
+      providing guaranteed rates per slice, as well as guarantees per
+      traffic class within each slice.
+
+      For managed Customer Edges (CEs), edge admission control can be distributed between CEs
+      and PEs, where a part of the admission control is implemented on the CE
+      and other part of the admission control is implemented on the PE.
+
+   *  Coarse-grained resource control at the transit (non-attachment
+      circuits) links in the provider network, using a single NRP, spanning the entire provider network.
+      Transit nodes in the provider network do not maintain any state of individual slices.
+      Instead, only a flat (non-hierarchical) QoS model is used on
+      transit links in the provider network, with up to 8 traffic classes.  At the PE,
+      traffic-flows from multiple slice services are mapped
+      to the limited number of traffic classes used on provider network transit links.
+
+   *  Capacity planning/management for efficient usage of provider network resources:
+
+      The role of capacity management is to ensure the provider network
+      capacity can be utilized without causing any bottlenecks.  The
+      methods used here can range from careful network planning, to
+      ensure a more or less equal traffic distribution (i.e., equal cost load
+      balancing), to advanced TE techniques, with or
+      without bandwidth reservations, to force more consistent load
+      distribution even in non-ECMP friendly network topologies. See also {{Section 8 of ?RFC9522}}).
+
+This document does not describe in detail how to manage an L2VPN or L3VPN, as this is already well-documented. For example, the reader may refer to {{?RFC4176}} and {{?RFC6136}} for such details.
+
+The realization model described in the document inherits the scalability properties of the underlying L2VPN and L3VPN technologies. Readers may refer, for example, to {{Section 13 of ?RFC4365}} or {{Section 1.2.5 of ?RFC6624}} for a scalability assessment of some of these technologies. Per {{sec-sca-impli}}, providers may adjust the mapping model to better handle local scalability constraints.
 
 Although this document focuses on 5G, the realizations are not fundamentally constrained by the 5G use case. The document is not intended to be a BCP and does not claim to specify mandatory mechanisms to realize network slices. Rather, a key goal of the document is to provide pragmatic implementation approaches by leveraging existing readily-available, widely-deployed techniques. The document is also intended to align the mobile and the IETF perspectives of slicing from a realization perspective.
 
@@ -399,10 +458,6 @@ are passed between Orchestrators via a dedicated interface, e.g., the Network Sl
 ~~~~
 {: #figure-4 title="Coordination of Transport Network Resources for the AC Provisioning" artwork-align="center"}
 
-### Additional Segmentation and Domains {#sec-add-seg-domains}
-
-More complex scenarios can happen with extra segmentation of the TN and additional TN orchestration domains. It is not realistic to describe every design flavor, however the main concepts presented here in terms of segmentation (provider/customer) and stitching (AC) can be reused for the integration of more complex integrations.
-
 ## Mapping 5G Network Slices to Transport Network Slices {#sec-mapping}
 
    There are multiple options for mapping 5G Network Slices to TN slices:
@@ -463,74 +518,6 @@ For instance, consider a slice based on split-CU in the RAN, both CU-UP and Cent
 {: #figure-7 title="First and Subsequent Slice Deployment" artwork-align="center"}
 
 Overall, policies might be provided by an operator (e.g., to Network Slice Controllers) to indicate whether the same or dedicated CP NFs are allowed when processing a new slice creation request. Providing such a policy is meant to better automate the realization of 5G slices and minimize the realization delay that might be induced by extra cycles to seek for operator validation.
-
-
-##  Overview of the Transport Network Realization Model {#sec-over-rea-model}
-
-   The realization model described in this document is depicted in
-   {{figure-high-level-qos}}. The following building blocks are used:
-
-   *  Layer 2 Virtual Private Network (L2VPN) {{?RFC4664}} and/or Layer 3 Virtual Private Network (L3VPN) {{?RFC4364}} service instances for logical separation:
-
-      This realization model of transport for 5G slices assumes Layer 3
-      delivery for midhaul and backhaul transport connections, and a
-      Layer 2 or Layer 3 delivery for
-      fronthaul connections. Enhanced Common Public Radio Interface (eCPRI) {{ECPRI}} supports both delivery models. L2VPN/L3VPN service instances might be
-      used as a basic form of logical slice separation.  Furthermore, using
-      service instances results in an additional outer header (as packets
-      are encapsulated/decapsulated at the nodes hosting service instances) providing clean discrimination between 5G QoS and TN
-      QoS, as explained in {{sec-qos-map}}.
-
-      The use of VPNs for realizing Network Slices is briefly described in Appendix A.4 of {{!RFC9543}}.
-
-   *  Fine-grained resource control at the PE:
-
-      This is sometimes called 'admission control' or 'traffic
-      conditioning'.  The main purpose is the enforcement of the
-      bandwidth contract for the slice right at the edge of the
-      provider network where the traffic is handed-off between the
-      customer site and the provider network.
-
-      The method used here is granular ingress policing (rate limiting)
-      to enforce contracted bandwidths per slice and, potentially, per
-      traffic class within the slice.  Traffic above the enforced rate might be
-      immediately dropped, or marked as high drop-probability traffic,
-      which is more likely to be dropped somewhere inside the provider network if
-      congestion occurs.  In the egress direction at the PE node,
-      hierarchical schedulers/shapers can be deployed,
-      providing guaranteed rates per slice, as well as guarantees per
-      traffic class within each slice.
-
-      For managed CEs, edge admission control can be distributed between CEs
-      and PEs, where a part of the admission control is implemented on the CE
-      and other part of the admission control is implemented on the PE.
-
-   *  Coarse-grained resource control at the transit (non-attachment
-      circuits) links in the provider network, using a single NRP (called "base NRP" in {{figure-high-level-qos}}), spanning the entire provider network.
-      Transit nodes in the provider network do not maintain any state of individual slices.
-      Instead, only a flat (non-hierarchical) QoS model is used on
-      transit links in the provider network, with up to 8 traffic classes.  At the PE,
-      traffic-flows from multiple slice services are mapped
-      to the limited number of traffic classes used on provider network transit links.
-
-   *  Capacity planning/management for efficient usage of provider network resources:
-
-      The role of capacity management is to ensure the provider network
-      capacity can be utilized without causing any bottlenecks.  The
-      methods used here can range from careful network planning, to
-      ensure a more or less equal traffic distribution (i.e., equal cost load
-      balancing), to advanced TE techniques, with or
-      without bandwidth reservations, to force more consistent load
-      distribution even in non-ECMP friendly network topologies. See also {{Section 8 of ?RFC9522}}).
-
-~~~~
-{::include ./drawings/high-level-qos.txt}
-~~~~
-{: #figure-high-level-qos title="Resource Allocation Slicing Model with a Single NRP" artwork-align="center"}
-
-This document does not describe in detail how to manage an L2VPN or L3VPN, as this is already well-documented. For example, the reader may refer to {{?RFC4176}} and {{?RFC6136}} for such details.
-
-The realization model described in the document inherits the scalability properties of the underlying L2VPN and L3VPN technologies. Readers may refer, for example, to {{Section 13 of ?RFC4365}} or {{Section 1.2.5 of ?RFC6624}} for a scalability assessment of some of these technologies. Per {{sec-sca-impli}}, providers may adjust the mapping model to better handle local scalability constraints.
 
 #  Hand-off Between Domains {#sec-handoff-domains}
 
@@ -811,8 +798,7 @@ since one IPv4/IPv6 labeled unicast host route represent one customer site, rega
 of the number of slices in the customer site, the number of forwarding entries
 on a PE is considerably reduced.
 
-For any slice-specific per-hop behavior at the provider network edge, as described
-in details in {{sec-over-rea-model}}, the PE need to determine which label in the packet
+For any slice-specific per-hop behavior at the provider network edge, the PE need to determine which label in the packet
 represents which slice. This can be achieved, for example, by allocating non-overlapping service label
 ranges for each slice, and use these ranges for slice identification purposes on PE.
 
