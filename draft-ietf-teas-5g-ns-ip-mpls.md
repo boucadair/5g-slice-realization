@@ -192,15 +192,15 @@ Concretely, the realization of an RFC 9543 Network Slice (i.e., connectivity wit
 ~~~~
 {: #fig-end-to-end title="Segmentation of the Transport Network" artwork-align="center"}
 
+The realization approach described in this document is typically triggered by Network Slice Service requests. How a Network Slice Service request is placed for realization, including how it is derived from a 5G Slice Service request, is out of scope. Mapping considerations between 3GPP and IETF Network Slice Service (e.g., mapping of service parameters) are discussed, e.g., in {{?I-D.ietf-teas-5g-network-slice-application}}.
+
 The 5G control plane relies upon the Single Network Slice Selection Assistance Information (S-NSSAI) identifier for slice
 identification {{TS-23.501}}. Because S-NSSAIs are not visible to the transport domain, 5G Network Functions can expose the 5G slices to the transport
 domain by mapping to explicit Layer 2 or Layer 3 identifiers. The realization of the mapping between customer sites and provider networks is refered to as the "hand-off". {{sec-handoff-domains}} lists a set of such hand-off methods.
 
-The realization approach described in this document is typically triggered by Network Slice Service requests. How a Network Slice Service request is placed for realization, including how it is derived from a 5G Slice Service request, is out of scope. Mapping considerations between 3GPP and IETF Network Slice Service (e.g., mapping of service parameters) are discussed, e.g., in {{?I-D.ietf-teas-5g-network-slice-application}}.
+This document assumes one single Network Resource Partition (NRP) (Section 7.1 of {{!RFC9543}}) in a provider network. The applicability to multiple NRPs is out of scope.
 
-The realization model described in this document uses a single Network Resource Partition (NRP) (Section 7.1 of {{!RFC9543}}). The applicability to multiple NRPs is out of scope.
-
-The realization model described in this document uses the following building blocks are used:
+The realization model uses the following building blocks within a provider network:
 
    *  Layer 2 Virtual Private Network (L2VPN) {{?RFC4664}} and/or Layer 3 Virtual Private Network (L3VPN) {{?RFC4364}} service instances for logical separation:
 
@@ -215,7 +215,7 @@ The realization model described in this document uses the following building blo
 
       The use of VPNs for realizing Network Slices is briefly described in Appendix A.4 of {{!RFC9543}}.
 
-   *  Fine-grained resource control at the PE:
+   *  Fine-grained resource control at the Provider Edge (PE):
 
       This is sometimes called 'admission control' or 'traffic
       conditioning'.  The main purpose is the enforcement of the
@@ -228,7 +228,7 @@ The realization model described in this document uses the following building blo
       traffic class within the slice.  Traffic above the enforced rate might be
       immediately dropped, or marked as high drop-probability traffic,
       which is more likely to be dropped somewhere inside the provider network if
-      congestion occurs.  In the egress direction at the Provider Edge (PE),
+      congestion occurs.  In the egress direction at the PE,
       hierarchical schedulers/shapers can be deployed,
       providing guaranteed rates per slice, as well as guarantees per
       traffic class within each slice.
