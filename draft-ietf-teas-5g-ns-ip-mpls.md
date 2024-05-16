@@ -551,33 +551,32 @@ The realization model described in the document inherits the scalability propert
 ##  VLAN Hand-off {#sec-vlan-handoff}
 
    In this option, the RFC 9543 Network Slice, fulfilling connectivity
-   requirements between NFs that belong to a 5G slice, is represented at the SDP
+   requirements between NFs that belong to a 5G slice, is represented at an SDP
    by a VLAN ID (or double VLAN IDs, commonly known as QinQ), as depicted in {{figure-vlan-hand-off}}.
-
-   Each VLAN
-   represents a distinct logical interface on the ACs;
-   hence it provides the possibility to place these logical interfaces
-   in distinct Layer 2 or Layer 3 service instances and implement separation
-   between slices via service instances.  Since the 5G interfaces are IP-based
-   interfaces (the only exception could be the F2 fronthaul-interface, where eCPRI with Ethernet encapsulation is used), this
-   VLAN is typically not transported across the provider network.  Typically,
-   it has only local significance at a particular SDP.  For
-   simplification it is recommended to rely on the same VLAN identifier
-   for all ACs, when possible.  However, SDPs for a same slice at
-   different locations may also use different VLAN values.  Therefore, a
-   VLAN to RFC 9543 Network Slice mapping table is maintained for each
-   AC, and the VLAN allocation is coordinated between customer orchestration and
-   provider orchestration.  Thus, while VLAN hand-off is simple for
-   NFs, it adds complexity due to the requirement of maintaining
-   mapping tables for each SDP and requires a configuration task of new VLANs and
-   IP subnet for every slice on every AC.
-
 
 ~~~~
 {::include ./drawings/vlan-hand-off.txt}
 ~~~~
 {: #figure-vlan-hand-off title="Example of 5G Slice with VLAN Hand-off Providing End-to-End Connectivity" artwork-align="center"}
 
+   Each VLAN
+   represents a distinct logical interface on the ACs;
+   hence it provides the possibility to place these logical interfaces
+   in distinct Layer 2 or Layer 3 service instances and implement separation
+   between slices via service instances. Since the 5G interfaces are IP-based
+   interfaces (with an exception of the F2 fronthaul-interface, where eCPRI with Ethernet encapsulation is used), this
+   VLAN is typically not transported across the provider network.  Typically,
+   it has only local significance at a particular SDP.  For
+   simplification, a deployment may rely on the same VLAN identifier
+   for all ACs. However, that may not be always possible. As such, SDPs for a same slice at
+   different locations may use different VLAN values.  Therefore, a
+   VLAN to RFC 9543 Network Slice mapping table is maintained for each
+   AC, and the VLAN allocation is coordinated between customer orchestration and
+   provider orchestration.
+
+   While VLAN hand-off is simple for NFs, it adds complexity at the provider network because of the requirement of maintaining
+   mapping tables for each SDP and performing a configuration task for new VLANs and
+   IP subnet for every slice on every AC.
 
 ##  IP Hand-off {#sec-ip-hof}
 
@@ -592,11 +591,11 @@ The realization model described in the document inherits the scalability propert
    * S-NSSAI to a DSCP value
    * Use a deterministic algorithm to map S-NSAAI to an IP subnet, prefix, or pools. For example, adaptations to the algorithm defined in {{?RFC7422}} may be considered.
 
-   Mapping S-NSSAI to IP addresses makes IP addresses an identifier for slice-related
-   policy decisions in the Transport Network (e.g., Differentiated Services,
+   Mapping S-NSSAIs to IP addresses makes IP addresses an identifier for slice-related
+   policy enfocement in the Transport Network (e.g., Differentiated Services,
    traffic steering, bandwidth allocation, security policies, or monitoring).
 
-   One example of the realization is the arrangement, where the slices in the TN
+   One example of the IP hand-off realization is the arrangement, where the slices in the TN
    domain are instantiated using IP tunnels (e.g., IPsec or GTP-U tunnels)
    established between NFs, as depicted in {{figure-ip-hand-off}}. The transport for
    a single 5G slice might be constructed with multiple such tunnels, since a
@@ -609,11 +608,11 @@ The realization model described in the document inherits the scalability propert
 ~~~~
 {: #figure-ip-hand-off title="Example of 5G Slice with IP Hand-off Providing End-to-End Connectivity" artwork-align="center"}
 
-   As opposed to the VLAN hand-off case, there is no logical interface representing
-   a slice on the PE, hence all slices are handled within single service instance.
+   As opposed to the VLAN hand-off case ({{sec-vlan-handoff}}), there is no logical interface representing
+   a slice on the PE, hence all slices are handled within a single service instance.
    The IP and VLAN hand-offs are not mutually exclusive, but instead could be used
    concurrently. Since the TN doesn't recognize S-NSSAIs, a mapping table similar to
-   the VLAN Hand-off solution should be utilized ({{sec-vlan-handoff}}).
+   the VLAN Hand-off solution is needed ({{sec-vlan-handoff}}).
 
    The mapping table can be simplified if, for example, IPv6 addressing is used to
    address NFs. An IPv6 address is a 128-bit long field, while the S-NSSAI is a
@@ -652,7 +651,7 @@ The realization model described in the document inherits the scalability propert
    In reference to {{figure-11}}, the most significant 96 bits of the IPv6 address
    are unique to the NF, but do not carry any slice-specific information. The S-NSSAI information is embedded in the least
    significant 32 bits. The 96-bit part of the address may be structured by the provider, for example, on the
-   geographical location or the DC identification. Refer to {{Section 2.1. of ?RFC9099}} for a discussion on the benefits of structuring an address plan for more structured security policies   in a network.
+   geographical location or the DC identification. Refer to {{Section 2.1. of ?RFC9099}} for a discussion on the benefits of structuring an address plan around both services and geographic locations for more structured security policies in a network.
 
    {{figure-s-nssai-deployment}} uses the example from {{figure-11}} to demonstrate a
    slicing deployment, where the entire S-NSSAI is embedded into IPv6 addresses used by
