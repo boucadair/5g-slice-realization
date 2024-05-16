@@ -592,7 +592,7 @@ The realization model described in the document inherits the scalability propert
    * S-NSSAI to a DSCP value
    * Use a deterministic algorithm to map S-NSAAI to an IP subnet, prefix, or pools. For example, adaptations to the algorithm defined in {{?RFC7422}} may be considered.
 
-   Mapping S-NSSAI to IP addresses makes IP addresses an identifier for eventual
+   Mapping S-NSSAI to IP addresses makes IP addresses an identifier for slice-related
    policy decisions in the Transport Network (e.g., Differentiated Services,
    traffic steering, bandwidth allocation, security policies, or monitoring).
 
@@ -631,11 +631,6 @@ The realization model described in the document inherits the scalability propert
    > Note that this addressing scheme is local to an ingress or egress NF; intermediary
    TN nodes are not required to associate any additional semantic with IPv6 address.
 
-   One benefit of embedding the S-NSSAI in an IPv6 address is that a specific S-NSSAI
-   can be identified as needed at any place in the TN domain. This might be used,
-   for example, to selectively enable per S-NSSAI monitoring, TE, or any
-   other per S-NSSAI handling, if required.
-
    Operators using such mapping methods should be aware of the implications
    of any change of S-NSSAI on the IPv6 addressing plans. For example, modifications of the S-NSSAIs in-use will require
    updating the IP addresses used by NFs involved in the associated slices.
@@ -651,6 +646,8 @@ The realization model described in the document inherits the scalability propert
     dddddd - SD (24 bits)
 ~~~
 {: #figure-11 title="An Example of S-NSSAI Embedded into an IPv6 Address" artwork-align="center"}
+
+### An Example of Local IPv6 Addressing Plan for Network Functions
 
    In reference to {{figure-11}}, the most significant 96 bits of the IPv6 address
    are unique to the NF, but do not carry any slice-specific information. The S-NSSAI information is embedded in the least
