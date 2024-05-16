@@ -1105,14 +1105,14 @@ Table of Contents
    security policies, or monitoring).
 
    One example of the realization is the arrangement, where the slices
-   in the TN domain are instantiated using IP tunnels (for example,
-   IPsec or GTP-U tunnels) established between NFs, as depicted in
-   Figure 13.  The transport for a single 5G slice might be constructed
-   with multiple such tunnels, since a typical 5G slice contains many
-   NFs - especially DUs and CUs.  If a shared NF (i.e., an NF that
-   serves multiple slices, for example a shared DU) is deployed,
-   multiple tunnels from shared NF are established, each tunnel
-   representing a single slice.
+   in the TN domain are instantiated using IP tunnels (e.g., IPsec or
+   GTP-U tunnels) established between NFs, as depicted in Figure 13.
+   The transport for a single 5G slice might be constructed with
+   multiple such tunnels, since a typical 5G slice contains many NFs -
+   especially DUs and CUs.  If a shared NF (i.e., an NF that serves
+   multiple slices, for example a shared DU) is deployed, multiple
+   tunnels from shared NF are established, each tunnel representing a
+   single slice.
 
                                            Tunnels representing slices
 
@@ -1139,7 +1139,7 @@ Table of Contents
    representing a slice on the PE, hence all slices are handled within
    single service instance.  The IP and VLAN hand-offs are not mutually
    exclusive, but instead could be used concurrently.  Since the TN
-   doesn't recognize S-NSSAI, a mapping table similar to the VLAN Hand-
+   doesn't recognize S-NSSAIs, a mapping table similar to the VLAN Hand-
    off solution should be utilized (Section 4.1).
 
    The mapping table can be simplified if, for example, IPv6 addressing
@@ -1147,14 +1147,11 @@ Table of Contents
    while the S-NSSAI is a 32-bit field: Slice/Service Type (SST): 8
    bits, Slice Differentiator (SD): 24 bits. 32 bits, out of 128 bits of
    the IPv6 address, may be used to encode the S-NSSAI, which makes an
-   IP to Slice mapping table unnecessary.  Alternatively, instead of
-   using 2 full octets from the 8 octets in an IPv6 address, a provider
-   could build a mapping table that uses only one octet or parts of an
-   octet to represent utilized S-NSSAI.  This mapping is a local IPv6
-   addresses allocation method to NFs in order to be representative of
-   the S-NSSAI without redefining IPv6 semantic.  IP forwarding is not
-   altered by this method and is still achieved following BCP 198
-   [RFC7608].
+   IP to Slice mapping table unnecessary.
+
+   The S-NSSAI/IPv6 mapping is a local IPv6 address allocation method to
+   NFs not disclosed to on-path nodes.  IP forwarding is not altered by
+   this method and is still achieved following BCP 198 [RFC7608].
 
    Different IPv6 address allocation schemes following this approach may
    be used, with one example allocation shown in Figure 14.
@@ -1163,16 +1160,17 @@ Table of Contents
       NF; intermediary TN nodes are not required to associate any
       additional semantic with IPv6 address.
 
-   One benefit of embedding the S-NSSAI in the IPv6 address is that a
+   One benefit of embedding the S-NSSAI in an IPv6 address is that a
    specific S-NSSAI can be identified as needed at any place in the TN
    domain.  This might be used, for example, to selectively enable per
    S-NSSAI monitoring, TE, or any other per S-NSSAI handling, if
    required.
 
-   However, operators using such mapping methods should be aware of the
-   implications of any change of S-NSSAI on the addressing plans.  For
-   example, modifications of the S-NSSAIs in-use will require updating
-   the IP addresses used by NFs involved in the associated slices.
+   Operators using such mapping methods should be aware of the
+   implications of any change of S-NSSAI on the IPv6 addressing plans.
+   For example, modifications of the S-NSSAIs in-use will require
+   updating the IP addresses used by NFs involved in the associated
+   slices.
 
                             NF specific          reserved
                        (not slice specific)     for S-NSSAI
@@ -1190,23 +1188,25 @@ Table of Contents
    information.  The S-NSSAI information is embedded in the least
    significant 32 bits.  The 96-bit part of the address may be
    structured by the provider, for example, on the geographical location
-   or the DC identification.
+   or the DC identification.  Refer to Section 2.1. of [RFC9099] for a
+   discussion on the benefits of structuring an address plan for more
+   structured security policies in a network.
 
    Figure 15 uses the example from Figure 14 to demonstrate a slicing
    deployment, where the entire S-NSSAI is embedded into IPv6 addresses
-   used by NFs.  NF-A has a set of tunnel termination points, with
-   unique per-slice IP addresses allocated from the 2001:db8:a:0::/96
-   prefix, while NF-B uses a set of tunnel termination points with per-
-   slice IP addresses allocated from 2001:db8:b:0::/96.  This example
-   shows two slices: customer A eMBB (SST=01, SD=00001) and customer B
-   Massive Internet of Things (MIoT) (SST=03, SD=00003).  Therefore, for
-   customer A eMBB the tunnel IP addresses are auto-derived (without the
-   need for an explicit mapping table) as the IP addresses
-   {2001:db8:a::100:1, 2001:db8:b::100:1}, where {:0100:0001} is used as
-   the last two octets, and for customer B MIoT (SST=3, SD=00003) tunnel
-   uses the IP addresses {2001:db8:a::300:3, 2001:db8:b::300:3} and
-   simply adds {:0300:0003} as the last two octets.  Leading zeros are
-   not represented in the resulting IPv6 addresses as per [RFC5952].
+   used by NFs.  Let us consider that "NF-A" has a set of tunnel
+   termination points with unique per-slice IP addresses allocated from
+   2001:db8:a:0::/96, while "NF-B" uses a set of tunnel termination
+   points with per-slice IP addresses allocated from 2001:db8:b:0::/96.
+   This example shows two slices: "customer A eMBB" (SST=01, SD=00001)
+   and "customer B Massive Internet of Things (MIoT)" (SST=03,
+   SD=00003).  For "customer A eMBB" slice, the tunnel IP addresses are
+   auto-derived as the IP addresses {2001:db8:a::100:1,
+   2001:db8:b::100:1}, where {:0100:0001} is used as the last two
+   octets. "customer B MIoT" slice (SST=3, SD=00003) tunnel uses the IP
+   addresses {2001:db8:a::300:3, 2001:db8:b::300:3} and simply adds
+   {:0300:0003} as the last two octets.  Leading zeros are not
+   represented in the resulting IPv6 addresses as per [RFC5952].
 
     2001:db8:a::/96 (NF-A)                      2001:db8:b::/96 (NF-B)
 
@@ -2932,6 +2932,11 @@ Table of Contents
               DOI 10.17487/RFC8986, February 2021,
               <https://www.rfc-editor.org/rfc/rfc8986>.
 
+   [RFC9099]  Vyncke, É., Chittimaneni, K., Kaeo, M., and E. Rey,
+              "Operational Security Considerations for IPv6 Networks",
+              RFC 9099, DOI 10.17487/RFC9099, August 2021,
+              <https://www.rfc-editor.org/rfc/rfc9099>.
+
    [RFC9182]  Barguil, S., Gonzalez de Dios, O., Ed., Boucadair, M.,
               Ed., Munoz, L., and A. Aguado, "A YANG Network Data Model
               for Layer 3 VPNs", RFC 9182, DOI 10.17487/RFC9182,
@@ -3422,8 +3427,8 @@ Acknowledgments
 
    The authors would like to thank Adrian Farrel, Joel Halpern, Tarek
    Saad, Greg Mirsky, Rüdiger Geib, Nicklous D.  Morris, Daniele
-   Ceccarelli, Bo Wu, and Xuesong Geng for their review of this document
-   and for providing valuable comments.
+   Ceccarelli, Bo Wu, Xuesong Geng, and Deborah Brungard for their
+   review of this document and for providing valuable comments.
 
    Special thanks to Jie Dong and Adrian Farrel for the detailed and
    careful reviews.
