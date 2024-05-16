@@ -96,6 +96,8 @@ Table of Contents
    4.  Hand-off Between Domains
      4.1.  VLAN Hand-off
      4.2.  IP Hand-off
+       4.2.1.  An Example of Local IPv6 Addressing Plan for Network
+               Functions
      4.3.  MPLS Label Hand-off
        4.3.1.  Option A
        4.3.2.  Option B
@@ -1100,7 +1102,7 @@ Table of Contents
       defined in [RFC7422] may be considered.
 
    Mapping S-NSSAI to IP addresses makes IP addresses an identifier for
-   eventual policy decisions in the Transport Network (e.g.,
+   slice-related policy decisions in the Transport Network (e.g.,
    Differentiated Services, traffic steering, bandwidth allocation,
    security policies, or monitoring).
 
@@ -1160,12 +1162,6 @@ Table of Contents
       NF; intermediary TN nodes are not required to associate any
       additional semantic with IPv6 address.
 
-   One benefit of embedding the S-NSSAI in an IPv6 address is that a
-   specific S-NSSAI can be identified as needed at any place in the TN
-   domain.  This might be used, for example, to selectively enable per
-   S-NSSAI monitoring, TE, or any other per S-NSSAI handling, if
-   required.
-
    Operators using such mapping methods should be aware of the
    implications of any change of S-NSSAI on the IPv6 addressing plans.
    For example, modifications of the S-NSSAIs in-use will require
@@ -1182,6 +1178,8 @@ Table of Contents
                    dddddd - SD (24 bits)
 
        Figure 14: An Example of S-NSSAI Embedded into an IPv6 Address
+
+4.2.1.  An Example of Local IPv6 Addressing Plan for Network Functions
 
    In reference to Figure 14, the most significant 96 bits of the IPv6
    address are unique to the NF, but do not carry any slice-specific
