@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-05-14T00:28:10.620675+00:00",
+  "timestamp": "2024-05-16T00:27:48.388222+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -1656,6 +1656,42 @@
           "updatedAt": "2024-05-08T11:41:35Z"
         }
       ]
+    },
+    {
+      "number": 183,
+      "id": "I_kwDOIw9g6c6IxEeU",
+      "title": "add a mention of type SDP 3/4",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/183",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "boucadair"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-05-14T06:41:55Z",
+      "updatedAt": "2024-05-14T06:41:55Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 184,
+      "id": "I_kwDOIw9g6c6IxEny",
+      "title": "Update a figure with SDP type 4",
+      "url": "https://github.com/boucadair/5g-slice-realization/issues/184",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "robric"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-05-14T06:42:21Z",
+      "updatedAt": "2024-05-14T06:42:22Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -6006,24 +6042,26 @@
       "id": "PR_kwDOIw9g6c5ut56x",
       "title": "Adrian Review: Section 3.1-disambiguation",
       "url": "https://github.com/boucadair/5g-slice-realization/pull/167",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "boucadair",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "> ---\r\n> \r\n> 3.1\r\n> \r\n>    The term \"Transport Network\" is used for disambiguation with\r\n> 5G\r\n>    network (e.g., IP, packet-based forwarding vs RAN and CN).\r\n>    Consequently, the disambiguation applies to Transport Network\r\n> Slicing\r\n>    vs. 5G End-to-End Network Slicing (Section 3.2) as well the\r\n>    management domains: RAN, CN, and TN domains.\r\n> \r\n> I thought I understood what was meant by TN in this document\r\n> until I reached this paragraph. The previous text in 3.1 (and in\r\n> the references) seems clear as to what a TN is. This text,\r\n> however, confuses me and I can't extract anything useful from it.\r\n> After all, haven't you just explained that:\r\n> \r\n>    Appendix B provides an overview of 5G network building blocks:\r\n> the\r\n>    Radio Access Network (RAN), Core Network (CN), and Transport\r\n> Network\r\n>    (TN).  The Transport Network is defined by the 3GPP as the\r\n> \"part\r\n>    supporting connectivity within and between CN and RAN parts\"\r\n>    (Section 1 of [TS-28.530]).\r\n>",
       "createdAt": "2024-05-07T06:38:51Z",
-      "updatedAt": "2024-05-07T06:38:51Z",
+      "updatedAt": "2024-05-14T06:07:49Z",
       "baseRepository": "boucadair/5g-slice-realization",
       "baseRefName": "main",
       "baseRefOid": "2f194b522c32607568ae3ec0c882b67c1f4d30b3",
       "headRepository": "boucadair/5g-slice-realization",
       "headRefName": "Adrian-Review-Section-3.1-disambiguation",
       "headRefOid": "e5bd31ab751eb0dad113efd6ad0bfa7dcb159ed4",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-05-14T06:07:48Z",
+      "mergedAt": "2024-05-14T06:07:48Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "fa2d521cd825dc15b7176924c3eb677f8fc25062"
+      },
       "comments": [],
       "reviews": []
     },
@@ -6284,24 +6322,26 @@
       "id": "PR_kwDOIw9g6c5u3-Ga",
       "title": "Adding references to standard community and route-target",
       "url": "https://github.com/boucadair/5g-slice-realization/pull/180",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "kszarkowicz",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Based on Adrian's comment:\r\n\r\n4.3.2 and 4.3.3\r\n\r\nJust wondering whether these use an existing BGP mechanism (in which case, add a reference), or need a small protocol extension to define the community that matches a slice.\r\n\r\n\r\nAddeded references to appropriate RFCs defining standard and RT extended communities, that we used as ecxamples for slice identification in our text.",
       "createdAt": "2024-05-08T12:28:42Z",
-      "updatedAt": "2024-05-08T12:41:34Z",
+      "updatedAt": "2024-05-14T06:03:21Z",
       "baseRepository": "boucadair/5g-slice-realization",
       "baseRefName": "main",
       "baseRefOid": "abe60784129c81597091d8f5010326d766ff202e",
       "headRepository": "boucadair/5g-slice-realization",
       "headRefName": "kszarkowicz-community-reference",
-      "headRefOid": "67cada9a16a4a235a3078ea8e3030dfa4d60f6d2",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "c1d4299bcf915422fb724564ebf4a952eb205b41",
+      "closedAt": "2024-05-14T06:03:20Z",
+      "mergedAt": "2024-05-14T06:03:20Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "0420663a8b39592daee702b603ccef23ba2b80f2"
+      },
       "comments": [
         {
           "author": "julianL999",
@@ -6311,6 +6351,89 @@
           "updatedAt": "2024-05-08T12:41:33Z"
         }
       ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c56WyJW",
+          "commit": {
+            "abbreviatedOid": "67cada9"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2024-05-13T13:59:47Z",
+          "updatedAt": "2024-05-14T05:44:34Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\n   target extended community ({{Section 4 of ?RFC4360}}) might be used as slice differentiator.  In\r\n```",
+              "createdAt": "2024-05-13T13:59:47Z",
+              "updatedAt": "2024-05-14T05:44:34Z"
+            },
+            {
+              "originalPosition": 9,
+              "body": "```suggestion\r\n   BGP attribute (e.g., a standard community - {{?RFC1997}}) might be used for slice\r\n```",
+              "createdAt": "2024-05-13T13:59:57Z",
+              "updatedAt": "2024-05-14T05:44:34Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 181,
+      "id": "PR_kwDOIw9g6c5vWSl7",
+      "title": "Move some realization model text to the introduction to better explai\u2026",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/181",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "\u2026n the flow",
+      "createdAt": "2024-05-14T05:53:52Z",
+      "updatedAt": "2024-05-14T06:13:43Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "abe60784129c81597091d8f5010326d766ff202e",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "explain-the-realization-model-early-in-the-document",
+      "headRefOid": "e6e402516627fa6ea7d0e83449d41763c5924835",
+      "closedAt": "2024-05-14T06:13:42Z",
+      "mergedAt": "2024-05-14T06:13:42Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "388062aed9ded729a5ea6780698344316244c4ee"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 182,
+      "id": "PR_kwDOIw9g6c5vWULY",
+      "title": "Mapping to rather than between",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/182",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-05-14T05:56:42Z",
+      "updatedAt": "2024-05-14T06:15:11Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "abe60784129c81597091d8f5010326d766ff202e",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-1",
+      "headRefOid": "ee30aa7b1196c1796291194951d86dc8b410eb9e",
+      "closedAt": "2024-05-14T06:15:10Z",
+      "mergedAt": "2024-05-14T06:15:10Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "7c044f5e011906384ae0e15a9534d69a117f2cac"
+      },
+      "comments": [],
       "reviews": []
     }
   ]
