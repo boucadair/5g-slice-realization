@@ -330,7 +330,7 @@ A co-managed CE is orchestrated by both the customer and the provider. In this c
 
 While in most cases CEs connect to PEs using IP (e.g., VLANs subinterface on a Layer 3 interface), a CE may also connect to the provider network using other technologies such as MPLS -potentially over IP tunnels- or Segment Routing over IPv6 (SRv6) {{?RFC8986}}. The CE has thus awareness of provider services configuration (e.g., control plane identifiers such as Route Targets (RTs) and Route Distinguishers (RDs)). An example of such an AC is depicted in {{figure-51}}.
 
-This deployment is a source of confusion since service configurations are typically enforced on PEs. Notwithstanding, the reference design based on the orchestration scopes prevails: the CE is managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE.
+The reference design based on the orchestration scopes prevails: the CE is managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE.
 
 ~~~~
 {::include ./drawings/mpls-ac.txt}
@@ -542,8 +542,11 @@ The realization model described in the document inherits the scalability propert
    between customer sites and provider networks.
 
    More details about the mapping between 3GPP and RFC 9543 Network Slices is provided in {{?I-D.ietf-teas-5g-network-slice-application}}.
+
+   <!---
    That document includes additional methods for mapping 5G slices to TN slices (e.g., source UDP port number), but these
    methods are not discussed here because of the shortcomings of these methods (e.g., load balancing, NAT).
+   -->
 
 ##  VLAN Hand-off {#sec-vlan-handoff}
 
@@ -620,8 +623,7 @@ The realization model described in the document inherits the scalability propert
    S-NSSAI, which makes an IP to Slice mapping table unnecessary. Alternatively,
    instead of using 2 full octets from the 8 octets in an IPv6 address, a provider
    could build a mapping table that uses only one octet or parts of an octet to
-   represent utilized S-NSSAI. This mapping is a local allocation method to
-   allocate IPv6 addresses to NFs in order to be representative of the S-NSSAI without
+   represent utilized S-NSSAI. This mapping is a local IPv6 addresses allocation method to NFs in order to be representative of the S-NSSAI without
    redefining IPv6 semantic. IP forwarding is not altered by this method and is
    still achieved following BCP 198 {{!RFC7608}}.
 
