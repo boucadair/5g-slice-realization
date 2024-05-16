@@ -326,7 +326,7 @@ In subsequent sections of this document, the terms CE and PE are used for both s
 
 A co-managed CE is orchestrated by both the customer and the provider. In this case, the customer and provider usually have control on distinct device configuration perimeters. For example, the customer is responsible for the LAN interfaces, while the provider is responsible for the WAN interfaces (including routing/forwarding policies). Considering the generic model, a co-managed CE has both PE and CE functions and there is no strict AC connection, although one may consider that the AC stitching logic happens internally within the CE itself. The provider manages the AC between the CE and the PE.
 
-### Service-aware CE
+### Service-aware CE {#sec-service-aware-ce}
 
 While in most cases CEs connect to PEs using IP (e.g., VLANs subinterface on a Layer 3 interface), a CE may also connect to the provider network using other technologies such as MPLS -potentially over IP tunnels- or Segment Routing over IPv6 (SRv6) {{?RFC8986}}. The CE has thus awareness of provider services configuration (e.g., control plane identifiers such as Route Targets (RTs) and Route Distinguishers (RDs)). An example of such an AC is depicted in {{figure-51}}.
 
@@ -699,7 +699,7 @@ The realization model described in the document inherits the scalability propert
 
    In this option, L3VPN service instances are instantiated outside the
    provider network.  These L3VPN service instances
-   are instantiated in the customer site, which could be, for example, either on the compute that hosts mobile NFs ({{figure-mpls-10b-hand-off}}, left hand side) or within the DC/cloud
+   are instantiated in the customer site which could be, for example, either on the compute that hosts mobile NFs ({{figure-mpls-10b-hand-off}}, left hand side) or within the DC/cloud
    infrastructure itself (e.g., on the top of the rack or leaf switch
    within cloud IP fabric ({{figure-mpls-10b-hand-off}}, right hand side)). On the
    AC connected to a PE, packets are already MPLS
@@ -723,20 +723,20 @@ The realization model described in the document inherits the scalability propert
    exchanging service prefixes over an AC, each slice might be represented by a unique BGP community, so
    tracking label assignment to the slice might be possible.  For example, in
    {{figure-mpls-10b-hand-off}}, for the slice identified with COM=1, the PE advertises a
-   dynamically allocated label A".  Since, based on the community, the
+   dynamically allocated label A". Since, based on the community, the
    label to slice association is known, the PE can use this dynamically
-   allocated label A" to identify incoming packets as belonging to slice
-   1, and execute appropriate edge per-hop behavior.
+   allocated label A" to identify incoming packets as belonging to "slice 1"
+   and execute appropriate edge per-hop behavior.
 
    It is worth noting that slice identification in the BGP control plane
    might be with per-prefix granularity.  In the extreme case, each prefix can have
    different community representing a different slice.  Depending on the
    business requirements, each slice could be represented by a different
-   service instance, as outlined in {{figure-mpls-10b-hand-off}}.  In that case, the route
+   service instance as outlined in {{figure-mpls-10b-hand-off}}.  In that case, the route
    target extended community ({{Section 4 of ?RFC4360}}) might be used as slice differentiator.  In
    other deployments, all prefixes (representing different slices)
    might be handled by a single 'mobile' service instance, and some other
-   BGP attribute (e.g., a standard community - {{?RFC1997}}) might be used for slice
+   BGP attribute (e.g., a standard community {{?RFC1997}}) might be used for slice
    differentiation.  There could be also a deployment option that groups multiple
    slices together into a single service instance, resulting in a
    handful of service instances.  In any case, fine-grained per-hop
