@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 15 November 2024                               Juniper Networks
+Expires: 17 November 2024                               Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                             14 May 2024
+                                                             16 May 2024
 
 
  A Realization of Network Slices for 5G Networks Using Current IP/MPLS
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 15 November 2024.
+   This Internet-Draft will expire on 17 November 2024.
 
 Copyright Notice
 
@@ -548,13 +548,11 @@ Table of Contents
    Distinguishers (RDs)).  An example of such an AC is depicted in
    Figure 5.
 
-   This deployment is a source of confusion since service configurations
-   are typically enforced on PEs.  Notwithstanding, the reference design
-   based on the orchestration scopes prevails: the CE is managed by the
-   customer and the AC is based on MPLS or SRv6 data plane technologies.
-   Note that the complete termination of the AC within the provider
-   network may happen on distinct routers: this is another example of
-   distributed PE.
+   The reference design based on the orchestration scopes prevails: the
+   CE is managed by the customer and the AC is based on MPLS or SRv6
+   data plane technologies.  Note that the complete termination of the
+   AC within the provider network may happen on distinct routers: this
+   is another example of distributed PE.
 
           ┌ ─ ─ ─ ─ ─ ─ ─                       ┌ ─ ─ ─ ─ ─ ─ ─ ┐
               Customer   │                          Provider
@@ -1032,10 +1030,7 @@ Table of Contents
 
    More details about the mapping between 3GPP and RFC 9543 Network
    Slices is provided in [I-D.ietf-teas-5g-network-slice-application].
-   That document includes additional methods for mapping 5G slices to TN
-   slices (e.g., source UDP port number), but these methods are not
-   discussed here because of the shortcomings of these methods (e.g.,
-   load balancing, NAT).
+
 
 4.1.  VLAN Hand-off
 
@@ -1155,11 +1150,11 @@ Table of Contents
    IP to Slice mapping table unnecessary.  Alternatively, instead of
    using 2 full octets from the 8 octets in an IPv6 address, a provider
    could build a mapping table that uses only one octet or parts of an
-   octet to represent utilized S-NSSAI.  This mapping is a local
-   allocation method to allocate IPv6 addresses to NFs in order to be
-   representative of the S-NSSAI without redefining IPv6 semantic.  IP
-   forwarding is not altered by this method and is still achieved
-   following BCP 198 [RFC7608].
+   octet to represent utilized S-NSSAI.  This mapping is a local IPv6
+   addresses allocation method to NFs in order to be representative of
+   the S-NSSAI without redefining IPv6 semantic.  IP forwarding is not
+   altered by this method and is still achieved following BCP 198
+   [RFC7608].
 
    Different IPv6 address allocation schemes following this approach may
    be used, with one example allocation shown in Figure 14.
@@ -2736,17 +2731,17 @@ Table of Contents
               Boucadair, M., Roberts, R., de Dios, O. G., Barguil, S.,
               and B. Wu, "A Network YANG Data Model for Attachment
               Circuits", Work in Progress, Internet-Draft, draft-ietf-
-              opsawg-ntw-attachment-circuit-09, 19 April 2024,
+              opsawg-ntw-attachment-circuit-11, 15 May 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-
-              ntw-attachment-circuit-09>.
+              ntw-attachment-circuit-11>.
 
    [I-D.ietf-opsawg-teas-attachment-circuit]
               Boucadair, M., Roberts, R., de Dios, O. G., Barguil, S.,
               and B. Wu, "YANG Data Models for Bearers and 'Attachment
               Circuits'-as-a-Service (ACaaS)", Work in Progress,
               Internet-Draft, draft-ietf-opsawg-teas-attachment-circuit-
-              11, 19 April 2024, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-opsawg-teas-attachment-circuit-11>.
+              12, 14 May 2024, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-opsawg-teas-attachment-circuit-12>.
 
    [I-D.ietf-teas-5g-network-slice-application]
               Geng, X., Contreras, L. M., Rokui, R., Dong, J., and I.
