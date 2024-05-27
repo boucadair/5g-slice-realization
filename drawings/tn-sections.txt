@@ -1,26 +1,26 @@
-      ├───────────────────────TN Slice─────────────┤            
+      <───────────────────────TN Slice─────────────>            
                                                                 
-                        ○─────RFC 9543 ─────○                   
-                        |   Network Slice   |                   
-                        |                   |                   
-                        |                   |                   
-                        ▼                   ▼                   
-      ○──CS───□ □───AC──○ □──────PN───────□ ○──AC──○            
+                        RFC 9543 Network Slice
+                        +------sdp T3 ------+               
+                        |  +-- sdp T4 ---+  |                   
+                        |  |             |  |                   
+                        v  v             v  v                   
+      <──CS───> <───AC──> <──────PN───────> <──AC──>            
   ┌ ─ ─ ─ ─ ─ ─           ┌ ─ ─ ─ ─ ─ ─ ─ ┐         ┌ ─ ─ ─ ─ ─ 
      Customer  |               Provider               Customer |
   |   Site 1              |    Network    |         |  Site 2   
                |        ┌────┐          ┌────┐                 |
   |┌───┐    ┌────┐  AC  |    |          |    | AC ┌─┴─┐         
 CS |NF1├────┤ CE ├──────┤ PE |          | PE ├────┤NF3|        |
-□ |└─┬─┘    └────┘      |    |          |    |    └─┬─┘         
+^ |└─┬─┘    └────┘      |    |          |    |    └─┬─┘         
 |    |         |        └────┘          └────┘                 |
 | |  |                    |               |         |           
-□  ┌─┴─┐       |                                               |
+v  ┌─┴─┐       |                                               |
   ||NF2|                  |               |         |           
    └───┘       |                                               |
   └ ─ ─ ─ ─ ─ ─           └ ─ ─ ─ ─ ─ ─ ─ ┘         └ ─ ─ ─ ─ ─ 
                                                                 
-              □──────□  TN segments:                            
+              <──────>  TN segments:                            
                           CS = Customer Segment                 
                           AC = Attachment Circuit               
                           PN = Provider Network
