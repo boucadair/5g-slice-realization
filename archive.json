@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-05-26T00:31:30.753416+00:00",
+  "timestamp": "2024-05-28T00:28:54.468282+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -1689,9 +1689,17 @@
       "labels": [],
       "body": "",
       "createdAt": "2024-05-14T06:42:21Z",
-      "updatedAt": "2024-05-14T06:42:22Z",
+      "updatedAt": "2024-05-27T17:25:02Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "robric",
+          "authorAssociation": "COLLABORATOR",
+          "body": "updated drawing for sections:\r\n\r\nhttps://github.com/boucadair/5g-slice-realization/blob/branch-sdp34/drawings/tn-sections.txt",
+          "createdAt": "2024-05-27T17:25:01Z",
+          "updatedAt": "2024-05-27T17:25:01Z"
+        }
+      ]
     }
   ],
   "pulls": [
