@@ -218,6 +218,10 @@ Customer:
 : An entity that is responsible for managing and orchestrating the end-to-end 5G Mobile Network, notably the Radio Access Network (RAN) and Core Network (CN).
 : This entity is distinct from the customer of a 5G Network Slice Service.
 
+Customer site:
+: A customer manages and deploys 5G NFs (e.g., gNodeB (gNB) and 5G Core (5GC)) in customer sites. A customer site can be either a physical or a virtual location.
+: Examples of customer sites are a customer private locations (Point of Presence (PoP), DC), a VPC in a Public Cloud, or servers hosted within the provider network or colocation service.
+
 Provider:
 : An entity responsible for interconnecting customer sites.
 : A provider orchestrates and manages a provider network.
@@ -278,10 +282,10 @@ In practice, the TN may not map to a monolithic architecture and management doma
 ~~~~
 {: #fig-tn-arch title="Reference Design with Customer Site and Provider Network" artwork-align="center"}
 
-The description of the main components shown in {{fig-tn-arch}} are:
+The description of the main components shown in {{fig-tn-arch}} is provided below:
 
 Customer site:
-: A customer manages and deploys 5G NFs (RAN and CN) in customer sites. On top of 5G NFs (e.g., gNodeB (gNB) and 5G Core (5GC)), a customer may manage additional TN elements (e.g., servers, routers, and switches) within a customer site. A customer site can be either a physical or a virtual location. Examples of customer sites are a customer private locations (Point of Presence (PoP), DC), a VPC in a Public Cloud, or servers hosted within the provider network or colocation service.
+: On top of 5G NFs, a customer may manage additional TN elements (e.g., servers, routers, and switches) within a customer site.
 : NFs may be hosted on a CE, directly connected to a CE, or be located multiple IP hops from a CE.
 : The orchestration of the TN within a customer site involves a set of controllers for automation purposes (e.g., Network Functions Virtualization Infrastructure (NFVI), Enhanced Container Network Interface (CNI), Fabric Managers, or Public Cloud APIs). It is out of the scope of this document to document how these controllers are implemented.
 
@@ -289,7 +293,7 @@ Provider Network:
 : A provider uses a provider network to interconnect customer sites. This document assumes that the provider network is based on IP or MPLS.
 
 Customer Edge (CE):
-: A function that provides logical connectivity to the provider network. The logical connectivity is enforced at Layer 2 and/or Layer 3 and is denominated an Attachment Circuit (AC). Examples of CEs include TN components (e.g., router, switch, and firewalls) and also 5G NFs (i.e., an element of the 5G domain such as Centralized Unit (CU), Distributed Unit (DU), or User Plane Function (UPF)).
+: A function that provides logical connectivity of a customer site to the provider network. The logical connectivity is enforced at Layer 2 and/or Layer 3 and is denominated an Attachment Circuit (AC). Examples of CEs include TN components (e.g., router, switch, and firewalls) and also 5G NFs (i.e., an element of the 5G domain such as Centralized Unit (CU), Distributed Unit (DU), or User Plane Function (UPF)).
 : A CE is typically managed by the customer, but it can also be co-managed with the provider. A co-managed CE is orchestrated by both the customer and the provider. In this case, the customer and provider usually have control on distinct device configuration perimeters. A co-managed CE has both PE and CE functions and there is no strict AC connection, although one may consider that the AC stitching logic happens internally within the CE itself. The provider manages the AC between the CE and the PE.
 : This document generalizes the definition of a CE with the introduction of "Distributed CE" in {{sec-distributed}}.
 
@@ -328,14 +332,9 @@ In subsequent sections of this document, the terms CE and PE are used for both s
 
 ### Service-aware CE {#sec-service-aware-ce}
 
-While in most cases CEs connect to PEs using IP (e.g., VLANs subinterface on a Layer 3 interface), a CE may also connect to the provider network using other technologies such as MPLS -potentially over IP tunnels- or Segment Routing over IPv6 (SRv6) {{?RFC8986}}. The CE has thus awareness of provider services configuration (e.g., control plane identifiers such as Route Targets (RTs) and Route Distinguishers (RDs)). An example of such an AC is depicted in {{figure-51}}.
+While in most cases CEs connect to PEs using IP (e.g., VLANs subinterface on a Layer 3 interface), a CE may also connect to the provider network using other technologies such as MPLS -potentially over IP tunnels- or Segment Routing over IPv6 (SRv6) {{?RFC8986}}. The CE has thus awareness of provider services configuration (e.g., control plane identifiers such as Route Targets (RTs) and Route Distinguishers (RDs)). 
 
 The reference design based on the orchestration scopes prevails: the CE is managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. Note that the complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE.
-
-~~~~
-{::include ./drawings/mpls-ac.txt}
-~~~~
-{: #figure-51 title="Example of MPLS-based Attachment Circuit" artwork-align="center"}
 
 Service-aware CEs are used, for example, in the deployment discussed in Sections {{<sec-10b}} and {{<sec-10c}}.
 
@@ -687,6 +686,13 @@ The realization model described in the document inherits the scalability propert
    :  redistribution of labeled VPN routes without next-hop
     change and redistribution of labeled transport routes with next-hop
     change at domain boundaries.
+
+{{figure-51}} illustrate the use of service-aware CE {{sec-service-aware-ce}} for the deployment discussed in Sections {{<sec-10b}} and {{<sec-10c}}.
+
+~~~~
+{::include ./drawings/mpls-ac.txt}
+~~~~
+{: #figure-51 title="Example of MPLS-based Attachment Circuit" artwork-align="center"}
 
 ###  Option A {#sec-10a}
 
