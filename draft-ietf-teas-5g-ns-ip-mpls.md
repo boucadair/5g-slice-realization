@@ -685,7 +685,7 @@ The realization model described in the document inherits the scalability propert
     change and redistribution of labeled transport routes with next-hop
     change at domain boundaries.
 
-{{figure-51}} illustrate the use of service-aware CE {{sec-service-aware-ce}} for the deployment discussed in Sections {{<sec-10b}} and {{<sec-10c}}.
+{{figure-51}} illustrates the use of service-aware CE ({{sec-service-aware-ce}}) for the deployment discussed in Sections {{<sec-10b}} and {{<sec-10c}}.
 
 ~~~~
 {::include ./drawings/mpls-ac.txt}
