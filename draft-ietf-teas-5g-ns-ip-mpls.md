@@ -467,7 +467,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
    The realization model described in this document is depicted in
    {{figure-high-level-qos}}. The following building blocks are used:
 
-   *  Layer 2 Virtual Private Network (L2VPN) {{?RFC4664}} and/or Layer 3 Virtual Private Network (L3VPN) {{?RFC4364}} service instances for logical separation:
+   *  L2VPN {{?RFC4664}} and/or L3VPN {{?RFC4364}} service instances for logical separation:
 
       This realization model of transport for 5G slices assumes Layer 3
       delivery for midhaul and backhaul transport connections, and a
