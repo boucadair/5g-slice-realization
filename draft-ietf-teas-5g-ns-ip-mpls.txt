@@ -1072,7 +1072,7 @@ Table of Contents
    Figure 12.  The transport for a single 5G slice might be constructed
    with multiple such tunnels, since a typical 5G slice contains many
    NFs - especially DUs and CUs.  If a shared NF (i.e., an NF that
-   serves multiple slices, for example a shared DU) is deployed,
+   serves multiple slices, for example, a shared DU) is deployed,
    multiple tunnels from shared NF are established, each tunnel
    representing a single slice.
 
