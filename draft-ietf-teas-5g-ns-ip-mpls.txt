@@ -1243,7 +1243,7 @@ Table of Contents
       without next-hop change and redistribution of labeled transport
       routes with next-hop change at domain boundaries.
 
-   Figure 15 illustrate the use of service-aware CE Section 3.3.2 for
+   Figure 15 illustrates the use of service-aware CE (Section 3.3.2) for
    the deployment discussed in Sections 4.3.2 and 4.3.3.
 
           ┌ ─ ─ ─ ─ ─ ─ ─                       ┌ ─ ─ ─ ─ ─ ─ ─ ┐
