@@ -399,10 +399,6 @@ are passed between Orchestrators via a dedicated interface, e.g., the Network Sl
 ~~~~
 {: #figure-4 title="Coordination of Transport Network Resources for the AC Provisioning" artwork-align="center"}
 
-### Additional Segmentation and Domains {#sec-add-seg-domains}
-
-More complex scenarios can happen with extra segmentation of the TN and additional TN orchestration domains. It is not realistic to describe every design flavor, however the main concepts presented here in terms of segmentation (provider/customer) and stitching (AC) can be reused for the integration of more complex integrations.
-
 ## Mapping 5G Network Slices to Transport Network Slices {#sec-mapping}
 
    There are multiple options for mapping 5G Network Slices to TN slices:
