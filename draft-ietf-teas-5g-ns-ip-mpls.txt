@@ -362,22 +362,21 @@ Table of Contents
    modelling the Transport Network based on management perimeters
    (Customer vs. Provider).
 
+ Customer Orch.             Provider Orch.              Customer Orch.
+     Domain                     Domain                      Domain
 
- Customer Orch.               Provider Orch.              Customer Orch.
-     Domain                       Domain                      Domain
++----------------+      +---------------------+       +----------------+
+|    Customer    |      |  Provider Network   |       |    Customer    |
+|      Site 1    |      |                     |       |      Site 2    |
+|          +----+|      |+----+         +----+|       |+----+          |
+|+--+      |    ||  AC  ||    |         |    ||  AC   || NF |          |
+||NF|......| CE +--------+ PE |         | PE +---------+(CE)|          |
+|+--+      |    ||      ||    |         |    ||       ||    |          |
+|          +----+|      |+----+         +----+|       |+----+          |
+|                |      |                     |       |                |
++----------------+      +---------------------+       +----------------+
 
-┌ ─ ─ ─ ─ ─ ─ ─ ─       ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐       ┌ ─ ─ ─ ─ ─ ─ ─ ─
-     Customer    │         Provider Network                Customer    │
-│      Site 1           │                     │       │      Site 2
-           ┌────┐│       ┌────┐         ┌────┐         ┌────┐          │
-│┌──┐      │    │   AC  ││    │         │    ││  AC   ││ NF │
- │┌─┴┐.....│ CE ├│─ ─ ─ ─│ PE │         │ PE │─ ─ ─ ─ ─│(CE)│          │
-│└┤┌─┴┐    │    │       ││    │         │    ││       ││    │
-  └┤NF│    └────┘│       └────┘         └────┘         └────┘          │
-│  └──┘                 │                     │       │
- ─ ─ ─ ─ ─ ─ ─ ─ ┘       ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─         ─ ─ ─ ─ ─ ─ ─ ─ ┘
-
-      ◀─────────────────Transport Network────────────────▶
+      <-----------------Transport Network------------------->
 
   Figure 3: Reference Design with Customer Site and Provider Network
 
