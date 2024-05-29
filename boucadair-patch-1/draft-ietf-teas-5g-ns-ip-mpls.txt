@@ -928,8 +928,7 @@ Table of Contents
    The realization model described in this document is depicted in
    Figure 11.  The following building blocks are used:
 
-   *  Layer 2 Virtual Private Network (L2VPN) [RFC4664] and/or Layer 3
-      Virtual Private Network (L3VPN) [RFC4364] service instances for
+   *  L2VPN [RFC4664] and/or L3VPN [RFC4364] service instances for
       logical separation:
 
       This realization model of transport for 5G slices assumes Layer 3
