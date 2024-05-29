@@ -272,7 +272,6 @@ In practice, the TN may not map to a monolithic architecture and management doma
       for logical separation, Quality of Service (QoS), and Traffic
       Engineering (TE). Whether all or a subset of these components are enabled is a deployment choice.
 
-
 ## Transport Network Reference Design {#sec-ref-design}
 
 {{fig-tn-arch}} depicts the reference design used in this document for modelling the Transport Network based on management perimeters (Customer vs. Provider).
@@ -282,44 +281,52 @@ In practice, the TN may not map to a monolithic architecture and management doma
 ~~~~
 {: #fig-tn-arch title="Reference Design with Customer Site and Provider Network" artwork-align="center"}
 
-The description of the main components shown in {{fig-tn-arch}} is provided below:
+The description of the main components shown in {{fig-tn-arch}} is provided in the following subsections.
 
-Customer site:
-: On top of 5G NFs, a customer may manage additional TN elements (e.g., servers, routers, and switches) within a customer site.
-: NFs may be hosted on a CE, directly connected to a CE, or be located multiple IP hops from a CE.
-: The orchestration of the TN within a customer site involves a set of controllers for automation purposes (e.g., Network Functions Virtualization Infrastructure (NFVI), Container Network Interface (CNI), Fabric Managers, or Public Cloud APIs). It is out of scope to document how these controllers are implemented.
+### Customer Site {#sec-cs}
 
-Customer Edge (CE):
-: A function that provides logical connectivity of a customer site to the provider network. The logical connectivity is enforced at Layer 2 and/or Layer 3 and is denominated an Attachment Circuit (AC). Examples of CEs include TN components (e.g., router, switch, and firewalls) and also 5G NFs (i.e., an element of the 5G domain such as Centralized Unit (CU), Distributed Unit (DU), or User Plane Function (UPF)).
-: A CE is typically managed by the customer, but it can also be co-managed with the provider. A co-managed CE is orchestrated by both the customer and the provider. In this case, the customer and provider usually have control on distinct device configuration perimeters. A co-managed CE has both PE and CE functions and there is no strict AC connection, although one may consider that the AC stitching logic happens internally within the CE itself. The provider manages the AC between the CE and the PE.
-: This document generalizes the definition of a CE with the introduction of "Distributed CE" in {{sec-distributed}}.
+On top of 5G NFs, a customer may manage additional TN elements (e.g., servers, routers, and switches) within a customer site.
 
-Provider Network:
-: A provider uses a provider network to interconnect customer sites. This document assumes that the provider network is based on IP or MPLS.
+NFs may be hosted on a CE, directly connected to a CE, or be located multiple IP hops from a CE.
 
-Provider Edge (PE):
-: A device managed by a provider that is connected to a CE. The connectivity between a CE and a PE is achieved using one or multiple ACs.
-: This document generalizes the PE definition with the introduction of "Distributed PE" in {{sec-distributed}}.
+The orchestration of the TN within a customer site involves a set of controllers for automation purposes (e.g., Network Functions Virtualization Infrastructure (NFVI), Container Network Interface (CNI), Fabric Managers, or Public Cloud APIs). It is out of scope to document how these controllers are implemented.
 
-Attachment Circuit (AC):
-: The logical connection that attaches a CE to a PE. A CE is connected to a PE via one or multiple ACs. An AC is technology-specific.
-: For consistency with the AC data models terminology (e.g., {{?I-D.ietf-opsawg-teas-attachment-circuit}} and {{?I-D.ietf-opsawg-ntw-attachment-circuit}}), this document assumes that an AC is configured on a "bearer", which represents the underlying connectivity.
-: Examples of ACs are Virtual Local Area Networks (VLANs) (AC) configured on a physical interface (bearer) or an Overlay VXLAN EVI (AC) configured on an IP underlay (bearer).
+### Customer Edge (CE) {#sec-ce}
+
+A CE is a function that provides logical connectivity of a customer site ({{sec-cs}}) to the provider network ({{sec-pn}}). The logical connectivity is enforced at Layer 2 and/or Layer 3 and is denominated an Attachment Circuit (AC) ({{sec-ac}}). Examples of CEs include TN components (e.g., router, switch, and firewalls) and also 5G NFs (i.e., an element of the 5G domain such as Centralized Unit (CU), Distributed Unit (DU), or User Plane Function (UPF)).
+
+A CE is typically managed by the customer, but it can also be co-managed with the provider. A co-managed CE is orchestrated by both the customer and the provider. In this case, the customer and provider usually have control on distinct device configuration perimeters. A co-managed CE has both PE and CE functions and there is no strict AC connection, although one may consider that the AC stitching logic happens internally within the CE itself. The provider manages the AC between the CE and the PE.
+
+This document generalizes the definition of a CE with the introduction of "Distributed CE"; that is, the logical connectivity is realized by configuring multiple devices in the customer domain. The CE function is distributed. An example of a distributed CE is the realization of an interconnection using a L3VPN service based on a distributed CE composed of a switch (Layer 2) and a router (Layer 3) (case (ii) in {{fig-50}}).
+
+While in most cases CEs connect to PEs using IP (e.g., VLANs subinterface on a Layer 3 interface), a CE may also connect to the provider network using other technologies such as MPLS -potentially over IP tunnels- or Segment Routing over IPv6 (SRv6) {{?RFC8986}}. The CE has thus awareness of provider services configuration (e.g., control plane identifiers such as Route Targets (RTs) and Route Distinguishers (RDs)). However, the CE is still managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. The complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE. Service-aware CEs are used, for example, in the deployments discussed in Sections {{<sec-10b}} and {{<sec-10c}}.
+
+### Provider Network {#sec-pn}
+
+A provider uses a provider network to interconnect customer sites. This document assumes that the provider network is based on IP or MPLS.
+
+### Provider Edge (PE) {#sec-pe}
+
+A device managed by a provider that is connected to a CE. The connectivity between a CE and a PE is achieved using one or multiple ACs.
+
+This document generalizes the PE definition with the introduction of "Distributed PE"; that is, the logical connectivity is realized by configuring  multiple devices in the provider network (i.e., provider orchestration domain). The PE function is distributed.
+
+An example of a distributed PE is the "Managed CE service". For example, a provider delivers VPN services using CEs and PEs which are both managed by the provider (case (iii) in {{fig-50}}). The managed CE can also be a Data Center Gateway as depicted in the example (iv) of {{fig-50}}. A provider-managed CE may attach to CEs of multiple customers. However, this device is part of the provider network.
+
+### Attachment Circuit (AC) {#sec-ac}
+
+The AC is the logical connection that attaches a CE ({{sec-ce}}) to a PE ({{sec-pe}}). A CE is connected to a PE via one or multiple ACs. An AC is technology-specific.
+
+For consistency with the AC data models terminology (e.g., {{?I-D.ietf-opsawg-teas-attachment-circuit}} and {{?I-D.ietf-opsawg-ntw-attachment-circuit}}), this document assumes that an AC is configured on a "bearer", which represents the underlying connectivity.
+
+Examples of ACs are Virtual Local Area Networks (VLANs) (AC) configured on a physical interface (bearer) or an Overlay VXLAN EVI (AC) configured on an IP underlay (bearer).
 
 > In order to keep the figures simple, only one AC and single-homed CEs are represented.
 > However, this document does not exclude the instantiation of multiple ACs between a CE and a PE nor the presence of CEs that are attached to more than one PE.
 
-###  Distributed PE and Distributed CE {#sec-distributed}
+###  Distributed PE and Distributed CE Deployment {#sec-dpce}
 
 This document uses the concept of distributed CEs and PEs (e.g., {{Section 3.4.3 of ?RFC4664}}). This approach consolidates a CE/AC/PE definition that is consistent with the orchestration perimeters ({{sec-orch}}). The CEs and PEs delimit respectively the customer and provider orchestration domains, while an AC interconnects these domains.
-
-Distributed CE:
-: The logical connectivity is realized by configuring multiple devices in the customer domain. The CE function is distributed.
-: An example of a distributed CE is the realization of an interconnection using a L3VPN service based on a distributed CE composed of a switch (Layer 2) and a router (Layer 3) (case (ii) in {{fig-50}}).
-
-Distributed PE:
-: The logical connectivity is realized by configuring  multiple devices in the provider network (i.e., provider orchestration domain). The PE function is distributed.
-: An example of a distributed PE is the "Managed CE service". For example, a provider delivers VPN services using CEs and PEs which are both managed by the provider (case (iii) in {{fig-50}}). The managed CE can also be a Data Center Gateway as depicted in the example (iv) of {{fig-50}}. A provider-managed CE may attach to CEs of multiple customers. However, this device is part of the provider network.
 
 {{fig-50}} depicts examples of distributed CEs and PEs. Deployment cases where the AC is also managed by the provider are not discussed here because the setup of such an AC does not require any coordination between the customer and provider orchestration domains.
 
@@ -329,12 +336,6 @@ Distributed PE:
 {: #fig-50 title="Generic Model vs Distributed CE and PE" artwork-align="center"}
 
 In subsequent sections of this document, the terms CE and PE are used for both single and distributed devices.
-
-### Service-aware CE {#sec-service-aware-ce}
-
-While in most cases CEs connect to PEs using IP (e.g., VLANs subinterface on a Layer 3 interface), a CE may also connect to the provider network using other technologies such as MPLS -potentially over IP tunnels- or Segment Routing over IPv6 (SRv6) {{?RFC8986}}. The CE has thus awareness of provider services configuration (e.g., control plane identifiers such as Route Targets (RTs) and Route Distinguishers (RDs)). However, the CE is still managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. The complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE ({{sec-distributed}}).
-
-Service-aware CEs are used, for example, in the deployment discussed in Sections {{<sec-10b}} and {{<sec-10c}}.
 
 ##  Orchestration Overview {#sec-orch}
 
@@ -686,7 +687,7 @@ The realization model described in the document inherits the scalability propert
     change and redistribution of labeled transport routes with next-hop
     change at domain boundaries.
 
-{{figure-51}} illustrates the use of service-aware CE ({{sec-service-aware-ce}}) for the deployment discussed in Sections {{<sec-10b}} and {{<sec-10c}}.
+{{figure-51}} illustrates the use of service-aware CE ({{sec-ce}}) for the deployment discussed in Sections {{<sec-10b}} and {{<sec-10c}}.
 
 ~~~~
 {::include ./drawings/mpls-ac.txt}
