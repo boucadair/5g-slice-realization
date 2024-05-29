@@ -82,8 +82,7 @@ Table of Contents
      3.2.  5G Network Slicing versus Transport Network Slicing
      3.3.  Transport Network Reference Design
        3.3.1.  Distributed PE and CE
-       3.3.2.  Co-Managed CE
-       3.3.3.  Service-aware CE
+       3.3.2.  Service-aware CE
      3.4.  Orchestration Overview
        3.4.1.  5G End-to-End Slice Orchestration Architecture
        3.4.2.  Transport Network Segments and Network Slice
@@ -216,6 +215,15 @@ Table of Contents
    Network Resource Partition (NRP) (Section 7.1 of [RFC9543]).  The
    applicability to multiple NRPs is out of scope.
 
+   The realization model relies upon many building blocks currently
+   commonly used in service provider networks.  Concretely, the model
+   uses (1) Layer 2 Virtual Private Network (L2VPN) [RFC4664] and/or
+   Layer 3 Virtual Private Network (L3VPN) [RFC4364] service instances
+   for logical separation, (2) fine-grained resource control at the
+   Provider Edges (PEs), (3) coarse-grained resource control at within
+   the provider network, and (4) capacity management.  Section 3.8
+   further details the model.
+
    Although this document focuses on 5G, the realizations are not
    fundamentally constrained by the 5G use case.  The document is not
    intended to be a BCP and does not claim to specify mandatory
@@ -237,6 +245,19 @@ Table of Contents
 
    An extended list of abbreviations used in this document is provided
    in Appendix A.
+
+   This document makes use of the following terms:
+
+   Customer:  An entity that is responsible for managing and
+      orchestrating the end-to-end 5G Mobile Network, notably the Radio
+      Access Network (RAN) and Core Network (CN).
+
+      This entity is distinct from the customer of a 5G Network Slice
+      Service.
+
+   Provider:  An entity responsible for interconnecting customer sites.
+
+      A provider orchestrates and manages a provider network.
 
 3.  5G Network Slicing Integration in Transport Networks
 
@@ -362,13 +383,6 @@ Table of Contents
 
    The description of the main components shown in Figure 3 are:
 
-   Customer:  An entity that is responsible for managing and
-      orchestrating the end-to-end 5G Mobile Network, notably RANs and
-      CNs.
-
-      This entity is distinct from the customer of a 5G Network Slice
-      Service.
-
    Customer site:  A customer manages and deploys 5G NFs (RAN and CN) in
       customer sites.  On top of 5G NFs (e.g., gNodeB (gNB) and 5G Core
       (5GC)), a customer may manage additional TN elements (e.g.,
@@ -388,10 +402,6 @@ Table of Contents
       out of the scope of this document to document how these
       controllers are implemented.
 
-   Provider:  An entity responsible for interconnecting customer sites.
-
-      The provider orchestrates and manages a provider network.
-
    Provider Network:  A provider uses a provider network to interconnect
       customer sites.  This document assumes that the provider network
       is based on IP or MPLS.
@@ -403,6 +413,15 @@ Table of Contents
       switch, and firewalls) and also 5G NFs (i.e., an element of the 5G
       domain such as Centralized Unit (CU), Distributed Unit (DU), or
       User Plane Function (UPF)).
+
+      A CE is typically managed by the customer, but it can also be co-
+      managed with the provider.  A co-managed CE is orchestrated by
+      both the customer and the provider.  In this case, the customer
+      and provider usually have control on distinct device configuration
+      perimeters.  A co-managed CE has both PE and CE functions and
+      there is no strict AC connection, although one may consider that
+      the AC stitching logic happens internally within the CE itself.
+      The provider manages the AC between the CE and the PE.
 
       This document generalizes the definition of a CE with the
       introduction of "Distributed CE" in Section 3.3.1.
@@ -525,20 +544,7 @@ Table of Contents
    In subsequent sections of this document, the terms CE and PE are used
    for both single and distributed devices.
 
-3.3.2.  Co-Managed CE
-
-   A co-managed CE is orchestrated by both the customer and the
-   provider.  In this case, the customer and provider usually have
-   control on distinct device configuration perimeters.  For example,
-   the customer is responsible for the LAN interfaces, while the
-   provider is responsible for the WAN interfaces (including routing/
-   forwarding policies).  Considering the generic model, a co-managed CE
-   has both PE and CE functions and there is no strict AC connection,
-   although one may consider that the AC stitching logic happens
-   internally within the CE itself.  The provider manages the AC between
-   the CE and the PE.
-
-3.3.3.  Service-aware CE
+3.3.2.  Service-aware CE
 
    While in most cases CEs connect to PEs using IP (e.g., VLANs
    subinterface on a Layer 3 interface), a CE may also connect to the
@@ -814,6 +820,12 @@ Table of Contents
    factors, such as the actual business cases, the NF vendor
    capabilities, the NF vendor reference designs, as well as service
    provider or even legal requirements.
+
+   Mapping approaches that rely upon preserving the 5G slice
+   identification in the TN (e.g., Section 4.2) may simplify required
+   operations to map back TN slices to 5G slices.  However, such
+   considerations are not detailed in this document because these are
+   under the responsibility of the 3GPP orchestration domain.
 
 3.6.  Scalability Implications
 
@@ -2101,8 +2113,8 @@ Table of Contents
    A transport plane refers to a specific forwarding behavior between
    PEs in order to provide packet delivery that is consistent with the
    corresponding SLOs.  A network operator can define multiple transport
-   planes.  A transport plane may be realized in multiple ways such as
-   (but not limited to):
+   planes within a single NRP.  A transport plane may be realized in
+   multiple ways such as (but not limited to):
 
    *  A mesh of RSVP-TE [RFC3209] or SR-TE [RFC9256] tunnels created
       with specific optimization criteria and constraints.  For example,
@@ -2113,6 +2125,10 @@ Table of Contents
       latency), or one that only uses links with particular properties
       (e.g., MACsec link [IEEE802.1AE]), or excludes links that are
       within a particular geography.
+
+   Also, transport planes may be realized using separate NRPs.  However,
+   such an approach is left out of the scope given the current state of
+   the technology (2024).
 
    Detailed realization of transport planes is out of the scope of this
    document.
