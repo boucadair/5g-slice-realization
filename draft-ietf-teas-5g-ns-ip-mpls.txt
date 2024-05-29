@@ -81,16 +81,7 @@ Table of Contents
      3.1.  Scope of the Transport Network
      3.2.  5G Network Slicing versus Transport Network Slicing
      3.3.  Transport Network Reference Design
-       3.3.1.  Customer Site
-       3.3.2.  Customer Edge (CE)
-       3.3.3.  Provider Network
-       3.3.4.  Provider Edge (PE)
-       3.3.5.  Attachment Circuit (AC)
-       3.3.6.  Distributed PE and Distributed CE Deployment
      3.4.  Orchestration Overview
-       3.4.1.  5G End-to-End Slice Orchestration Architecture
-       3.4.2.  Transport Network Segments and Network Slice
-               Instantiation
      3.5.  Mapping 5G Network Slices to Transport Network Slices
      3.6.  Scalability Implications
      3.7.  First 5G Slice versus Subsequent Slices
@@ -98,19 +89,10 @@ Table of Contents
    4.  Hand-off Between Domains
      4.1.  VLAN Hand-off
      4.2.  IP Hand-off
-       4.2.1.  An Example of Local IPv6 Addressing Plan for Network
-               Functions
      4.3.  MPLS Label Hand-off
-       4.3.1.  Option A
-       4.3.2.  Option B
-       4.3.3.  Option C
    5.  QoS Mapping Realization Models
      5.1.  QoS Layers
-       5.1.1.  5G QoS Layer
-       5.1.2.  TN QoS Layer
      5.2.  QoS Realization Models
-       5.2.1.  5QI-unaware Model
-       5.2.2.  5QI-aware Model
      5.3.  Transit Resource Control
    6.  Transport Planes Mapping Models
      6.1.  5QI-unaware Model
@@ -118,9 +100,6 @@ Table of Contents
    7.  Capacity Planning/Management
      7.1.  Bandwidth Requirements
      7.2.  Bandwidth Models
-       7.2.1.  Scheme 1: Shortest Path Forwarding (SPF)
-       7.2.2.  Scheme 2: TE Paths with Fixed Bandwidth Reservations
-       7.2.3.  Scheme 3: TE Paths without Bandwidth Reservation
    8.  Network Slicing OAM
    9.  IANA Considerations
    10. Security Considerations
