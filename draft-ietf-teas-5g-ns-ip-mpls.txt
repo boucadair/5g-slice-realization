@@ -82,8 +82,7 @@ Table of Contents
      3.2.  5G Network Slicing versus Transport Network Slicing
      3.3.  Transport Network Reference Design
        3.3.1.  Distributed PE and CE
-       3.3.2.  Co-Managed CE
-       3.3.3.  Service-aware CE
+       3.3.2.  Service-aware CE
      3.4.  Orchestration Overview
        3.4.1.  5G End-to-End Slice Orchestration Architecture
        3.4.2.  Transport Network Segments and Network Slice
@@ -238,6 +237,19 @@ Table of Contents
    An extended list of abbreviations used in this document is provided
    in Appendix A.
 
+   This document makes use of the following terms:
+
+   Customer:  An entity that is responsible for managing and
+      orchestrating the end-to-end 5G Mobile Network, notably the Radio
+      Access Network (RAN) and Core Network (CN).
+
+      This entity is distinct from the customer of a 5G Network Slice
+      Service.
+
+   Provider:  An entity responsible for interconnecting customer sites.
+
+      A provider orchestrates and manages a provider network.
+
 3.  5G Network Slicing Integration in Transport Networks
 
 3.1.  Scope of the Transport Network
@@ -362,13 +374,6 @@ Table of Contents
 
    The description of the main components shown in Figure 3 are:
 
-   Customer:  An entity that is responsible for managing and
-      orchestrating the end-to-end 5G Mobile Network, notably RANs and
-      CNs.
-
-      This entity is distinct from the customer of a 5G Network Slice
-      Service.
-
    Customer site:  A customer manages and deploys 5G NFs (RAN and CN) in
       customer sites.  On top of 5G NFs (e.g., gNodeB (gNB) and 5G Core
       (5GC)), a customer may manage additional TN elements (e.g.,
@@ -388,10 +393,6 @@ Table of Contents
       out of the scope of this document to document how these
       controllers are implemented.
 
-   Provider:  An entity responsible for interconnecting customer sites.
-
-      The provider orchestrates and manages a provider network.
-
    Provider Network:  A provider uses a provider network to interconnect
       customer sites.  This document assumes that the provider network
       is based on IP or MPLS.
@@ -403,6 +404,15 @@ Table of Contents
       switch, and firewalls) and also 5G NFs (i.e., an element of the 5G
       domain such as Centralized Unit (CU), Distributed Unit (DU), or
       User Plane Function (UPF)).
+
+      A CE is typically managed by the customer, but it can also be co-
+      managed with the provider.  A co-managed CE is orchestrated by
+      both the customer and the provider.  In this case, the customer
+      and provider usually have control on distinct device configuration
+      perimeters.  A co-managed CE has both PE and CE functions and
+      there is no strict AC connection, although one may consider that
+      the AC stitching logic happens internally within the CE itself.
+      The provider manages the AC between the CE and the PE.
 
       This document generalizes the definition of a CE with the
       introduction of "Distributed CE" in Section 3.3.1.
@@ -525,20 +535,7 @@ Table of Contents
    In subsequent sections of this document, the terms CE and PE are used
    for both single and distributed devices.
 
-3.3.2.  Co-Managed CE
-
-   A co-managed CE is orchestrated by both the customer and the
-   provider.  In this case, the customer and provider usually have
-   control on distinct device configuration perimeters.  For example,
-   the customer is responsible for the LAN interfaces, while the
-   provider is responsible for the WAN interfaces (including routing/
-   forwarding policies).  Considering the generic model, a co-managed CE
-   has both PE and CE functions and there is no strict AC connection,
-   although one may consider that the AC stitching logic happens
-   internally within the CE itself.  The provider manages the AC between
-   the CE and the PE.
-
-3.3.3.  Service-aware CE
+3.3.2.  Service-aware CE
 
    While in most cases CEs connect to PEs using IP (e.g., VLANs
    subinterface on a Layer 3 interface), a CE may also connect to the
