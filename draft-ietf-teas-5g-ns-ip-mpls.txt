@@ -162,32 +162,23 @@ Table of Contents
    distances (low latency) where basic QoS/scheduling logic is
    sufficient to comply with the Service Level Objectives (SLOs).
 
-           |------------------TN Slice------------------|
+          |------------------TN Slice------------------|
 
-                             |------RFC 9543-----|
-                             |   Network Slice   |
-                             |                   |
-                             |                   |
-                             v                   v
-           <---CS---> <---AC--> <------PN------> <--AC-->
-       +------------+          +---------------+         +----------+
-       |  Customer  |          |    Provider   |         | Customer |
-       |   Site 1   |          |    Network    |         |  Site 2  |
-       |            |        +-+--+          +-+--+      |          |
-       |+---+    +--+-+  AC  |    |          |    | AC +-+-+        |
-     CS||NF1+....+ CE +------+ PE |          | PE +----+NF3|        |
-     ^ |+---+    +--+-+      |    |          |    |    +-+-+        |
-     | |            |        +-+--+          +-+--+      |          |
-     | |            |          |               |         |          |
-     v |+---+       |          |               |         |          |
-       ||NF2|       |          |               |         |          |
-       |+---+       |          |               |         |          |
-       +------------+          +---------------+         +----------+
-
-                   <──────>  TN segments:
-                               CS = Customer Segment
-                               AC = Attachment Circuit
-                               PN = Provider Network
+                            |------RFC 9543-----|
+                            |   Network Slice   |
+                            |                   |
+                            |                   |
+                            v                   v
+      +------------+          +---------------+         +------------+
+      |  Customer  |          |    Provider   |         |  Customer  |
+      |   Site 1   |          |    Network    |         |   Site 2   |
+      |            |        +-+--+          +-+--+      |            |
+      |+---+    +--+-+  AC  |    |          |    | AC +-+-+          |
+      ||NF +....+ CE +------+ PE |          | PE +----+NF |          |
+      |+---+    +--+-+      |    |          |    |    +-+-+          |
+      |            |        +-+--+          +-+--+      |            |
+      |            |          |               |         |            |
+      +------------+          +---------------+         +------------+
 
               Figure 1: Segmentation of the Transport Network
 

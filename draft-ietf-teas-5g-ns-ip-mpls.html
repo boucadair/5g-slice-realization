@@ -1364,25 +1364,17 @@ Concretely, the realization of an RFC 9543 Network Slice (i.e., connectivity wit
                         |                   |
                         |                   |
                         v                   v
-      &lt;---CS---&gt; &lt;---AC--&gt; &lt;------PN------&gt; &lt;--AC--&gt;
-  +------------+          +---------------+         +----------+
-  |  Customer  |          |    Provider   |         | Customer |
-  |   Site 1   |          |    Network    |         |  Site 2  |
-  |            |        +-+--+          +-+--+      |          |
-  |+---+    +--+-+  AC  |    |          |    | AC +-+-+        |
-CS||NF1+....+ CE +------+ PE |          | PE +----+NF3|        |
-^ |+---+    +--+-+      |    |          |    |    +-+-+        |
-| |            |        +-+--+          +-+--+      |          |
-| |            |          |               |         |          |
-v |+---+       |          |               |         |          |
-  ||NF2|       |          |               |         |          |
-  |+---+       |          |               |         |          |
-  +------------+          +---------------+         +----------+
+  +------------+          +---------------+         +------------+
+  |  Customer  |          |    Provider   |         |  Customer  |
+  |   Site 1   |          |    Network    |         |   Site 2   |
+  |            |        +-+--+          +-+--+      |            |
+  |+---+    +--+-+  AC  |    |          |    | AC +-+-+          |
+  ||NF +....+ CE +------+ PE |          | PE +----+NF |          |
+  |+---+    +--+-+      |    |          |    |    +-+-+          |
+  |            |        +-+--+          +-+--+      |            |
+  |            |          |               |         |            |
+  +------------+          +---------------+         +------------+
 
-              &lt;──────&gt;  TN segments:
-                          CS = Customer Segment
-                          AC = Attachment Circuit
-                          PN = Provider Network
 </pre>
 </div>
 <figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
