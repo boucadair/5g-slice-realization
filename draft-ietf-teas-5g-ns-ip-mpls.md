@@ -210,6 +210,16 @@ The document uses the terms defined in {{!RFC9543}}. See {{sec-ref-design}} for 
 
 An extended list of abbreviations used in this document is provided in {{ext-abbr}}.
 
+This document makes use of the following terms:
+
+Customer:
+: An entity that is responsible for managing and orchestrating the end-to-end 5G Mobile Network, notably the Radio Access Network (RAN) and Core Network (CN).
+: This entity is distinct from the customer of a 5G Network Slice Service.
+
+Provider:
+: An entity responsible for interconnecting customer sites.
+: A provider orchestrates and manages a provider network.
+
 #  5G Network Slicing Integration in Transport Networks {#sec-5g}
 
 ## Scope of the Transport Network {#sec-scope}
@@ -268,24 +278,17 @@ In practice, the TN may not map to a monolithic architecture and management doma
 
 The description of the main components shown in {{fig-tn-arch}} are:
 
-Customer:
-: An entity that is responsible for managing and orchestrating the end-to-end 5G Mobile Network, notably RANs and CNs.
-: This entity is distinct from the customer of a 5G Network Slice Service.
-
 Customer site:
 : A customer manages and deploys 5G NFs (RAN and CN) in customer sites. On top of 5G NFs (e.g., gNodeB (gNB) and 5G Core (5GC)), a customer may manage additional TN elements (e.g., servers, routers, and switches) within a customer site. A customer site can be either a physical or a virtual location. Examples of customer sites are a customer private locations (Point of Presence (PoP), DC), a VPC in a Public Cloud, or servers hosted within the provider network or colocation service.
 : NFs may be hosted on a CE, directly connected to a CE, or be located multiple IP hops from a CE.
 : The orchestration of the TN within a customer site involves a set of controllers for automation purposes (e.g., Network Functions Virtualization Infrastructure (NFVI), Enhanced Container Network Interface (CNI), Fabric Managers, or Public Cloud APIs). It is out of the scope of this document to document how these controllers are implemented.
-
-Provider:
-: An entity responsible for interconnecting customer sites.
-: The provider orchestrates and manages a provider network.
 
 Provider Network:
 : A provider uses a provider network to interconnect customer sites. This document assumes that the provider network is based on IP or MPLS.
 
 Customer Edge (CE):
 : A function that provides logical connectivity to the provider network. The logical connectivity is enforced at Layer 2 and/or Layer 3 and is denominated an Attachment Circuit (AC). Examples of CEs include TN components (e.g., router, switch, and firewalls) and also 5G NFs (i.e., an element of the 5G domain such as Centralized Unit (CU), Distributed Unit (DU), or User Plane Function (UPF)).
+: A CE is typically managed by the customer, but it can also be co-managed with the provider. A co-managed CE is orchestrated by both the customer and the provider. In this case, the customer and provider usually have control on distinct device configuration perimeters. A co-managed CE has both PE and CE functions and there is no strict AC connection, although one may consider that the AC stitching logic happens internally within the CE itself. The provider manages the AC between the CE and the PE.
 : This document generalizes the definition of a CE with the introduction of "Distributed CE" in {{sec-distributed}}.
 
 Provider Edge (PE):
@@ -296,7 +299,6 @@ Attachment Circuit (AC):
 : The logical connection that attaches a CE to a PE. A CE is connected to a PE via one or multiple ACs. An AC is technology-specific.
 : For consistency with the AC data models terminology (e.g., {{?I-D.ietf-opsawg-teas-attachment-circuit}} and {{?I-D.ietf-opsawg-ntw-attachment-circuit}}), this document assumes that an AC is configured on a "bearer", which represents the underlying connectivity.
 : Examples of ACs are Virtual Local Area Networks (VLANs) (AC) configured on a physical interface (bearer) or an Overlay VXLAN EVI (AC) configured on an IP underlay (bearer).
-
 
 > In order to keep the figures simple, only one AC and single-homed CEs are represented.
 > However, this document does not exclude the instantiation of multiple ACs between a CE and a PE nor the presence of CEs that are attached to more than one PE.
@@ -321,10 +323,6 @@ Distributed PE:
 {: #fig-50 title="Generic Model vs Distributed CE and PE" artwork-align="center"}
 
 In subsequent sections of this document, the terms CE and PE are used for both single and distributed devices.
-
-###  Co-Managed CE
-
-A co-managed CE is orchestrated by both the customer and the provider. In this case, the customer and provider usually have control on distinct device configuration perimeters. For example, the customer is responsible for the LAN interfaces, while the provider is responsible for the WAN interfaces (including routing/forwarding policies). Considering the generic model, a co-managed CE has both PE and CE functions and there is no strict AC connection, although one may consider that the AC stitching logic happens internally within the CE itself. The provider manages the AC between the CE and the PE.
 
 ### Service-aware CE {#sec-service-aware-ce}
 
