@@ -442,7 +442,7 @@ A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For inst
    capabilities, the NF vendor reference designs, as well as service
    provider or even legal requirements.
 
-Mapping approaches that rely upon preserving the 5G slice identification in the TN (e.g., {{sec-ip-hof}}) may simplify required operations to map back TN slices to 5G slices. However, such considerations are detailed in this document because these are under the responsibility of the 3GPP orchestration domain.
+Mapping approaches that rely upon preserving the 5G slice identification in the TN (e.g., {{sec-ip-hof}}) may simplify required operations to map back TN slices to 5G slices. However, such considerations are not detailed in this document because these are under the responsibility of the 3GPP orchestration domain.
 
 ## Scalability Implications {#sec-sca-impli}
 
