@@ -200,7 +200,7 @@ domain by mapping to explicit data plane identifiers (e.g., Layer 2, Layer 3, or
 
 The realization model described in this document uses a single Network Resource Partition (NRP) ({{Section 7.1 of !RFC9543}}). The applicability to multiple NRPs is out of scope.
 
-The realization model relies upon a set of building blocks commonly used in service provider networks. Concretely, the model uses (1) Layer 2 Virtual Private Network (L2VPN) {{?RFC4664}} and/or Layer 3 Virtual Private Network (L3VPN) {{?RFC4364}} service instances for logical separation, (2) fine-grained resource control at the Provider Edges (PEs), (3) coarse-grained resource control at within the provider network, and (4) capacity management. {{sec-over-rea-model}} further details the model.
+The realization model relies upon a set of building blocks commonly used in service provider networks. Concretely, the model uses (1) Layer 2 Virtual Private Network (L2VPN) {{?RFC4664}} and/or Layer 3 Virtual Private Network (L3VPN) {{?RFC4364}} service instances for logical separation, (2) fine-grained resource control at the Provider Edges (PEs), (3) coarse-grained resource control at within the provider network, and (4) capacity management. More details are provided in Sections {{<sec-over-rea-model}}, {{<sec-qos-map}}, {{<transport-plane-mapping-models}}, and {{<sec-capacity-planning}}.
 
 Although this document focuses on 5G, the realizations are not fundamentally constrained by the 5G use case. The document is not intended to be a BCP and does not claim to specify mandatory mechanisms to realize network slices. Rather, a key goal of the document is to provide pragmatic implementation approaches by leveraging existing readily-available, widely-deployed techniques. The document is also intended to align the mobile and the IETF perspectives of slicing from a realization perspective.
 
@@ -289,13 +289,13 @@ Customer site:
 : NFs may be hosted on a CE, directly connected to a CE, or be located multiple IP hops from a CE.
 : The orchestration of the TN within a customer site involves a set of controllers for automation purposes (e.g., Network Functions Virtualization Infrastructure (NFVI), Container Network Interface (CNI), Fabric Managers, or Public Cloud APIs). It is out of scope to document how these controllers are implemented.
 
-Provider Network:
-: A provider uses a provider network to interconnect customer sites. This document assumes that the provider network is based on IP or MPLS.
-
 Customer Edge (CE):
 : A function that provides logical connectivity of a customer site to the provider network. The logical connectivity is enforced at Layer 2 and/or Layer 3 and is denominated an Attachment Circuit (AC). Examples of CEs include TN components (e.g., router, switch, and firewalls) and also 5G NFs (i.e., an element of the 5G domain such as Centralized Unit (CU), Distributed Unit (DU), or User Plane Function (UPF)).
 : A CE is typically managed by the customer, but it can also be co-managed with the provider. A co-managed CE is orchestrated by both the customer and the provider. In this case, the customer and provider usually have control on distinct device configuration perimeters. A co-managed CE has both PE and CE functions and there is no strict AC connection, although one may consider that the AC stitching logic happens internally within the CE itself. The provider manages the AC between the CE and the PE.
 : This document generalizes the definition of a CE with the introduction of "Distributed CE" in {{sec-distributed}}.
+
+Provider Network:
+: A provider uses a provider network to interconnect customer sites. This document assumes that the provider network is based on IP or MPLS.
 
 Provider Edge (PE):
 : A device managed by a provider that is connected to a CE. The connectivity between a CE and a PE is achieved using one or multiple ACs.
@@ -309,7 +309,7 @@ Attachment Circuit (AC):
 > In order to keep the figures simple, only one AC and single-homed CEs are represented.
 > However, this document does not exclude the instantiation of multiple ACs between a CE and a PE nor the presence of CEs that are attached to more than one PE.
 
-###  Distributed PE and CE {#sec-distributed}
+###  Distributed PE and Distributed CE {#sec-distributed}
 
 This document uses the concept of distributed CEs and PEs (e.g., {{Section 3.4.3 of ?RFC4664}}). This approach consolidates a CE/AC/PE definition that is consistent with the orchestration perimeters ({{sec-orch}}). The CEs and PEs delimit respectively the customer and provider orchestration domains, while an AC interconnects these domains.
 
