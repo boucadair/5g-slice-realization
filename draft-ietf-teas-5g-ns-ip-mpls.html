@@ -1363,14 +1363,14 @@ Concretely, the realization of an RFC 9543 Network Slice (i.e., connectivity wit
 <figure id="figure-1">
         <div class="alignCenter art-text artwork" id="section-1-3.1">
 <pre>
-      |───────────────────────TN Slice─────────────|
+      |------------------TN Slice------------------|
 
-                        |─────RFC 9543 ─────|
+                        |------RFC 9543-----|
                         |   Network Slice   |
                         |                   |
                         |                   |
-                        ▼                   ▼
-      &lt;──CS───&gt; &lt;───AC──&gt; &lt;──────PN───────&gt; &lt;──AC──&gt;
+                        v                   v
+      &lt;---CS---&gt; &lt;---AC--&gt; &lt;------PN------&gt; &lt;--AC--&gt;
   +------------+          +---------------+         +----------+
   |  Customer  |          |    Provider   |         | Customer |
   |   Site 1   |          |    Network    |         |  Site 2  |
@@ -1378,10 +1378,10 @@ Concretely, the realization of an RFC 9543 Network Slice (i.e., connectivity wit
   |+---+    +--+-+  AC  |    |          |    | AC +-+-+        |
 CS||NF1+....+ CE +------+ PE |          | PE +----+NF3|        |
 ^ |+---+    +--+-+      |    |          |    |    +-+-+        |
-| |  |         |        +-+--+          +-+--+      |          |
-| |  |                    |               |         |          |
+| |            |        +-+--+          +-+--+      |          |
+| |            |          |               |         |          |
 v |+---+       |          |               |         |          |
-  ||NF2|                  |               |         |          |
+  ||NF2|       |          |               |         |          |
   |+---+       |          |               |         |          |
   +------------+          +---------------+         +----------+
 
