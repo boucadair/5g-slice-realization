@@ -88,7 +88,6 @@ Table of Contents
        3.4.1.  5G End-to-End Slice Orchestration Architecture
        3.4.2.  Transport Network Segments and Network Slice
                Instantiation
-       3.4.3.  Additional Segmentation and Domains
      3.5.  Mapping 5G Network Slices to Transport Network Slices
      3.6.  Scalability Implications
      3.7.  First 5G Slice versus Subsequent Slices
@@ -728,14 +727,6 @@ Table of Contents
 
       Figure 7: Coordination of Transport Network Resources for the AC
                                 Provisioning
-
-3.4.3.  Additional Segmentation and Domains
-
-   More complex scenarios can happen with extra segmentation of the TN
-   and additional TN orchestration domains.  It is not realistic to
-   describe every design flavor, however the main concepts presented
-   here in terms of segmentation (provider/customer) and stitching (AC)
-   can be reused for the integration of more complex integrations.
 
 3.5.  Mapping 5G Network Slices to Transport Network Slices
 
