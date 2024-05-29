@@ -180,7 +180,7 @@ Table of Contents
       |            |          |               |         |            |
       +------------+          +---------------+         +------------+
 
-              Figure 1: Segmentation of the Transport Network
+     Figure 1: Transport Network Slice & RFC 9543 Network Slice Scopes
 
    The realization approach described in this document is typically
    triggered by Network Slice Service requests.  How a Network Slice
