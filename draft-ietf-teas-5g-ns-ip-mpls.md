@@ -461,7 +461,7 @@ For instance, consider a slice based on split-CU in the RAN, both CU-UP and Cent
 {: #figure-7 title="First and Subsequent Slice Deployment" artwork-align="center"}
 
 Overall, policies might be provided by an operator (e.g., to Network Slice Controllers) to indicate whether the same or dedicated CP NFs are allowed when processing a new slice creation request. Providing such a policy is meant to better automate the realization of 5G slices and minimize the realization delay that might be induced by extra cycles to seek for operator validation.
-      
+
 ##  Overview of the Transport Network Realization Model {#sec-over-rea-model}
 
    The realization model described in this document is depicted in
