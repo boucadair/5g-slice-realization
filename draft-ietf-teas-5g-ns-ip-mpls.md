@@ -303,7 +303,7 @@ While in most cases CEs connect to PEs using IP (e.g., VLANs subinterface on a L
 
 ### Provider Network {#sec-pn}
 
-A provider uses a provider network to interconnect customer sites. This document assumes that the provider network is based on IP or MPLS.
+A provider uses a provider network to interconnect customer sites. This document assumes that the provider network is based on IP, MPLS, or both.
 
 ### Provider Edge (PE) {#sec-pe}
 
