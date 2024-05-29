@@ -301,7 +301,7 @@ This document generalizes the definition of a CE with the introduction of "Distr
 
 While in most cases CEs connect to PEs using IP (e.g., VLANs subinterface on a Layer 3 interface), a CE may also connect to the provider network using other technologies such as MPLS -potentially over IP tunnels- or Segment Routing over IPv6 (SRv6) {{?RFC8986}}. The CE has thus awareness of provider services configuration (e.g., control plane identifiers such as Route Targets (RTs) and Route Distinguishers (RDs)). However, the CE is still managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. The complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE . Service-aware CEs are used, for example, in the deployment discussed in Sections {{<sec-10b}} and {{<sec-10c}}.
 
-### Provider Network {#sec-cs}
+### Provider Network {#sec-pn}
 
 A provider uses a provider network to interconnect customer sites. This document assumes that the provider network is based on IP or MPLS.
 
@@ -687,7 +687,7 @@ The realization model described in the document inherits the scalability propert
     change and redistribution of labeled transport routes with next-hop
     change at domain boundaries.
 
-{{figure-51}} illustrates the use of service-aware CE ({{sec-service-aware-ce}}) for the deployment discussed in Sections {{<sec-10b}} and {{<sec-10c}}.
+{{figure-51}} illustrates the use of service-aware CE ({{sec-ce}}) for the deployment discussed in Sections {{<sec-10b}} and {{<sec-10c}}.
 
 ~~~~
 {::include ./drawings/mpls-ac.txt}
