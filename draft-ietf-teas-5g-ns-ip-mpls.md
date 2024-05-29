@@ -442,6 +442,8 @@ A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For inst
    capabilities, the NF vendor reference designs, as well as service
    provider or even legal requirements.
 
+Mapping approaches that rely upon preserving the 5G slice identification in the TN (e.g., {{sec-ip-hof}}) may simplify required operations to map back TN slices to 5G slices. However, such considerations are detailed in this document because these are under the responsibility of the 3GPP orchestration domain.
+
 ## Scalability Implications {#sec-sca-impli}
 
 The actual mapping (see {{sec-mapping}}) is a design choice of service operators that may be a function of, e.g., the number of instantiated slices, requested services, or local engineering capabilities and guidelines. However, operators should carefully consider means to ease slice migration strategies. For example, a provider may initially adopt a 1-to-1 mapping if it has to instantiate just a few Network Slices and accommodate the need of only a few customers. That provider may decide to move to a N-to-1 mapping for aggregation/scalability purposes if sustained increased slice demand is observed.
