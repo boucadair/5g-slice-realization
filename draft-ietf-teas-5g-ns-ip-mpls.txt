@@ -441,8 +441,8 @@ Table of Contents
 3.3.3.  Provider Network
 
    A provider uses a provider network to interconnect customer sites.
-   This document assumes that the provider network is based on IP or
-   MPLS.
+   This document assumes that the provider network is based on IP, MPLS,
+   or both.
 
 3.3.4.  Provider Edge (PE)
 
