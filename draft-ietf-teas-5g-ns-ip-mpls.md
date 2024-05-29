@@ -293,11 +293,11 @@ The orchestration of the TN within a customer site involves a set of controllers
 
 ### Customer Edge (CE) {#sec-ce}
 
-A CE is a function that provides logical connectivity of a customer site ({{sec-cs}}) to the provider network ({{sec-pn}}). The logical connectivity is enforced at Layer 2 and/or Layer 3 and is denominated an Attachment Circuit (AC). Examples of CEs include TN components (e.g., router, switch, and firewalls) and also 5G NFs (i.e., an element of the 5G domain such as Centralized Unit (CU), Distributed Unit (DU), or User Plane Function (UPF)).
+A CE is a function that provides logical connectivity of a customer site ({{sec-cs}}) to the provider network ({{sec-pn}}). The logical connectivity is enforced at Layer 2 and/or Layer 3 and is denominated an Attachment Circuit (AC) ({{sec-ac}}). Examples of CEs include TN components (e.g., router, switch, and firewalls) and also 5G NFs (i.e., an element of the 5G domain such as Centralized Unit (CU), Distributed Unit (DU), or User Plane Function (UPF)).
 
 A CE is typically managed by the customer, but it can also be co-managed with the provider. A co-managed CE is orchestrated by both the customer and the provider. In this case, the customer and provider usually have control on distinct device configuration perimeters. A co-managed CE has both PE and CE functions and there is no strict AC connection, although one may consider that the AC stitching logic happens internally within the CE itself. The provider manages the AC between the CE and the PE.
 
-This document generalizes the definition of a CE with the introduction of "Distributed CE", that is the logical connectivity is realized by configuring multiple devices in the customer domain. The CE function is distributed. An example of a distributed CE is the realization of an interconnection using a L3VPN service based on a distributed CE composed of a switch (Layer 2) and a router (Layer 3) (case (ii) in {{fig-50}}).
+This document generalizes the definition of a CE with the introduction of "Distributed CE"; that is, the logical connectivity is realized by configuring multiple devices in the customer domain. The CE function is distributed. An example of a distributed CE is the realization of an interconnection using a L3VPN service based on a distributed CE composed of a switch (Layer 2) and a router (Layer 3) (case (ii) in {{fig-50}}).
 
 While in most cases CEs connect to PEs using IP (e.g., VLANs subinterface on a Layer 3 interface), a CE may also connect to the provider network using other technologies such as MPLS -potentially over IP tunnels- or Segment Routing over IPv6 (SRv6) {{?RFC8986}}. The CE has thus awareness of provider services configuration (e.g., control plane identifiers such as Route Targets (RTs) and Route Distinguishers (RDs)). However, the CE is still managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. The complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE . Service-aware CEs are used, for example, in the deployment discussed in Sections {{<sec-10b}} and {{<sec-10c}}.
 
@@ -309,7 +309,7 @@ A provider uses a provider network to interconnect customer sites. This document
 
 A device managed by a provider that is connected to a CE. The connectivity between a CE and a PE is achieved using one or multiple ACs.
 
-This document generalizes the PE definition with the introduction of "Distributed PE"; that is, the logical connectivity is realized by configuring  multiple devices in the provider network (i.e., provider orchestration domain). The PE function is distributed. 
+This document generalizes the PE definition with the introduction of "Distributed PE"; that is, the logical connectivity is realized by configuring  multiple devices in the provider network (i.e., provider orchestration domain). The PE function is distributed.
 
 An example of a distributed PE is the "Managed CE service". For example, a provider delivers VPN services using CEs and PEs which are both managed by the provider (case (iii) in {{fig-50}}). The managed CE can also be a Data Center Gateway as depicted in the example (iv) of {{fig-50}}. A provider-managed CE may attach to CEs of multiple customers. However, this device is part of the provider network.
 
