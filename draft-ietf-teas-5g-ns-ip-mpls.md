@@ -604,7 +604,7 @@ The realization model described in the document inherits the scalability propert
    established between NFs, as depicted in {{figure-ip-hand-off}}. The transport for
    a single 5G slice might be constructed with multiple such tunnels, since a
    typical 5G slice contains many NFs - especially DUs and CUs. If a shared NF (i.e.,
-   an NF that serves multiple slices, for example a shared DU) is deployed, multiple
+   an NF that serves multiple slices, for example, a shared DU) is deployed, multiple
    tunnels from shared NF are established, each tunnel representing a single slice.
 
 ~~~~
