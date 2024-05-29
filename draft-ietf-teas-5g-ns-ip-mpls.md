@@ -200,6 +200,8 @@ The realization approach described in this document is typically triggered by Ne
 
 The realization model described in this document uses a single Network Resource Partition (NRP) ({{Section 7.1 of !RFC9543}}). The applicability to multiple NRPs is out of scope.
 
+The realization model relies upon many building blocks currently commonly used in service provider networks. Concretely, the model uses (1) Layer 2 Virtual Private Network (L2VPN) {{?RFC4664}} and/or Layer 3 Virtual Private Network (L3VPN) {{?RFC4364}} service instances for logical separation, (2) fine-grained resource control at the Provider Edges (PEs), (3) coarse-grained resource control at within the provider network, and (4) capacity management. {{sec-over-rea-model}} further details the model.
+
 Although this document focuses on 5G, the realizations are not fundamentally constrained by the 5G use case. The document is not intended to be a BCP and does not claim to specify mandatory mechanisms to realize network slices. Rather, a key goal of the document is to provide pragmatic implementation approaches by leveraging existing readily-available, widely-deployed techniques. The document is also intended to align the mobile and the IETF perspectives of slicing from a realization perspective.
 
 A brief 5G overview is provided in {{sec-5g-overview}} for the reader's convenience. For a definitive description of 3GPP network architectures, the reader should refer to {{TS-23.501}}. More  details can be found in {{5G-Book}}.
@@ -459,8 +461,7 @@ For instance, consider a slice based on split-CU in the RAN, both CU-UP and Cent
 {: #figure-7 title="First and Subsequent Slice Deployment" artwork-align="center"}
 
 Overall, policies might be provided by an operator (e.g., to Network Slice Controllers) to indicate whether the same or dedicated CP NFs are allowed when processing a new slice creation request. Providing such a policy is meant to better automate the realization of 5G slices and minimize the realization delay that might be induced by extra cycles to seek for operator validation.
-
-
+      
 ##  Overview of the Transport Network Realization Model {#sec-over-rea-model}
 
    The realization model described in this document is depicted in
