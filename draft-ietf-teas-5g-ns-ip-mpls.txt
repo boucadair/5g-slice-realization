@@ -1216,18 +1216,18 @@ Table of Contents
    Figure 15 illustrates the use of service-aware CE (Section 3.3.2) for
    the deployment discussed in Sections 4.3.2 and 4.3.3.
 
-          ┌ ─ ─ ─ ─ ─ ─ ─                       ┌ ─ ─ ─ ─ ─ ─ ─ ┐
-              Customer   │                          Provider
-          │     Site                            │    Network    │
-                         │
-          │                                     │               │
-                         │  ◀─────MP-BGP─────▶
-          │           ┌────┐                  ┌─┴──┐            │
-                      │    │   MPLS-based AC  │    │
-          │           │ CE ├──────────────────│ PE │            │
-                   ┏━━┻━━━━┻━━┓               │    │
-          │        ┃ VRF foo  ┃               └─┬──┘            │
-           ─ ─ ─ ─ ┻━━━━━━━━━━┛                  ─ ─ ─ ─ ─ ─ ─ ─
+          +--------------+                      +--------------+
+          |   Customer   |                      |   Provider   |
+          |     Site     |                      |    Network   |
+          |              |                      |              |
+          |              |                      |              |
+          |              |  <------MP-BGP-----> |              |
+          |           +--+-+                  +-+--+           |
+          |           |    |   MPLS-based AC  |    |           |
+          |           | CE +------------------+ PE |           |
+          |        +--+----+--+               |    |           |
+          |        | VRF foo  |               +-+--+           |
+          +--------+----------+                 +--------------+
 
             Figure 15: Example of MPLS-based Attachment Circuit
 

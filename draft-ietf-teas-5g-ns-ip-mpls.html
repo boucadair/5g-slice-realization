@@ -2700,18 +2700,18 @@ change at domain boundaries.<a href="#section-4.3-3.4.1" class="pilcrow">¶</a><
 <figure id="figure-15">
           <div class="alignCenter art-text artwork" id="section-4.3-5.1">
 <pre>
-┌ ─ ─ ─ ─ ─ ─ ─                       ┌ ─ ─ ─ ─ ─ ─ ─ ┐
-    Customer   │                          Provider
-│     Site                            │    Network    │
-               │
-│                                     │               │
-               │  ◀─────MP-BGP─────▶
-│           ┌────┐                  ┌─┴──┐            │
-            │    │   MPLS-based AC  │    │
-│           │ CE ├──────────────────│ PE │            │
-         ┏━━┻━━━━┻━━┓               │    │
-│        ┃ VRF foo  ┃               └─┬──┘            │
- ─ ─ ─ ─ ┻━━━━━━━━━━┛                  ─ ─ ─ ─ ─ ─ ─ ─
++--------------+                      +--------------+
+|   Customer   |                      |   Provider   |
+|     Site     |                      |    Network   |
+|              |                      |              |
+|              |                      |              |
+|              |  &lt;------MP-BGP-----&gt; |              |
+|           +--+-+                  +-+--+           |
+|           |    |   MPLS-based AC  |    |           |
+|           | CE +------------------+ PE |           |
+|        +--+----+--+               |    |           |
+|        | VRF foo  |               +-+--+           |
++--------+----------+                 +--------------+
 </pre>
 </div>
 <figcaption><a href="#figure-15" class="selfRef">Figure 15</a>:
