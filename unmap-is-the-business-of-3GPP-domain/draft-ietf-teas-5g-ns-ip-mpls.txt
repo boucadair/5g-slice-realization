@@ -827,8 +827,8 @@ Table of Contents
    Mapping approaches that rely upon preserving the 5G slice
    identification in the TN (e.g., Section 4.2) may simplify required
    operations to map back TN slices to 5G slices.  However, such
-   considerations are detailed in this document because these are under
-   the responsibility of the 3GPP orchestration domain.
+   considerations are not detailed in this document because these are
+   under the responsibility of the 3GPP orchestration domain.
 
 3.6.  Scalability Implications
 
