@@ -3,6 +3,14 @@ title: "A Realization of Network Slices for 5G Networks Using Current IP/MPLS Te
 abbrev: "Implementing 5G Transport Slices"
 category: info
 
+pi:
+  toc: yes
+  tocdepth: 2
+  sortrefs: yes
+  symrefs: yes
+  compact: yes
+  comments: yes
+
 docname: draft-ietf-teas-5g-ns-ip-mpls-latest
 submissiontype: IETF
 number:
