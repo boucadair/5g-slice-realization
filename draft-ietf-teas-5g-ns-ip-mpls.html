@@ -1167,7 +1167,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-transport-network-reference" class="internal xref">Transport Network Reference Design</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3.2.1">
-                    <p id="section-toc.1-1.3.2.3.2.1.1"><a href="#section-3.3.1" class="auto internal xref">3.3.1</a>.  <a href="#name-distributed-pe-and-ce" class="internal xref">Distributed PE and CE</a></p>
+                    <p id="section-toc.1-1.3.2.3.2.1.1"><a href="#section-3.3.1" class="auto internal xref">3.3.1</a>.  <a href="#name-distributed-pe-and-distribu" class="internal xref">Distributed PE and Distributed CE</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3.2.2">
                     <p id="section-toc.1-1.3.2.3.2.2.1"><a href="#section-3.3.2" class="auto internal xref">3.3.2</a>.  <a href="#name-service-aware-ce" class="internal xref">Service-aware CE</a></p>
@@ -1386,7 +1386,7 @@ Concretely, the realization of an RFC 9543 Network Slice (i.e., connectivity wit
 identification <span>[<a href="#TS-23.501" class="cite xref">TS-23.501</a>]</span>. Because S-NSSAIs are not visible to the transport domain, 5G domains can expose the 5G slices to the transport
 domain by mapping to explicit data plane identifiers (e.g., Layer 2, Layer 3, or Layer 4). The realization of the mapping between customer sites and provider networks is refered to as the "hand-off". <a href="#sec-handoff-domains" class="auto internal xref">Section 4</a> lists a set of such hand-off methods.<a href="#section-1-5" class="pilcrow">¶</a></p>
 <p id="section-1-6">The realization model described in this document uses a single Network Resource Partition (NRP) (<span><a href="https://rfc-editor.org/rfc/rfc9543#section-7.1" class="relref">Section 7.1</a> of [<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>). The applicability to multiple NRPs is out of scope.<a href="#section-1-6" class="pilcrow">¶</a></p>
-<p id="section-1-7">The realization model relies upon a set of building blocks commonly used in service provider networks. Concretely, the model uses (1) Layer 2 Virtual Private Network (L2VPN) <span>[<a href="#RFC4664" class="cite xref">RFC4664</a>]</span> and/or Layer 3 Virtual Private Network (L3VPN) <span>[<a href="#RFC4364" class="cite xref">RFC4364</a>]</span> service instances for logical separation, (2) fine-grained resource control at the Provider Edges (PEs), (3) coarse-grained resource control at within the provider network, and (4) capacity management. <a href="#sec-over-rea-model" class="auto internal xref">Section 3.8</a> further details the model.<a href="#section-1-7" class="pilcrow">¶</a></p>
+<p id="section-1-7">The realization model relies upon a set of building blocks commonly used in service provider networks. Concretely, the model uses (1) Layer 2 Virtual Private Network (L2VPN) <span>[<a href="#RFC4664" class="cite xref">RFC4664</a>]</span> and/or Layer 3 Virtual Private Network (L3VPN) <span>[<a href="#RFC4364" class="cite xref">RFC4364</a>]</span> service instances for logical separation, (2) fine-grained resource control at the Provider Edges (PEs), (3) coarse-grained resource control at within the provider network, and (4) capacity management. More details are provided in Sections <a href="#sec-over-rea-model" class="auto internal xref">3.8</a>, <a href="#sec-qos-map" class="auto internal xref">5</a>, <a href="#transport-plane-mapping-models" class="auto internal xref">6</a>, and <a href="#sec-capacity-planning" class="auto internal xref">7</a>.<a href="#section-1-7" class="pilcrow">¶</a></p>
 <p id="section-1-8">Although this document focuses on 5G, the realizations are not fundamentally constrained by the 5G use case. The document is not intended to be a BCP and does not claim to specify mandatory mechanisms to realize network slices. Rather, a key goal of the document is to provide pragmatic implementation approaches by leveraging existing readily-available, widely-deployed techniques. The document is also intended to align the mobile and the IETF perspectives of slicing from a realization perspective.<a href="#section-1-8" class="pilcrow">¶</a></p>
 <p id="section-1-9">A brief 5G overview is provided in <a href="#sec-5g-overview" class="auto internal xref">Appendix B</a> for the reader's convenience. For a definitive description of 3GPP network architectures, the reader should refer to <span>[<a href="#TS-23.501" class="cite xref">TS-23.501</a>]</span>. More  details can be found in <span>[<a href="#_5G-Book" class="cite xref">_5G-Book</a>]</span>.<a href="#section-1-9" class="pilcrow">¶</a></p>
 </section>
@@ -1568,24 +1568,24 @@ There are different components to implement TN slices based upon
             <p id="section-3.3-4.6.1">The orchestration of the TN within a customer site involves a set of controllers for automation purposes (e.g., Network Functions Virtualization Infrastructure (NFVI), Container Network Interface (CNI), Fabric Managers, or Public Cloud APIs). It is out of scope to document how these controllers are implemented.<a href="#section-3.3-4.6.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-3.3-4.7">Provider Network:</dt>
+<dt id="section-3.3-4.7">Customer Edge (CE):</dt>
           <dd style="margin-left: 1.5em" id="section-3.3-4.8">
-            <p id="section-3.3-4.8.1">A provider uses a provider network to interconnect customer sites. This document assumes that the provider network is based on IP or MPLS.<a href="#section-3.3-4.8.1" class="pilcrow">¶</a></p>
+            <p id="section-3.3-4.8.1">A function that provides logical connectivity of a customer site to the provider network. The logical connectivity is enforced at Layer 2 and/or Layer 3 and is denominated an Attachment Circuit (AC). Examples of CEs include TN components (e.g., router, switch, and firewalls) and also 5G NFs (i.e., an element of the 5G domain such as Centralized Unit (CU), Distributed Unit (DU), or User Plane Function (UPF)).<a href="#section-3.3-4.8.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-3.3-4.9">Customer Edge (CE):</dt>
+<dt id="section-3.3-4.9"></dt>
           <dd style="margin-left: 1.5em" id="section-3.3-4.10">
-            <p id="section-3.3-4.10.1">A function that provides logical connectivity of a customer site to the provider network. The logical connectivity is enforced at Layer 2 and/or Layer 3 and is denominated an Attachment Circuit (AC). Examples of CEs include TN components (e.g., router, switch, and firewalls) and also 5G NFs (i.e., an element of the 5G domain such as Centralized Unit (CU), Distributed Unit (DU), or User Plane Function (UPF)).<a href="#section-3.3-4.10.1" class="pilcrow">¶</a></p>
+            <p id="section-3.3-4.10.1">A CE is typically managed by the customer, but it can also be co-managed with the provider. A co-managed CE is orchestrated by both the customer and the provider. In this case, the customer and provider usually have control on distinct device configuration perimeters. A co-managed CE has both PE and CE functions and there is no strict AC connection, although one may consider that the AC stitching logic happens internally within the CE itself. The provider manages the AC between the CE and the PE.<a href="#section-3.3-4.10.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 <dt id="section-3.3-4.11"></dt>
           <dd style="margin-left: 1.5em" id="section-3.3-4.12">
-            <p id="section-3.3-4.12.1">A CE is typically managed by the customer, but it can also be co-managed with the provider. A co-managed CE is orchestrated by both the customer and the provider. In this case, the customer and provider usually have control on distinct device configuration perimeters. A co-managed CE has both PE and CE functions and there is no strict AC connection, although one may consider that the AC stitching logic happens internally within the CE itself. The provider manages the AC between the CE and the PE.<a href="#section-3.3-4.12.1" class="pilcrow">¶</a></p>
+            <p id="section-3.3-4.12.1">This document generalizes the definition of a CE with the introduction of "Distributed CE" in <a href="#sec-distributed" class="auto internal xref">Section 3.3.1</a>.<a href="#section-3.3-4.12.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-3.3-4.13"></dt>
+<dt id="section-3.3-4.13">Provider Network:</dt>
           <dd style="margin-left: 1.5em" id="section-3.3-4.14">
-            <p id="section-3.3-4.14.1">This document generalizes the definition of a CE with the introduction of "Distributed CE" in <a href="#sec-distributed" class="auto internal xref">Section 3.3.1</a>.<a href="#section-3.3-4.14.1" class="pilcrow">¶</a></p>
+            <p id="section-3.3-4.14.1">A provider uses a provider network to interconnect customer sites. This document assumes that the provider network is based on IP or MPLS.<a href="#section-3.3-4.14.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 <dt id="section-3.3-4.15">Provider Edge (PE):</dt>
@@ -1622,8 +1622,8 @@ However, this document does not exclude the instantiation of multiple ACs betwee
         </ul>
 <div id="sec-distributed">
 <section id="section-3.3.1">
-          <h4 id="name-distributed-pe-and-ce">
-<a href="#section-3.3.1" class="section-number selfRef">3.3.1. </a><a href="#name-distributed-pe-and-ce" class="section-name selfRef">Distributed PE and CE</a>
+          <h4 id="name-distributed-pe-and-distribu">
+<a href="#section-3.3.1" class="section-number selfRef">3.3.1. </a><a href="#name-distributed-pe-and-distribu" class="section-name selfRef">Distributed PE and Distributed CE</a>
           </h4>
 <p id="section-3.3.1-1">This document uses the concept of distributed CEs and PEs (e.g., <span><a href="https://rfc-editor.org/rfc/rfc4664#section-3.4.3" class="relref">Section 3.4.3</a> of [<a href="#RFC4664" class="cite xref">RFC4664</a>]</span>). This approach consolidates a CE/AC/PE definition that is consistent with the orchestration perimeters (<a href="#sec-orch" class="auto internal xref">Section 3.4</a>). The CEs and PEs delimit respectively the customer and provider orchestration domains, while an AC interconnects these domains.<a href="#section-3.3.1-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-3.3.1-2">

@@ -81,7 +81,7 @@ Table of Contents
      3.1.  Scope of the Transport Network
      3.2.  5G Network Slicing versus Transport Network Slicing
      3.3.  Transport Network Reference Design
-       3.3.1.  Distributed PE and CE
+       3.3.1.  Distributed PE and Distributed CE
        3.3.2.  Service-aware CE
      3.4.  Orchestration Overview
        3.4.1.  5G End-to-End Slice Orchestration Architecture
@@ -209,8 +209,8 @@ Table of Contents
    Virtual Private Network (L3VPN) [RFC4364] service instances for
    logical separation, (2) fine-grained resource control at the Provider
    Edges (PEs), (3) coarse-grained resource control at within the
-   provider network, and (4) capacity management.  Section 3.8 further
-   details the model.
+   provider network, and (4) capacity management.  More details are
+   provided in Sections 3.8, 5, 6, and 7.
 
    Although this document focuses on 5G, the realizations are not
    fundamentally constrained by the 5G use case.  The document is not
@@ -393,10 +393,6 @@ Table of Contents
       (CNI), Fabric Managers, or Public Cloud APIs).  It is out of scope
       to document how these controllers are implemented.
 
-   Provider Network:  A provider uses a provider network to interconnect
-      customer sites.  This document assumes that the provider network
-      is based on IP or MPLS.
-
    Customer Edge (CE):  A function that provides logical connectivity of
       a customer site to the provider network.  The logical connectivity
       is enforced at Layer 2 and/or Layer 3 and is denominated an
@@ -416,6 +412,10 @@ Table of Contents
 
       This document generalizes the definition of a CE with the
       introduction of "Distributed CE" in Section 3.3.1.
+
+   Provider Network:  A provider uses a provider network to interconnect
+      customer sites.  This document assumes that the provider network
+      is based on IP or MPLS.
 
    Provider Edge (PE):  A device managed by a provider that is connected
       to a CE.  The connectivity between a CE and a PE is achieved using
@@ -443,7 +443,7 @@ Table of Contents
       instantiation of multiple ACs between a CE and a PE nor the
       presence of CEs that are attached to more than one PE.
 
-3.3.1.  Distributed PE and CE
+3.3.1.  Distributed PE and Distributed CE
 
    This document uses the concept of distributed CEs and PEs (e.g.,
    Section 3.4.3 of [RFC4664]).  This approach consolidates a CE/AC/PE
