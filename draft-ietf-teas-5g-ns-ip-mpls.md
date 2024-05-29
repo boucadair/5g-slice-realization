@@ -1405,11 +1405,13 @@ to TN QoS Classes may be rather common.
 #  Transport Planes Mapping Models {#transport-plane-mapping-models}
 
    A transport plane refers to a specific forwarding behavior between PEs in order to provide packet delivery that is consistent with the corresponding SLOs.
-   A network operator can define multiple transport planes. A transport plane may be realized in multiple ways such as (but not limited to):
+   A network operator can define multiple transport planes within a single NRP. A transport plane may be realized in multiple ways such as (but not limited to):
 
    * A mesh of RSVP-TE {{?RFC3209}} or SR-TE {{?RFC9256}} tunnels created with specific optimization criteria and
    constraints. For example, mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.
    * A Flex-Algorithm {{?RFC9350}} with a particular metric-type (e.g., latency), or one that only uses links with particular properties (e.g., MACsec link {{IEEE802.1AE}}), or excludes links that are within a particular geography.
+
+Also, transport planes may be realized using separate NRPs. However, such an approach is left out of the scope given the current state of the technology (2024).
 
    Detailed realization of transport planes is out of the scope of this document.
 
