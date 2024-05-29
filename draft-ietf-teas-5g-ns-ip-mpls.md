@@ -287,7 +287,7 @@ The description of the main components shown in {{fig-tn-arch}} is provided belo
 Customer site:
 : On top of 5G NFs, a customer may manage additional TN elements (e.g., servers, routers, and switches) within a customer site.
 : NFs may be hosted on a CE, directly connected to a CE, or be located multiple IP hops from a CE.
-: The orchestration of the TN within a customer site involves a set of controllers for automation purposes (e.g., Network Functions Virtualization Infrastructure (NFVI), Enhanced Container Network Interface (CNI), Fabric Managers, or Public Cloud APIs). It is out of the scope of this document to document how these controllers are implemented.
+: The orchestration of the TN within a customer site involves a set of controllers for automation purposes (e.g., Network Functions Virtualization Infrastructure (NFVI), Container Network Interface (CNI), Fabric Managers, or Public Cloud APIs). It is out of scope to document how these controllers are implemented.
 
 Provider Network:
 : A provider uses a provider network to interconnect customer sites. This document assumes that the provider network is based on IP or MPLS.
@@ -436,7 +436,7 @@ A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For inst
    capabilities, the NF vendor reference designs, as well as service
    provider or even legal requirements.
 
-Mapping approaches that rely upon preserving the 5G slice identification in the TN (e.g., {{sec-ip-hof}}) may simplify required operations to map back TN slices to 5G slices. However, such considerations are not detailed in this document because these are under the responsibility of the 3GPP orchestration domain.
+Mapping approaches that preserve the 5G slice identification in the TN (e.g., {{sec-ip-hof}}) may simplify required operations to map back TN slices to 5G slices. However, such considerations are not detailed in this document because these are under the responsibility of the 3GPP orchestration domain.
 
 ## Scalability Implications {#sec-sca-impli}
 
