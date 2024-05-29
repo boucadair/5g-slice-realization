@@ -192,15 +192,15 @@ Concretely, the realization of an RFC 9543 Network Slice (i.e., connectivity wit
 ~~~~
 {: #fig-end-to-end title="Segmentation of the Transport Network" artwork-align="center"}
 
-The 5G control plane relies upon the Single Network Slice Selection Assistance Information (S-NSSAI) identifier for slice
-identification {{TS-23.501}}. Because S-NSSAIs are not visible to the transport domain, 5G Network Functions can expose the 5G slices to the transport
-domain by mapping to explicit Layer 2 or Layer 3 identifiers. The realization of the mapping between customer sites and provider networks is refered to as the "hand-off". {{sec-handoff-domains}} lists a set of such hand-off methods.
-
 The realization approach described in this document is typically triggered by Network Slice Service requests. How a Network Slice Service request is placed for realization, including how it is derived from a 5G Slice Service request, is out of scope. Mapping considerations between 3GPP and IETF Network Slice Service (e.g., mapping of service parameters) are discussed, e.g., in {{?I-D.ietf-teas-5g-network-slice-application}}.
+
+The 5G control plane relies upon the Single Network Slice Selection Assistance Information (S-NSSAI) for slice
+identification {{TS-23.501}}. Because S-NSSAIs are not visible to the transport domain, 5G domains can expose the 5G slices to the transport
+domain by mapping to explicit data plane identifiers (e.g., Layer 2, Layer 3, or Layer 4). The realization of the mapping between customer sites and provider networks is refered to as the "hand-off". {{sec-handoff-domains}} lists a set of such hand-off methods.
 
 The realization model described in this document uses a single Network Resource Partition (NRP) ({{Section 7.1 of !RFC9543}}). The applicability to multiple NRPs is out of scope.
 
-The realization model relies upon many building blocks currently commonly used in service provider networks. Concretely, the model uses (1) Layer 2 Virtual Private Network (L2VPN) {{?RFC4664}} and/or Layer 3 Virtual Private Network (L3VPN) {{?RFC4364}} service instances for logical separation, (2) fine-grained resource control at the Provider Edges (PEs), (3) coarse-grained resource control at within the provider network, and (4) capacity management. {{sec-over-rea-model}} further details the model.
+The realization model relies upon a set of building blocks commonly used in service provider networks. Concretely, the model uses (1) Layer 2 Virtual Private Network (L2VPN) {{?RFC4664}} and/or Layer 3 Virtual Private Network (L3VPN) {{?RFC4364}} service instances for logical separation, (2) fine-grained resource control at the Provider Edges (PEs), (3) coarse-grained resource control at within the provider network, and (4) capacity management. {{sec-over-rea-model}} further details the model.
 
 Although this document focuses on 5G, the realizations are not fundamentally constrained by the 5G use case. The document is not intended to be a BCP and does not claim to specify mandatory mechanisms to realize network slices. Rather, a key goal of the document is to provide pragmatic implementation approaches by leveraging existing readily-available, widely-deployed techniques. The document is also intended to align the mobile and the IETF perspectives of slicing from a realization perspective.
 
