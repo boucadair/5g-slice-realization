@@ -262,8 +262,8 @@ Table of Contents
 
    In practice, the TN may not map to a monolithic architecture and
    management domain.  It is frequently segmented, non-uniform, and
-   managed by different entities.  For example, Figure 2 depicts a NF
-   instance that is deployed in an edge data center (DC) connected to a
+   managed by different entities.  For example, Figure 2 depicts an NF
+   instance that is deployed in an edge data center (DC) connected to an
    NF located in a Public Cloud via a WAN (e.g., MPLS-VPN service).  In
    this example, the TN can be seen as an abstraction representing an
    end-to-end connectivity based upon three distinct domains: DC, WAN,
@@ -615,7 +615,7 @@ Table of Contents
    types that are as follows:
 
    Customer Site:  Either connects NFs located in the same customer site
-      (e.g., NF1-NF2) or connects a NF to a CE (e.g., NF1-CE).  This
+      (e.g., NF1-NF2) or connects an NF to a CE (e.g., NF1-CE).  This
       segment may not be present if the NF is the CE (e.g., NF3): in
       this case the AC connects the NF to a PE.
 
@@ -1445,7 +1445,7 @@ Table of Contents
    (corresponding to specific 5QI value) set in the IP packet generated
    by NFs, some 5G deployments might use 5QI in the RAN domain only,
    without requesting per-5QI differentiated treatment from the provider
-   network.  This might be due to a NF limitation (e.g., no capability
+   network.  This might be due to an NF limitation (e.g., no capability
    to set DSCP), or it might simply depend on the overall slicing
    deployment model.  The O-RAN Alliance, for example, defines a phased
    approach to the slicing, with initial phases utilizing only per-
