@@ -305,7 +305,23 @@ A CE is a function that provides logical connectivity of a customer site ({{sec-
 
 A CE is typically managed by the customer, but it can also be co-managed with the provider. A co-managed CE is orchestrated by both the customer and the provider. In this case, the customer and provider usually have control on distinct device configuration perimeters. A co-managed CE has both PE and CE functions and there is no strict AC connection, although one may consider that the AC stitching logic happens internally within the CE itself. The provider manages the AC between the CE and the PE.
 
-This document generalizes the definition of a CE with the introduction of "Distributed CE"; that is, the logical connectivity is realized by configuring multiple devices in the customer domain. The CE function is distributed. An example of a distributed CE is the realization of an interconnection using a L3VPN service based on a distributed CE composed of a switch (Layer 2) and a router (Layer 3) (case (ii) in {{fig-50}}).
+This document generalizes the definition of a CE with the introduction of "Distributed CE"; that is, the logical connectivity is realized by configuring multiple devices in the customer domain. The CE function is distributed. An example of distributed CE is the realization of an interconnection using a L3VPN service based on a distributed CE composed of a switch (Layer 2) and a router (Layer 3) ({{fig-distribute-ce}}). Another example of distributed CE is shown in {{fig-50}}.
+
+~~~~
++--------------+                      +--------------+
+|   Customer   |                      |   Provider   | 
+|     Site     |                      |    Network   |
+|              |                  .................  | 
+|          +----+                 .+----+   +----+.  |
+|          |    --------------------Mngd|   |    |.  | 
+|          | CE + ─ ─ ─ ─AC ─ ─ ─ ─+ CE ├───┤ PE |.  |
+|          |    --------------------    |   |    |.  | 
+|          +----+                 .+----+   +----+.  |
+|              |                  '..Distributed..'  | 
+|              |                      |  PE          |
++--------------+                      +--------------+
+~~~~
+{: #fig-distribute-ce title="Example of " artwork-align="center"}
 
 While in most cases CEs connect to PEs using IP (e.g., VLANs subinterface on a Layer 3 interface), a CE may also connect to the provider network using other technologies such as MPLS -potentially over IP tunnels- or Segment Routing over IPv6 (SRv6) {{?RFC8986}}. The CE has thus awareness of provider services configuration (e.g., control plane identifiers such as Route Targets (RTs) and Route Distinguishers (RDs)). However, the CE is still managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. The complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE. Service-aware CEs are used, for example, in the deployments discussed in Sections {{<sec-10b}} and {{<sec-10c}}.
 
@@ -315,35 +331,73 @@ A provider uses a provider network to interconnect customer sites. This document
 
 ### Provider Edge (PE) {#sec-pe}
 
-A device managed by a provider that is connected to a CE. The connectivity between a CE and a PE is achieved using one or multiple ACs.
+PE is a device managed by a provider that is connected to a CE. The connectivity between a CE and a PE is achieved using one or multiple ACs ({{sec-ac}}).
 
-This document generalizes the PE definition with the introduction of "Distributed PE"; that is, the logical connectivity is realized by configuring  multiple devices in the provider network (i.e., provider orchestration domain). The PE function is distributed.
+This document generalizes the PE definition with the introduction of "Distributed PE"; that is, the logical connectivity is realized by configuring multiple devices in the provider network (i.e., provider orchestration domain). The PE function is distributed.
 
-An example of a distributed PE is the "Managed CE service". For example, a provider delivers VPN services using CEs and PEs which are both managed by the provider (case (iii) in {{fig-50}}). The managed CE can also be a Data Center Gateway as depicted in the example (iv) of {{fig-50}}. A provider-managed CE may attach to CEs of multiple customers. However, this device is part of the provider network.
+An example of a distributed PE is the "Managed CE service". For example, a provider delivers VPN services using CEs and PEs which are both managed by the provider (case (i) in {{fig-50}}). The managed CE can also be a Data Center Gateway as depicted in the example (ii) of {{fig-50}}. A provider-managed CE may attach to CEs of multiple customers. However, this device is part of the provider network.
+
+~~~~
++--------------+                      +--------------+
+|   Customer   |                      |   Provider   | 
+|     Site     |                      |    Network   |
+|              |                  .................  | 
+|          +----+                 .+----+   +----+.  |
+|          |    --------------------Mngd|   |    |.  | 
+|          | CE + ─ ─ ─ ─AC ─ ─ ─ ─+ CE +---+ PE |.  |
+|          |    --------------------    |   |    |.  | 
+|          +----+                 .+----+   +----+.  |
+|              |                  '..Distributed..'  | 
+|              |                      |  PE          |
++--------------+                      +--------------+
+                  (i) Distributed PE                  
+                                                       
++--------------+                      +--------------+
+|   Customer   |                      |   Provider   | 
+|     Site     |                      |    Network   |
+|  ..................             .................. | 
+|  .    IP Fabric   .             .+----+   +----+ . |
+|  . +---+  +---+   ---------------- DC |   |    | . | 
+|  . +---+  +---+   +─  ─ ─ AC ─ ─ + GW +---+ PE | . |
+|  .+--+  +--+      ----------------    |   |    | . | 
+|  .+--+  +--+      .             .+----+   +----+ . |
+|  '...Distributed..'             '...Distributed..' | 
+|          CE  |                      |  PE          |
+|              |                      |              |  
++--Data Center-+                      +--------------+
+              (ii) Distributed PE and CE 
+~~~~
+{: #fig-50 title="Examples of Distributed PE" artwork-align="center"}
+
+In subsequent sections of this document, the terms CE and PE are used for both single and distributed devices.
 
 ### Attachment Circuit (AC) {#sec-ac}
 
 The AC is the logical connection that attaches a CE ({{sec-ce}}) to a PE ({{sec-pe}}). A CE is connected to a PE via one or multiple ACs. An AC is technology-specific.
 
+This document uses the concept of distributed CEs and PEs (e.g., {{Section 3.4.3 of ?RFC4664}}) to consolidate a CE/AC/PE definition ({{fig-50-ac}}) that is consistent with the orchestration perimeters ({{sec-orch}}). The CEs and PEs delimit respectively the customer and provider orchestration domains, while an AC interconnects these domains.
+
+~~~~
++--------------+                      +--------------+
+|   Customer   |                      |   Provider   |  
+|     Site +----+                  +----+  Network   |
+|          |    --------------------    |            | 
+|          | CE + ─ ─ ─ ─AC ─ ─ ─ ─+ PE |            |
+|          |    --------------------    |            | 
+|          +----+                  +----+            |
+|              |                      |              |
++--------------+                      +--------------+
+~~~~
+{: #fig-50-ac title="Reference AC Design" artwork-align="center"}
+
 For consistency with the AC data models terminology (e.g., {{?I-D.ietf-opsawg-teas-attachment-circuit}} and {{?I-D.ietf-opsawg-ntw-attachment-circuit}}), this document assumes that an AC is configured on a "bearer", which represents the underlying connectivity.
 
 Examples of ACs are Virtual Local Area Networks (VLANs) (AC) configured on a physical interface (bearer) or an Overlay VXLAN EVI (AC) configured on an IP underlay (bearer).
 
+Deployment cases where the AC is also managed by the provider are not discussed in the document because the setup of such an AC does not require any coordination between the customer and provider orchestration domains.
+
 > In order to keep the figures simple, only one AC and single-homed CEs are represented.
 > However, this document does not exclude the instantiation of multiple ACs between a CE and a PE nor the presence of CEs that are attached to more than one PE.
-
-###  Distributed PE and Distributed CE Deployment {#sec-dpce}
-
-This document uses the concept of distributed CEs and PEs (e.g., {{Section 3.4.3 of ?RFC4664}}). This approach consolidates a CE/AC/PE definition that is consistent with the orchestration perimeters ({{sec-orch}}). The CEs and PEs delimit respectively the customer and provider orchestration domains, while an AC interconnects these domains.
-
-{{fig-50}} depicts examples of distributed CEs and PEs. Deployment cases where the AC is also managed by the provider are not discussed here because the setup of such an AC does not require any coordination between the customer and provider orchestration domains.
-
-~~~~
-{::include ./drawings/distributed-pe-ce.txt}
-~~~~
-{: #fig-50 title="Generic Model vs Distributed CE and PE" artwork-align="center"}
-
-In subsequent sections of this document, the terms CE and PE are used for both single and distributed devices.
 
 ##  Orchestration Overview {#sec-orch}
 
