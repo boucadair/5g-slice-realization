@@ -1036,7 +1036,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Szarkowicz, et al.</td>
-<td class="center">Expires 30 November 2024</td>
+<td class="center">Expires 1 December 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1049,12 +1049,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-teas-5g-ns-ip-mpls-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-05-29" class="published">29 May 2024</time>
+<time datetime="2024-05-30" class="published">30 May 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-11-30">30 November 2024</time></dd>
+<dd class="expires"><time datetime="2024-12-01">1 December 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1119,7 +1119,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 30 November 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 1 December 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1559,58 +1559,57 @@ However, this document does not exclude the instantiation of multiple ACs betwee
 <figure id="figure-4">
             <div class="alignCenter art-text artwork" id="section-3.3.6-3.1">
 <pre>
-┌ ─ ─ ─ ─ ─ ─ ─                       ┌ ─ ─ ─ ─ ─ ─ ─ ┐
-    Customer   │                          Provider
-│     Site ┌────┐                  ┌──┴─┐  Network    │
-           │    ├──────────────────┤    │
-│          │ CE ├ ─ ─ ─ ─AC ─ ─ ─ ─│ PE │             │
-           │    ├──────────────────┤    │
-│          └────┘                  └──┬─┘             │
- ─ ─ ─ ─ ─ ─ ─ ┘                       ─ ─ ─ ─ ─ ─ ─ ─
++--------------+                      +--------------+
+|   Customer   |                      |   Provider   |
+|     Site +----+                  +----+  Network   |
+|          |    --------------------    |            |
+|          | CE + ─ ─ ─ ─AC ─ ─ ─ ─+ PE |            |
+|          |    --------------------    |            |
+|          +----+                  +----+            |
+|              |                      |              |
++--------------+                      +--------------+
                 i) Reference Design
-┌ ─ ─ ─ ─ ─ ─ ─                       ┌ ─ ─ ─ ─ ─ ─ ─ ┐
-    Customer   │                          Provider
-│     Site                            │    Network    │
- ┏━━━━━━━━━━━━━━━┓
-│┃ ┌─────┐ ┌────┐┃                 ┌──┴─┐             │
- ┃ │     │ │    ├┃─────────────────┤    │
-│┃ │     ├ ┼ ─ ─│┃ ─ ─ ─ AC─ ─ ─ ─ ┤ PE │             │
- ┃ │ RTR │ │ SW ├┃─────────────────┤    │
-│┃ └─────┘ └────┘┃                 └──┬─┘             │
- ┗━━Distributed━━┛
-│       CE                            │               │
- ─ ─ ─ ─ ─ ─ ─ ┘                       ─ ─ ─ ─ ─ ─ ─ ─
-                  ii) Distributed CE
-┌ ─ ─ ─ ─ ─ ─ ─                       ┌ ─ ─ ─ ─ ─ ─ ─ ┐
-    Customer   │                          Provider
-│     Site                            │    Network    │
-               │                  ┏━━━━━━━━━━━━━━━┓
-│          ┌────┐                 ┃┌──┴─┐   ┌────┐┃   │
-           │    ├─────────────────┃┤Mngd│   │    │┃
-│          │ CE ├ ─ ─ ─ ─AC ─ ─ ─ ┃│ CE ├───┤ PE │┃   │
-           │    ├─────────────────┃┤    │   │    │┃
-│          └────┘                 ┃└──┬─┘   └────┘┃   │
-               │                  ┗━━Distributed━━┛
-│                                     │  PE           │
- ─ ─ ─ ─ ─ ─ ─ ┘                       ─ ─ ─ ─ ─ ─ ─ ─
-                  iii) Distributed PE
++--------------+                      +--------------+
+|   Customer   |                      |   Provider   |
+|     Site     |                      |    Network   |
+|.................                    |              |
+|. +-----+ +----+.                 +----+            |
+|. |     | |    --------------------    |            |
+|. |     + ─ ─ ─ ─ ─ AC ─ ─ ─ ─ ─ ─+ PE |            |
+|. | RTR | | SW --------------------    |            |
+|. +-----+ +----+.                 +----+            |
+|'..Distributed..'                    |              |
+|       CE     |                      |              |
++--------------+                      +--------------+
+                  (ii) Distributed CE
++--------------+                      +--------------+
+|   Customer   |                      |   Provider   |
+|     Site     |                      |    Network   |
+|              |                  .................  |
+|          +----+                 .+----+   +----+.  |
+|          |    --------------------Mngd|   |    |.  |
+|          | CE + ─ ─ ─ ─AC ─ ─ ─ ─+ CE ├───┤ PE |.  |
+|          |    --------------------    |   |    |.  |
+|          +----+                 .+----+   +----+.  |
+|              |                  '..Distributed..'  |
+|              |                      |  PE          |
++--------------+                      +--------------+
+                  (iii) Distributed PE
 
-┌ ─ ─ ─ ─ ─ ─ ─                       ┌ ─ ─ ─ ─ ─ ─ ─ ┐
-    Customer   │                          Provider
-│     Site                            │    Network    │
-   ┏━━━━━━━━━━━━━━━━┓             ┏━━━━━━━━━━━━━━━━┓
-│  ┃    IP Fabric   ┃             ┃┌──┴─┐   ┌────┐ ┃  │
-   ┃   ┌───┐┌───┐   ┃─────────────╋┤ DC │   │    │ ┃
-│  ┃   └───┘└───┘   ┃ ─ ─ ─AC ─ ─ ╋│ GW ├───┤ PE │ ┃  │
-   ┃┌──┐┌──┐┌──┐┌──┐┃─────────────╋┤    │   │    │ ┃
-│  ┃└──┘└──┘└──┘└──┘┃             ┃└──┬─┘   └────┘ ┃  │
-   ┗━━━Distributed━━┛             ┗━━Distributed━━━┛
-│          CE                         │  PE           │
-               │
-└ ─Data Center─                       └ ─ ─ ─ ─ ─ ─ ─ ┘
-                  iv) Distributed PE
-                        and CE
-
++--------------+                      +--------------+
+|   Customer   |                      |   Provider   |
+|     Site     |                      |    Network   |
+|  ..................             .................. |
+|  .    IP Fabric   .             .+----+   +----+ . |
+|  . +---+  +---+   ---------------- DC |   |    | . |
+|  . +---+  +---+   +─  ─ ─ AC ─ ─ + GW +---+ PE | . |
+|  .+--+  +--+      ----------------    |   |    | . |
+|  .+--+  +--+      .             .+----+   +----+ . |
+|  '...Distributed..'             '...Distributed..' |
+|          CE  |                      |  PE          |
+|              |                      |              |
++--Data Center-+                      +--------------+
+              (iv) Distributed PE and CE
 </pre>
 </div>
 <figcaption><a href="#figure-4" class="selfRef">Figure 4</a>:
