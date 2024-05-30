@@ -3732,13 +3732,22 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
 <p id="section-6-7">Note that there might be multiple tunnels within a single transport plane
    between any pair of PEs. <a href="#_figure-23" class="auto internal xref">Figure 29</a> shows only single
    tunnel per transport plane for (ingress PE, egress PE) pair.<a href="#section-6-7" class="pilcrow">¶</a></p>
-<p id="section-6-8">Similar to the QoS mapping models discussed in <a href="#sec-qos-map" class="auto internal xref">Section 5</a>, for mapping
+<p id="section-6-8">It is worth noting that TN QoS Classes and Transport Planes are
+   orthogonal.  The TN domain can be operated with, e.g., 8 TN QoS Classes (representing 8 hardware queues in the
+   routers), and 2 Transport Planes (e.g., latency optimized transport
+   plane using link latency metrics for path calculation, and transport
+   plane following Interior Gateway Protocol (IGP) metrics).  TN QoS Class determines the per-hop
+   behavior when the packets are transiting through the provider network,
+   while transport plane determines the paths for packets through provider
+   network based on operator's business model (operator's requirements).
+   This path can be optimised or constrained.<a href="#section-6-8" class="pilcrow">¶</a></p>
+<p id="section-6-9">Similar to the QoS mapping models discussed in <a href="#sec-qos-map" class="auto internal xref">Section 5</a>, for mapping
    to transport planes at the ingress PE, both 5QI-unaware and 5QI-aware
    models are defined.  Essentially, entire slices can be mapped to
    transport planes without 5G QoS consideration (5QI-unaware model). For example,
    flows with different 5G QoS Classes, even from same
    slice, can be mapped to different transport planes (5QI-aware
-   model).<a href="#section-6-8" class="pilcrow">¶</a></p>
+   model).<a href="#section-6-9" class="pilcrow">¶</a></p>
 <div id="qi-unaware-model">
 <section id="section-6.1">
         <h3 id="name-5qi-unaware-model-2">
@@ -3796,16 +3805,6 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
 <a href="#name-network-slice-to-transport-" class="selfRef">Network Slice to Transport Plane Mapping (5QI-unaware Model)</a>
           </figcaption></figure>
 </div>
-<p id="section-6.1-3">It is worth noting that TN QoS Classes and Transport Planes are
-   orthogonal.  The TN domain can be operated with
-   e.g., 8 TN QoS Classes (representing 8 hardware queues in the
-   routers), and 2 Transport Planes (e.g., latency optimized transport
-   plane using link latency metrics for path calculation, and transport
-   plane following Interior Gateway Protocol (IGP) metrics).  TN QoS Class determines the per-hop
-   behavior when the packets are transiting through the provider network,
-   while transport plane determines the paths for packets through provider
-   network based on operator's business model (operator's requirement).
-   This path can be optimised or constrained.<a href="#section-6.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="qi-aware-model-1">
