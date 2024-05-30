@@ -83,9 +83,8 @@ Table of Contents
      3.3.  Transport Network Reference Design
      3.4.  Orchestration Overview
      3.5.  Mapping 5G Network Slices to Transport Network Slices
-     3.6.  Scalability Implications
-     3.7.  First 5G Slice versus Subsequent Slices
-     3.8.  Overview of the Transport Network Realization Model
+     3.6.  First 5G Slice versus Subsequent Slices
+     3.7.  Overview of the Transport Network Realization Model
    4.  Hand-off Between Domains
      4.1.  VLAN Hand-off
      4.2.  IP Hand-off
@@ -101,6 +100,7 @@ Table of Contents
      7.1.  Bandwidth Requirements
      7.2.  Bandwidth Models
    8.  Network Slicing OAM
+     8.1.  Scalability Implications
    9.  IANA Considerations
    10. Security Considerations
    11. References
@@ -189,7 +189,7 @@ Table of Contents
    [RFC4364] service instances for logical separation, (2) fine-grained
    resource control at the Provider Edges (PEs), (3) coarse-grained
    resource control at within the provider network, and (4) capacity
-   management.  More details are provided in Sections 3.8, 5, 6, and 7.
+   management.  More details are provided in Sections 3.7, 5, 6, and 7.
 
    This realization model uses a single Network Resource Partition (NRP)
    (Section 7.1 of [RFC9543]).  The applicability to multiple NRPs is
@@ -216,6 +216,9 @@ Table of Contents
 
    An extended list of abbreviations used in this document is provided
    in Appendix A.
+
+   "5G Network Slicing" (or "5G Network Slice") refers to "Network
+   Slicing" (or "Network Slice") as defined in the 3GPP [TS-28.530].
 
    This document makes use of the following terms:
 
@@ -304,12 +307,22 @@ Table of Contents
 
 3.2.1.  5G Network Slicing
 
-   5G Network Slicing is defined by the 3GPP as an appraoch where
-   logical networks/partitions are created (called, 5G Network Slices),
-   with appropriate isolation, resources and optimized topology to serve
-   a purpose or service category or customers [TS-28.530].  These
-   resources are from the TN, RAN, CN Network Functions, and the
-   underlying infrastructure.
+   5G Network Slicing is defined by the 3GPP [TS-28.530] as an appraoch:
+
+   |  "where logical networks/partitions are created, with appropriate
+   |  isolation, resources and optimized topology to serve a purpose or
+   |  service category (e.g. use case/traffic category, or for MNO
+   |  internal reasons) or customers (logical system created "on
+   |  demand")."
+
+   These resources are from the TN, RAN, CN domains, and the underlying
+   infrastructure.
+
+   Section 3.1 of [TS-28.530] defines 5G Network Slice as:
+
+   |  "a logical network that provides specific network capabilities and
+   |  network characteristics, supporting various service properties for
+   |  network slice customers."
 
 3.2.2.  TN Slicing
 
@@ -693,7 +706,7 @@ Table of Contents
       user plane in TN slices for a single 5G Enhanced Mobile Broadband
       (eMBB) network slice.  It is important to note that this mapping
       can serve as an interim step to M to N mapping.  Further details
-      about this scheme are described in Section 3.7.
+      about this scheme are described in Section 3.6.
 
    *  M to 1: Multiple 5G Network Slices may rely upon the same TN
       slice.  In such a case, the Service Level Agreement (SLA)
@@ -775,23 +788,7 @@ Table of Contents
    detailed in this document because these are under the responsibility
    of the 3GPP orchestration domain.
 
-3.6.  Scalability Implications
-
-   The actual mapping (see Section 3.5) is a design choice of service
-   operators that may be a function of, e.g., the number of instantiated
-   slices, requested services, or local engineering capabilities and
-   guidelines.  However, operators should carefully consider means to
-   ease slice migration strategies.  For example, a provider may
-   initially adopt a 1-to-1 mapping if it has to instantiate just a few
-   Network Slices and accommodate the need of only a few customers.
-   That provider may decide to move to a N-to-1 mapping for aggregation/
-   scalability purposes if sustained increased slice demand is observed.
-
-   Putting in place adequate automation means to realize Network Slices
-   (including the adjustment of Slice Services to Network Slices
-   mapping) would ease slice migration operations.
-
-3.7.  First 5G Slice versus Subsequent Slices
+3.6.  First 5G Slice versus Subsequent Slices
 
    An operational 5G Network Slice incorporates both 5G control plane
    and user plane capabilities.  For instance, consider a slice based on
@@ -871,7 +868,7 @@ Table of Contents
    slices and minimize the realization delay that might be induced by
    extra cycles to seek for operator validation.
 
-3.8.  Overview of the Transport Network Realization Model
+3.7.  Overview of the Transport Network Realization Model
 
    The realization model described in this document is depicted in
    Figure 11.  The following building blocks are used:
@@ -961,13 +958,6 @@ Table of Contents
    This document does not describe in detail how to manage an L2VPN or
    L3VPN, as this is already well-documented.  For example, the reader
    may refer to [RFC4176] and [RFC6136] for such details.
-
-   The realization model described in the document inherits the
-   scalability properties of the underlying L2VPN and L3VPN
-   technologies.  Readers may refer, for example, to Section 13 of
-   [RFC4365] or Section 1.2.5 of [RFC6624] for a scalability assessment
-   of some of these technologies.  Per Section 3.6, providers may adjust
-   the mapping model to better handle local scalability constraints.
 
 4.  Hand-off Between Domains
 
@@ -1377,7 +1367,7 @@ Table of Contents
    reduced.
 
    For any slice-specific per-hop behavior at the provider network edge,
-   as described in details in Section 3.8, the PE need to determine
+   as described in details in Section 3.7, the PE need to determine
    which label in the packet represents which slice.  This can be
    achieved, for example, by allocating non-overlapping service label
    ranges for each slice, and use these ranges for slice identification
@@ -2570,6 +2560,30 @@ Table of Contents
       OAM state to customer.  For example,
       [I-D.ietf-teas-ietf-network-slice-nbi-yang] exposes a set of
       statistics per SDP, connectivity construct, and connection group.
+
+8.1.  Scalability Implications
+
+   The mapping between 5G slice to TN slices (see Section 3.5) is a
+   design choice of service operators that may be a function of, e.g.,
+   the number of instantiated slices, requested services, or local
+   engineering capabilities and guidelines.  However, operators should
+   carefully consider means to ease slice migration strategies.  For
+   example, a provider may initially adopt a 1-to-1 mapping if it has to
+   instantiate just a few Network Slices and accommodate the need of
+   only a few customers.  That provider may decide to move to a N-to-1
+   mapping for aggregation/scalability purposes if sustained increased
+   slice demand is observed.
+
+   Putting in place adequate automation means to realize Network Slices
+   (including the adjustment of Slice Services to Network Slices
+   mapping) would ease slice migration operations.
+
+   The realization model described in the document inherits the
+   scalability properties of the underlying L2VPN and L3VPN technologies
+   (Section 3.7).  Readers may refer, for example, to Section 13 of
+   [RFC4365] or Section 1.2.5 of [RFC6624] for a scalability assessment
+   of some of these technologies.  Providers may adjust the mapping
+   model to better handle local scalability constraints.
 
 9.  IANA Considerations
 
