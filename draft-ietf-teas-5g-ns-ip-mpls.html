@@ -1432,34 +1432,33 @@ domain by mapping to explicit data plane identifiers (e.g., Layer 2, Layer 3, or
 <a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-5g-network-slicing-versus-t" class="section-name selfRef">5G Network Slicing versus Transport Network Slicing</a>
         </h3>
 <p id="section-3.2-1">Network slicing has a different meaning in the 3GPP mobile world and transport
-   world. This difference can be seen from the descriptions below that set out
-   the objectives of 5G Network Slicing and Transport Network
-   Slicing. These descriptions are not intended to be exhaustive.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-3.2-2.1">
-            <p id="section-3.2-2.1.1">5G Network Slicing:<a href="#section-3.2-2.1.1" class="pilcrow">¶</a></p>
-<p id="section-3.2-2.1.2">
-Is defined by the 3GPP as an appraoch where logical networks/partitions are created (called, 5G Network Slices), with appropriate isolation, resources and optimized topology to serve a purpose or service category or customers <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span>. These resources are from the TN, RAN, CN
- Network Functions, and the underlying infrastructure.<a href="#section-3.2-2.1.2" class="pilcrow">¶</a></p>
-</li>
-          <li class="normal" id="section-3.2-2.2">
-            <p id="section-3.2-2.2.1">TN Slicing:<a href="#section-3.2-2.2.1" class="pilcrow">¶</a></p>
-<p id="section-3.2-2.2.2">
-The term "TN slice" refers to a slice in the Transport Network domain of the 5G
- architecture.<a href="#section-3.2-2.2.2" class="pilcrow">¶</a></p>
-<p id="section-3.2-2.2.3">
-The objective of TN Slicing is to isolate,
- guarantee, or prioritize Transport Network resources for Slice Services. Examples of such resources are:
- buffers, link capacity, or even Routing Information Base (RIB) and Forwarding Information Base (FIB).<a href="#section-3.2-2.2.3" class="pilcrow">¶</a></p>
-<p id="section-3.2-2.2.4">
-TN Slicing provides various degrees of sharing of resources between slices. For example, the network capacity can be shared by all slices, usually with a guaranteed minimum per slice, or each individual slice can be allocated dedicated network capacity. Parts of a given network may use the former, while others use the latter. For example, in order to satisfy local engineering guidelines and specific service requirements, shared TN resources could be provided in the backhaul (or midhaul), and dedicated TN resources could be provided in the midhaul (or backhaul). The capacity partitioning strategy is deployment specific.<a href="#section-3.2-2.2.4" class="pilcrow">¶</a></p>
-<p id="section-3.2-2.2.5">
-There are different components to implement TN slices based upon
- mechanisms such as Virtual Routing and Forwarding instances (VRFs)
- for logical separation, Quality of Service (QoS), and Traffic
- Engineering (TE). Whether all or a subset of these components are enabled is a deployment choice.<a href="#section-3.2-2.2.5" class="pilcrow">¶</a></p>
-</li>
-        </ul>
+world. This difference can be seen from the descriptions below that set out
+the objectives of 5G Network Slicing (<a href="#sec-5g-slicing" class="auto internal xref">Section 3.2.1</a>) and Transport Network
+Slicing (<a href="#sec-tn-slicing" class="auto internal xref">Section 3.2.2</a>). These descriptions are not intended to be exhaustive.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+<div id="sec-5g-slicing">
+<section id="section-3.2.1">
+          <h4 id="name-5g-network-slicing">
+<a href="#section-3.2.1" class="section-number selfRef">3.2.1. </a><a href="#name-5g-network-slicing" class="section-name selfRef">5G Network Slicing</a>
+          </h4>
+<p id="section-3.2.1-1">5G Network Slicing is defined by the 3GPP as an appraoch where logical networks/partitions are created (called, 5G Network Slices), with appropriate isolation, resources and optimized topology to serve a purpose or service category or customers <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span>. These resources are from the TN, RAN, CN Network Functions, and the underlying infrastructure.<a href="#section-3.2.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="sec-tn-slicing">
+<section id="section-3.2.2">
+          <h4 id="name-tn-slicing">
+<a href="#section-3.2.2" class="section-number selfRef">3.2.2. </a><a href="#name-tn-slicing" class="section-name selfRef">TN Slicing</a>
+          </h4>
+<p id="section-3.2.2-1">The term "TN slice" refers to a slice in the Transport Network domain of the 5G architecture.<a href="#section-3.2.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.2.2-2">The objective of TN Slicing is to isolate,
+guarantee, or prioritize Transport Network resources for Slice Services. Examples of such resources are:
+buffers, link capacity, or even Routing Information Base (RIB) and Forwarding Information Base (FIB).<a href="#section-3.2.2-2" class="pilcrow">¶</a></p>
+<p id="section-3.2.2-3">TN Slicing provides various degrees of sharing of resources between slices. For example, the network capacity can be shared by all slices, usually with a guaranteed minimum per slice, or each individual slice can be allocated dedicated network capacity. Parts of a given network may use the former, while others use the latter. For example, in order to satisfy local engineering guidelines and specific service requirements, shared TN resources could be provided in the backhaul (or midhaul), and dedicated TN resources could be provided in the midhaul (or backhaul). The capacity partitioning strategy is deployment specific.<a href="#section-3.2.2-3" class="pilcrow">¶</a></p>
+<p id="section-3.2.2-4">There are different components to implement TN slices based upon
+mechanisms such as Virtual Routing and Forwarding instances (VRFs)
+for logical separation, Quality of Service (QoS), and Traffic
+Engineering (TE). Whether all or a subset of these components are enabled is a deployment choice.<a href="#section-3.2.2-4" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="sec-ref-design">
