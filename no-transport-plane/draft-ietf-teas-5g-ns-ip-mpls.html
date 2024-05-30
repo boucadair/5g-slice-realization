@@ -1300,11 +1300,11 @@ Concretely, the realization of an RFC 9543 Network Slice (i.e., connectivity wit
 <pre>
       |------------------TN Slice------------------|
 
-                        |------RFC 9543-----|
-                        |   Network Slice   |
-                        |                   |
-                        |                   |
-                        v                   v
+                        RFC 9543 Network Slice
+                        +-----SDP Type 3----+
+                        |  +- SDP Type 4-+  |
+                        |  |             |  |
+                        v  v             v  v
   +------------+          +---------------+         +------------+
   |  Customer  |          |    Provider   |         |  Customer  |
   |   Site 1   |          |    Network    |         |   Site 2   |
@@ -1315,7 +1315,6 @@ Concretely, the realization of an RFC 9543 Network Slice (i.e., connectivity wit
   |            |        +-+--+          +-+--+      |            |
   |            |          |               |         |            |
   +------------+          +---------------+         +------------+
-
 </pre>
 </div>
 <figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
@@ -1323,10 +1322,10 @@ Concretely, the realization of an RFC 9543 Network Slice (i.e., connectivity wit
         </figcaption></figure>
 </div>
 <p id="section-1-4">The realization approach described in this document is typically triggered by Network Slice Service requests. How a Network Slice Service request is placed for realization, including how it is derived from a 5G Slice Service request, is out of scope. Mapping considerations between 3GPP and IETF Network Slice Service (e.g., mapping of service parameters) are discussed, e.g., in <span>[<a href="#I-D.ietf-teas-5g-network-slice-application" class="cite xref">I-D.ietf-teas-5g-network-slice-application</a>]</span>.<a href="#section-1-4" class="pilcrow">¶</a></p>
-<p id="section-1-5">The 5G control plane relies upon the Single Network Slice Selection Assistance Information (S-NSSAI) for slice
+<p id="section-1-5">The 5G control plane uses the Single Network Slice Selection Assistance Information (S-NSSAI) for slice
 identification <span>[<a href="#TS-23.501" class="cite xref">TS-23.501</a>]</span>. Because S-NSSAIs are not visible to the transport domain, 5G domains can expose the 5G slices to the transport
 domain by mapping to explicit data plane identifiers (e.g., Layer 2, Layer 3, or Layer 4). The realization of the mapping between customer sites and provider networks is refered to as the "hand-off". <a href="#sec-handoff-domains" class="auto internal xref">Section 4</a> lists a set of such hand-off methods.<a href="#section-1-5" class="pilcrow">¶</a></p>
-<p id="section-1-6">The realization model described in this document relies upon a set of building blocks commonly used in service provider networks. Concretely, the model uses (1) Layer 2 Virtual Private Network (L2VPN) <span>[<a href="#RFC4664" class="cite xref">RFC4664</a>]</span> and/or Layer 3 Virtual Private Network (L3VPN) <span>[<a href="#RFC4364" class="cite xref">RFC4364</a>]</span> service instances for logical separation, (2) fine-grained resource control at the Provider Edges (PEs), (3) coarse-grained resource control at within the provider network, and (4) capacity management. More details are provided in Sections <a href="#sec-over-rea-model" class="auto internal xref">3.7</a>, <a href="#sec-qos-map" class="auto internal xref">5</a>, <a href="#transport-plane-mapping-models" class="auto internal xref">6</a>, and <a href="#sec-capacity-planning" class="auto internal xref">7</a>.<a href="#section-1-6" class="pilcrow">¶</a></p>
+<p id="section-1-6">The realization model described in this document uses a set of building blocks commonly used in service provider networks. Concretely, the model uses (1) Layer 2 Virtual Private Network (L2VPN) <span>[<a href="#RFC4664" class="cite xref">RFC4664</a>]</span> and/or Layer 3 Virtual Private Network (L3VPN) <span>[<a href="#RFC4364" class="cite xref">RFC4364</a>]</span> service instances for logical separation, (2) fine-grained resource control at the Provider Edges (PEs), (3) coarse-grained resource control at within the provider network, and (4) capacity management. More details are provided in Sections <a href="#sec-over-rea-model" class="auto internal xref">3.7</a>, <a href="#sec-qos-map" class="auto internal xref">5</a>, <a href="#transport-plane-mapping-models" class="auto internal xref">6</a>, and <a href="#sec-capacity-planning" class="auto internal xref">7</a>.<a href="#section-1-6" class="pilcrow">¶</a></p>
 <p id="section-1-7">This realization model uses a single Network Resource Partition (NRP) (<span><a href="https://rfc-editor.org/rfc/rfc9543#section-7.1" class="relref">Section 7.1</a> of [<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>). The applicability to multiple NRPs is out of scope.<a href="#section-1-7" class="pilcrow">¶</a></p>
 <p id="section-1-8">Although this document focuses on 5G, the realizations are not fundamentally constrained by the 5G use case. The document is not intended to be a BCP and does not claim to specify mandatory mechanisms to realize network slices. Rather, a key goal of the document is to provide pragmatic implementation approaches by leveraging existing readily-available, widely-deployed techniques. The document is also intended to align the mobile and the IETF perspectives of slicing from a realization perspective.<a href="#section-1-8" class="pilcrow">¶</a></p>
 <p id="section-1-9">A brief 5G overview is provided in <a href="#sec-5g-overview" class="auto internal xref">Appendix B</a> for the reader's convenience. For a definitive description of 3GPP network architectures, the reader should refer to <span>[<a href="#TS-23.501" class="cite xref">TS-23.501</a>]</span>. More  details can be found in <span>[<a href="#_5G-Book" class="cite xref">_5G-Book</a>]</span>.<a href="#section-1-9" class="pilcrow">¶</a></p>
@@ -1643,7 +1642,7 @@ However, this document does not exclude the instantiation of multiple ACs betwee
             <dd class="break"></dd>
 <dt id="section-3.4.1-4.3">Customer Site Orchestration domain:</dt>
             <dd style="margin-left: 1.5em" id="section-3.4.1-4.4">
-              <p id="section-3.4.1-4.4.1">The Orchestration of TN elements of the customer sites relies upon a variety of  controllers (e.g., Fabric Manager, Element Management System, or VIM).<a href="#section-3.4.1-4.4.1" class="pilcrow">¶</a></p>
+              <p id="section-3.4.1-4.4.1">The Orchestration of TN elements of the customer sites relies upon a variety of  controllers (e.g., Fabric Manager, Element Management System, or Virtualized Infrastructure Manager (VIM)).<a href="#section-3.4.1-4.4.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 </dl>
@@ -1819,25 +1818,20 @@ In practice, for operational and scaling reasons, typically M to N would be used
 <figure id="figure-8">
           <div class="alignCenter art-text artwork" id="section-3.5-3.1">
 <pre>
-┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
-
++---------------------------------------------------------------+
 |                        5G Slice eMBB                          |
-
-|            ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐            |
-  ┌─────┐ N3   ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐   N3 ┌─────┐
-| |CU-UP├─────── RFC 9543 Network Slice UP_eMBB  ───────┤ UPF | |
-  └─────┘      └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘      └─────┘
-|            |                                     |            |
-  ┌─────┐ N2   ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐   N2 ┌─────┐
-| |CU-CP├───────    RFC 9543 Network Slice CP    ───────┤ AMF | |
-  └─────┘      └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘      └─────┘
-└ ─ ─ ─ ─ ─ ─|─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─|─ ─ ─ ─ ─ ─ ┘
-
-             |                                     |
-                       Transport Network
-             |                                     |
-
-             └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
+|            +------------------------------------+             |
+| +-----+ N3 | +---------------------------------+|  N3 +-----+ |
+| |CU-UP+------+ RFC 9543 Network Slice UP_eMBB  +------+ UPF | |
+| +-----+    | +---------------------------------+|     +-----+ |
+|            |                                    |             |
+| +-----+ N2 | +---------------------------------+|  N2 +-----+ |
+| |CU-CP+------+    RFC 9543 Network Slice CP    +------+ AMF | |
+| +-----+    | +---------------------------------+|     +-----+ |
++------------|------------------------------------|-------------+
+             |                                    |
+             |           Transport Network        |
+             +------------------------------------+
 </pre>
 </div>
 <figcaption><a href="#figure-8" class="selfRef">Figure 8</a>:
@@ -1848,29 +1842,28 @@ In practice, for operational and scaling reasons, typically M to N would be used
 <figure id="figure-9">
           <div class="alignCenter art-text artwork" id="section-3.5-4.1">
 <pre>
-                  ┌ ─ ─ ─ ─ ─ ─ ┐
-                     Edge Cloud
+                  +-------------+
+                  |  Edge Cloud |
                   |             |
-                    ┌─────────┐
+                  | +---------+ |
                   | |UPF_URLLC| |
-                    └─────┬───┘
-                  └ ─ ─ ─ | ─ ─ ┘
-┌ ─ ─ ─ ─ ─ ─ ─ ┐ ┌ ─ ─ ─ | ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
-                    ┌ ─ ─ ┴ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  | ┌ ─ ─ ─ ─ ─ ─ ─
-|   Cell Site   | |                            |                  |
-                    |                            | |   Regional
-| ┌───────────┐ | |                            |         Cloud    |
-  |CU-UP_URLLC├─────┤                            | | ┌──────────┐
-| └───────────┘ | |       RFC 9543 Network     ├─────┤  5GC CP  | |
-                    |        Slice ALL           | | └──────────┘
-| ┌───────────┐ | |                            |                  |
-  |CU-UP_eMBB ├─────┤                            | | ┌──────────┐
-| └───────────┘ | |                            ├─────┤ UPF_eMBB | |
- ─ ─ ─ ─ ─ ─ ─ ─    |                            | | └──────────┘
-                  |  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘                  |
-                                                 | └ ─ ─ ─ ─ ─ ─ ─
-                  |      Transport Network
-                   ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
+                  | +-----+---+ |
+                  +-------|-----+
++---------------+ +-------|----------------------+
+|   Cell Site   | | +-----+--------------------+ | +--------------+
+|               | | |                            | |   Regional   |
+| +-----------+ | | |                          | | |     Cloud    |
+| |CU-UP_URLLC+-----+                          | | | +-----------+|
+| +-----------+ | | |     RFC 9543 Network     +-----+  5GC CP  | |
+|               | | |        Slice ALL         | | | +-----------+|
+| +-----------+ | | |                          | | |              |
+| |CU-UP_eMBB +-----+                          | | | +-----------+
+| +-----------+ | | |                          +-----+ UPF_eMBB | |
++---------------+ | |                          | | | +-----------+|
+                  | +--------------------------+ | |              |
+                  |                              | +--------------+
+                  |      Transport Network       |
+                  +------------------------------+
 </pre>
 </div>
 <figcaption><a href="#figure-9" class="selfRef">Figure 9</a>:
@@ -1898,430 +1891,200 @@ For instance, consider a slice based on split-CU in the RAN, both CU-UP and Cent
 <figure id="figure-10">
           <div id="section-3.6-3.1">
             <div class="alignCenter art-svg artwork" id="section-3.6-3.1.1">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="768" width="528" viewBox="0 0 528 768" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
-                <path d="M 268,328 L 276,344" fill="none" stroke="black"></path>
-                <path d="M 276,344 L 284,360" fill="none" stroke="black"></path>
-                <path d="M 292,360 L 300,344" fill="none" stroke="black"></path>
-                <path d="M 300,344 L 308,328" fill="none" stroke="black"></path>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="704" width="736" viewBox="0 0 736 704" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+                <path d="M 8,32 L 8,176" fill="none" stroke="black"></path>
+                <path d="M 8,336 L 8,480" fill="none" stroke="black"></path>
+                <path d="M 8,512 L 8,624" fill="none" stroke="black"></path>
+                <path d="M 72,64 L 72,96" fill="none" stroke="black"></path>
+                <path d="M 72,128 L 72,160" fill="none" stroke="black"></path>
+                <path d="M 72,368 L 72,400" fill="none" stroke="black"></path>
+                <path d="M 72,432 L 72,464" fill="none" stroke="black"></path>
+                <path d="M 72,544 L 72,576" fill="none" stroke="black"></path>
+                <path d="M 120,64 L 120,96" fill="none" stroke="black"></path>
+                <path d="M 120,128 L 120,160" fill="none" stroke="black"></path>
+                <path d="M 120,368 L 120,400" fill="none" stroke="black"></path>
+                <path d="M 120,432 L 120,464" fill="none" stroke="black"></path>
+                <path d="M 128,544 L 128,576" fill="none" stroke="black"></path>
+                <path d="M 160,48 L 160,72" fill="none" stroke="black"></path>
+                <path d="M 160,88 L 160,136" fill="none" stroke="black"></path>
+                <path d="M 160,152 L 160,224" fill="none" stroke="black"></path>
+                <path d="M 160,352 L 160,376" fill="none" stroke="black"></path>
+                <path d="M 160,392 L 160,440" fill="none" stroke="black"></path>
+                <path d="M 160,456 L 160,552" fill="none" stroke="black"></path>
+                <path d="M 160,568 L 160,672" fill="none" stroke="black"></path>
+                <path d="M 176,64 L 176,96" fill="none" stroke="black"></path>
+                <path d="M 176,128 L 176,160" fill="none" stroke="black"></path>
+                <path d="M 176,368 L 176,400" fill="none" stroke="black"></path>
+                <path d="M 176,432 L 176,464" fill="none" stroke="black"></path>
+                <path d="M 176,544 L 176,576" fill="none" stroke="black"></path>
+                <path d="M 280,256 L 280,288" fill="none" stroke="black"></path>
+                <path d="M 296,256 L 296,288" fill="none" stroke="black"></path>
+                <path d="M 392,64 L 392,96" fill="none" stroke="black"></path>
+                <path d="M 392,128 L 392,160" fill="none" stroke="black"></path>
+                <path d="M 392,368 L 392,400" fill="none" stroke="black"></path>
+                <path d="M 392,432 L 392,464" fill="none" stroke="black"></path>
+                <path d="M 392,544 L 392,576" fill="none" stroke="black"></path>
+                <path d="M 408,48 L 408,72" fill="none" stroke="black"></path>
+                <path d="M 408,88 L 408,136" fill="none" stroke="black"></path>
+                <path d="M 408,152 L 408,224" fill="none" stroke="black"></path>
+                <path d="M 408,352 L 408,376" fill="none" stroke="black"></path>
+                <path d="M 408,392 L 408,440" fill="none" stroke="black"></path>
+                <path d="M 408,456 L 408,552" fill="none" stroke="black"></path>
+                <path d="M 408,568 L 408,672" fill="none" stroke="black"></path>
+                <path d="M 440,544 L 440,576" fill="none" stroke="black"></path>
+                <path d="M 448,64 L 448,96" fill="none" stroke="black"></path>
+                <path d="M 448,128 L 448,160" fill="none" stroke="black"></path>
+                <path d="M 448,368 L 448,400" fill="none" stroke="black"></path>
+                <path d="M 448,432 L 448,464" fill="none" stroke="black"></path>
+                <path d="M 496,64 L 496,96" fill="none" stroke="black"></path>
+                <path d="M 496,128 L 496,160" fill="none" stroke="black"></path>
+                <path d="M 496,368 L 496,400" fill="none" stroke="black"></path>
+                <path d="M 496,432 L 496,464" fill="none" stroke="black"></path>
+                <path d="M 496,544 L 496,576" fill="none" stroke="black"></path>
+                <path d="M 520,32 L 520,176" fill="none" stroke="black"></path>
+                <path d="M 520,336 L 520,480" fill="none" stroke="black"></path>
+                <path d="M 520,512 L 520,624" fill="none" stroke="black"></path>
+                <path d="M 8,32 L 520,32" fill="none" stroke="black"></path>
+                <path d="M 160,48 L 408,48" fill="none" stroke="black"></path>
+                <path d="M 72,64 L 120,64" fill="none" stroke="black"></path>
+                <path d="M 176,64 L 392,64" fill="none" stroke="black"></path>
+                <path d="M 448,64 L 496,64" fill="none" stroke="black"></path>
+                <path d="M 120,80 L 176,80" fill="none" stroke="black"></path>
+                <path d="M 392,80 L 448,80" fill="none" stroke="black"></path>
+                <path d="M 72,96 L 120,96" fill="none" stroke="black"></path>
+                <path d="M 176,96 L 392,96" fill="none" stroke="black"></path>
+                <path d="M 448,96 L 496,96" fill="none" stroke="black"></path>
+                <path d="M 72,128 L 120,128" fill="none" stroke="black"></path>
+                <path d="M 176,128 L 392,128" fill="none" stroke="black"></path>
+                <path d="M 448,128 L 496,128" fill="none" stroke="black"></path>
+                <path d="M 120,144 L 176,144" fill="none" stroke="black"></path>
+                <path d="M 392,144 L 448,144" fill="none" stroke="black"></path>
+                <path d="M 72,160 L 120,160" fill="none" stroke="black"></path>
+                <path d="M 176,160 L 392,160" fill="none" stroke="black"></path>
+                <path d="M 448,160 L 496,160" fill="none" stroke="black"></path>
+                <path d="M 8,176 L 152,176" fill="none" stroke="black"></path>
+                <path d="M 168,176 L 400,176" fill="none" stroke="black"></path>
+                <path d="M 416,176 L 520,176" fill="none" stroke="black"></path>
+                <path d="M 160,224 L 408,224" fill="none" stroke="black"></path>
+                <path d="M 264,288 L 280,288" fill="none" stroke="black"></path>
+                <path d="M 296,288 L 312,288" fill="none" stroke="black"></path>
+                <path d="M 8,336 L 520,336" fill="none" stroke="black"></path>
+                <path d="M 160,352 L 408,352" fill="none" stroke="black"></path>
+                <path d="M 72,368 L 120,368" fill="none" stroke="black"></path>
+                <path d="M 176,368 L 392,368" fill="none" stroke="black"></path>
+                <path d="M 448,368 L 496,368" fill="none" stroke="black"></path>
+                <path d="M 120,384 L 176,384" fill="none" stroke="black"></path>
+                <path d="M 392,384 L 448,384" fill="none" stroke="black"></path>
+                <path d="M 72,400 L 120,400" fill="none" stroke="black"></path>
+                <path d="M 176,400 L 392,400" fill="none" stroke="black"></path>
+                <path d="M 448,400 L 496,400" fill="none" stroke="black"></path>
+                <path d="M 72,432 L 120,432" fill="none" stroke="black"></path>
+                <path d="M 176,432 L 392,432" fill="none" stroke="black"></path>
+                <path d="M 448,432 L 496,432" fill="none" stroke="black"></path>
+                <path d="M 120,448 L 176,448" fill="none" stroke="black"></path>
+                <path d="M 392,448 L 448,448" fill="none" stroke="black"></path>
+                <path d="M 72,464 L 120,464" fill="none" stroke="black"></path>
+                <path d="M 176,464 L 392,464" fill="none" stroke="black"></path>
+                <path d="M 448,464 L 496,464" fill="none" stroke="black"></path>
+                <path d="M 8,480 L 152,480" fill="none" stroke="black"></path>
+                <path d="M 168,480 L 400,480" fill="none" stroke="black"></path>
+                <path d="M 416,480 L 520,480" fill="none" stroke="black"></path>
+                <path d="M 8,512 L 152,512" fill="none" stroke="black"></path>
+                <path d="M 168,512 L 400,512" fill="none" stroke="black"></path>
+                <path d="M 416,512 L 520,512" fill="none" stroke="black"></path>
+                <path d="M 72,544 L 128,544" fill="none" stroke="black"></path>
+                <path d="M 176,544 L 392,544" fill="none" stroke="black"></path>
+                <path d="M 440,544 L 496,544" fill="none" stroke="black"></path>
+                <path d="M 128,560 L 176,560" fill="none" stroke="black"></path>
+                <path d="M 392,560 L 440,560" fill="none" stroke="black"></path>
+                <path d="M 72,576 L 128,576" fill="none" stroke="black"></path>
+                <path d="M 176,576 L 392,576" fill="none" stroke="black"></path>
+                <path d="M 440,576 L 496,576" fill="none" stroke="black"></path>
+                <path d="M 8,624 L 152,624" fill="none" stroke="black"></path>
+                <path d="M 168,624 L 400,624" fill="none" stroke="black"></path>
+                <path d="M 416,624 L 520,624" fill="none" stroke="black"></path>
+                <path d="M 160,672 L 408,672" fill="none" stroke="black"></path>
+                <path d="M 268,296 L 284,328" fill="none" stroke="black"></path>
+                <path d="M 292,328 L 308,296" fill="none" stroke="black"></path>
                 <g class="text">
-                  <text x="8" y="36">┌</text>
-                  <text x="24" y="36">─</text>
-                  <text x="40" y="36">─</text>
-                  <text x="56" y="36">─</text>
-                  <text x="72" y="36">─</text>
-                  <text x="88" y="36">─</text>
-                  <text x="104" y="36">─</text>
-                  <text x="120" y="36">─</text>
-                  <text x="136" y="36">─</text>
-                  <text x="152" y="36">─</text>
-                  <text x="168" y="36">─</text>
-                  <text x="184" y="36">─</text>
-                  <text x="200" y="36">─</text>
-                  <text x="216" y="36">─</text>
-                  <text x="232" y="36">─</text>
-                  <text x="248" y="36">─</text>
-                  <text x="264" y="36">─</text>
-                  <text x="280" y="36">─</text>
-                  <text x="296" y="36">─</text>
-                  <text x="312" y="36">─</text>
-                  <text x="328" y="36">─</text>
-                  <text x="344" y="36">─</text>
-                  <text x="360" y="36">─</text>
-                  <text x="376" y="36">─</text>
-                  <text x="392" y="36">─</text>
-                  <text x="408" y="36">─</text>
-                  <text x="424" y="36">─</text>
-                  <text x="440" y="36">─</text>
-                  <text x="456" y="36">─</text>
-                  <text x="472" y="36">─</text>
-                  <text x="488" y="36">─</text>
-                  <text x="504" y="36">─</text>
-                  <text x="520" y="36">┐</text>
-                  <text x="160" y="52">┌</text>
-                  <text x="176" y="52">─</text>
-                  <text x="192" y="52">─</text>
-                  <text x="208" y="52">─</text>
-                  <text x="224" y="52">─</text>
-                  <text x="240" y="52">─</text>
-                  <text x="256" y="52">─</text>
-                  <text x="272" y="52">─</text>
-                  <text x="288" y="52">─</text>
-                  <text x="304" y="52">─</text>
-                  <text x="320" y="52">─</text>
-                  <text x="336" y="52">─</text>
-                  <text x="352" y="52">─</text>
-                  <text x="368" y="52">─</text>
-                  <text x="384" y="52">─</text>
-                  <text x="400" y="52">─</text>
-                  <text x="8" y="68">│</text>
                   <text x="32" y="68">1</text>
-                  <text x="96" y="68">┌─────┐</text>
-                  <text x="284" y="68">┌──────────────────────────┐</text>
-                  <text x="408" y="68">│</text>
-                  <text x="472" y="68">┌─────┐</text>
-                  <text x="520" y="68">│</text>
                   <text x="32" y="84">s</text>
                   <text x="48" y="84">S</text>
-                  <text x="124" y="84">│NF-CP├──────┤</text>
+                  <text x="96" y="84">NF-CP</text>
                   <text x="212" y="84">CP</text>
                   <text x="236" y="84">TN</text>
                   <text x="272" y="84">Slice</text>
                   <text x="332" y="84">(TNS-CP)</text>
-                  <text x="444" y="84">├──────┤NF-CP│</text>
-                  <text x="8" y="100">│</text>
+                  <text x="472" y="84">NF-CP</text>
                   <text x="32" y="100">t</text>
                   <text x="48" y="100">l</text>
-                  <text x="96" y="100">└─────┘</text>
-                  <text x="284" y="100">└──────────────────────────┘</text>
-                  <text x="408" y="100">│</text>
-                  <text x="472" y="100">└─────┘</text>
-                  <text x="520" y="100">│</text>
                   <text x="48" y="116">i</text>
-                  <text x="160" y="116">│</text>
-                  <text x="8" y="132">│</text>
                   <text x="32" y="132">5</text>
                   <text x="48" y="132">c</text>
-                  <text x="96" y="132">┌─────┐</text>
-                  <text x="284" y="132">┌──────────────────────────┐</text>
-                  <text x="408" y="132">│</text>
-                  <text x="472" y="132">┌─────┐</text>
-                  <text x="520" y="132">│</text>
                   <text x="32" y="148">G</text>
                   <text x="48" y="148">e</text>
-                  <text x="124" y="148">│NF-UP├──────┤</text>
+                  <text x="96" y="148">NF-UP</text>
                   <text x="204" y="148">UP</text>
                   <text x="228" y="148">TN</text>
                   <text x="264" y="148">Slice</text>
                   <text x="328" y="148">(TNS-UP1)</text>
-                  <text x="444" y="148">├──────┤NF-UP│</text>
-                  <text x="8" y="164">│</text>
-                  <text x="96" y="164">└─────┘</text>
-                  <text x="284" y="164">└──────────────────────────┘</text>
-                  <text x="408" y="164">│</text>
-                  <text x="472" y="164">└─────┘</text>
-                  <text x="520" y="164">│</text>
-                  <text x="16" y="180">─</text>
-                  <text x="32" y="180">─</text>
-                  <text x="48" y="180">─</text>
-                  <text x="64" y="180">─</text>
-                  <text x="80" y="180">─</text>
-                  <text x="96" y="180">─</text>
-                  <text x="112" y="180">─</text>
-                  <text x="128" y="180">─</text>
-                  <text x="144" y="180">─</text>
-                  <text x="160" y="180">┼</text>
-                  <text x="176" y="180">─</text>
-                  <text x="192" y="180">─</text>
-                  <text x="208" y="180">─</text>
-                  <text x="224" y="180">─</text>
-                  <text x="240" y="180">─</text>
-                  <text x="256" y="180">─</text>
-                  <text x="272" y="180">─</text>
-                  <text x="288" y="180">─</text>
-                  <text x="304" y="180">─</text>
-                  <text x="320" y="180">─</text>
-                  <text x="336" y="180">─</text>
-                  <text x="352" y="180">─</text>
-                  <text x="368" y="180">─</text>
-                  <text x="384" y="180">─</text>
-                  <text x="400" y="180">─</text>
-                  <text x="416" y="180">─</text>
-                  <text x="432" y="180">─</text>
-                  <text x="448" y="180">─</text>
-                  <text x="464" y="180">─</text>
-                  <text x="480" y="180">─</text>
-                  <text x="496" y="180">─</text>
-                  <text x="512" y="180">─</text>
-                  <text x="408" y="196">│</text>
-                  <text x="160" y="212">│</text>
+                  <text x="472" y="148">NF-UP</text>
                   <text x="248" y="212">Transport</text>
                   <text x="320" y="212">Network</text>
-                  <text x="408" y="228">│</text>
-                  <text x="160" y="244">└</text>
-                  <text x="176" y="244">─</text>
-                  <text x="192" y="244">─</text>
-                  <text x="208" y="244">─</text>
-                  <text x="224" y="244">─</text>
-                  <text x="240" y="244">─</text>
-                  <text x="256" y="244">─</text>
-                  <text x="272" y="244">─</text>
-                  <text x="288" y="244">─</text>
-                  <text x="304" y="244">─</text>
-                  <text x="320" y="244">─</text>
-                  <text x="336" y="244">─</text>
-                  <text x="352" y="244">─</text>
-                  <text x="368" y="244">─</text>
-                  <text x="384" y="244">─</text>
-                  <text x="400" y="244">─</text>
-                  <text x="220" y="260">Deployment</text>
-                  <text x="276" y="260">of</text>
-                  <text x="312" y="260">first</text>
-                  <text x="348" y="260">5G</text>
-                  <text x="384" y="260">slice</text>
-                  <text x="280" y="276">│</text>
-                  <text x="296" y="276">│</text>
-                  <text x="280" y="292">│</text>
-                  <text x="296" y="292">│</text>
-                  <text x="280" y="308">│</text>
-                  <text x="296" y="308">│</text>
-                  <text x="276" y="324">─┘</text>
-                  <text x="300" y="324">└─</text>
-                  <text x="288" y="372">V</text>
-                  <text x="8" y="388">┌</text>
-                  <text x="24" y="388">─</text>
-                  <text x="40" y="388">─</text>
-                  <text x="56" y="388">─</text>
-                  <text x="72" y="388">─</text>
-                  <text x="88" y="388">─</text>
-                  <text x="104" y="388">─</text>
-                  <text x="120" y="388">─</text>
-                  <text x="136" y="388">─</text>
-                  <text x="152" y="388">─</text>
-                  <text x="168" y="388">─</text>
-                  <text x="184" y="388">─</text>
-                  <text x="200" y="388">─</text>
-                  <text x="216" y="388">─</text>
-                  <text x="232" y="388">─</text>
-                  <text x="248" y="388">─</text>
-                  <text x="264" y="388">─</text>
-                  <text x="280" y="388">─</text>
-                  <text x="296" y="388">─</text>
-                  <text x="312" y="388">─</text>
-                  <text x="328" y="388">─</text>
-                  <text x="344" y="388">─</text>
-                  <text x="360" y="388">─</text>
-                  <text x="376" y="388">─</text>
-                  <text x="392" y="388">─</text>
-                  <text x="408" y="388">─</text>
-                  <text x="424" y="388">─</text>
-                  <text x="440" y="388">─</text>
-                  <text x="456" y="388">─</text>
-                  <text x="472" y="388">─</text>
-                  <text x="488" y="388">─</text>
-                  <text x="504" y="388">─</text>
-                  <text x="520" y="388">┐</text>
-                  <text x="160" y="404">┌</text>
-                  <text x="176" y="404">─</text>
-                  <text x="192" y="404">─</text>
-                  <text x="208" y="404">─</text>
-                  <text x="224" y="404">─</text>
-                  <text x="240" y="404">─</text>
-                  <text x="256" y="404">─</text>
-                  <text x="272" y="404">─</text>
-                  <text x="288" y="404">─</text>
-                  <text x="304" y="404">─</text>
-                  <text x="320" y="404">─</text>
-                  <text x="336" y="404">─</text>
-                  <text x="352" y="404">─</text>
-                  <text x="368" y="404">─</text>
-                  <text x="384" y="404">─</text>
-                  <text x="400" y="404">─</text>
-                  <text x="8" y="420">│</text>
-                  <text x="32" y="420">1</text>
-                  <text x="96" y="420">┌─────┐</text>
-                  <text x="284" y="420">┌──────────────────────────┐</text>
-                  <text x="408" y="420">│</text>
-                  <text x="472" y="420">┌─────┐</text>
-                  <text x="520" y="420">│</text>
-                  <text x="32" y="436">s</text>
-                  <text x="48" y="436">S</text>
-                  <text x="124" y="436">│NF-CP├──────┤</text>
-                  <text x="212" y="436">CP</text>
-                  <text x="236" y="436">TN</text>
-                  <text x="272" y="436">Slice</text>
-                  <text x="332" y="436">(TNS-CP)</text>
-                  <text x="444" y="436">├──────┤NF-CP│</text>
-                  <text x="8" y="452">│</text>
-                  <text x="32" y="452">t</text>
-                  <text x="48" y="452">l</text>
-                  <text x="96" y="452">└─────┘</text>
-                  <text x="284" y="452">└──────────────────────────┘</text>
-                  <text x="408" y="452">│</text>
-                  <text x="472" y="452">└─────┘</text>
-                  <text x="520" y="452">│</text>
-                  <text x="48" y="468">i</text>
-                  <text x="160" y="468">│</text>
-                  <text x="8" y="484">│</text>
-                  <text x="32" y="484">5</text>
-                  <text x="48" y="484">c</text>
-                  <text x="96" y="484">┌─────┐</text>
-                  <text x="284" y="484">┌──────────────────────────┐</text>
-                  <text x="408" y="484">│</text>
-                  <text x="472" y="484">┌─────┐</text>
-                  <text x="520" y="484">│</text>
-                  <text x="32" y="500">G</text>
-                  <text x="48" y="500">e</text>
-                  <text x="124" y="500">│NF-UP├──────┤</text>
-                  <text x="204" y="500">UP</text>
-                  <text x="228" y="500">TN</text>
-                  <text x="264" y="500">Slice</text>
-                  <text x="328" y="500">(TNS-UP1)</text>
-                  <text x="444" y="500">├──────┤NF-UP│</text>
-                  <text x="8" y="516">│</text>
-                  <text x="96" y="516">└─────┘</text>
-                  <text x="284" y="516">└──────────────────────────┘</text>
-                  <text x="408" y="516">│</text>
-                  <text x="472" y="516">└─────┘</text>
-                  <text x="520" y="516">│</text>
-                  <text x="16" y="532">─</text>
-                  <text x="32" y="532">─</text>
-                  <text x="48" y="532">─</text>
-                  <text x="64" y="532">─</text>
-                  <text x="80" y="532">─</text>
-                  <text x="96" y="532">─</text>
-                  <text x="112" y="532">─</text>
-                  <text x="128" y="532">─</text>
-                  <text x="144" y="532">─</text>
-                  <text x="160" y="532">┼</text>
-                  <text x="176" y="532">─</text>
-                  <text x="192" y="532">─</text>
-                  <text x="208" y="532">─</text>
-                  <text x="224" y="532">─</text>
-                  <text x="240" y="532">─</text>
-                  <text x="256" y="532">─</text>
-                  <text x="272" y="532">─</text>
-                  <text x="288" y="532">─</text>
-                  <text x="304" y="532">─</text>
-                  <text x="320" y="532">─</text>
-                  <text x="336" y="532">─</text>
-                  <text x="352" y="532">─</text>
-                  <text x="368" y="532">─</text>
-                  <text x="384" y="532">─</text>
-                  <text x="400" y="532">─</text>
-                  <text x="416" y="532">─</text>
-                  <text x="432" y="532">─</text>
-                  <text x="448" y="532">─</text>
-                  <text x="464" y="532">─</text>
-                  <text x="480" y="532">─</text>
-                  <text x="496" y="532">─</text>
-                  <text x="512" y="532">─</text>
-                  <text x="408" y="548">│</text>
-                  <text x="8" y="564">┌</text>
-                  <text x="24" y="564">─</text>
-                  <text x="40" y="564">─</text>
-                  <text x="56" y="564">─</text>
-                  <text x="72" y="564">─</text>
-                  <text x="88" y="564">─</text>
-                  <text x="104" y="564">─</text>
-                  <text x="120" y="564">─</text>
-                  <text x="136" y="564">─</text>
-                  <text x="160" y="564">─│─</text>
-                  <text x="184" y="564">─</text>
-                  <text x="200" y="564">─</text>
-                  <text x="216" y="564">─</text>
-                  <text x="232" y="564">─</text>
-                  <text x="248" y="564">─</text>
-                  <text x="264" y="564">─</text>
-                  <text x="280" y="564">─</text>
-                  <text x="296" y="564">─</text>
-                  <text x="312" y="564">─</text>
-                  <text x="328" y="564">─</text>
-                  <text x="344" y="564">─</text>
-                  <text x="360" y="564">─</text>
-                  <text x="376" y="564">─</text>
-                  <text x="392" y="564">─</text>
-                  <text x="408" y="564">─</text>
-                  <text x="424" y="564">─</text>
-                  <text x="440" y="564">─</text>
-                  <text x="456" y="564">─</text>
-                  <text x="472" y="564">─</text>
-                  <text x="488" y="564">─</text>
-                  <text x="504" y="564">─</text>
-                  <text x="520" y="564">┐</text>
-                  <text x="32" y="580">2</text>
-                  <text x="408" y="580">│</text>
-                  <text x="8" y="596">│</text>
-                  <text x="32" y="596">n</text>
-                  <text x="48" y="596">S</text>
-                  <text x="100" y="596">┌──────┐</text>
-                  <text x="160" y="596">│</text>
-                  <text x="284" y="596">┌──────────────────────────┐</text>
-                  <text x="468" y="596">┌──────┐</text>
-                  <text x="520" y="596">│</text>
-                  <text x="32" y="612">d</text>
-                  <text x="48" y="612">l</text>
-                  <text x="124" y="612">│NF-UP2├─────┤</text>
-                  <text x="204" y="612">UP</text>
-                  <text x="228" y="612">TN</text>
-                  <text x="264" y="612">Slice</text>
-                  <text x="328" y="612">(TNS-UP2)</text>
-                  <text x="444" y="612">├─────┤NF-UP2│</text>
-                  <text x="8" y="628">│</text>
-                  <text x="48" y="628">i</text>
-                  <text x="100" y="628">└──────┘</text>
-                  <text x="160" y="628">│</text>
-                  <text x="284" y="628">└──────────────────────────┘</text>
-                  <text x="468" y="628">└──────┘</text>
-                  <text x="520" y="628">│</text>
-                  <text x="32" y="644">5</text>
-                  <text x="48" y="644">c</text>
-                  <text x="408" y="644">│</text>
-                  <text x="8" y="660">│</text>
-                  <text x="32" y="660">G</text>
-                  <text x="48" y="660">e</text>
-                  <text x="160" y="660">│</text>
-                  <text x="520" y="660">│</text>
-                  <text x="16" y="676">─</text>
-                  <text x="32" y="676">─</text>
-                  <text x="48" y="676">─</text>
-                  <text x="64" y="676">─</text>
-                  <text x="80" y="676">─</text>
-                  <text x="96" y="676">─</text>
-                  <text x="112" y="676">─</text>
-                  <text x="128" y="676">─</text>
-                  <text x="144" y="676">─</text>
-                  <text x="160" y="676">─</text>
-                  <text x="176" y="676">─</text>
-                  <text x="192" y="676">─</text>
-                  <text x="208" y="676">─</text>
-                  <text x="224" y="676">─</text>
-                  <text x="240" y="676">─</text>
-                  <text x="256" y="676">─</text>
-                  <text x="272" y="676">─</text>
-                  <text x="288" y="676">─</text>
-                  <text x="304" y="676">─</text>
-                  <text x="320" y="676">─</text>
-                  <text x="336" y="676">─</text>
-                  <text x="352" y="676">─</text>
-                  <text x="368" y="676">─</text>
-                  <text x="384" y="676">─</text>
-                  <text x="408" y="676">─│─</text>
-                  <text x="432" y="676">─</text>
-                  <text x="448" y="676">─</text>
-                  <text x="464" y="676">─</text>
-                  <text x="480" y="676">─</text>
-                  <text x="496" y="676">─</text>
-                  <text x="512" y="676">─</text>
-                  <text x="160" y="692">│</text>
-                  <text x="256" y="708">Transport</text>
-                  <text x="328" y="708">Network</text>
-                  <text x="408" y="708">│</text>
-                  <text x="160" y="724">│</text>
-                  <text x="168" y="740">─</text>
-                  <text x="184" y="740">─</text>
-                  <text x="200" y="740">─</text>
-                  <text x="216" y="740">─</text>
-                  <text x="232" y="740">─</text>
-                  <text x="248" y="740">─</text>
-                  <text x="264" y="740">─</text>
-                  <text x="280" y="740">─</text>
-                  <text x="296" y="740">─</text>
-                  <text x="312" y="740">─</text>
-                  <text x="328" y="740">─</text>
-                  <text x="344" y="740">─</text>
-                  <text x="360" y="740">─</text>
-                  <text x="376" y="740">─</text>
-                  <text x="392" y="740">─</text>
-                  <text x="408" y="740">┘</text>
-                  <text x="76" y="756">Deployment</text>
-                  <text x="132" y="756">of</text>
-                  <text x="188" y="756">additional</text>
-                  <text x="244" y="756">5G</text>
-                  <text x="280" y="756">slice</text>
-                  <text x="324" y="756">with</text>
-                  <text x="372" y="756">shared</text>
-                  <text x="432" y="756">Control</text>
-                  <text x="488" y="756">Plane</text>
+                  <text x="220" y="244">Deployment</text>
+                  <text x="276" y="244">of</text>
+                  <text x="312" y="244">first</text>
+                  <text x="348" y="244">5G</text>
+                  <text x="384" y="244">slice</text>
+                  <text x="32" y="372">1</text>
+                  <text x="32" y="388">s</text>
+                  <text x="48" y="388">S</text>
+                  <text x="96" y="388">NF-CP</text>
+                  <text x="212" y="388">CP</text>
+                  <text x="236" y="388">TN</text>
+                  <text x="272" y="388">Slice</text>
+                  <text x="332" y="388">(TNS-CP)</text>
+                  <text x="472" y="388">NF-CP</text>
+                  <text x="32" y="404">t</text>
+                  <text x="48" y="404">l</text>
+                  <text x="48" y="420">i</text>
+                  <text x="32" y="436">5</text>
+                  <text x="48" y="436">c</text>
+                  <text x="32" y="452">G</text>
+                  <text x="48" y="452">e</text>
+                  <text x="96" y="452">NF-UP</text>
+                  <text x="204" y="452">UP</text>
+                  <text x="228" y="452">TN</text>
+                  <text x="264" y="452">Slice</text>
+                  <text x="328" y="452">(TNS-UP1)</text>
+                  <text x="472" y="452">NF-UP</text>
+                  <text x="32" y="532">2</text>
+                  <text x="32" y="548">n</text>
+                  <text x="48" y="548">S</text>
+                  <text x="32" y="564">d</text>
+                  <text x="48" y="564">l</text>
+                  <text x="100" y="564">NF-UP2</text>
+                  <text x="204" y="564">UP</text>
+                  <text x="228" y="564">TN</text>
+                  <text x="264" y="564">Slice</text>
+                  <text x="328" y="564">(TNS-UP2)</text>
+                  <text x="468" y="564">NF-UP2</text>
+                  <text x="48" y="580">i</text>
+                  <text x="32" y="596">5</text>
+                  <text x="48" y="596">c</text>
+                  <text x="32" y="612">G</text>
+                  <text x="48" y="612">e</text>
+                  <text x="248" y="660">Transport</text>
+                  <text x="320" y="660">Network</text>
+                  <text x="76" y="692">Deployment</text>
+                  <text x="132" y="692">of</text>
+                  <text x="188" y="692">additional</text>
+                  <text x="244" y="692">5G</text>
+                  <text x="280" y="692">slice</text>
+                  <text x="324" y="692">with</text>
+                  <text x="372" y="692">shared</text>
+                  <text x="432" y="692">Control</text>
+                  <text x="488" y="692">Plane</text>
                 </g>
               </svg><a href="#section-3.6-3.1.1" class="pilcrow">¶</a>
 </div>
