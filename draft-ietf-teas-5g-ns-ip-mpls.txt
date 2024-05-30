@@ -100,12 +100,12 @@ Table of Contents
      7.1.  Bandwidth Requirements
      7.2.  Bandwidth Models
    8.  Network Slicing OAM
-     8.1.  Scalability Implications
-   9.  IANA Considerations
-   10. Security Considerations
-   11. References
-     11.1.  Normative References
-     11.2.  Informative References
+   9.  Scalability Implications
+   10. IANA Considerations
+   11. Security Considerations
+   12. References
+     12.1.  Normative References
+     12.2.  Informative References
    Appendix A.  Acronyms and Abbreviations
    Appendix B.  An Overview of 5G Networking
      B.1.  Key Building Blocks
@@ -2561,7 +2561,7 @@ Table of Contents
       [I-D.ietf-teas-ietf-network-slice-nbi-yang] exposes a set of
       statistics per SDP, connectivity construct, and connection group.
 
-8.1.  Scalability Implications
+9.  Scalability Implications
 
    The mapping between 5G slice to TN slices (see Section 3.5) is a
    design choice of service operators that may be a function of, e.g.,
@@ -2585,11 +2585,11 @@ Table of Contents
    of some of these technologies.  Providers may adjust the mapping
    model to better handle local scalability constraints.
 
-9.  IANA Considerations
+10.  IANA Considerations
 
    This document does not make any IANA request.
 
-10.  Security Considerations
+11.  Security Considerations
 
    Section 10 of [RFC9543] discusses generic security considerations
    that are applicable to network slicing, with a focus on the following
@@ -2655,9 +2655,9 @@ Table of Contents
    protocols listed in the document are discussed in the specification
    documents of each of these protocols.
 
-11.  References
+12.  References
 
-11.1.  Normative References
+12.1.  Normative References
 
    [RFC4364]  Rosen, E. and Y. Rekhter, "BGP/MPLS IP Virtual Private
               Networks (VPNs)", RFC 4364, DOI 10.17487/RFC4364, February
@@ -2696,7 +2696,7 @@ Table of Contents
               Technologies", RFC 9543, DOI 10.17487/RFC9543, March 2024,
               <https://www.rfc-editor.org/rfc/rfc9543>.
 
-11.2.  Informative References
+12.2.  Informative References
 
    [ECPRI]    Common Public Radio Interface, "Common Public Radio
               Interface: eCPRI Interface Specification", n.d.,
