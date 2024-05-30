@@ -308,18 +308,18 @@ A CE is typically managed by the customer, but it can also be co-managed with th
 This document generalizes the definition of a CE with the introduction of "Distributed CE"; that is, the logical connectivity is realized by configuring multiple devices in the customer domain. The CE function is distributed. An example of distributed CE is the realization of an interconnection using a L3VPN service based on a distributed CE composed of a switch (Layer 2) and a router (Layer 3) ({{fig-distribute-ce}}). Another example of distributed CE is shown in {{fig-50}}.
 
 ~~~~
-+--------------+                      +--------------+
-|   Customer   |                      |   Provider   | 
-|     Site     |                      |    Network   |
-|              |                  .................  | 
-|          +----+                 .+----+   +----+.  |
-|          |    --------------------Mngd|   |    |.  | 
-|          | CE + ─ ─ ─ ─AC ─ ─ ─ ─+ CE ├───┤ PE |.  |
-|          |    --------------------    |   |    |.  | 
-|          +----+                 .+----+   +----+.  |
-|              |                  '..Distributed..'  | 
-|              |                      |  PE          |
-+--------------+                      +--------------+
++--------------+                    +--------------+
+|   Customer   |                    |   Provider   |
+|     Site     |                    |    Network   |
+|              |                .................  |
+|          +----+               .+----+   +----+.  |
+|          |    ------------------Mngd|   |    |.  |
+|          | CE + ─ ─ ─AC ─ ─ ─ ─+ CE ├───┤ PE |.  |
+|          |    ------------------    |   |    |.  |
+|          +----+               .+----+   +----+.  |
+|              |                '..Distributed..'  |
+|              |                    |  PE          |
++--------------+                    +--------------+
 ~~~~
 {: #fig-distribute-ce title="Example of " artwork-align="center"}
 
@@ -338,34 +338,34 @@ This document generalizes the PE definition with the introduction of "Distribute
 An example of a distributed PE is the "Managed CE service". For example, a provider delivers VPN services using CEs and PEs which are both managed by the provider (case (i) in {{fig-50}}). The managed CE can also be a Data Center Gateway as depicted in the example (ii) of {{fig-50}}. A provider-managed CE may attach to CEs of multiple customers. However, this device is part of the provider network.
 
 ~~~~
-+--------------+                      +--------------+
-|   Customer   |                      |   Provider   | 
-|     Site     |                      |    Network   |
-|              |                  .................  | 
-|          +----+                 .+----+   +----+.  |
-|          |    --------------------Mngd|   |    |.  | 
-|          | CE + ─ ─ ─ ─AC ─ ─ ─ ─+ CE +---+ PE |.  |
-|          |    --------------------    |   |    |.  | 
-|          +----+                 .+----+   +----+.  |
-|              |                  '..Distributed..'  | 
-|              |                      |  PE          |
-+--------------+                      +--------------+
-                  (i) Distributed PE                  
-                                                       
-+--------------+                      +--------------+
-|   Customer   |                      |   Provider   | 
-|     Site     |                      |    Network   |
-|  ..................             .................. | 
-|  .    IP Fabric   .             .+----+   +----+ . |
-|  . +---+  +---+   ---------------- DC |   |    | . | 
-|  . +---+  +---+   +─  ─ ─ AC ─ ─ + GW +---+ PE | . |
-|  .+--+  +--+      ----------------    |   |    | . | 
-|  .+--+  +--+      .             .+----+   +----+ . |
-|  '...Distributed..'             '...Distributed..' | 
-|          CE  |                      |  PE          |
-|              |                      |              |  
-+--Data Center-+                      +--------------+
-              (ii) Distributed PE and CE 
++--------------+                    +--------------+
+|   Customer   |                    |   Provider   |
+|     Site     |                    |    Network   |
+|              |                .................  |
+|          +----+               .+----+   +----+.  |
+|          |    ------------------Mngd|   |    |.  |
+|          | CE + ─ ─ ─ AC─ ─ ─ ─+ CE +---+ PE |.  |
+|          |    ------------------    |   |    |.  |
+|          +----+               .+----+   +----+.  |
+|              |                '..Distributed..'  |
+|              |                    |  PE          |
++--------------+                    +--------------+
+                  (i) Distributed PE
+
++--------------+                    +--------------+
+|   Customer   |                    |   Provider   |
+|     Site     |                    |    Network   |
+|  ..................           .................. |
+|  .    IP Fabric   .           .+----+   +----+ . |
+|  . +---+  +---+   -------------- DC |   |    | . |
+|  . +---+  +---+   +─  ─ AC ─ ─ + GW +---+ PE | . |
+|  .+--+  +--+      --------------    |   |    | . |
+|  .+--+  +--+      .           .+----+   +----+ . |
+|  '...Distributed..'           '...Distributed..' |
+|          CE  |                    |  PE          |
+|              |                    |              |
++--Data Center-+                    +--------------+
+              (ii) Distributed PE and CE
 ~~~~
 {: #fig-50 title="Examples of Distributed PE" artwork-align="center"}
 
@@ -378,15 +378,15 @@ The AC is the logical connection that attaches a CE ({{sec-ce}}) to a PE ({{sec-
 This document uses the concept of distributed CEs and PEs (e.g., {{Section 3.4.3 of ?RFC4664}}) to consolidate a CE/AC/PE definition ({{fig-50-ac}}) that is consistent with the orchestration perimeters ({{sec-orch}}). The CEs and PEs delimit respectively the customer and provider orchestration domains, while an AC interconnects these domains.
 
 ~~~~
-+--------------+                      +--------------+
-|   Customer   |                      |   Provider   |  
-|     Site +----+                  +----+  Network   |
-|          |    --------------------    |            | 
-|          | CE + ─ ─ ─ ─AC ─ ─ ─ ─+ PE |            |
-|          |    --------------------    |            | 
-|          +----+                  +----+            |
-|              |                      |              |
-+--------------+                      +--------------+
++--------------+                    +--------------+
+|   Customer   |                    |   Provider   |
+|     Site +----+                +----+  Network   |
+|          |    ------------------    |            |
+|          | CE + ─ ─ ─AC ─ ─ ─ ─+ PE |            |
+|          |    ------------------    |            |
+|          +----+                +----+            |
+|              |                    |              |
++--------------+                    +--------------+
 ~~~~
 {: #fig-50-ac title="Reference AC Design" artwork-align="center"}
 
