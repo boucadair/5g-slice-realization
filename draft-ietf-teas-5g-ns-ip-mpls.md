@@ -202,11 +202,11 @@ Concretely, the realization of an RFC 9543 Network Slice (i.e., connectivity wit
 
 The realization approach described in this document is typically triggered by Network Slice Service requests. How a Network Slice Service request is placed for realization, including how it is derived from a 5G Slice Service request, is out of scope. Mapping considerations between 3GPP and IETF Network Slice Service (e.g., mapping of service parameters) are discussed, e.g., in {{?I-D.ietf-teas-5g-network-slice-application}}.
 
-The 5G control plane relies upon the Single Network Slice Selection Assistance Information (S-NSSAI) for slice
+The 5G control plane uses the Single Network Slice Selection Assistance Information (S-NSSAI) for slice
 identification {{TS-23.501}}. Because S-NSSAIs are not visible to the transport domain, 5G domains can expose the 5G slices to the transport
 domain by mapping to explicit data plane identifiers (e.g., Layer 2, Layer 3, or Layer 4). The realization of the mapping between customer sites and provider networks is refered to as the "hand-off". {{sec-handoff-domains}} lists a set of such hand-off methods.
 
-The realization model described in this document relies upon a set of building blocks commonly used in service provider networks. Concretely, the model uses (1) Layer 2 Virtual Private Network (L2VPN) {{?RFC4664}} and/or Layer 3 Virtual Private Network (L3VPN) {{?RFC4364}} service instances for logical separation, (2) fine-grained resource control at the Provider Edges (PEs), (3) coarse-grained resource control at within the provider network, and (4) capacity management. More details are provided in Sections {{<sec-over-rea-model}}, {{<sec-qos-map}}, {{<transport-plane-mapping-models}}, and {{<sec-capacity-planning}}.
+The realization model described in this document uses a set of building blocks commonly used in service provider networks. Concretely, the model uses (1) Layer 2 Virtual Private Network (L2VPN) {{?RFC4664}} and/or Layer 3 Virtual Private Network (L3VPN) {{?RFC4364}} service instances for logical separation, (2) fine-grained resource control at the Provider Edges (PEs), (3) coarse-grained resource control at within the provider network, and (4) capacity management. More details are provided in Sections {{<sec-over-rea-model}}, {{<sec-qos-map}}, {{<transport-plane-mapping-models}}, and {{<sec-capacity-planning}}.
 
 This realization model uses a single Network Resource Partition (NRP) ({{Section 7.1 of !RFC9543}}). The applicability to multiple NRPs is out of scope.
 
