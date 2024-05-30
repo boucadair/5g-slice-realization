@@ -566,7 +566,8 @@ Table of Contents
 
    Customer Site Orchestration domain:  The Orchestration of TN elements
       of the customer sites relies upon a variety of controllers (e.g.,
-      Fabric Manager, Element Management System, or VIM).
+      Fabric Manager, Element Management System, or Virtualized
+      Infrastructure Manager (VIM)).
 
    A TN slice relies upon resources that can involve both the provider
    and customer TN domains.  More details are provided in Section 3.4.2.
