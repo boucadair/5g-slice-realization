@@ -279,15 +279,15 @@ Section 3.1 of {{TS-28.530}} defines 5G Network Slice as:
 {:quote}
 > "a logical network that provides specific network capabilities and network characteristics, supporting various service properties for network slice customers."
 
-### TN Slicing {#sec-tn-slicing}
+### Transport Network Slicing {#sec-tn-slicing}
 
 The term "TN slice" refers to a slice in the Transport Network domain of the 5G architecture.
 
-The objective of TN Slicing is to isolate,
+The objective of Transport Network Slicing is to isolate,
 guarantee, or prioritize Transport Network resources for Slice Services. Examples of such resources are:
 buffers, link capacity, or even Routing Information Base (RIB) and Forwarding Information Base (FIB).
 
-TN Slicing provides various degrees of sharing of resources between slices. For example, the network capacity can be shared by all slices, usually with a guaranteed minimum per slice, or each individual slice can be allocated dedicated network capacity. Parts of a given network may use the former, while others use the latter. For example, in order to satisfy local engineering guidelines and specific service requirements, shared TN resources could be provided in the backhaul (or midhaul), and dedicated TN resources could be provided in the midhaul (or backhaul). The capacity partitioning strategy is deployment specific.
+Transport Network Slicing provides various degrees of sharing of resources between slices. For example, the network capacity can be shared by all slices, usually with a guaranteed minimum per slice, or each individual slice can be allocated dedicated network capacity. Parts of a given network may use the former, while others use the latter. For example, in order to satisfy local engineering guidelines and specific service requirements, shared TN resources could be provided in the backhaul (or midhaul), and dedicated TN resources could be provided in the midhaul (or backhaul). The capacity partitioning strategy is deployment specific.
 
 There are different components to implement TN slices based upon
 mechanisms such as Virtual Routing and Forwarding instances (VRFs)
