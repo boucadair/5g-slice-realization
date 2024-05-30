@@ -1915,7 +1915,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
    * Means to report and expose observed performance metrics and other OAM state to customer.
      For example, {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}} exposes a set of statistics per SDP, connectivity construct, and connection group.
 
-## Scalability Implications {#sec-sca-impli}
+# Scalability Implications {#sec-sca-impli}
 
 The mapping between 5G slice to TN slices (see {{sec-mapping}}) is a design choice of service operators that may be a function of, e.g., the number of instantiated slices, requested services, or local engineering capabilities and guidelines. However, operators should carefully consider means to ease slice migration strategies. For example, a provider may initially adopt a 1-to-1 mapping if it has to instantiate just a few Network Slices and accommodate the need of only a few customers. That provider may decide to move to a N-to-1 mapping for aggregation/scalability purposes if sustained increased slice demand is observed.
 
