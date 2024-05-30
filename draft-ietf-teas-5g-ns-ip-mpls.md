@@ -270,9 +270,9 @@ Slicing ({{sec-tn-slicing}}). These descriptions are not intended to be exhausti
 5G Network Slicing is defined by the 3GPP  {{TS-28.530}} as an appraoch:
 
 {:quote}
-> "where logical networks/partitions are created, with appropriate isolation, resources and optimized topology to serve a purpose or service category (e.g. use case/traffic category, or for MNO internal reasons) or customers (logical system created "on demand")." 
+> "where logical networks/partitions are created, with appropriate isolation, resources and optimized topology to serve a purpose or service category (e.g. use case/traffic category, or for MNO internal reasons) or customers (logical system created "on demand")."
 
-These resources are from the TN, RAN, CN Network Functions, and the underlying infrastructure.
+These resources are from the TN, RAN, CN domains, and the underlying infrastructure.
 
 Section 3.1 of {{TS-28.530}} defines 5G Network Slice as:
 
