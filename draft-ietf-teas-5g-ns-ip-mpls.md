@@ -228,7 +228,7 @@ Customer:
 
 Customer site:
 : A customer manages and deploys 5G NFs (e.g., gNodeB (gNB) and 5G Core (5GC)) in customer sites. A customer site can be either a physical or a virtual location.
-: Examples of customer sites are a customer private locations (Point of Presence (PoP), DC), a VPC in a Public Cloud, or servers hosted within the provider network or colocation service.
+: Examples of customer sites are a customer private locations (Point of Presence (PoP), Data Center (DC)), a Virtual Private Cloud (VPC), or servers hosted within the provider network or colocation service.
 
 Provider:
 : An entity responsible for interconnecting customer sites.
@@ -311,17 +311,17 @@ This document generalizes the definition of a CE with the introduction of "Distr
 +--------------+                    +--------------+
 |   Customer   |                    |   Provider   |
 |     Site     |                    |    Network   |
-|              |                .................  |
-|          +----+               .+----+   +----+.  |
-|          |    ------------------Mngd|   |    |.  |
-|          | CE + ─ ─ ─AC ─ ─ ─ ─+ CE ├───┤ PE |.  |
-|          |    ------------------    |   |    |.  |
-|          +----+               .+----+   +----+.  |
-|              |                '..Distributed..'  |
-|              |                    |  PE          |
+|.................                  |              |
+|. +-----+ +----+.               +----+            |
+|. |     | |    ==================    |            |
+|. |     +------------AC---------+ PE |            |
+|. | RTR | | SW ==================    |            |
+|. +-----+ +----+.               +----+            |
+|'..Distributed..'                  |              |
+|       CE     |                    |              |
 +--------------+                    +--------------+
 ~~~~
-{: #fig-distribute-ce title="Example of " artwork-align="center"}
+{: #fig-distribute-ce title="Example of Distributed CE" artwork-align="center"}
 
 While in most cases CEs connect to PEs using IP (e.g., VLANs subinterface on a Layer 3 interface), a CE may also connect to the provider network using other technologies such as MPLS -potentially over IP tunnels- or Segment Routing over IPv6 (SRv6) {{?RFC8986}}. The CE has thus awareness of provider services configuration (e.g., control plane identifiers such as Route Targets (RTs) and Route Distinguishers (RDs)). However, the CE is still managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. The complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE. Service-aware CEs are used, for example, in the deployments discussed in Sections {{<sec-10b}} and {{<sec-10c}}.
 
@@ -343,9 +343,9 @@ An example of a distributed PE is the "Managed CE service". For example, a provi
 |     Site     |                    |    Network   |
 |              |                .................  |
 |          +----+               .+----+   +----+.  |
-|          |    ------------------Mngd|   |    |.  |
-|          | CE + ─ ─ ─ AC─ ─ ─ ─+ CE +---+ PE |.  |
-|          |    ------------------    |   |    |.  |
+|          |    ==================Mngd|   |    |.  |
+|          | CE +--------AC------+ CE +---+ PE |.  |
+|          |    ==================    |   |    |.  |
 |          +----+               .+----+   +----+.  |
 |              |                '..Distributed..'  |
 |              |                    |  PE          |
@@ -357,9 +357,9 @@ An example of a distributed PE is the "Managed CE service". For example, a provi
 |     Site     |                    |    Network   |
 |  ..................           .................. |
 |  .    IP Fabric   .           .+----+   +----+ . |
-|  . +---+  +---+   -------------- DC |   |    | . |
-|  . +---+  +---+   +─  ─ AC ─ ─ + GW +---+ PE | . |
-|  .+--+  +--+      --------------    |   |    | . |
+|  . +---+  +---+   ============== DC |   |    | . |
+|  . +---+  +---+   +-----AC-----+ GW +---+ PE | . |
+|  .+--+  +--+      ==============    |   |    | . |
 |  .+--+  +--+      .           .+----+   +----+ . |
 |  '...Distributed..'           '...Distributed..' |
 |          CE  |                    |  PE          |
@@ -375,20 +375,7 @@ In subsequent sections of this document, the terms CE and PE are used for both s
 
 The AC is the logical connection that attaches a CE ({{sec-ce}}) to a PE ({{sec-pe}}). A CE is connected to a PE via one or multiple ACs. An AC is technology-specific.
 
-This document uses the concept of distributed CEs and PEs (e.g., {{Section 3.4.3 of ?RFC4664}}) to consolidate a CE/AC/PE definition ({{fig-50-ac}}) that is consistent with the orchestration perimeters ({{sec-orch}}). The CEs and PEs delimit respectively the customer and provider orchestration domains, while an AC interconnects these domains.
-
-~~~~
-+--------------+                    +--------------+
-|   Customer   |                    |   Provider   |
-|     Site +----+                +----+  Network   |
-|          |    ------------------    |            |
-|          | CE + ─ ─ ─AC ─ ─ ─ ─+ PE |            |
-|          |    ------------------    |            |
-|          +----+                +----+            |
-|              |                    |              |
-+--------------+                    +--------------+
-~~~~
-{: #fig-50-ac title="Reference AC Design" artwork-align="center"}
+This document uses the concept of distributed CEs and PEs (e.g., {{Section 3.4.3 of ?RFC4664}}) to consolidate a CE/AC/PE definition that is consistent with the orchestration perimeters ({{sec-orch}}). The CEs and PEs delimit respectively the customer and provider orchestration domains, while an AC interconnects these domains.
 
 For consistency with the AC data models terminology (e.g., {{?I-D.ietf-opsawg-teas-attachment-circuit}} and {{?I-D.ietf-opsawg-ntw-attachment-circuit}}), this document assumes that an AC is configured on a "bearer", which represents the underlying connectivity.
 
