@@ -258,31 +258,29 @@ In practice, the TN may not map to a monolithic architecture and management doma
 
 ##  5G Network Slicing versus Transport Network Slicing {#sec-5gtn}
 
-   Network slicing has a different meaning in the 3GPP mobile world and transport
-   world. This difference can be seen from the descriptions below that set out
-   the objectives of 5G Network Slicing and Transport Network
-   Slicing. These descriptions are not intended to be exhaustive.
+Network slicing has a different meaning in the 3GPP mobile world and transport
+world. This difference can be seen from the descriptions below that set out
+the objectives of 5G Network Slicing ({{sec-5g-slicing}}) and Transport Network
+Slicing ({{sec-tn-slicing}}). These descriptions are not intended to be exhaustive.
 
-   * 5G Network Slicing:
+### 5G Network Slicing  {#sec-5g-slicing}
 
-      Is defined by the 3GPP as an appraoch where logical networks/partitions are created (called, 5G Network Slices), with appropriate isolation, resources and optimized topology to serve a purpose or service category or customers {{TS-28.530}}. These resources are from the TN, RAN, CN
-      Network Functions, and the underlying infrastructure.
+5G Network Slicing is defined by the 3GPP as an appraoch where logical networks/partitions are created (called, 5G Network Slices), with appropriate isolation, resources and optimized topology to serve a purpose or service category or customers {{TS-28.530}}. These resources are from the TN, RAN, CN Network Functions, and the underlying infrastructure.
 
-   * TN Slicing:
+### TN Slicing {#sec-tn-slicing}
 
-      The term "TN slice" refers to a slice in the Transport Network domain of the 5G
-      architecture.
+The term "TN slice" refers to a slice in the Transport Network domain of the 5G architecture.
 
-      The objective of TN Slicing is to isolate,
-      guarantee, or prioritize Transport Network resources for Slice Services. Examples of such resources are:
-      buffers, link capacity, or even Routing Information Base (RIB) and Forwarding Information Base (FIB).
+The objective of TN Slicing is to isolate,
+guarantee, or prioritize Transport Network resources for Slice Services. Examples of such resources are:
+buffers, link capacity, or even Routing Information Base (RIB) and Forwarding Information Base (FIB).
 
-     TN Slicing provides various degrees of sharing of resources between slices. For example, the network capacity can be shared by all slices, usually with a guaranteed minimum per slice, or each individual slice can be allocated dedicated network capacity. Parts of a given network may use the former, while others use the latter. For example, in order to satisfy local engineering guidelines and specific service requirements, shared TN resources could be provided in the backhaul (or midhaul), and dedicated TN resources could be provided in the midhaul (or backhaul). The capacity partitioning strategy is deployment specific.
+TN Slicing provides various degrees of sharing of resources between slices. For example, the network capacity can be shared by all slices, usually with a guaranteed minimum per slice, or each individual slice can be allocated dedicated network capacity. Parts of a given network may use the former, while others use the latter. For example, in order to satisfy local engineering guidelines and specific service requirements, shared TN resources could be provided in the backhaul (or midhaul), and dedicated TN resources could be provided in the midhaul (or backhaul). The capacity partitioning strategy is deployment specific.
 
-      There are different components to implement TN slices based upon
-      mechanisms such as Virtual Routing and Forwarding instances (VRFs)
-      for logical separation, Quality of Service (QoS), and Traffic
-      Engineering (TE). Whether all or a subset of these components are enabled is a deployment choice.
+There are different components to implement TN slices based upon
+mechanisms such as Virtual Routing and Forwarding instances (VRFs)
+for logical separation, Quality of Service (QoS), and Traffic
+Engineering (TE). Whether all or a subset of these components are enabled is a deployment choice.
 
 ## Transport Network Reference Design {#sec-ref-design}
 
