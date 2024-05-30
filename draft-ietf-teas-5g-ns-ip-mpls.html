@@ -1300,11 +1300,11 @@ Concretely, the realization of an RFC 9543 Network Slice (i.e., connectivity wit
 <pre>
       |------------------TN Slice------------------|
 
-                        |------RFC 9543-----|
-                        |   Network Slice   |
-                        |                   |
-                        |                   |
-                        v                   v
+                        RFC 9543 Network Slice
+                        +-----SDP Type 3----+
+                        |  +- SDP Type 4-+  |
+                        |  |             |  |
+                        v  v             v  v
   +------------+          +---------------+         +------------+
   |  Customer  |          |    Provider   |         |  Customer  |
   |   Site 1   |          |    Network    |         |   Site 2   |
@@ -1315,7 +1315,6 @@ Concretely, the realization of an RFC 9543 Network Slice (i.e., connectivity wit
   |            |        +-+--+          +-+--+      |            |
   |            |          |               |         |            |
   +------------+          +---------------+         +------------+
-
 </pre>
 </div>
 <figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
