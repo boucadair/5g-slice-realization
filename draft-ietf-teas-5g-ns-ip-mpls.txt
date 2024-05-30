@@ -274,7 +274,7 @@ Table of Contents
    orchestration domains is introduced in Section 3.4.
 
                    +----------------------------------+
-              +----+      5G RAN or CORE Network      +----+
+              +----+      5G RAN or Core Network      +----+
               |    +----------------------------------+    |
               |                                            |
               v                                            v
