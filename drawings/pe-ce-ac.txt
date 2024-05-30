@@ -1,6 +1,6 @@
- Customer Orch.             Provider Orch.              Customer Orch.  
-     Domain                     Domain                      Domain      
-                                                                          
+      Customer                 Provider                     Customer
+   Orchestration            Orchestration                 Orchestration
+      Domain                   Domain                       Domain                                                                          
 +----------------+      +---------------------+       +----------------+
 |    Customer    |      |  Provider Network   |       |    Customer    |
 |      Site 1    |      |                     |       |      Site 2    |
