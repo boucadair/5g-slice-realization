@@ -206,9 +206,9 @@ The 5G control plane relies upon the Single Network Slice Selection Assistance I
 identification {{TS-23.501}}. Because S-NSSAIs are not visible to the transport domain, 5G domains can expose the 5G slices to the transport
 domain by mapping to explicit data plane identifiers (e.g., Layer 2, Layer 3, or Layer 4). The realization of the mapping between customer sites and provider networks is refered to as the "hand-off". {{sec-handoff-domains}} lists a set of such hand-off methods.
 
-The realization model described in this document uses a single Network Resource Partition (NRP) ({{Section 7.1 of !RFC9543}}). The applicability to multiple NRPs is out of scope.
+The realization model described in this document relies upon a set of building blocks commonly used in service provider networks. Concretely, the model uses (1) Layer 2 Virtual Private Network (L2VPN) {{?RFC4664}} and/or Layer 3 Virtual Private Network (L3VPN) {{?RFC4364}} service instances for logical separation, (2) fine-grained resource control at the Provider Edges (PEs), (3) coarse-grained resource control at within the provider network, and (4) capacity management. More details are provided in Sections {{<sec-over-rea-model}}, {{<sec-qos-map}}, {{<transport-plane-mapping-models}}, and {{<sec-capacity-planning}}.
 
-The realization model relies upon a set of building blocks commonly used in service provider networks. Concretely, the model uses (1) Layer 2 Virtual Private Network (L2VPN) {{?RFC4664}} and/or Layer 3 Virtual Private Network (L3VPN) {{?RFC4364}} service instances for logical separation, (2) fine-grained resource control at the Provider Edges (PEs), (3) coarse-grained resource control at within the provider network, and (4) capacity management. More details are provided in Sections {{<sec-over-rea-model}}, {{<sec-qos-map}}, {{<transport-plane-mapping-models}}, and {{<sec-capacity-planning}}.
+This realization model uses a single Network Resource Partition (NRP) ({{Section 7.1 of !RFC9543}}). The applicability to multiple NRPs is out of scope.
 
 Although this document focuses on 5G, the realizations are not fundamentally constrained by the 5G use case. The document is not intended to be a BCP and does not claim to specify mandatory mechanisms to realize network slices. Rather, a key goal of the document is to provide pragmatic implementation approaches by leveraging existing readily-available, widely-deployed techniques. The document is also intended to align the mobile and the IETF perspectives of slicing from a realization perspective.
 
@@ -238,11 +238,17 @@ Provider:
 
 ## Scope of the Transport Network {#sec-scope}
 
-{{sec-5g-overview}} provides an overview of 5G network building blocks: the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN). The Transport Network is defined by the 3GPP as the "part supporting connectivity within and between CN and RAN parts" (Section 1 of {{TS-28.530}}).
+{{sec-5g-overview}} provides an overview of 5G network building blocks: the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN). The Transport Network is defined by the 3GPP as:
+
+{:quote}
+> {: start="2"}
+"part supporting connectivity within and between CN and RAN parts" (Section 1 of {{TS-28.530}}).
 
 As discussed in Section 4.4.1 of {{TS-28.530}}, the 3GPP management system does not directly control the Transport Network: it is considered as a non-3GPP managed system.
 
-> 'The non-3GPP part includes TN parts. The 3GPP management system provides the network slice requirements to the corresponding management systems of those non-3GPP parts, e.g. the TN part supports connectivity within and between CN and AN parts.' (Section 4.4.1 of {{TS-28.530}})
+{:quote}
+> {: start="2"}
+  'The non-3GPP part includes TN parts. The 3GPP management system provides the network slice requirements to the corresponding management systems of those non-3GPP parts, e.g. the TN part supports connectivity within and between CN and AN parts.' (Section 4.4.1 of {{TS-28.530}})
 
 In practice, the TN may not map to a monolithic architecture and management domain. It is frequently segmented, non-uniform, and managed by different entities. For example, {{fig-1}} depicts a NF instance that is deployed in an edge data center (DC) connected to a NF located in a Public Cloud via a WAN (e.g., MPLS-VPN service). In this example, the TN can be seen as an abstraction representing an end-to-end connectivity based upon three distinct domains: DC, WAN, and Public Cloud. A model for the Transport Network based on orchestration domains is introduced in {{sec-orch}}.
 
