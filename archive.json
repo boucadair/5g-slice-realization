@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-05-28T00:28:54.468282+00:00",
+  "timestamp": "2024-05-30T00:29:06.172596+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -1662,7 +1662,7 @@
       "id": "I_kwDOIw9g6c6IxEeU",
       "title": "add a mention of type SDP 3/4",
       "url": "https://github.com/boucadair/5g-slice-realization/issues/183",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "boucadair",
       "authorAssociation": "OWNER",
       "assignees": [
@@ -1671,8 +1671,8 @@
       "labels": [],
       "body": "",
       "createdAt": "2024-05-14T06:41:55Z",
-      "updatedAt": "2024-05-14T06:41:55Z",
-      "closedAt": null,
+      "updatedAt": "2024-05-29T13:10:17Z",
+      "closedAt": "2024-05-29T13:10:17Z",
       "comments": []
     },
     {
@@ -6468,6 +6468,190 @@
       "mergedBy": "boucadair",
       "mergeCommit": {
         "oid": "31008bc8883a3a0a7e99e8043fcf1f7199e44b09"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 186,
+      "id": "PR_kwDOIw9g6c5w2HEP",
+      "title": "NRP or not NRP",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/186",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-05-29T07:28:02Z",
+      "updatedAt": "2024-05-29T10:40:22Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "957f75ec826050b09ff3514f69b81fc0ca015a2f",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "NRP-or-not-NRP",
+      "headRefOid": "1f7f9ed684a0432e0955150438a1c08f88400e80",
+      "closedAt": "2024-05-29T10:40:22Z",
+      "mergedAt": "2024-05-29T10:40:22Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "a6b79a239d082614fd3d021398968959ff131d2d"
+      },
+      "comments": [
+        {
+          "author": "kszarkowicz",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Looks OK from my side.",
+          "createdAt": "2024-05-29T09:42:13Z",
+          "updatedAt": "2024-05-29T09:42:13Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 187,
+      "id": "PR_kwDOIw9g6c5w3FDd",
+      "title": "unmap is the business of 3GPP domain",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/187",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-05-29T09:42:08Z",
+      "updatedAt": "2024-05-29T10:40:34Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "957f75ec826050b09ff3514f69b81fc0ca015a2f",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "unmap-is-the-business-of-3GPP-domain",
+      "headRefOid": "d538dc3744b1464bba927de17016d69103b3792d",
+      "closedAt": "2024-05-29T10:40:34Z",
+      "mergedAt": "2024-05-29T10:40:34Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "b645f3a9ea50b40ebed88f24765cf6d7aa977bad"
+      },
+      "comments": [
+        {
+          "author": "kszarkowicz",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Looks good",
+          "createdAt": "2024-05-29T09:58:01Z",
+          "updatedAt": "2024-05-29T09:58:01Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 188,
+      "id": "PR_kwDOIw9g6c5w3bpW",
+      "title": "No need to claim that: complex segmentations",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/188",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-05-29T10:27:12Z",
+      "updatedAt": "2024-05-29T10:40:47Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "3459b8eb59d1f6c03cfe5e24cbeeaae7ad5787b8",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-1",
+      "headRefOid": "bc2015c3af5454558e637c2a6c7f42a15e53a319",
+      "closedAt": "2024-05-29T10:40:46Z",
+      "mergedAt": "2024-05-29T10:40:46Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "2ba120fa6f9bddb4ea2e5e7d29d88aaa4b5b1e09"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 189,
+      "id": "PR_kwDOIw9g6c5w3pcy",
+      "title": "simplify the flow",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/189",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-05-29T10:58:50Z",
+      "updatedAt": "2024-05-29T12:37:48Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "2ba120fa6f9bddb4ea2e5e7d29d88aaa4b5b1e09",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "simplify-the-flow",
+      "headRefOid": "70dd0a2c55438541acaf96698d30020f7a0edcf6",
+      "closedAt": "2024-05-29T12:37:47Z",
+      "mergedAt": "2024-05-29T12:37:47Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "8ec9c1bb7e37d993f0c11c99f24447e45f9dd6be"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 190,
+      "id": "PR_kwDOIw9g6c5w4jXi",
+      "title": "realization overview early in the document",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/190",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-05-29T13:07:16Z",
+      "updatedAt": "2024-05-29T13:10:03Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "8ec9c1bb7e37d993f0c11c99f24447e45f9dd6be",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-1",
+      "headRefOid": "579c9bf75d28875bb537b493341bb2d958f13374",
+      "closedAt": "2024-05-29T13:10:03Z",
+      "mergedAt": "2024-05-29T13:10:03Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "751bb25d0c10e948673533a6ac8faa7623932297"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 191,
+      "id": "PR_kwDOIw9g6c5w5-fn",
+      "title": "consolidate many subsections",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/191",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-05-29T16:09:57Z",
+      "updatedAt": "2024-05-29T16:22:21Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "279643377e2ac62bed1db8889ff45c2134208d09",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-1",
+      "headRefOid": "2fa8d6ccf4f7e6777deb9b3a3695f73aafce942b",
+      "closedAt": "2024-05-29T16:22:20Z",
+      "mergedAt": "2024-05-29T16:22:20Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "c92a90c6ac2c413fc036927d27a5e77e22a21286"
       },
       "comments": [],
       "reviews": []
