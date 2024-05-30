@@ -1510,6 +1510,16 @@ Also, transport planes may be realized using separate NRPs. However, such an app
    between any pair of PEs. {{figure-23}} shows only single
    tunnel per transport plane for (ingress PE, egress PE) pair.
 
+   It is worth noting that TN QoS Classes and Transport Planes are
+   orthogonal.  The TN domain can be operated with, e.g., 8 TN QoS Classes (representing 8 hardware queues in the
+   routers), and 2 Transport Planes (e.g., latency optimized transport
+   plane using link latency metrics for path calculation, and transport
+   plane following Interior Gateway Protocol (IGP) metrics).  TN QoS Class determines the per-hop
+   behavior when the packets are transiting through the provider network,
+   while transport plane determines the paths for packets through provider
+   network based on operator's business model (operator's requirements).
+   This path can be optimised or constrained.
+
    Similar to the QoS mapping models discussed in {{sec-qos-map}}, for mapping
    to transport planes at the ingress PE, both 5QI-unaware and 5QI-aware
    models are defined.  Essentially, entire slices can be mapped to
@@ -1566,18 +1576,6 @@ Also, transport planes may be realized using separate NRPs. However, such an app
    └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
 ~~~
 {: #figure-24 title="Network Slice to Transport Plane Mapping (5QI-unaware Model)" artwork-align="center"}
-
-   It is worth noting that TN QoS Classes and Transport Planes are
-   orthogonal.  The TN domain can be operated with
-   e.g., 8 TN QoS Classes (representing 8 hardware queues in the
-   routers), and 2 Transport Planes (e.g., latency optimized transport
-   plane using link latency metrics for path calculation, and transport
-   plane following Interior Gateway Protocol (IGP) metrics).  TN QoS Class determines the per-hop
-   behavior when the packets are transiting through the provider network,
-   while transport plane determines the paths for packets through provider
-   network based on operator's business model (operator's requirement).
-   This path can be optimised or constrained.
-
 
 ##  5QI-aware Model
 
