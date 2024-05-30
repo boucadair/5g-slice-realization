@@ -248,7 +248,7 @@ As discussed in Section 4.4.1 of {{TS-28.530}}, the 3GPP management system does 
 {:quote}
 > "The non-3GPP part includes TN parts. The 3GPP management system provides the network slice requirements to the corresponding management systems of those non-3GPP parts, e.g. the TN part supports connectivity within and between CN and AN parts." (Section 4.4.1 of {{TS-28.530}})
 
-In practice, the TN may not map to a monolithic architecture and management domain. It is frequently segmented, non-uniform, and managed by different entities. For example, {{fig-1}} depicts a NF instance that is deployed in an edge data center (DC) connected to a NF located in a Public Cloud via a WAN (e.g., MPLS-VPN service). In this example, the TN can be seen as an abstraction representing an end-to-end connectivity based upon three distinct domains: DC, WAN, and Public Cloud. A model for the Transport Network based on orchestration domains is introduced in {{sec-orch}}.
+In practice, the TN may not map to a monolithic architecture and management domain. It is frequently segmented, non-uniform, and managed by different entities. For example, {{fig-1}} depicts an NF instance that is deployed in an edge data center (DC) connected to an NF located in a Public Cloud via a WAN (e.g., MPLS-VPN service). In this example, the TN can be seen as an abstraction representing an end-to-end connectivity based upon three distinct domains: DC, WAN, and Public Cloud. A model for the Transport Network based on orchestration domains is introduced in {{sec-orch}}.
 
 ~~~~
 {::include ./drawings/TN-abstraction.txt}
@@ -423,7 +423,7 @@ The various orchestration depicted in {{figure-orch}} encompass the 3GPP's Netwo
 In reference to the architecture depicted in {{sec-5g-sli-arch}}, the connectivity between NFs can be decomposed into three main segment types that are as follows:
 
 Customer Site:
-: Either connects NFs located in the same customer site (e.g., NF1-NF2) or connects a NF to a CE (e.g., NF1-CE). This segment may not be present if the NF is the CE (e.g., NF3): in this case the AC connects the NF to a PE.
+: Either connects NFs located in the same customer site (e.g., NF1-NF2) or connects an NF to a CE (e.g., NF1-CE). This segment may not be present if the NF is the CE (e.g., NF3): in this case the AC connects the NF to a PE.
 : The realization of this segment is driven by the 5G Network Orchestration (e.g., NFs instantiation) and the Customer Site Orchestration for the TN part.
 
 Provider Network:
@@ -930,7 +930,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
    (corresponding to specific 5QI value) set in the IP packet generated
    by NFs, some 5G deployments might use 5QI in the RAN domain only,
    without requesting per-5QI differentiated treatment from the provider network.
-   This might be due to a NF limitation (e.g., no capability to set
+   This might be due to an NF limitation (e.g., no capability to set
    DSCP), or it might simply depend on the overall slicing deployment
    model.  The O-RAN Alliance, for example, defines a phased approach to
    the slicing, with initial phases utilizing only per-slice, but not
