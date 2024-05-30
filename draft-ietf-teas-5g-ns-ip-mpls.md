@@ -502,12 +502,6 @@ A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For inst
 
 Mapping approaches that preserve the 5G slice identification in the TN (e.g., {{sec-ip-hof}}) may simplify required operations to map back TN slices to 5G slices. However, such considerations are not detailed in this document because these are under the responsibility of the 3GPP orchestration domain.
 
-## Scalability Implications {#sec-sca-impli}
-
-The actual mapping (see {{sec-mapping}}) is a design choice of service operators that may be a function of, e.g., the number of instantiated slices, requested services, or local engineering capabilities and guidelines. However, operators should carefully consider means to ease slice migration strategies. For example, a provider may initially adopt a 1-to-1 mapping if it has to instantiate just a few Network Slices and accommodate the need of only a few customers. That provider may decide to move to a N-to-1 mapping for aggregation/scalability purposes if sustained increased slice demand is observed.
-
-Putting in place adequate automation means to realize Network Slices (including the adjustment of Slice Services to Network Slices mapping) would ease slice migration operations.
-
 ##  First 5G Slice versus Subsequent Slices {#sec-firstslice}
 
 An operational 5G Network Slice incorporates both 5G control plane and user plane capabilities.
@@ -588,8 +582,6 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
 {: #figure-high-level-qos title="Resource Allocation Slicing Model with a Single NRP" artwork-align="center"}
 
 This document does not describe in detail how to manage an L2VPN or L3VPN, as this is already well-documented. For example, the reader may refer to {{?RFC4176}} and {{?RFC6136}} for such details.
-
-The realization model described in the document inherits the scalability properties of the underlying L2VPN and L3VPN technologies. Readers may refer, for example, to {{Section 13 of ?RFC4365}} or {{Section 1.2.5 of ?RFC6624}} for a scalability assessment of some of these technologies. Per {{sec-sca-impli}}, providers may adjust the mapping model to better handle local scalability constraints.
 
 #  Hand-off Between Domains {#sec-handoff-domains}
 
@@ -1922,6 +1914,14 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
 
    * Means to report and expose observed performance metrics and other OAM state to customer.
      For example, {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}} exposes a set of statistics per SDP, connectivity construct, and connection group.
+
+## Scalability Implications {#sec-sca-impli}
+
+The mapping between 5G slice to TN slices (see {{sec-mapping}}) is a design choice of service operators that may be a function of, e.g., the number of instantiated slices, requested services, or local engineering capabilities and guidelines. However, operators should carefully consider means to ease slice migration strategies. For example, a provider may initially adopt a 1-to-1 mapping if it has to instantiate just a few Network Slices and accommodate the need of only a few customers. That provider may decide to move to a N-to-1 mapping for aggregation/scalability purposes if sustained increased slice demand is observed.
+
+Putting in place adequate automation means to realize Network Slices (including the adjustment of Slice Services to Network Slices mapping) would ease slice migration operations.
+
+The realization model described in the document inherits the scalability properties of the underlying L2VPN and L3VPN technologies ({{sec-over-rea-model}}). Readers may refer, for example, to {{Section 13 of ?RFC4365}} or {{Section 1.2.5 of ?RFC6624}} for a scalability assessment of some of these technologies. Providers may adjust the mapping model to better handle local scalability constraints.
 
 # IANA Considerations
 
