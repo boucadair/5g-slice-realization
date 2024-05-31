@@ -1705,55 +1705,53 @@ However, this document does not exclude the instantiation of multiple ACs betwee
           <h4 id="name-transport-network-segments-">
 <a href="#section-3.4.2" class="section-number selfRef">3.4.2. </a><a href="#name-transport-network-segments-" class="section-name selfRef">Transport Network Segments and Network Slice Instantiation</a>
           </h4>
-<p id="section-3.4.2-1">In reference to the architecture depicted in <a href="#sec-5g-sli-arch" class="auto internal xref">Section 3.4.1</a>, the connectivity between NFs can be decomposed into three main segment types that are as follows:<a href="#section-3.4.2-1" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlParallel" id="section-3.4.2-2">
-            <dt id="section-3.4.2-2.1">Customer Site:</dt>
-            <dd style="margin-left: 1.5em" id="section-3.4.2-2.2">
-              <p id="section-3.4.2-2.2.1">Either connects NFs located in the same customer site (e.g., NF1-NF2) or connects an NF to a CE (e.g., NF1-CE). This segment may not be present if the NF is the CE (e.g., NF3): in this case the AC connects the NF to a PE.<a href="#section-3.4.2-2.2.1" class="pilcrow">¶</a></p>
+<p id="section-3.4.2-1">This document focuses on deployments where the Service Demarcation Points (SDPs) are located per Types 3 and 4 of Figure 1 of <span>[<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>. The concept of distributed PE (<a href="#sec-pe" class="auto internal xref">Section 3.3.4</a>) assimilates CE-based SDPs defined in <span><a href="https://rfc-editor.org/rfc/rfc9543#section-5.2" class="relref">Section 5.2</a> of [<a href="#RFC9543" class="cite xref">RFC9543</a>]</span> (i.e., Types 1 and 2) as SDP Type 3 or 4 in this document.<a href="#section-3.4.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.4.2-2">In reference to the architecture depicted in <a href="#sec-5g-sli-arch" class="auto internal xref">Section 3.4.1</a>, the connectivity between NFs can be decomposed into three main segment types that are as follows:<a href="#section-3.4.2-2" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-3.4.2-3">
+            <dt id="section-3.4.2-3.1">Customer Site:</dt>
+            <dd style="margin-left: 1.5em" id="section-3.4.2-3.2">
+              <p id="section-3.4.2-3.2.1">Either connects NFs located in the same customer site or connects an NF to a CE.<a href="#section-3.4.2-3.2.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
-<dt id="section-3.4.2-2.3"></dt>
-            <dd style="margin-left: 1.5em" id="section-3.4.2-2.4">
-              <p id="section-3.4.2-2.4.1">The realization of this segment is driven by the 5G Network Orchestration (e.g., NFs instantiation) and the Customer Site Orchestration for the TN part.<a href="#section-3.4.2-2.4.1" class="pilcrow">¶</a></p>
+<dt id="section-3.4.2-3.3"></dt>
+            <dd style="margin-left: 1.5em" id="section-3.4.2-3.4">
+              <p id="section-3.4.2-3.4.1">This segment may not be present if the NF is the CE. In this case the AC connects the NF to a PE.<a href="#section-3.4.2-3.4.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
-<dt id="section-3.4.2-2.5">Provider Network:</dt>
-            <dd style="margin-left: 1.5em" id="section-3.4.2-2.6">
-              <p id="section-3.4.2-2.6.1">Represents the connectivity between two PEs (e.g., PE1-PE2). The realization of this segment is controlled by an RFC 9543 NSC.<a href="#section-3.4.2-2.6.1" class="pilcrow">¶</a></p>
+<dt id="section-3.4.2-3.5"></dt>
+            <dd style="margin-left: 1.5em" id="section-3.4.2-3.6">
+              <p id="section-3.4.2-3.6.1">The realization of this segment is driven by the 5G Network Orchestration (e.g., NFs instantiation) and the Customer Site Orchestration for the TN part.<a href="#section-3.4.2-3.6.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
-<dt id="section-3.4.2-2.7">Attachment Circuit:</dt>
-            <dd style="margin-left: 1.5em" id="section-3.4.2-2.8">
-              <p id="section-3.4.2-2.8.1">Represents the connectivity between CEs and PEs (e.g., CE-PE1 and PE2-NF3). The orchestration of this segment relies partially upon an RFC 9543 NSC for the configuration of the AC on the PE customer-facing interfaces and the Customer Site Orchestration for the configuration of the AC on the CE.<a href="#section-3.4.2-2.8.1" class="pilcrow">¶</a></p>
+<dt id="section-3.4.2-3.7">Provider Network:</dt>
+            <dd style="margin-left: 1.5em" id="section-3.4.2-3.8">
+              <p id="section-3.4.2-3.8.1">Represents the connectivity between two PEs. The realization of this segment is controlled by an NSC (<span><a href="https://rfc-editor.org/rfc/rfc9543#section-6.3" class="relref">Section 6.3</a> of [<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>).<a href="#section-3.4.2-3.8.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
-<dt id="section-3.4.2-2.9"></dt>
-            <dd style="margin-left: 1.5em" id="section-3.4.2-2.10">
-              <p id="section-3.4.2-2.10.1">The provisioning of a Network Slice may rely on new or existing ACs.<a href="#section-3.4.2-2.10.1" class="pilcrow">¶</a></p>
-</dd>
-          <dd class="break"></dd>
-</dl>
-<p id="section-3.4.2-3">This document focuses on deployments where the Service Demarcation Points (SDPs) are located per Types 3 and 4 of Figure 1 of <span>[<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>. The concept of distributed PE (<a href="#sec-pe" class="auto internal xref">Section 3.3.4</a>) assimilates CE-based SDPs defined in <span><a href="https://rfc-editor.org/rfc/rfc9543#section-5.2" class="relref">Section 5.2</a> of [<a href="#RFC9543" class="cite xref">RFC9543</a>]</span> (i.e., Types 1 and 2) as SDP Type 3 or 4 in this document.<a href="#section-3.4.2-3" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlParallel" id="section-3.4.2-4">
-            <dt id="section-3.4.2-4.1">Resource synchronization for AC provisioning:</dt>
-            <dd style="margin-left: 1.5em" id="section-3.4.2-4.2">
-              <p id="section-3.4.2-4.2.1">The realization of the AC is made up of TN resources shared between the Customer Site Orchestration and the Provider Network Orchestration (e.g., RFC 9543 NSC).  More precisely, a PE and a CE connected via an AC need to be
-provisioned with consistent data plane and control plane  information (e.g., VLAN-
+<dt id="section-3.4.2-3.9">Attachment Circuit:</dt>
+            <dd style="margin-left: 1.5em" id="section-3.4.2-3.10">
+              <p id="section-3.4.2-3.10.1">Represents the connectivity between CEs and PEs. The orchestration of this segment relies partially upon an NSC for the configuration of the AC on the PE customer-facing interfaces and the Customer Site Orchestration for the configuration of the AC on the CE. More precisely, a PE and a CE connected via an AC need to be
+provisioned with consistent data plane and control plane information (e.g., VLAN-
 IDs, IP addresses/subnets, or BGP  Autonomous System (AS) Number). Hence, the realization of this
-interconnection is technology-specific and requires coordination between the Customer Site Orchestration and an NSC. Automating the provisioning and management of the AC is thus key to automate the overall service provisioning. Aligned with <span>[<a href="#RFC8969" class="cite xref">RFC8969</a>]</span>, this document assumes that this coordination is based upon standard YANG data models and APIs.<a href="#section-3.4.2-4.2.1" class="pilcrow">¶</a></p>
+interconnection is technology-specific and requires coordination between the Customer Site Orchestration and an NSC. Automating the provisioning and management of the AC is thus key to automate the overall service provisioning. Aligned with <span>[<a href="#RFC8969" class="cite xref">RFC8969</a>]</span>, this document assumes that this coordination is based upon standard YANG data models and APIs.<a href="#section-3.4.2-3.10.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
-<dt id="section-3.4.2-4.3"></dt>
-            <dd style="margin-left: 1.5em" id="section-3.4.2-4.4">
-              <p id="section-3.4.2-4.4.1"><a href="#_figure-4" class="auto internal xref">Figure 7</a> is a basic example of a Layer 3 CE-PE link realization
+<dt id="section-3.4.2-3.11"></dt>
+            <dd style="margin-left: 1.5em" id="section-3.4.2-3.12">
+              <p id="section-3.4.2-3.12.1">The provisioning of a Network Slice may rely on new or existing ACs.<a href="#section-3.4.2-3.12.1" class="pilcrow">¶</a></p>
+</dd>
+            <dd class="break"></dd>
+<dt id="section-3.4.2-3.13"></dt>
+            <dd style="margin-left: 1.5em" id="section-3.4.2-3.14">
+              <p id="section-3.4.2-3.14.1"><a href="#_figure-4" class="auto internal xref">Figure 7</a> is a basic example of a Layer 3 CE-PE link realization
 with shared network resources (such as VLAN-IDs and IP prefixes) which
-are passed between Orchestrators via a dedicated interface, e.g., the Network Slice Service Model (NSSM) <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="cite xref">I-D.ietf-teas-ietf-network-slice-nbi-yang</a>]</span> or the Attachment Circuit-as-a-Service (ACaaS) <span>[<a href="#I-D.ietf-opsawg-teas-attachment-circuit" class="cite xref">I-D.ietf-opsawg-teas-attachment-circuit</a>]</span>.<a href="#section-3.4.2-4.4.1" class="pilcrow">¶</a></p>
+are passed between Orchestrators via a dedicated interface, e.g., the Network Slice Service Model (NSSM) <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="cite xref">I-D.ietf-teas-ietf-network-slice-nbi-yang</a>]</span> or the Attachment Circuit-as-a-Service (ACaaS) <span>[<a href="#I-D.ietf-opsawg-teas-attachment-circuit" class="cite xref">I-D.ietf-opsawg-teas-attachment-circuit</a>]</span>.<a href="#section-3.4.2-3.14.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 </dl>
 <span id="name-coordination-of-transport-n"></span><div id="_figure-4">
 <figure id="figure-7">
-            <div class="alignCenter art-text artwork" id="section-3.4.2-5.1">
+            <div class="alignCenter art-text artwork" id="section-3.4.2-4.1">
 <pre>
   +---------------+                   +------------------+
   |               |                   |   RFC9543 NSC    |
@@ -3042,7 +3040,7 @@ outbound direction at the provider network edge links.<a href="#section-5.2.1.2-
    assigned a single egress queue.  The sum of slice CIRs, used as the
    weight in weighted queueing model, should not exceed the physical
    capacity of the AC.  Slice requests above this limit
-   should be rejected by the RFC 9543 NSC, unless an already established slice with
+   should be rejected by the NSC, unless an already established slice with
    lower priority, if such exists, is preempted.<a href="#section-5.2.1.2-4" class="pilcrow">¶</a></p>
 <span id="name-ingress-slice-admission-cont"></span><div id="_figure-18">
 <figure id="figure-23">
@@ -3753,7 +3751,7 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
           </figcaption></figure>
 </div>
 <p id="section-7.1-8"><span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="cite xref">I-D.ietf-teas-ietf-network-slice-nbi-yang</a>]</span> can be used to convey all
-   of the information in the traffic matrix to the RFC 9543 NSC.  The RFC 9543
+   of the information in the traffic matrix to an NSC.  The
    NSC applies policers corresponding to the last column in the traffic
    matrix to the appropriate PE routers, in order to enforce the
    bandwidth contract.  For example, it applies a policer of 11 units to
@@ -3766,9 +3764,9 @@ From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
 <p id="section-7.1-9">Depending on the bandwidth model used in the provider network (<a href="#sec-bw" class="auto internal xref">Section 7.2</a>),
    the other values in the matrix, i.e., the DC-to-DC demands, may not
    be directly applied to the provider network.  Even so, the
-   information may be useful to the RFC 9543 NSC for capacity planning and
+   information may be useful to the NSC for capacity planning and
    failure simulation purposes.  If, on the other hand, the DC-to-DC
-   demand information is not used by the RFC 9543 NSC, the IETF YANG Data
+   demand information is not used by the NSC, the IETF YANG Data
    Model for L3VPN Service Delivery <span>[<a href="#RFC8299" class="cite xref">RFC8299</a>]</span> or the IETF YANG Data
    Model for L2VPN Service Delivery <span>[<a href="#RFC8466" class="cite xref">RFC8466</a>]</span> could be used instead of
    <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="cite xref">I-D.ietf-teas-ietf-network-slice-nbi-yang</a>]</span>, as they support
