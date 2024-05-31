@@ -1218,7 +1218,7 @@ Table of Contents
    switch within cloud IP fabric (Figure 17, right hand side)).  On the
    AC connected to a PE, packets are already MPLS encapsulated (or MPLS-
    in-UDP/MPLS-in-IP encapsulated, if cloud or compute infrastructure
-   don’t support MPLS encapsulation).  Therefore, the PE uses neither a
+   don't support MPLS encapsulation).  Therefore, the PE uses neither a
    VLAN nor an IP address for slice identification at the SDP, but
    instead uses the MPLS label.
 
@@ -2637,7 +2637,7 @@ Table of Contents
    operations and content.
 
    In order to avoid the need for a mapping table to associate source/
-   destination IP addresses and slices’ specific S-NSSAIs, Section 4.2
+   destination IP addresses and slices' specific S-NSSAIs, Section 4.2
    describes an approach where some or all S-NSSAI bits are embedded in
    an IPv6 address using an algorithm approach.  An attacker from within
    the transport network who has access to the mapping configuration may
