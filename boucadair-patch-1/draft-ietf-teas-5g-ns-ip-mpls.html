@@ -1440,7 +1440,7 @@ Slicing (<a href="#sec-tn-slicing" class="auto internal xref">Section 3.2.2</a>)
           <h4 id="name-5g-network-slicing">
 <a href="#section-3.2.1" class="section-number selfRef">3.2.1. </a><a href="#name-5g-network-slicing" class="section-name selfRef">5G Network Slicing</a>
           </h4>
-<p id="section-3.2.1-1">5G Network Slicing is defined by the 3GPP  <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span> as an appraoch:<a href="#section-3.2.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.2.1-1">5G Network Slicing is defined by the 3GPP  <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span> as an approach:<a href="#section-3.2.1-1" class="pilcrow">¶</a></p>
 <blockquote id="section-3.2.1-2">
             <p id="section-3.2.1-2.1">"where logical networks/partitions are created, with appropriate isolation, resources and optimized topology to serve a purpose or service category (e.g. use case/traffic category, or for MNO internal reasons) or customers (logical system created "on demand")."<a href="#section-3.2.1-2.1" class="pilcrow">¶</a></p>
 </blockquote>
@@ -1493,7 +1493,7 @@ Engineering (TE). Whether all or a subset of these components are enabled is a d
 |                |      |                     |       |                |
 +----------------+      +---------------------+       +----------------+
 
-      &lt;-----------------Transport Network-------------------&gt;
+     &lt;-----------------Transport Network---------------&gt;
 </pre>
 </div>
 <figcaption><a href="#figure-3" class="selfRef">Figure 3</a>:
@@ -1527,11 +1527,11 @@ Engineering (TE). Whether all or a subset of these components are enabled is a d
 |   Customer   |                    |   Provider   |
 |     Site     |                    |    Network   |
 |.................                  |              |
-|. +-----+ +----+.               +----+            |
-|. |     | |    ==================    |            |
-|. |     +------------AC---------+ PE |            |
-|. | RTR | | SW ==================    |            |
-|. +-----+ +----+.               +----+            |
+|| +-----+ +----+|               +----+            |
+|| |     | |    ==================    |            |
+|| |     +------------AC---------+ PE |            |
+|| | RTR | | SW ==================    |            |
+|| +-----+ +----+|               +----+            |
 |'..Distributed..'                  |              |
 |       CE     |                    |              |
 +--------------+                    +--------------+
@@ -1568,11 +1568,11 @@ Engineering (TE). Whether all or a subset of these components are enabled is a d
 |   Customer   |                    |   Provider   |
 |     Site     |                    |    Network   |
 |              |                .................  |
-|          +----+               .+----+   +----+.  |
-|          |    ==================Mngd|   |    |.  |
-|          | CE +--------AC------+ CE +---+ PE |.  |
-|          |    ==================    |   |    |.  |
-|          +----+               .+----+   +----+.  |
+|          +----+               |+----+   +----+|  |
+|          |    ==================Mngd|   |    ||  |
+|          | CE +--------AC------+ CE +---+ PE ||  |
+|          |    ==================    |   |    ||  |
+|          +----+               |+----+   +----+|  |
 |              |                '..Distributed..'  |
 |              |                    |  PE          |
 +--------------+                    +--------------+
@@ -1582,11 +1582,11 @@ Engineering (TE). Whether all or a subset of these components are enabled is a d
 |   Customer   |                    |   Provider   |
 |     Site     |                    |    Network   |
 |  ..................           .................. |
-|  .    IP Fabric   .           .+----+   +----+ . |
-|  . +---+  +---+   ============== DC |   |    | . |
-|  . +---+  +---+   +-----AC-----+ GW +---+ PE | . |
-|  .+--+  +--+      ==============    |   |    | . |
-|  .+--+  +--+      .           .+----+   +----+ . |
+|  |    IP Fabric   |           |+----+   +----+ | |
+|  |.-----. .-----. ============== DC |   |    | | |
+|  |'-----' '-----' +-----AC-----+ GW +---+ PE | | |
+|  |.-. .-. .-. .-. ==============    |   |    | | |
+|  |'-' '-' '-' '-' |           |+----+   +----+ | |
 |  '...Distributed..'           '...Distributed..' |
 |          CE  |                    |  PE          |
 |              |                    |              |
@@ -1733,7 +1733,7 @@ However, this document does not exclude the instantiation of multiple ACs betwee
 </dd>
           <dd class="break"></dd>
 </dl>
-<p id="section-3.4.2-3">This document focuses on deployments where the Service Demarcation Points (SDPs) are located per Types 3 and 4 of Figure 1 of <span>[<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>.<a href="#section-3.4.2-3" class="pilcrow">¶</a></p>
+<p id="section-3.4.2-3">This document focuses on deployments where the Service Demarcation Points (SDPs) are located per Types 3 and 4 of Figure 1 of <span>[<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>. The concept of distributed PE (<a href="#sec-pe" class="auto internal xref">Section 3.3.4</a>) assimilates CE-based SDPs defined in <span><a href="https://rfc-editor.org/rfc/rfc9543#section-5.2" class="relref">Section 5.2</a> of [<a href="#RFC9543" class="cite xref">RFC9543</a>]</span> (i.e., Types 1 and 2) as SDP Type 3 or 4 in this document.<a href="#section-3.4.2-3" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-3.4.2-4">
             <dt id="section-3.4.2-4.1">Resource synchronization for AC provisioning:</dt>
             <dd style="margin-left: 1.5em" id="section-3.4.2-4.2">

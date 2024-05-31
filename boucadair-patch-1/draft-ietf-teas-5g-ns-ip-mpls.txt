@@ -307,7 +307,7 @@ Table of Contents
 
 3.2.1.  5G Network Slicing
 
-   5G Network Slicing is defined by the 3GPP [TS-28.530] as an appraoch:
+   5G Network Slicing is defined by the 3GPP [TS-28.530] as an approach:
 
    |  "where logical networks/partitions are created, with appropriate
    |  isolation, resources and optimized topology to serve a purpose or
@@ -371,7 +371,7 @@ Table of Contents
 |                |      |                     |       |                |
 +----------------+      +---------------------+       +----------------+
 
-      <-----------------Transport Network------------------->
+     <-----------------Transport Network--------------->
 
   Figure 3: Reference Design with Customer Site and Provider Network
 
@@ -423,11 +423,11 @@ Table of Contents
            |   Customer   |                    |   Provider   |
            |     Site     |                    |    Network   |
            |.................                  |              |
-           |. +-----+ +----+.               +----+            |
-           |. |     | |    ==================    |            |
-           |. |     +------------AC---------+ PE |            |
-           |. | RTR | | SW ==================    |            |
-           |. +-----+ +----+.               +----+            |
+           || +-----+ +----+|               +----+            |
+           || |     | |    ==================    |            |
+           || |     +------------AC---------+ PE |            |
+           || | RTR | | SW ==================    |            |
+           || +-----+ +----+|               +----+            |
            |'..Distributed..'                  |              |
            |       CE     |                    |              |
            +--------------+                    +--------------+
@@ -475,11 +475,11 @@ Table of Contents
            |   Customer   |                    |   Provider   |
            |     Site     |                    |    Network   |
            |              |                .................  |
-           |          +----+               .+----+   +----+.  |
-           |          |    ==================Mngd|   |    |.  |
-           |          | CE +--------AC------+ CE +---+ PE |.  |
-           |          |    ==================    |   |    |.  |
-           |          +----+               .+----+   +----+.  |
+           |          +----+               |+----+   +----+|  |
+           |          |    ==================Mngd|   |    ||  |
+           |          | CE +--------AC------+ CE +---+ PE ||  |
+           |          |    ==================    |   |    ||  |
+           |          +----+               |+----+   +----+|  |
            |              |                '..Distributed..'  |
            |              |                    |  PE          |
            +--------------+                    +--------------+
@@ -489,11 +489,11 @@ Table of Contents
            |   Customer   |                    |   Provider   |
            |     Site     |                    |    Network   |
            |  ..................           .................. |
-           |  .    IP Fabric   .           .+----+   +----+ . |
-           |  . +---+  +---+   ============== DC |   |    | . |
-           |  . +---+  +---+   +-----AC-----+ GW +---+ PE | . |
-           |  .+--+  +--+      ==============    |   |    | . |
-           |  .+--+  +--+      .           .+----+   +----+ . |
+           |  |    IP Fabric   |           |+----+   +----+ | |
+           |  |.-----. .-----. ============== DC |   |    | | |
+           |  |'-----' '-----' +-----AC-----+ GW +---+ PE | | |
+           |  |.-. .-. .-. .-. ==============    |   |    | | |
+           |  |'-' '-' '-' '-' |           |+----+   +----+ | |
            |  '...Distributed..'           '...Distributed..' |
            |          CE  |                    |  PE          |
            |              |                    |              |
@@ -650,6 +650,9 @@ Table of Contents
 
    This document focuses on deployments where the Service Demarcation
    Points (SDPs) are located per Types 3 and 4 of Figure 1 of [RFC9543].
+   The concept of distributed PE (Section 3.3.4) assimilates CE-based
+   SDPs defined in Section 5.2 of [RFC9543] (i.e., Types 1 and 2) as SDP
+   Type 3 or 4 in this document.
 
    Resource synchronization for AC provisioning:  The realization of the
       AC is made up of TN resources shared between the Customer Site
