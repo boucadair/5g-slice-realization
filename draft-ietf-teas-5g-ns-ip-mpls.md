@@ -391,7 +391,7 @@ The AC is the logical connection that attaches a CE ({{sec-ce}}) to a PE ({{sec-
 
 This document uses the concept of distributed CEs and PEs (e.g., {{Section 3.4.3 of ?RFC4664}}) to consolidate a CE/AC/PE definition that is consistent with the orchestration perimeters ({{sec-orch}}). The CEs and PEs delimit respectively the customer and provider orchestration domains, while an AC interconnects these domains.
 
-For consistency with the AC data models terminology (e.g., {{?I-D.ietf-opsawg-teas-attachment-circuit}} and {{?I-D.ietf-opsawg-ntw-attachment-circuit}}), this document assumes that an AC is configured on a "bearer", which represents the underlying connectivity. For example, the bearer is illustrated with "===" in Figures {{>fig-distribute-ce}} and {{>fig-50}}.
+For consistency with the AC data models terminology (e.g., {{?I-D.ietf-opsawg-teas-attachment-circuit}} and {{?I-D.ietf-opsawg-ntw-attachment-circuit}}), this document assumes that an AC is configured on a "bearer", which represents the underlying connectivity. For example, the bearer is illustrated with "===" in Figures {{<fig-distribute-ce}} and {{<fig-50}}.
 
 Examples of ACs are Virtual Local Area Networks (VLANs) (AC) configured on a physical interface (bearer) or an Overlay VXLAN EVI (AC) configured on an IP underlay (bearer).
 
