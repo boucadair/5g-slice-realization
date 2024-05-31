@@ -443,7 +443,7 @@ Attachment Circuit:
 : Represents the connectivity between CEs and PEs (e.g., CE-PE1 and PE2-NF3). The orchestration of this segment relies partially upon an RFC 9543 NSC for the configuration of the AC on the PE customer-facing interfaces and the Customer Site Orchestration for the configuration of the AC on the CE.
 : The provisioning of a Network Slice may rely on new or existing ACs.
 
-This document focuses on deployments where the Service Demarcation Points (SDPs) are located per Types 3 and 4 of Figure 1 of {{!RFC9543}}.
+This document focuses on deployments where the Service Demarcation Points (SDPs) are located per Types 3 and 4 of Figure 1 of {{!RFC9543}}. The concept of distributed PE ({{sec-pe}}) assimilates CE-based SDPs defined in {{Section 5.2 of !RFC9543}} (i.e., Types 1 and 2) as SDP Type 3 or 4 in this document.
 
 Resource synchronization for AC provisioning:
 : The realization of the AC is made up of TN resources shared between the Customer Site Orchestration and the Provider Network Orchestration (e.g., RFC 9543 NSC).  More precisely, a PE and a CE connected via an AC need to be
