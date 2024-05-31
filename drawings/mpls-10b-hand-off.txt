@@ -8,17 +8,16 @@
                                                         VLANs       
 service instances                service instances  representing   
 representing slices              representing slices    slices      
-     |          +----------------+           |           |          
+     |          + - - - - - - - -            |           |          
      |          |    Provider    |           |           |          
-+----v-+       ++----+       +---+-+       +-v------+    v  +------+
-|    # |       |*    |       |    *|       | #<><><>x-------x      |
-| NF # +-------+* PE |       | PE *+-------+ #<><><>x-------x   NF |
-|    # |       |*    |       |    *|       | #<><><>x-------x      |
-+------+       ++----+       +---+-+       +--------+       +------+
-                |     Network    |            L2/L3                 
-                +----------------+
-                                                                    
-  x Logical interface represented by a VLAN on a physical interface   
-  # Service instances (with unique MPLS labels)                    
-  * SDP
++----v-+       ++----+       +-----+       +-v------+    v  +------+
+|    ◙ |       |■    |       |    ■|       | ◙………………+.......+      |
+| NF ◙ +-------+■ PE |       | PE ■+-------+ ◙………………+.......+   NF |
+|    ◙ |       |■    |       |    ■|       | ◙………………+.......+      |
++------+       ++----+       +-----+       +--------+       +------+
+                      Network    |            L2/L3                 
+                + - - - - - - - - 
 
+  ● Logical interface represented by VLAN on physical interface   
+  ◙ Service instances (with unique MPLS label)                    
+  ■ SDP
