@@ -818,37 +818,34 @@ adjacent nodes in a customer site and a provider network, as depicted in {{figur
 As a result, a node in a customer site performs hierarchical next-hop resolution.
 
 ~~~~
-     ◁-------------------------------------------
+     <-------------------------------------------
              BGP VPN
                COM=1, L=A, NEXT_HOP=CS2
                COM=2, L=B, NEXT_HOP=CS2
                COM=3, L=C, NEXT_HOP=CS2
-     ◁------------------------------------------▷
+     <------------------------------------------>
 
-      ◁------        ◁------        ◁------
+      <------        <------        <------
       BGP LU         BGP LU         BGP LU
         CS2, L=X"      CS2, L=X'      CS2, L=X
-     ◁-------------▷◁------------▷◁-------------▷
+     <-------------><------------><------------->
                 nhs  nhs      nhs  nhs
                                                          VLANs
   service instances                service instances  representing
  representing slices              representing slices    slices
-+ - - ┬ +       + - - - - - - - - - +       + ┬ - - - - - ┬ - - - - -
-      |               Provider                |           |          |
-|+----v-┤       :-----+       +-----┤       :-v------+    v  +------+
- |    # |       |*    |       |    *|       | #………………x-------x      ||
-|| NF # :-------┤* PE |       | PE *:-------┤ #………………x-------x   NF |
- |    # |       |*    |       |    *|       | #………………x-------x      ||
-|+------┤       :-----+       +-----┤       :--------+       +------+
-   CS1                 Network                         CS2           |
-+ - - - +       + - - - - - - - - - +       + - - - - - - - - - - - -
-      +--------++-------------------++--------+ +-------------------+
-      Attachment   Provider Network  Attachment      Customer Site
-       Circuit         Segment        Circuit           Segment
++ - + |           + - - - - - - -+            +-|-----------|--------+
+|   | |           |     Provider |            | |           |        |
+|+--+-v-+       +-+---+       +--+--+       +-+-v----+    v  +------+|
+||    # |       |*    |       |    *|       | #<><><>x.......x      ||
+|| NF # +-------+* PE |       | PE *+-------+ #<><><>x.......x   NF ||
+||    # |       |*    |       |    *|       | #<><><>x.......x      ||
+|+---+--+       +-+---+       +---+-+       +-+------+       +------+|
+| CS1|            |      Network  |           |          CS2         |
++----+            +---------------+           +----------------------+
 
-   x – logical interface represented by VLAN on physical interface
-   # - service instances (with unique MPLS label)
-   * - Service Demarcation Point
+   x Logical interface represented by a VLAN on s physical interface
+   # Service instances (with unique MPLS label)
+   * SDP
 ~~~~
 {: #figure-mpls-10c-hand-off title="MPLS Hand-off with Option C" artwork-align="center"}
 
