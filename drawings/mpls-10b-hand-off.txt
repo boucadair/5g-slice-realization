@@ -6,7 +6,7 @@
     <-------------><------------><------------->                    
                nhs  nhs      nhs  nhs                               
                                                         VLANs       
- service instances                service instances  representing   
+service instances                service instances  representing   
 representing slices              representing slices    slices      
      |          + - - - - - - - -            |           |          
      |               Provider    |           |           |          
@@ -17,10 +17,8 @@ representing slices              representing slices    slices
 +------+       +┬----+       +-----+       +--------+       +------+
                       Network    |            L2/L3                 
                 + - - - - - - - -                                   
-     +--------++-------------------+++--------+ +-----------+       
-     Attachment   Provider Network   Attachment Customer Site       
-      Circuit         Segment         Circuit      Segment          
                                                                     
   x – Logical interface represented by VLAN on physical interface   
   # - Service instances (with unique MPLS labels)                    
   * - Service Demarcation Point                                     
+
