@@ -2224,21 +2224,20 @@ distribution even in non-ECMP friendly network topologies. See also <span><a hre
 <pre>
 VLANs representing slices           VLANs representing slices
 
-           |     ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─      |             |
-           |                        |     |             |
-┌──────┐   ▼   ┌─┴───┐ Provider ┌─────┐   ▼   ┌─────┐   ▼   ┌──────┐
-|      ●───────●■    |          |    ■●───────●     ●───────●      |
-| NF   ●───────●■ PE |          | PE ■●───────●L2/L3●───────●   NF |
-|      ●───────●■    |          |    ■●───────●     ●───────●      |
-└──────┘       └─┬───┘  Network └─────┘       └─────┘       └──────┘
-                                    |
-                 └ ─ ─ ─ ─ ─ ─ ─ ─ ─
-      └────────┘└────────────────────┘└────────┘ └───────────┘
-      Attachment   Provider Network   Attachment Customer Site
-       Circuit         Segment         Circuit      Segment
+           |     +------------------+     |             |
+           |     |                  |     |             |
++------+   v   +-+---+ Provider +---+-+   v   +-----+   v   +------+
+|      +-------+*    |          |    *+-------+     +-------+      |
+| NF   +-------+* PE |          | PE *+-------+L2/L3+-------+   NF |
+|      +-------+*    |          |    *+-------+     +-------+      |
++------+       +-+---+  Network +---+-+       +-----+       +------+
+                 |                  |
+                 +------------------+
+       |------||----------------------||------||-----------
+           AC      Provider Network       AC     Customer Site
 
- ● – Logical interface represented by a VLAN on a physical interface
- ■ - Service Demarcation Point
+ + Logical interface represented by a VLAN on a physical interface
+ * SDP
 </pre>
 </div>
 <figcaption><a href="#figure-12" class="selfRef">Figure 12</a>:
