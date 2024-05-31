@@ -1036,7 +1036,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Szarkowicz, et al.</td>
-<td class="center">Expires 1 December 2024</td>
+<td class="center">Expires 2 December 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1049,12 +1049,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-teas-5g-ns-ip-mpls-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-05-30" class="published">30 May 2024</time>
+<time datetime="2024-05-31" class="published">31 May 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-12-01">1 December 2024</time></dd>
+<dd class="expires"><time datetime="2024-12-02">2 December 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1119,7 +1119,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 1 December 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 2 December 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1209,7 +1209,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-transport-planes-mapping-mo" class="internal xref">Transport Planes Mapping Models</a></p>
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-inter-pe-transfer-plane-map" class="internal xref">Inter-PE Transfer Plane Mapping Models</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-5qi-unaware-model-2" class="internal xref">5QI-unaware Model</a></p>
@@ -3438,11 +3438,11 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
 </div>
 <div id="transport-plane-mapping-models">
 <section id="section-6">
-      <h2 id="name-transport-planes-mapping-mo">
-<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-transport-planes-mapping-mo" class="section-name selfRef">Transport Planes Mapping Models</a>
+      <h2 id="name-inter-pe-transfer-plane-map">
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-inter-pe-transfer-plane-map" class="section-name selfRef">Inter-PE Transfer Plane Mapping Models</a>
       </h2>
-<p id="section-6-1">A transport plane refers to a specific forwarding behavior between PEs in order to provide packet delivery that is consistent with the corresponding SLOs.
-   A network operator can define multiple transport planes within a single NRP. A transport plane may be realized in multiple ways such as (but not limited to):<a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-6-1">An inter-PE transfer plane refers to a specific forwarding behavior between PEs in order to provide packet delivery that is consistent with the corresponding SLOs.
+   A network operator can define multiple inter-PE transfer planes within a single NRP. An inter-PE transfer plane may be realized in multiple ways such as (but not limited to):<a href="#section-6-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-6-2.1">
           <p id="section-6-2.1.1">A mesh of RSVP-TE <span>[<a href="#RFC3209" class="cite xref">RFC3209</a>]</span> or SR-TE <span>[<a href="#RFC9256" class="cite xref">RFC9256</a>]</span> tunnels created with specific optimization criteria and
@@ -3452,16 +3452,16 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
           <p id="section-6-2.2.1">A Flex-Algorithm <span>[<a href="#RFC9350" class="cite xref">RFC9350</a>]</span> with a particular metric-type (e.g., latency), or one that only uses links with particular properties (e.g., MACsec link <span>[<a href="#IEEE802.1AE" class="cite xref">IEEE802.1AE</a>]</span>), or excludes links that are within a particular geography.<a href="#section-6-2.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="section-6-3">Also, transport planes may be realized using separate NRPs. However, such an approach is left out of the scope given the current state of the technology (2024).<a href="#section-6-3" class="pilcrow">¶</a></p>
-<p id="section-6-4">Detailed realization of transport planes is out of the scope of this document.<a href="#section-6-4" class="pilcrow">¶</a></p>
+<p id="section-6-3">Also, inter-PE transfer planes may be realized using separate NRPs. However, such an approach is left out of the scope given the current state of the technology (2024).<a href="#section-6-3" class="pilcrow">¶</a></p>
+<p id="section-6-4">Detailed realization of inter-PE transfer planes is out of the scope of this document.<a href="#section-6-4" class="pilcrow">¶</a></p>
 <p id="section-6-5"><a href="#_figure-23" class="auto internal xref">Figure 29</a> depicts an example of a simple network with two transport
    planes, each using a mesh of TE tunnels with or without Path Computation Element (PCE) <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>, and with or without bandwidth
    reservations.
    <a href="#sec-capacity-planning" class="auto internal xref">Section 7</a> discusses in detail different bandwidth
    models that can be deployed in the provider network.  However,
-   discussion about how to realize or orchestrate transport planes is
+   discussion about how to realize or orchestrate inter-PE transfer planes is
    out of scope for this document.<a href="#section-6-5" class="pilcrow">¶</a></p>
-<span id="name-example-of-transport-planes"></span><div id="_figure-23">
+<span id="name-example-of-inter-pe-transfe"></span><div id="_figure-23">
 <figure id="figure-29">
         <div class="alignCenter art-text artwork" id="section-6-6.1">
 <pre>
@@ -3470,46 +3470,46 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
 │               │   ║   ╔═══════════════════════════▷│      │
 │  ┌ ─ ─ ─ ─ ┐  │   ║   ╚═════════════════════╗      └──────┘
 │            ●══════╝   ╔═════════════════════╝
-│  │Transport●════════════════════════════════╗      ┌──────┐
+│  │Transfert●════════════════════════════════╗      ┌──────┐
 │    Plane A ●═════════════╗                  ╚═════&gt;│ PE-B │
 │  │         ●═══════╗  ║  ║  ╔═══╗   ╔═══╗   ╔═════▷│      │
 │   ─ ─ ─ ─ ─   │    ║  ║  ║  ║   ║   ║   ║   ║      └──────┘
 │               │    ║  ║  ║  ║   ╚═══╝   ╚═══╝
 │  ┌ ─ ─ ─ ─ ┐  │    ║  ║  ║  ║                      ┌──────┐
 │            ○═══════║══╝  ╚════════════════════════&gt;│ PE-C │
-│  │Transport○═══════║════════╝               ╔═════▷│      │
+│  │Transfert○═══════║════════╝               ╔═════▷│      │
 │    Plane B ○═══════║═════════════════╗      ║      └──────┘
 │  │         ○═════╗ ╚═══════════════╗ ║      ║
 │   ─ ─ ─ ─ ─   │  ║ ╔═╗ ╔═╗ ╔═╗ ╔═╗ ║ ╚══════╝      ┌──────┐
 │               │  ║ ║ ║ ║ ║ ║ ║ ║ ║ ╚══════════════&gt;│ PE-D │
 └───────────────┘  ╚═╝ ╚═╝ ╚═╝ ╚═╝ ╚════════════════▷│      │
                                                      └──────┘
-         ●════════▶  Tunnels of Transport Plane A
-         ○════════▷  Tunnels of Transport Plane B
+         ●════════▶  Tunnels of Inter-PE Transfer Plane A
+         ○════════▷  Tunnels of Inter-PE Transfer Plane B
 </pre>
 </div>
 <figcaption><a href="#figure-29" class="selfRef">Figure 29</a>:
-<a href="#name-example-of-transport-planes" class="selfRef">Example of Transport Planes Relying on TE Tunnels</a>
+<a href="#name-example-of-inter-pe-transfe" class="selfRef">Example of Inter-PE Transfer Planes Relying on TE Tunnels</a>
         </figcaption></figure>
 </div>
-<p id="section-6-7">Note that there might be multiple tunnels within a single transport plane
-   between any pair of PEs. <a href="#_figure-23" class="auto internal xref">Figure 29</a> shows only single
-   tunnel per transport plane for (ingress PE, egress PE) pair.<a href="#section-6-7" class="pilcrow">¶</a></p>
-<p id="section-6-8">It is worth noting that TN QoS Classes and Transport Planes are
+<p id="section-6-7">For illustration purposes, <a href="#_figure-23" class="auto internal xref">Figure 29</a> shows only single
+   tunnels per inter-PE transfer plane for (ingress PE, egress PE) pair. However, there might be multiple tunnels within a single inter-PE transfer plane
+   between any pair of PEs.<a href="#section-6-7" class="pilcrow">¶</a></p>
+<p id="section-6-8">It is worth noting that TN QoS Classes and inter-PE transfer planes are
    orthogonal.  The TN domain can be operated with, e.g., 8 TN QoS Classes (representing 8 hardware queues in the
-   routers), and 2 Transport Planes (e.g., latency optimized transport
+   routers), and 2 inter-PE transfer planes (e.g., latency optimized transport
    plane using link latency metrics for path calculation, and transport
    plane following Interior Gateway Protocol (IGP) metrics).  TN QoS Class determines the per-hop
    behavior when the packets are transiting through the provider network,
-   while transport plane determines the paths for packets through provider
+   while inter-PE transfer plane determines the paths for packets through provider
    network based on operator's business model (operator's requirements).
    This path can be optimised or constrained.<a href="#section-6-8" class="pilcrow">¶</a></p>
 <p id="section-6-9">Similar to the QoS mapping models discussed in <a href="#sec-qos-map" class="auto internal xref">Section 5</a>, for mapping
-   to transport planes at the ingress PE, both 5QI-unaware and 5QI-aware
+   to inter-PE transfer planes at the ingress PE, both 5QI-unaware and 5QI-aware
    models are defined.  Essentially, entire slices can be mapped to
-   transport planes without 5G QoS consideration (5QI-unaware model). For example,
+   inter-PE transfer planes without 5G QoS consideration (5QI-unaware model). For example,
    flows with different 5G QoS Classes, even from same
-   slice, can be mapped to different transport planes (5QI-aware
+   slice, can be mapped to different inter-PE transfer planes (5QI-aware
    model).<a href="#section-6-9" class="pilcrow">¶</a></p>
 <div id="qi-unaware-model">
 <section id="section-6.1">
@@ -3520,10 +3520,10 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    doesn't take into account 5G QoS during execution of per-hop
    behavior.  The entire slice is mapped to single TN QoS Class,
    therefore the entire slice is subject to the same per-hop behavior.
-   Similarly, in 5QI-unaware transport plane mapping model, the entire
-   slice is mapped to a single transport plane, as depicted in
+   Similarly, in 5QI-unaware inter-PE transfer plane mapping model, the entire
+   slice is mapped to a single inter-PE transfer plane, as depicted in
    <a href="#_figure-24" class="auto internal xref">Figure 30</a>.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
-<span id="name-network-slice-to-transport-"></span><div id="_figure-24">
+<span id="name-network-slice-to-inter-pe-t"></span><div id="_figure-24">
 <figure id="figure-30">
           <div class="alignCenter art-text artwork" id="section-6.1-2.1">
 <pre>
@@ -3565,7 +3565,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
 </pre>
 </div>
 <figcaption><a href="#figure-30" class="selfRef">Figure 30</a>:
-<a href="#name-network-slice-to-transport-" class="selfRef">Network Slice to Transport Plane Mapping (5QI-unaware Model)</a>
+<a href="#name-network-slice-to-inter-pe-t" class="selfRef">Network Slice to Inter-PE Transfer Plane Mapping (5QI-unaware Model)</a>
           </figcaption></figure>
 </div>
 </section>
@@ -3575,12 +3575,12 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
         <h3 id="name-5qi-aware-model-2">
 <a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-5qi-aware-model-2" class="section-name selfRef">5QI-aware Model</a>
         </h3>
-<p id="section-6.2-1">In 5QI-aware model, the traffic can be mapped to transport planes at
+<p id="section-6.2-1">In 5QI-aware model, the traffic can be mapped to inter-PE transfer planes at
    the granularity of 5G QoS Class.  Given that the potential number of
-   transport planes is limited, packets from multiple 5G QoS Classes
-   with similar characteristics are mapped to a common transport plane,
+   inter-PE transfer planes is limited, packets from multiple 5G QoS Classes
+   with similar characteristics are mapped to a common inter-PE transfer plane,
    as depicted in <a href="#_figure-25" class="auto internal xref">Figure 31</a>.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
-<span id="name-network-slice-to-transport-p"></span><div id="_figure-25">
+<span id="name-network-slice-to-inter-pe-tr"></span><div id="_figure-25">
 <figure id="figure-31">
           <div class="alignCenter art-text artwork" id="section-6.2-2.1">
 <pre>
@@ -3622,7 +3622,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
 </pre>
 </div>
 <figcaption><a href="#figure-31" class="selfRef">Figure 31</a>:
-<a href="#name-network-slice-to-transport-p" class="selfRef">Network Slice to Transport Plane mapping (5QI-aware Model)</a>
+<a href="#name-network-slice-to-inter-pe-tr" class="selfRef">Network Slice to Inter-PE Transfer Plane mapping (5QI-aware Model)</a>
           </figcaption></figure>
 </div>
 </section>
@@ -4012,7 +4012,7 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
 <li class="normal" id="section-11-2.1">
           <p id="section-11-2.1.1">Conformance to security constraints:<a href="#section-11-2.1.1" class="pilcrow">¶</a></p>
 <p id="section-11-2.1.2">
-Specific security requests, such as not routing traffic through a particular geographical region can be met by mapping the traffic to a transport plane that avoids that region.<a href="#section-11-2.1.2" class="pilcrow">¶</a></p>
+Specific security requests, such as not routing traffic through a particular geographical region can be met by mapping the traffic to an inter-PE transfer plane that avoids that region.<a href="#section-11-2.1.2" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-11-2.2">
           <p id="section-11-2.2.1">IETF NSC authentication:<a href="#section-11-2.2.1" class="pilcrow">¶</a></p>
@@ -4027,7 +4027,7 @@ Adequate admission control policies, for example policers as described in <a hre
         <li class="normal" id="section-11-2.4">
           <p id="section-11-2.4.1">Data Confidentiality and Integrity of an IETF Network Slice:<a href="#section-11-2.4.1" class="pilcrow">¶</a></p>
 <p id="section-11-2.4.2">
-As described in <span><a href="https://rfc-editor.org/rfc/rfc9543#section-5.1.2.1" class="relref">Section 5.1.2.1</a> of [<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>, the customer might request an SLE that mandates encryption. As described in <a href="#transport-plane-mapping-models" class="auto internal xref">Section 6</a>, this can be achieved, e.g., by mapping the traffic to a transport plane that uses only MACsec-encrypted links.<a href="#section-11-2.4.2" class="pilcrow">¶</a></p>
+As described in <span><a href="https://rfc-editor.org/rfc/rfc9543#section-5.1.2.1" class="relref">Section 5.1.2.1</a> of [<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>, the customer might request an SLE that mandates encryption. As described in <a href="#transport-plane-mapping-models" class="auto internal xref">Section 6</a>, this can be achieved, e.g., by mapping the traffic to an inter-PE transfer plane that uses only MACsec-encrypted links.<a href="#section-11-2.4.2" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="section-11-3">Many of the YANG modules cited in this document define schema for data that is designed to be accessed via network management protocols such as NETCONF <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> or RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>. The lowest NETCONF layer is the secure transport layer, and the mandatory-to-implement secure transport is Secure Shell (SSH) <span>[<a href="#RFC6242" class="cite xref">RFC6242</a>]</span>. The lowest RESTCONF layer is HTTPS, and the mandatory-to-implement secure transport is TLS <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>.<a href="#section-11-3" class="pilcrow">¶</a></p>
