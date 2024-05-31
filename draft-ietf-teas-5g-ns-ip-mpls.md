@@ -690,7 +690,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    |xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:ttdd:dddd|
    +----+----+----+----+----+----+----+----+
    <------------------128 bits------------->
-    
+
     tt     - SST (8 bits)
     dddddd - SD (24 bits)
 ~~~
@@ -1569,7 +1569,7 @@ Also, inter-PE transfer planes may be realized using separate NRPs. However, suc
    :+---------------+:       |               |
    :|  SDP          |:       |               |
    :|  +----------+ |:       |               |
-   :|  |     NS 5 +----------+               | 
+   :|  |     NS 5 +----------+               |
    :|  +----------+ |:                       |
    :+---------------+:                       |
    '.. .. .. .. .. ..                        |
@@ -1591,7 +1591,7 @@ Also, inter-PE transfer planes may be realized using separate NRPs. However, suc
      :        AC       :      PE                 |
      :+---------------+:                         |
    R :|  SDP          |:                         |
-   F :|  +----------+ |:                         |                        
+   F :|  +----------+ |:                         |
    C :|  | 5G QoS A +------+                     |
    9 :|  +----------+ |:   |                     |
    5 :|  +----------+ |:   |                     |
