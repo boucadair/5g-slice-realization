@@ -2499,32 +2499,29 @@ change at domain boundaries.<a href="#section-4.3-3.4.1" class="pilcrow">¶</a><
 <figure id="figure-17">
             <div class="alignCenter art-text artwork" id="section-4.3.2-2.1">
 <pre>
-     &lt;──────        &lt;──────        &lt;──────
+     &lt;------        &lt;------        &lt;------
      BGP VPN        BGP VPN        BGP VPN
        COM=1, L=A"    COM=1, L=A'    COM=1, L=A
        COM=2, L=B"    COM=2, L=B'    COM=2, L=B
        COM=3, L=C"    COM=3, L=C'    COM=3, L=C
-    &lt;─────────────&gt;&lt;────────────&gt;&lt;─────────────&gt;
+&lt;-------------&gt;&lt;------------&gt;&lt;-------------&gt;
                nhs  nhs      nhs  nhs
                                                         VLANs
- service instances                service instances  representing
+service instances                service instances  representing
 representing slices              representing slices    slices
-     │          ┌ ─ ─ ─ ─ ─ ─ ─ ─            │           │
-     │               Provider    │           │           │
-┌────▼─┐       ┌┴────┐       ┌─────┐       ┌─v──────┐    v  ┌──────┐
-│    ◙ │       │■    │       │    ■│       │ ◙………………●───────●      │
-│ NF ◙ ├───────┤■ PE │       │ PE ■├───────┤ ◙………………●───────●   NF │
-│    ◙ │       │■    │       │    ■│       │ ◙………………●───────●      │
-└──────┘       └┬────┘       └─────┘       └────────┘       └──────┘
-                      Network    │            L2/L3
-                └ ─ ─ ─ ─ ─ ─ ─ ─
-     └────────┘└───────────────────┘┘└────────┘ └───────────┘
-     Attachment   Provider Network   Attachment Customer Site
-      Circuit         Segment         Circuit      Segment
+     |          + - - - - - - - -            |           |
+     |          |    Provider    |           |           |
++----v-+       ++----+       +-----+       +-v------+    v  +------+
+|    ◙ |       |■    |       |    ■|       | ◙………………+.......+      |
+| NF ◙ +-------+■ PE |       | PE ■+-------+ ◙………………+.......+   NF |
+|    ◙ |       |■    |       |    ■|       | ◙………………+.......+      |
++------+       ++----+       +-----+       +--------+       +------+
+                      Network    |            L2/L3
+                + - - - - - - - -
 
-  ● – Logical interface represented by VLAN on physical interface
-  ◙ - Service instances (with unique MPLS labels)
-  ■ - Service Demarcation Point
+  ● Logical interface represented by VLAN on physical interface
+  ◙ Service instances (with unique MPLS label)
+  ■ SDP
 </pre>
 </div>
 <figcaption><a href="#figure-17" class="selfRef">Figure 17</a>:

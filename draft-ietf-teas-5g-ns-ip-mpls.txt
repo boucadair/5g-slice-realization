@@ -1222,32 +1222,29 @@ Table of Contents
    VLAN nor an IP address for slice identification at the SDP, but
    instead uses the MPLS label.
 
-        <──────        <──────        <──────
+        <------        <------        <------
         BGP VPN        BGP VPN        BGP VPN
           COM=1, L=A"    COM=1, L=A'    COM=1, L=A
           COM=2, L=B"    COM=2, L=B'    COM=2, L=B
           COM=3, L=C"    COM=3, L=C'    COM=3, L=C
-       <─────────────><────────────><─────────────>
+   <-------------><------------><------------->
                   nhs  nhs      nhs  nhs
                                                            VLANs
-    service instances                service instances  representing
+   service instances                service instances  representing
    representing slices              representing slices    slices
-        │          ┌ ─ ─ ─ ─ ─ ─ ─ ─            │           │
-        │               Provider    │           │           │
-   ┌────▼─┐       ┌┴────┐       ┌─────┐       ┌─v──────┐    v  ┌──────┐
-   │    ◙ │       │■    │       │    ■│       │ ◙………………●───────●      │
-   │ NF ◙ ├───────┤■ PE │       │ PE ■├───────┤ ◙………………●───────●   NF │
-   │    ◙ │       │■    │       │    ■│       │ ◙………………●───────●      │
-   └──────┘       └┬────┘       └─────┘       └────────┘       └──────┘
-                         Network    │            L2/L3
-                   └ ─ ─ ─ ─ ─ ─ ─ ─
-        └────────┘└───────────────────┘┘└────────┘ └───────────┘
-        Attachment   Provider Network   Attachment Customer Site
-         Circuit         Segment         Circuit      Segment
+        |          + - - - - - - - -            |           |
+        |          |    Provider    |           |           |
+   +----v-+       ++----+       +-----+       +-v------+    v  +------+
+   |    ◙ |       |■    |       |    ■|       | ◙………………+.......+      |
+   | NF ◙ +-------+■ PE |       | PE ■+-------+ ◙………………+.......+   NF |
+   |    ◙ |       |■    |       |    ■|       | ◙………………+.......+      |
+   +------+       ++----+       +-----+       +--------+       +------+
+                         Network    |            L2/L3
+                   + - - - - - - - -
 
-     ● – Logical interface represented by VLAN on physical interface
-     ◙ - Service instances (with unique MPLS labels)
-     ■ - Service Demarcation Point
+     ● Logical interface represented by VLAN on physical interface
+     ◙ Service instances (with unique MPLS label)
+     ■ SDP
 
              Figure 17: Example of MPLS Hand-off with Option B
 
