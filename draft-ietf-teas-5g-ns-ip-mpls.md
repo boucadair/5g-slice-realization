@@ -1462,18 +1462,18 @@ to TN QoS Classes may be rather common.
 
 #  Inter-PE Transfer Plane Mapping Models {#transport-plane-mapping-models}
 
-   An inter-PE transfer plane refers to a specific forwarding behavior between PEs in order to provide packet delivery that is consistent with the corresponding SLOs.
-   A network operator can define multiple inter-PE transfer planes within a single NRP. An inter-PE transfer plane may be realized in multiple ways such as (but not limited to):
+   An inter-PE transfer plane (or "transfer plane") refers to a specific forwarding behavior between PEs in order to provide packet delivery that is consistent with the corresponding SLOs.
+   A network operator can define multiple inter-PE transfer planes within a single NRP. A transfer plane may be realized in multiple ways such as (but not limited to):
 
    * A mesh of RSVP-TE {{?RFC3209}} or SR-TE {{?RFC9256}} tunnels created with specific optimization criteria and
    constraints. For example, mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.
    * A Flex-Algorithm {{?RFC9350}} with a particular metric-type (e.g., latency), or one that only uses links with particular properties (e.g., MACsec link {{IEEE802.1AE}}), or excludes links that are within a particular geography.
 
+These protocols can be controlled, e.g., by tuning the protocol list under the "underlay-transport" data node defined in the L3VPN Network Model (L3NM) {{?RFC9182}} and the L2VPN Network Model (L2NM) {{?RFC9291}}.
+
 Also, inter-PE transfer planes may be realized using separate NRPs. However, such an approach is left out of the scope given the current state of the technology (2024).
 
-   Detailed realization of inter-PE transfer planes is out of the scope of this document.
-
-   {{figure-23}} depicts an example of a simple network with two transport
+   {{figure-23}} depicts an example of a simple network with two transfer
    planes, each using a mesh of TE tunnels with or without Path Computation Element (PCE) {{?RFC5440}}, and with or without bandwidth
    reservations.
    {{sec-capacity-planning}} discusses in detail different bandwidth
@@ -1507,25 +1507,25 @@ Also, inter-PE transfer planes may be realized using separate NRPs. However, suc
 {: #figure-23 title="Example of Inter-PE Transfer Planes Relying on TE Tunnels" artwork-align="center"}
 
    For illustration purposes, {{figure-23}} shows only single
-   tunnels per inter-PE transfer plane for (ingress PE, egress PE) pair. However, there might be multiple tunnels within a single inter-PE transfer plane
+   tunnels per transfer plane for (ingress PE, egress PE) pair. However, there might be multiple tunnels within a single transfer plane
    between any pair of PEs.
 
    It is worth noting that TN QoS Classes and inter-PE transfer planes are
    orthogonal.  The TN domain can be operated with, e.g., 8 TN QoS Classes (representing 8 hardware queues in the
-   routers), and 2 inter-PE transfer planes (e.g., latency optimized transport
-   plane using link latency metrics for path calculation, and transport
+   routers), and 2 transfer planes (e.g., latency optimized transfer
+   plane using link latency metrics for path calculation, and transfert
    plane following Interior Gateway Protocol (IGP) metrics).  TN QoS Class determines the per-hop
    behavior when the packets are transiting through the provider network,
-   while inter-PE transfer plane determines the paths for packets through provider
+   while transfer plane determines the paths for packets through provider
    network based on operator's business model (operator's requirements).
-   This path can be optimised or constrained.
+   This path can be optimized or constrained.
 
    Similar to the QoS mapping models discussed in {{sec-qos-map}}, for mapping
-   to inter-PE transfer planes at the ingress PE, both 5QI-unaware and 5QI-aware
+   to transfer planes at the ingress PE, both 5QI-unaware and 5QI-aware
    models are defined.  Essentially, entire slices can be mapped to
-   inter-PE transfer planes without 5G QoS consideration (5QI-unaware model). For example,
+   transfer planes without 5G QoS consideration (5QI-unaware model). For example,
    flows with different 5G QoS Classes, even from same
-   slice, can be mapped to different inter-PE transfer planes (5QI-aware
+   slice, can be mapped to different transfer planes (5QI-aware
    model).
 
 ##  5QI-unaware Model
@@ -1535,7 +1535,7 @@ Also, inter-PE transfer planes may be realized using separate NRPs. However, suc
    behavior.  The entire slice is mapped to single TN QoS Class,
    therefore the entire slice is subject to the same per-hop behavior.
    Similarly, in 5QI-unaware inter-PE transfer plane mapping model, the entire
-   slice is mapped to a single inter-PE transfer plane, as depicted in
+   slice is mapped to a single transfer plane, as depicted in
    {{figure-24}}.
 
 ~~~
@@ -1579,10 +1579,10 @@ Also, inter-PE transfer planes may be realized using separate NRPs. However, suc
 
 ##  5QI-aware Model
 
-   In 5QI-aware model, the traffic can be mapped to inter-PE transfer planes at
+   In 5QI-aware model, the traffic can be mapped to transfer planes at
    the granularity of 5G QoS Class.  Given that the potential number of
    inter-PE transfer planes is limited, packets from multiple 5G QoS Classes
-   with similar characteristics are mapped to a common inter-PE transfer plane,
+   with similar characteristics are mapped to a common transfer plane,
    as depicted in {{figure-25}}.
 
 ~~~
