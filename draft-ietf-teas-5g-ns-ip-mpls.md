@@ -762,7 +762,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    within cloud IP fabric ({{figure-mpls-10b-hand-off}}, right hand side)). On the
    AC connected to a PE, packets are already MPLS
    encapsulated (or MPLS-in-UDP/MPLS-in-IP encapsulated, if cloud or compute
-   infrastructure don’t support MPLS encapsulation). Therefore,
+   infrastructure don't support MPLS encapsulation). Therefore,
    the PE uses neither a VLAN nor an IP address for slice
    identification at the SDP, but instead uses the MPLS label.
 
@@ -1940,7 +1940,7 @@ Many of the YANG modules cited in this document define schema for data that is d
 The NETCONF access control model {{!RFC8341}} provides the means to restrict access for particular NETCONF or RESTCONF users to a preconfigured subset of all available NETCONF or RESTCONF protocol operations and content.
 
 In order to avoid the need for a mapping table to associate source/destination IP
-addresses and slices’ specific S-NSSAIs, {{sec-ip-hof}} describes an approach where some or all S-NSSAI bits
+addresses and slices' specific S-NSSAIs, {{sec-ip-hof}} describes an approach where some or all S-NSSAI bits
 are embedded in an IPv6 address using an algorithm approach. An attacker from within the transport network
 who has access to the mapping configuration may infer the slices to which belong a packet. It may also
 alter these bits which may lead to steering the packet via a distinct network slice, and thus lead to
