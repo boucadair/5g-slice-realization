@@ -391,7 +391,7 @@ The AC is the logical connection that attaches a CE ({{sec-ce}}) to a PE ({{sec-
 
 This document uses the concept of distributed CEs and PEs (e.g., {{Section 3.4.3 of ?RFC4664}}) to consolidate a CE/AC/PE definition that is consistent with the orchestration perimeters ({{sec-orch}}). The CEs and PEs delimit respectively the customer and provider orchestration domains, while an AC interconnects these domains.
 
-For consistency with the AC data models terminology (e.g., {{?I-D.ietf-opsawg-teas-attachment-circuit}} and {{?I-D.ietf-opsawg-ntw-attachment-circuit}}), this document assumes that an AC is configured on a "bearer", which represents the underlying connectivity.
+For consistency with the AC data models terminology (e.g., {{?I-D.ietf-opsawg-teas-attachment-circuit}} and {{?I-D.ietf-opsawg-ntw-attachment-circuit}}), this document assumes that an AC is configured on a "bearer", which represents the underlying connectivity. For example, the bearer is illustrated with "===" in Figures {{>fig-distribute-ce}} and {{>fig-50}}.
 
 Examples of ACs are Virtual Local Area Networks (VLANs) (AC) configured on a physical interface (bearer) or an Overlay VXLAN EVI (AC) configured on an IP underlay (bearer).
 
@@ -443,9 +443,10 @@ Provider Network:
 : Represents the connectivity between two PEs. The realization of this segment is controlled by an NSC ({{Section 6.3 of !RFC9543}}).
 
 Attachment Circuit:
-: Represents the connectivity between CEs and PEs. The orchestration of this segment relies partially upon an NSC for the configuration of the AC on the PE customer-facing interfaces and the Customer Site Orchestration for the configuration of the AC on the CE. More precisely, a PE and a CE connected via an AC need to be
-provisioned with consistent data plane and control plane information (e.g., VLAN-
-IDs, IP addresses/subnets, or BGP  Autonomous System (AS) Number). Hence, the realization of this
+: The orchestration of this segment relies partially upon an NSC for the configuration of the AC on the PE customer-facing interfaces and the Customer Site Orchestration for the configuration of the AC on the CE.
+: PEs and CEs that are connected via an AC need to be
+provisioned with consistent data plane and control plane information (VLAN-
+IDs, IP addresses/subnets, BGP  Autonomous System (AS) Number, etc.). Hence, the realization of this
 interconnection is technology-specific and requires coordination between the Customer Site Orchestration and an NSC. Automating the provisioning and management of the AC is thus key to automate the overall service provisioning. Aligned with {{?RFC8969}}, this document assumes that this coordination is based upon standard YANG data models and APIs.
 : The provisioning of a Network Slice may rely on new or existing ACs.
 : {{figure-4}} is a basic example of a Layer 3 CE-PE link realization
