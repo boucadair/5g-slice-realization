@@ -3761,47 +3761,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
           </tbody>
         </table>
 </div>
-<span id="name-inter-dc-traffic-demand-matr"></span><div id="_table-y">
-<table class="center" id="table-2">
-          <caption>
-<a href="#table-2" class="selfRef">Table 2</a>:
-<a href="#name-inter-dc-traffic-demand-matr" class="selfRef">Inter-DC Traffic Demand Matrix (Slice Y)</a>
-          </caption>
-<thead>
-            <tr>
-              <th class="text-left" rowspan="1" colspan="1">From/To</th>
-              <th class="text-left" rowspan="1" colspan="1">DC 1</th>
-              <th class="text-left" rowspan="1" colspan="1">DC 2</th>
-              <th class="text-left" rowspan="1" colspan="1">DC 3</th>
-              <th class="text-center" rowspan="1" colspan="1">Total from DC</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="text-left" rowspan="1" colspan="1">DC 1</td>
-              <td class="text-left" rowspan="1" colspan="1">n/a</td>
-              <td class="text-left" rowspan="1" colspan="1">4</td>
-              <td class="text-left" rowspan="1" colspan="1">2.5</td>
-              <td class="text-center" rowspan="1" colspan="1">6.0</td>
-            </tr>
-            <tr>
-              <td class="text-left" rowspan="1" colspan="1">DC 2</td>
-              <td class="text-left" rowspan="1" colspan="1">0.5</td>
-              <td class="text-left" rowspan="1" colspan="1">n/a</td>
-              <td class="text-left" rowspan="1" colspan="1">0.8</td>
-              <td class="text-center" rowspan="1" colspan="1">1.0</td>
-            </tr>
-            <tr>
-              <td class="text-left" rowspan="1" colspan="1">DC 3</td>
-              <td class="text-left" rowspan="1" colspan="1">2.6</td>
-              <td class="text-left" rowspan="1" colspan="1">3</td>
-              <td class="text-left" rowspan="1" colspan="1">n/a</td>
-              <td class="text-center" rowspan="1" colspan="1">5.1</td>
-            </tr>
-          </tbody>
-        </table>
-</div>
-<p id="section-7.1-9"><span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="cite xref">I-D.ietf-teas-ietf-network-slice-nbi-yang</a>]</span> can be used to convey all
+<p id="section-7.1-8"><span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="cite xref">I-D.ietf-teas-ietf-network-slice-nbi-yang</a>]</span> can be used to convey all
    of the information in the traffic matrix to an NSC.  The
    NSC applies policers corresponding to the last column in the traffic
    matrix to the appropriate PE routers, in order to enforce the
@@ -3811,8 +3771,8 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    controller may apply shapers in the direction from the TN to the DC,
    if otherwise there is the possibility of a link in the DC being
    oversubscribed.  Note that a peer NF endpoint of an AC can be
-   identified using 'peer-sap-id' as defined in <span>[<a href="#RFC9408" class="cite xref">RFC9408</a>]</span>.<a href="#section-7.1-9" class="pilcrow">¶</a></p>
-<p id="section-7.1-10">Depending on the bandwidth model used in the provider network (<a href="#sec-bw" class="auto internal xref">Section 7.2</a>),
+   identified using 'peer-sap-id' as defined in <span>[<a href="#RFC9408" class="cite xref">RFC9408</a>]</span>.<a href="#section-7.1-8" class="pilcrow">¶</a></p>
+<p id="section-7.1-9">Depending on the bandwidth model used in the provider network (<a href="#sec-bw" class="auto internal xref">Section 7.2</a>),
    the other values in the matrix, i.e., the DC-to-DC demands, may not
    be directly applied to the provider network.  Even so, the
    information may be useful to the NSC for capacity planning and
@@ -3822,8 +3782,8 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    Model for L2VPN Service Delivery <span>[<a href="#RFC8466" class="cite xref">RFC8466</a>]</span> could be used instead of
    <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="cite xref">I-D.ietf-teas-ietf-network-slice-nbi-yang</a>]</span>, as they support
    conveying the bandwidth information in the right-most column of the
-   traffic matrix.<a href="#section-7.1-10" class="pilcrow">¶</a></p>
-<p id="section-7.1-11">The provider network may be implemented in such a way that it has
+   traffic matrix.<a href="#section-7.1-9" class="pilcrow">¶</a></p>
+<p id="section-7.1-10">The provider network may be implemented in such a way that it has
    various types of paths, for example low-latency traffic might be
    mapped onto a different transport path to other traffic (for example
    a particular Flex-Algorithm, a particular set of TE paths, or a specific queue <span>[<a href="#RFC9330" class="cite xref">RFC9330</a>]</span>), as discussed
@@ -3833,7 +3793,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    <span>[<a href="#RFC8466" class="cite xref">RFC8466</a>]</span> do not support requesting a particular transport-type,
    e.g., low-latency.  One option is to augment these models to convey
    this information.  This can be achieved by reusing the 'underlay-
-   transport' construct defined in <span>[<a href="#RFC9182" class="cite xref">RFC9182</a>]</span> and <span>[<a href="#RFC9291" class="cite xref">RFC9291</a>]</span>.<a href="#section-7.1-11" class="pilcrow">¶</a></p>
+   transport' construct defined in <span>[<a href="#RFC9182" class="cite xref">RFC9182</a>]</span> and <span>[<a href="#RFC9291" class="cite xref">RFC9291</a>]</span>.<a href="#section-7.1-10" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-bw">
@@ -3897,7 +3857,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
 <p id="section-7.2.2-2">The bandwidth requirement from DCi to DCj is the sum of the DCi-DCj
    demands of the individual slices.  For example, if only slices "X" and
    "Y" are present, then the bandwidth requirement from "DC1" to "DC2"
-   is 12 units (8 units for slice "X" and 4 units for slice "Y").  When the
+   is 12 units (8 units for slice "X" (<a href="#_table-x" class="auto internal xref">Table 1</a>) and 4 units for slice "Y" (<a href="#_table-y" class="auto internal xref">Table 2</a>)).  When the
    5G NSO requests a new slice, the NSC, in its mind,
    increments the bandwidth requirement according to the requirements of
    the new slice.  For example, in <a href="#_figure-multi-DC" class="auto internal xref">Figure 32</a>, suppose a new slice is
@@ -3905,7 +3865,47 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    controller would increase its notion of the bandwidth requirement
    from "DC1" to "DC2" from 12 Gbps to 12.8 Gbps to accommodate the
    additional expected traffic.<a href="#section-7.2.2-2" class="pilcrow">¶</a></p>
-<p id="section-7.2.2-3">In the example, each DC has two PEs facing it for reasons of
+<span id="name-inter-dc-traffic-demand-matr"></span><div id="_table-y">
+<table class="center" id="table-2">
+            <caption>
+<a href="#table-2" class="selfRef">Table 2</a>:
+<a href="#name-inter-dc-traffic-demand-matr" class="selfRef">Inter-DC Traffic Demand Matrix (Slice Y)</a>
+            </caption>
+<thead>
+              <tr>
+                <th class="text-left" rowspan="1" colspan="1">From/To</th>
+                <th class="text-left" rowspan="1" colspan="1">DC 1</th>
+                <th class="text-left" rowspan="1" colspan="1">DC 2</th>
+                <th class="text-left" rowspan="1" colspan="1">DC 3</th>
+                <th class="text-center" rowspan="1" colspan="1">Total from DC</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-left" rowspan="1" colspan="1">DC 1</td>
+                <td class="text-left" rowspan="1" colspan="1">n/a</td>
+                <td class="text-left" rowspan="1" colspan="1">4</td>
+                <td class="text-left" rowspan="1" colspan="1">2.5</td>
+                <td class="text-center" rowspan="1" colspan="1">6.0</td>
+              </tr>
+              <tr>
+                <td class="text-left" rowspan="1" colspan="1">DC 2</td>
+                <td class="text-left" rowspan="1" colspan="1">0.5</td>
+                <td class="text-left" rowspan="1" colspan="1">n/a</td>
+                <td class="text-left" rowspan="1" colspan="1">0.8</td>
+                <td class="text-center" rowspan="1" colspan="1">1.0</td>
+              </tr>
+              <tr>
+                <td class="text-left" rowspan="1" colspan="1">DC 3</td>
+                <td class="text-left" rowspan="1" colspan="1">2.6</td>
+                <td class="text-left" rowspan="1" colspan="1">3</td>
+                <td class="text-left" rowspan="1" colspan="1">n/a</td>
+                <td class="text-center" rowspan="1" colspan="1">5.1</td>
+              </tr>
+            </tbody>
+          </table>
+</div>
+<p id="section-7.2.2-4">In the example, each DC has two PEs facing it for reasons of
    resilience.  The NSC needs to determine how to map
    the "DC1" to "DC2" bandwidth requirement to bandwidth reservations of TE
    LSPs from "DC1" to "DC2".  For example, if the routing configuration is
@@ -3924,7 +3924,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    causes traffic from "DC1" to land on "PE1B", rather than "PE1A".  The
    NSC may not be aware of the failure and therefore
    may not know that it now needs to apply bandwidth reservations to
-   paths from "PE1B" to "PE2A" / "PE2B".<a href="#section-7.2.2-3" class="pilcrow">¶</a></p>
+   paths from "PE1B" to "PE2A" / "PE2B".<a href="#section-7.2.2-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="scheme-3-te-paths-without-bandwidth-reservation">
