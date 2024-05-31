@@ -2304,22 +2304,20 @@ VLANs representing slices           VLANs representing slices
           <div class="alignCenter art-text artwork" id="section-4.2-5.1">
 <pre>
                                         Tunnels representing slices
+                 +------------------+                   |
+                 |                  |                   |
++------+       +--+--+ Provider +---+-+       +-----+   v   +------+
+|    o============*================*==========================o    |
+| NF   +-------+ PE  |          | PE  +-------+L2/L3+.......+   NF |
+|    o============*================*==========================o    |
++------+       +-+---+  Network +---+-+       +-----+       +------+
+                 |                  |
+                 +------------------+
+       |------||----------------------||------||-----------
+           AC      Provider Network       AC     Customer Site
 
-                  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ┐                   │
-                                                        │
-┌──────┐       ┌──┴──┐ Provider ┌───┴─┐       ┌─────┐   ▼   ┌──────┐
-│    ○════════════■════════════════■══════════════════════════○    │
-│ NF   ├───────┤ PE  │          │ PE  ├───────┤L2/L3├───────┤   NF │
-│    ○════════════■════════════════■══════════════════════════○    │
-└──────┘       └──┬──┘  Network └───┬─┘       └─────┘       └──────┘
-
-                  └ ─ ─ ─ ─ ─ ─ ─ ─ ┘
-      └────────┘└────────────────────┘└────────┘ └───────────┘
-      Attachment   Provider Network   Attachment Customer Site
-       Circuit         Segment         Circuit      Segment
-
-          ○ – tunnel (IPsec, GTP-U, ...) termination point
-          ■ - Service Demarcation Point
+o Tunnel (IPsec, GTP-U, ...) termination point
+* SDP
 </pre>
 </div>
 <figcaption><a href="#figure-13" class="selfRef">Figure 13</a>:

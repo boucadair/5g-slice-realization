@@ -1049,22 +1049,20 @@ Table of Contents
    representing a single slice.
 
                                            Tunnels representing slices
+                    +------------------+                   |
+                    |                  |                   |
+   +------+       +--+--+ Provider +---+-+       +-----+   v   +------+
+   |    o============*================*==========================o    |
+   | NF   +-------+ PE  |          | PE  +-------+L2/L3+.......+   NF |
+   |    o============*================*==========================o    |
+   +------+       +-+---+  Network +---+-+       +-----+       +------+
+                    |                  |
+                    +------------------+
+          |------||----------------------||------||-----------
+              AC      Provider Network       AC     Customer Site
 
-                     ┌ ─ ─ ─ ─ ─ ─ ─ ─ ┐                   │
-                                                           │
-   ┌──────┐       ┌──┴──┐ Provider ┌───┴─┐       ┌─────┐   ▼   ┌──────┐
-   │    ○════════════■════════════════■══════════════════════════○    │
-   │ NF   ├───────┤ PE  │          │ PE  ├───────┤L2/L3├───────┤   NF │
-   │    ○════════════■════════════════■══════════════════════════○    │
-   └──────┘       └──┬──┘  Network └───┬─┘       └─────┘       └──────┘
-
-                     └ ─ ─ ─ ─ ─ ─ ─ ─ ┘
-         └────────┘└────────────────────┘└────────┘ └───────────┘
-         Attachment   Provider Network   Attachment Customer Site
-          Circuit         Segment         Circuit      Segment
-
-             ○ – tunnel (IPsec, GTP-U, ...) termination point
-             ■ - Service Demarcation Point
+   o Tunnel (IPsec, GTP-U, ...) termination point
+   * SDP
 
     Figure 13: Example of 5G Slice with IP Hand-off Providing End-to-End
                                 Connectivity
