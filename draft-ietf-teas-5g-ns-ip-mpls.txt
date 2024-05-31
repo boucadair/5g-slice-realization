@@ -650,6 +650,9 @@ Table of Contents
 
    This document focuses on deployments where the Service Demarcation
    Points (SDPs) are located per Types 3 and 4 of Figure 1 of [RFC9543].
+   The concept of distributed PE (Section 3.3.4) assimilates CE-based
+   SDPs defined in Section 5.2 of [RFC9543] (i.e., Types 1 and 2) as SDP
+   Type 3 or 4 in this document.
 
    Resource synchronization for AC provisioning:  The realization of the
       AC is made up of TN resources shared between the Customer Site
