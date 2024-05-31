@@ -1608,7 +1608,7 @@ Engineering (TE). Whether all or a subset of these components are enabled is a d
           </h4>
 <p id="section-3.3.5-1">The AC is the logical connection that attaches a CE (<a href="#sec-ce" class="auto internal xref">Section 3.3.2</a>) to a PE (<a href="#sec-pe" class="auto internal xref">Section 3.3.4</a>). A CE is connected to a PE via one or multiple ACs. An AC is technology-specific.<a href="#section-3.3.5-1" class="pilcrow">¶</a></p>
 <p id="section-3.3.5-2">This document uses the concept of distributed CEs and PEs (e.g., <span><a href="https://rfc-editor.org/rfc/rfc4664#section-3.4.3" class="relref">Section 3.4.3</a> of [<a href="#RFC4664" class="cite xref">RFC4664</a>]</span>) to consolidate a CE/AC/PE definition that is consistent with the orchestration perimeters (<a href="#sec-orch" class="auto internal xref">Section 3.4</a>). The CEs and PEs delimit respectively the customer and provider orchestration domains, while an AC interconnects these domains.<a href="#section-3.3.5-2" class="pilcrow">¶</a></p>
-<p id="section-3.3.5-3">For consistency with the AC data models terminology (e.g., <span>[<a href="#I-D.ietf-opsawg-teas-attachment-circuit" class="cite xref">I-D.ietf-opsawg-teas-attachment-circuit</a>]</span> and <span>[<a href="#I-D.ietf-opsawg-ntw-attachment-circuit" class="cite xref">I-D.ietf-opsawg-ntw-attachment-circuit</a>]</span>), this document assumes that an AC is configured on a "bearer", which represents the underlying connectivity.<a href="#section-3.3.5-3" class="pilcrow">¶</a></p>
+<p id="section-3.3.5-3">For consistency with the AC data models terminology (e.g., <span>[<a href="#I-D.ietf-opsawg-teas-attachment-circuit" class="cite xref">I-D.ietf-opsawg-teas-attachment-circuit</a>]</span> and <span>[<a href="#I-D.ietf-opsawg-ntw-attachment-circuit" class="cite xref">I-D.ietf-opsawg-ntw-attachment-circuit</a>]</span>), this document assumes that an AC is configured on a "bearer", which represents the underlying connectivity. For example, the bearer is illustrated with "===" in Figures <a href="#fig-distribute-ce" class="auto internal xref">4</a> and <a href="#fig-50" class="auto internal xref">5</a>.<a href="#section-3.3.5-3" class="pilcrow">¶</a></p>
 <p id="section-3.3.5-4">Examples of ACs are Virtual Local Area Networks (VLANs) (AC) configured on a physical interface (bearer) or an Overlay VXLAN EVI (AC) configured on an IP underlay (bearer).<a href="#section-3.3.5-4" class="pilcrow">¶</a></p>
 <p id="section-3.3.5-5">Deployment cases where the AC is also managed by the provider are not discussed in the document because the setup of such an AC does not require any coordination between the customer and provider orchestration domains.<a href="#section-3.3.5-5" class="pilcrow">¶</a></p>
 <ul class="normal ulEmpty">
@@ -1730,22 +1730,27 @@ However, this document does not exclude the instantiation of multiple ACs betwee
             <dd class="break"></dd>
 <dt id="section-3.4.2-3.9">Attachment Circuit:</dt>
             <dd style="margin-left: 1.5em" id="section-3.4.2-3.10">
-              <p id="section-3.4.2-3.10.1">Represents the connectivity between CEs and PEs. The orchestration of this segment relies partially upon an NSC for the configuration of the AC on the PE customer-facing interfaces and the Customer Site Orchestration for the configuration of the AC on the CE. More precisely, a PE and a CE connected via an AC need to be
-provisioned with consistent data plane and control plane information (e.g., VLAN-
-IDs, IP addresses/subnets, or BGP  Autonomous System (AS) Number). Hence, the realization of this
-interconnection is technology-specific and requires coordination between the Customer Site Orchestration and an NSC. Automating the provisioning and management of the AC is thus key to automate the overall service provisioning. Aligned with <span>[<a href="#RFC8969" class="cite xref">RFC8969</a>]</span>, this document assumes that this coordination is based upon standard YANG data models and APIs.<a href="#section-3.4.2-3.10.1" class="pilcrow">¶</a></p>
+              <p id="section-3.4.2-3.10.1">The orchestration of this segment relies partially upon an NSC for the configuration of the AC on the PE customer-facing interfaces and the Customer Site Orchestration for the configuration of the AC on the CE.<a href="#section-3.4.2-3.10.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
 <dt id="section-3.4.2-3.11"></dt>
             <dd style="margin-left: 1.5em" id="section-3.4.2-3.12">
-              <p id="section-3.4.2-3.12.1">The provisioning of a Network Slice may rely on new or existing ACs.<a href="#section-3.4.2-3.12.1" class="pilcrow">¶</a></p>
+              <p id="section-3.4.2-3.12.1">PEs and CEs that are connected via an AC need to be
+provisioned with consistent data plane and control plane information (VLAN-
+IDs, IP addresses/subnets, BGP  Autonomous System (AS) Number, etc.). Hence, the realization of this
+interconnection is technology-specific and requires coordination between the Customer Site Orchestration and an NSC. Automating the provisioning and management of the AC is thus key to automate the overall service provisioning. Aligned with <span>[<a href="#RFC8969" class="cite xref">RFC8969</a>]</span>, this document assumes that this coordination is based upon standard YANG data models and APIs.<a href="#section-3.4.2-3.12.1" class="pilcrow">¶</a></p>
 </dd>
             <dd class="break"></dd>
 <dt id="section-3.4.2-3.13"></dt>
             <dd style="margin-left: 1.5em" id="section-3.4.2-3.14">
-              <p id="section-3.4.2-3.14.1"><a href="#_figure-4" class="auto internal xref">Figure 7</a> is a basic example of a Layer 3 CE-PE link realization
+              <p id="section-3.4.2-3.14.1">The provisioning of a Network Slice may rely on new or existing ACs.<a href="#section-3.4.2-3.14.1" class="pilcrow">¶</a></p>
+</dd>
+            <dd class="break"></dd>
+<dt id="section-3.4.2-3.15"></dt>
+            <dd style="margin-left: 1.5em" id="section-3.4.2-3.16">
+              <p id="section-3.4.2-3.16.1"><a href="#_figure-4" class="auto internal xref">Figure 7</a> is a basic example of a Layer 3 CE-PE link realization
 with shared network resources (such as VLAN-IDs and IP prefixes) which
-are passed between Orchestrators via a dedicated interface, e.g., the Network Slice Service Model (NSSM) <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="cite xref">I-D.ietf-teas-ietf-network-slice-nbi-yang</a>]</span> or the Attachment Circuit-as-a-Service (ACaaS) <span>[<a href="#I-D.ietf-opsawg-teas-attachment-circuit" class="cite xref">I-D.ietf-opsawg-teas-attachment-circuit</a>]</span>.<a href="#section-3.4.2-3.14.1" class="pilcrow">¶</a></p>
+are passed between Orchestrators via a dedicated interface, e.g., the Network Slice Service Model (NSSM) <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="cite xref">I-D.ietf-teas-ietf-network-slice-nbi-yang</a>]</span> or the Attachment Circuit-as-a-Service (ACaaS) <span>[<a href="#I-D.ietf-opsawg-teas-attachment-circuit" class="cite xref">I-D.ietf-opsawg-teas-attachment-circuit</a>]</span>.<a href="#section-3.4.2-3.16.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 </dl>
@@ -2164,23 +2169,23 @@ distribution even in non-ECMP friendly network topologies. See also <span><a hre
 <figure id="figure-11">
           <div class="alignCenter art-text artwork" id="section-3.7-3.1">
 <pre>
-            ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
-      ┌──────────┐               base NRP               ┌──────────┐
-      |    PE    |                                      |    PE    |
-    ┌ ┼ ─ ─ ─ ─ ─|─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─|─
-      ■&lt;───┐|    |       RFC 9543 Network Slice 1       |    ┌┼───&gt;■ |
-    | |    |     |        ┌─────┐        ┌─────┐        |    |     |
-      ■&lt;───┤|    |        |  P  |        |  P  |        |    ├┼───&gt;■ |
-    ├ ┼ ─ ─├────&gt;□&lt;──────&gt;□&lt;───&gt;□&lt;──────&gt;□────&gt;□&lt;──────&gt;□&lt;───┤─ ─ ─|─
-      ■&lt;───┤|    |        |     |        |     |        |    ├┼───&gt;■ |
-    | |    |     |        └─────┘        └─────┘        |    |     |
-      ■&lt;───┘|    |       RFC 9543 Network Slice 2       |    └┼───&gt;■ |
-    └ ┼ ─ ─ ─ ─ ─|─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─|─
-      |     |    |                                      |     |    |
-      └──────────┘                                      └──────────┘
-            └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
- ■ - SDP, with fine-grained QoS (dedicated resources per TN slice)
- □ - coarse-grained QoS, with resources shared by all TN slices
+            + .. .. .. .. .. .. .. .. .. .. .. .. .. .. .. .. +
+      +-----:----+               Base NRP               +-----:----+
+      | PE  :    |                                      |     : PE |
+     .|.....:....|......................................|.....:....|.
+    . *&lt;---+:    |       RFC 9543 Network Slice 1       |    +:---&gt;* .
+    . |    |:    |        +-----+        +-----+        |    |:    | .
+    . *&lt;---+:    |        |  P  |        |  P  |        |    +:---&gt;* .
+     .|....+:---&gt;o&lt;------&gt;o&lt;---&gt;o&lt;------&gt;o----&gt;o&lt;------&gt;o&lt;---|:....|.
+    . *&lt;---+:    |        |     |        |     |        |    +:---&gt;* .
+    . |    |:    |        +-----+        +-----+        |    |:    | .
+    . *&lt;---+:    |       RFC 9543 Network Slice 2       |    +:---&gt;* .
+     .|.....:....|......................................|.....:....|.
+      |     :    |                                      |     :    |
+      +-----:----+                                      +-----:----+
+            + .. .. .. .. .. .. .. .. .. .. .. .. .. .. .. .. +
+ * - SDP, with fine-grained QoS (dedicated resources per TN slice)
+ o - coarse-grained QoS, with resources shared by all TN slices
 </pre>
 </div>
 <figcaption><a href="#figure-11" class="selfRef">Figure 11</a>:
