@@ -1611,12 +1611,10 @@ Engineering (TE). Whether all or a subset of these components are enabled is a d
 <p id="section-3.3.5-3">For consistency with the AC data models terminology (e.g., <span>[<a href="#I-D.ietf-opsawg-teas-attachment-circuit" class="cite xref">I-D.ietf-opsawg-teas-attachment-circuit</a>]</span> and <span>[<a href="#I-D.ietf-opsawg-ntw-attachment-circuit" class="cite xref">I-D.ietf-opsawg-ntw-attachment-circuit</a>]</span>), this document assumes that an AC is configured on a "bearer", which represents the underlying connectivity. For example, the bearer is illustrated with "===" in Figures <a href="#fig-distribute-ce" class="auto internal xref">4</a> and <a href="#fig-50" class="auto internal xref">5</a>.<a href="#section-3.3.5-3" class="pilcrow">¶</a></p>
 <p id="section-3.3.5-4">Examples of ACs are Virtual Local Area Networks (VLANs) (AC) configured on a physical interface (bearer) or an Overlay VXLAN EVI (AC) configured on an IP underlay (bearer).<a href="#section-3.3.5-4" class="pilcrow">¶</a></p>
 <p id="section-3.3.5-5">Deployment cases where the AC is also managed by the provider are not discussed in the document because the setup of such an AC does not require any coordination between the customer and provider orchestration domains.<a href="#section-3.3.5-5" class="pilcrow">¶</a></p>
-<ul class="normal ulEmpty">
-<li class="normal ulEmpty" id="section-3.3.5-6.1">
-              <p id="section-3.3.5-6.1.1">In order to keep the figures simple, only one AC and single-homed CEs are represented.
-However, this document does not exclude the instantiation of multiple ACs between a CE and a PE nor the presence of CEs that are attached to more than one PE.<a href="#section-3.3.5-6.1.1" class="pilcrow">¶</a></p>
-</li>
-          </ul>
+<aside id="section-3.3.5-6">
+            <p id="section-3.3.5-6.1">In order to keep the figures simple, only one AC and single-homed CEs are represented.
+However, this document does not exclude the instantiation of multiple ACs between a CE and a PE nor the presence of CEs that are attached to more than one PE.<a href="#section-3.3.5-6.1" class="pilcrow">¶</a></p>
+</aside>
 </section>
 </div>
 </section>
@@ -2351,12 +2349,14 @@ o Tunnel (IPsec, GTP-U, ...) termination point
 <figure id="figure-14">
             <div class="alignCenter art-text artwork" id="section-4.2.1-2.1">
 <pre>
-             NF specific          reserved
+             NF-specific          Reserved
         (not slice specific)     for S-NSSAI
-    &lt;───────────────────────────&gt; &lt;───────&gt;
-   ┌────┬────┬────┬────┬────┬────┬────┬────┐
+   &lt;----------------------------&gt;&lt;---------&gt;
+   +----+----+----+----+----+----+----+----+
    |xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:ttdd:dddd|
-   └─────────┴─────────┴─────────┴─────────┘
+   +----+----+----+----+----+----+----+----+
+   &lt;------------------128 bits-------------&gt;
+
     tt     - SST (8 bits)
     dddddd - SD (24 bits)
 </pre>
@@ -2813,25 +2813,25 @@ Fine-grained QoS enforcement   Coarse-grained QoS enforcement
 <figure id="figure-20">
             <div class="alignCenter art-text artwork" id="section-5.2.1-5.1">
 <pre>
-                                 ┌──────────────┐
+                                 +--------------+
                                  | MPLS Header  |
-                                 ├─────┬─────┐  |
+                                 +-----+-----+  |
                                  |Label|TN TC|  |
-┌──────────────┐ ─ ─ ─ ─ ─ ─ ─ ─ ├─────┴─────┴──┤
++--------------+ ─ ─ ─ ─ ─ ─ ─ ─ +-----+-----+--+
 |  IP Header   |         |\      |  IP Header   |
-|      ┌───────┤         | \     |      ┌───────┤
-|      |5G DSCP| ────────┘  \    |      |5G DSCP|
-├──────┴───────┤             \   ├──────┴───────┤
+|      +-------+         | \     |      +-------+
+|      |5G DSCP|---------+  \    |      |5G DSCP|
++------+-------+             \   +------+-------+
 |              |              \  |              |
 |              |               \ |              |
-|              |                ▏|              |
+|              |                 |              |
 |   Payload    |               / |   Payload    |
 |(GTP-U/IPsec) |              /  |(GTP-U/IPsec) |
 |              |             /   |              |
-|              | ────────┐  /    |              |
+|              |---------+  /    |              |
 |              |         | /     |              |
 |              |         |/      |              |
-└──────────────┘ ─ ─ ─ ─ ─ ─ ─ ─ └──────────────┘
++--------------+ ─ ─ ─ ─ ─ ─ ─ ─ +--------------+
 </pre>
 </div>
 <figcaption><a href="#figure-20" class="selfRef">Figure 20</a>:
@@ -2842,29 +2842,29 @@ Fine-grained QoS enforcement   Coarse-grained QoS enforcement
 <figure id="figure-21">
             <div class="alignCenter art-text artwork" id="section-5.2.1-6.1">
 <pre>
-                                 ┌──────────────┐
+                                 +--------------+
                                  | IPv6 Header  |
-                                 |      ┌───────┤
+                                 |      +-------+
                                  |      |TN DSCP|
-                                 ├──────┴───────┤
-                                     optional
-                                 |     IPv6     |
-                                      headers
-┌──────────────┐ ─ ─ ─ ─ ─ ─ ─ ─ ├──────────────┤
+                                 +------+-------+
+                                 :   Optional   :
+                                 :     IPv6     :
+                                 :    Headers   :
++--------------+ ─ ─ ─ ─ ─ ─ ─ ─ +-----+-----+--+
 |  IP Header   |         |\      |  IP Header   |
-|      ┌───────┤         | \     |      ┌───────┤
-|      |5G DSCP| ────────┘  \    |      |5G DSCP|
-├──────┴───────┤             \   ├──────┴───────┤
+|      +-------+         | \     |      +-------+
+|      |5G DSCP|---------+  \    |      |5G DSCP|
++------+-------+             \   +------+-------+
 |              |              \  |              |
 |              |               \ |              |
-|              |                ||              |
+|              |                 |              |
 |   Payload    |               / |   Payload    |
 |(GTP-U/IPsec) |              /  |(GTP-U/IPsec) |
 |              |             /   |              |
-|              | ────────┐  /    |              |
+|              |---------+  /    |              |
 |              |         | /     |              |
 |              |         |/      |              |
-└──────────────┘ ─ ─ ─ ─ ─ ─ ─ ─ └──────────────┘
++--------------+ ─ ─ ─ ─ ─ ─ ─ ─ +--------------+
 </pre>
 </div>
 <figcaption><a href="#figure-21" class="selfRef">Figure 21</a>:
@@ -3465,27 +3465,27 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
 <figure id="figure-29">
         <div class="alignCenter art-text artwork" id="section-6-6.1">
 <pre>
-┌───────────────┐                                    ┌──────┐
++---------------+                                    +------+
 |  Ingress PE   |   ╔═══════════════════════════════&gt;| PE-A |
-|               |   ║   ╔═══════════════════════════▷|      |
-|  ┌ ─ ─ ─ ─ ┐  |   ║   ╚═════════════════════╗      └──────┘
-|            ●══════╝   ╔═════════════════════╝
-|  |Transfert●════════════════════════════════╗      ┌──────┐
-|    Plane A ●═════════════╗                  ╚═════&gt;| PE-B |
-|  |         ●═══════╗  ║  ║  ╔═══╗   ╔═══╗   ╔═════▷|      |
-|   ─ ─ ─ ─ ─   |    ║  ║  ║  ║   ║   ║   ║   ║      └──────┘
+|               |   ║   ╔══════════════════════════&gt;&gt;|      |
+|  +---------+  |   ║   ╚═════════════════════╗      +------+
+|  |         x══════╝   ╔═════════════════════╝
+|  |Transfer x════════════════════════════════╗      +------+
+|  | Plane A x═════════════╗                  ╚═════&gt;| PE-B |
+|  |         x═══════╗  ║  ║  ╔═══╗   ╔═══╗   ╔════&gt;&gt;|      |
+|  +---------+  |    ║  ║  ║  ║   ║   ║   ║   ║      +------+
 |               |    ║  ║  ║  ║   ╚═══╝   ╚═══╝
-|  ┌ ─ ─ ─ ─ ┐  |    ║  ║  ║  ║                      ┌──────┐
-|            ○═══════║══╝  ╚════════════════════════&gt;| PE-C |
-|  |Transfert○═══════║════════╝               ╔═════▷|      |
-|    Plane B ○═══════║═════════════════╗      ║      └──────┘
-|  |         ○═════╗ ╚═══════════════╗ ║      ║
-|   ─ ─ ─ ─ ─   |  ║ ╔═╗ ╔═╗ ╔═╗ ╔═╗ ║ ╚══════╝      ┌──────┐
+|  +---------+  |    ║  ║  ║  ║                      +------+
+|  |         o═══════║══╝  ╚════════════════════════&gt;| PE-C |
+|  |Transfer o═══════║════════╝               ╔════&gt;&gt;|      |
+|  | Plane B o═══════║═════════════════╗      ║      +------+
+|  |         o═════╗ ╚═══════════════╗ ║      ║
+|  +---------+  |  ║ ╔═╗ ╔═╗ ╔═╗ ╔═╗ ║ ╚══════╝      +------+
 |               |  ║ ║ ║ ║ ║ ║ ║ ║ ║ ╚══════════════&gt;| PE-D |
-└───────────────┘  ╚═╝ ╚═╝ ╚═╝ ╚═╝ ╚════════════════▷|      |
-                                                     └──────┘
-         ●════════▶  Tunnels of Inter-PE Transfer Plane A
-         ○════════▷  Tunnels of Inter-PE Transfer Plane B
++---------------+  ╚═╝ ╚═╝ ╚═╝ ╚═╝ ╚═══════════════&gt;&gt;|      |
+                                                     +------+
+ x═════&gt;   Tunnels of Inter-PE Transfer Plane A
+ o════&gt;&gt;   Tunnels of Inter-PE Transfer Plane B
 </pre>
 </div>
 <figcaption><a href="#figure-29" class="selfRef">Figure 29</a>:
@@ -3498,7 +3498,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
 <p id="section-6-8">It is worth noting that TN QoS Classes and inter-PE transfer planes are
    orthogonal.  The TN domain can be operated with, e.g., 8 TN QoS Classes (representing 8 hardware queues in the
    routers), and 2 transfer planes (e.g., latency optimized transfer
-   plane using link latency metrics for path calculation, and transfert
+   plane using link latency metrics for path calculation, and transfer
    plane following Interior Gateway Protocol (IGP) metrics).  TN QoS Class determines the per-hop
    behavior when the packets are transiting through the provider network,
    while transfer plane determines the paths for packets through provider
@@ -3527,41 +3527,41 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
 <figure id="figure-30">
           <div class="alignCenter art-text artwork" id="section-6.1-2.1">
 <pre>
-   ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
-   ┏━━━━━━━━━━━━━━━━━┓                        |
-   ┃ Attach. Circuit ┃      PE router
-   ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃                        |
-   ┃   SDP           ┃
-   ┃|  ┌──────────┐ |┃                        |
-   ┃   |     NS 1 ├──────────┐
-   ┃|  └──────────┘ |┃       |                |
-   ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃       |
-   ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃       |   ┌─────────┐  |
-   ┃   SDP           ┃       |   |         |
-   ┃|  ┌──────────┐ |┃       |   |Transport|  |
-   ┃   |     NS 2 ├──────┐   ├───&gt;  Plane  |
-   ┃|  └──────────┘ |┃   |   |   |    A    |  |
-   ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃   |   |   |         |
-   ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃   |   |   └─────────┘  |
-   ┃   SDP           ┃   |   |
-   ┃|  ┌──────────┐ |┃   |   |                |
-   ┃   |     NS 3 ├──────┤   |
-   ┃|  └──────────┘ |┃   |   |   ┌─────────┐  |
-   ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃   |   |   |         |
-   ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃   |   |   |Transport|  |
-   ┃   SDP           ┃   ├───|───&gt;  Plane  |
-   ┃|  ┌──────────┐ |┃   |   |   |    B    |  |
-   ┃   |     NS 4 ├──────┘   |   |         |
-   ┃|  └──────────┘ |┃       |   └─────────┘  |
-   ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃       |
-   ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃       |                |
-   ┃   SDP           ┃       |
-   ┃|  ┌──────────┐ |┃       |                |
-   ┃   |     NS 5 ├──────────┘
-   ┃|  └──────────┘ |┃                        |
-   ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃
-   ┗━━━━━━━━━━━━━━━━━┛                        |
-   └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+   +-----------------------------------------+
+   |.. .. .. .. .. ..                        |
+   :        AC       :      PE               |
+   :+---------------+:                       |
+   :|  SDP          |:                       |
+   :|  +----------+ |:                       |
+   :|  |     NS 1 +----------+               |
+   :|  +----------+ |:       |               |
+   :+---------------+:       |               |
+   :+---------------+:       |   +---------+ |
+   :|  SDP          |:       |   |         | |
+   :|  +----------+ |:       |   |Transfer | |
+   :|  |     NS 2 +------+   +---&gt;  Plane  | |
+   :|  +----------+ |:   |   |   |    A    | |
+   :+---------------+:   |   |   |         | |
+   :+---------------+:   |   |   +---------+ |
+   :|  SDP          |:   |   |               |
+   :|  +----------+ |:   |   |               |
+   :|   |     NS 3 +-----+   |               |
+   :|  +----------+ |:   |   |   +---------+ |
+   :+---------------+:   |   |   |         | |
+   :+---------------+:   |   |   |Transfer | |
+   :|  SDP          |:   +-------&gt;  Plane  | |
+   :|  +----------+ |:   |   |   |    B    | |
+   :|  |     NS 4 +------+   |   |         | |
+   :|  +----------+ |:       |   +---------+ |
+   :+---------------+:       |               |
+   :+---------------+:       |               |
+   :|  SDP          |:       |               |
+   :|  +----------+ |:       |               |
+   :|  |     NS 5 +----------+               |
+   :|  +----------+ |:                       |
+   :+---------------+:                       |
+   '.. .. .. .. .. ..                        |
+   +-----------------------------------------+
 </pre>
 </div>
 <figcaption><a href="#figure-30" class="selfRef">Figure 30</a>:
@@ -3584,41 +3584,41 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
 <figure id="figure-31">
           <div class="alignCenter art-text artwork" id="section-6.2-2.1">
 <pre>
-     ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
-     ┏━━━━━━━━━━━━━━━━━┓
-     ┃ Attach. Circuit ┃                         |
-     ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃        PE router
-   R ┃   SDP           ┃                         |
-   F ┃|  ┌──────────┐ |┃
-   C ┃   | 5G QoS A ├──────┐                     |
-   9 ┃|  └──────────┘ |┃   |
-   5 ┃   ┌──────────┐  ┃   |                     |
-   4 ┃|  | 5G QoS B ├──────┤
-   3 ┃   └──────────┘  ┃   |         ┌─────────┐ |
-     ┃|  ┌──────────┐ |┃   |         |         |
-   N ┃   | 5G QoS C ├───────────┐    |Transport| |
-   S ┃|  └──────────┘ |┃   ├────|────&gt;  Plane  |
-     ┃   ┌──────────┐  ┃   |    |    |    A    | |
-   1 ┃|  | 5G QoS D ├───────────┤    |         |
-     ┃   └──────────┘  ┃   |    |    └─────────┘ |
-     ┃└ ─ ─ ─ ─ ─ ─ ─ ┘┃   |    |
-   R ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃   |    |                |
-   F ┃   ┌──────────┐  ┃   |    |
-   C ┃|  | 5G QoS A ├──────┤    |    ┌─────────┐ |
-   9 ┃   └──────────┘  ┃   |    |    |         |
-   5 ┃|  ┌──────────┐ |┃   |    |    |Transport| |
-   4 ┃   | 5G QoS E ├──────┘    ├────&gt;  Plane  |
-   3 ┃|  └──────────┘ |┃        |    |    B    | |
-     ┃   ┌──────────┐  ┃        |    |         |
-   N ┃|  | 5G QoS F ├───────────┤    └─────────┘ |
-   S ┃   └──────────┘  ┃        |
-     ┃|  ┌──────────┐ |┃        |                |
-   2 ┃   | 5G QoS G ├───────────┘
-     ┃|  └──────────┘ |┃                         |
-     ┃   SDP           ┃
-     ┃└ ─ ─ ─ ─ ─ ─ ─ ┘┃                         |
-     ┗━━━━━━━━━━━━━━━━━┛
-     └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
+     +-------------------------------------------+
+     |.. .. .. .. .. ..                          |
+     :        AC       :      PE                 |
+     :+---------------+:                         |
+   R :|  SDP          |:                         |
+   F :|  +----------+ |:                         |
+   C :|  | 5G QoS A +------+                     |
+   9 :|  +----------+ |:   |                     |
+   5 :|  +----------+ |:   |                     |
+   4 :|  | 5G QoS B +------+                     |
+   3 :|  +----------+ |:   |         +---------+ |
+     :|  +----------+ |:   |         |         | |
+   N :|  | 5G QoS C +-----------+    |Transfer | |
+   S :|  +----------+ |:   +---------&gt;  Plane  | |
+     :|  +----------+ |:   |    |    |    A    | |
+   1 :|  | 5G QoS D +-----------+    |         | |
+     :|  +----------+ |:   |    |    +---------+ |
+     :+---------------+:   |    |                |
+   R :+---------------+:   |    |                |
+   F :|  +----------+ |:   |    |                |
+   C :|  | 5G QoS A +------+    |    +---------+ |
+   9 :|  +----------+ |:   |    |    |         | |
+   5 :|  +----------+ |:   |    |    |Transfer | |
+   4 :|  | 5G QoS E +------+    +----&gt;  Plane  | |
+   3 :|  +----------+ |:        |    |    B    | |
+     :|  +----------+ |:        |    |         | |
+   N :|  | 5G QoS F +-----------+    +---------+ |
+   S :|  +----------+ |:        |                |
+     :|  +----------+ |:        |                |
+   2 :|  | 5G QoS G +-----------+                |
+     :|  +----------+ |:                         |
+     :|  SDP          |:                         |
+     :+---------------+:                         |
+     '.. .. .. .. .. ..                          |
+     +-------------------------------------------+
 </pre>
 </div>
 <figcaption><a href="#figure-31" class="selfRef">Figure 31</a>:
@@ -3703,56 +3703,105 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    interested in these metrics for a small fraction of all the possible
    DC-pairs, i.e. those in the same region of the provider network.  The
    mechanism for conveying the information is out of scope for this document.<a href="#section-7.1-5" class="pilcrow">¶</a></p>
-<p id="section-7.1-6"><a href="#_figure-27" class="auto internal xref">Figure 33</a> shows the matrix of bandwidth demands for 5G slice "X".
-   Within the slice, multiple network function instances might be
+<p id="section-7.1-6"><a href="#_table-x" class="auto internal xref">Table 1</a> shows the matrix of bandwidth demands for 5G slice "X".
+   Within the slice, multiple NF instances might be
    sending traffic from DCi to DCj.  However, the 5G NSO sums the
-   associated demands into one value.  For example, NF1A and NF1B in DC1
-   might be sending traffic to multiple NFs in DC2, but this is
+   associated demands into one value.  For example, "NF1A" and "NF1B" in "DC1"
+   might be sending traffic to multiple NFs in "DC2", but this is
    expressed as one value in the traffic matrix: the total bandwidth
-   required for 5G slice X from DC1 to DC2 (8 units).  Each row in the
+   required for 5G slice "X" from "DC1" to "DC2" (8 units).  Each row in the
    right-most column in the traffic matrix shows the total amount of
    traffic going from a given DC into the transport network, regardless
    of the destination DC.  Note that this number can be less than the
    sum of DC-to-DC demands in the same row, on the basis that not all
-   the network functions are likely to be sending at their maximum rate
-   simultaneously.  For example, the total traffic from DC1 for Slice X
+   the NFs are likely to be sending at their maximum rate
+   simultaneously.  For example, the total traffic from "DC1" for slice "X"
    is 11 units, which is less than the sum of the DC-to-DC demands in
    the same row (13 units).  Note, as described in <a href="#sec-qos-map" class="auto internal xref">Section 5</a>, a slice
    may have per-QoS class bandwidth requirements, and may have CIR and
    PIR limits.  This is not included in the example, but the same
    principles apply in such cases.<a href="#section-7.1-6" class="pilcrow">¶</a></p>
-<span id="name-inter-dc-traffic-demand-mat"></span><div id="_figure-27">
-<figure id="figure-33">
-          <div class="alignCenter art-text artwork" id="section-7.1-7.1">
-<pre>
-      To┌──────┬──────┬──────┬──────────────┐
-From    | DC 1 | DC 2 | DC 3 |Total from DC |
- ┌──────┼──────┼──────┼──────┼──────────────┤
- | DC 1 | n/a  |  8   |  5   |     11.0     |
- ├──────┼──────┼──────┼──────┼──────────────┤
- | DC 2 |  1   | n/a  |  2   |      2.5     |
- ├──────┼──────┼──────┼──────┼──────────────┤
- | DC 3 |  4   |  7   | n/a  |     10.0     |
- └──────┴──────┴──────┴──────┴──────────────┘
-                    Slice X
-
-      To┌──────┬──────┬──────┬──────────────┐
-From    | DC 1 | DC 2 | DC 3 |Total from DC |
- ┌──────┼──────┼──────┼──────┼──────────────┤
- | DC 1 | n/a  |  4   | 2.5  |     6.0      |
- ├──────┼──────┼──────┼──────┼──────────────┤
- | DC 2 | 0.5  | n/a  | 0.8  |     1.0      |
- ├──────┼──────┼──────┼──────┼──────────────┤
- | DC 3 | 2.6  |  3   | n/a  |     5.1      |
- └──────┴──────┴──────┴──────┴──────────────┘
-                    Slice Y
-</pre>
+<span id="name-inter-dc-traffic-demand-mat"></span><div id="_table-x">
+<table class="center" id="table-1">
+          <caption>
+<a href="#table-1" class="selfRef">Table 1</a>:
+<a href="#name-inter-dc-traffic-demand-mat" class="selfRef">Inter-DC Traffic Demand Matrix (Slice X)</a>
+          </caption>
+<thead>
+            <tr>
+              <th class="text-left" rowspan="1" colspan="1">From/To</th>
+              <th class="text-left" rowspan="1" colspan="1">DC 1</th>
+              <th class="text-left" rowspan="1" colspan="1">DC 2</th>
+              <th class="text-left" rowspan="1" colspan="1">DC 3</th>
+              <th class="text-center" rowspan="1" colspan="1">Total from DC</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">DC 1</td>
+              <td class="text-left" rowspan="1" colspan="1">n/a</td>
+              <td class="text-left" rowspan="1" colspan="1">8</td>
+              <td class="text-left" rowspan="1" colspan="1">5</td>
+              <td class="text-center" rowspan="1" colspan="1">11.0</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">DC 2</td>
+              <td class="text-left" rowspan="1" colspan="1">1</td>
+              <td class="text-left" rowspan="1" colspan="1">n/a</td>
+              <td class="text-left" rowspan="1" colspan="1">2</td>
+              <td class="text-center" rowspan="1" colspan="1">2.5</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">DC 3</td>
+              <td class="text-left" rowspan="1" colspan="1">4</td>
+              <td class="text-left" rowspan="1" colspan="1">7</td>
+              <td class="text-left" rowspan="1" colspan="1">n/a</td>
+              <td class="text-center" rowspan="1" colspan="1">10.0</td>
+            </tr>
+          </tbody>
+        </table>
 </div>
-<figcaption><a href="#figure-33" class="selfRef">Figure 33</a>:
-<a href="#name-inter-dc-traffic-demand-mat" class="selfRef">Inter-DC Traffic Demand Matrix</a>
-          </figcaption></figure>
+<span id="name-inter-dc-traffic-demand-matr"></span><div id="_table-y">
+<table class="center" id="table-2">
+          <caption>
+<a href="#table-2" class="selfRef">Table 2</a>:
+<a href="#name-inter-dc-traffic-demand-matr" class="selfRef">Inter-DC Traffic Demand Matrix (Slice Y)</a>
+          </caption>
+<thead>
+            <tr>
+              <th class="text-left" rowspan="1" colspan="1">From/To</th>
+              <th class="text-left" rowspan="1" colspan="1">DC 1</th>
+              <th class="text-left" rowspan="1" colspan="1">DC 2</th>
+              <th class="text-left" rowspan="1" colspan="1">DC 3</th>
+              <th class="text-center" rowspan="1" colspan="1">Total from DC</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">DC 1</td>
+              <td class="text-left" rowspan="1" colspan="1">n/a</td>
+              <td class="text-left" rowspan="1" colspan="1">4</td>
+              <td class="text-left" rowspan="1" colspan="1">2.5</td>
+              <td class="text-center" rowspan="1" colspan="1">6.0</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">DC 2</td>
+              <td class="text-left" rowspan="1" colspan="1">0.5</td>
+              <td class="text-left" rowspan="1" colspan="1">n/a</td>
+              <td class="text-left" rowspan="1" colspan="1">0.8</td>
+              <td class="text-center" rowspan="1" colspan="1">1.0</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">DC 3</td>
+              <td class="text-left" rowspan="1" colspan="1">2.6</td>
+              <td class="text-left" rowspan="1" colspan="1">3</td>
+              <td class="text-left" rowspan="1" colspan="1">n/a</td>
+              <td class="text-center" rowspan="1" colspan="1">5.1</td>
+            </tr>
+          </tbody>
+        </table>
 </div>
-<p id="section-7.1-8"><span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="cite xref">I-D.ietf-teas-ietf-network-slice-nbi-yang</a>]</span> can be used to convey all
+<p id="section-7.1-9"><span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="cite xref">I-D.ietf-teas-ietf-network-slice-nbi-yang</a>]</span> can be used to convey all
    of the information in the traffic matrix to an NSC.  The
    NSC applies policers corresponding to the last column in the traffic
    matrix to the appropriate PE routers, in order to enforce the
@@ -3762,8 +3811,8 @@ From    | DC 1 | DC 2 | DC 3 |Total from DC |
    controller may apply shapers in the direction from the TN to the DC,
    if otherwise there is the possibility of a link in the DC being
    oversubscribed.  Note that a peer NF endpoint of an AC can be
-   identified using 'peer-sap-id' as defined in <span>[<a href="#RFC9408" class="cite xref">RFC9408</a>]</span>.<a href="#section-7.1-8" class="pilcrow">¶</a></p>
-<p id="section-7.1-9">Depending on the bandwidth model used in the provider network (<a href="#sec-bw" class="auto internal xref">Section 7.2</a>),
+   identified using 'peer-sap-id' as defined in <span>[<a href="#RFC9408" class="cite xref">RFC9408</a>]</span>.<a href="#section-7.1-9" class="pilcrow">¶</a></p>
+<p id="section-7.1-10">Depending on the bandwidth model used in the provider network (<a href="#sec-bw" class="auto internal xref">Section 7.2</a>),
    the other values in the matrix, i.e., the DC-to-DC demands, may not
    be directly applied to the provider network.  Even so, the
    information may be useful to the NSC for capacity planning and
@@ -3773,8 +3822,8 @@ From    | DC 1 | DC 2 | DC 3 |Total from DC |
    Model for L2VPN Service Delivery <span>[<a href="#RFC8466" class="cite xref">RFC8466</a>]</span> could be used instead of
    <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="cite xref">I-D.ietf-teas-ietf-network-slice-nbi-yang</a>]</span>, as they support
    conveying the bandwidth information in the right-most column of the
-   traffic matrix.<a href="#section-7.1-9" class="pilcrow">¶</a></p>
-<p id="section-7.1-10">The provider network may be implemented in such a way that it has
+   traffic matrix.<a href="#section-7.1-10" class="pilcrow">¶</a></p>
+<p id="section-7.1-11">The provider network may be implemented in such a way that it has
    various types of paths, for example low-latency traffic might be
    mapped onto a different transport path to other traffic (for example
    a particular Flex-Algorithm, a particular set of TE paths, or a specific queue <span>[<a href="#RFC9330" class="cite xref">RFC9330</a>]</span>), as discussed
@@ -3784,7 +3833,7 @@ From    | DC 1 | DC 2 | DC 3 |Total from DC |
    <span>[<a href="#RFC8466" class="cite xref">RFC8466</a>]</span> do not support requesting a particular transport-type,
    e.g., low-latency.  One option is to augment these models to convey
    this information.  This can be achieved by reusing the 'underlay-
-   transport' construct defined in <span>[<a href="#RFC9182" class="cite xref">RFC9182</a>]</span> and <span>[<a href="#RFC9291" class="cite xref">RFC9291</a>]</span>.<a href="#section-7.1-10" class="pilcrow">¶</a></p>
+   transport' construct defined in <span>[<a href="#RFC9182" class="cite xref">RFC9182</a>]</span> and <span>[<a href="#RFC9291" class="cite xref">RFC9291</a>]</span>.<a href="#section-7.1-11" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-bw">
@@ -3846,36 +3895,36 @@ From    | DC 1 | DC 2 | DC 3 |Total from DC |
    follows the minimum IGP metric path, as described in <a href="#sec-qos-map" class="auto internal xref">Section 5</a>.
    There would be a many-to-one mapping of slices to paths.<a href="#section-7.2.2-1" class="pilcrow">¶</a></p>
 <p id="section-7.2.2-2">The bandwidth requirement from DCi to DCj is the sum of the DCi-DCj
-   demands of the individual slices.  For example, if only Slice X and
-   Slice Y are present, then the bandwidth requirement from DC1 to DC2
-   is 12 units (8 units for Slice X and 4 units for Slice Y).  When the
+   demands of the individual slices.  For example, if only slices "X" and
+   "Y" are present, then the bandwidth requirement from "DC1" to "DC2"
+   is 12 units (8 units for slice "X" and 4 units for slice "Y").  When the
    5G NSO requests a new slice, the NSC, in its mind,
    increments the bandwidth requirement according to the requirements of
    the new slice.  For example, in <a href="#_figure-multi-DC" class="auto internal xref">Figure 32</a>, suppose a new slice is
-   instantiated that needs 0.8 Gbps from DC1 to DC2.  The transport
+   instantiated that needs 0.8 Gbps from "DC1" to "DC2".  The transport
    controller would increase its notion of the bandwidth requirement
-   from DC1 to DC2 from 12 Gbps to 12.8 Gbps to accommodate the
+   from "DC1" to "DC2" from 12 Gbps to 12.8 Gbps to accommodate the
    additional expected traffic.<a href="#section-7.2.2-2" class="pilcrow">¶</a></p>
 <p id="section-7.2.2-3">In the example, each DC has two PEs facing it for reasons of
    resilience.  The NSC needs to determine how to map
-   the DC1 to DC2 bandwidth requirement to bandwidth reservations of TE
-   LSPs from DC1 to DC2.  For example, if the routing configuration is
+   the "DC1" to "DC2" bandwidth requirement to bandwidth reservations of TE
+   LSPs from "DC1" to "DC2".  For example, if the routing configuration is
    arranged such that in the absence of any network failure, traffic
-   from DC1 to DC2 always enters PE1A and goes to PE2A, the controller
-   reserves 12.8 Gbps of bandwidth on the path from PE1A to PE2A.  If, on
+   from "DC1" to "DC2" always enters "PE1A" and goes to "PE2A", the controller
+   reserves 12.8 Gbps of bandwidth on the path from "PE1A" to "PE2A".  If, on
    the other hand, the routing configuration is arranged such that in
-   the absence of any network failure, traffic from DC1 to DC2 always
-   enters PE1A and is load-balanced across PE2A and PE2B, the controller
-   reserves 6.4 Gbps of bandwidth on the path from PE1A to PE2A and 6.4
-   Gbps of bandwidth on the path from PE1A to PE2B.  It might be tricky
+   the absence of any network failure, traffic from "DC1" to "DC2" always
+   enters "PE1A" and is load-balanced across "PE2A" and "PE2B", the controller
+   reserves 6.4 Gbps of bandwidth on the path from "PE1A" to "PE2A" and
+   6.4 Gbps of bandwidth on the path from "PE1A" to "PE2B".  It might be tricky
    for the NSC to be aware of all conditions that
    change the way traffic lands on the various PEs, and therefore know
    that it needs to change bandwidth reservations of paths accordingly.
-   For example, there might be an internal failure within DC1 that
-   causes traffic from DC1 to land on PE1B, rather than PE1A.  The
+   For example, there might be an internal failure within "DC1" that
+   causes traffic from "DC1" to land on "PE1B", rather than "PE1A".  The
    NSC may not be aware of the failure and therefore
    may not know that it now needs to apply bandwidth reservations to
-   paths from PE1B to PE2A/PE2B.<a href="#section-7.2.2-3" class="pilcrow">¶</a></p>
+   paths from "PE1B" to "PE2A" / "PE2B".<a href="#section-7.2.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="scheme-3-te-paths-without-bandwidth-reservation">
@@ -4404,10 +4453,10 @@ service disruption. Note that such an on-path attacker may make more damage (e.g
    compose the 5G System (5GS) Architecture together with related
    interfaces (e.g., N1 and N2).  This architecture has built-in control
    and user plane separation, and the control plane leverages a Service-
-   Based Architecture (SBA).  <a href="#_figure-28" class="auto internal xref">Figure 34</a> outlines an example 5GS architecture
+   Based Architecture (SBA).  <a href="#_figure-28" class="auto internal xref">Figure 33</a> outlines an example 5GS architecture
    with a subset of possible NFs and network interfaces.<a href="#appendix-B.1-1" class="pilcrow">¶</a></p>
 <span id="name-5gs-architecture-and-servic"></span><div id="_figure-28">
-<figure id="figure-34">
+<figure id="figure-33">
           <div class="alignCenter art-text artwork" id="appendix-B.1-2.1">
 <pre>
   +-----+  +-----+  +-----+    +-----+  +-----+  +-----+
@@ -4428,12 +4477,12 @@ User Plane          /     |           |         \
                 +---+  +-----+     +-----+    +-----+     '---'
 </pre>
 </div>
-<figcaption><a href="#figure-34" class="selfRef">Figure 34</a>:
+<figcaption><a href="#figure-33" class="selfRef">Figure 33</a>:
 <a href="#name-5gs-architecture-and-servic" class="selfRef">5GS Architecture and Service-based Interfaces</a>
           </figcaption></figure>
 </div>
 <p id="appendix-B.1-3">Similar to previous versions of 3GPP mobile networks <span>[<a href="#RFC6459" class="cite xref">RFC6459</a>]</span>, a 5G mobile network is split
-   into the following four major domains (<a href="#_figure-29" class="auto internal xref">Figure 35</a>):<a href="#appendix-B.1-3" class="pilcrow">¶</a></p>
+   into the following four major domains (<a href="#_figure-29" class="auto internal xref">Figure 34</a>):<a href="#appendix-B.1-3" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B.1-4.1">
             <p id="appendix-B.1-4.1.1">UE, MS, MN, and Mobile:<a href="#appendix-B.1-4.1.1" class="pilcrow">¶</a></p>
@@ -4468,7 +4517,7 @@ traffic generated by NFs is - mostly - based on IP or Ethernet.<a href="#appendi
 </li>
         </ul>
 <span id="name-building-blocks-of-5g-archi"></span><div id="_figure-29">
-<figure id="figure-35">
+<figure id="figure-34">
           <div class="alignCenter art-text artwork" id="appendix-B.1-5.1">
 <pre>
 +----------------------------------------------+
@@ -4486,7 +4535,7 @@ traffic generated by NFs is - mostly - based on IP or Ethernet.<a href="#appendi
 +----------------------------------------------+
 </pre>
 </div>
-<figcaption><a href="#figure-35" class="selfRef">Figure 35</a>:
+<figcaption><a href="#figure-34" class="selfRef">Figure 34</a>:
 <a href="#name-building-blocks-of-5g-archi" class="selfRef">Building Blocks of 5G Architecture (A High-Level Representation)</a>
           </figcaption></figure>
 </div>
@@ -4497,7 +4546,7 @@ traffic generated by NFs is - mostly - based on IP or Ethernet.<a href="#appendi
         <h3 id="name-core-network-cn">
 <a href="#appendix-B.2" class="section-number selfRef">B.2. </a><a href="#name-core-network-cn" class="section-name selfRef">Core Network (CN)</a>
         </h3>
-<p id="appendix-B.2-1">The 5G Core Network (5GC) is made up of a set of NFs which fall into two main categories (<a href="#_figure-30" class="auto internal xref">Figure 36</a>):<a href="#appendix-B.2-1" class="pilcrow">¶</a></p>
+<p id="appendix-B.2-1">The 5G Core Network (5GC) is made up of a set of NFs which fall into two main categories (<a href="#_figure-30" class="auto internal xref">Figure 35</a>):<a href="#appendix-B.2-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B.2-2.1">
             <p id="appendix-B.2-2.1.1">5GC User Plane:<a href="#appendix-B.2-2.1.1" class="pilcrow">¶</a></p>
@@ -4526,7 +4575,7 @@ since their connectivity may rely on the Transport Network:<a href="#appendix-B.
 </li>
         </ul>
 <span id="name-5g-core-network-cn"></span><div id="_figure-30">
-<figure id="figure-36">
+<figure id="figure-35">
           <div class="alignCenter art-text artwork" id="appendix-B.2-3.1">
 <pre>
   +---------+    +-------------------------+
@@ -4547,7 +4596,7 @@ since their connectivity may rely on the Transport Network:<a href="#appendix-B.
   +---------+    +-------------------------+
 </pre>
 </div>
-<figcaption><a href="#figure-36" class="selfRef">Figure 36</a>:
+<figcaption><a href="#figure-35" class="selfRef">Figure 35</a>:
 <a href="#name-5g-core-network-cn" class="selfRef">5G Core Network (CN)</a>
           </figcaption></figure>
 </div>
@@ -4585,9 +4634,9 @@ radio waves<a href="#appendix-B.3-2.3.1" class="pilcrow">¶</a></p>
    digital signal processing and a CU (Centralized Unit) for RAN Layer 3
    processing.  Furthermore, the CU can be itself split into Control
    Plane (CU-CP) and User Plane (CU-UP).<a href="#appendix-B.3-4" class="pilcrow">¶</a></p>
-<p id="appendix-B.3-5"><a href="#_figure-31" class="auto internal xref">Figure 37</a> depicts a disaggregated RAN with NFs and interfaces.<a href="#appendix-B.3-5" class="pilcrow">¶</a></p>
+<p id="appendix-B.3-5"><a href="#_figure-31" class="auto internal xref">Figure 36</a> depicts a disaggregated RAN with NFs and interfaces.<a href="#appendix-B.3-5" class="pilcrow">¶</a></p>
 <span id="name-ran-disaggregation"></span><div id="_figure-31">
-<figure id="figure-37">
+<figure id="figure-36">
           <div class="alignCenter art-text artwork" id="appendix-B.3-6.1">
 <pre>
             +---------------------------------+    +-----------+
@@ -4618,7 +4667,7 @@ radio waves<a href="#appendix-B.3-2.3.1" class="pilcrow">¶</a></p>
             +---------------------------------+    +-----------+
 </pre>
 </div>
-<figcaption><a href="#figure-37" class="selfRef">Figure 37</a>:
+<figcaption><a href="#figure-36" class="selfRef">Figure 36</a>:
 <a href="#name-ran-disaggregation" class="selfRef">RAN Disaggregation</a>
           </figcaption></figure>
 </div>
@@ -4650,10 +4699,10 @@ interconnection between the RAN and the CN.  All traffic
 is encapsulated in IP.<a href="#appendix-B.4-2.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="appendix-B.4-3"><a href="#_figure-32" class="auto internal xref">Figure 38</a> illustrates the different segments of the Transport Network
+<p id="appendix-B.4-3"><a href="#_figure-32" class="auto internal xref">Figure 37</a> illustrates the different segments of the Transport Network
    with the relevant NFs.<a href="#appendix-B.4-3" class="pilcrow">¶</a></p>
 <span id="name-5g-transport-segments"></span><div id="_figure-32">
-<figure id="figure-38">
+<figure id="figure-37">
           <div class="alignCenter art-text artwork" id="appendix-B.4-4.1">
 <pre>
 +---------------------------------------------------------+
@@ -4668,18 +4717,18 @@ is encapsulated in IP.<a href="#appendix-B.4-2.3.1" class="pilcrow">¶</a></p>
  +----+      +----+         +----+        +-----+     `---'
 </pre>
 </div>
-<figcaption><a href="#figure-38" class="selfRef">Figure 38</a>:
+<figcaption><a href="#figure-37" class="selfRef">Figure 37</a>:
 <a href="#name-5g-transport-segments" class="selfRef">5G Transport Segments</a>
           </figcaption></figure>
 </div>
 <p id="appendix-B.4-5">A given part of the transport network can
    carry several 5G transport segments concurrently, as outlined in
-   <a href="#_figure-33" class="auto internal xref">Figure 39</a>.  This is because different types of 5G NFs
+   <a href="#_figure-33" class="auto internal xref">Figure 38</a>.  This is because different types of 5G NFs
    might be placed in the same location (e.g., the UPF from one slice
    might be placed in the same location as the CU-UP from another
    slice).<a href="#appendix-B.4-5" class="pilcrow">¶</a></p>
 <span id="name-concurrent-5g-transport-seg"></span><div id="_figure-33">
-<figure id="figure-39">
+<figure id="figure-38">
           <div class="alignCenter art-text artwork" id="appendix-B.4-6.1">
 <pre>
 +---------+
@@ -4702,7 +4751,7 @@ is encapsulated in IP.<a href="#appendix-B.4-2.3.1" class="pilcrow">¶</a></p>
  +----+      +----+         +----+        +-----+     `---'
 </pre>
 </div>
-<figcaption><a href="#figure-39" class="selfRef">Figure 39</a>:
+<figcaption><a href="#figure-38" class="selfRef">Figure 38</a>:
 <a href="#name-concurrent-5g-transport-seg" class="selfRef">Concurrent 5G Transport Segments</a>
           </figcaption></figure>
 </div>
