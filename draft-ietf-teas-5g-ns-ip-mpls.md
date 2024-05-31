@@ -1212,7 +1212,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
       |  t  | e  +-|--------------------------+  | shaping=Slice-3-PIR
    ---|-----|---->                            |  |
       |     | 3  +-|--------------------------+ /|\
-      |     +---┬--+- - - - - - - - - - - - - - - - - - - - - - - - - -
+      |     +---|--+- - - - - - - - - - - - - - - - - - - - - - - - - -
       +---------+
 ~~~
 {: #figure-18 title="Ingress Slice Admission control (5QI-unaware Model)" artwork-align="center"}
