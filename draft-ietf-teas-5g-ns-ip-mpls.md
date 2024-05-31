@@ -1693,14 +1693,6 @@ Also, inter-PE transfer planes may be realized using separate NRPs. However, suc
 | DC 3 |  4   |  7   | n/a  |     10.0     |
 {: #table-x title="Inter-DC Traffic Demand Matrix (Slice X)"}
 
-
-|From/To|	DC 1|	DC 2|	DC 3|	Total from DC|
-|---|---|---|---|:-------------:|
-| DC 1 | n/a  |  4   | 2.5  |     6.0      |
-| DC 2 | 0.5  | n/a  | 0.8  |     1.0      |
-| DC 3 | 2.6  |  3   | n/a  |     5.1      |
-{: #table-y title="Inter-DC Traffic Demand Matrix (Slice Y)"}
-
    {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}} can be used to convey all
    of the information in the traffic matrix to an NSC.  The
    NSC applies policers corresponding to the last column in the traffic
@@ -1793,7 +1785,7 @@ Also, inter-PE transfer planes may be realized using separate NRPs. However, suc
    The bandwidth requirement from DCi to DCj is the sum of the DCi-DCj
    demands of the individual slices.  For example, if only slices "X" and
    "Y" are present, then the bandwidth requirement from "DC1" to "DC2"
-   is 12 units (8 units for slice "X" and 4 units for slice "Y").  When the
+   is 12 units (8 units for slice "X" ({{table-x}}) and 4 units for slice "Y" ({{table-y}})).  When the
    5G NSO requests a new slice, the NSC, in its mind,
    increments the bandwidth requirement according to the requirements of
    the new slice.  For example, in {{figure-multi-DC}}, suppose a new slice is
@@ -1801,6 +1793,13 @@ Also, inter-PE transfer planes may be realized using separate NRPs. However, suc
    controller would increase its notion of the bandwidth requirement
    from "DC1" to "DC2" from 12 Gbps to 12.8 Gbps to accommodate the
    additional expected traffic.
+
+|From/To|	DC 1|	DC 2|	DC 3|	Total from DC|
+|---|---|---|---|:-------------:|
+| DC 1 | n/a  |  4   | 2.5  |     6.0      |
+| DC 2 | 0.5  | n/a  | 0.8  |     1.0      |
+| DC 3 | 2.6  |  3   | n/a  |     5.1      |
+{: #table-y title="Inter-DC Traffic Demand Matrix (Slice Y)"}
 
    In the example, each DC has two PEs facing it for reasons of
    resilience.  The NSC needs to determine how to map
