@@ -397,6 +397,7 @@ Examples of ACs are Virtual Local Area Networks (VLANs) (AC) configured on a phy
 
 Deployment cases where the AC is also managed by the provider are not discussed in the document because the setup of such an AC does not require any coordination between the customer and provider orchestration domains.
 
+{:aside}
 > In order to keep the figures simple, only one AC and single-homed CEs are represented.
 > However, this document does not exclude the instantiation of multiple ACs between a CE and a PE nor the presence of CEs that are attached to more than one PE.
 
@@ -682,12 +683,14 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    in {{figure-11}}.
 
 ~~~
-             NF specific          reserved
+             NF-specific          Reserved
         (not slice specific)     for S-NSSAI
-    <───────────────────────────> <───────>
-   ┌────┬────┬────┬────┬────┬────┬────┬────┐
+   <----------------------------><--------->
+   +----+----+----+----+----+----+----+----+
    |xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:ttdd:dddd|
-   └─────────┴─────────┴─────────┴─────────┘
+   +----+----+----+----+----+----+----+----+
+   <------------------128 bits------------->
+    
     tt     - SST (8 bits)
     dddddd - SD (24 bits)
 ~~~
@@ -985,52 +988,52 @@ ranges for each slice, and use these ranges for slice identification purposes on
    encapsulation.
 
 ~~~
-                                 ┌──────────────┐
+                                 +--------------+
                                  | MPLS Header  |
-                                 ├─────┬─────┐  |
+                                 +-----+-----+  |
                                  |Label|TN TC|  |
-┌──────────────┐ ─ ─ ─ ─ ─ ─ ─ ─ ├─────┴─────┴──┤
++--------------+ ─ ─ ─ ─ ─ ─ ─ ─ +-----+-----+--+
 |  IP Header   |         |\      |  IP Header   |
-|      ┌───────┤         | \     |      ┌───────┤
-|      |5G DSCP| ────────┘  \    |      |5G DSCP|
-├──────┴───────┤             \   ├──────┴───────┤
+|      +-------+         | \     |      +-------+
+|      |5G DSCP|---------+  \    |      |5G DSCP|
++------+-------+             \   +------+-------+
 |              |              \  |              |
 |              |               \ |              |
-|              |                ▏|              |
+|              |                 |              |
 |   Payload    |               / |   Payload    |
 |(GTP-U/IPsec) |              /  |(GTP-U/IPsec) |
 |              |             /   |              |
-|              | ────────┐  /    |              |
+|              |---------+  /    |              |
 |              |         | /     |              |
 |              |         |/      |              |
-└──────────────┘ ─ ─ ─ ─ ─ ─ ─ ─ └──────────────┘
++--------------+ ─ ─ ─ ─ ─ ─ ─ ─ +--------------+
 ~~~
 {: #figure-15 title="QoS with MPLS Encapsulation" artwork-align="center"}
 
 ~~~
-                                 ┌──────────────┐
+                                 +--------------+
                                  | IPv6 Header  |
-                                 |      ┌───────┤
+                                 |      +-------+
                                  |      |TN DSCP|
-                                 ├──────┴───────┤
-                                     optional
-                                 |     IPv6     |
-                                      headers
-┌──────────────┐ ─ ─ ─ ─ ─ ─ ─ ─ ├──────────────┤
+                                 +------+-------+
+                                 :   Optional   :
+                                 :     IPv6     :
+                                 :    Headers   :
++--------------+ ─ ─ ─ ─ ─ ─ ─ ─ +-----+-----+--+
 |  IP Header   |         |\      |  IP Header   |
-|      ┌───────┤         | \     |      ┌───────┤
-|      |5G DSCP| ────────┘  \    |      |5G DSCP|
-├──────┴───────┤             \   ├──────┴───────┤
+|      +-------+         | \     |      +-------+
+|      |5G DSCP|---------+  \    |      |5G DSCP|
++------+-------+             \   +------+-------+
 |              |              \  |              |
 |              |               \ |              |
-|              |                ||              |
+|              |                 |              |
 |   Payload    |               / |   Payload    |
 |(GTP-U/IPsec) |              /  |(GTP-U/IPsec) |
 |              |             /   |              |
-|              | ────────┐  /    |              |
+|              |---------+  /    |              |
 |              |         | /     |              |
 |              |         |/      |              |
-└──────────────┘ ─ ─ ─ ─ ─ ─ ─ ─ └──────────────┘
++--------------+ ─ ─ ─ ─ ─ ─ ─ ─ +--------------+
 ~~~
 {: #figure-16 title="QoS with IPv6 Encapsulation" artwork-align="center"}
 
@@ -1479,27 +1482,27 @@ Also, inter-PE transfer planes may be realized using separate NRPs. However, suc
    out of scope for this document.
 
 ~~~
-┌───────────────┐                                    ┌──────┐
++---------------+                                    +------+
 |  Ingress PE   |   ╔═══════════════════════════════>| PE-A |
-|               |   ║   ╔═══════════════════════════▷|      |
-|  ┌ ─ ─ ─ ─ ┐  |   ║   ╚═════════════════════╗      └──────┘
-|            ●══════╝   ╔═════════════════════╝
-|  |Transfert●════════════════════════════════╗      ┌──────┐
-|    Plane A ●═════════════╗                  ╚═════>| PE-B |
-|  |         ●═══════╗  ║  ║  ╔═══╗   ╔═══╗   ╔═════▷|      |
-|   ─ ─ ─ ─ ─   |    ║  ║  ║  ║   ║   ║   ║   ║      └──────┘
+|               |   ║   ╔══════════════════════════>>|      |
+|  +---------+  |   ║   ╚═════════════════════╗      +------+
+|  |         x══════╝   ╔═════════════════════╝
+|  |Transfer x════════════════════════════════╗      +------+
+|  | Plane A x═════════════╗                  ╚═════>| PE-B |
+|  |         x═══════╗  ║  ║  ╔═══╗   ╔═══╗   ╔════>>|      |
+|  +---------+  |    ║  ║  ║  ║   ║   ║   ║   ║      +------+
 |               |    ║  ║  ║  ║   ╚═══╝   ╚═══╝
-|  ┌ ─ ─ ─ ─ ┐  |    ║  ║  ║  ║                      ┌──────┐
-|            ○═══════║══╝  ╚════════════════════════>| PE-C |
-|  |Transfert○═══════║════════╝               ╔═════▷|      |
-|    Plane B ○═══════║═════════════════╗      ║      └──────┘
-|  |         ○═════╗ ╚═══════════════╗ ║      ║
-|   ─ ─ ─ ─ ─   |  ║ ╔═╗ ╔═╗ ╔═╗ ╔═╗ ║ ╚══════╝      ┌──────┐
+|  +---------+  |    ║  ║  ║  ║                      +------+
+|  |         o═══════║══╝  ╚════════════════════════>| PE-C |
+|  |Transfer o═══════║════════╝               ╔════>>|      |
+|  | Plane B o═══════║═════════════════╗      ║      +------+
+|  |         o═════╗ ╚═══════════════╗ ║      ║
+|  +---------+  |  ║ ╔═╗ ╔═╗ ╔═╗ ╔═╗ ║ ╚══════╝      +------+
 |               |  ║ ║ ║ ║ ║ ║ ║ ║ ║ ╚══════════════>| PE-D |
-└───────────────┘  ╚═╝ ╚═╝ ╚═╝ ╚═╝ ╚════════════════▷|      |
-                                                     └──────┘
-         ●════════▶  Tunnels of Inter-PE Transfer Plane A
-         ○════════▷  Tunnels of Inter-PE Transfer Plane B
++---------------+  ╚═╝ ╚═╝ ╚═╝ ╚═╝ ╚═══════════════>>|      |
+                                                     +------+
+ x═════>   Tunnels of Inter-PE Transfer Plane A
+ o════>>   Tunnels of Inter-PE Transfer Plane B
 ~~~
 {: #figure-23 title="Example of Inter-PE Transfer Planes Relying on TE Tunnels" artwork-align="center"}
 
@@ -1510,7 +1513,7 @@ Also, inter-PE transfer planes may be realized using separate NRPs. However, suc
    It is worth noting that TN QoS Classes and inter-PE transfer planes are
    orthogonal.  The TN domain can be operated with, e.g., 8 TN QoS Classes (representing 8 hardware queues in the
    routers), and 2 transfer planes (e.g., latency optimized transfer
-   plane using link latency metrics for path calculation, and transfert
+   plane using link latency metrics for path calculation, and transfer
    plane following Interior Gateway Protocol (IGP) metrics).  TN QoS Class determines the per-hop
    behavior when the packets are transiting through the provider network,
    while transfer plane determines the paths for packets through provider
@@ -1536,41 +1539,41 @@ Also, inter-PE transfer planes may be realized using separate NRPs. However, suc
    {{figure-24}}.
 
 ~~~
-   ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
-   ┏━━━━━━━━━━━━━━━━━┓                        |
-   ┃ Attach. Circuit ┃      PE router
-   ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃                        |
-   ┃   SDP           ┃
-   ┃|  ┌──────────┐ |┃                        |
-   ┃   |     NS 1 ├──────────┐
-   ┃|  └──────────┘ |┃       |                |
-   ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃       |
-   ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃       |   ┌─────────┐  |
-   ┃   SDP           ┃       |   |         |
-   ┃|  ┌──────────┐ |┃       |   |Transport|  |
-   ┃   |     NS 2 ├──────┐   ├───>  Plane  |
-   ┃|  └──────────┘ |┃   |   |   |    A    |  |
-   ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃   |   |   |         |
-   ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃   |   |   └─────────┘  |
-   ┃   SDP           ┃   |   |
-   ┃|  ┌──────────┐ |┃   |   |                |
-   ┃   |     NS 3 ├──────┤   |
-   ┃|  └──────────┘ |┃   |   |   ┌─────────┐  |
-   ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃   |   |   |         |
-   ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃   |   |   |Transport|  |
-   ┃   SDP           ┃   ├───|───>  Plane  |
-   ┃|  ┌──────────┐ |┃   |   |   |    B    |  |
-   ┃   |     NS 4 ├──────┘   |   |         |
-   ┃|  └──────────┘ |┃       |   └─────────┘  |
-   ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃       |
-   ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃       |                |
-   ┃   SDP           ┃       |
-   ┃|  ┌──────────┐ |┃       |                |
-   ┃   |     NS 5 ├──────────┘
-   ┃|  └──────────┘ |┃                        |
-   ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃
-   ┗━━━━━━━━━━━━━━━━━┛                        |
-   └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+   +-----------------------------------------+
+   |.. .. .. .. .. ..                        |
+   :        AC       :      PE               |
+   :+---------------+:                       |
+   :|  SDP          |:                       |
+   :|  +----------+ |:                       |
+   :|  |     NS 1 +----------+               |
+   :|  +----------+ |:       |               |
+   :+---------------+:       |               |
+   :+---------------+:       |   +---------+ |
+   :|  SDP          |:       |   |         | |
+   :|  +----------+ |:       |   |Transfer | |
+   :|  |     NS 2 +------+   +--->  Plane  | |
+   :|  +----------+ |:   |   |   |    A    | |
+   :+---------------+:   |   |   |         | |
+   :+---------------+:   |   |   +---------+ |
+   :|  SDP          |:   |   |               |
+   :|  +----------+ |:   |   |               |
+   :|   |     NS 3 +-----+   |               |
+   :|  +----------+ |:   |   |   +---------+ |
+   :+---------------+:   |   |   |         | |
+   :+---------------+:   |   |   |Transfer | |
+   :|  SDP          |:   +------->  Plane  | |
+   :|  +----------+ |:   |   |   |    B    | |
+   :|  |     NS 4 +------+   |   |         | |
+   :|  +----------+ |:       |   +---------+ |
+   :+---------------+:       |               |
+   :+---------------+:       |               |
+   :|  SDP          |:       |               |
+   :|  +----------+ |:       |               |
+   :|  |     NS 5 +----------+               | 
+   :|  +----------+ |:                       |
+   :+---------------+:                       |
+   '.. .. .. .. .. ..                        |
+   +-----------------------------------------+
 ~~~
 {: #figure-24 title="Network Slice to Inter-PE Transfer Plane Mapping (5QI-unaware Model)" artwork-align="center"}
 
@@ -1583,41 +1586,41 @@ Also, inter-PE transfer planes may be realized using separate NRPs. However, suc
    as depicted in {{figure-25}}.
 
 ~~~
-     ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
-     ┏━━━━━━━━━━━━━━━━━┓
-     ┃ Attach. Circuit ┃                         |
-     ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃        PE router
-   R ┃   SDP           ┃                         |
-   F ┃|  ┌──────────┐ |┃
-   C ┃   | 5G QoS A ├──────┐                     |
-   9 ┃|  └──────────┘ |┃   |
-   5 ┃   ┌──────────┐  ┃   |                     |
-   4 ┃|  | 5G QoS B ├──────┤
-   3 ┃   └──────────┘  ┃   |         ┌─────────┐ |
-     ┃|  ┌──────────┐ |┃   |         |         |
-   N ┃   | 5G QoS C ├───────────┐    |Transport| |
-   S ┃|  └──────────┘ |┃   ├────|────>  Plane  |
-     ┃   ┌──────────┐  ┃   |    |    |    A    | |
-   1 ┃|  | 5G QoS D ├───────────┤    |         |
-     ┃   └──────────┘  ┃   |    |    └─────────┘ |
-     ┃└ ─ ─ ─ ─ ─ ─ ─ ┘┃   |    |
-   R ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃   |    |                |
-   F ┃   ┌──────────┐  ┃   |    |
-   C ┃|  | 5G QoS A ├──────┤    |    ┌─────────┐ |
-   9 ┃   └──────────┘  ┃   |    |    |         |
-   5 ┃|  ┌──────────┐ |┃   |    |    |Transport| |
-   4 ┃   | 5G QoS E ├──────┘    ├────>  Plane  |
-   3 ┃|  └──────────┘ |┃        |    |    B    | |
-     ┃   ┌──────────┐  ┃        |    |         |
-   N ┃|  | 5G QoS F ├───────────┤    └─────────┘ |
-   S ┃   └──────────┘  ┃        |
-     ┃|  ┌──────────┐ |┃        |                |
-   2 ┃   | 5G QoS G ├───────────┘
-     ┃|  └──────────┘ |┃                         |
-     ┃   SDP           ┃
-     ┃└ ─ ─ ─ ─ ─ ─ ─ ┘┃                         |
-     ┗━━━━━━━━━━━━━━━━━┛
-     └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
+     +-------------------------------------------+
+     |.. .. .. .. .. ..                          |
+     :        AC       :      PE                 |
+     :+---------------+:                         |
+   R :|  SDP          |:                         |
+   F :|  +----------+ |:                         |                        
+   C :|  | 5G QoS A +------+                     |
+   9 :|  +----------+ |:   |                     |
+   5 :|  +----------+ |:   |                     |
+   4 :|  | 5G QoS B +------+                     |
+   3 :|  +----------+ |:   |         +---------+ |
+     :|  +----------+ |:   |         |         | |
+   N :|  | 5G QoS C +-----------+    |Transfer | |
+   S :|  +----------+ |:   +--------->  Plane  | |
+     :|  +----------+ |:   |    |    |    A    | |
+   1 :|  | 5G QoS D +-----------+    |         | |
+     :|  +----------+ |:   |    |    +---------+ |
+     :+---------------+:   |    |                |
+   R :+---------------+:   |    |                |
+   F :|  +----------+ |:   |    |                |
+   C :|  | 5G QoS A +------+    |    +---------+ |
+   9 :|  +----------+ |:   |    |    |         | |
+   5 :|  +----------+ |:   |    |    |Transfer | |
+   4 :|  | 5G QoS E +------+    +---->  Plane  | |
+   3 :|  +----------+ |:        |    |    B    | |
+     :|  +----------+ |:        |    |         | |
+   N :|  | 5G QoS F +-----------+    +---------+ |
+   S :|  +----------+ |:        |                |
+     :|  +----------+ |:        |                |
+   2 :|  | 5G QoS G +-----------+                |
+     :|  +----------+ |:                         |
+     :|  SDP          |:                         |
+     :+---------------+:                         |
+     '.. .. .. .. .. ..                          |
+     +-------------------------------------------+
 ~~~
 {: #figure-25 title="Network Slice to Inter-PE Transfer Plane mapping (5QI-aware Model)" artwork-align="center"}
 
@@ -1664,49 +1667,39 @@ Also, inter-PE transfer planes may be realized using separate NRPs. However, suc
    DC-pairs, i.e. those in the same region of the provider network.  The
    mechanism for conveying the information is out of scope for this document.
 
-   {{figure-27}} shows the matrix of bandwidth demands for 5G slice "X".
-   Within the slice, multiple network function instances might be
+   {{table-x}} shows the matrix of bandwidth demands for 5G slice "X".
+   Within the slice, multiple NF instances might be
    sending traffic from DCi to DCj.  However, the 5G NSO sums the
-   associated demands into one value.  For example, NF1A and NF1B in DC1
-   might be sending traffic to multiple NFs in DC2, but this is
+   associated demands into one value.  For example, "NF1A" and "NF1B" in "DC1"
+   might be sending traffic to multiple NFs in "DC2", but this is
    expressed as one value in the traffic matrix: the total bandwidth
-   required for 5G slice X from DC1 to DC2 (8 units).  Each row in the
+   required for 5G slice "X" from "DC1" to "DC2" (8 units).  Each row in the
    right-most column in the traffic matrix shows the total amount of
    traffic going from a given DC into the transport network, regardless
    of the destination DC.  Note that this number can be less than the
    sum of DC-to-DC demands in the same row, on the basis that not all
-   the network functions are likely to be sending at their maximum rate
-   simultaneously.  For example, the total traffic from DC1 for Slice X
+   the NFs are likely to be sending at their maximum rate
+   simultaneously.  For example, the total traffic from "DC1" for slice "X"
    is 11 units, which is less than the sum of the DC-to-DC demands in
    the same row (13 units).  Note, as described in {{sec-qos-map}}, a slice
    may have per-QoS class bandwidth requirements, and may have CIR and
    PIR limits.  This is not included in the example, but the same
    principles apply in such cases.
 
-~~~
-      To┌──────┬──────┬──────┬──────────────┐
-From    | DC 1 | DC 2 | DC 3 |Total from DC |
- ┌──────┼──────┼──────┼──────┼──────────────┤
- | DC 1 | n/a  |  8   |  5   |     11.0     |
- ├──────┼──────┼──────┼──────┼──────────────┤
- | DC 2 |  1   | n/a  |  2   |      2.5     |
- ├──────┼──────┼──────┼──────┼──────────────┤
- | DC 3 |  4   |  7   | n/a  |     10.0     |
- └──────┴──────┴──────┴──────┴──────────────┘
-                    Slice X
+|From/To|	DC 1|	DC 2|	DC 3|	Total from DC|
+|---|---|---|---|:-------------:|
+| DC 1 | n/a  |  8   |  5   |     11.0     |
+| DC 2 |  1   | n/a  |  2   |      2.5     |
+| DC 3 |  4   |  7   | n/a  |     10.0     |
+{: #table-x title="Inter-DC Traffic Demand Matrix (Slice X)"}
 
-      To┌──────┬──────┬──────┬──────────────┐
-From    | DC 1 | DC 2 | DC 3 |Total from DC |
- ┌──────┼──────┼──────┼──────┼──────────────┤
- | DC 1 | n/a  |  4   | 2.5  |     6.0      |
- ├──────┼──────┼──────┼──────┼──────────────┤
- | DC 2 | 0.5  | n/a  | 0.8  |     1.0      |
- ├──────┼──────┼──────┼──────┼──────────────┤
- | DC 3 | 2.6  |  3   | n/a  |     5.1      |
- └──────┴──────┴──────┴──────┴──────────────┘
-                    Slice Y
-~~~
-{: #figure-27 title="Inter-DC Traffic Demand Matrix" artwork-align="center"}
+
+|From/To|	DC 1|	DC 2|	DC 3|	Total from DC|
+|---|---|---|---|:-------------:|
+| DC 1 | n/a  |  4   | 2.5  |     6.0      |
+| DC 2 | 0.5  | n/a  | 0.8  |     1.0      |
+| DC 3 | 2.6  |  3   | n/a  |     5.1      |
+{: #table-y title="Inter-DC Traffic Demand Matrix (Slice Y)"}
 
    {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}} can be used to convey all
    of the information in the traffic matrix to an NSC.  The
@@ -1798,37 +1791,37 @@ From    | DC 1 | DC 2 | DC 3 |Total from DC |
    There would be a many-to-one mapping of slices to paths.
 
    The bandwidth requirement from DCi to DCj is the sum of the DCi-DCj
-   demands of the individual slices.  For example, if only Slice X and
-   Slice Y are present, then the bandwidth requirement from DC1 to DC2
-   is 12 units (8 units for Slice X and 4 units for Slice Y).  When the
+   demands of the individual slices.  For example, if only slices "X" and
+   "Y" are present, then the bandwidth requirement from "DC1" to "DC2"
+   is 12 units (8 units for slice "X" and 4 units for slice "Y").  When the
    5G NSO requests a new slice, the NSC, in its mind,
    increments the bandwidth requirement according to the requirements of
    the new slice.  For example, in {{figure-multi-DC}}, suppose a new slice is
-   instantiated that needs 0.8 Gbps from DC1 to DC2.  The transport
+   instantiated that needs 0.8 Gbps from "DC1" to "DC2".  The transport
    controller would increase its notion of the bandwidth requirement
-   from DC1 to DC2 from 12 Gbps to 12.8 Gbps to accommodate the
+   from "DC1" to "DC2" from 12 Gbps to 12.8 Gbps to accommodate the
    additional expected traffic.
 
    In the example, each DC has two PEs facing it for reasons of
    resilience.  The NSC needs to determine how to map
-   the DC1 to DC2 bandwidth requirement to bandwidth reservations of TE
-   LSPs from DC1 to DC2.  For example, if the routing configuration is
+   the "DC1" to "DC2" bandwidth requirement to bandwidth reservations of TE
+   LSPs from "DC1" to "DC2".  For example, if the routing configuration is
    arranged such that in the absence of any network failure, traffic
-   from DC1 to DC2 always enters PE1A and goes to PE2A, the controller
-   reserves 12.8 Gbps of bandwidth on the path from PE1A to PE2A.  If, on
+   from "DC1" to "DC2" always enters "PE1A" and goes to "PE2A", the controller
+   reserves 12.8 Gbps of bandwidth on the path from "PE1A" to "PE2A".  If, on
    the other hand, the routing configuration is arranged such that in
-   the absence of any network failure, traffic from DC1 to DC2 always
-   enters PE1A and is load-balanced across PE2A and PE2B, the controller
-   reserves 6.4 Gbps of bandwidth on the path from PE1A to PE2A and 6.4
-   Gbps of bandwidth on the path from PE1A to PE2B.  It might be tricky
+   the absence of any network failure, traffic from "DC1" to "DC2" always
+   enters "PE1A" and is load-balanced across "PE2A" and "PE2B", the controller
+   reserves 6.4 Gbps of bandwidth on the path from "PE1A" to "PE2A" and
+   6.4 Gbps of bandwidth on the path from "PE1A" to "PE2B".  It might be tricky
    for the NSC to be aware of all conditions that
    change the way traffic lands on the various PEs, and therefore know
    that it needs to change bandwidth reservations of paths accordingly.
-   For example, there might be an internal failure within DC1 that
-   causes traffic from DC1 to land on PE1B, rather than PE1A.  The
+   For example, there might be an internal failure within "DC1" that
+   causes traffic from "DC1" to land on "PE1B", rather than "PE1A".  The
    NSC may not be aware of the failure and therefore
    may not know that it now needs to apply bandwidth reservations to
-   paths from PE1B to PE2A/PE2B.
+   paths from "PE1B" to "PE2A" / "PE2B".
 
 ### Scheme 3: TE Paths without Bandwidth Reservation
 
