@@ -1274,7 +1274,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
-            <p id="section-toc.1-1.15.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+            <p id="section-toc.1-1.15.1"><a href="#appendix-C" class="auto internal xref">Appendix C</a>.  <a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16">
             <p id="section-toc.1-1.16.1"><a href="#appendix-D" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
@@ -1294,9 +1294,9 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <p id="section-1-1">This document focuses on network slicing for 5G networks, covering the connectivity between Network Functions (NFs) across multiple domains such as edge clouds, data centers, and the Wide Area Network (WAN). The document describes a Network Slice realization approach that fulfills 5G slicing requirements by using existing IP/MPLS technologies to optimally control connectivity Service Level Agreements (SLAs) offered for 5G slices. To that aim, this document describes the scope of the Transport Network in 5G architectures (<a href="#sec-scope" class="auto internal xref">Section 3.1</a>), disambiguates 5G Network Slicing versus Transport Network Slicing (<a href="#sec-5gtn" class="auto internal xref">Section 3.2</a>), draws the perimeter of the various orchestration domains to realize slices (<a href="#sec-orch" class="auto internal xref">Section 3.4</a>), and identifies the required coordination between these orchestration domains for adequate setup of Attachment Circuits (ACs) (<a href="#sec-tn-nsi" class="auto internal xref">Section 3.4.2</a>).<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">This work is compatible with the framework defined in <span>[<a href="#RFC9543" class="cite xref">RFC9543</a>]</span> which describes network slicing in the context of networks built from IETF technologies. Specifically, this document explains how RFC 9543 Network Slices are realized within provider networks and how such slices are stitched to Transport Network resources in a customer site in the context of Transport Network Slices (<a href="#fig-end-to-end" class="auto internal xref">Figure 1</a>).
 Concretely, the realization of an RFC 9543 Network Slice (i.e., connectivity with performance commitments) involves the provider network and partially the AC (the PE-side of the AC). This document assumes that the customer site infrastructure is over-provisioned and involves short distances (low latency) where basic QoS/scheduling logic is sufficient to comply with the Service Level Objectives (SLOs).<a href="#section-1-2" class="pilcrow">¶</a></p>
-<span id="name-transport-network-slice-rfc"></span><div id="fig-end-to-end">
+<div id="fig-end-to-end">
 <figure id="figure-1">
-        <div class="alignCenter art-text artwork" id="section-1-3.1">
+        <div class="alignLeft art-text artwork" id="section-1-3.1">
 <pre>
       |------------------TN Slice------------------|
 
@@ -1317,9 +1317,7 @@ Concretely, the realization of an RFC 9543 Network Slice (i.e., connectivity wit
   +------------+          +---------------+         +------------+
 </pre>
 </div>
-<figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
-<a href="#name-transport-network-slice-rfc" class="selfRef">Transport Network Slice &amp;  RFC 9543 Network Slice Scopes</a>
-        </figcaption></figure>
+<figcaption><a href="#figure-1" class="selfRef">Figure 1</a></figcaption></figure>
 </div>
 <p id="section-1-4">The realization approach described in this document is typically triggered by Network Slice Service requests. How a Network Slice Service request is placed for realization, including how it is derived from a 5G Slice Service request, is out of scope. Mapping considerations between 3GPP and IETF Network Slice Service (e.g., mapping of service parameters) are discussed, e.g., in <span>[<a href="#I-D.ietf-teas-5g-network-slice-application" class="cite xref">I-D.ietf-teas-5g-network-slice-application</a>]</span>.<a href="#section-1-4" class="pilcrow">¶</a></p>
 <p id="section-1-5">The 5G control plane uses the Single Network Slice Selection Assistance Information (S-NSSAI) for slice
@@ -1393,9 +1391,9 @@ domain by mapping to explicit data plane identifiers (e.g., Layer 2, Layer 3, or
           <p id="section-3.1-4.1">"The non-3GPP part includes TN parts. The 3GPP management system provides the network slice requirements to the corresponding management systems of those non-3GPP parts, e.g. the TN part supports connectivity within and between CN and AN parts." (Section 4.4.1 of <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span>)<a href="#section-3.1-4.1" class="pilcrow">¶</a></p>
 </blockquote>
 <p id="section-3.1-5">In practice, the TN may not map to a monolithic architecture and management domain. It is frequently segmented, non-uniform, and managed by different entities. For example, <a href="#fig-1" class="auto internal xref">Figure 2</a> depicts an NF instance that is deployed in an edge data center (DC) connected to an NF located in a Public Cloud via a WAN (e.g., MPLS-VPN service). In this example, the TN can be seen as an abstraction representing an end-to-end connectivity based upon three distinct domains: DC, WAN, and Public Cloud. A model for the Transport Network based on orchestration domains is introduced in <a href="#sec-orch" class="auto internal xref">Section 3.4</a>.<a href="#section-3.1-5" class="pilcrow">¶</a></p>
-<span id="name-an-example-of-transport-net"></span><div id="fig-1">
+<div id="fig-1">
 <figure id="figure-2">
-          <div class="alignCenter art-text artwork" id="section-3.1-6.1">
+          <div class="alignLeft art-text artwork" id="section-3.1-6.1">
 <pre>
       +----------------------------------+
  +----+      5G RAN or Core Network      +----+
@@ -1420,9 +1418,7 @@ domain by mapping to explicit data plane identifiers (e.g., Layer 2, Layer 3, or
  +----------------+  +----------+   +--------+
 </pre>
 </div>
-<figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
-<a href="#name-an-example-of-transport-net" class="selfRef">An Example of Transport Network Decomposition</a>
-          </figcaption></figure>
+<figcaption><a href="#figure-2" class="selfRef">Figure 2</a></figcaption></figure>
 </div>
 </section>
 </div>
@@ -1475,9 +1471,9 @@ Engineering (TE). Whether all or a subset of these components are enabled is a d
 <a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-transport-network-reference" class="section-name selfRef">Transport Network Reference Design</a>
         </h3>
 <p id="section-3.3-1"><a href="#fig-tn-arch" class="auto internal xref">Figure 3</a> depicts the reference design used in this document for modelling the Transport Network based on management perimeters (Customer vs. Provider).<a href="#section-3.3-1" class="pilcrow">¶</a></p>
-<span id="name-reference-design-with-custo"></span><div id="fig-tn-arch">
+<div id="fig-tn-arch">
 <figure id="figure-3">
-          <div class="alignCenter art-text artwork" id="section-3.3-2.1">
+          <div class="alignLeft art-text artwork" id="section-3.3-2.1">
 <pre>
       Customer                 Provider                     Customer
    Orchestration            Orchestration                 Orchestration
@@ -1496,9 +1492,7 @@ Engineering (TE). Whether all or a subset of these components are enabled is a d
      &lt;-----------------Transport Network---------------&gt;
 </pre>
 </div>
-<figcaption><a href="#figure-3" class="selfRef">Figure 3</a>:
-<a href="#name-reference-design-with-custo" class="selfRef">Reference Design with Customer Site and Provider Network</a>
-          </figcaption></figure>
+<figcaption><a href="#figure-3" class="selfRef">Figure 3</a></figcaption></figure>
 </div>
 <p id="section-3.3-3">The description of the main components shown in <a href="#fig-tn-arch" class="auto internal xref">Figure 3</a> is provided in the following subsections.<a href="#section-3.3-3" class="pilcrow">¶</a></p>
 <div id="sec-cs">
@@ -1519,27 +1513,25 @@ Engineering (TE). Whether all or a subset of these components are enabled is a d
 <p id="section-3.3.2-1">A CE is a function that provides logical connectivity of a customer site (<a href="#sec-cs" class="auto internal xref">Section 3.3.1</a>) to the provider network (<a href="#sec-pn" class="auto internal xref">Section 3.3.3</a>). The logical connectivity is enforced at Layer 2 and/or Layer 3 and is denominated an Attachment Circuit (AC) (<a href="#sec-ac" class="auto internal xref">Section 3.3.5</a>). Examples of CEs include TN components (e.g., router, switch, and firewalls) and also 5G NFs (i.e., an element of the 5G domain such as Centralized Unit (CU), Distributed Unit (DU), or User Plane Function (UPF)).<a href="#section-3.3.2-1" class="pilcrow">¶</a></p>
 <p id="section-3.3.2-2">A CE is typically managed by the customer, but it can also be co-managed with the provider. A co-managed CE is orchestrated by both the customer and the provider. In this case, the customer and provider usually have control on distinct device configuration perimeters. A co-managed CE has both PE and CE functions and there is no strict AC connection, although one may consider that the AC stitching logic happens internally within the CE itself. The provider manages the AC between the CE and the PE.<a href="#section-3.3.2-2" class="pilcrow">¶</a></p>
 <p id="section-3.3.2-3">This document generalizes the definition of a CE with the introduction of "Distributed CE"; that is, the logical connectivity is realized by configuring multiple devices in the customer domain. The CE function is distributed. An example of distributed CE is the realization of an interconnection using a L3VPN service based on a distributed CE composed of a switch (Layer 2) and a router (Layer 3) (<a href="#fig-distribute-ce" class="auto internal xref">Figure 4</a>). Another example of distributed CE is shown in <a href="#fig-50" class="auto internal xref">Figure 5</a>.<a href="#section-3.3.2-3" class="pilcrow">¶</a></p>
-<span id="name-example-of-distributed-ce"></span><div id="fig-distribute-ce">
+<div id="fig-distribute-ce">
 <figure id="figure-4">
-            <div class="alignCenter art-text artwork" id="section-3.3.2-4.1">
+            <div class="alignLeft art-text artwork" id="section-3.3.2-4.1">
 <pre>
 +--------------+                    +--------------+
 |   Customer   |                    |   Provider   |
 |     Site     |                    |    Network   |
 |.................                  |              |
-|| +-----+ +----+|               +----+            |
-|| |     | |    ==================    |            |
-|| |     +------------AC---------+ PE |            |
-|| | RTR | | SW ==================    |            |
-|| +-----+ +----+|               +----+            |
+| +-----+ +----+|               +----+            |
+| |     | |    ------------------    |            |
+| |     +------------AC---------+ PE |            |
+| | RTR | | SW ------------------    |            |
+| +-----+ +----+|               +----+            |
 |'..Distributed..'                  |              |
 |       CE     |                    |              |
 +--------------+                    +--------------+
 </pre>
 </div>
-<figcaption><a href="#figure-4" class="selfRef">Figure 4</a>:
-<a href="#name-example-of-distributed-ce" class="selfRef">Example of Distributed CE</a>
-            </figcaption></figure>
+<figcaption><a href="#figure-4" class="selfRef">Figure 4</a></figcaption></figure>
 </div>
 <p id="section-3.3.2-5">While in most cases CEs connect to PEs using IP (e.g., VLANs subinterface on a Layer 3 interface), a CE may also connect to the provider network using other technologies such as MPLS -potentially over IP tunnels- or Segment Routing over IPv6 (SRv6) <span>[<a href="#RFC8986" class="cite xref">RFC8986</a>]</span>. The CE has thus awareness of provider services configuration (e.g., control plane identifiers such as Route Targets (RTs) and Route Distinguishers (RDs)). However, the CE is still managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. The complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE. Service-aware CEs are used, for example, in the deployments discussed in Sections <a href="#sec-10b" class="auto internal xref">4.3.2</a> and <a href="#sec-10c" class="auto internal xref">4.3.3</a>.<a href="#section-3.3.2-5" class="pilcrow">¶</a></p>
 </section>
@@ -1560,18 +1552,18 @@ Engineering (TE). Whether all or a subset of these components are enabled is a d
 <p id="section-3.3.4-1">PE is a device managed by a provider that is connected to a CE. The connectivity between a CE and a PE is achieved using one or multiple ACs (<a href="#sec-ac" class="auto internal xref">Section 3.3.5</a>).<a href="#section-3.3.4-1" class="pilcrow">¶</a></p>
 <p id="section-3.3.4-2">This document generalizes the PE definition with the introduction of "Distributed PE"; that is, the logical connectivity is realized by configuring multiple devices in the provider network (i.e., provider orchestration domain). The PE function is distributed.<a href="#section-3.3.4-2" class="pilcrow">¶</a></p>
 <p id="section-3.3.4-3">An example of a distributed PE is the "Managed CE service". For example, a provider delivers VPN services using CEs and PEs which are both managed by the provider (case (i) in <a href="#fig-50" class="auto internal xref">Figure 5</a>). The managed CE can also be a Data Center Gateway as depicted in the example (ii) of <a href="#fig-50" class="auto internal xref">Figure 5</a>. A provider-managed CE may attach to CEs of multiple customers. However, this device is part of the provider network.<a href="#section-3.3.4-3" class="pilcrow">¶</a></p>
-<span id="name-examples-of-distributed-pe"></span><div id="fig-50">
+<div id="fig-50">
 <figure id="figure-5">
-            <div class="alignCenter art-text artwork" id="section-3.3.4-4.1">
+            <div class="alignLeft art-text artwork" id="section-3.3.4-4.1">
 <pre>
 +--------------+                    +--------------+
 |   Customer   |                    |   Provider   |
 |     Site     |                    |    Network   |
 |              |                .................  |
 |          +----+               |+----+   +----+|  |
-|          |    ==================Mngd|   |    ||  |
-|          | CE +--------AC------+ CE +---+ PE ||  |
-|          |    ==================    |   |    ||  |
+|          |    ------------------Mngd|   |    |  |
+|          | CE +--------AC------+ CE +---+ PE |  |
+|          |    ------------------    |   |    |  |
 |          +----+               |+----+   +----+|  |
 |              |                '..Distributed..'  |
 |              |                    |  PE          |
@@ -1583,9 +1575,9 @@ Engineering (TE). Whether all or a subset of these components are enabled is a d
 |     Site     |                    |    Network   |
 |  ..................           .................. |
 |  |    IP Fabric   |           |+----+   +----+ | |
-|  |.-----. .-----. ============== DC |   |    | | |
+|  |.-----. .-----. -------------- DC |   |    | | |
 |  |'-----' '-----' +-----AC-----+ GW +---+ PE | | |
-|  |.-. .-. .-. .-. ==============    |   |    | | |
+|  |.-. .-. .-. .-. --------------    |   |    | | |
 |  |'-' '-' '-' '-' |           |+----+   +----+ | |
 |  '...Distributed..'           '...Distributed..' |
 |          CE  |                    |  PE          |
@@ -1594,9 +1586,7 @@ Engineering (TE). Whether all or a subset of these components are enabled is a d
               (ii) Distributed PE and CE
 </pre>
 </div>
-<figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
-<a href="#name-examples-of-distributed-pe" class="selfRef">Examples of Distributed PE</a>
-            </figcaption></figure>
+<figcaption><a href="#figure-5" class="selfRef">Figure 5</a></figcaption></figure>
 </div>
 <p id="section-3.3.4-5">In subsequent sections of this document, the terms CE and PE are used for both single and distributed devices.<a href="#section-3.3.4-5" class="pilcrow">¶</a></p>
 </section>
@@ -1608,7 +1598,7 @@ Engineering (TE). Whether all or a subset of these components are enabled is a d
           </h4>
 <p id="section-3.3.5-1">The AC is the logical connection that attaches a CE (<a href="#sec-ce" class="auto internal xref">Section 3.3.2</a>) to a PE (<a href="#sec-pe" class="auto internal xref">Section 3.3.4</a>). A CE is connected to a PE via one or multiple ACs. An AC is technology-specific.<a href="#section-3.3.5-1" class="pilcrow">¶</a></p>
 <p id="section-3.3.5-2">This document uses the concept of distributed CEs and PEs (e.g., <span><a href="https://rfc-editor.org/rfc/rfc4664#section-3.4.3" class="relref">Section 3.4.3</a> of [<a href="#RFC4664" class="cite xref">RFC4664</a>]</span>) to consolidate a CE/AC/PE definition that is consistent with the orchestration perimeters (<a href="#sec-orch" class="auto internal xref">Section 3.4</a>). The CEs and PEs delimit respectively the customer and provider orchestration domains, while an AC interconnects these domains.<a href="#section-3.3.5-2" class="pilcrow">¶</a></p>
-<p id="section-3.3.5-3">For consistency with the AC data models terminology (e.g., <span>[<a href="#I-D.ietf-opsawg-teas-attachment-circuit" class="cite xref">I-D.ietf-opsawg-teas-attachment-circuit</a>]</span> and <span>[<a href="#I-D.ietf-opsawg-ntw-attachment-circuit" class="cite xref">I-D.ietf-opsawg-ntw-attachment-circuit</a>]</span>), this document assumes that an AC is configured on a "bearer", which represents the underlying connectivity. For example, the bearer is illustrated with "===" in Figures <a href="#fig-distribute-ce" class="auto internal xref">4</a> and <a href="#fig-50" class="auto internal xref">5</a>.<a href="#section-3.3.5-3" class="pilcrow">¶</a></p>
+<p id="section-3.3.5-3">For consistency with the AC data models terminology (e.g., <span>[<a href="#I-D.ietf-opsawg-teas-attachment-circuit" class="cite xref">I-D.ietf-opsawg-teas-attachment-circuit</a>]</span> and <span>[<a href="#I-D.ietf-opsawg-ntw-attachment-circuit" class="cite xref">I-D.ietf-opsawg-ntw-attachment-circuit</a>]</span>), this document assumes that an AC is configured on a "bearer", which represents the underlying connectivity. For example, the bearer is illustrated with "---" in Figures <a href="#fig-distribute-ce" class="auto internal xref">4</a> and <a href="#fig-50" class="auto internal xref">5</a>.<a href="#section-3.3.5-3" class="pilcrow">¶</a></p>
 <p id="section-3.3.5-4">Examples of ACs are Virtual Local Area Networks (VLANs) (AC) configured on a physical interface (bearer) or an Overlay VXLAN EVI (AC) configured on an IP underlay (bearer).<a href="#section-3.3.5-4" class="pilcrow">¶</a></p>
 <p id="section-3.3.5-5">Deployment cases where the AC is also managed by the provider are not discussed in the document because the setup of such an AC does not require any coordination between the customer and provider orchestration domains.<a href="#section-3.3.5-5" class="pilcrow">¶</a></p>
 <aside id="section-3.3.5-6">
@@ -1646,9 +1636,9 @@ However, this document does not exclude the instantiation of multiple ACs betwee
 </dl>
 <p id="section-3.4.1-5">A TN slice relies upon resources that can involve both the provider and customer TN domains. More details are provided in <a href="#sec-tn-nsi" class="auto internal xref">Section 3.4.2</a>.<a href="#section-3.4.1-5" class="pilcrow">¶</a></p>
 <p id="section-3.4.1-6">A TN slice might be considered as a variant of horizontal composition of Network Slices mentioned in Appendix A.6 of <span>[<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>.<a href="#section-3.4.1-6" class="pilcrow">¶</a></p>
-<span id="name-5g-end-to-end-slice-orchestr"></span><div id="_figure-orch">
+<div id="_figure-orch">
 <figure id="figure-6">
-            <div class="alignCenter art-text artwork" id="section-3.4.1-7.1">
+            <div class="alignLeft art-text artwork" id="section-3.4.1-7.1">
 <pre>
                          +-----------+
                          |  5G NSO   |
@@ -1691,9 +1681,7 @@ However, this document does not exclude the instantiation of multiple ACs betwee
 
 </pre>
 </div>
-<figcaption><a href="#figure-6" class="selfRef">Figure 6</a>:
-<a href="#name-5g-end-to-end-slice-orchestr" class="selfRef">5G End-to-End Slice Orchestration with TN</a>
-            </figcaption></figure>
+<figcaption><a href="#figure-6" class="selfRef">Figure 6</a></figcaption></figure>
 </div>
 <p id="section-3.4.1-8">The various orchestration depicted in <a href="#_figure-orch" class="auto internal xref">Figure 6</a> encompass the 3GPP's Network Slice Subnet Management Function (NSSMF) mentioned, e.g., in Figure 5 of <span>[<a href="#I-D.ietf-teas-5g-network-slice-application" class="cite xref">I-D.ietf-teas-5g-network-slice-application</a>]</span>.<a href="#section-3.4.1-8" class="pilcrow">¶</a></p>
 </section>
@@ -1752,9 +1740,9 @@ are passed between Orchestrators via a dedicated interface, e.g., the Network Sl
 </dd>
           <dd class="break"></dd>
 </dl>
-<span id="name-coordination-of-transport-n"></span><div id="_figure-4">
+<div id="_figure-4">
 <figure id="figure-7">
-            <div class="alignCenter art-text artwork" id="section-3.4.2-4.1">
+            <div class="alignLeft art-text artwork" id="section-3.4.2-4.1">
 <pre>
   +---------------+                   +------------------+
   |               |                   |   RFC9543 NSC    |
@@ -1776,9 +1764,7 @@ are passed between Orchestrators via a dedicated interface, e.g., the Network Sl
                |----------- AC -----------|
 </pre>
 </div>
-<figcaption><a href="#figure-7" class="selfRef">Figure 7</a>:
-<a href="#name-coordination-of-transport-n" class="selfRef">Coordination of Transport Network Resources for the AC Provisioning</a>
-            </figcaption></figure>
+<figcaption><a href="#figure-7" class="selfRef">Figure 7</a></figcaption></figure>
 </div>
 </section>
 </div>
@@ -1815,9 +1801,9 @@ In this scenario, a subset of the TN slices can be intended for sharing by multi
 In practice, for operational and scaling reasons, typically M to N would be used, with M &gt;&gt; N.<a href="#section-3.5-2.3.3" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<span id="name-1-5g-slice-to-n-rfc-9543-ne"></span><div id="_figure-5">
+<div id="_figure-5">
 <figure id="figure-8">
-          <div class="alignCenter art-text artwork" id="section-3.5-3.1">
+          <div class="alignLeft art-text artwork" id="section-3.5-3.1">
 <pre>
 +---------------------------------------------------------------+
 |                        5G Slice eMBB                          |
@@ -1835,13 +1821,11 @@ In practice, for operational and scaling reasons, typically M to N would be used
              +------------------------------------+
 </pre>
 </div>
-<figcaption><a href="#figure-8" class="selfRef">Figure 8</a>:
-<a href="#name-1-5g-slice-to-n-rfc-9543-ne" class="selfRef">1 (5G Slice) to N (RFC 9543 Network Slice) Mapping</a>
-          </figcaption></figure>
+<figcaption><a href="#figure-8" class="selfRef">Figure 8</a></figcaption></figure>
 </div>
-<span id="name-n-5g-slice-to-1-rfc-9543-ne"></span><div id="_figure-6">
+<div id="_figure-6">
 <figure id="figure-9">
-          <div class="alignCenter art-text artwork" id="section-3.5-4.1">
+          <div class="alignLeft art-text artwork" id="section-3.5-4.1">
 <pre>
                   +-------------+
                   |  Edge Cloud |
@@ -1867,9 +1851,7 @@ In practice, for operational and scaling reasons, typically M to N would be used
                   +------------------------------+
 </pre>
 </div>
-<figcaption><a href="#figure-9" class="selfRef">Figure 9</a>:
-<a href="#name-n-5g-slice-to-1-rfc-9543-ne" class="selfRef">N (5G Slice) to 1 (RFC 9543 Network Slice) Mapping</a>
-          </figcaption></figure>
+<figcaption><a href="#figure-9" class="selfRef">Figure 9</a></figcaption></figure>
 </div>
 <p id="section-3.5-5">Note that the actual realization of the mapping depends on several
    factors, such as the actual business cases, the NF vendor
@@ -1886,12 +1868,12 @@ In practice, for operational and scaling reasons, typically M to N would be used
 <p id="section-3.6-1">An operational 5G Network Slice incorporates both 5G control plane and user plane capabilities.
 For instance, consider a slice based on split-CU in the RAN, both CU-UP and Centralized Unit Control Plane (CU-CP) need to be deployed along with the associated interfaces E1, F1-c, F1-u, N2, and N3 which are conveyed in the TN. In this regard, the creation of the "first slice" can be subject to a specific logic that does not apply to subsequent slices. Let us consider the example depicted in <a href="#_figure-7" class="auto internal xref">Figure 10</a> to illustrate this deploloyment. In this example, the first 5G slice relies on the deployment of NF-CP and NF-UP functions together with two TN slices for control and user planes (INS-CP and INS-UP1). Next, the deployment of a second slice relies solely on the instantiation of a UPF (NF-UP2) together with a dedicated user plane TN slice (INS-UP2). In this example, the control plane of the first 5G slice is also updated to integrate the second slice: the TN slice (INS-CP) and Network Functions (NF-CP) are shared.<a href="#section-3.6-1" class="pilcrow">¶</a></p>
 <p id="section-3.6-2">At the time of writing (2024), Section 6.1.2 of <span>[<a href="#NG.113" class="cite xref">NG.113</a>]</span> specifies that the
-   eMBB slice (SST=1 and no Slice Differentiator (SD)) should be supported globally.  This 5G
+   eMBB slice (SST-1 and no Slice Differentiator (SD)) should be supported globally.  This 5G
    slice would be the first slice in any 5G deployment.<a href="#section-3.6-2" class="pilcrow">¶</a></p>
-<span id="name-first-and-subsequent-slice-"></span><div id="_figure-7">
+<div id="_figure-7">
 <figure id="figure-10">
           <div id="section-3.6-3.1">
-            <div class="alignCenter art-svg artwork" id="section-3.6-3.1.1">
+            <div class="alignLeft art-svg artwork" id="section-3.6-3.1.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="704" width="736" viewBox="0 0 736 704" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
                 <path d="M 8,32 L 8,176" fill="none" stroke="black"></path>
                 <path d="M 8,336 L 8,480" fill="none" stroke="black"></path>
@@ -2090,9 +2072,7 @@ For instance, consider a slice based on split-CU in the RAN, both CU-UP and Cent
               </svg><a href="#section-3.6-3.1.1" class="pilcrow">¶</a>
 </div>
 </div>
-<figcaption><a href="#figure-10" class="selfRef">Figure 10</a>:
-<a href="#name-first-and-subsequent-slice-" class="selfRef">First and Subsequent Slice Deployment</a>
-          </figcaption></figure>
+<figcaption><a href="#figure-10" class="selfRef">Figure 10</a></figcaption></figure>
 </div>
 <p id="section-3.6-4">Overall, policies might be provided by an operator (e.g., to Network Slice Controllers) to indicate whether the same or dedicated CP NFs are allowed when processing a new slice creation request. Providing such a policy is meant to better automate the realization of 5G slices and minimize the realization delay that might be induced by extra cycles to seek for operator validation.<a href="#section-3.6-4" class="pilcrow">¶</a></p>
 </section>
@@ -2163,9 +2143,9 @@ without bandwidth reservations, to force more consistent load
 distribution even in non-ECMP friendly network topologies. See also <span><a href="https://rfc-editor.org/rfc/rfc9522#section-8" class="relref">Section 8</a> of [<a href="#RFC9522" class="cite xref">RFC9522</a>]</span>).<a href="#section-3.7-2.4.2" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<span id="name-resource-allocation-slicing"></span><div id="_figure-high-level-qos">
+<div id="_figure-high-level-qos">
 <figure id="figure-11">
-          <div class="alignCenter art-text artwork" id="section-3.7-3.1">
+          <div class="alignLeft art-text artwork" id="section-3.7-3.1">
 <pre>
             + .. .. .. .. .. .. .. .. .. .. .. .. .. .. .. .. +
       +-----:----+               Base NRP               +-----:----+
@@ -2186,9 +2166,7 @@ distribution even in non-ECMP friendly network topologies. See also <span><a hre
  o - coarse-grained QoS, with resources shared by all TN slices
 </pre>
 </div>
-<figcaption><a href="#figure-11" class="selfRef">Figure 11</a>:
-<a href="#name-resource-allocation-slicing" class="selfRef">Resource Allocation Slicing Model with a Single NRP</a>
-          </figcaption></figure>
+<figcaption><a href="#figure-11" class="selfRef">Figure 11</a></figcaption></figure>
 </div>
 <p id="section-3.7-4">This document does not describe in detail how to manage an L2VPN or L3VPN, as this is already well-documented. For example, the reader may refer to <span>[<a href="#RFC4176" class="cite xref">RFC4176</a>]</span> and <span>[<a href="#RFC6136" class="cite xref">RFC6136</a>]</span> for such details.<a href="#section-3.7-4" class="pilcrow">¶</a></p>
 </section>
@@ -2216,9 +2194,9 @@ distribution even in non-ECMP friendly network topologies. See also <span><a hre
 <p id="section-4.1-1">In this option, the RFC 9543 Network Slice, fulfilling connectivity
    requirements between NFs that belong to a 5G slice, is represented at an SDP
    by a VLAN ID (or double VLAN IDs, commonly known as QinQ), as depicted in <a href="#_figure-vlan-hand-off" class="auto internal xref">Figure 12</a>.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
-<span id="name-example-of-5g-slice-with-vl"></span><div id="_figure-vlan-hand-off">
+<div id="_figure-vlan-hand-off">
 <figure id="figure-12">
-          <div class="alignCenter art-text artwork" id="section-4.1-2.1">
+          <div class="alignLeft art-text artwork" id="section-4.1-2.1">
 <pre>
 VLANs representing slices           VLANs representing slices
 
@@ -2238,9 +2216,7 @@ VLANs representing slices           VLANs representing slices
  * SDP
 </pre>
 </div>
-<figcaption><a href="#figure-12" class="selfRef">Figure 12</a>:
-<a href="#name-example-of-5g-slice-with-vl" class="selfRef">Example of 5G Slice with VLAN Hand-off Providing End-to-End Connectivity</a>
-          </figcaption></figure>
+<figcaption><a href="#figure-12" class="selfRef">Figure 12</a></figcaption></figure>
 </div>
 <p id="section-4.1-3">Each VLAN
    represents a distinct logical interface on the ACs;
@@ -2297,9 +2273,9 @@ VLANs representing slices           VLANs representing slices
    typical 5G slice contains many NFs - especially DUs and CUs. If a shared NF (i.e.,
    an NF that serves multiple slices, for example, a shared DU) is deployed, multiple
    tunnels from shared NF are established, each tunnel representing a single slice.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
-<span id="name-example-of-5g-slice-with-ip"></span><div id="_figure-ip-hand-off">
+<div id="_figure-ip-hand-off">
 <figure id="figure-13">
-          <div class="alignCenter art-text artwork" id="section-4.2-5.1">
+          <div class="alignLeft art-text artwork" id="section-4.2-5.1">
 <pre>
                                         Tunnels representing slices
                  +------------------+                   |
@@ -2318,9 +2294,7 @@ o Tunnel (IPsec, GTP-U, ...) termination point
 * SDP
 </pre>
 </div>
-<figcaption><a href="#figure-13" class="selfRef">Figure 13</a>:
-<a href="#name-example-of-5g-slice-with-ip" class="selfRef">Example of 5G Slice with IP Hand-off Providing End-to-End Connectivity</a>
-          </figcaption></figure>
+<figcaption><a href="#figure-13" class="selfRef">Figure 13</a></figcaption></figure>
 </div>
 <p id="section-4.2-6">As opposed to the VLAN hand-off case (<a href="#sec-vlan-handoff" class="auto internal xref">Section 4.1</a>), there is no logical interface representing
    a slice on the PE, hence all slices are handled within a single service instance.
@@ -2345,9 +2319,9 @@ o Tunnel (IPsec, GTP-U, ...) termination point
 <p id="section-4.2.1-1">Different IPv6 address allocation
    schemes following the above approach may be used, with one example allocation shown
    in <a href="#_figure-11" class="auto internal xref">Figure 14</a>.<a href="#section-4.2.1-1" class="pilcrow">¶</a></p>
-<span id="name-an-example-of-s-nssai-embed"></span><div id="_figure-11">
+<div id="_figure-11">
 <figure id="figure-14">
-            <div class="alignCenter art-text artwork" id="section-4.2.1-2.1">
+            <div class="alignLeft art-text artwork" id="section-4.2.1-2.1">
 <pre>
              NF-specific          Reserved
         (not slice specific)     for S-NSSAI
@@ -2361,9 +2335,7 @@ o Tunnel (IPsec, GTP-U, ...) termination point
     dddddd - SD (24 bits)
 </pre>
 </div>
-<figcaption><a href="#figure-14" class="selfRef">Figure 14</a>:
-<a href="#name-an-example-of-s-nssai-embed" class="selfRef">An Example of S-NSSAI Embedded into an IPv6 Address</a>
-            </figcaption></figure>
+<figcaption><a href="#figure-14" class="selfRef">Figure 14</a></figcaption></figure>
 </div>
 <p id="section-4.2.1-3">In reference to <a href="#_figure-11" class="auto internal xref">Figure 14</a>, the most significant 96 bits of the IPv6 address
    are unique to the NF, but do not carry any slice-specific information. The S-NSSAI information is embedded in the least
@@ -2374,14 +2346,14 @@ o Tunnel (IPsec, GTP-U, ...) termination point
    NFs. Let us consider that "NF-A" has a set of tunnel termination points with unique per-slice IP addresses
    allocated from 2001:db8:a:0::/96, while "NF-B" uses a set of tunnel termination
    points with per-slice IP addresses allocated from 2001:db8:b:0::/96. This example shows
-   two slices: "customer A eMBB" (SST=01, SD=00001) and "customer B Massive Internet of Things (MIoT)" (SST=03, SD=00003).
+   two slices: "customer A eMBB" (SST-01, SD-00001) and "customer B Massive Internet of Things (MIoT)" (SST-03, SD-00003).
    For "customer A eMBB" slice, the tunnel IP addresses are auto-derived as the IP addresses {2001:db8:a::100:1, 2001:db8:b::100:1},
-   where {:0100:0001} is used as the last two octets. "customer B MIoT" slice (SST=3,
-   SD=00003) tunnel uses the IP addresses {2001:db8:a::300:3, 2001:db8:b::300:3} and simply
+   where {:0100:0001} is used as the last two octets. "customer B MIoT" slice (SST-3,
+   SD-00003) tunnel uses the IP addresses {2001:db8:a::300:3, 2001:db8:b::300:3} and simply
    adds {:0300:0003} as the last two octets. Leading zeros are not represented in the resulting IPv6 addresses as per <span>[<a href="#RFC5952" class="cite xref">RFC5952</a>]</span>.<a href="#section-4.2.1-4" class="pilcrow">¶</a></p>
-<span id="name-deployment-example-with-s-n"></span><div id="_figure-s-nssai-deployment">
+<div id="_figure-s-nssai-deployment">
 <figure id="figure-15">
-            <div class="alignCenter art-text artwork" id="section-4.2.1-5.1">
+            <div class="alignLeft art-text artwork" id="section-4.2.1-5.1">
 <pre>
  2001:db8:a::/96 (NF-A)                      2001:db8:b::/96 (NF-B)
 
@@ -2403,9 +2375,7 @@ o Tunnel (IPsec, GTP-U, ...) termination point
  * SDP
 </pre>
 </div>
-<figcaption><a href="#figure-15" class="selfRef">Figure 15</a>:
-<a href="#name-deployment-example-with-s-n" class="selfRef">Deployment Example with S-NSSAI Embedded into IPv6 Addresses</a>
-            </figcaption></figure>
+<figcaption><a href="#figure-15" class="selfRef">Figure 15</a></figcaption></figure>
 </div>
 </section>
 </div>
@@ -2445,9 +2415,9 @@ change at domain boundaries.<a href="#section-4.3-3.4.1" class="pilcrow">¶</a><
         <dd class="break"></dd>
 </dl>
 <p id="section-4.3-4"><a href="#_figure-51" class="auto internal xref">Figure 16</a> illustrates the use of service-aware CE (<a href="#sec-ce" class="auto internal xref">Section 3.3.2</a>) for the deployment discussed in Sections <a href="#sec-10b" class="auto internal xref">4.3.2</a> and <a href="#sec-10c" class="auto internal xref">4.3.3</a>.<a href="#section-4.3-4" class="pilcrow">¶</a></p>
-<span id="name-example-of-mpls-based-attac"></span><div id="_figure-51">
+<div id="_figure-51">
 <figure id="figure-16">
-          <div class="alignCenter art-text artwork" id="section-4.3-5.1">
+          <div class="alignLeft art-text artwork" id="section-4.3-5.1">
 <pre>
 +--------------+                      +--------------+
 |   Customer   |                      |   Provider   |
@@ -2463,9 +2433,7 @@ change at domain boundaries.<a href="#section-4.3-3.4.1" class="pilcrow">¶</a><
 +--------+----------+                 +--------------+
 </pre>
 </div>
-<figcaption><a href="#figure-16" class="selfRef">Figure 16</a>:
-<a href="#name-example-of-mpls-based-attac" class="selfRef">Example of MPLS-based Attachment Circuit</a>
-          </figcaption></figure>
+<figcaption><a href="#figure-16" class="selfRef">Figure 16</a></figcaption></figure>
 </div>
 <div id="sec-10a">
 <section id="section-4.3.1">
@@ -2490,9 +2458,9 @@ change at domain boundaries.<a href="#section-4.3-3.4.1" class="pilcrow">¶</a><
    infrastructure don’t support MPLS encapsulation). Therefore,
    the PE uses neither a VLAN nor an IP address for slice
    identification at the SDP, but instead uses the MPLS label.<a href="#section-4.3.2-1" class="pilcrow">¶</a></p>
-<span id="name-example-of-mpls-hand-off-wi"></span><div id="_figure-mpls-10b-hand-off">
+<div id="_figure-mpls-10b-hand-off">
 <figure id="figure-17">
-            <div class="alignCenter art-text artwork" id="section-4.3.2-2.1">
+            <div class="alignLeft art-text artwork" id="section-4.3.2-2.1">
 <pre>
      &lt;------        &lt;------        &lt;------
      BGP VPN        BGP VPN        BGP VPN
@@ -2520,9 +2488,7 @@ representing slices              representing slices    slices
 
 </pre>
 </div>
-<figcaption><a href="#figure-17" class="selfRef">Figure 17</a>:
-<a href="#name-example-of-mpls-hand-off-wi" class="selfRef">Example of MPLS Hand-off with Option B</a>
-            </figcaption></figure>
+<figcaption><a href="#figure-17" class="selfRef">Figure 17</a></figcaption></figure>
 </div>
 <p id="section-4.3.2-3">MPLS labels are allocated dynamically in Option B
    deployments, where at the domain boundaries service prefixes are
@@ -2532,7 +2498,7 @@ representing slices              representing slices    slices
    which label represents which slice.  In the BGP control plane, when
    exchanging service prefixes over an AC, each slice might be represented by a unique BGP community, so
    tracking label assignment to the slice might be possible.  For example, in
-   <a href="#_figure-mpls-10b-hand-off" class="auto internal xref">Figure 17</a>, for the slice identified with COM=1, the PE advertises a
+   <a href="#_figure-mpls-10b-hand-off" class="auto internal xref">Figure 17</a>, for the slice identified with COM-1, the PE advertises a
    dynamically allocated label A". Since, based on the community, the
    label to slice association is known, the PE can use this dynamically
    allocated label A" to identify incoming packets as belonging to "slice 1"
@@ -2566,24 +2532,24 @@ carrying, propagating, and programing appropriate forwarding entries
 for service prefixes.<a href="#section-4.3.3-1" class="pilcrow">¶</a></p>
 <p id="section-4.3.3-2">Option C relies upon exchanging service prefixes via multi-hop BGP sessions
 between customer sites, without changing the NEXT_HOP BGP attribute.
-Additionally, IPv4/IPv6 labeled unicast (SAFI=4) host routes, used as NEXT_HOP
+Additionally, IPv4/IPv6 labeled unicast (SAFI-4) host routes, used as NEXT_HOP
 for service prefixes, are exchanged via direct single-hop BGP sessions between
 adjacent nodes in a customer site and a provider network, as depicted in <a href="#_figure-mpls-10c-hand-off" class="auto internal xref">Figure 18</a>.
 As a result, a node in a customer site performs hierarchical next-hop resolution.<a href="#section-4.3.3-2" class="pilcrow">¶</a></p>
-<span id="name-mpls-hand-off-with-option-c"></span><div id="_figure-mpls-10c-hand-off">
+<div id="_figure-mpls-10c-hand-off">
 <figure id="figure-18">
-            <div class="alignCenter art-text artwork" id="section-4.3.3-3.1">
+            <div class="alignLeft art-text artwork" id="section-4.3.3-3.1">
 <pre>
      &lt;-------------------------------------------
              BGP VPN
-               COM=1, L=A, NEXT_HOP=CS2
-               COM=2, L=B, NEXT_HOP=CS2
-               COM=3, L=C, NEXT_HOP=CS2
+               COM-1, L-A, NEXT_HOP-CS2
+               COM-2, L-B, NEXT_HOP-CS2
+               COM-3, L-C, NEXT_HOP-CS2
      &lt;------------------------------------------&gt;
 
       &lt;------        &lt;------        &lt;------
       BGP LU         BGP LU         BGP LU
-        CS2, L=X"      CS2, L=X'      CS2, L=X
+        CS2, L-X"      CS2, L-X'      CS2, L-X
      &lt;-------------&gt;&lt;------------&gt;&lt;-------------&gt;
                 nhs  nhs      nhs  nhs
                                                          VLANs
@@ -2592,9 +2558,9 @@ As a result, a node in a customer site performs hierarchical next-hop resolution
 + - + |           + - - - - - - -+            +-|-----------|--------+
 |   | |           |     Provider |            | |           |        |
 |+--+-v-+       +-+---+       +--+--+       +-+-v----+    v  +------+|
-||    # |       |*    |       |    *|       | #&lt;&gt;&lt;&gt;&lt;&gt;x.......x      ||
-|| NF # +-------+* PE |       | PE *+-------+ #&lt;&gt;&lt;&gt;&lt;&gt;x.......x   NF ||
-||    # |       |*    |       |    *|       | #&lt;&gt;&lt;&gt;&lt;&gt;x.......x      ||
+|    # |       |*    |       |    *|       | #&lt;&gt;&lt;&gt;&lt;&gt;x.......x      |
+| NF # +-------+* PE |       | PE *+-------+ #&lt;&gt;&lt;&gt;&lt;&gt;x.......x   NF |
+|    # |       |*    |       |    *|       | #&lt;&gt;&lt;&gt;&lt;&gt;x.......x      |
 |+---+--+       +-+---+       +---+-+       +-+------+       +------+|
 | CS1|            |      Network  |           |          CS2         |
 +----+            +---------------+           +----------------------+
@@ -2604,9 +2570,7 @@ As a result, a node in a customer site performs hierarchical next-hop resolution
    * SDP
 </pre>
 </div>
-<figcaption><a href="#figure-18" class="selfRef">Figure 18</a>:
-<a href="#name-mpls-hand-off-with-option-c" class="selfRef">MPLS Hand-off with Option C</a>
-            </figcaption></figure>
+<figcaption><a href="#figure-18" class="selfRef">Figure 18</a></figcaption></figure>
 </div>
 <p id="section-4.3.3-4">This architecture requires an end-to-end Label Switched Path (LSP) leading from a packet's
 ingress node inside one customer site to its egress inside another customer
@@ -2738,9 +2702,9 @@ ranges for each slice, and use these ranges for slice identification purposes on
    multiple slices with similar characteristics.  QoS enforcement on
    transit links is fully coarse-grained (single NRP, sharing resources among
    all RFC 9543 Network Slices), as displayed in <a href="#_figure-QoS-5QI-unaware" class="auto internal xref">Figure 19</a>.<a href="#section-5.2.1-1" class="pilcrow">¶</a></p>
-<span id="name-slice-to-tn-qos-mapping-5qi"></span><div id="_figure-QoS-5QI-unaware">
+<div id="_figure-QoS-5QI-unaware">
 <figure id="figure-19">
-            <div class="alignCenter art-text artwork" id="section-5.2.1-2.1">
+            <div class="alignLeft art-text artwork" id="section-5.2.1-2.1">
 <pre>
 + - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ...................         PE                               |
@@ -2781,9 +2745,7 @@ Fine-grained QoS enforcement   Coarse-grained QoS enforcement
    RFC 9543 Network Slice)       RFC 9543 Network Slices)
 </pre>
 </div>
-<figcaption><a href="#figure-19" class="selfRef">Figure 19</a>:
-<a href="#name-slice-to-tn-qos-mapping-5qi" class="selfRef">Slice to TN QoS Mapping (5QI-unaware Model)</a>
-            </figcaption></figure>
+<figcaption><a href="#figure-19" class="selfRef">Figure 19</a></figcaption></figure>
 </div>
 <p id="section-5.2.1-3">When the IP traffic is handed over at the SDP from the AC to the provider network, the PE encapsulates the
    traffic into MPLS (if MPLS transport is used in the provider network), or
@@ -2799,9 +2761,9 @@ Fine-grained QoS enforcement   Coarse-grained QoS enforcement
    header for QoS-related decisions.  This model is outlined in
    <a href="#_figure-15" class="auto internal xref">Figure 20</a> for MPLS encapsulation, and in <a href="#_figure-16" class="auto internal xref">Figure 21</a> for SRv6
    encapsulation.<a href="#section-5.2.1-4" class="pilcrow">¶</a></p>
-<span id="name-qos-with-mpls-encapsulation"></span><div id="_figure-15">
+<div id="_figure-15">
 <figure id="figure-20">
-            <div class="alignCenter art-text artwork" id="section-5.2.1-5.1">
+            <div class="alignLeft art-text artwork" id="section-5.2.1-5.1">
 <pre>
                                  +--------------+
                                  | MPLS Header  |
@@ -2824,13 +2786,11 @@ Fine-grained QoS enforcement   Coarse-grained QoS enforcement
 +--------------+ - - - - - - - - +--------------+
 </pre>
 </div>
-<figcaption><a href="#figure-20" class="selfRef">Figure 20</a>:
-<a href="#name-qos-with-mpls-encapsulation" class="selfRef">QoS with MPLS Encapsulation</a>
-            </figcaption></figure>
+<figcaption><a href="#figure-20" class="selfRef">Figure 20</a></figcaption></figure>
 </div>
-<span id="name-qos-with-ipv6-encapsulation"></span><div id="_figure-16">
+<div id="_figure-16">
 <figure id="figure-21">
-            <div class="alignCenter art-text artwork" id="section-5.2.1-6.1">
+            <div class="alignLeft art-text artwork" id="section-5.2.1-6.1">
 <pre>
                                  +--------------+
                                  | IPv6 Header  |
@@ -2857,9 +2817,7 @@ Fine-grained QoS enforcement   Coarse-grained QoS enforcement
 +--------------+ - - - - - - - - +--------------+
 </pre>
 </div>
-<figcaption><a href="#figure-21" class="selfRef">Figure 21</a>:
-<a href="#name-qos-with-ipv6-encapsulation" class="selfRef">QoS with IPv6 Encapsulation</a>
-            </figcaption></figure>
+<figcaption><a href="#figure-21" class="selfRef">Figure 21</a></figcaption></figure>
 </div>
 <p id="section-5.2.1-7">From a QoS perspective, both options are similar.  However, there
    is one difference between the two options.  The MPLS TC is only 3
@@ -2949,9 +2907,9 @@ congestion (yellow), or hard dropping the traffic (red).<a href="#section-5.2.1.
    belonging to the slice are treated the same way in the provider network (no
    5Q QoS Class differentiation in the provider) is outlined in
    <a href="#_figure-17" class="auto internal xref">Figure 22</a>.<a href="#section-5.2.1.1-6" class="pilcrow">¶</a></p>
-<span id="name-ingress-slice-admission-con"></span><div id="_figure-17">
+<div id="_figure-17">
 <figure id="figure-22">
-              <div class="alignCenter art-text artwork" id="section-5.2.1.1-7.1">
+              <div class="alignLeft art-text artwork" id="section-5.2.1.1-7.1">
 <pre>
             Slice
            policer     +---------+
@@ -2989,9 +2947,7 @@ congestion (yellow), or hard dropping the traffic (red).<a href="#section-5.2.1.
                        +---------+
 </pre>
 </div>
-<figcaption><a href="#figure-22" class="selfRef">Figure 22</a>:
-<a href="#name-ingress-slice-admission-con" class="selfRef">Ingress Slice Admission Control (5QI-unware Model)</a>
-              </figcaption></figure>
+<figcaption><a href="#figure-22" class="selfRef">Figure 22</a></figcaption></figure>
 </div>
 </section>
 </div>
@@ -3034,42 +2990,40 @@ outbound direction at the provider network edge links.<a href="#section-5.2.1.2-
    capacity of the AC.  Slice requests above this limit
    should be rejected by the NSC, unless an already established slice with
    lower priority, if such exists, is preempted.<a href="#section-5.2.1.2-4" class="pilcrow">¶</a></p>
-<span id="name-ingress-slice-admission-cont"></span><div id="_figure-18">
+<div id="_figure-18">
 <figure id="figure-23">
-              <div class="alignCenter art-text artwork" id="section-5.2.1.2-5.1">
+              <div class="alignLeft art-text artwork" id="section-5.2.1.2-5.1">
 <pre>
       +---------+        QoS output queues
       |     +---|--+- - - - - - - - - - - - - - - - - - - - - - - - - -
       |     | S    |                            \|/
       |     | l    |                             |
       |     | i    |                             |
-      |  A  | c    |                             |  weight=Slice-1-CIR
-      |  t  | e  +-|--------------------------+  | shaping=Slice-1-PIR
+      |  A  | c    |                             |  weight-Slice-1-CIR
+      |  t  | e  +-|--------------------------+  | shaping-Slice-1-PIR
    ---|--t--|----&gt;                            |  |
       |  a  | 1  +-|--------------------------+ /|\
       |  c   ------ - - - - - - - - - - - - - - - - - - - - - - - - - -
       |  h  | S    |                            \|/
       |  m  | l    |                             |
       |  e  | i    |                             |
-      |  n  | c    |                             |  weight=Slice-2-CIR
-      |  t  | e  +-|--------------------------+  | shaping=Slice-2-PIR
+      |  n  | c    |                             |  weight-Slice-2-CIR
+      |  t  | e  +-|--------------------------+  | shaping-Slice-2-PIR
    ---|-----|----&gt;                            |  |
       |  C  | 2  +-|--------------------------+ /|\
       |  i   ------ - - - - - - - - - - - - - - - - - - - - - - - - - -
       |  r  | S    |                            \|/
       |  c  | l    |                             |
       |  u  | i    |                             |
-      |  i  | c    |                             |  weight=Slice-3-CIR
-      |  t  | e  +-|--------------------------+  | shaping=Slice-3-PIR
+      |  i  | c    |                             |  weight-Slice-3-CIR
+      |  t  | e  +-|--------------------------+  | shaping-Slice-3-PIR
    ---|-----|----&gt;                            |  |
       |     | 3  +-|--------------------------+ /|\
       |     +---|--+- - - - - - - - - - - - - - - - - - - - - - - - - -
       +---------+
 </pre>
 </div>
-<figcaption><a href="#figure-23" class="selfRef">Figure 23</a>:
-<a href="#name-ingress-slice-admission-cont" class="selfRef">Ingress Slice Admission control (5QI-unaware Model)</a>
-              </figcaption></figure>
+<figcaption><a href="#figure-23" class="selfRef">Figure 23</a></figcaption></figure>
 </div>
 </section>
 </div>
@@ -3084,9 +3038,9 @@ outbound direction at the provider network edge links.<a href="#section-5.2.1.2-
    (the architecture scales to thousands of 5G slices) is mapped
    (multiplexed) to up to 8 TN QoS Classes used in a provider network transit
    equipment, as outlined in <a href="#_figure-QoS-5QI-aware" class="auto internal xref">Figure 24</a>.<a href="#section-5.2.2-1" class="pilcrow">¶</a></p>
-<span id="name-slice-5q-qos-to-tn-qos-mapp"></span><div id="_figure-QoS-5QI-aware">
+<div id="_figure-QoS-5QI-aware">
 <figure id="figure-24">
-            <div class="alignCenter art-text artwork" id="section-5.2.2-2.1">
+            <div class="alignLeft art-text artwork" id="section-5.2.2-2.1">
 <pre>
   + - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   ...................         PE                               |
@@ -3127,9 +3081,7 @@ S :   +----------+  :  |           :+------------------------+ :
      RFC 9543 Network Slice)        RFC 9543 Network Slices)
 </pre>
 </div>
-<figcaption><a href="#figure-24" class="selfRef">Figure 24</a>:
-<a href="#name-slice-5q-qos-to-tn-qos-mapp" class="selfRef">Slice 5Q QoS to TN QoS Mapping (5QI-aware Model)</a>
-            </figcaption></figure>
+<figcaption><a href="#figure-24" class="selfRef">Figure 24</a></figcaption></figure>
 </div>
 <p id="section-5.2.2-3">Given that in deployments with a large number of 5G
    slices, the number of potential 5G QoS Classes is much higher than
@@ -3147,9 +3099,9 @@ S :   +----------+  :  |           :+------------------------+ :
 </dd>
           <dd class="break"></dd>
 </dl>
-<span id="name-example-of-3gpp-qos-mapped-"></span><div id="_figure-QoS-5QI-mapping-example">
+<div id="_figure-QoS-5QI-mapping-example">
 <figure id="figure-25">
-            <div class="alignCenter art-text artwork" id="section-5.2.2-5.1">
+            <div class="alignLeft art-text artwork" id="section-5.2.2-5.1">
 <pre>
                       +-------------  PE  -----------------+
 +------ NF-A ------+  |                                    |
@@ -3182,9 +3134,7 @@ S :   +----------+  :  |           :+------------------------+ :
                       +------------------------------------+
 </pre>
 </div>
-<figcaption><a href="#figure-25" class="selfRef">Figure 25</a>:
-<a href="#name-example-of-3gpp-qos-mapped-" class="selfRef">Example of 3GPP QoS Mapped to TN QoS</a>
-            </figcaption></figure>
+<figcaption><a href="#figure-25" class="selfRef">Figure 25</a></figcaption></figure>
 </div>
 <p id="section-5.2.2-6">In current SDO progress of 3GPP (Release 17) and O-RAN, the mapping of 5QI to
 DSCP is not expected to be in a per-slice fashion, where 5QI to DSCP mapping may
@@ -3232,9 +3182,9 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    traffic class granularity, as outlined in <a href="#_figure-20" class="auto internal xref">Figure 26</a>.  In this model,
    if a premium class doesn't consume all available class capacity, it
    cannot be reused by non-premium (i.e., Best Effort) class.<a href="#section-5.2.2.1-4" class="pilcrow">¶</a></p>
-<span id="name-ingress-slice-admission-contr"></span><div id="_figure-20">
+<div id="_figure-20">
 <figure id="figure-26">
-              <div class="alignCenter art-text artwork" id="section-5.2.2.1-5.1">
+              <div class="alignLeft art-text artwork" id="section-5.2.2.1-5.1">
 <pre>
                      Class             +---------+
                     policer         +--|---+     |
@@ -3271,9 +3221,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
                                        +---------+
 </pre>
 </div>
-<figcaption><a href="#figure-26" class="selfRef">Figure 26</a>:
-<a href="#name-ingress-slice-admission-contr" class="selfRef">Ingress Slice Admission Control (5QI-aware Model)</a>
-              </figcaption></figure>
+<figcaption><a href="#figure-26" class="selfRef">Figure 26</a></figcaption></figure>
 </div>
 <p id="section-5.2.2.1-6">The second model combines the advantages of 5QI-unaware model (per
    slice admission control) with the per traffic class admission
@@ -3284,9 +3232,9 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    any given moment.  I.e., slice capacity, which is not consumed by
    premium classes.  It is a hierarchical model, as depicted in
    <a href="#_figure-21" class="auto internal xref">Figure 27</a>.<a href="#section-5.2.2.1-6" class="pilcrow">¶</a></p>
-<span id="name-ingress-slice-admission-contro"></span><div id="_figure-21">
+<div id="_figure-21">
 <figure id="figure-27">
-              <div class="alignCenter art-text artwork" id="section-5.2.2.1-7.1">
+              <div class="alignLeft art-text artwork" id="section-5.2.2.1-7.1">
 <pre>
                               Slice
                              policer   +---------+
@@ -3324,9 +3272,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
                                        +---------+
 </pre>
 </div>
-<figcaption><a href="#figure-27" class="selfRef">Figure 27</a>:
-<a href="#name-ingress-slice-admission-contro" class="selfRef">Ingress Slice Admission Control (5QI-aware) - Hierarchical</a>
-              </figcaption></figure>
+<figcaption><a href="#figure-27" class="selfRef">Figure 27</a></figcaption></figure>
 </div>
 </section>
 </div>
@@ -3341,57 +3287,55 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    queue CIRs within the slice, should not exceed the CIR of the slice
    itself.  And, similarly to the 5QI-aware model, the sum of slice CIRs
    should not exceed the physical capacity of the AC.<a href="#section-5.2.2.2-1" class="pilcrow">¶</a></p>
-<span id="name-egress-slice-admission-cont"></span><div id="_figure-22">
+<div id="_figure-22">
 <figure id="figure-28">
-              <div class="alignCenter art-text artwork" id="section-5.2.2.2-2.1">
+              <div class="alignLeft art-text artwork" id="section-5.2.2.2-2.1">
 <pre>
    +---------+        QoS output queues
    |      ---|-- - - - - - - - - - - - - - - - - - - - - - - - - - -
    |     |   |.-|--------------------------. \|/
----|-----|----&gt; 5Q-QoS-A: w=5Q-QoS-A-CIR   |  |
+---|-----|----&gt; 5Q-QoS-A: w-5Q-QoS-A-CIR   |  |
    |     | S |'-|--------------------------'  |
    |     | l |.-|--------------------------.  |
----|-----|-i--&gt; 5Q-QoS-B: w=5Q-QoS-B-CIR   |  |
-   |     | c |'-|--------------------------'  |  weight=Slice-1-CIR
-   |     | e |.-|--------------------------.  | shaping=Slice-1-PIR
----|-----|----&gt; 5Q-QoS-C: w=5Q-QoS-C-CIR   |  |
+---|-----|-i--&gt; 5Q-QoS-B: w-5Q-QoS-B-CIR   |  |
+   |     | c |'-|--------------------------'  |  weight-Slice-1-CIR
+   |     | e |.-|--------------------------.  | shaping-Slice-1-PIR
+---|-----|----&gt; 5Q-QoS-C: w-5Q-QoS-C-CIR   |  |
    |     | 1 |'-|--------------------------'  |
    |     |   |.-|--------------------------.  |
 ---|-----|----&gt; Best Effort (remainder)    |  |
    |     |   |'-|--------------------------' /|\
    |  A   ---|-- - - - - - - - - - - - - - - - - - - - - - - - - - -
    |  t  |   |.-|--------------------------. \|/
-   |  t  |   || |                          |  |
+   |  t  |   | |                          |  |
    |  a  |   |'-|--------------------------'  |
    |  c  | S |.-|--------------------------.  |
-   |  h  | l || |                          |  |
-   |  m  | i |'-|--------------------------'  |  weight=Slice-2-CIR
-   |  e  | c |.-|--------------------------.  | shaping=Slice-2-PIR
-   |  n  | e || |                          |  |
+   |  h  | l | |                          |  |
+   |  m  | i |'-|--------------------------'  |  weight-Slice-2-CIR
+   |  e  | c |.-|--------------------------.  | shaping-Slice-2-PIR
+   |  n  | e | |                          |  |
    |  t  |   |'-|--------------------------'  |
    |     | 2 |.-|--------------------------.  |
-   |  C  |   || |                          |  |
+   |  C  |   | |                          |  |
    |  i  |   |'-|--------------------------' /|\
    |  r   ---|-- - - - - - - - - - - - - - - - - - - - - - - - - - -
    |  c  |   |.-|--------------------------. \|/
-   |  u  |   || |                          |  |
+   |  u  |   | |                          |  |
    |  i  | S |'-|--------------------------'  |
    |  t  | l |.-|--------------------------.  |
-   |     | i || |                          |  |
-   |     | c |'-|--------------------------'  |  weight=Slice-3-CIR
-   |     | e |.-|--------------------------+  | shaping=Slice-3-PIR
-   |     |   || |                          |  |
+   |     | i | |                          |  |
+   |     | c |'-|--------------------------'  |  weight-Slice-3-CIR
+   |     | e |.-|--------------------------+  | shaping-Slice-3-PIR
+   |     |   | |                          |  |
    |     | 3 |'-|--------------------------'  |
    |     |   |.-|--------------------------.  |
-   |     |   || |                          |  |
+   |     |   | |                          |  |
    |     |   |'-|--------------------------' /|\
    |      ---|-- - - - - - - - - - - - - - - - - - - - - - - - - - -
    +---------+
 </pre>
 </div>
-<figcaption><a href="#figure-28" class="selfRef">Figure 28</a>:
-<a href="#name-egress-slice-admission-cont" class="selfRef">Egress Slice Admission Control (5QI-aware)</a>
-              </figcaption></figure>
+<figcaption><a href="#figure-28" class="selfRef">Figure 28</a></figcaption></figure>
 </div>
 </section>
 </div>
@@ -3451,36 +3395,34 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    models that can be deployed in the provider network.  However,
    discussion about how to realize or orchestrate inter-PE transfer planes is
    out of scope for this document.<a href="#section-6-5" class="pilcrow">¶</a></p>
-<span id="name-example-of-inter-pe-transfe"></span><div id="_figure-23">
+<div id="_figure-23">
 <figure id="figure-29">
-        <div class="alignCenter art-text artwork" id="section-6-6.1">
+        <div class="alignLeft art-text artwork" id="section-6-6.1">
 <pre>
 +---------------+                                    +------+
-|  Ingress PE   |   ╔===============================&gt;| PE-A |
-|               |   ║   ╔==========================&gt;&gt;|      |
-|  +---------+  |   ║   ╚=====================╗      +------+
-|  |         x======╝   ╔=====================╝
-|  |Transfer x================================╗      +------+
-|  | Plane A x=============╗                  ╚=====&gt;| PE-B |
-|  |         x=======╗  ║  ║  ╔===╗   ╔===╗   ╔====&gt;&gt;|      |
-|  +---------+  |    ║  ║  ║  ║   ║   ║   ║   ║      +------+
-|               |    ║  ║  ║  ║   ╚===╝   ╚===╝
-|  +---------+  |    ║  ║  ║  ║                      +------+
-|  |         o=======║==╝  ╚========================&gt;| PE-C |
-|  |Transfer o=======║========╝               ╔====&gt;&gt;|      |
-|  | Plane B o=======║=================╗      ║      +------+
-|  |         o=====╗ ╚===============╗ ║      ║
-|  +---------+  |  ║ ╔=╗ ╔=╗ ╔=╗ ╔=╗ ║ ╚======╝      +------+
-|               |  ║ ║ ║ ║ ║ ║ ║ ║ ║ ╚==============&gt;| PE-D |
-+---------------+  ╚=╝ ╚=╝ ╚=╝ ╚=╝ ╚===============&gt;&gt;|      |
+|  Ingress PE   |   .-------------------------------&gt;| PE-A |
+|               |   |   .--------------------------&gt;&gt;|      |
+|  +---------+  |   |   '---------------------.      +------+
+|  |         x------'   .---------------------'
+|  |Transfer x--------------------------------.      +------+
+|  | Plane A x-------------.                  '-----&gt;| PE-B |
+|  |         x-------.  |  |  .---.   .---.   .----&gt;&gt;|      |
+|  +---------+  |    |  |  |  |   |   |   |   |      +------+
+|               |    |  |  |  |   '---'   '---'
+|  +---------+  |    |  |  |  |                      +------+
+|  |         o-------|--'  '------------------------&gt;| PE-C |
+|  |Transfer o-------|--------'               .----&gt;&gt;|      |
+|  | Plane B o-------|-----------------.      |      +------+
+|  |         o-----. '---------------. |      |
+|  +---------+  |  | .-. .-. .-. .-. | '------'      +------+
+|               |  | | | | | | | | | '--------------&gt;| PE-D |
++---------------+  '-' '-' '-' '-' '---------------&gt;&gt;|      |
                                                      +------+
- x=====&gt;   Tunnels of Inter-PE Transfer Plane A
- o====&gt;&gt;   Tunnels of Inter-PE Transfer Plane B
+ x-----&gt;   Tunnels of Inter-PE Transfer Plane A
+ o----&gt;&gt;   Tunnels of Inter-PE Transfer Plane B
 </pre>
 </div>
-<figcaption><a href="#figure-29" class="selfRef">Figure 29</a>:
-<a href="#name-example-of-inter-pe-transfe" class="selfRef">Example of Inter-PE Transfer Planes Relying on TE Tunnels</a>
-        </figcaption></figure>
+<figcaption><a href="#figure-29" class="selfRef">Figure 29</a></figcaption></figure>
 </div>
 <p id="section-6-7">For illustration purposes, <a href="#_figure-23" class="auto internal xref">Figure 29</a> shows only single
    tunnels per transfer plane for (ingress PE, egress PE) pair. However, there might be multiple tunnels within a single transfer plane
@@ -3513,9 +3455,9 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    Similarly, in 5QI-unaware inter-PE transfer plane mapping model, the entire
    slice is mapped to a single transfer plane, as depicted in
    <a href="#_figure-24" class="auto internal xref">Figure 30</a>.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
-<span id="name-network-slice-to-inter-pe-t"></span><div id="_figure-24">
+<div id="_figure-24">
 <figure id="figure-30">
-          <div class="alignCenter art-text artwork" id="section-6.1-2.1">
+          <div class="alignLeft art-text artwork" id="section-6.1-2.1">
 <pre>
    +-----------------------------------------+
    |.. .. .. .. .. ..                        |
@@ -3554,9 +3496,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    +-----------------------------------------+
 </pre>
 </div>
-<figcaption><a href="#figure-30" class="selfRef">Figure 30</a>:
-<a href="#name-network-slice-to-inter-pe-t" class="selfRef">Network Slice to Inter-PE Transfer Plane Mapping (5QI-unaware Model)</a>
-          </figcaption></figure>
+<figcaption><a href="#figure-30" class="selfRef">Figure 30</a></figcaption></figure>
 </div>
 </section>
 </div>
@@ -3570,9 +3510,9 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    inter-PE transfer planes is limited, packets from multiple 5G QoS Classes
    with similar characteristics are mapped to a common transfer plane,
    as depicted in <a href="#_figure-25" class="auto internal xref">Figure 31</a>.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
-<span id="name-network-slice-to-inter-pe-tr"></span><div id="_figure-25">
+<div id="_figure-25">
 <figure id="figure-31">
-          <div class="alignCenter art-text artwork" id="section-6.2-2.1">
+          <div class="alignLeft art-text artwork" id="section-6.2-2.1">
 <pre>
      +-------------------------------------------+
      |.. .. .. .. .. ..                          |
@@ -3611,9 +3551,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
      +-------------------------------------------+
 </pre>
 </div>
-<figcaption><a href="#figure-31" class="selfRef">Figure 31</a>:
-<a href="#name-network-slice-to-inter-pe-tr" class="selfRef">Network Slice to Inter-PE Transfer Plane mapping (5QI-aware Model)</a>
-          </figcaption></figure>
+<figcaption><a href="#figure-31" class="selfRef">Figure 31</a></figcaption></figure>
 </div>
 </section>
 </div>
@@ -3642,9 +3580,9 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    network.  The NSC has the opposite view - it is
    aware of the provider network infrastructure and the links between the PEs
    and the DCs, but is not aware of the individual network functions at customer sites.<a href="#section-7.1-3" class="pilcrow">¶</a></p>
-<span id="name-an-example-of-multi-dc-arch"></span><div id="_figure-multi-DC">
+<div id="_figure-multi-DC">
 <figure id="figure-32">
-          <div class="alignCenter art-text artwork" id="section-7.1-4.1">
+          <div class="alignLeft art-text artwork" id="section-7.1-4.1">
 <pre>
 + - - - - DC 1- - - -+   + - - - - - - - - +   + - - - - DC 2- - - -+
 | +------+           |  +----+         +----+  |           +------+ |
@@ -3673,9 +3611,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
   * SDP, with fine-grained QoS (dedicated resources per RFC 9543 NS)
 </pre>
 </div>
-<figcaption><a href="#figure-32" class="selfRef">Figure 32</a>:
-<a href="#name-an-example-of-multi-dc-arch" class="selfRef">An Example of Multi-DC Architecture</a>
-          </figcaption></figure>
+<figcaption><a href="#figure-32" class="selfRef">Figure 32</a></figcaption></figure>
 </div>
 <p id="section-7.1-5">Let us consider 5G slice "X" that uses some of the network functions in
    the three DCs.  If this slice has latency requirements, the 5G NSO will
@@ -3711,12 +3647,9 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    may have per-QoS class bandwidth requirements, and may have CIR and
    PIR limits.  This is not included in the example, but the same
    principles apply in such cases.<a href="#section-7.1-6" class="pilcrow">¶</a></p>
-<span id="name-inter-dc-traffic-demand-mat"></span><div id="_table-x">
+<div id="_table-x">
 <table class="center" id="table-1">
-          <caption>
-<a href="#table-1" class="selfRef">Table 1</a>:
-<a href="#name-inter-dc-traffic-demand-mat" class="selfRef">Inter-DC Traffic Demand Matrix (Slice X)</a>
-          </caption>
+          <caption><a href="#table-1" class="selfRef">Table 1</a></caption>
 <thead>
             <tr>
               <th class="text-left" rowspan="1" colspan="1">From/To</th>
@@ -3855,12 +3788,9 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    controller would increase its notion of the bandwidth requirement
    from "DC1" to "DC2" from 12 Gbps to 12.8 Gbps to accommodate the
    additional expected traffic.<a href="#section-7.2.2-2" class="pilcrow">¶</a></p>
-<span id="name-inter-dc-traffic-demand-matr"></span><div id="_table-y">
+<div id="_table-y">
 <table class="center" id="table-2">
-            <caption>
-<a href="#table-2" class="selfRef">Table 2</a>:
-<a href="#name-inter-dc-traffic-demand-matr" class="selfRef">Inter-DC Traffic Demand Matrix (Slice Y)</a>
-            </caption>
+            <caption><a href="#table-2" class="selfRef">Table 2</a></caption>
 <thead>
               <tr>
                 <th class="text-left" rowspan="1" colspan="1">From/To</th>
@@ -4333,11 +4263,11 @@ service disruption. Note that such an on-path attacker may make more damage (e.g
 <dd class="break"></dd>
 <dt id="TS-23.501">[TS-23.501]</dt>
         <dd>
-<span class="refAuthor">3GPP</span>, <span class="refTitle">"TS 23.501: System architecture for the 5G System (5GS)"</span>, <time datetime="2021" class="refDate">2021</time>, <span>&lt;<a href="https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3144">https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3144</a>&gt;</span>. </dd>
+<span class="refAuthor">3GPP</span>, <span class="refTitle">"TS 23.501: System architecture for the 5G System (5GS)"</span>, <time datetime="2021" class="refDate">2021</time>, <span>&lt;<a href="https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId-3144">https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId-3144</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="TS-28.530">[TS-28.530]</dt>
         <dd>
-<span class="refAuthor">3GPP</span>, <span class="refTitle">"TS 23.530: Management and orchestration; Concepts, use cases and requirements)"</span>, <time datetime="2023" class="refDate">2023</time>, <span>&lt;<a href="https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3273">https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3273</a>&gt;</span>. </dd>
+<span class="refAuthor">3GPP</span>, <span class="refTitle">"TS 23.530: Management and orchestration; Concepts, use cases and requirements)"</span>, <time datetime="2023" class="refDate">2023</time>, <span>&lt;<a href="https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId-3273">https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId-3273</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="_5G-Book">[_5G-Book]</dt>
       <dd>
@@ -4445,9 +4375,9 @@ service disruption. Note that such an on-path attacker may make more damage (e.g
    and user plane separation, and the control plane leverages a Service-
    Based Architecture (SBA).  <a href="#_figure-28" class="auto internal xref">Figure 33</a> outlines an example 5GS architecture
    with a subset of possible NFs and network interfaces.<a href="#appendix-B.1-1" class="pilcrow">¶</a></p>
-<span id="name-5gs-architecture-and-servic"></span><div id="_figure-28">
+<div id="_figure-28">
 <figure id="figure-33">
-          <div class="alignCenter art-text artwork" id="appendix-B.1-2.1">
+          <div class="alignLeft art-text artwork" id="appendix-B.1-2.1">
 <pre>
   +-----+  +-----+  +-----+    +-----+  +-----+  +-----+
   |NSSF |  | NEF |  | NRF |    | PCF |  | UDM |  | AF  |
@@ -4460,16 +4390,14 @@ Nnssf|    Nnef|    Nnrf|      Npcf|    Nudm|        |Naf
               +-----+  +--+--+     +--+------+
                        /  |           |      \
 Control Plane      N1 /   |N2         |N4     \N4
-============================================================
+------------------------------------------------------------
 User Plane          /     |           |         \
                 +---+  +--+--+  N3 +--+--+ N9 +-----+ N6  .---.
                 |UE +--+(R)AN+-----+ UPF +----+ UPF +----( DN  )
                 +---+  +-----+     +-----+    +-----+     '---'
 </pre>
 </div>
-<figcaption><a href="#figure-33" class="selfRef">Figure 33</a>:
-<a href="#name-5gs-architecture-and-servic" class="selfRef">5GS Architecture and Service-based Interfaces</a>
-          </figcaption></figure>
+<figcaption><a href="#figure-33" class="selfRef">Figure 33</a></figcaption></figure>
 </div>
 <p id="appendix-B.1-3">Similar to previous versions of 3GPP mobile networks <span>[<a href="#RFC6459" class="cite xref">RFC6459</a>]</span>, a 5G mobile network is split
    into the following four major domains (<a href="#_figure-29" class="auto internal xref">Figure 34</a>):<a href="#appendix-B.1-3" class="pilcrow">¶</a></p>
@@ -4506,9 +4434,9 @@ Provides connectivity between 5G NFs.  The TN may provide connectivity from the 
 traffic generated by NFs is - mostly - based on IP or Ethernet.<a href="#appendix-B.1-4.4.2" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<span id="name-building-blocks-of-5g-archi"></span><div id="_figure-29">
+<div id="_figure-29">
 <figure id="figure-34">
-          <div class="alignCenter art-text artwork" id="appendix-B.1-5.1">
+          <div class="alignLeft art-text artwork" id="appendix-B.1-5.1">
 <pre>
 +----------------------------------------------+
 |             +------------+    +------------+ |
@@ -4525,9 +4453,7 @@ traffic generated by NFs is - mostly - based on IP or Ethernet.<a href="#appendi
 +----------------------------------------------+
 </pre>
 </div>
-<figcaption><a href="#figure-34" class="selfRef">Figure 34</a>:
-<a href="#name-building-blocks-of-5g-archi" class="selfRef">Building Blocks of 5G Architecture (A High-Level Representation)</a>
-          </figcaption></figure>
+<figcaption><a href="#figure-34" class="selfRef">Figure 34</a></figcaption></figure>
 </div>
 </section>
 </div>
@@ -4564,9 +4490,9 @@ since their connectivity may rely on the Transport Network:<a href="#appendix-B.
             </ul>
 </li>
         </ul>
-<span id="name-5g-core-network-cn"></span><div id="_figure-30">
+<div id="_figure-30">
 <figure id="figure-35">
-          <div class="alignCenter art-text artwork" id="appendix-B.2-3.1">
+          <div class="alignLeft art-text artwork" id="appendix-B.2-3.1">
 <pre>
   +---------+    +-------------------------+
   |   RAN   |    |      5G Core (5GC)      |
@@ -4578,7 +4504,7 @@ since their connectivity may rely on the Transport Network:<a href="#appendix-B.
   |    CP -----------+ AMF +-----+ SMF |   |
   |         |    |   +-----+     +--+--+   |
   |         |    |                  |      |  Control Plane
-===========================================================
+-----------------------------------------------------------
   |         |    |                  | N4   |  User Plane
   |         | N3 |               +--+--+   | N6  .-------.
   |    UP -----------------------+ UPF +-------&gt;(   DN    )
@@ -4586,9 +4512,7 @@ since their connectivity may rely on the Transport Network:<a href="#appendix-B.
   +---------+    +-------------------------+
 </pre>
 </div>
-<figcaption><a href="#figure-35" class="selfRef">Figure 35</a>:
-<a href="#name-5g-core-network-cn" class="selfRef">5G Core Network (CN)</a>
-          </figcaption></figure>
+<figcaption><a href="#figure-35" class="selfRef">Figure 35</a></figcaption></figure>
 </div>
 </section>
 </div>
@@ -4625,9 +4549,9 @@ radio waves<a href="#appendix-B.3-2.3.1" class="pilcrow">¶</a></p>
    processing.  Furthermore, the CU can be itself split into Control
    Plane (CU-CP) and User Plane (CU-UP).<a href="#appendix-B.3-4" class="pilcrow">¶</a></p>
 <p id="appendix-B.3-5"><a href="#_figure-31" class="auto internal xref">Figure 36</a> depicts a disaggregated RAN with NFs and interfaces.<a href="#appendix-B.3-5" class="pilcrow">¶</a></p>
-<span id="name-ran-disaggregation"></span><div id="_figure-31">
+<div id="_figure-31">
 <figure id="figure-36">
-          <div class="alignCenter art-text artwork" id="appendix-B.3-6.1">
+          <div class="alignLeft art-text artwork" id="appendix-B.3-6.1">
 <pre>
             +---------------------------------+    +-----------+
             |                                 | N3 |           |
@@ -4657,9 +4581,7 @@ radio waves<a href="#appendix-B.3-2.3.1" class="pilcrow">¶</a></p>
             +---------------------------------+    +-----------+
 </pre>
 </div>
-<figcaption><a href="#figure-36" class="selfRef">Figure 36</a>:
-<a href="#name-ran-disaggregation" class="selfRef">RAN Disaggregation</a>
-          </figcaption></figure>
+<figcaption><a href="#figure-36" class="selfRef">Figure 36</a></figcaption></figure>
 </div>
 </section>
 </div>
@@ -4691,9 +4613,9 @@ is encapsulated in IP.<a href="#appendix-B.4-2.3.1" class="pilcrow">¶</a></p>
         </ul>
 <p id="appendix-B.4-3"><a href="#_figure-32" class="auto internal xref">Figure 37</a> illustrates the different segments of the Transport Network
    with the relevant NFs.<a href="#appendix-B.4-3" class="pilcrow">¶</a></p>
-<span id="name-5g-transport-segments"></span><div id="_figure-32">
+<div id="_figure-32">
 <figure id="figure-37">
-          <div class="alignCenter art-text artwork" id="appendix-B.4-4.1">
+          <div class="alignLeft art-text artwork" id="appendix-B.4-4.1">
 <pre>
 +---------------------------------------------------------+
 |                    Transport Network                    |
@@ -4707,9 +4629,7 @@ is encapsulated in IP.<a href="#appendix-B.4-2.3.1" class="pilcrow">¶</a></p>
  +----+      +----+         +----+        +-----+     `---'
 </pre>
 </div>
-<figcaption><a href="#figure-37" class="selfRef">Figure 37</a>:
-<a href="#name-5g-transport-segments" class="selfRef">5G Transport Segments</a>
-          </figcaption></figure>
+<figcaption><a href="#figure-37" class="selfRef">Figure 37</a></figcaption></figure>
 </div>
 <p id="appendix-B.4-5">A given part of the transport network can
    carry several 5G transport segments concurrently, as outlined in
@@ -4717,17 +4637,17 @@ is encapsulated in IP.<a href="#appendix-B.4-2.3.1" class="pilcrow">¶</a></p>
    might be placed in the same location (e.g., the UPF from one slice
    might be placed in the same location as the CU-UP from another
    slice).<a href="#appendix-B.4-5" class="pilcrow">¶</a></p>
-<span id="name-concurrent-5g-transport-seg"></span><div id="_figure-33">
+<div id="_figure-33">
 <figure id="figure-38">
-          <div class="alignCenter art-text artwork" id="appendix-B.4-6.1">
+          <div class="alignLeft art-text artwork" id="appendix-B.4-6.1">
 <pre>
 +---------+
 |+----+   | Colocated
-||RU-1|   | RU/DU
+|RU-1|   | RU/DU
 |+-+--+   |
 |  | FH-1 |
 |+-+--+   |
-||DU-1|   |  +----+         +-----+         .---.
+|DU-1|   |  +----+         +-----+         .---.
 |+-+--+   |  |CU-1|         |UPF-1+--------( DN  )
 +--|------+  +-+-++         +-+---+         `---'
 +--|-----------|-|------------|----------------------------+
@@ -4741,9 +4661,7 @@ is encapsulated in IP.<a href="#appendix-B.4-2.3.1" class="pilcrow">¶</a></p>
  +----+      +----+         +----+        +-----+     `---'
 </pre>
 </div>
-<figcaption><a href="#figure-38" class="selfRef">Figure 38</a>:
-<a href="#name-concurrent-5g-transport-seg" class="selfRef">Concurrent 5G Transport Segments</a>
-          </figcaption></figure>
+<figcaption><a href="#figure-38" class="selfRef">Figure 38</a></figcaption></figure>
 </div>
 </section>
 </div>
@@ -4752,7 +4670,7 @@ is encapsulated in IP.<a href="#appendix-B.4-2.3.1" class="pilcrow">¶</a></p>
 <div id="acknowledgments">
 <section id="appendix-C">
       <h2 id="name-acknowledgments">
-<a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
+<a href="#appendix-C" class="section-number selfRef">Appendix C. </a><a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
       </h2>
 <p id="appendix-C-1">The authors would like to thank Adrian Farrel, Joel Halpern, Tarek
    Saad, Greg Mirsky, Rüdiger Geib, Nicklous D. Morris,         Daniele Ceccarelli, Bo Wu, Xuesong Geng, and Deborah Brungard for
