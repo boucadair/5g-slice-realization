@@ -307,7 +307,7 @@ Table of Contents
 
 3.2.1.  5G Network Slicing
 
-   5G Network Slicing is defined by the 3GPP [TS-28.530] as an appraoch:
+   5G Network Slicing is defined by the 3GPP [TS-28.530] as an approach:
 
    |  "where logical networks/partitions are created, with appropriate
    |  isolation, resources and optimized topology to serve a purpose or
