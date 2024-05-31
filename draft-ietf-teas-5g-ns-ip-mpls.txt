@@ -371,7 +371,7 @@ Table of Contents
 |                |      |                     |       |                |
 +----------------+      +---------------------+       +----------------+
 
-      <-----------------Transport Network------------------->
+     <-----------------Transport Network--------------->
 
   Figure 3: Reference Design with Customer Site and Provider Network
 
