@@ -685,7 +685,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
         (not slice specific)     for S-NSSAI
     <───────────────────────────> <───────>
    ┌────┬────┬────┬────┬────┬────┬────┬────┐
-   │xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:ttdd:dddd│
+   |xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:ttdd:dddd|
    └─────────┴─────────┴─────────┴─────────┘
     tt     - SST (8 bits)
     dddddd - SD (24 bits)
@@ -830,13 +830,13 @@ As a result, a node in a customer site performs hierarchical next-hop resolution
   service instances                service instances  representing
  representing slices              representing slices    slices
 ┌ ─ ─ ┬ ┐       ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐       ┌ ┬ ─ ─ ─ ─ ─ ┬ ─ ─ ─ ─ ─
-      │               Provider                │           │          │
-│┌────▼─┤       ├─────┐       ┌─────┤       ├─▼──────┐    ▼  ┌──────┐
- │    ◙ │       │■    │       │    ■│       │ ◙………………●───────●      ││
-││ NF ◙ ├───────┤■ PE │       │ PE ■├───────┤ ◙………………●───────●   NF │
- │    ◙ │       │■    │       │    ■│       │ ◙………………●───────●      ││
-│└──────┤       ├─────┘       └─────┤       ├────────┘       └──────┘
-   CS1                 Network                         CS2           │
+      |               Provider                |           |          |
+|┌────▼─┤       ├─────┐       ┌─────┤       ├─▼──────┐    ▼  ┌──────┐
+ |    ◙ |       |■    |       |    ■|       | ◙………………●───────●      ||
+|| NF ◙ ├───────┤■ PE |       | PE ■├───────┤ ◙………………●───────●   NF |
+ |    ◙ |       |■    |       |    ■|       | ◙………………●───────●      ||
+|└──────┤       ├─────┘       └─────┤       ├────────┘       └──────┘
+   CS1                 Network                         CS2           |
 └ ─ ─ ─ ┘       └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘       └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
       └────────┘└───────────────────┘└────────┘ └───────────────────┘
       Attachment   Provider Network  Attachment      Customer Site
@@ -985,50 +985,50 @@ ranges for each slice, and use these ranges for slice identification purposes on
 
 ~~~
                                  ┌──────────────┐
-                                 │ MPLS Header  │
-                                 ├─────┬─────┐  │
-                                 │Label│TN TC│  │
+                                 | MPLS Header  |
+                                 ├─────┬─────┐  |
+                                 |Label|TN TC|  |
 ┌──────────────┐ ─ ─ ─ ─ ─ ─ ─ ─ ├─────┴─────┴──┤
-│  IP Header   │         │╲      │  IP Header   │
-│      ┌───────┤         │ ╲     │      ┌───────┤
-│      │5G DSCP│ ────────┘  ╲    │      │5G DSCP│
-├──────┴───────┤             ╲   ├──────┴───────┤
-│              │              ╲  │              │
-│              │               ╲ │              │
-│              │                ▏│              │
-│   Payload    │               ╱ │   Payload    │
-│(GTP-U/IPsec) │              ╱  │(GTP-U/IPsec) │
-│              │             ╱   │              │
-│              │ ────────┐  ╱    │              │
-│              │         │ ╱     │              │
-│              │         │╱      │              │
+|  IP Header   |         |\      |  IP Header   |
+|      ┌───────┤         | \     |      ┌───────┤
+|      |5G DSCP| ────────┘  \    |      |5G DSCP|
+├──────┴───────┤             \   ├──────┴───────┤
+|              |              \  |              |
+|              |               \ |              |
+|              |                ▏|              |
+|   Payload    |               / |   Payload    |
+|(GTP-U/IPsec) |              /  |(GTP-U/IPsec) |
+|              |             /   |              |
+|              | ────────┐  /    |              |
+|              |         | /     |              |
+|              |         |/      |              |
 └──────────────┘ ─ ─ ─ ─ ─ ─ ─ ─ └──────────────┘
 ~~~
 {: #figure-15 title="QoS with MPLS Encapsulation" artwork-align="center"}
 
 ~~~
                                  ┌──────────────┐
-                                 │ IPv6 Header  │
-                                 │      ┌───────┤
-                                 │      │TN DSCP│
+                                 | IPv6 Header  |
+                                 |      ┌───────┤
+                                 |      |TN DSCP|
                                  ├──────┴───────┤
                                      optional
-                                 │     IPv6     │
+                                 |     IPv6     |
                                       headers
 ┌──────────────┐ ─ ─ ─ ─ ─ ─ ─ ─ ├──────────────┤
-│  IP Header   │         │╲      │  IP Header   │
-│      ┌───────┤         │ ╲     │      ┌───────┤
-│      │5G DSCP│ ────────┘  ╲    │      │5G DSCP│
-├──────┴───────┤             ╲   ├──────┴───────┤
-│              │              ╲  │              │
-│              │               ╲ │              │
-│              │                ││              │
-│   Payload    │               ╱ │   Payload    │
-│(GTP-U/IPsec) │              ╱  │(GTP-U/IPsec) │
-│              │             ╱   │              │
-│              │ ────────┐  ╱    │              │
-│              │         │ ╱     │              │
-│              │         │╱      │              │
+|  IP Header   |         |\      |  IP Header   |
+|      ┌───────┤         | \     |      ┌───────┤
+|      |5G DSCP| ────────┘  \    |      |5G DSCP|
+├──────┴───────┤             \   ├──────┴───────┤
+|              |              \  |              |
+|              |               \ |              |
+|              |                ||              |
+|   Payload    |               / |   Payload    |
+|(GTP-U/IPsec) |              /  |(GTP-U/IPsec) |
+|              |             /   |              |
+|              | ────────┐  /    |              |
+|              |         | /     |              |
+|              |         |/      |              |
 └──────────────┘ ─ ─ ─ ─ ─ ─ ─ ─ └──────────────┘
 ~~~
 {: #figure-16 title="QoS with IPv6 Encapsulation" artwork-align="center"}
@@ -1115,37 +1115,37 @@ ranges for each slice, and use these ranges for slice identification purposes on
 ~~~
             Slice
            policer     ┌─────────┐
-              ║    ┌───┴──┐      │
-              ║    │      │      │
-              ║    │    S │      │
-              ║    │    l │      │
-              v    │    i │      │
-──────────────◇────┼──> c │      │
-                   │    e │  A   │
-                   │      │  t   │
-                   │    1 │  t   │
-                   │      │  a   │
-                   ├──────┤  c   │
-                   │      │  h   │
-                   │    S │  m   │
-                   │    l │  e   │
-                   │    i │  n   │
-──────────────◇────┼──> c │  t   │
-                   │    e │      │
-                   │      │  C   │
-                   │    2 │  i   │
-                   │      │  r   │
-                   ├──────┤  c   │
-                   │      │  u   │
-                   │    S │  i   │
-                   │    l │  t   │
-                   │    i │      │
-──────────────◇────┼──> c │      │
-                   │    e │      │
-                   │      │      │
-                   │    3 │      │
-                   │      │      │
-                   └───┬──┘      │
+              ║    ┌───┴──┐      |
+              ║    |      |      |
+              ║    |    S |      |
+              ║    |    l |      |
+              v    |    i |      |
+──────────────◇────┼──> c |      |
+                   |    e |  A   |
+                   |      |  t   |
+                   |    1 |  t   |
+                   |      |  a   |
+                   ├──────┤  c   |
+                   |      |  h   |
+                   |    S |  m   |
+                   |    l |  e   |
+                   |    i |  n   |
+──────────────◇────┼──> c |  t   |
+                   |    e |      |
+                   |      |  C   |
+                   |    2 |  i   |
+                   |      |  r   |
+                   ├──────┤  c   |
+                   |      |  u   |
+                   |    S |  i   |
+                   |    l |  t   |
+                   |    i |      |
+──────────────◇────┼──> c |      |
+                   |    e |      |
+                   |      |      |
+                   |    3 |      |
+                   |      |      |
+                   └───┬──┘      |
                        └─────────┘
 ~~~
 {: #figure-17 title="Ingress Slice Admission Control (5QI-unware Model)" artwork-align="center"}
@@ -1187,31 +1187,31 @@ ranges for each slice, and use these ranges for slice identification purposes on
 
 ~~~
       ┌─────────┐        QoS output queues
-      │     ┌───┴──┐─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
-      │     │ S    │                            ╲│╱
-      │     │ l    │                             │
-      │     │ i    │                             │
-      │  A  │ c    │                             │  weight=Slice-1-CIR
-      │  t  │ e  ┌─┴──────────────────────────┐  │ shaping=Slice-1-PIR
-   ───┼──t──┼────>                            │  │
-      │  a  │ 1  └─┬──────────────────────────┘ ╱│╲
-      │  c  ├──────┤─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
-      │  h  │ S    │                            ╲│╱
-      │  m  │ l    │                             │
-      │  e  │ i    │                             │
-      │  n  │ c    │                             │  weight=Slice-2-CIR
-      │  t  │ e  ┌─┴──────────────────────────┐  │ shaping=Slice-2-PIR
-   ───┼─────┼────>                            │  │
-      │  C  │ 2  └─┬──────────────────────────┘ ╱│╲
-      │  i  ├──────┤─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
-      │  r  │ S    │                            ╲│╱
-      │  c  │ l    │                             │
-      │  u  │ i    │                             │
-      │  i  │ c    │                             │  weight=Slice-3-CIR
-      │  t  │ e  ┌─┴──────────────────────────┐  │ shaping=Slice-3-PIR
-   ───┼─────┼────>                            │  │
-      │     │ 3  └─┬──────────────────────────┘ ╱│╲
-      │     └───┬──┘─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+      |     ┌───┴──┐─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+      |     | S    |                            \|/
+      |     | l    |                             |
+      |     | i    |                             |
+      |  A  | c    |                             |  weight=Slice-1-CIR
+      |  t  | e  ┌─┴──────────────────────────┐  | shaping=Slice-1-PIR
+   ───┼──t──┼────>                            |  |
+      |  a  | 1  └─┬──────────────────────────┘ /|\
+      |  c  ├──────┤─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+      |  h  | S    |                            \|/
+      |  m  | l    |                             |
+      |  e  | i    |                             |
+      |  n  | c    |                             |  weight=Slice-2-CIR
+      |  t  | e  ┌─┴──────────────────────────┐  | shaping=Slice-2-PIR
+   ───┼─────┼────>                            |  |
+      |  C  | 2  └─┬──────────────────────────┘ /|\
+      |  i  ├──────┤─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+      |  r  | S    |                            \|/
+      |  c  | l    |                             |
+      |  u  | i    |                             |
+      |  i  | c    |                             |  weight=Slice-3-CIR
+      |  t  | e  ┌─┴──────────────────────────┐  | shaping=Slice-3-PIR
+   ───┼─────┼────>                            |  |
+      |     | 3  └─┬──────────────────────────┘ /|\
+      |     └───┬──┘─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
       └─────────┘
 ~~~
 {: #figure-18 title="Ingress Slice Admission control (5QI-unaware Model)" artwork-align="center"}
@@ -1296,37 +1296,37 @@ to TN QoS Classes may be rather common.
 
 ~~~
                      Class             ┌─────────┐
-                    policer         ┌──┴───┐     │
-                                    │      │     │
-5Q-QoS-A: CIR-1A ──────◇────────────┼──> S │     │
-5Q-QoS-B: CIR-1B ──────◇────────────┼──> l │     │
-5Q-QoS-C: CIR-1C ──────◇────────────┼──> i │     │
-                                    │    c │     │
-                                    │    e │     │
-   BE CIR/PIR-1D ──────◇────────────┼──>   │  A  │
-                                    │    1 │  t  │
-                                    │      │  t  │
-                                    ├──────┤  a  │
-                                    │      │  c  │
-5Q-QoS-A: CIR-2A ──────◇────────────┼─>  S │  h  │
-5Q-QoS-B: CIR-2B ──────◇────────────┼─>  l │  m  │
-5Q-QoS-C: CIR-2C ──────◇────────────┼─>  i │  e  │
-                                    │    c │  n  │
-                                    │    e │  t  │
-   BE CIR/PIR-2D ──────◇────────────┼─>    │     │
-                                    │    2 │  C  │
-                                    │      │  i  │
-                                    ├──────┤  r  │
-                                    │      │  c  │
-5Q-QoS-A: CIR-3A ──────◇────────────┼─>  S │  u  │
-5Q-QoS-B: CIR-3B ──────◇────────────┼─>  l │  i  │
-5Q-QoS-C: CIR-3C ──────◇────────────┼─>  i │  t  │
-                                    │    c │     │
-                                    │    e │     │
-   BE CIR/PIR-3D───────◇────────────┼─>    │     │
-                                    │    3 │     │
-                                    │      │     │
-                                    └──┬───┘     │
+                    policer         ┌──┴───┐     |
+                                    |      |     |
+5Q-QoS-A: CIR-1A ──────◇────────────┼──> S |     |
+5Q-QoS-B: CIR-1B ──────◇────────────┼──> l |     |
+5Q-QoS-C: CIR-1C ──────◇────────────┼──> i |     |
+                                    |    c |     |
+                                    |    e |     |
+   BE CIR/PIR-1D ──────◇────────────┼──>   |  A  |
+                                    |    1 |  t  |
+                                    |      |  t  |
+                                    ├──────┤  a  |
+                                    |      |  c  |
+5Q-QoS-A: CIR-2A ──────◇────────────┼─>  S |  h  |
+5Q-QoS-B: CIR-2B ──────◇────────────┼─>  l |  m  |
+5Q-QoS-C: CIR-2C ──────◇────────────┼─>  i |  e  |
+                                    |    c |  n  |
+                                    |    e |  t  |
+   BE CIR/PIR-2D ──────◇────────────┼─>    |     |
+                                    |    2 |  C  |
+                                    |      |  i  |
+                                    ├──────┤  r  |
+                                    |      |  c  |
+5Q-QoS-A: CIR-3A ──────◇────────────┼─>  S |  u  |
+5Q-QoS-B: CIR-3B ──────◇────────────┼─>  l |  i  |
+5Q-QoS-C: CIR-3C ──────◇────────────┼─>  i |  t  |
+                                    |    c |     |
+                                    |    e |     |
+   BE CIR/PIR-3D───────◇────────────┼─>    |     |
+                                    |    3 |     |
+                                    |      |     |
+                                    └──┬───┘     |
                                        └─────────┘
 ~~~
 {: #figure-20 title="Ingress Slice Admission Control (5QI-aware Model)" artwork-align="center"}
@@ -1344,37 +1344,37 @@ to TN QoS Classes may be rather common.
 ~~~
                               Slice
                              policer   ┌─────────┐
-                   Class        .   ┌──┴───┐     │
-                  policer      ; :  │      │     │
-5Q-QoS-A: CIR-1A ────◇─────────┤─┼──┼──> S │     │
-5Q-QoS-B: CIR-1B ────◇─────────┤─┼──┼──> l │     │
-5Q-QoS-C: CIR-1C ────◇─────────┤─┼──┼──> i │     │
-                               │ │  │    c │     │
-                               │ │  │    e │     │
-   BE CIR/PIR-1D ──────────────┤─┼──┼──>   │  A  │
-                               │ │  │    1 │  t  │
-                               : ;  │      │  t  │
-                                .   ├──────┤  a  │
-                               ; :  │      │  c  │
-5Q-QoS-A: CIR-2A ────◇─────────┤─┼──┼──> S │  h  │
-5Q-QoS-B: CIR-2B ────◇─────────┤─┼──┼──> l │  m  │
-5Q-QoS-C: CIR-2C ────◇─────────┤─┼──┼──> i │  e  │
-                               │ │  │    c │  n  │
-                               │ │  │    e │  t  │
-   BE CIR/PIR-2D ──────────────┤─┼──┼──>   │     │
-                               │ │  │    2 │  C  │
-                               : ;  │      │  i  │
-                                .   ├──────┤  r  │
-                               ; :  │      │  c  │
-5Q-QoS-A: CIR-3A ────◇─────────┤─┼──┼──> S │  u  │
-5Q-QoS-B: CIR-3B ────◇─────────┤─┼──┼──> l │  i  │
-5Q-QoS-C: CIR-3C ────◇───── ───┤─┼──┼──> i │  t  │
-                               │ │  │    c │     │
-                               │ │  │    e │     │
-   BE CIR/PIR-3D ──────────────┤─┼──┼──>   │     │
-                               │ │  │    3 │     │
-                               : ;  │      │     │
-                                '   └──┬───┘     │
+                   Class        .   ┌──┴───┐     |
+                  policer      ; :  |      |     |
+5Q-QoS-A: CIR-1A ────◇─────────┤─┼──┼──> S |     |
+5Q-QoS-B: CIR-1B ────◇─────────┤─┼──┼──> l |     |
+5Q-QoS-C: CIR-1C ────◇─────────┤─┼──┼──> i |     |
+                               | |  |    c |     |
+                               | |  |    e |     |
+   BE CIR/PIR-1D ──────────────┤─┼──┼──>   |  A  |
+                               | |  |    1 |  t  |
+                               : ;  |      |  t  |
+                                .   ├──────┤  a  |
+                               ; :  |      |  c  |
+5Q-QoS-A: CIR-2A ────◇─────────┤─┼──┼──> S |  h  |
+5Q-QoS-B: CIR-2B ────◇─────────┤─┼──┼──> l |  m  |
+5Q-QoS-C: CIR-2C ────◇─────────┤─┼──┼──> i |  e  |
+                               | |  |    c |  n  |
+                               | |  |    e |  t  |
+   BE CIR/PIR-2D ──────────────┤─┼──┼──>   |     |
+                               | |  |    2 |  C  |
+                               : ;  |      |  i  |
+                                .   ├──────┤  r  |
+                               ; :  |      |  c  |
+5Q-QoS-A: CIR-3A ────◇─────────┤─┼──┼──> S |  u  |
+5Q-QoS-B: CIR-3B ────◇─────────┤─┼──┼──> l |  i  |
+5Q-QoS-C: CIR-3C ────◇───── ───┤─┼──┼──> i |  t  |
+                               | |  |    c |     |
+                               | |  |    e |     |
+   BE CIR/PIR-3D ──────────────┤─┼──┼──>   |     |
+                               | |  |    3 |     |
+                               : ;  |      |     |
+                                '   └──┬───┘     |
                                        └─────────┘
 ~~~
 {: #figure-21 title="Ingress Slice Admission Control (5QI-aware) - Hierarchical" artwork-align="center"}
@@ -1390,46 +1390,46 @@ to TN QoS Classes may be rather common.
 
 ~~~
    ┌─────────┐        QoS output queues
-   │     ┌───┴──┐─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
-   │     │    ┌─┴──────────────────────────┐ ╲│╱
-───┼─────┼────> 5Q-QoS-A: w=5Q-QoS-A-CIR   │  │
-   │     │ S  └─┬──────────────────────────┘  │
-   │     │ l  ┌─┴──────────────────────────┐  │
-───┼─────┼─i──> 5Q-QoS-B: w=5Q-QoS-B-CIR   │  │
-   │     │ c  └─┬──────────────────────────┘  │  weight=Slice-1-CIR
-   │     │ e  ┌─┴──────────────────────────┐  │ shaping=Slice-1-PIR
-───┼─────┼────> 5Q-QoS-C: w=5Q-QoS-C-CIR   │  │
-   │     │ 1  └─┬──────────────────────────┘  │
-   │     │    ┌─┴──────────────────────────┐  │
-───┼─────┼────> Best Effort (remainder)    │  │
-   │     │    └─┬──────────────────────────┘ ╱│╲
-   │  A  ├──────┤─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
-   │  t  │    ┌─┴──────────────────────────┐ ╲│╱
-   │  t  │    │                            │  │
-   │  a  │    └─┬──────────────────────────┘  │
-   │  c  │ S  ┌─┴──────────────────────────┐  │
-   │  h  │ l  │                            │  │
-   │  m  │ i  └─┬──────────────────────────┘  │  weight=Slice-2-CIR
-   │  e  │ c  ┌─┴──────────────────────────┐  │ shaping=Slice-2-PIR
-   │  n  │ e  │                            │  │
-   │  t  │    └─┬──────────────────────────┘  │
-   │     │ 2  ┌─┴──────────────────────────┐  │
-   │  C  │    │                            │  │
-   │  i  │    └─┬──────────────────────────┘ ╱│╲
-   │  r  ├──────┤─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
-   │  c  │    ┌─┴──────────────────────────┐ ╲│╱
-   │  u  │    │                            │  │
-   │  i  │ S  └─┬──────────────────────────┘  │
-   │  t  │ l  ┌─┴──────────────────────────┐  │
-   │     │ i  │                            │  │
-   │     │ c  └─┬──────────────────────────┘  │  weight=Slice-3-CIR
-   │     │ e  ┌─┴──────────────────────────┐  │ shaping=Slice-3-PIR
-   │     │    │                            │  │
-   │     │ 3  └─┬──────────────────────────┘  │
-   │     │    ┌─┴──────────────────────────┐  │
-   │     │    │                            │  │
-   │     │    └─┬──────────────────────────┘ ╱│╲
-   │     └───┬──┘─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+   |     ┌───┴──┐─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+   |     |    ┌─┴──────────────────────────┐ \|/
+───┼─────┼────> 5Q-QoS-A: w=5Q-QoS-A-CIR   |  |
+   |     | S  └─┬──────────────────────────┘  |
+   |     | l  ┌─┴──────────────────────────┐  |
+───┼─────┼─i──> 5Q-QoS-B: w=5Q-QoS-B-CIR   |  |
+   |     | c  └─┬──────────────────────────┘  |  weight=Slice-1-CIR
+   |     | e  ┌─┴──────────────────────────┐  | shaping=Slice-1-PIR
+───┼─────┼────> 5Q-QoS-C: w=5Q-QoS-C-CIR   |  |
+   |     | 1  └─┬──────────────────────────┘  |
+   |     |    ┌─┴──────────────────────────┐  |
+───┼─────┼────> Best Effort (remainder)    |  |
+   |     |    └─┬──────────────────────────┘ /|\
+   |  A  ├──────┤─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+   |  t  |    ┌─┴──────────────────────────┐ \|/
+   |  t  |    |                            |  |
+   |  a  |    └─┬──────────────────────────┘  |
+   |  c  | S  ┌─┴──────────────────────────┐  |
+   |  h  | l  |                            |  |
+   |  m  | i  └─┬──────────────────────────┘  |  weight=Slice-2-CIR
+   |  e  | c  ┌─┴──────────────────────────┐  | shaping=Slice-2-PIR
+   |  n  | e  |                            |  |
+   |  t  |    └─┬──────────────────────────┘  |
+   |     | 2  ┌─┴──────────────────────────┐  |
+   |  C  |    |                            |  |
+   |  i  |    └─┬──────────────────────────┘ /|\
+   |  r  ├──────┤─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+   |  c  |    ┌─┴──────────────────────────┐ \|/
+   |  u  |    |                            |  |
+   |  i  | S  └─┬──────────────────────────┘  |
+   |  t  | l  ┌─┴──────────────────────────┐  |
+   |     | i  |                            |  |
+   |     | c  └─┬──────────────────────────┘  |  weight=Slice-3-CIR
+   |     | e  ┌─┴──────────────────────────┐  | shaping=Slice-3-PIR
+   |     |    |                            |  |
+   |     | 3  └─┬──────────────────────────┘  |
+   |     |    ┌─┴──────────────────────────┐  |
+   |     |    |                            |  |
+   |     |    └─┬──────────────────────────┘ /|\
+   |     └───┬──┘─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
    └─────────┘
 ~~~
 {: #figure-22 title="Egress Slice Admission Control (5QI-aware)" artwork-align="center"}
@@ -1479,23 +1479,23 @@ Also, inter-PE transfer planes may be realized using separate NRPs. However, suc
 
 ~~~
 ┌───────────────┐                                    ┌──────┐
-│  Ingress PE   │   ╔═══════════════════════════════>│ PE-A │
-│               │   ║   ╔═══════════════════════════▷│      │
-│  ┌ ─ ─ ─ ─ ┐  │   ║   ╚═════════════════════╗      └──────┘
-│            ●══════╝   ╔═════════════════════╝
-│  │Transfert●════════════════════════════════╗      ┌──────┐
-│    Plane A ●═════════════╗                  ╚═════>│ PE-B │
-│  │         ●═══════╗  ║  ║  ╔═══╗   ╔═══╗   ╔═════▷│      │
-│   ─ ─ ─ ─ ─   │    ║  ║  ║  ║   ║   ║   ║   ║      └──────┘
-│               │    ║  ║  ║  ║   ╚═══╝   ╚═══╝
-│  ┌ ─ ─ ─ ─ ┐  │    ║  ║  ║  ║                      ┌──────┐
-│            ○═══════║══╝  ╚════════════════════════>│ PE-C │
-│  │Transfert○═══════║════════╝               ╔═════▷│      │
-│    Plane B ○═══════║═════════════════╗      ║      └──────┘
-│  │         ○═════╗ ╚═══════════════╗ ║      ║
-│   ─ ─ ─ ─ ─   │  ║ ╔═╗ ╔═╗ ╔═╗ ╔═╗ ║ ╚══════╝      ┌──────┐
-│               │  ║ ║ ║ ║ ║ ║ ║ ║ ║ ╚══════════════>│ PE-D │
-└───────────────┘  ╚═╝ ╚═╝ ╚═╝ ╚═╝ ╚════════════════▷│      │
+|  Ingress PE   |   ╔═══════════════════════════════>| PE-A |
+|               |   ║   ╔═══════════════════════════▷|      |
+|  ┌ ─ ─ ─ ─ ┐  |   ║   ╚═════════════════════╗      └──────┘
+|            ●══════╝   ╔═════════════════════╝
+|  |Transfert●════════════════════════════════╗      ┌──────┐
+|    Plane A ●═════════════╗                  ╚═════>| PE-B |
+|  |         ●═══════╗  ║  ║  ╔═══╗   ╔═══╗   ╔═════▷|      |
+|   ─ ─ ─ ─ ─   |    ║  ║  ║  ║   ║   ║   ║   ║      └──────┘
+|               |    ║  ║  ║  ║   ╚═══╝   ╚═══╝
+|  ┌ ─ ─ ─ ─ ┐  |    ║  ║  ║  ║                      ┌──────┐
+|            ○═══════║══╝  ╚════════════════════════>| PE-C |
+|  |Transfert○═══════║════════╝               ╔═════▷|      |
+|    Plane B ○═══════║═════════════════╗      ║      └──────┘
+|  |         ○═════╗ ╚═══════════════╗ ║      ║
+|   ─ ─ ─ ─ ─   |  ║ ╔═╗ ╔═╗ ╔═╗ ╔═╗ ║ ╚══════╝      ┌──────┐
+|               |  ║ ║ ║ ║ ║ ║ ║ ║ ║ ╚══════════════>| PE-D |
+└───────────────┘  ╚═╝ ╚═╝ ╚═╝ ╚═╝ ╚════════════════▷|      |
                                                      └──────┘
          ●════════▶  Tunnels of Inter-PE Transfer Plane A
          ○════════▷  Tunnels of Inter-PE Transfer Plane B
@@ -1536,39 +1536,39 @@ Also, inter-PE transfer planes may be realized using separate NRPs. However, suc
 
 ~~~
    ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
-   ┏━━━━━━━━━━━━━━━━━┓                        │
+   ┏━━━━━━━━━━━━━━━━━┓                        |
    ┃ Attach. Circuit ┃      PE router
-   ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃                        │
+   ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃                        |
    ┃   SDP           ┃
-   ┃│  ┌──────────┐ │┃                        │
-   ┃   │     NS 1 ├──────────┐
-   ┃│  └──────────┘ │┃       │                │
-   ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃       │
-   ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃       │   ┌─────────┐  │
-   ┃   SDP           ┃       │   │         │
-   ┃│  ┌──────────┐ │┃       │   │Transport│  │
-   ┃   │     NS 2 ├──────┐   ├───>  Plane  │
-   ┃│  └──────────┘ │┃   │   │   │    A    │  │
-   ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃   │   │   │         │
-   ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃   │   │   └─────────┘  │
-   ┃   SDP           ┃   │   │
-   ┃│  ┌──────────┐ │┃   │   │                │
-   ┃   │     NS 3 ├──────┤   │
-   ┃│  └──────────┘ │┃   │   │   ┌─────────┐  │
-   ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃   │   │   │         │
-   ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃   │   │   │Transport│  │
-   ┃   SDP           ┃   ├───│───>  Plane  │
-   ┃│  ┌──────────┐ │┃   │   │   │    B    │  │
-   ┃   │     NS 4 ├──────┘   │   │         │
-   ┃│  └──────────┘ │┃       │   └─────────┘  │
-   ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃       │
-   ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃       │                │
-   ┃   SDP           ┃       │
-   ┃│  ┌──────────┐ │┃       │                │
-   ┃   │     NS 5 ├──────────┘
-   ┃│  └──────────┘ │┃                        │
+   ┃|  ┌──────────┐ |┃                        |
+   ┃   |     NS 1 ├──────────┐
+   ┃|  └──────────┘ |┃       |                |
+   ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃       |
+   ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃       |   ┌─────────┐  |
+   ┃   SDP           ┃       |   |         |
+   ┃|  ┌──────────┐ |┃       |   |Transport|  |
+   ┃   |     NS 2 ├──────┐   ├───>  Plane  |
+   ┃|  └──────────┘ |┃   |   |   |    A    |  |
+   ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃   |   |   |         |
+   ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃   |   |   └─────────┘  |
+   ┃   SDP           ┃   |   |
+   ┃|  ┌──────────┐ |┃   |   |                |
+   ┃   |     NS 3 ├──────┤   |
+   ┃|  └──────────┘ |┃   |   |   ┌─────────┐  |
+   ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃   |   |   |         |
+   ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃   |   |   |Transport|  |
+   ┃   SDP           ┃   ├───|───>  Plane  |
+   ┃|  ┌──────────┐ |┃   |   |   |    B    |  |
+   ┃   |     NS 4 ├──────┘   |   |         |
+   ┃|  └──────────┘ |┃       |   └─────────┘  |
+   ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃       |
+   ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃       |                |
+   ┃   SDP           ┃       |
+   ┃|  ┌──────────┐ |┃       |                |
+   ┃   |     NS 5 ├──────────┘
+   ┃|  └──────────┘ |┃                        |
    ┃ ─ ─ ─ ─ ─ ─ ─ ─ ┃
-   ┗━━━━━━━━━━━━━━━━━┛                        │
+   ┗━━━━━━━━━━━━━━━━━┛                        |
    └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
 ~~~
 {: #figure-24 title="Network Slice to Inter-PE Transfer Plane Mapping (5QI-unaware Model)" artwork-align="center"}
@@ -1584,37 +1584,37 @@ Also, inter-PE transfer planes may be realized using separate NRPs. However, suc
 ~~~
      ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
      ┏━━━━━━━━━━━━━━━━━┓
-     ┃ Attach. Circuit ┃                         │
+     ┃ Attach. Circuit ┃                         |
      ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃        PE router
-   R ┃   SDP           ┃                         │
-   F ┃│  ┌──────────┐ │┃
-   C ┃   │ 5G QoS A ├──────┐                     │
-   9 ┃│  └──────────┘ │┃   │
-   5 ┃   ┌──────────┐  ┃   │                     │
-   4 ┃│  │ 5G QoS B ├──────┤
-   3 ┃   └──────────┘  ┃   │         ┌─────────┐ │
-     ┃│  ┌──────────┐ │┃   │         │         │
-   N ┃   │ 5G QoS C ├───────────┐    │Transport│ │
-   S ┃│  └──────────┘ │┃   ├────│────>  Plane  │
-     ┃   ┌──────────┐  ┃   │    │    │    A    │ │
-   1 ┃│  │ 5G QoS D ├───────────┤    │         │
-     ┃   └──────────┘  ┃   │    │    └─────────┘ │
-     ┃└ ─ ─ ─ ─ ─ ─ ─ ┘┃   │    │
-   R ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃   │    │                │
-   F ┃   ┌──────────┐  ┃   │    │
-   C ┃│  │ 5G QoS A ├──────┤    │    ┌─────────┐ │
-   9 ┃   └──────────┘  ┃   │    │    │         │
-   5 ┃│  ┌──────────┐ │┃   │    │    │Transport│ │
-   4 ┃   │ 5G QoS E ├──────┘    ├────>  Plane  │
-   3 ┃│  └──────────┘ │┃        │    │    B    │ │
-     ┃   ┌──────────┐  ┃        │    │         │
-   N ┃│  │ 5G QoS F ├───────────┤    └─────────┘ │
-   S ┃   └──────────┘  ┃        │
-     ┃│  ┌──────────┐ │┃        │                │
-   2 ┃   │ 5G QoS G ├───────────┘
-     ┃│  └──────────┘ │┃                         │
+   R ┃   SDP           ┃                         |
+   F ┃|  ┌──────────┐ |┃
+   C ┃   | 5G QoS A ├──────┐                     |
+   9 ┃|  └──────────┘ |┃   |
+   5 ┃   ┌──────────┐  ┃   |                     |
+   4 ┃|  | 5G QoS B ├──────┤
+   3 ┃   └──────────┘  ┃   |         ┌─────────┐ |
+     ┃|  ┌──────────┐ |┃   |         |         |
+   N ┃   | 5G QoS C ├───────────┐    |Transport| |
+   S ┃|  └──────────┘ |┃   ├────|────>  Plane  |
+     ┃   ┌──────────┐  ┃   |    |    |    A    | |
+   1 ┃|  | 5G QoS D ├───────────┤    |         |
+     ┃   └──────────┘  ┃   |    |    └─────────┘ |
+     ┃└ ─ ─ ─ ─ ─ ─ ─ ┘┃   |    |
+   R ┃┌ ─ ─ ─ ─ ─ ─ ─ ┐┃   |    |                |
+   F ┃   ┌──────────┐  ┃   |    |
+   C ┃|  | 5G QoS A ├──────┤    |    ┌─────────┐ |
+   9 ┃   └──────────┘  ┃   |    |    |         |
+   5 ┃|  ┌──────────┐ |┃   |    |    |Transport| |
+   4 ┃   | 5G QoS E ├──────┘    ├────>  Plane  |
+   3 ┃|  └──────────┘ |┃        |    |    B    | |
+     ┃   ┌──────────┐  ┃        |    |         |
+   N ┃|  | 5G QoS F ├───────────┤    └─────────┘ |
+   S ┃   └──────────┘  ┃        |
+     ┃|  ┌──────────┐ |┃        |                |
+   2 ┃   | 5G QoS G ├───────────┘
+     ┃|  └──────────┘ |┃                         |
      ┃   SDP           ┃
-     ┃└ ─ ─ ─ ─ ─ ─ ─ ┘┃                         │
+     ┃└ ─ ─ ─ ─ ─ ─ ─ ┘┃                         |
      ┗━━━━━━━━━━━━━━━━━┛
      └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
 ~~~
@@ -1684,24 +1684,24 @@ Also, inter-PE transfer planes may be realized using separate NRPs. However, suc
 
 ~~~
       To┌──────┬──────┬──────┬──────────────┐
-From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
+From    | DC 1 | DC 2 | DC 3 |Total from DC |
  ┌──────┼──────┼──────┼──────┼──────────────┤
- │ DC 1 │ n/a  │  8   │  5   │     11.0     │
+ | DC 1 | n/a  |  8   |  5   |     11.0     |
  ├──────┼──────┼──────┼──────┼──────────────┤
- │ DC 2 │  1   │ n/a  │  2   │      2.5     │
+ | DC 2 |  1   | n/a  |  2   |      2.5     |
  ├──────┼──────┼──────┼──────┼──────────────┤
- │ DC 3 │  4   │  7   │ n/a  │     10.0     │
+ | DC 3 |  4   |  7   | n/a  |     10.0     |
  └──────┴──────┴──────┴──────┴──────────────┘
                     Slice X
 
       To┌──────┬──────┬──────┬──────────────┐
-From    │ DC 1 │ DC 2 │ DC 3 │Total from DC │
+From    | DC 1 | DC 2 | DC 3 |Total from DC |
  ┌──────┼──────┼──────┼──────┼──────────────┤
- │ DC 1 │ n/a  │  4   │ 2.5  │     6.0      │
+ | DC 1 | n/a  |  4   | 2.5  |     6.0      |
  ├──────┼──────┼──────┼──────┼──────────────┤
- │ DC 2 │ 0.5  │ n/a  │ 0.8  │     1.0      │
+ | DC 2 | 0.5  | n/a  | 0.8  |     1.0      |
  ├──────┼──────┼──────┼──────┼──────────────┤
- │ DC 3 │ 2.6  │  3   │ n/a  │     5.1      │
+ | DC 3 | 2.6  |  3   | n/a  |     5.1      |
  └──────┴──────┴──────┴──────┴──────────────┘
                     Slice Y
 ~~~
@@ -2115,28 +2115,28 @@ Security considerations specific to each of the technologies and protocols liste
    {{TS-23.501}} defines the Network Functions (UPF, Access and Mobility Function (AMF), etc.) that
    compose the 5G System (5GS) Architecture together with related
    interfaces (e.g., N1 and N2).  This architecture has built-in control
-   and user plane separation, and the control plane leverages a service-
-   based architecture.  {{figure-28}} outlines an example 5GS architecture
-   with a subset of possible network functions and network interfaces.
+   and user plane separation, and the control plane leverages a Service-
+   Based Architecture (SBA).  {{figure-28}} outlines an example 5GS architecture
+   with a subset of possible NFs and network interfaces.
 
 ~~~
 
-  ┌─────┐  ┌─────┐  ┌─────┐    ┌─────┐  ┌─────┐  ┌─────┐
-  │NSSF │  │ NEF │  │ NRF │    │ PCF │  │ UDM │  │ AF  │
-  └──┬──┘  └──┬──┘  └──┬──┘    └──┬──┘  └──┬──┘  └──┬──┘
-Nnssf│    Nnef│    Nnrf│      Npcf│    Nudm│        │Naf
-  ───┴────────┴──┬─────┴──┬───────┴───┬────┴────────┴────
-            Nausf│    Namf│       Nsmf│
-              ┌──┴──┐  ┌──┴──┐     ┌──┴──────┐
-              │AUSR │  │ AMF │     │   SMF   │
-              └─────┘  └──┬──┘     └──┬──────┘
-                       ╱  │           │      ╲
-Control Plane      N1 ╱   │N2         │N4     ╲N4
-════════════════════════════════════════════════════════════
-User Plane          ╱     │           │         ╲
-                ┌───┐  ┌──┴──┐  N3 ┌──┴──┐ N9 ┌─────┐ N6  .───.
-                │UE ├──┤(R)AN├─────┤ UPF ├────┤ UPF ├────( DN  )
-                └───┘  └─────┘     └─────┘    └─────┘     `───'
+  +-----+  +-----+  +-----+    +-----+  +-----+  +-----+
+  |NSSF |  | NEF |  | NRF |    | PCF |  | UDM |  | AF  |
+  +--+--+  +--+--+  +--+--+    +--+--+  +--+--+  +--+--+
+Nnssf|    Nnef|    Nnrf|      Npcf|    Nudm|        |Naf
+  ---+--------+--+-----+----------+---+----+--------+----
+            Nausf|    Namf|       Nsmf|
+              +--+--+  +--+--+     +--+------+
+              |AUSR |  | AMF |     |   SMF   |
+              +-----+  +--+--+     +--+------+
+                       /  |           |      \
+Control Plane      N1 /   |N2         |N4     \N4
+============================================================
+User Plane          /     |           |         \
+                +---+  +--+--+  N3 +--+--+ N9 +-----+ N6  .---.
+                |UE +--+(R)AN+-----+ UPF +----+ UPF +----( DN  )
+                +---+  +-----+     +-----+    +-----+     '---'
 ~~~
 {: #figure-28 title="5GS Architecture and Service-based Interfaces" artwork-align="center"}
 
@@ -2145,18 +2145,17 @@ User Plane          ╱     │           │         ╲
 
    *  UE, MS, MN, and Mobile:
 
-      The terms UE (User Equipment), MS (Mobile Station), MN (Mobile
-      Node), and mobile refer to the devices that are hosts with the
+      The terms User Equipment (UE), Mobile Station (MS), Mobile
+      Node (MN), and mobile refer to the devices that are hosts with the
       ability to obtain Internet connectivity via a 3GPP network.  An MS
-      is comprised of the Terminal Equipment (TE) and a Mobile Terminal
-      (MT).  The terms UE, MS, MN, and mobile are used interchangeably
-      within this document.
+      is comprised of a Terminal Equipment (TE) and a Mobile Terminal
+      (MT).
 
    *  Radio Access Network (RAN):
 
-      Provides wireless connectivity to the UE devices via radio.  It is
-      made up of the Antenna that transmits and receives signals to the
-      UE and the Base Station that digitizes the signal and converts the
+      Provides wireless connectivity to UEs. A RAN is
+      made up of the Antenna that transmits and receives signals to
+      UEs and the Base Station that digitizes the signal and converts the
       Radio Frequency (RF) data stream to IP packets.
 
    *  Core Network (CN):
@@ -2168,34 +2167,26 @@ User Plane          ╱     │           │         ╲
 
    *  Transport Network (TN):
 
-      Provides connectivity between 5G Network Functions.  The TN may provide connectivity from the RAN to the Core
-      Network, as well as  within the RAN or within the CN.  The
+      Provides connectivity between 5G NFs.  The TN may provide connectivity from the RAN to the CN as well as  within the RAN or within the CN.  The
       traffic generated by NFs is - mostly - based on IP or Ethernet.
 
 ~~~
-┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
-                                               │
-│             ┌────────────┐    ┌────────────┐
-              │            │    │            │ │
-│ ┌────┐      │            │    │            │     .───────.
-  │ UE ├──────┤    RAN     │    │     CN     ├────(    DN   )
-│ └────┘      │            │    │            │     `───────'
-              │            │    │            │ │
-│             └──────┬─────┘    └──────┬─────┘
-                     │                 │       │
-│                    │                 │
-                     │                 │       │
-│              ┌─────┴─────────────────┴────┐
-               │                            │  │
-│              │                            │
-               │     Transport Network      │  │
-│              │                            │
-               │                            │  │
-│              └────────────────────────────┘
-                                               │
-│                    5G System
-                                               │
-└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
++----------------------------------------------+
+|             +------------+    +------------+ |
+| +----+      |            |    |            | |   .-------.
+| | UE +------+    RAN     |    |     CN     +----(    DN   )
+| +----+      |            |    |            | |   '-------'
+|             +------+-----+    +------+-----+ |
+|                    |                 |       |
+|                    |                 |       |
+|              +-----+-----------------+----+  |
+|              |                            |  |
+|              |     Transport Network      |  |
+|              |                            |  |
+|              +----------------------------+  |
+|                                              |
+|                    5G System                 |
++----------------------------------------------+
 ~~~
 {: #figure-29 title="Building Blocks of 5G Architecture (A High-Level Representation)" artwork-align="center"}
 
@@ -2205,46 +2196,40 @@ User Plane          ╱     │           │         ╲
 
    *  5GC User Plane:
 
-      The User Plane Function (UPF) is the interconnect
+      The UPF is the interconnect
       point between the mobile infrastructure and the Data Network (DN).
       It interfaces with the RAN via the N3 interface by encapsulating/
-      decapsulating the user plane Traffic in GTP Tunnels (aka GTP-U or
+      decapsulating the user plane traffic in GTP tunnels (aka GTP-U or
       Mobile user plane).
 
    *  5GC Control Plane:
 
       The 5G control plane is made up of a
-      comprehensive set of Network Functions.  An exhaustive list and
-      description of these entities is out of the scope of this
-      document.  The following NFs and interfaces are worth mentioning,
+      comprehensive set of NFs.  The description of these entities is out of the scope of this
+      document. The following NFs and interfaces are worth mentioning,
       since their connectivity may rely on the Transport Network:
 
-      -  the AMF connects with the RAN
-         control plane over the N2 interface
+      -  the AMF connects with the RAN control plane over the N2 interface
 
       -  the SMF controls the 5GC UPF via the N4 interface
 
 ~~~
-  ┌ ─ ─ ─ ─ ┐    ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
-      RAN               5G Core (5GC)
-  │         │    │                         │
-  │         │    │ [AUSF] [NRF] [UDM] etc. │
-  │         │    │     (Service Based)     │
-                       ( Architecture)
-  │         │    │                         │
-              N2     ┌─────┐ N11 ┌─────┐
-  │    CP ───────────┤ AMF ├─────┤ SMF │   │
-                     └─────┘     └──┬──┘
-  │         │    │                  │      │
-                                    │         Control Plane
-═══════════════════════════════════════════════════════════
-                                    │         User Plane
-  │         │    │                  │ N4   │
-              N3                 ┌──┴──┐     N6  .───────.
-  │    UP ───────────────────────┤ UPF ├───────>(   DN    )
-                                 └─────┘         `───────'
-  │         │    │                         │
-   ─ ─ ─ ─ ─      ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
+  +---------+    +-------------------------+
+  |   RAN   |    |      5G Core (5GC)      |
+  |         |    |                         |
+  |         |    |   AUSF  NRF  UDM ...    |
+  |         |    |         (SBA)           |
+    |         |    |                         |
+  |         | N2 |   +-----+ N11 +-----+   |
+  |    CP -----------+ AMF +-----+ SMF |   |
+  |         |    |   +-----+     +--+--+   |
+  |         |    |                  |      |  Control Plane
+===========================================================
+  |         |    |                  | N4   |  User Plane
+  |         | N3 |               +--+--+   | N6  .───────.
+  |    UP -----------------------+ UPF +------->(   DN    )
+  |         |    |               +-----+   |     `───────'
+  +---------+    +-------------------------+
 ~~~
 {: #figure-30 title="5G Core Network (CN)" artwork-align="center"}
 
@@ -2280,43 +2265,37 @@ User Plane          ╱     │           │         ╲
 
 
 ~~~
-            ┌─────────────────────────────────┐    ┌ ─ ─ ─ ─ ─ ┐
-            │                                 │ N3
-┌────┐  NR  │                                 ├────┤  5G Core  │
-│ UE ├──────┤             gNodeB              │
-└────┘      │                                 ├────┤   (5GC)   │
-            │                                 │ N2
-            └─────────────────────────────────┘    └ ─ ─ ─ ─ ─ ┘
-                            │ │
-                            │ │
-                            │ │
-                           ─┘ └─
-                           ╲   ╱
-                            ╲ ╱
-                             V
-            ┌─────────────────────────────────┐    ┌ ─ ─ ─ ─ ─ ┐
-            │           ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐ │
-            │                                 │    │           │
-┌────┐  NR  │ ┌────┐ F2 │┌────┐ F1-U ┌─────┐│ │ N3    ┌─────┐
-│ UE ├────────┤ RU ├─────┤ DU ├──────┤CU-UP├──────────┤ UPF │  │
-└────┘      │ └────┘    │└────┘      └──┬──┘│ │       └─────┘
-            │                 ╲         │     │    │           │
-            │           │      ╲        │   │ │
-            │                   ╲       │     │    │           │
-            │           │        ╲      │E1 │ │
-            │                F1-C ╲     │     │    │           │
-            │           │          ╲    │   │ │
-            │                       ╲   │     │    │           │
-            │           │            ╲  │   │ │
-            │                        ┌──┴──┐  │ N2 │  ┌─────┐  │
-            │           │            │CU-CP├──────────┤ AMF │
-            │                        └─────┘  │    │  └─────┘  │
-            │           │                   │ │
-            │                 BBU split       │    │  5G Core  │
-            │           └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘ │
-            │                                 │    │   (5GC)   │
-            │       disaggregated gNodeB      │
-            └─────────────────────────────────┘    └ ─ ─ ─ ─ ─ ┘
+            +---------------------------------+    +-----------+
+            |                                 | N3 |           | 
++----+  NR  |                                 +----+  5G Core  |
+| UE +------+             gNodeB              |    |           |
++----+      |                                 +----+   (5GC)   |
+            |                                 | N2 |           |
+            +---------------------------------+    +-----------+
+                            | |
+                            | |
+                           .+ +.
+                           \   /
+                            \ /                             
+            +---------------------------------+    +-----------+
+            |           +-------------------+ |    |           |
+            |           |                   | |    |           |
++----+  NR  | +----+ F2 |+----+ F1-U +-----+| | N3 |  +-----+  |
+| UE +--------+ RU +-----+ DU +------+CU-UP+----------+ UPF |  |
++----+      | +----+    |+----+      +--+--+| |    |  +-----+  |
+            |           |     \         |   | |    |           |
+            |           |       \       |E1 | |    |           |
+            |           |   F1-C \      |   | |    |           |
+            |           |          \    |   | |    |           |
+            |           |           \   |   | |    |           |
+            |           |            \  |   | |    |           |
+            |           |            +--+--+| | N2 |  +-----+  |
+            |           |            |CU-CP+----------+ AMF |  |
+            |           |            +-----+| |    |  +-----+  |
+            |           |     BBU split     | |    |  5G Core  |
+            |           +-------------------+ |    |           |
+            |       Disaggregated gNodeB      |    |           |
+            +---------------------------------+    +-----------+
 ~~~
 {: #figure-31 title="RAN Disaggregation" artwork-align="center"}
 
@@ -2327,7 +2306,7 @@ User Plane          ╱     │           │         ╲
    Midhaul (MH), and Backhaul (BH) {{TR-GSTR-TN5G}}:
 
    *  Fronthaul happens before the BBU processing.  In 5G, this
-      interface is based on eCPRI (Enhanced CPRI) with Ethernet
+      interface is based on eCPRI with Ethernet
       or IP encapsulation.
 
    *  Midhaul is optional: this segment is introduced in the BBU split
@@ -2336,53 +2315,53 @@ User Plane          ╱     │           │         ╲
       traffic is encapsulated in IP (signaling and user plane).
 
    *  Backhaul happens after BBU processing.  Therefore, it maps to the
-      interconnection between the RAN and the Core Network.  All traffic
-      is also encapsulated in IP.
+      interconnection between the RAN and the CN.  All traffic
+      is encapsulated in IP.
 
    {{figure-32}} illustrates the different segments of the Transport Network
-   with the relevant Network Functions.
+   with the relevant NFs.
 
 ~~~
-┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
-│                         Transport Network               │
-│                                                         │
-    TN Segment 1  TN Segment 2  TN Segment 3
-│    (Fronthaul)   (Midhaul)     (Backhaul)               │
-   ┌───────────┐ ┌────────────┐ ┌───────────┐
-│  │           │ │            │ │           │             │
- ─ ┼ ─ ─ ─ ─ ─ ┼ ┼ ─ ─ ─ ─ ─ ─│─│─ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ─
- ┌─┴──┐      ┌─┴─┴┐         ┌─┴─┴┐       ┌──┴──┐     .───.
- │ RU │      │ DU │         │ CU │       │ UPF ├────( DN  )
- └────┘      └────┘         └────┘       └─────┘     `───'
++---------------------------------------------------------+
+|                    Transport Network                    |
+|                                                         |
+|   TN Segment 1  TN Segment 2  TN Segment 3              |
+|    (Fronthaul)   (Midhaul)     (Backhaul)               |
+|  +-----------+ +------------+ +-----------+             |
+|  |           | |            | |           |             |
++--|-----------|-|------------|-|-----------|-------------+
+ +-+--+      +-+-++         +-+-++        +-+---+     .---.
+ | RU |      | DU |         | CU |        | UPF ├────( DN  )
+ +----+      +----+         +----+        +-----+     `---'
 ~~~
 {: #figure-32 title="5G Transport Segments" artwork-align="center"}
 
-   It is worth mentioning that a given part of the transport network can
+   A given part of the transport network can
    carry several 5G transport segments concurrently, as outlined in
-   {{figure-33}}.  This is because different types of 5G network functions
+   {{figure-33}}.  This is because different types of 5G NFs
    might be placed in the same location (e.g., the UPF from one slice
    might be placed in the same location as the CU-UP from another
    slice).
 
 ~~~
-┌ ─ ─ ─ ─ ┐
- ┌────┐     Colocated
-││RU-1│   │ RU/DU
- └─┬──┘
-│  │ FH-1 │
- ┌─┴──┐
-││DU-1│   │  ┌────┐         ┌─────┐         .───.
- └─┬──┘      │CU-1│         │UPF-1├────────( DN  )
-└ ─│─ ─ ─ ┘  └─┬─┬┘         └─┬───┘         `───'
-┌ ─│─ ─ ─ ─ ─ ─│─│─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─
-   │    MH-1   │ │    BH-1    │          Transport Network │
-│  └───────────┘ └────────────┘
-   ┌───────────┐ ┌────────────┐ ┌───────────┐              │
-│  │    FH-2   │ │    MH-2    │ │    BH-2   │
- ─ ┼ ─ ─ ─ ─ ─ ┼ ┼ ─ ─ ─ ─ ─ ─│─│─ ─ ─ ─ ─ ─│─ ─ ─ ─ ─ ─ ─ ┘
- ┌─┴──┐      ┌─┴─┴┐         ┌─┴─┴┐        ┌─┴───┐     .───.
- │RU-2│      │DU-2│         │CU-2│        │UPF-2├────( DN  )
- └────┘      └────┘         └────┘        └─────┘     `───'
++---------+
+|+----+   | Colocated
+||RU-1|   | RU/DU
+|+-+--+   |
+|  | FH-1 |
+|+-+--+   |
+||DU-1|   |  +----+         +-----+         .---.
+|+-+--+   |  |CU-1|         |UPF-1+--------( DN  )
++--|------+  +-+-++         +-+---+         `---'
++--|-----------|-|------------|----------------------------+
+|  |    MH-1   | |    BH-1    |          Transport Network |
+|  +-----------+ +------------+                            |
+|  +-----------+ +------------+ +-----------+              |
+|  |    FH-2   | |    MH-2    | |    BH-2   |              |
++--|-----------|-|------------|-|-----------|--------------+
+ +-+--+      +-+-++         +-+-++        +-+---+     .---.
+ |RU-2|      |DU-2|         |CU-2|        |UPF-2+----( DN  )
+ +----+      +----+         +----+        +-----+     `---'
 ~~~
 {: #figure-33 title="Concurrent 5G Transport Segments" artwork-align="center"}
 
