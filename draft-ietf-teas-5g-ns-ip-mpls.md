@@ -371,9 +371,9 @@ An example of a distributed PE is the "Managed CE service". For example, a provi
 |     Site     |                    |    Network   |
 |  ..................           .................. |
 |  |    IP Fabric   |           |+----+   +----+ | |
-|  |.-----. .-----. =============  DC |   |    | | |
+|  |.-----. .-----. ============== DC |   |    | | |
 |  |'-----' '-----' +-----AC-----+ GW +---+ PE | | |
-|  |.-. .-. .-. .-. =============     |   |    | | |
+|  |.-. .-. .-. .-. ==============    |   |    | | |
 |  |'-' '-' '-' '-' |           |+----+   +----+ | |
 |  '...Distributed..'           '...Distributed..' |
 |          CE  |                    |  PE          |
@@ -387,19 +387,20 @@ In subsequent sections of this document, the terms CE and PE are used for both s
 
 ### Attachment Circuit (AC) {#sec-ac}
 
-The AC is the logical connection that attaches a CE ({{sec-ce}}) to a PE ({{sec-pe}}). A CE is connected to a PE via one or multiple ACs. An AC is technology-specific.
+The AC is the logical connection that attaches a CE ({{sec-ce}}) to a PE ({{sec-pe}}). A CE is connected to a PE via one or multiple ACs.
 
-This document uses the concept of distributed CEs and PEs (e.g., {{Section 3.4.3 of ?RFC4664}}) to consolidate a CE/AC/PE definition that is consistent with the orchestration perimeters ({{sec-orch}}). The CEs and PEs delimit respectively the customer and provider orchestration domains, while an AC interconnects these domains.
+This document uses the concept of distributed CE and PE (Sections {{<sec-ce}}) and ({{<sec-pe}}) to consolidate a CE/AC/PE definition that is consistent with the orchestration perimeters ({{sec-orch}}). The CEs and PEs delimit respectively the customer and provider orchestration domains, while an AC interconnects these domains.
 
-For consistency with the AC data models terminology (e.g., {{?I-D.ietf-opsawg-teas-attachment-circuit}} and {{?I-D.ietf-opsawg-ntw-attachment-circuit}}), this document assumes that an AC is configured on a "bearer", which represents the underlying connectivity. For example, the bearer is illustrated with "---" in Figures {{<fig-distribute-ce}} and {{<fig-50}}.
+For consistency with the AC data models terminology (e.g., {{?I-D.ietf-opsawg-teas-attachment-circuit}} and {{?I-D.ietf-opsawg-ntw-attachment-circuit}}), this document assumes that an AC is configured on a "bearer", which represents the underlying connectivity. For example, the bearer is illustrated with "===" in Figures {{<fig-distribute-ce}} and {{<fig-50}}.
 
-Examples of ACs are Virtual Local Area Networks (VLANs) (AC) configured on a physical interface (bearer) or an Overlay VXLAN EVI (AC) configured on an IP underlay (bearer).
+An AC is technology-specific. Examples of ACs are Virtual Local Area Networks (VLANs) (AC) configured on a physical interface (bearer) or an Overlay VXLAN EVI (AC) configured on an IP underlay (bearer).
 
 Deployment cases where the AC is also managed by the provider are not discussed in the document because the setup of such an AC does not require any coordination between the customer and provider orchestration domains.
 
 {:aside}
-> In order to keep the figures simple, only one AC and single-homed CEs are represented.
+> In order to keep the figures simple, only one AC and single-homed CEs are represented. Also, the underlying bearers are not represented in most of the figures.
 > However, this document does not exclude the instantiation of multiple ACs between a CE and a PE nor the presence of CEs that are attached to more than one PE.
+
 
 ##  Orchestration Overview {#sec-orch}
 
