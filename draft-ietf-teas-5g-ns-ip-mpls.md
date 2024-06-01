@@ -833,9 +833,9 @@ As a result, a node in a customer site performs hierarchical next-hop resolution
         CS2, L=X"      CS2, L=X'      CS2, L=X
      <-------------><------------><------------->
                 nhs  nhs      nhs  nhs
-                                                        VLANs       
-service instances                service instances  representing   
-representing slices              representing slices    slices      
+                                                        VLANs
+service instances                service instances  representing
+representing slices              representing slices    slices
       |                                       |         | 
 +---+ |           +--------------+           +|---------|----------+
 |   | |           |     Provider |           ||         |          |
