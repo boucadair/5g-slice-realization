@@ -948,6 +948,9 @@ Table of Contents
 
        Figure 11: Resource Allocation Slicing Model with a Single NRP
 
+   P nodes shown in Figure 11 are routers that do no interface with
+   customer devices.  See Section 5.3.1 of [RFC4026].
+
    This document does not describe in detail how to manage an L2VPN or
    L3VPN, as this is already well-documented.  For example, the reader
    may refer to [RFC4176] and [RFC6136] for such details.
@@ -2773,6 +2776,11 @@ Table of Contents
               and G. Swallow, "RSVP-TE: Extensions to RSVP for LSP
               Tunnels", RFC 3209, DOI 10.17487/RFC3209, December 2001,
               <https://www.rfc-editor.org/rfc/rfc3209>.
+
+   [RFC4026]  Andersson, L. and T. Madsen, "Provider Provisioned Virtual
+              Private Network (VPN) Terminology", RFC 4026,
+              DOI 10.17487/RFC4026, March 2005,
+              <https://www.rfc-editor.org/rfc/rfc4026>.
 
    [RFC4115]  Aboul-Magd, O. and S. Rabie, "A Differentiated Service
               Two-Rate, Three-Color Marker with Efficient Handling of
