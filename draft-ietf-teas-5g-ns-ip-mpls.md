@@ -510,7 +510,7 @@ For instance, consider a slice based on split-CU in the RAN, both CU-UP and Cent
    eMBB slice (SST-1 and no Slice Differentiator (SD)) should be supported globally.  This 5G
    slice would be the first slice in any 5G deployment.
 
-~~~ aasvg
+~~~
 {::include ./drawings/1st-slice.txt}
 ~~~
 {: #figure-7 title="First and Subsequent Slice Deployment" artwork-align="center"}
