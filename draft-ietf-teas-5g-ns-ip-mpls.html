@@ -1583,9 +1583,9 @@ Engineering (TE). Whether all or a subset of these components are enabled is a d
 |     Site     |                    |    Network   |
 |  ..................           .................. |
 |  |    IP Fabric   |           |+----+   +----+ | |
-|  |.-----. .-----. =============  DC |   |    | | |
+|  |.-----. .-----. ============== DC |   |    | | |
 |  |'-----' '-----' +-----AC-----+ GW +---+ PE | | |
-|  |.-. .-. .-. .-. =============     |   |    | | |
+|  |.-. .-. .-. .-. ==============    |   |    | | |
 |  |'-' '-' '-' '-' |           |+----+   +----+ | |
 |  '...Distributed..'           '...Distributed..' |
 |          CE  |                    |  PE          |
@@ -1606,13 +1606,13 @@ Engineering (TE). Whether all or a subset of these components are enabled is a d
           <h4 id="name-attachment-circuit-ac">
 <a href="#section-3.3.5" class="section-number selfRef">3.3.5. </a><a href="#name-attachment-circuit-ac" class="section-name selfRef">Attachment Circuit (AC)</a>
           </h4>
-<p id="section-3.3.5-1">The AC is the logical connection that attaches a CE (<a href="#sec-ce" class="auto internal xref">Section 3.3.2</a>) to a PE (<a href="#sec-pe" class="auto internal xref">Section 3.3.4</a>). A CE is connected to a PE via one or multiple ACs. An AC is technology-specific.<a href="#section-3.3.5-1" class="pilcrow">¶</a></p>
-<p id="section-3.3.5-2">This document uses the concept of distributed CEs and PEs (e.g., <span><a href="https://rfc-editor.org/rfc/rfc4664#section-3.4.3" class="relref">Section 3.4.3</a> of [<a href="#RFC4664" class="cite xref">RFC4664</a>]</span>) to consolidate a CE/AC/PE definition that is consistent with the orchestration perimeters (<a href="#sec-orch" class="auto internal xref">Section 3.4</a>). The CEs and PEs delimit respectively the customer and provider orchestration domains, while an AC interconnects these domains.<a href="#section-3.3.5-2" class="pilcrow">¶</a></p>
-<p id="section-3.3.5-3">For consistency with the AC data models terminology (e.g., <span>[<a href="#I-D.ietf-opsawg-teas-attachment-circuit" class="cite xref">I-D.ietf-opsawg-teas-attachment-circuit</a>]</span> and <span>[<a href="#I-D.ietf-opsawg-ntw-attachment-circuit" class="cite xref">I-D.ietf-opsawg-ntw-attachment-circuit</a>]</span>), this document assumes that an AC is configured on a "bearer", which represents the underlying connectivity. For example, the bearer is illustrated with "---" in Figures <a href="#fig-distribute-ce" class="auto internal xref">4</a> and <a href="#fig-50" class="auto internal xref">5</a>.<a href="#section-3.3.5-3" class="pilcrow">¶</a></p>
-<p id="section-3.3.5-4">Examples of ACs are Virtual Local Area Networks (VLANs) (AC) configured on a physical interface (bearer) or an Overlay VXLAN EVI (AC) configured on an IP underlay (bearer).<a href="#section-3.3.5-4" class="pilcrow">¶</a></p>
+<p id="section-3.3.5-1">The AC is the logical connection that attaches a CE (<a href="#sec-ce" class="auto internal xref">Section 3.3.2</a>) to a PE (<a href="#sec-pe" class="auto internal xref">Section 3.3.4</a>). A CE is connected to a PE via one or multiple ACs.<a href="#section-3.3.5-1" class="pilcrow">¶</a></p>
+<p id="section-3.3.5-2">This document uses the concept of distributed CE and PE (Sections <a href="#sec-ce" class="auto internal xref">3.3.2</a>) and (<a href="#sec-pe" class="auto internal xref">3.3.4</a>) to consolidate a CE/AC/PE definition that is consistent with the orchestration perimeters (<a href="#sec-orch" class="auto internal xref">Section 3.4</a>). The CEs and PEs delimit respectively the customer and provider orchestration domains, while an AC interconnects these domains.<a href="#section-3.3.5-2" class="pilcrow">¶</a></p>
+<p id="section-3.3.5-3">For consistency with the AC data models terminology (e.g., <span>[<a href="#I-D.ietf-opsawg-teas-attachment-circuit" class="cite xref">I-D.ietf-opsawg-teas-attachment-circuit</a>]</span> and <span>[<a href="#I-D.ietf-opsawg-ntw-attachment-circuit" class="cite xref">I-D.ietf-opsawg-ntw-attachment-circuit</a>]</span>), this document assumes that an AC is configured on a "bearer", which represents the underlying connectivity. For example, the bearer is illustrated with "===" in Figures <a href="#fig-distribute-ce" class="auto internal xref">4</a> and <a href="#fig-50" class="auto internal xref">5</a>.<a href="#section-3.3.5-3" class="pilcrow">¶</a></p>
+<p id="section-3.3.5-4">An AC is technology-specific. Examples of ACs are Virtual Local Area Networks (VLANs) (AC) configured on a physical interface (bearer) or an Overlay VXLAN EVI (AC) configured on an IP underlay (bearer).<a href="#section-3.3.5-4" class="pilcrow">¶</a></p>
 <p id="section-3.3.5-5">Deployment cases where the AC is also managed by the provider are not discussed in the document because the setup of such an AC does not require any coordination between the customer and provider orchestration domains.<a href="#section-3.3.5-5" class="pilcrow">¶</a></p>
 <aside id="section-3.3.5-6">
-            <p id="section-3.3.5-6.1">In order to keep the figures simple, only one AC and single-homed CEs are represented.
+            <p id="section-3.3.5-6.1">In order to keep the figures simple, only one AC and single-homed CEs are represented. Also, the underlying bearers are not represented in most of the figures.
 However, this document does not exclude the instantiation of multiple ACs between a CE and a PE nor the presence of CEs that are attached to more than one PE.<a href="#section-3.3.5-6.1" class="pilcrow">¶</a></p>
 </aside>
 </section>
