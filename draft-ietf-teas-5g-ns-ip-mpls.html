@@ -2171,19 +2171,19 @@ distribution even in non-ECMP friendly network topologies. See also <span><a hre
       +-----:----+               Base NRP               +-----:----+
       | PE  :    |                                      |     : PE |
      .|.....:....|......................................|.....:....|.
-    . *&lt;---+:    |       RFC 9543 Network Slice 1       |    +:---&gt;* .
-    . |    |:    |        +-----+        +-----+        |    |:    | .
-    . *&lt;---+:    |        |  P  |        |  P  |        |    +:---&gt;* .
+    | *&lt;---+:    |       RFC 9543 Network Slice 1       |    +:---&gt;* |
+    | |    |:    |        +-----+        +-----+        |    |:    | |
+    | *&lt;---+:    |        |  P  |        |  P  |        |    +:---&gt;* |
      .|....+:---&gt;o&lt;------&gt;o&lt;---&gt;o&lt;------&gt;o----&gt;o&lt;------&gt;o&lt;---|:....|.
-    . *&lt;---+:    |        |     |        |     |        |    +:---&gt;* .
-    . |    |:    |        +-----+        +-----+        |    |:    | .
-    . *&lt;---+:    |       RFC 9543 Network Slice 2       |    +:---&gt;* .
+    | *&lt;---+:    |        |     |        |     |        |    +:---&gt;* |
+    | |    |:    |        +-----+        +-----+        |    |:    | |
+    | *&lt;---+:    |       RFC 9543 Network Slice 2       |    +:---&gt;* |
      .|.....:....|......................................|.....:....|.
       |     :    |                                      |     :    |
       +-----:----+                                      +-----:----+
             + .. .. .. .. .. .. .. .. .. .. .. .. .. .. .. .. +
- * - SDP, with fine-grained QoS (dedicated resources per TN slice)
- o - coarse-grained QoS, with resources shared by all TN slices
+ * SDP, with fine-grained QoS (dedicated resources per TN slice)
+ o Coarse-grained QoS, with resources shared by all TN slices
 </pre>
 </div>
 <figcaption><a href="#figure-11" class="selfRef">Figure 11</a>:
