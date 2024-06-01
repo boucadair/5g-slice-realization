@@ -2,16 +2,16 @@
       +-----:----+               Base NRP               +-----:----+
       | PE  :    |                                      |     : PE |
      .|.....:....|......................................|.....:....|. 
-    . *<---+:    |       RFC 9543 Network Slice 1       |    +:--->* .
-    . |    |:    |        +-----+        +-----+        |    |:    | .
-    . *<---+:    |        |  P  |        |  P  |        |    +:--->* .
+    | *<---+:    |       RFC 9543 Network Slice 1       |    +:--->* |
+    | |    |:    |        +-----+        +-----+        |    |:    | |
+    | *<---+:    |        |  P  |        |  P  |        |    +:--->* |
      .|....+:--->o<------>o<--->o<------>o---->o<------>o<---|:....|.
-    . *<---+:    |        |     |        |     |        |    +:--->* .
-    . |    |:    |        +-----+        +-----+        |    |:    | .
-    . *<---+:    |       RFC 9543 Network Slice 2       |    +:--->* .
+    | *<---+:    |        |     |        |     |        |    +:--->* |
+    | |    |:    |        +-----+        +-----+        |    |:    | |
+    | *<---+:    |       RFC 9543 Network Slice 2       |    +:--->* |
      .|.....:....|......................................|.....:....|. 
       |     :    |                                      |     :    |
       +-----:----+                                      +-----:----+
             + .. .. .. .. .. .. .. .. .. .. .. .. .. .. .. .. +
- * - SDP, with fine-grained QoS (dedicated resources per TN slice) 
- o - coarse-grained QoS, with resources shared by all TN slices         
+ * SDP, with fine-grained QoS (dedicated resources per TN slice) 
+ o Coarse-grained QoS, with resources shared by all TN slices         
