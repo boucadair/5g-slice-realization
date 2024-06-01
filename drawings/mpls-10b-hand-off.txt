@@ -3,22 +3,22 @@
        COM=1, L=A"    COM=1, L=A'    COM=1, L=A                     
        COM=2, L=B"    COM=2, L=B'    COM=2, L=B                     
        COM=3, L=C"    COM=3, L=C'    COM=3, L=C                     
-<-------------><------------><------------->                    
+     <-------------><------------><------------->                    
                nhs  nhs      nhs  nhs                               
                                                         VLANs       
 service instances                service instances  representing   
 representing slices              representing slices    slices      
-     |          +----------------+           |           |          
-     |          |    Provider    |           |           |          
-+----v-+       ++----+       +---+-+       +-v------+    v  +------+
-|    # |       |*    |       |    *|       | #<><><>x-------x      |
-| NF # +-------+* PE |       | PE *+-------+ #<><><>x-------x   NF |
-|    # |       |*    |       |    *|       | #<><><>x-------x      |
-+------+       ++----+       +---+-+       +--------+       +------+
-                |     Network    |            L2/L3                 
-                +----------------+
-                                                                    
+      |                                       |         | 
++---+ |           +--------------+           +|---------|----------+
+|   | |           |     Provider |           ||         |          |
+|+--+-v-+       +-+---+       +--+--+      +-+v----+    v  +------+|
+||    # |       |*    |       |    *|      |  #<><>x.......x      ||
+|| NF # +-------+* PE |       | PE *+------+  #<><>x.......x   NF ||
+||    # |   AC  |*    |       |    *|   AC |  #<><>x.......x      ||
+|+---+--+       +-+---+       +---+-+      +-+-----+       +------+|
+| CS1|            |      Network  |          | L2/L3    CS2        |
++----+            +---------------+          +---------------------+
+
   x Logical interface represented by a VLAN on a physical interface   
   # Service instances (with unique MPLS labels)                    
   * SDP
-
