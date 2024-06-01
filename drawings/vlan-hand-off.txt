@@ -6,11 +6,9 @@ VLANs representing slices           VLANs representing slices
 |      +-------+*    |          |    *+-------+     +.......+      |
 | NF   +-------+* PE |          | PE *+-------+L2/L3+.......+   NF |
 |      +-------+*    |          |    *+-------+     +.......+      |
-+------+       +-+---+  Network +---+-+       +-----+       +------+
++------+   AC  +-+---+  Network +---+-+   AC  +-----+       +------+
                  |                  |                               
                  +------------------+
-       |------||----------------------||------||-----------      
-           AC      Provider Network       AC     Customer Site      
-                                                                    
+                                                                     
  + Logical interface represented by a VLAN on a physical interface
  * SDP
