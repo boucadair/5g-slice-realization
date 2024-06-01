@@ -1447,7 +1447,7 @@ to TN QoS Classes may be rather common.
    in the packets handed off to the TN) is mapped to the TN QoS Class.
    Based on TN QoS Class, when the packet is encapsulated with outer
    header (MPLS or IPv6), TN QoS Class marking (MPLS TC or IPv6 DSCP in
-   outer header, as depicted in {{figure-15}} and {{figure-16}}) is set in the
+   outer header, as depicted in Figures {{<figure-15}} and {{<figure-16}}) is set in the
    outer header.  PHB in provider network transit routers is based exclusively on that TN QoS
    Class marking, i.e., original 5G QoS Class DSCP is not taken into
    consideration on transit.
@@ -1463,8 +1463,9 @@ to TN QoS Classes may be rather common.
 
 #  Inter-PE Transfer Plane Mapping Models {#transport-plane-mapping-models}
 
-   An inter-PE transfer plane (or "transfer plane") refers to a specific forwarding behavior between PEs in order to provide packet delivery that is consistent with the corresponding SLOs.
-   A network operator can define multiple inter-PE transfer planes within a single NRP. A transfer plane may be realized in multiple ways such as (but not limited to):
+An inter-PE transfer plane (or "transfer plane") refers to a specific path forwarding behavior between PEs in order to provide packet delivery that is consistent with the corresponding SLOs. This realization step focuses on controlling the paths that will be used for packet delivery between PEs, independent of the underlying network resource partitioning.
+   
+A network operator can define multiple inter-PE transfer planes within a single NRP. A transfer plane may be realized in multiple ways such as (but not limited to):
 
    * A mesh of RSVP-TE {{?RFC3209}} or SR-TE {{?RFC9256}} tunnels created with specific optimization criteria and
    constraints. For example, mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.
