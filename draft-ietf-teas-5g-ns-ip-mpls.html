@@ -2342,25 +2342,25 @@ change at domain boundaries.<a href="#section-4.3-3.4.1" class="pilcrow">¶</a><
        COM=1, L=A"    COM=1, L=A'    COM=1, L=A
        COM=2, L=B"    COM=2, L=B'    COM=2, L=B
        COM=3, L=C"    COM=3, L=C'    COM=3, L=C
-&lt;-------------&gt;&lt;------------&gt;&lt;-------------&gt;
+     &lt;-------------&gt;&lt;------------&gt;&lt;-------------&gt;
                nhs  nhs      nhs  nhs
                                                         VLANs
 service instances                service instances  representing
 representing slices              representing slices    slices
-     |          +----------------+           |           |
-     |          |    Provider    |           |           |
-+----v-+       ++----+       +---+-+       +-v------+    v  +------+
-|    # |       |*    |       |    *|       | #&lt;&gt;&lt;&gt;&lt;&gt;x-------x      |
-| NF # +-------+* PE |       | PE *+-------+ #&lt;&gt;&lt;&gt;&lt;&gt;x-------x   NF |
-|    # |       |*    |       |    *|       | #&lt;&gt;&lt;&gt;&lt;&gt;x-------x      |
-+------+       ++----+       +---+-+       +--------+       +------+
-                |     Network    |            L2/L3
-                +----------------+
+      |                                       |         |
++---+ |           +--------------+           +|---------|----------+
+|   | |           |     Provider |           ||         |          |
+|+--+-v-+       +-+---+       +--+--+      +-+v----+    v  +------+|
+||    # |       |*    |       |    *|      |  #&lt;&gt;&lt;&gt;x.......x      ||
+|| NF # +-------+* PE |       | PE *+------+  #&lt;&gt;&lt;&gt;x.......x   NF ||
+||    # |   AC  |*    |       |    *|   AC |  #&lt;&gt;&lt;&gt;x.......x      ||
+|+---+--+       +-+---+       +---+-+      +-+-----+       +------+|
+| CS1|            |      Network  |          | L2/L3    CS2        |
++----+            +---------------+          +---------------------+
 
   x Logical interface represented by a VLAN on a physical interface
   # Service instances (with unique MPLS labels)
   * SDP
-
 </pre>
 </div>
 <figcaption><a href="#figure-17" class="selfRef">Figure 17</a>:
