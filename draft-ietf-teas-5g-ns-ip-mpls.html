@@ -2419,28 +2419,29 @@ As a result, a node in a customer site performs hierarchical next-hop resolution
 <pre>
      &lt;-------------------------------------------
              BGP VPN
-               COM-1, L-A, NEXT_HOP-CS2
-               COM-2, L-B, NEXT_HOP-CS2
-               COM-3, L-C, NEXT_HOP-CS2
+               COM=1, L=A, NEXT_HOP=CS2
+               COM=2, L=B, NEXT_HOP=CS2
+               COM=3, L=C, NEXT_HOP=CS2
      &lt;------------------------------------------&gt;
 
       &lt;------        &lt;------        &lt;------
       BGP LU         BGP LU         BGP LU
-        CS2, L-X"      CS2, L-X'      CS2, L-X
+        CS2, L=X"      CS2, L=X'      CS2, L=X
      &lt;-------------&gt;&lt;------------&gt;&lt;-------------&gt;
                 nhs  nhs      nhs  nhs
-                                                         VLANs
-  service instances                service instances  representing
- representing slices              representing slices    slices
-+ - + |           + - - - - - - -+            +-|---------|----------+
-|   | |           |     Provider |            | |         |          |
-|+--+-v-+       +-+---+       +--+--+       +-+-v----+    v  +------+|
-||    # |       |*    |       |    *|       | #&lt;&gt;&lt;&gt;&lt;&gt;x.......x      ||
-|| NF # +-------+* PE |       | PE *+-------+ #&lt;&gt;&lt;&gt;&lt;&gt;x.......x   NF ||
-||    # |   AC  |*    |       |    *|   AC  | #&lt;&gt;&lt;&gt;&lt;&gt;x.......x      ||
-|+---+--+       +-+---+       +---+-+       +-+------+       +------+|
-| CS1|            |      Network  |           |          CS2         |
-+----+            +---------------+           +----------------------+
+                                                        VLANs
+service instances                service instances  representing
+representing slices              representing slices    slices
+      |                                       |         |
++---+ |           +--------------+           +|---------|----------+
+|   | |           |     Provider |           ||         |          |
+|+--+-v-+       +-+---+       +--+--+      +-+v----+    v  +------+|
+||    # |       |*    |       |    *|      |  #&lt;&gt;&lt;&gt;x.......x      ||
+|| NF # +-------+* PE |       | PE *+------+  #&lt;&gt;&lt;&gt;x.......x   NF ||
+||    # |   AC  |*    |       |    *|   AC |  #&lt;&gt;&lt;&gt;x.......x      ||
+|+---+--+       +-+---+       +---+-+      +-+-----+       +------+|
+| CS1|            |      Network  |          | L2/L3    CS2        |
++----+            +---------------+          +---------------------+
 
    x Logical interface represented by a VLAN on s physical interface
    # Service instances (with unique MPLS label)
@@ -3253,7 +3254,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    in the packets handed off to the TN) is mapped to the TN QoS Class.
    Based on TN QoS Class, when the packet is encapsulated with outer
    header (MPLS or IPv6), TN QoS Class marking (MPLS TC or IPv6 DSCP in
-   outer header, as depicted in <a href="#_figure-15" class="auto internal xref">Figure 20</a> and <a href="#_figure-16" class="auto internal xref">Figure 21</a>) is set in the
+   outer header, as depicted in Figures <a href="#_figure-15" class="auto internal xref">20</a> and <a href="#_figure-16" class="auto internal xref">21</a>) is set in the
    outer header.  PHB in provider network transit routers is based exclusively on that TN QoS
    Class marking, i.e., original 5G QoS Class DSCP is not taken into
    consideration on transit.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
@@ -3274,29 +3275,44 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
       <h2 id="name-inter-pe-transfer-plane-map">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-inter-pe-transfer-plane-map" class="section-name selfRef">Inter-PE Transfer Plane Mapping Models</a>
       </h2>
-<p id="section-6-1">An inter-PE transfer plane (or "transfer plane") refers to a specific forwarding behavior between PEs in order to provide packet delivery that is consistent with the corresponding SLOs.
-   A network operator can define multiple inter-PE transfer planes within a single NRP. A transfer plane may be realized in multiple ways such as (but not limited to):<a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-6-1">An inter-PE transfer plane (or "transfer plane") refers to a specific path forwarding behavior between PEs in order to provide packet delivery that is consistent with the corresponding SLOs. This realization step focuses on controlling the paths that will be used for packet delivery between PEs, independent of the underlying network resource partitioning.<a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-6-2">It is worth noting that TN QoS Classes and inter-PE transfer planes are
+   orthogonal.  The TN domain can be operated with, e.g., 8 TN QoS Classes (representing 8 hardware queues in the
+   routers), and 2 transfer planes (e.g., latency optimized transfer
+   plane using link latency metrics for path calculation, and transfer
+   plane following Interior Gateway Protocol (IGP) metrics).  TN QoS Class determines the per-hop
+   behavior when the packets are transiting through the provider network,
+   while transfer plane determines the paths for packets through provider
+   network based on the operator's requirements. This path can be optimized or constrained.<a href="#section-6-2" class="pilcrow">¶</a></p>
+<p id="section-6-3">A network operator can define multiple inter-PE transfer planes within a single NRP. A transfer plane may be realized in multiple ways such as (but not limited to):<a href="#section-6-3" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-6-2.1">
-          <p id="section-6-2.1.1">A mesh of RSVP-TE <span>[<a href="#RFC3209" class="cite xref">RFC3209</a>]</span> or SR-TE <span>[<a href="#RFC9256" class="cite xref">RFC9256</a>]</span> tunnels created with specific optimization criteria and
-   constraints. For example, mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.<a href="#section-6-2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-6-4.1">
+          <p id="section-6-4.1.1">A mesh of RSVP-TE <span>[<a href="#RFC3209" class="cite xref">RFC3209</a>]</span> or SR-TE <span>[<a href="#RFC9256" class="cite xref">RFC9256</a>]</span> tunnels created with specific optimization criteria and
+   constraints. For example, mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.<a href="#section-6-4.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-6-2.2">
-          <p id="section-6-2.2.1">A Flex-Algorithm <span>[<a href="#RFC9350" class="cite xref">RFC9350</a>]</span> with a particular metric-type (e.g., latency), or one that only uses links with particular properties (e.g., MACsec link <span>[<a href="#IEEE802.1AE" class="cite xref">IEEE802.1AE</a>]</span>), or excludes links that are within a particular geography.<a href="#section-6-2.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="section-6-4.2">
+          <p id="section-6-4.2.1">A Flex-Algorithm <span>[<a href="#RFC9350" class="cite xref">RFC9350</a>]</span> with a particular metric-type (e.g., latency), or one that only uses links with particular properties (e.g., MACsec link <span>[<a href="#IEEE802.1AE" class="cite xref">IEEE802.1AE</a>]</span>), or excludes links that are within a particular geography.<a href="#section-6-4.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="section-6-3">These protocols can be controlled, e.g., by tuning the protocol list under the "underlay-transport" data node defined in the L3VPN Network Model (L3NM) <span>[<a href="#RFC9182" class="cite xref">RFC9182</a>]</span> and the L2VPN Network Model (L2NM) <span>[<a href="#RFC9291" class="cite xref">RFC9291</a>]</span>.<a href="#section-6-3" class="pilcrow">¶</a></p>
-<p id="section-6-4">Also, inter-PE transfer planes may be realized using separate NRPs. However, such an approach is left out of the scope given the current state of the technology (2024).<a href="#section-6-4" class="pilcrow">¶</a></p>
-<p id="section-6-5"><a href="#_figure-23" class="auto internal xref">Figure 29</a> depicts an example of a simple network with two transfer
+<p id="section-6-5">These protocols can be controlled, e.g., by tuning the protocol list under the "underlay-transport" data node defined in the L3VPN Network Model (L3NM) <span>[<a href="#RFC9182" class="cite xref">RFC9182</a>]</span> and the L2VPN Network Model (L2NM) <span>[<a href="#RFC9291" class="cite xref">RFC9291</a>]</span>.<a href="#section-6-5" class="pilcrow">¶</a></p>
+<p id="section-6-6">Also, inter-PE transfer planes may be realized using separate NRPs. However, such an approach is left out of the scope given the current state of the technology (2024).<a href="#section-6-6" class="pilcrow">¶</a></p>
+<p id="section-6-7">Similar to the QoS mapping models discussed in <a href="#sec-qos-map" class="auto internal xref">Section 5</a>, for mapping
+   to transfer planes at the ingress PE, both 5QI-unaware and 5QI-aware
+   models are defined.  Essentially, entire slices can be mapped to
+   transfer planes without 5G QoS consideration (5QI-unaware model). For example,
+   flows with different 5G QoS Classes, even from same
+   slice, can be mapped to different transfer planes (5QI-aware
+   model).<a href="#section-6-7" class="pilcrow">¶</a></p>
+<p id="section-6-8"><a href="#_figure-23" class="auto internal xref">Figure 29</a> depicts an example of a simple network with two transfer
    planes, each using a mesh of TE tunnels with or without Path Computation Element (PCE) <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>, and with or without bandwidth
    reservations.
    <a href="#sec-capacity-planning" class="auto internal xref">Section 7</a> discusses in detail different bandwidth
    models that can be deployed in the provider network.  However,
    discussion about how to realize or orchestrate inter-PE transfer planes is
-   out of scope for this document.<a href="#section-6-5" class="pilcrow">¶</a></p>
+   out of scope for this document.<a href="#section-6-8" class="pilcrow">¶</a></p>
 <span id="name-example-of-inter-pe-transfe"></span><div id="_figure-23">
 <figure id="figure-29">
-        <div class="alignCenter art-text artwork" id="section-6-6.1">
+        <div class="alignCenter art-text artwork" id="section-6-9.1">
 <pre>
 +---------------+                                    +------+
 |  Ingress PE   |   .-------------------------------&gt;| PE-A |
@@ -3325,25 +3341,9 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
 <a href="#name-example-of-inter-pe-transfe" class="selfRef">Example of Inter-PE Transfer Planes Relying on TE Tunnels</a>
         </figcaption></figure>
 </div>
-<p id="section-6-7">For illustration purposes, <a href="#_figure-23" class="auto internal xref">Figure 29</a> shows only single
+<p id="section-6-10">For illustration purposes, <a href="#_figure-23" class="auto internal xref">Figure 29</a> shows only single
    tunnels per transfer plane for (ingress PE, egress PE) pair. However, there might be multiple tunnels within a single transfer plane
-   between any pair of PEs.<a href="#section-6-7" class="pilcrow">¶</a></p>
-<p id="section-6-8">It is worth noting that TN QoS Classes and inter-PE transfer planes are
-   orthogonal.  The TN domain can be operated with, e.g., 8 TN QoS Classes (representing 8 hardware queues in the
-   routers), and 2 transfer planes (e.g., latency optimized transfer
-   plane using link latency metrics for path calculation, and transfer
-   plane following Interior Gateway Protocol (IGP) metrics).  TN QoS Class determines the per-hop
-   behavior when the packets are transiting through the provider network,
-   while transfer plane determines the paths for packets through provider
-   network based on operator's business model (operator's requirements).
-   This path can be optimized or constrained.<a href="#section-6-8" class="pilcrow">¶</a></p>
-<p id="section-6-9">Similar to the QoS mapping models discussed in <a href="#sec-qos-map" class="auto internal xref">Section 5</a>, for mapping
-   to transfer planes at the ingress PE, both 5QI-unaware and 5QI-aware
-   models are defined.  Essentially, entire slices can be mapped to
-   transfer planes without 5G QoS consideration (5QI-unaware model). For example,
-   flows with different 5G QoS Classes, even from same
-   slice, can be mapped to different transfer planes (5QI-aware
-   model).<a href="#section-6-9" class="pilcrow">¶</a></p>
+   between any pair of PEs.<a href="#section-6-10" class="pilcrow">¶</a></p>
 <div id="qi-unaware-model">
 <section id="section-6.1">
         <h3 id="name-5qi-unaware-model-2">
@@ -4570,11 +4570,11 @@ is encapsulated in IP.<a href="#appendix-B.4-2.3.1" class="pilcrow">¶</a></p>
 <pre>
 +---------+
 |+----+   | Colocated
-|RU-1|   | RU/DU
+||RU-1|   | RU/DU
 |+-+--+   |
 |  | FH-1 |
 |+-+--+   |
-|DU-1|   |  +----+         +-----+         .---.
+||DU-1|   |  +----+         +-----+         .---.
 |+-+--+   |  |CU-1|         |UPF-1+--------( DN  )
 +--|------+  +-+-++         +-+---+         `---'
 +--|-----------|-|------------|----------------------------+
