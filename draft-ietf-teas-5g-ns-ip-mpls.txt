@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 3 December 2024                                Juniper Networks
+Expires: 5 December 2024                                Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                             1 June 2024
+                                                             3 June 2024
 
 
  A Realization of Network Slices for 5G Networks Using Current IP/MPLS
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 December 2024.
+   This Internet-Draft will expire on 5 December 2024.
 
 Copyright Notice
 
@@ -928,25 +928,32 @@ Table of Contents
       even in non-ECMP friendly network topologies.  See also Section 8
       of [RFC9522]).
 
-               .. .. .. .. .. .. .. .. .. .. .. .. .. .. .. ...
-         +-----:----+              Base NRP              +----:-----+
-         | PE  :    |                                    |    :  PE |
-      ...|.....:....|....................................|....:.....|...
-      |  *<---+:    |      RFC 9543 Network Slice 1      |    :+--->*  |
-      |  |    |:    |       +-----+        +-----+       |    :|    |  |
-      |  *<---+:    |       |  P  |        |  P  |       |    :+--->*  |
-       .......+---->o<----->o<--->o<------>o---->o<----->o<----+....|..
-      |  *<---+:    |       |     |        |     |       |    :+--->*  |
-      |  |    |:    |       +-----+        +-----+       |    :|    |  |
-      |  *<---+:    |      RFC 9543 Network Slice 2      |    :+--->*  |
-      ....|....:....|....................................|....:.....|...
-          |    :    |                                    |    :     |
-          +----:----+                                    +----:-----+
-               '.. .. .. .. .. .. .. .. .. .. .. .. .. .. .. ..'
+             ..............................................
+            :                   Base NRP                   :
+      +-----:----+                                    +----:-----+
+      | PE  :    |                                    |    :  PE |
+-- -- |- -- -- --| - -- -- -- -- -- -- -- -- -- -- -- | -- -- -- |
+ N    *<---+     |                                    |     +--->*
+ S    |    |     |       +-----+        +-----+       |     |    |
+ #    *<---+     |       |  P  |        |  P  |       |     +--->*
+ 1    |    |     |       |     |        |     |       |     |    |
+== == |    +---->o<----->o<--->o<------>o---->o<----->o<----|    |
+ N    |    |     |       |     |        |     |       |     |    |
+ S    *<---+     |       |     |        |     |       |     +--->*
+ #    |    |     |       +-----+        +-----+       |     |    |
+ 2    *<---+     |                                    |     +--->*
+-- -- |- -- -- --|-- -- -- -- -- -- -- -- -- -- -- -- | -- -- -- |
+      |     :    |                                    |    :     |
+      +-----:----+                                    +----:-----+
+            :                                              :
+            '..............................................'
+
     * SDP, with fine-grained QoS (dedicated resources per Network Slice)
     o Coarse-grained QoS, with resources shared by all Network Slices
+  ... Base NRP
+-- -- Network Slice
 
-       Figure 11: Resource Allocation Slicing Model with a Single NRP
+    Figure 11: Resource Allocation Slicing Model with a Single NRP
 
    P nodes shown in Figure 11 are routers that do no interface with
    customer devices.  See Section 5.3.1 of [RFC4026].
