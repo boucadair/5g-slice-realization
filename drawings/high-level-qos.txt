@@ -14,7 +14,7 @@
 -- -- |- -- :- --|-- -- -- -- -- -- -- -- -- -- -- -- | -- : -- -| 
       |     :    |                                    |    :     |
       +-----:----+                                    +----:-----+
-           '..............................................'
+            '..............................................'
 
     * SDP, with fine-grained QoS (dedicated resources per Network Slice) 
     o Coarse-grained QoS, with resources shared by all Network Slices
