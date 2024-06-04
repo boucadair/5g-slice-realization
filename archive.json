@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-06-02T00:31:35.593154+00:00",
+  "timestamp": "2024-06-04T00:29:01.620868+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -1169,7 +1169,7 @@
       "id": "I_kwDOIw9g6c52QjcI",
       "title": "Add an example how to realize the example from the application document",
       "url": "https://github.com/boucadair/5g-slice-realization/issues/72",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "boucadair",
       "authorAssociation": "OWNER",
       "assignees": [
@@ -1179,8 +1179,8 @@
       "labels": [],
       "body": "",
       "createdAt": "2023-11-08T17:09:28Z",
-      "updatedAt": "2023-11-15T13:30:50Z",
-      "closedAt": null,
+      "updatedAt": "2024-06-03T08:32:10Z",
+      "closedAt": "2024-06-03T08:32:10Z",
       "comments": []
     },
     {
@@ -1321,15 +1321,15 @@
       "id": "I_kwDOIw9g6c54n0iN",
       "title": "fix issues for printing on windows",
       "url": "https://github.com/boucadair/5g-slice-realization/issues/114",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "robric",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "In some windows, we can see several formatting issues for figures (even in .txt), we need to work on something more neutral / digestible on most system and browsers.\r\n\r\n-  replace char small vertical bar  \u258fwith regular pipe \u2502 \r\n-  replace arrows \u25c0 with \"inferior than\" <   (same for opposite direction)\r\n-  replace  diamond \u25c7 with something else (e.g. \"+\")\r\n-  find other issues :-)",
       "createdAt": "2023-12-04T12:05:41Z",
-      "updatedAt": "2023-12-04T12:05:41Z",
-      "closedAt": null,
+      "updatedAt": "2024-06-03T08:31:56Z",
+      "closedAt": "2024-06-03T08:31:56Z",
       "comments": []
     },
     {
@@ -1680,7 +1680,7 @@
       "id": "I_kwDOIw9g6c6IxEny",
       "title": "Update a figure with SDP type 4",
       "url": "https://github.com/boucadair/5g-slice-realization/issues/184",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "boucadair",
       "authorAssociation": "OWNER",
       "assignees": [
@@ -1689,8 +1689,8 @@
       "labels": [],
       "body": "",
       "createdAt": "2024-05-14T06:42:21Z",
-      "updatedAt": "2024-05-27T17:25:02Z",
-      "closedAt": null,
+      "updatedAt": "2024-06-03T08:31:42Z",
+      "closedAt": "2024-06-03T08:31:42Z",
       "comments": [
         {
           "author": "robric",
@@ -6918,6 +6918,34 @@
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 201,
+      "id": "PR_kwDOIw9g6c5xSO9I",
+      "title": "Readable Base Figure",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/201",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-06-03T11:14:16Z",
+      "updatedAt": "2024-06-03T12:52:51Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "176a89913cdb259f408f597e255a35ca8543fa3c",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "Readable-Base-Figure",
+      "headRefOid": "a7a59594e45d0ff4b8868dbfaf41fefa0cfabf60",
+      "closedAt": "2024-06-03T12:52:50Z",
+      "mergedAt": "2024-06-03T12:52:50Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "bde1fad50be90926bb8c10fb705c9fb966f67468"
+      },
       "comments": [],
       "reviews": []
     }
