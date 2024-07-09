@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 5 December 2024                                Juniper Networks
+Expires: 10 January 2025                                Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                             3 June 2024
+                                                             9 July 2024
 
 
  A Realization of Network Slices for 5G Networks Using Current IP/MPLS
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 December 2024.
+   This Internet-Draft will expire on 10 January 2025.
 
 Copyright Notice
 
@@ -2707,9 +2707,9 @@ Table of Contents
               Contreras, L. M., Bykov, I., and K. G. Szarkowicz, "5QI to
               DiffServ DSCP Mapping Example for Enforcement of 5G End-
               to-End Network Slice QoS", Work in Progress, Internet-
-              Draft, draft-cbs-teas-5qi-to-dscp-mapping-00, 4 March
-              2024, <https://datatracker.ietf.org/doc/html/draft-cbs-
-              teas-5qi-to-dscp-mapping-00>.
+              Draft, draft-cbs-teas-5qi-to-dscp-mapping-02, 8 July 2024,
+              <https://datatracker.ietf.org/doc/html/draft-cbs-teas-5qi-
+              to-dscp-mapping-02>.
 
    [I-D.ietf-opsawg-ntw-attachment-circuit]
               Boucadair, M., Roberts, R., de Dios, O. G., Barguil, S.,
@@ -2731,9 +2731,9 @@ Table of Contents
               Geng, X., Contreras, L. M., Rokui, R., Dong, J., and I.
               Bykov, "IETF Network Slice Application in 3GPP 5G End-to-
               End Network Slice", Work in Progress, Internet-Draft,
-              draft-ietf-teas-5g-network-slice-application-02, 23
-              October 2023, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-teas-5g-network-slice-application-02>.
+              draft-ietf-teas-5g-network-slice-application-03, 10 June
+              2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
+              teas-5g-network-slice-application-03>.
 
    [I-D.ietf-teas-ietf-network-slice-nbi-yang]
               Wu, B., Dhody, D., Rokui, R., Saad, T., and J. Mullooly,
@@ -2748,9 +2748,9 @@ Table of Contents
               X., Dhody, D., and S. Belotti, "IETF Network Slice
               Controller and its associated data models", Work in
               Progress, Internet-Draft, draft-ietf-teas-ns-controller-
-              models-01, 23 October 2023,
+              models-02, 8 July 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-
-              controller-models-01>.
+              controller-models-02>.
 
    [IEEE802.1AE]
               IEEE, "802.1AE: MAC Security (MACsec)", n.d.,
