@@ -1520,8 +1520,8 @@ Also, underlay transports may be realized using separate NRPs. However, such an 
 |               |  | | | | | | | | | '-------------->| PE-D |
 +---------------+  '-' '-' '-' '-' '--------------->>|      |
                                                      +------+
- x----->   Tunnels of underlay transport A
- o---->>   Tunnels of underlay transport B
+ x----->   Tunnels of Underlay Transport A
+ o---->>   Tunnels of Underlay Transport B
 ~~~
 {: #figure-23 title="Example of Underlay Transport Relying on TE Tunnels" artwork-align="center"}
 
