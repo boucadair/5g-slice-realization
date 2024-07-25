@@ -1461,20 +1461,20 @@ to TN QoS Classes may be rather common.
    only occur in traffic that was de-prioritized by ingress admission control {{sec-inbound-edge-resource-control}} or in non-premium (best-effort) classes.  Capacity planning and management, as described in {{sec-capacity-planning}}, ensures that enough
    capacity is available to fulfill all approved slice requests.
 
-#  Inter-PE Transfer Plane Mapping Models {#transport-plane-mapping-models}
+#  PEs Underlay Transport Mapping Models {#transport-plane-mapping-models}
 
-An inter-PE transfer plane (or "transfer plane") refers to a specific path forwarding behavior between PEs in order to provide packet delivery that is consistent with the corresponding SLOs. This realization step focuses on controlling the paths that will be used for packet delivery between PEs, independent of the underlying network resource partitioning.
+The PEs underlay transport (underlay transport, for short) refers to a specific path forwarding behavior between PEs in order to provide packet delivery that is consistent with the corresponding SLOs. This realization step focuses on controlling the paths that will be used for packet delivery between PEs, independent of the underlying network resource partitioning.
 
-It is worth noting that TN QoS Classes and inter-PE transfer planes are
+It is worth noting that TN QoS Classes and underlay transport are
    orthogonal.  The TN domain can be operated with, e.g., 8 TN QoS Classes (representing 8 hardware queues in the
-   routers), and 2 transfer planes (e.g., latency optimized transfer
-   plane using link latency metrics for path calculation, and transfer
-   plane following Interior Gateway Protocol (IGP) metrics).  TN QoS Class determines the per-hop
+   routers), and two underlay transports (e.g., latency optimized underlay
+   transport using link latency metrics for path calculation, and underlay
+   transport following Interior Gateway Protocol (IGP) metrics).  TN QoS Class determines the per-hop
    behavior when the packets are transiting through the provider network,
-   while transfer plane determines the paths for packets through provider
+   while underlay transport determines the paths for packets through provider
    network based on the operator's requirements. This path can be optimized or constrained.
 
-A network operator can define multiple inter-PE transfer planes within a single NRP. A transfer plane may be realized in multiple ways such as (but not limited to):
+A network operator can define multiple underlay transports within a single NRP. An underlay transport may be realized in multiple ways such as (but not limited to):
 
    * A mesh of RSVP-TE {{?RFC3209}} or SR-TE {{?RFC9256}} tunnels created with specific optimization criteria and
    constraints. For example, mesh "A" might represent tunnels optimized for latency, and mesh "B" might represent tunnels optimized for high capacity.
@@ -1482,22 +1482,22 @@ A network operator can define multiple inter-PE transfer planes within a single 
 
 These protocols can be controlled, e.g., by tuning the protocol list under the "underlay-transport" data node defined in the L3VPN Network Model (L3NM) {{?RFC9182}} and the L2VPN Network Model (L2NM) {{?RFC9291}}.
 
-Also, inter-PE transfer planes may be realized using separate NRPs. However, such an approach is left out of the scope given the current state of the technology (2024).
+Also, underlay transports may be realized using separate NRPs. However, such an approach is left out of the scope given the current state of the technology (2024).
 
    Similar to the QoS mapping models discussed in {{sec-qos-map}}, for mapping
-   to transfer planes at the ingress PE, both 5QI-unaware and 5QI-aware
+   to underlay transports at the ingress PE, both 5QI-unaware and 5QI-aware
    models are defined.  Essentially, entire slices can be mapped to
-   transfer planes without 5G QoS consideration (5QI-unaware model). For example,
+   underlay transports without 5G QoS consideration (5QI-unaware model). For example,
    flows with different 5G QoS Classes, even from same
-   slice, can be mapped to different transfer planes (5QI-aware
+   slice, can be mapped to different underlay transports (5QI-aware
    model).
 
-   {{figure-23}} depicts an example of a simple network with two transfer
-   planes, each using a mesh of TE tunnels with or without Path Computation Element (PCE) {{?RFC5440}}, and with or without bandwidth
+   {{figure-23}} depicts an example of a simple network with two underlay transports,
+   each using a mesh of TE tunnels with or without Path Computation Element (PCE) {{?RFC5440}}, and with or without bandwidth
    reservations.
    {{sec-capacity-planning}} discusses in detail different bandwidth
    models that can be deployed in the provider network.  However,
-   discussion about how to realize or orchestrate inter-PE transfer planes is
+   discussion about how to realize or orchestrate underlay transports is
    out of scope for this document.
 
 ~~~
@@ -1506,27 +1506,27 @@ Also, inter-PE transfer planes may be realized using separate NRPs. However, suc
 |               |   |   .-------------------------->>|      |
 |  +---------+  |   |   '---------------------.      +------+
 |  |         x------'   .---------------------'
-|  |Transfer x--------------------------------.      +------+
-|  | Plane A x-------------.                  '----->| PE-B |
-|  |         x-------.  |  |  .---.   .---.   .---->>|      |
+|  |Underlay x--------------------------------.      +------+
+|  |Transportx-------------.                  '----->| PE-B |
+|  |   A     x-------.  |  |  .---.   .---.   .---->>|      |
 |  +---------+  |    |  |  |  |   |   |   |   |      +------+
 |               |    |  |  |  |   '---'   '---'
 |  +---------+  |    |  |  |  |                      +------+
 |  |         o-------|--'  '------------------------>| PE-C |
-|  |Transfer o-------|--------'               .---->>|      |
-|  | Plane B o-------|-----------------.      |      +------+
-|  |         o-----. '---------------. |      |
+|  |Underlay o-------|--------'               .---->>|      |
+|  |Transporto-------|-----------------.      |      +------+
+|  |   B     o-----. '---------------. |      |
 |  +---------+  |  | .-. .-. .-. .-. | '------'      +------+
 |               |  | | | | | | | | | '-------------->| PE-D |
 +---------------+  '-' '-' '-' '-' '--------------->>|      |
                                                      +------+
- x----->   Tunnels of Inter-PE Transfer Plane A
- o---->>   Tunnels of Inter-PE Transfer Plane B
+ x----->   Tunnels of Underlay Transport A
+ o---->>   Tunnels of Underlay Transport B
 ~~~
-{: #figure-23 title="Example of Inter-PE Transfer Planes Relying on TE Tunnels" artwork-align="center"}
+{: #figure-23 title="Example of Underlay Transport Relying on TE Tunnels" artwork-align="center"}
 
    For illustration purposes, {{figure-23}} shows only single
-   tunnels per transfer plane for (ingress PE, egress PE) pair. However, there might be multiple tunnels within a single transfer plane
+   tunnels per underlay transport for (ingress PE, egress PE) pair. However, there might be multiple tunnels within a single underlay transport
    between any pair of PEs.
 
 ##  5QI-unaware Model
@@ -1535,8 +1535,8 @@ Also, inter-PE transfer planes may be realized using separate NRPs. However, suc
    doesn't take into account 5G QoS during execution of per-hop
    behavior.  The entire slice is mapped to single TN QoS Class,
    therefore the entire slice is subject to the same per-hop behavior.
-   Similarly, in 5QI-unaware inter-PE transfer plane mapping model, the entire
-   slice is mapped to a single transfer plane, as depicted in
+   Similarly, in 5QI-unaware PE underlay transport mapping model, the entire
+   slice is mapped to a single underlay transport, as depicted in
    {{figure-24}}.
 
 ~~~
@@ -1551,8 +1551,8 @@ Also, inter-PE transfer planes may be realized using separate NRPs. However, suc
    :+---------------+:       |               |
    :+---------------+:       |   +---------+ |
    :|  SDP          |:       |   |         | |
-   :|  +----------+ |:       |   |Transfer | |
-   :|  |     NS 2 +------+   +--->  Plane  | |
+   :|  +----------+ |:       |   |Underlay | |
+   :|  |     NS 2 +------+   +--->Transport| |
    :|  +----------+ |:   |   |   |    A    | |
    :+---------------+:   |   |   |         | |
    :+---------------+:   |   |   +---------+ |
@@ -1561,8 +1561,8 @@ Also, inter-PE transfer planes may be realized using separate NRPs. However, suc
    :|   |     NS 3 +-----+   |               |
    :|  +----------+ |:   |   |   +---------+ |
    :+---------------+:   |   |   |         | |
-   :+---------------+:   |   |   |Transfer | |
-   :|  SDP          |:   +------->  Plane  | |
+   :+---------------+:   |   |   |Underlay | |
+   :|  SDP          |:   +------->Transport| |
    :|  +----------+ |:   |   |   |    B    | |
    :|  |     NS 4 +------+   |   |         | |
    :|  +----------+ |:       |   +---------+ |
@@ -1576,14 +1576,14 @@ Also, inter-PE transfer planes may be realized using separate NRPs. However, suc
    '.. .. .. .. .. ..                        |
    +-----------------------------------------+
 ~~~
-{: #figure-24 title="Network Slice to Inter-PE Transfer Plane Mapping (5QI-unaware Model)" artwork-align="center"}
+{: #figure-24 title="Network Slice to PEs Underlay Transport Mapping (5QI-unaware Model)" artwork-align="center"}
 
 ##  5QI-aware Model
 
-   In 5QI-aware model, the traffic can be mapped to transfer planes at
+   In 5QI-aware model, the traffic can be mapped to underlay transports at
    the granularity of 5G QoS Class.  Given that the potential number of
-   inter-PE transfer planes is limited, packets from multiple 5G QoS Classes
-   with similar characteristics are mapped to a common transfer plane,
+   underlay transports is limited, packets from multiple 5G QoS Classes
+   with similar characteristics are mapped to a common underlay transport,
    as depicted in {{figure-25}}.
 
 ~~~
@@ -1599,8 +1599,8 @@ Also, inter-PE transfer planes may be realized using separate NRPs. However, suc
    4 :|  | 5G QoS B +------+                     |
    3 :|  +----------+ |:   |         +---------+ |
      :|  +----------+ |:   |         |         | |
-   N :|  | 5G QoS C +-----------+    |Transfer | |
-   S :|  +----------+ |:   +--------->  Plane  | |
+   N :|  | 5G QoS C +-----------+    |Underlay | |
+   S :|  +----------+ |:   +--------->Transport| |
      :|  +----------+ |:   |    |    |    A    | |
    1 :|  | 5G QoS D +-----------+    |         | |
      :|  +----------+ |:   |    |    +---------+ |
@@ -1609,8 +1609,8 @@ Also, inter-PE transfer planes may be realized using separate NRPs. However, suc
    F :|  +----------+ |:   |    |                |
    C :|  | 5G QoS A +------+    |    +---------+ |
    9 :|  +----------+ |:   |    |    |         | |
-   5 :|  +----------+ |:   |    |    |Transfer | |
-   4 :|  | 5G QoS E +------+    +---->  Plane  | |
+   5 :|  +----------+ |:   |    |    |Underlay | |
+   4 :|  | 5G QoS E +------+    +---->Transport| |
    3 :|  +----------+ |:        |    |    B    | |
      :|  +----------+ |:        |    |         | |
    N :|  | 5G QoS F +-----------+    +---------+ |
@@ -1623,7 +1623,7 @@ Also, inter-PE transfer planes may be realized using separate NRPs. However, suc
      '.. .. .. .. .. ..                          |
      +-------------------------------------------+
 ~~~
-{: #figure-25 title="Network Slice to Inter-PE Transfer Plane mapping (5QI-aware Model)" artwork-align="center"}
+{: #figure-25 title="Network Slice to Underlay Transport Mapping (5QI-aware Model)" artwork-align="center"}
 
 #  Capacity Planning/Management {#sec-capacity-planning}
 
@@ -1922,7 +1922,7 @@ The realization model described in the document inherits the scalability propert
 
  * Conformance to security constraints:
 
-      Specific security requests, such as not routing traffic through a particular geographical region can be met by mapping the traffic to an inter-PE transfer plane that avoids that region.
+      Specific security requests, such as not routing traffic through a particular geographical region can be met by mapping the traffic to an underlay transport that avoids that region.
 
  * IETF NSC authentication:
 
@@ -1934,7 +1934,7 @@ The realization model described in the document inherits the scalability propert
 
  * Data Confidentiality and Integrity of an IETF Network Slice:
 
-     As described in {{Section 5.1.2.1 of !RFC9543}}, the customer might request an SLE that mandates encryption. As described in {{transport-plane-mapping-models}}, this can be achieved, e.g., by mapping the traffic to an inter-PE transfer plane that uses only MACsec-encrypted links.
+     As described in {{Section 5.1.2.1 of !RFC9543}}, the customer might request an SLE that mandates encryption. As described in {{transport-plane-mapping-models}}, this can be achieved, e.g., by mapping the traffic to an underlay transport that uses only MACsec-encrypted links.
 
 Many of the YANG modules cited in this document define schema for data that is designed to be accessed via network management protocols such as NETCONF {{!RFC6241}} or RESTCONF {{!RFC8040}}. The lowest NETCONF layer is the secure transport layer, and the mandatory-to-implement secure transport is Secure Shell (SSH) {{!RFC6242}}. The lowest RESTCONF layer is HTTPS, and the mandatory-to-implement secure transport is TLS {{!RFC8446}}.
 
