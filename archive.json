@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-25T00:30:52.244057+00:00",
+  "timestamp": "2024-07-28T00:34:30.201037+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -6945,6 +6945,34 @@
       "mergedBy": "boucadair",
       "mergeCommit": {
         "oid": "bde1fad50be90926bb8c10fb705c9fb966f67468"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 202,
+      "id": "PR_kwDOIw9g6c52fp53",
+      "title": "underlay transport change",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/202",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-07-25T17:17:05Z",
+      "updatedAt": "2024-07-25T17:24:13Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "e24cd526db5f109151afaaf56582a92f004f7ab2",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "underlay-transport-change",
+      "headRefOid": "72db55847d105479a3a0450ea6c298788587e51a",
+      "closedAt": "2024-07-25T17:24:12Z",
+      "mergedAt": "2024-07-25T17:24:11Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "b216ac058b585527f43a408f3e295364617a7500"
       },
       "comments": [],
       "reviews": []
