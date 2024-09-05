@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-03T00:32:49.978599+00:00",
+  "timestamp": "2024-09-05T00:33:21.287391+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -6974,6 +6974,32 @@
       "mergeCommit": {
         "oid": "b216ac058b585527f43a408f3e295364617a7500"
       },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 203,
+      "id": "PR_kwDOIw9g6c56RYgX",
+      "title": "Update draft-ietf-teas-5g-ns-ip-mpls.md",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/203",
+      "state": "OPEN",
+      "author": "julianL999",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "To address Jie's comment on 28th Aug 2024, in response to the second wglc. The comment was:\r\n\r\n\"2404    7.2.2.  Scheme 2: TE Paths with Fixed Bandwidth Reservations\r\n \r\n2410       slice.  Note that the \"reservations\" would be in the mind of the\r\n2411       transport controller - it is not necessary (or indeed possible for\r\n2412       SR-TE) to reserve bandwidth at the network layer.\r\n \r\n[Jie] With some mechanisms resource reservation can also be done on the network devices. If section 7.2.2 only talks about bandwidth reservation in the mind of the controller, it is suggested to make this explicit in the title of this section.\r\n \r\nAs for segment routing with resource reservation at the network layer, this document may consider to add a reference to draft-ietf-spring-resource-aware-segments.\"\r\n\r\nI changed the wording from \"would\" to \"could\".",
+      "createdAt": "2024-09-03T14:20:39Z",
+      "updatedAt": "2024-09-03T14:20:39Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "b216ac058b585527f43a408f3e295364617a7500",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "julianL999-patch-1",
+      "headRefOid": "ac69018de94e380aaee3059cdde8667443195955",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
       "comments": [],
       "reviews": []
     }
