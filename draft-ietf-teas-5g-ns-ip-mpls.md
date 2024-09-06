@@ -1772,7 +1772,7 @@ Also, underlay transports may be realized using separate NRPs. However, such an 
    reservations.  By "fixed", we mean a value that stays constant over
    time, unless the 5G NSO communicates a change in slice bandwidth
    requirements, due to the creation or modification of a slice.  Note
-   that the "reservations" can be in the mind of the transport
+   that the "reservations" may be maintained by the transport
    controller - it is not necessary (or indeed possible for SR-TE) to
    reserve bandwidth at the network layer.  The bandwidth requirement
    acts as a constraint whenever the controller (re)computes a path.  There could be a single mesh of paths between endpoints that
