@@ -1948,9 +1948,6 @@ service disruption. Note that such an on-path attacker may make more damage (e.g
 
 Security considerations specific to each of the technologies and protocols listed in the document are discussed in the specification documents of each of these protocols.
 
-
-
-
 --- back
 
 # Acronyms and Abbreviations {#ext-abbr}
@@ -2124,7 +2121,7 @@ Security considerations specific to each of the technologies and protocols liste
    : Virtual Extensible Local Area Network
 
 # Acknowledgments
-{:numbered-"false"}
+{:numbered="false"}
 
    The authors would like to thank Adrian Farrel, Joel Halpern, Tarek
    Saad, Greg Mirsky, Rüdiger Geib, Nicklous D. Morris, 	Daniele Ceccarelli, Bo Wu, Xuesong Geng, and Deborah Brungard for
