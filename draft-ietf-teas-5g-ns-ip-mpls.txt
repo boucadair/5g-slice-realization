@@ -107,7 +107,7 @@ Table of Contents
      12.1.  Normative References
      12.2.  Informative References
    Appendix A.  Acronyms and Abbreviations
-   Appendix B.  Acknowledgments
+   Acknowledgments
    Contributors
    Authors' Addresses
 
@@ -3090,7 +3090,7 @@ Appendix A.  Acronyms and Abbreviations
 
    VXLAN:  Virtual Extensible Local Area Network
 
-Appendix B.  Acknowledgments
+Acknowledgments
 
    The authors would like to thank Adrian Farrel, Joel Halpern, Tarek
    Saad, Greg Mirsky, Rüdiger Geib, Nicklous D.  Morris, Daniele
