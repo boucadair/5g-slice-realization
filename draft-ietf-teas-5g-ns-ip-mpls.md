@@ -192,7 +192,7 @@ This document describes a Network Slice realization model for IP/MPLS networks w
 
 This document focuses on network slicing for 5G networks, covering the connectivity between Network Functions (NFs) across multiple domains such as edge clouds, data centers, and the Wide Area Network (WAN). The document describes a Network Slice realization approach that fulfills 5G slicing requirements by using existing IP/MPLS technologies to optimally control connectivity Service Level Agreements (SLAs) offered for 5G slices. To that aim, this document describes the scope of the Transport Network in 5G architectures ({{sec-scope}}), disambiguates 5G Network Slicing versus Transport Network Slicing ({{sec-5gtn}}), draws the perimeter of the various orchestration domains to realize slices ({{sec-orch}}), and identifies the required coordination between these orchestration domains for adequate setup of Attachment Circuits (ACs) ({{sec-tn-nsi}}).
 
-This work is compatible with the framework defined in {{!RFC9543}} which describes network slicing in the context of networks built from IETF technologies. Specifically, this document explains how RFC 9543 Network Slices are realized within provider networks and how such slices are stitched to Transport Network resources in a customer site in the context of Transport Network Slices ({{fig-end-to-end}}).
+This work is compatible with the framework defined in {{!RFC9543}} which describes network slicing in the context of networks built from IETF technologies. Specifically, this document describes an approach to how RFC 9543 Network Slices are realized within provider networks and how such slices are stitched to Transport Network resources in a customer site in the context of Transport Network Slices ({{fig-end-to-end}}).
 Concretely, the realization of an RFC 9543 Network Slice (i.e., connectivity with performance commitments) involves the provider network and partially the AC (the PE-side of the AC). This document assumes that the customer site infrastructure is over-provisioned and involves short distances (low latency) where basic QoS/scheduling logic is sufficient to comply with the Service Level Objectives (SLOs).
 
 ~~~~
@@ -206,7 +206,7 @@ The 5G control plane uses the Single Network Slice Selection Assistance Informat
 identification {{TS-23.501}}. Because S-NSSAIs are not visible to the transport domain, 5G domains can expose the 5G slices to the transport
 domain by mapping to explicit data plane identifiers (e.g., Layer 2, Layer 3, or Layer 4). The realization of the mapping between customer sites and provider networks is refered to as the "hand-off". {{sec-handoff-domains}} lists a set of such hand-off methods.
 
-The realization model described in this document uses a set of building blocks commonly used in service provider networks. Concretely, the model uses (1) Layer 2 Virtual Private Network (L2VPN) {{?RFC4664}} and/or Layer 3 Virtual Private Network (L3VPN) {{?RFC4364}} service instances for logical separation, (2) fine-grained resource control at the Provider Edges (PEs), (3) coarse-grained resource control at within the provider network, and (4) capacity management. More details are provided in Sections {{<sec-over-rea-model}}, {{<sec-qos-map}}, {{<transport-plane-mapping-models}}, and {{<sec-capacity-planning}}.
+The realization model described in this document uses a set of building blocks commonly used in service provider networks. Concretely, the model uses (1) Layer 2 Virtual Private Network (L2VPN) {{?RFC4664}} and/or Layer 3 Virtual Private Network (L3VPN) {{?RFC4364}} service instances for logical separation, (2) fine-grained resource control at the Provider Edges (PEs), (3) coarse-grained resource control within the provider network, and (4) capacity management. More details are provided in Sections {{<sec-over-rea-model}}, {{<sec-qos-map}}, {{<transport-plane-mapping-models}}, and {{<sec-capacity-planning}}.
 
 This realization model uses a single Network Resource Partition (NRP) ({{Section 7.1 of !RFC9543}}). The applicability to multiple NRPs is out of scope.
 
@@ -337,7 +337,7 @@ This document generalizes the definition of a CE with the introduction of "Distr
 ~~~~
 {: #fig-distribute-ce title="Example of Distributed CE" artwork-align="center"}
 
-While in most cases CEs connect to PEs using IP (e.g., VLANs subinterface on a Layer 3 interface), a CE may also connect to the provider network using other technologies such as MPLS -potentially over IP tunnels- or Segment Routing over IPv6 (SRv6) {{?RFC8986}}. The CE has thus awareness of provider services configuration (e.g., control plane identifiers such as Route Targets (RTs) and Route Distinguishers (RDs)). However, the CE is still managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. The complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE. Service-aware CEs are used, for example, in the deployments discussed in Sections {{<sec-10b}} and {{<sec-10c}}.
+While in most cases CEs connect to PEs using IP (e.g., via Layer 3 VLAN subinterfaces), a CE may also connect to the provider network using other technologies such as MPLS -potentially over IP tunnels- or Segment Routing over IPv6 (SRv6) {{?RFC8986}}. The CE has thus awareness of provider services configuration (e.g., control plane identifiers such as Route Targets (RTs) and Route Distinguishers (RDs)). However, the CE is still managed by the customer and the AC is based on MPLS or SRv6 data plane technologies. The complete termination of the AC within the provider network may happen on distinct routers: this is another example of distributed PE. Service-aware CEs are used, for example, in the deployments discussed in Sections {{<sec-10b}} and {{<sec-10c}}.
 
 ### Provider Network {#sec-pn}
 
@@ -504,7 +504,7 @@ Mapping approaches that preserve the 5G slice identification in the TN (e.g., {{
 ##  First 5G Slice versus Subsequent Slices {#sec-firstslice}
 
 An operational 5G Network Slice incorporates both 5G control plane and user plane capabilities.
-For instance, consider a slice based on split-CU in the RAN, both CU-UP and Centralized Unit Control Plane (CU-CP) need to be deployed along with the associated interfaces E1, F1-c, F1-u, N2, and N3 which are conveyed in the TN. In this regard, the creation of the "first slice" can be subject to a specific logic that does not apply to subsequent slices. Let us consider the example depicted in {{figure-7}} to illustrate this deploloyment. In this example, the first 5G slice relies on the deployment of NF-CP and NF-UP functions together with two TN slices for control and user planes (INS-CP and INS-UP1). Next, the deployment of a second slice relies solely on the instantiation of a UPF (NF-UP2) together with a dedicated user plane TN slice (INS-UP2). In this example, the control plane of the first 5G slice is also updated to integrate the second slice: the TN slice (INS-CP) and Network Functions (NF-CP) are shared.
+For instance, consider a slice based on split-CU in the RAN, both CU-UP and Centralized Unit Control Plane (CU-CP) need to be deployed along with the associated interfaces E1, F1-c, F1-u, N2, and N3 which are conveyed in the TN. In this regard, the creation of the "first slice" can be subject to a specific logic that does not apply to subsequent slices. Let us consider the example depicted in {{figure-7}} to illustrate this deployment. In this example, the first 5G slice relies on the deployment of NF-CP and NF-UP functions together with two TN slices for control and user planes (INS-CP and INS-UP1). Next, the deployment of a second slice relies solely on the instantiation of a UPF (NF-UP2) together with a dedicated user plane TN slice (INS-UP2). In this example, the control plane of the first 5G slice is also updated to integrate the second slice: the TN slice (INS-CP) and Network Functions (NF-CP) are shared.
 
    At the time of writing (2024), Section 6.1.2 of {{NG.113}} specifies that the
    eMBB slice (SST-1 and no Slice Differentiator (SD)) should be supported globally.  This 5G
@@ -1461,12 +1461,11 @@ to TN QoS Classes may be rather common.
    only occur in traffic that was de-prioritized by ingress admission control {{sec-inbound-edge-resource-control}} or in non-premium (best-effort) classes.  Capacity planning and management, as described in {{sec-capacity-planning}}, ensures that enough
    capacity is available to fulfill all approved slice requests.
 
-#  PEs Underlay Transport Mapping Models {#transport-plane-mapping-models}
+#  PE Underlay Transport Mapping Models {#transport-plane-mapping-models}
 
-The PEs underlay transport (underlay transport, for short) refers to a specific path forwarding behavior between PEs in order to provide packet delivery that is consistent with the corresponding SLOs. This realization step focuses on controlling the paths that will be used for packet delivery between PEs, independent of the underlying network resource partitioning.
+The PE underlay transport (underlay transport, for short) refers to a specific path forwarding behavior between PEs in order to provide packet delivery that is consistent with the corresponding SLOs. This realization step focuses on controlling the paths that will be used for packet delivery between PEs, independent of the underlying network resource partitioning.
 
-It is worth noting that TN QoS Classes and underlay transport are
-   orthogonal.  The TN domain can be operated with, e.g., 8 TN QoS Classes (representing 8 hardware queues in the
+It is worth noting that TN QoS Classes and underlay transport are each related to different engineering objectives.  The TN domain can be operated with, e.g., 8 TN QoS Classes (representing 8 hardware queues in the
    routers), and two underlay transports (e.g., latency optimized underlay
    transport using link latency metrics for path calculation, and underlay
    transport following Interior Gateway Protocol (IGP) metrics).  TN QoS Class determines the per-hop
@@ -1773,7 +1772,7 @@ Also, underlay transports may be realized using separate NRPs. However, such an 
    reservations.  By "fixed", we mean a value that stays constant over
    time, unless the 5G NSO communicates a change in slice bandwidth
    requirements, due to the creation or modification of a slice.  Note
-   that the "reservations" would be in the mind of the transport
+   that the "reservations" may be maintained by the transport
    controller - it is not necessary (or indeed possible for SR-TE) to
    reserve bandwidth at the network layer.  The bandwidth requirement
    acts as a constraint whenever the controller (re)computes a path.  There could be a single mesh of paths between endpoints that
@@ -1787,7 +1786,7 @@ Also, underlay transports may be realized using separate NRPs. However, such an 
    demands of the individual slices.  For example, if only slices "X" and
    "Y" are present, then the bandwidth requirement from "DC1" to "DC2"
    is 12 units (8 units for slice "X" ({{table-x}}) and 4 units for slice "Y" ({{table-y}})).  When the
-   5G NSO requests a new slice, the NSC, in its mind,
+   5G NSO requests a new slice, the NSC,
    increments the bandwidth requirement according to the requirements of
    the new slice.  For example, in {{figure-multi-DC}}, suppose a new slice is
    instantiated that needs 0.8 Gbps from "DC1" to "DC2".  The transport
