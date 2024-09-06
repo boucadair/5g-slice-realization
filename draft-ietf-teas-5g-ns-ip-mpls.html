@@ -1642,12 +1642,9 @@ However, this document does not exclude the instantiation of multiple ACs betwee
   +-----------+ Orchestration +-|--------------------------+
   |           | (RAN and CN)  | |                          |
   |           +---------------+ |                          |
-  |                             |                          |
-  |    +------------------------|----------------------+   |
-  |    |TN Orchestration        |                      |   |
-  |    |        +------------------------------+       |   |
-  |    |        |               |              |       |   |
-  |    |        v               v              v       |   |
+  |                             v                          |
+  |    +-----------------------------------------------+   |
+  |    |TN Orchestration                               |   |
   |    |+---------------++-----------++---------------+|   |
   |    || Customer Site ||RFC9543 NSC|| Customer Site ||   |
   |    || Orchestration ||           || Orchestration ||   |
