@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-05T00:33:21.287391+00:00",
+  "timestamp": "2024-09-08T00:37:11.651216+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -6982,26 +6982,119 @@
       "id": "PR_kwDOIw9g6c56RYgX",
       "title": "Update draft-ietf-teas-5g-ns-ip-mpls.md",
       "url": "https://github.com/boucadair/5g-slice-realization/pull/203",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "julianL999",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "To address Jie's comment on 28th Aug 2024, in response to the second wglc. The comment was:\r\n\r\n\"2404    7.2.2.  Scheme 2: TE Paths with Fixed Bandwidth Reservations\r\n \r\n2410       slice.  Note that the \"reservations\" would be in the mind of the\r\n2411       transport controller - it is not necessary (or indeed possible for\r\n2412       SR-TE) to reserve bandwidth at the network layer.\r\n \r\n[Jie] With some mechanisms resource reservation can also be done on the network devices. If section 7.2.2 only talks about bandwidth reservation in the mind of the controller, it is suggested to make this explicit in the title of this section.\r\n \r\nAs for segment routing with resource reservation at the network layer, this document may consider to add a reference to draft-ietf-spring-resource-aware-segments.\"\r\n\r\nI changed the wording from \"would\" to \"could\".",
       "createdAt": "2024-09-03T14:20:39Z",
-      "updatedAt": "2024-09-03T14:20:39Z",
+      "updatedAt": "2024-09-06T18:14:34Z",
       "baseRepository": "boucadair/5g-slice-realization",
       "baseRefName": "main",
       "baseRefOid": "b216ac058b585527f43a408f3e295364617a7500",
       "headRepository": "boucadair/5g-slice-realization",
       "headRefName": "julianL999-patch-1",
-      "headRefOid": "ac69018de94e380aaee3059cdde8667443195955",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "4b81db811c890b03148c54d12db4b85000a3e7d7",
+      "closedAt": "2024-09-06T18:14:33Z",
+      "mergedAt": "2024-09-06T18:14:33Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "855e5cb9a8ff56eb4a534fe44766c1a37c5d298f"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c6IR652",
+          "commit": {
+            "abbreviatedOid": "c032014"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-06T14:16:53Z",
+          "updatedAt": "2024-09-06T14:16:54Z",
+          "comments": [
+            {
+              "originalPosition": 57,
+              "body": "```suggestion\r\n   that the \"reservations\" may be maintained by the transport\r\n```",
+              "createdAt": "2024-09-06T14:16:54Z",
+              "updatedAt": "2024-09-06T14:16:54Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 204,
+      "id": "PR_kwDOIw9g6c56rE04",
+      "title": "remove appendix + unused acronyms",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/204",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-09-06T14:15:22Z",
+      "updatedAt": "2024-09-06T18:14:48Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "b216ac058b585527f43a408f3e295364617a7500",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "remove-appendix-+-unused-acronyms",
+      "headRefOid": "f97b4fb7df1032cc224f7c456f2e82b2ca23f435",
+      "closedAt": "2024-09-06T18:14:46Z",
+      "mergedAt": "2024-09-06T18:14:46Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "db7cbe3be0e9abce4d014c40ef3bfbe1128ff213"
+      },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 205,
+      "id": "PR_kwDOIw9g6c56rvda",
+      "title": "Update tn-orchestration.txt",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/205",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-09-06T15:58:16Z",
+      "updatedAt": "2024-09-06T18:15:02Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "b216ac058b585527f43a408f3e295364617a7500",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "Greg-comment-Update-tn-orchestration",
+      "headRefOid": "31bece907f652d3066a40869c658c944d8cfeac1",
+      "closedAt": "2024-09-06T18:15:00Z",
+      "mergedAt": "2024-09-06T18:15:00Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "4ecd94357064f79f4c8e7f3123d9614d4e38d903"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c6IS-KU",
+          "commit": {
+            "abbreviatedOid": "31bece9"
+          },
+          "author": "julianL999",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Looks good, thank you",
+          "createdAt": "2024-09-06T16:12:29Z",
+          "updatedAt": "2024-09-06T16:12:29Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
