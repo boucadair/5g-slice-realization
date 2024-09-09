@@ -140,17 +140,17 @@ informative:
 
    TS-23.501:
               title: "TS 23.501: System architecture for the 5G System (5GS)"
-              date: 2021
+              date: 2024
               author:
                 org: 3GPP
-              target: https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId-3144
+              target: https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3144
 
    TS-28.530:
-              title: "TS 23.530: Management and orchestration; Concepts, use cases and requirements)"
+              title: "TS 28.530: Management and orchestration; Concepts, use cases and requirements)"
               author:
                org: 3GPP
-              date: 2023
-              target: https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId-3273
+              date: 2024
+              target: https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3273
 
    O-RAN.WG9.XPSAAS:
               title: "O-RAN.WG9.XPSAAS: O-RAN WG9 Xhaul Packet Switched Architectures and Solutions Version 04.00"
