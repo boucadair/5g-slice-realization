@@ -792,13 +792,14 @@ Table of Contents
    two TN slices for control and user planes (INS-CP and INS-UP1).
    Next, in many cases, the deployment of a second slice relies solely
    on the instantiation of a UPF (NF-UP2) together with a dedicated user
-   plane TN slice (INS-UP2).  In this example, the control plane of the
-   first 5G slice is also updated to integrate the second slice: the TN
-   slice (INS-CP) and Network Functions (NF-CP) are shared.  The model
-   described here in which the control plane is shared among multiple
-   slices is likely to be common, it is not mandatory.  Deployment
-   models with a separate control plane for each slice are also
-   possible.
+   plane TN slice (INS-UP2).  The control plane of the first 5G slice is
+   also updated to integrate the second slice: the TN slice (INS-CP) and
+   Network Functions (NF-CP) are shared.
+
+      The model described here in which the control plane is shared
+      among multiple slices is likely to be common; it is not mandatory,
+      though.  Deployment models with a separate control plane for each
+      slice are also possible.
 
    At the time of writing (2024), Section 6.1.2 of [NG.113] specifies
    that the eMBB slice (SST-1 and no Slice Differentiator (SD)) should
@@ -2412,8 +2413,8 @@ Table of Contents
    bandwidth requirements, due to the creation or modification of a
    slice.  Note that the "reservations" may be maintained by the
    transport controller - it is not necessary (or indeed possible for
-   current SR-TE technology) to reserve bandwidth at the network layer.
-   The bandwidth requirement acts as a constraint whenever the
+   current SR-TE technology in 2024) to reserve bandwidth at the network
+   layer.  The bandwidth requirement acts as a constraint whenever the
    controller (re)computes a path.  There could be a single mesh of
    paths between endpoints that carry all of the traffic types, or there
    could be a small handful of meshes, for example one mesh for low-
