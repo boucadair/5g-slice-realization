@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 13 March 2025                                  Juniper Networks
+Expires: 24 March 2025                                  Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                        9 September 2024
+                                                       20 September 2024
 
 
  A Realization of Network Slices for 5G Networks Using Current IP/MPLS
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 13 March 2025.
+   This Internet-Draft will expire on 24 March 2025.
 
 Copyright Notice
 
@@ -780,21 +780,25 @@ Table of Contents
 3.6.  First 5G Slice versus Subsequent Slices
 
    An operational 5G Network Slice incorporates both 5G control plane
-   and user plane capabilities.  For instance, consider a slice based on
-   split-CU in the RAN, both CU-UP and Centralized Unit Control Plane
-   (CU-CP) need to be deployed along with the associated interfaces E1,
-   F1-c, F1-u, N2, and N3 which are conveyed in the TN.  In this regard,
-   the creation of the "first slice" can be subject to a specific logic
-   that does not apply to subsequent slices.  Let us consider the
-   example depicted in Figure 10 to illustrate this deployment.  In this
-   example, the first 5G slice relies on the deployment of NF-CP and NF-
-   UP functions together with two TN slices for control and user planes
-   (INS-CP and INS-UP1).  Next, the deployment of a second slice relies
-   solely on the instantiation of a UPF (NF-UP2) together with a
-   dedicated user plane TN slice (INS-UP2).  In this example, the
-   control plane of the first 5G slice is also updated to integrate the
-   second slice: the TN slice (INS-CP) and Network Functions (NF-CP) are
-   shared.
+   and user plane capabilities.  For instance, in some deployments, in
+   the case of a slice based on split-CU in the RAN, both CU-UP and
+   Centralized Unit Control Plane (CU-CP) may need to be deployed along
+   with the associated interfaces E1, F1-c, F1-u, N2, and N3 which are
+   conveyed in the TN.  In this regard, the creation of the "first
+   slice" can be subject to a specific logic that does not apply to
+   subsequent slices.  Let us consider the example depicted in Figure 10
+   to illustrate this deployment.  In this example, the first 5G slice
+   relies on the deployment of NF-CP and NF-UP functions together with
+   two TN slices for control and user planes (INS-CP and INS-UP1).
+   Next, in many cases, the deployment of a second slice relies solely
+   on the instantiation of a UPF (NF-UP2) together with a dedicated user
+   plane TN slice (INS-UP2).  In this example, the control plane of the
+   first 5G slice is also updated to integrate the second slice: the TN
+   slice (INS-CP) and Network Functions (NF-CP) are shared.  The model
+   described here in which the control plane is shared among multiple
+   slices is likely to be common, it is not mandatory.  Deployment
+   models with a separate control plane for each slice are also
+   possible.
 
    At the time of writing (2024), Section 6.1.2 of [NG.113] specifies
    that the eMBB slice (SST-1 and no Slice Differentiator (SD)) should
@@ -2408,14 +2412,15 @@ Table of Contents
    bandwidth requirements, due to the creation or modification of a
    slice.  Note that the "reservations" may be maintained by the
    transport controller - it is not necessary (or indeed possible for
-   SR-TE) to reserve bandwidth at the network layer.  The bandwidth
-   requirement acts as a constraint whenever the controller (re)computes
-   a path.  There could be a single mesh of paths between endpoints that
-   carry all of the traffic types, or there could be a small handful of
-   meshes, for example one mesh for low-latency traffic that follows the
-   minimum latency path and another mesh for the other traffic that
-   follows the minimum IGP metric path, as described in Section 5.
-   There would be a many-to-one mapping of slices to paths.
+   current SR-TE technology) to reserve bandwidth at the network layer.
+   The bandwidth requirement acts as a constraint whenever the
+   controller (re)computes a path.  There could be a single mesh of
+   paths between endpoints that carry all of the traffic types, or there
+   could be a small handful of meshes, for example one mesh for low-
+   latency traffic that follows the minimum latency path and another
+   mesh for the other traffic that follows the minimum IGP metric path,
+   as described in Section 5.  There would be a many-to-one mapping of
+   slices to paths.
 
    The bandwidth requirement from DCi to DCj is the sum of the DCi-DCj
    demands of the individual slices.  For example, if only slices "X"
@@ -2718,8 +2723,9 @@ Table of Contents
               and B. Wu, "YANG Data Models for Bearers and 'Attachment
               Circuits'-as-a-Service (ACaaS)", Work in Progress,
               Internet-Draft, draft-ietf-opsawg-teas-attachment-circuit-
-              15, 9 August 2024, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-opsawg-teas-attachment-circuit-15>.
+              16, 10 September 2024,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-
+              teas-attachment-circuit-16>.
 
    [I-D.ietf-teas-5g-network-slice-application]
               Geng, X., Contreras, L. M., Rokui, R., Dong, J., and I.
