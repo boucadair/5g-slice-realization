@@ -14,20 +14,20 @@
        Slicing is a feature that was introduced by the 3rd Generation Partnership Project (3GPP) in mobile networks. Realization of 5G slicing implies requirements for all mobile domains, including the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN). 
        This document describes a Network Slice realization model for IP/MPLS networks with a focus on the Transport Network fulfilling 5G slicing connectivity service objectives. The realization model reuses many building blocks currently commonly used in service provider networks. 
     " name="description">
-<meta content="xml2rfc 3.23.0" name="generator">
+<meta content="xml2rfc 3.23.1" name="generator">
 <meta content="L3VPN" name="keyword">
 <meta content="L2VPN" name="keyword">
 <meta content="Slice Service" name="keyword">
 <meta content="draft-ietf-teas-5g-ns-ip-mpls-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.23.0
-    Python 3.12.3
+  xml2rfc 3.23.1
+    Python 3.12.6
     ConfigArgParse 1.7
-    google-i18n-address 3.1.0
+    google-i18n-address 3.1.1
     intervaltree 3.1.0
     Jinja2 3.1.4
     lxml 4.9.4
-    platformdirs 4.2.2
+    platformdirs 4.3.6
     pycountry 22.3.5
     PyYAML 6.0.1
     requests 2.32.3
@@ -1035,7 +1035,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Szarkowicz, et al.</td>
-<td class="center">Expires 10 March 2025</td>
+<td class="center">Expires 24 March 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1048,12 +1048,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-teas-5g-ns-ip-mpls-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-09-06" class="published">6 September 2024</time>
+<time datetime="2024-09-20" class="published">20 September 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-03-10">10 March 2025</time></dd>
+<dd class="expires"><time datetime="2025-03-24">24 March 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1118,7 +1118,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 10 March 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 24 March 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1256,30 +1256,13 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-toc.1-1.13.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-acronyms-and-abbreviations" class="internal xref">Acronyms and Abbreviations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
-            <p id="section-toc.1-1.14.1"><a href="#appendix-B" class="auto internal xref">Appendix B</a>.  <a href="#name-an-overview-of-5g-networkin" class="internal xref">An Overview of 5G Networking</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.1">
-                <p id="section-toc.1-1.14.2.1.1"><a href="#appendix-B.1" class="auto internal xref">B.1</a>.  <a href="#name-key-building-blocks" class="internal xref">Key Building Blocks</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.2">
-                <p id="section-toc.1-1.14.2.2.1"><a href="#appendix-B.2" class="auto internal xref">B.2</a>.  <a href="#name-core-network-cn" class="internal xref">Core Network (CN)</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.3">
-                <p id="section-toc.1-1.14.2.3.1"><a href="#appendix-B.3" class="auto internal xref">B.3</a>.  <a href="#name-radio-access-network-ran" class="internal xref">Radio Access Network (RAN)</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.4">
-                <p id="section-toc.1-1.14.2.4.1"><a href="#appendix-B.4" class="auto internal xref">B.4</a>.  <a href="#name-transport-network-tn" class="internal xref">Transport Network (TN)</a></p>
-</li>
-            </ul>
+            <p id="section-toc.1-1.14.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
-            <p id="section-toc.1-1.15.1"><a href="#appendix-C" class="auto internal xref">Appendix C</a>.  <a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+            <p id="section-toc.1-1.15.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16">
-            <p id="section-toc.1-1.16.1"><a href="#appendix-D" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
-</li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.17">
-            <p id="section-toc.1-1.17.1"><a href="#appendix-E" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.16.1"><a href="#appendix-D" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1327,7 +1310,7 @@ domain by mapping to explicit data plane identifiers (e.g., Layer 2, Layer 3, or
 <p id="section-1-6">The realization model described in this document uses a set of building blocks commonly used in service provider networks. Concretely, the model uses (1) Layer 2 Virtual Private Network (L2VPN) <span>[<a href="#RFC4664" class="cite xref">RFC4664</a>]</span> and/or Layer 3 Virtual Private Network (L3VPN) <span>[<a href="#RFC4364" class="cite xref">RFC4364</a>]</span> service instances for logical separation, (2) fine-grained resource control at the Provider Edges (PEs), (3) coarse-grained resource control within the provider network, and (4) capacity management. More details are provided in Sections <a href="#sec-over-rea-model" class="auto internal xref">3.7</a>, <a href="#sec-qos-map" class="auto internal xref">5</a>, <a href="#transport-plane-mapping-models" class="auto internal xref">6</a>, and <a href="#sec-capacity-planning" class="auto internal xref">7</a>.<a href="#section-1-6" class="pilcrow">¶</a></p>
 <p id="section-1-7">This realization model uses a single Network Resource Partition (NRP) (<span><a href="https://rfc-editor.org/rfc/rfc9543#section-7.1" class="relref">Section 7.1</a> of [<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>). The applicability to multiple NRPs is out of scope.<a href="#section-1-7" class="pilcrow">¶</a></p>
 <p id="section-1-8">Although this document focuses on 5G, the realizations are not fundamentally constrained by the 5G use case. The document is not intended to be a BCP and does not claim to specify mandatory mechanisms to realize network slices. Rather, a key goal of the document is to provide pragmatic implementation approaches by leveraging existing readily-available, widely-deployed techniques. The document is also intended to align the mobile and the IETF perspectives of slicing from a realization perspective.<a href="#section-1-8" class="pilcrow">¶</a></p>
-<p id="section-1-9">A brief 5G overview is provided in <a href="#sec-5g-overview" class="auto internal xref">Appendix B</a> for the reader's convenience. For a definitive description of 3GPP network architectures, the reader should refer to <span>[<a href="#TS-23.501" class="cite xref">TS-23.501</a>]</span>. More  details can be found in <span>[<a href="#_5G-Book" class="cite xref">_5G-Book</a>]</span>.<a href="#section-1-9" class="pilcrow">¶</a></p>
+<p id="section-1-9">For a definitive description of 3GPP network architectures, the reader should refer to <span>[<a href="#TS-23.501" class="cite xref">TS-23.501</a>]</span>. More  details can be found in <span>[<a href="#_5G-Book" class="cite xref">_5G-Book</a>]</span>.<a href="#section-1-9" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="definitions">
@@ -1383,7 +1366,7 @@ domain by mapping to explicit data plane identifiers (e.g., Layer 2, Layer 3, or
         <h3 id="name-scope-of-the-transport-netw">
 <a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-scope-of-the-transport-netw" class="section-name selfRef">Scope of the Transport Network</a>
         </h3>
-<p id="section-3.1-1"><a href="#sec-5g-overview" class="auto internal xref">Appendix B</a> provides an overview of 5G network building blocks: the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN). The Transport Network is defined by the 3GPP as:<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.1-1">The main 5G network building blocks are: the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN). The Transport Network is defined by the 3GPP as:<a href="#section-3.1-1" class="pilcrow">¶</a></p>
 <blockquote id="section-3.1-2">
           <p id="section-3.1-2.1">"part supporting connectivity within and between CN and RAN parts" (Section 1 of <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span>).<a href="#section-3.1-2.1" class="pilcrow">¶</a></p>
 </blockquote>
@@ -1659,12 +1642,9 @@ However, this document does not exclude the instantiation of multiple ACs betwee
   +-----------+ Orchestration +-|--------------------------+
   |           | (RAN and CN)  | |                          |
   |           +---------------+ |                          |
-  |                             |                          |
-  |    +------------------------|----------------------+   |
-  |    |TN Orchestration        |                      |   |
-  |    |        +------------------------------+       |   |
-  |    |        |               |              |       |   |
-  |    |        v               v              v       |   |
+  |                             v                          |
+  |    +-----------------------------------------------+   |
+  |    |TN Orchestration                               |   |
   |    |+---------------++-----------++---------------+|   |
   |    || Customer Site ||RFC9543 NSC|| Customer Site ||   |
   |    || Orchestration ||           || Orchestration ||   |
@@ -1883,7 +1863,7 @@ In practice, for operational and scaling reasons, typically M to N would be used
 <a href="#section-3.6" class="section-number selfRef">3.6. </a><a href="#name-first-5g-slice-versus-subse" class="section-name selfRef">First 5G Slice versus Subsequent Slices</a>
         </h3>
 <p id="section-3.6-1">An operational 5G Network Slice incorporates both 5G control plane and user plane capabilities.
-For instance, consider a slice based on split-CU in the RAN, both CU-UP and Centralized Unit Control Plane (CU-CP) need to be deployed along with the associated interfaces E1, F1-c, F1-u, N2, and N3 which are conveyed in the TN. In this regard, the creation of the "first slice" can be subject to a specific logic that does not apply to subsequent slices. Let us consider the example depicted in <a href="#_figure-7" class="auto internal xref">Figure 10</a> to illustrate this deployment. In this example, the first 5G slice relies on the deployment of NF-CP and NF-UP functions together with two TN slices for control and user planes (INS-CP and INS-UP1). Next, the deployment of a second slice relies solely on the instantiation of a UPF (NF-UP2) together with a dedicated user plane TN slice (INS-UP2). In this example, the control plane of the first 5G slice is also updated to integrate the second slice: the TN slice (INS-CP) and Network Functions (NF-CP) are shared.<a href="#section-3.6-1" class="pilcrow">¶</a></p>
+For instance, in some deployments, in the case of a slice based on split-CU in the RAN, both CU-UP and Centralized Unit Control Plane (CU-CP) may need to be deployed along with the associated interfaces E1, F1-c, F1-u, N2, and N3 which are conveyed in the TN. In this regard, the creation of the "first slice" can be subject to a specific logic that does not apply to subsequent slices. Let us consider the example depicted in <a href="#_figure-7" class="auto internal xref">Figure 10</a> to illustrate this deployment. In this example, the first 5G slice relies on the deployment of NF-CP and NF-UP functions together with two TN slices for control and user planes (INS-CP and INS-UP1). Next, in many cases, the deployment of a second slice relies solely on the instantiation of a UPF (NF-UP2) together with a dedicated user plane TN slice (INS-UP2). In this example, the control plane of the first 5G slice is also updated to integrate the second slice: the TN slice (INS-CP) and Network Functions (NF-CP) are shared. The model described here in which the control plane is shared among multiple slices is likely to be common, it is not mandatory. Deployment models with a separate control plane for each slice are also possible.<a href="#section-3.6-1" class="pilcrow">¶</a></p>
 <p id="section-3.6-2">At the time of writing (2024), Section 6.1.2 of <span>[<a href="#NG.113" class="cite xref">NG.113</a>]</span> specifies that the
    eMBB slice (SST-1 and no Slice Differentiator (SD)) should be supported globally.  This 5G
    slice would be the first slice in any 5G deployment.<a href="#section-3.6-2" class="pilcrow">¶</a></p>
@@ -3684,7 +3664,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    time, unless the 5G NSO communicates a change in slice bandwidth
    requirements, due to the creation or modification of a slice.  Note
    that the "reservations" may be maintained by the transport
-   controller - it is not necessary (or indeed possible for SR-TE) to
+   controller - it is not necessary (or indeed possible for current SR-TE technology) to
    reserve bandwidth at the network layer.  The bandwidth requirement
    acts as a constraint whenever the controller (re)computes a path.  There could be a single mesh of paths between endpoints that
    carry all of the traffic types, or there could be a small handful of
@@ -3994,7 +3974,7 @@ service disruption. Note that such an on-path attacker may make more damage (e.g
 <dd class="break"></dd>
 <dt id="I-D.ietf-opsawg-teas-attachment-circuit">[I-D.ietf-opsawg-teas-attachment-circuit]</dt>
         <dd>
-<span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Roberts, R.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, and <span class="refAuthor">B. Wu</span>, <span class="refTitle">"YANG Data Models for Bearers and 'Attachment Circuits'-as-a-Service (ACaaS)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-opsawg-teas-attachment-circuit-15</span>, <time datetime="2024-08-09" class="refDate">9 August 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-teas-attachment-circuit-15">https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-teas-attachment-circuit-15</a>&gt;</span>. </dd>
+<span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Roberts, R.</span>, <span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, and <span class="refAuthor">B. Wu</span>, <span class="refTitle">"YANG Data Models for Bearers and 'Attachment Circuits'-as-a-Service (ACaaS)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-opsawg-teas-attachment-circuit-16</span>, <time datetime="2024-09-10" class="refDate">10 September 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-teas-attachment-circuit-16">https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-teas-attachment-circuit-16</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-teas-5g-network-slice-application">[I-D.ietf-teas-5g-network-slice-application]</dt>
         <dd>
@@ -4087,10 +4067,6 @@ service disruption. Note that such an on-path attacker may make more damage (e.g
 <dt id="RFC6291">[RFC6291]</dt>
         <dd>
 <span class="refAuthor">Andersson, L.</span>, <span class="refAuthor">van Helvoort, H.</span>, <span class="refAuthor">Bonica, R.</span>, <span class="refAuthor">Romascanu, D.</span>, and <span class="refAuthor">S. Mansfield</span>, <span class="refTitle">"Guidelines for the Use of the "OAM" Acronym in the IETF"</span>, <span class="seriesInfo">BCP 161</span>, <span class="seriesInfo">RFC 6291</span>, <span class="seriesInfo">DOI 10.17487/RFC6291</span>, <time datetime="2011-06" class="refDate">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6291">https://www.rfc-editor.org/rfc/rfc6291</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC6459">[RFC6459]</dt>
-        <dd>
-<span class="refAuthor">Korhonen, J., Ed.</span>, <span class="refAuthor">Soininen, J.</span>, <span class="refAuthor">Patil, B.</span>, <span class="refAuthor">Savolainen, T.</span>, <span class="refAuthor">Bajko, G.</span>, and <span class="refAuthor">K. Iisakkila</span>, <span class="refTitle">"IPv6 in 3rd Generation Partnership Project (3GPP) Evolved Packet System (EPS)"</span>, <span class="seriesInfo">RFC 6459</span>, <span class="seriesInfo">DOI 10.17487/RFC6459</span>, <time datetime="2012-01" class="refDate">January 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6459">https://www.rfc-editor.org/rfc/rfc6459</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC6624">[RFC6624]</dt>
         <dd>
@@ -4186,11 +4162,11 @@ service disruption. Note that such an on-path attacker may make more damage (e.g
 <dd class="break"></dd>
 <dt id="TS-23.501">[TS-23.501]</dt>
         <dd>
-<span class="refAuthor">3GPP</span>, <span class="refTitle">"TS 23.501: System architecture for the 5G System (5GS)"</span>, <time datetime="2021" class="refDate">2021</time>, <span>&lt;<a href="https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId-3144">https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId-3144</a>&gt;</span>. </dd>
+<span class="refAuthor">3GPP</span>, <span class="refTitle">"TS 23.501: System architecture for the 5G System (5GS)"</span>, <time datetime="2024" class="refDate">2024</time>, <span>&lt;<a href="https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3144">https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3144</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="TS-28.530">[TS-28.530]</dt>
         <dd>
-<span class="refAuthor">3GPP</span>, <span class="refTitle">"TS 23.530: Management and orchestration; Concepts, use cases and requirements)"</span>, <time datetime="2023" class="refDate">2023</time>, <span>&lt;<a href="https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId-3273">https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId-3273</a>&gt;</span>. </dd>
+<span class="refAuthor">3GPP</span>, <span class="refTitle">"TS 28.530: Management and orchestration; Concepts, use cases and requirements)"</span>, <time datetime="2024" class="refDate">2024</time>, <span>&lt;<a href="https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3273">https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3273</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="_5G-Book">[_5G-Book]</dt>
       <dd>
@@ -4206,418 +4182,305 @@ service disruption. Note that such an on-path attacker may make more damage (e.g
       <h2 id="name-acronyms-and-abbreviations">
 <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-acronyms-and-abbreviations" class="section-name selfRef">Acronyms and Abbreviations</a>
       </h2>
-<p id="appendix-A-1">3GPP: 3rd Generation Partnership Project<a href="#appendix-A-1" class="pilcrow">¶</a></p>
-<p id="appendix-A-2">5GC: 5G Core<a href="#appendix-A-2" class="pilcrow">¶</a></p>
-<p id="appendix-A-3">5QI: 5G QoS Indicator<a href="#appendix-A-3" class="pilcrow">¶</a></p>
-<p id="appendix-A-4">A2A: Any-to-Any<a href="#appendix-A-4" class="pilcrow">¶</a></p>
-<p id="appendix-A-5">AC: Attachment Circuit<a href="#appendix-A-5" class="pilcrow">¶</a></p>
-<p id="appendix-A-6">AMF: Access and Mobility Management Function<a href="#appendix-A-6" class="pilcrow">¶</a></p>
-<p id="appendix-A-7">AUSF: Authentication Server Function<a href="#appendix-A-7" class="pilcrow">¶</a></p>
-<p id="appendix-A-8">BBU: Baseband Unit<a href="#appendix-A-8" class="pilcrow">¶</a></p>
-<p id="appendix-A-9">BH: Backhaul<a href="#appendix-A-9" class="pilcrow">¶</a></p>
-<p id="appendix-A-10">BS: Base Station<a href="#appendix-A-10" class="pilcrow">¶</a></p>
-<p id="appendix-A-11">CE: Customer Edge<a href="#appendix-A-11" class="pilcrow">¶</a></p>
-<p id="appendix-A-12">CIR: Committed Information Rate<a href="#appendix-A-12" class="pilcrow">¶</a></p>
-<p id="appendix-A-13">CN: Core Network<a href="#appendix-A-13" class="pilcrow">¶</a></p>
-<p id="appendix-A-14">CoS: Class of Service<a href="#appendix-A-14" class="pilcrow">¶</a></p>
-<p id="appendix-A-15">CP: Control Plane<a href="#appendix-A-15" class="pilcrow">¶</a></p>
-<p id="appendix-A-16">CU: Centralized Unit<a href="#appendix-A-16" class="pilcrow">¶</a></p>
-<p id="appendix-A-17">CU-CP: Centralized Unit Control Plane<a href="#appendix-A-17" class="pilcrow">¶</a></p>
-<p id="appendix-A-18">CU-UP: Centralized Unit User Plane<a href="#appendix-A-18" class="pilcrow">¶</a></p>
-<p id="appendix-A-19">DC: Data Center<a href="#appendix-A-19" class="pilcrow">¶</a></p>
-<p id="appendix-A-20">DDoS: Distributed Denial of Services<a href="#appendix-A-20" class="pilcrow">¶</a></p>
-<p id="appendix-A-21">DN: Data Network<a href="#appendix-A-21" class="pilcrow">¶</a></p>
-<p id="appendix-A-22">DSCP: Differentiated Services Code Point<a href="#appendix-A-22" class="pilcrow">¶</a></p>
-<p id="appendix-A-23">DU: Distributed Unit<a href="#appendix-A-23" class="pilcrow">¶</a></p>
-<p id="appendix-A-24">eCPRI: enhanced Common Public Radio Interface<a href="#appendix-A-24" class="pilcrow">¶</a></p>
-<p id="appendix-A-25">FH: Fronthaul<a href="#appendix-A-25" class="pilcrow">¶</a></p>
-<p id="appendix-A-26">FIB: Forwarding Information Base<a href="#appendix-A-26" class="pilcrow">¶</a></p>
-<p id="appendix-A-27">GPRS: Generic Packet Radio Service<a href="#appendix-A-27" class="pilcrow">¶</a></p>
-<p id="appendix-A-28">gNB: gNodeB<a href="#appendix-A-28" class="pilcrow">¶</a></p>
-<p id="appendix-A-29">GTP: GPRS Tunneling Protocol<a href="#appendix-A-29" class="pilcrow">¶</a></p>
-<p id="appendix-A-30">GTP-U: GPRS Tunneling Protocol User plane<a href="#appendix-A-30" class="pilcrow">¶</a></p>
-<p id="appendix-A-31">IGP: Interior Gateway Protocol<a href="#appendix-A-31" class="pilcrow">¶</a></p>
-<p id="appendix-A-32">L2VPN: Layer 2 Virtual Private Network<a href="#appendix-A-32" class="pilcrow">¶</a></p>
-<p id="appendix-A-33">L3VPN: Layer 3 Virtual Private Network<a href="#appendix-A-33" class="pilcrow">¶</a></p>
-<p id="appendix-A-34">LSP: Label Switched Path<a href="#appendix-A-34" class="pilcrow">¶</a></p>
-<p id="appendix-A-35">MH: Midhaul<a href="#appendix-A-35" class="pilcrow">¶</a></p>
-<p id="appendix-A-36">MIoT: Massive Internet of Things<a href="#appendix-A-36" class="pilcrow">¶</a></p>
-<p id="appendix-A-37">MPLS: Multiprotocol Label Switching<a href="#appendix-A-37" class="pilcrow">¶</a></p>
-<p id="appendix-A-38">NF: Network Function<a href="#appendix-A-38" class="pilcrow">¶</a></p>
-<p id="appendix-A-39">NRF: Network Function Repository<a href="#appendix-A-39" class="pilcrow">¶</a></p>
-<p id="appendix-A-40">NRP: Network Resource Partition<a href="#appendix-A-40" class="pilcrow">¶</a></p>
-<p id="appendix-A-41">NSC: Network Slice Controller<a href="#appendix-A-41" class="pilcrow">¶</a></p>
-<p id="appendix-A-42">PE: Provider Edge<a href="#appendix-A-42" class="pilcrow">¶</a></p>
-<p id="appendix-A-43">PIR: Peak Information Rate<a href="#appendix-A-43" class="pilcrow">¶</a></p>
-<p id="appendix-A-44">QoS: Quality of Service<a href="#appendix-A-44" class="pilcrow">¶</a></p>
-<p id="appendix-A-45">RAN: Radio Access Network<a href="#appendix-A-45" class="pilcrow">¶</a></p>
-<p id="appendix-A-46">RIB: Routing Information Base<a href="#appendix-A-46" class="pilcrow">¶</a></p>
-<p id="appendix-A-47">RSVP: Resource Reservation Protocol<a href="#appendix-A-47" class="pilcrow">¶</a></p>
-<p id="appendix-A-48">RU: Radio Unit<a href="#appendix-A-48" class="pilcrow">¶</a></p>
-<p id="appendix-A-49">SD: Slice Differentiator<a href="#appendix-A-49" class="pilcrow">¶</a></p>
-<p id="appendix-A-50">SDP: Service Demarcation Point<a href="#appendix-A-50" class="pilcrow">¶</a></p>
-<p id="appendix-A-51">SLA: Service Level Agreement<a href="#appendix-A-51" class="pilcrow">¶</a></p>
-<p id="appendix-A-52">SLO: Service Level Objective<a href="#appendix-A-52" class="pilcrow">¶</a></p>
-<p id="appendix-A-53">SMF: Session Management Function<a href="#appendix-A-53" class="pilcrow">¶</a></p>
-<p id="appendix-A-54">S-NSSAI: Single Network Slice Selection Assistance Information<a href="#appendix-A-54" class="pilcrow">¶</a></p>
-<p id="appendix-A-55">SST: Slice/Service Type<a href="#appendix-A-55" class="pilcrow">¶</a></p>
-<p id="appendix-A-56">SR: Segment Routing<a href="#appendix-A-56" class="pilcrow">¶</a></p>
-<p id="appendix-A-57">SRv6: Segment Routing version 6<a href="#appendix-A-57" class="pilcrow">¶</a></p>
-<p id="appendix-A-58">TC: Traffic Class<a href="#appendix-A-58" class="pilcrow">¶</a></p>
-<p id="appendix-A-59">TE: Traffic Engineering<a href="#appendix-A-59" class="pilcrow">¶</a></p>
-<p id="appendix-A-60">TN: Transport Network<a href="#appendix-A-60" class="pilcrow">¶</a></p>
-<p id="appendix-A-61">UDM: Unified Data Management<a href="#appendix-A-61" class="pilcrow">¶</a></p>
-<p id="appendix-A-62">UE: User Equipment<a href="#appendix-A-62" class="pilcrow">¶</a></p>
-<p id="appendix-A-63">UP: User Plane<a href="#appendix-A-63" class="pilcrow">¶</a></p>
-<p id="appendix-A-64">UPF: User Plane Function<a href="#appendix-A-64" class="pilcrow">¶</a></p>
-<p id="appendix-A-65">URLLC: Ultra Reliable Low Latency Communication<a href="#appendix-A-65" class="pilcrow">¶</a></p>
-<p id="appendix-A-66">VLAN: Virtual Local Area Network<a href="#appendix-A-66" class="pilcrow">¶</a></p>
-<p id="appendix-A-67">VNF: Virtual Network Function<a href="#appendix-A-67" class="pilcrow">¶</a></p>
-<p id="appendix-A-68">VPN: Virtual Private Network<a href="#appendix-A-68" class="pilcrow">¶</a></p>
-<p id="appendix-A-69">VRF: Virtual Routing and Forwarding<a href="#appendix-A-69" class="pilcrow">¶</a></p>
-<p id="appendix-A-70">VXLAN: Virtual Extensible Local Area Network<a href="#appendix-A-70" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="sec-5g-overview">
-<section id="appendix-B">
-      <h2 id="name-an-overview-of-5g-networkin">
-<a href="#appendix-B" class="section-number selfRef">Appendix B. </a><a href="#name-an-overview-of-5g-networkin" class="section-name selfRef">An Overview of 5G Networking</a>
-      </h2>
-<p id="appendix-B-1">This section provides a brief introduction to 5G mobile networking
-   with a perspective on the Transport Network.  This section does not
-   intend to replace or define 3GPP architecture, instead its objective is to provide an
-   overview for readers that do not have a mobile background.  For
-   more comprehensive information, refer to <span>[<a href="#TS-23.501" class="cite xref">TS-23.501</a>]</span>.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
-<div id="key-building-blocks">
-<section id="appendix-B.1">
-        <h3 id="name-key-building-blocks">
-<a href="#appendix-B.1" class="section-number selfRef">B.1. </a><a href="#name-key-building-blocks" class="section-name selfRef">Key Building Blocks</a>
-        </h3>
-<p id="appendix-B.1-1"><span>[<a href="#TS-23.501" class="cite xref">TS-23.501</a>]</span> defines the Network Functions (UPF, Access and Mobility Function (AMF), etc.) that
-   compose the 5G System (5GS) Architecture together with related
-   interfaces (e.g., N1 and N2).  This architecture has built-in control
-   and user plane separation, and the control plane leverages a Service-
-   Based Architecture (SBA).  <a href="#_figure-28" class="auto internal xref">Figure 33</a> outlines an example 5GS architecture
-   with a subset of possible NFs and network interfaces.<a href="#appendix-B.1-1" class="pilcrow">¶</a></p>
-<span id="name-5gs-architecture-and-servic"></span><div id="_figure-28">
-<figure id="figure-33">
-          <div class="alignCenter art-text artwork" id="appendix-B.1-2.1">
-<pre>
-  +-----+  +-----+  +-----+    +-----+  +-----+  +-----+
-  |NSSF |  | NEF |  | NRF |    | PCF |  | UDM |  | AF  |
-  +--+--+  +--+--+  +--+--+    +--+--+  +--+--+  +--+--+
-Nnssf|    Nnef|    Nnrf|      Npcf|    Nudm|        |Naf
-  ---+--------+--+-----+----------+---+----+--------+----
-            Nausf|    Namf|       Nsmf|
-              +--+--+  +--+--+     +--+------+
-              |AUSR |  | AMF |     |   SMF   |
-              +-----+  +--+--+     +--+------+
-                       /  |           |      \
-Control Plane      N1 /   |N2         |N4     \N4
-------------------------------------------------------------
-User Plane          /     |           |         \
-                +---+  +--+--+  N3 +--+--+ N9 +-----+ N6  .---.
-                |UE +--+(R)AN+-----+ UPF +----+ UPF +----( DN  )
-                +---+  +-----+     +-----+    +-----+     '---'
-</pre>
-</div>
-<figcaption><a href="#figure-33" class="selfRef">Figure 33</a>:
-<a href="#name-5gs-architecture-and-servic" class="selfRef">5GS Architecture and Service-based Interfaces</a>
-          </figcaption></figure>
-</div>
-<p id="appendix-B.1-3">Similar to previous versions of 3GPP mobile networks <span>[<a href="#RFC6459" class="cite xref">RFC6459</a>]</span>, a 5G mobile network is split
-   into the following four major domains (<a href="#_figure-29" class="auto internal xref">Figure 34</a>):<a href="#appendix-B.1-3" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="appendix-B.1-4.1">
-            <p id="appendix-B.1-4.1.1">UE, MS, MN, and Mobile:<a href="#appendix-B.1-4.1.1" class="pilcrow">¶</a></p>
-<p id="appendix-B.1-4.1.2">
-The terms User Equipment (UE), Mobile Station (MS), Mobile
-Node (MN), and mobile refer to the devices that are hosts with the
-ability to obtain Internet connectivity via a 3GPP network.  An MS
-is comprised of a Terminal Equipment (TE) and a Mobile Terminal
-(MT).<a href="#appendix-B.1-4.1.2" class="pilcrow">¶</a></p>
-</li>
-          <li class="normal" id="appendix-B.1-4.2">
-            <p id="appendix-B.1-4.2.1">Radio Access Network (RAN):<a href="#appendix-B.1-4.2.1" class="pilcrow">¶</a></p>
-<p id="appendix-B.1-4.2.2">
-Provides wireless connectivity to UEs. A RAN is
-made up of the Antenna that transmits and receives signals to
-UEs and the Base Station that digitizes the signal and converts the
-Radio Frequency (RF) data stream to IP packets.<a href="#appendix-B.1-4.2.2" class="pilcrow">¶</a></p>
-</li>
-          <li class="normal" id="appendix-B.1-4.3">
-            <p id="appendix-B.1-4.3.1">Core Network (CN):<a href="#appendix-B.1-4.3.1" class="pilcrow">¶</a></p>
-<p id="appendix-B.1-4.3.2">
-Controls the CP of the RAN and provides connectivity to the Data
-Network (e.g., the Internet or a private VPN).  The Core Network
-hosts dozens of services such as authentication, phone registry,
-charging, access to Public Switched Telephony Network (PSTN) and handover.<a href="#appendix-B.1-4.3.2" class="pilcrow">¶</a></p>
-</li>
-          <li class="normal" id="appendix-B.1-4.4">
-            <p id="appendix-B.1-4.4.1">Transport Network (TN):<a href="#appendix-B.1-4.4.1" class="pilcrow">¶</a></p>
-<p id="appendix-B.1-4.4.2">
-Provides connectivity between 5G NFs.  The TN may provide connectivity from the RAN to the CN as well as  within the RAN or within the CN.  The
-traffic generated by NFs is - mostly - based on IP or Ethernet.<a href="#appendix-B.1-4.4.2" class="pilcrow">¶</a></p>
-</li>
-        </ul>
-<span id="name-building-blocks-of-5g-archi"></span><div id="_figure-29">
-<figure id="figure-34">
-          <div class="alignCenter art-text artwork" id="appendix-B.1-5.1">
-<pre>
-+----------------------------------------------+
-|             +------------+    +------------+ |
-| +----+      |            |    |            | |   .-------.
-| | UE +------+    RAN     |    |     CN     +----(    DN   )
-| +----+      |            |    |            | |   '-------'
-|             +------+-----+    +------+-----+ |
-|                    |                 |       |
-|              +-----+-----------------+----+  |
-|              |     Transport Network      |  |
-|              +----------------------------+  |
-|                                              |
-|                    5G System                 |
-+----------------------------------------------+
-</pre>
-</div>
-<figcaption><a href="#figure-34" class="selfRef">Figure 34</a>:
-<a href="#name-building-blocks-of-5g-archi" class="selfRef">Building Blocks of 5G Architecture (A High-Level Representation)</a>
-          </figcaption></figure>
-</div>
-</section>
-</div>
-<div id="core-network-cn">
-<section id="appendix-B.2">
-        <h3 id="name-core-network-cn">
-<a href="#appendix-B.2" class="section-number selfRef">B.2. </a><a href="#name-core-network-cn" class="section-name selfRef">Core Network (CN)</a>
-        </h3>
-<p id="appendix-B.2-1">The 5G Core Network (5GC) is made up of a set of NFs which fall into two main categories (<a href="#_figure-30" class="auto internal xref">Figure 35</a>):<a href="#appendix-B.2-1" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="appendix-B.2-2.1">
-            <p id="appendix-B.2-2.1.1">5GC User Plane:<a href="#appendix-B.2-2.1.1" class="pilcrow">¶</a></p>
-<p id="appendix-B.2-2.1.2">
-The UPF is the interconnect
-point between the mobile infrastructure and the Data Network (DN).
-It interfaces with the RAN via the N3 interface by encapsulating/
-decapsulating the user plane traffic in GTP tunnels (aka GTP-U or
-Mobile user plane).<a href="#appendix-B.2-2.1.2" class="pilcrow">¶</a></p>
-</li>
-          <li class="normal" id="appendix-B.2-2.2">
-            <p id="appendix-B.2-2.2.1">5GC Control Plane:<a href="#appendix-B.2-2.2.1" class="pilcrow">¶</a></p>
-<p id="appendix-B.2-2.2.2">
-The 5G control plane is made up of a
-comprehensive set of NFs.  The description of these entities is out of the scope of this
-document. The following NFs and interfaces are worth mentioning,
-since their connectivity may rely on the Transport Network:<a href="#appendix-B.2-2.2.2" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="appendix-B.2-2.2.3.1">
-                <p id="appendix-B.2-2.2.3.1.1">the AMF connects with the RAN control plane over the N2 interface<a href="#appendix-B.2-2.2.3.1.1" class="pilcrow">¶</a></p>
-</li>
-              <li class="normal" id="appendix-B.2-2.2.3.2">
-                <p id="appendix-B.2-2.2.3.2.1">the SMF controls the 5GC UPF via the N4 interface<a href="#appendix-B.2-2.2.3.2.1" class="pilcrow">¶</a></p>
-</li>
-            </ul>
-</li>
-        </ul>
-<span id="name-5g-core-network-cn"></span><div id="_figure-30">
-<figure id="figure-35">
-          <div class="alignCenter art-text artwork" id="appendix-B.2-3.1">
-<pre>
-  +---------+    +-------------------------+
-  |   RAN   |    |      5G Core (5GC)      |
-  |         |    |                         |
-  |         |    |   [AUSF  NRF  UDM ...]  |
-  |         |    |         (SBA)           |
-  |         |    |                         |
-  |         | N2 |   +-----+ N11 +-----+   |
-  |    CP -----------+ AMF +-----+ SMF |   |
-  |         |    |   +-----+     +--+--+   |
-  |         |    |                  |      |  Control Plane
------------------------------------------------------------
-  |         |    |                  | N4   |  User Plane
-  |         | N3 |               +--+--+   | N6  .-------.
-  |    UP -----------------------+ UPF +-------&gt;(   DN    )
-  |         |    |               +-----+   |     `-------'
-  +---------+    +-------------------------+
-</pre>
-</div>
-<figcaption><a href="#figure-35" class="selfRef">Figure 35</a>:
-<a href="#name-5g-core-network-cn" class="selfRef">5G Core Network (CN)</a>
-          </figcaption></figure>
-</div>
-</section>
-</div>
-<div id="radio-access-network-ran">
-<section id="appendix-B.3">
-        <h3 id="name-radio-access-network-ran">
-<a href="#appendix-B.3" class="section-number selfRef">B.3. </a><a href="#name-radio-access-network-ran" class="section-name selfRef">Radio Access Network (RAN)</a>
-        </h3>
-<p id="appendix-B.3-1">The RAN connects cellular wireless devices to
-   a mobile Core Network.  The RAN is made up of three components,
-   which form the Radio Base Station:<a href="#appendix-B.3-1" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="appendix-B.3-2.1">
-            <p id="appendix-B.3-2.1.1">The Baseband Unit (BBU) provides the interface between the Core
-Network and the Radio Network.  It connects to the Radio Unit and
-is responsible for the baseband signal processing to packet.<a href="#appendix-B.3-2.1.1" class="pilcrow">¶</a></p>
-</li>
-          <li class="normal" id="appendix-B.3-2.2">
-            <p id="appendix-B.3-2.2.1">The Radio Unit (RU) is located close to the Antenna and controlled
-by the BBU.  It converts the Baseband signal received from the BBU
-to a Radio frequency signal.<a href="#appendix-B.3-2.2.1" class="pilcrow">¶</a></p>
-</li>
-          <li class="normal" id="appendix-B.3-2.3">
-            <p id="appendix-B.3-2.3.1">The Antenna converts the electric signal received from the RU to
-radio waves<a href="#appendix-B.3-2.3.1" class="pilcrow">¶</a></p>
-</li>
-        </ul>
-<p id="appendix-B.3-3">The 5G RAN Base Station is called a gNodeB (gNB).  It connects to the
-   Core Network via the N3 (User Plane) and N2 (Control Plane)
-   interfaces.<a href="#appendix-B.3-3" class="pilcrow">¶</a></p>
-<p id="appendix-B.3-4">The 5G RAN architecture supports RAN disaggregation in various ways.
-   Notably, the BBU can be split into a DU (Distributed Unit) for
-   digital signal processing and a CU (Centralized Unit) for RAN Layer 3
-   processing.  Furthermore, the CU can be itself split into Control
-   Plane (CU-CP) and User Plane (CU-UP).<a href="#appendix-B.3-4" class="pilcrow">¶</a></p>
-<p id="appendix-B.3-5"><a href="#_figure-31" class="auto internal xref">Figure 36</a> depicts a disaggregated RAN with NFs and interfaces.<a href="#appendix-B.3-5" class="pilcrow">¶</a></p>
-<span id="name-ran-disaggregation"></span><div id="_figure-31">
-<figure id="figure-36">
-          <div class="alignCenter art-text artwork" id="appendix-B.3-6.1">
-<pre>
-            +---------------------------------+    +-----------+
-            |                                 | N3 |           |
-+----+  NR  |                                 +----+  5G Core  |
-| UE +------+             gNodeB              |    |           |
-+----+      |                                 +----+   (5GC)   |
-            |                                 | N2 |           |
-            +---------------------------------+    +-----------+
-                            | |
-                           .+ +.
-                           \   /
-                            \ /
-            +---------------------------------+    +-----------+
-            |           +-------------------+ |    |           |
-            |           |                   | |    |           |
-+----+  NR  | +----+ F2 |+----+ F1-U +-----+| | N3 |  +-----+  |
-| UE +--------+ RU +-----+ DU +------+CU-UP+----------+ UPF |  |
-+----+      | +----+    |+-+--+      +--+--+| |    |  +-----+  |
-            |           |  |            |E1 | |    |           |
-            |           |  | F1-C       |   | |    |           |
-            |           |  |         +--+--+| | N2 |  +-----+  |
-            |           |  +---------+CU-CP+----------+ AMF |  |
-            |           |            +-----+| |    |  +-----+  |
-            |           |     BBU split     | |    |  5G Core  |
-            |           +-------------------+ |    |           |
-            |       Disaggregated gNodeB      |    |           |
-            +---------------------------------+    +-----------+
-</pre>
-</div>
-<figcaption><a href="#figure-36" class="selfRef">Figure 36</a>:
-<a href="#name-ran-disaggregation" class="selfRef">RAN Disaggregation</a>
-          </figcaption></figure>
-</div>
-</section>
-</div>
-<div id="transport-network-tn">
-<section id="appendix-B.4">
-        <h3 id="name-transport-network-tn">
-<a href="#appendix-B.4" class="section-number selfRef">B.4. </a><a href="#name-transport-network-tn" class="section-name selfRef">Transport Network (TN)</a>
-        </h3>
-<p id="appendix-B.4-1">The 5G transport architecture defines three main segments for the
-   Transport Network, which are commonly referred to as Fronthaul (FH),
-   Midhaul (MH), and Backhaul (BH) <span>[<a href="#TR-GSTR-TN5G" class="cite xref">TR-GSTR-TN5G</a>]</span>:<a href="#appendix-B.4-1" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="appendix-B.4-2.1">
-            <p id="appendix-B.4-2.1.1">Fronthaul happens before the BBU processing.  In 5G, this
-interface is based on eCPRI with Ethernet
-or IP encapsulation.<a href="#appendix-B.4-2.1.1" class="pilcrow">¶</a></p>
-</li>
-          <li class="normal" id="appendix-B.4-2.2">
-            <p id="appendix-B.4-2.2.1">Midhaul is optional: this segment is introduced in the BBU split
-presented in Appendix B.3, where Midhaul network refers to the DU-
-CU interconnection (i.e., F1 interface).  At this level, all
-traffic is encapsulated in IP (signaling and user plane).<a href="#appendix-B.4-2.2.1" class="pilcrow">¶</a></p>
-</li>
-          <li class="normal" id="appendix-B.4-2.3">
-            <p id="appendix-B.4-2.3.1">Backhaul happens after BBU processing.  Therefore, it maps to the
-interconnection between the RAN and the CN.  All traffic
-is encapsulated in IP.<a href="#appendix-B.4-2.3.1" class="pilcrow">¶</a></p>
-</li>
-        </ul>
-<p id="appendix-B.4-3"><a href="#_figure-32" class="auto internal xref">Figure 37</a> illustrates the different segments of the Transport Network
-   with the relevant NFs.<a href="#appendix-B.4-3" class="pilcrow">¶</a></p>
-<span id="name-5g-transport-segments"></span><div id="_figure-32">
-<figure id="figure-37">
-          <div class="alignCenter art-text artwork" id="appendix-B.4-4.1">
-<pre>
-+---------------------------------------------------------+
-|                    Transport Network                    |
-|                                                         |
-|    Fronthaul       Midhaul       Backhaul               |
-|  +-----------+ +------------+ +-----------+             |
-|  |           | |            | |           |             |
-+--|-----------|-|------------|-|-----------|-------------+
- +-+--+      +-+-++         +-+-++        +-+---+     .---.
- | RU |      | DU |         | CU |        | UPF :----( DN  )
- +----+      +----+         +----+        +-----+     `---'
-</pre>
-</div>
-<figcaption><a href="#figure-37" class="selfRef">Figure 37</a>:
-<a href="#name-5g-transport-segments" class="selfRef">5G Transport Segments</a>
-          </figcaption></figure>
-</div>
-<p id="appendix-B.4-5">A given part of the transport network can
-   carry several 5G transport segments concurrently, as outlined in
-   <a href="#_figure-33" class="auto internal xref">Figure 38</a>.  This is because different types of 5G NFs
-   might be placed in the same location (e.g., the UPF from one slice
-   might be placed in the same location as the CU-UP from another
-   slice).<a href="#appendix-B.4-5" class="pilcrow">¶</a></p>
-<span id="name-concurrent-5g-transport-seg"></span><div id="_figure-33">
-<figure id="figure-38">
-          <div class="alignCenter art-text artwork" id="appendix-B.4-6.1">
-<pre>
-+---------+
-|+----+   | Colocated
-||RU-1|   | RU/DU
-|+-+--+   |
-|  | FH-1 |
-|+-+--+   |
-||DU-1|   |  +----+         +-----+         .---.
-|+-+--+   |  |CU-1|         |UPF-1+--------( DN  )
-+--|------+  +-+-++         +-+---+         `---'
-+--|-----------|-|------------|----------------------------+
-|  |    MH-1   | |    BH-1    |          Transport Network |
-|  +-----------+ +------------+                            |
-|  +-----------+ +------------+ +-----------+              |
-|  |    FH-2   | |    MH-2    | |    BH-2   |              |
-+--|-----------|-|------------|-|-----------|--------------+
- +-+--+      +-+-++         +-+-++        +-+---+     .---.
- |RU-2|      |DU-2|         |CU-2|        |UPF-2+----( DN  )
- +----+      +----+         +----+        +-----+     `---'
-</pre>
-</div>
-<figcaption><a href="#figure-38" class="selfRef">Figure 38</a>:
-<a href="#name-concurrent-5g-transport-seg" class="selfRef">Concurrent 5G Transport Segments</a>
-          </figcaption></figure>
-</div>
-</section>
-</div>
+<span class="break"></span><dl class="dlParallel" id="appendix-A-1">
+        <dt id="appendix-A-1.1">3GPP:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.2">
+          <p id="appendix-A-1.2.1">3rd Generation Partnership Project<a href="#appendix-A-1.2.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.3">5GC:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.4">
+          <p id="appendix-A-1.4.1">5G Core<a href="#appendix-A-1.4.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.5">5QI:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.6">
+          <p id="appendix-A-1.6.1">5G QoS Indicator<a href="#appendix-A-1.6.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.7">A2A:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.8">
+          <p id="appendix-A-1.8.1">Any-to-Any<a href="#appendix-A-1.8.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.9">AC:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.10">
+          <p id="appendix-A-1.10.1">Attachment Circuit<a href="#appendix-A-1.10.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.11">CE:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.12">
+          <p id="appendix-A-1.12.1">Customer Edge<a href="#appendix-A-1.12.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.13">CIR:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.14">
+          <p id="appendix-A-1.14.1">Committed Information Rate<a href="#appendix-A-1.14.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.15">CN:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.16">
+          <p id="appendix-A-1.16.1">Core Network<a href="#appendix-A-1.16.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.17">CoS:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.18">
+          <p id="appendix-A-1.18.1">Class of Service<a href="#appendix-A-1.18.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.19">CP:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.20">
+          <p id="appendix-A-1.20.1">Control Plane<a href="#appendix-A-1.20.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.21">CU:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.22">
+          <p id="appendix-A-1.22.1">Centralized Unit<a href="#appendix-A-1.22.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.23">CU-CP:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.24">
+          <p id="appendix-A-1.24.1">Centralized Unit Control Plane<a href="#appendix-A-1.24.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.25">CU-UP:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.26">
+          <p id="appendix-A-1.26.1">Centralized Unit User Plane<a href="#appendix-A-1.26.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.27">DC:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.28">
+          <p id="appendix-A-1.28.1">Data Center<a href="#appendix-A-1.28.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.29">DDoS:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.30">
+          <p id="appendix-A-1.30.1">Distributed Denial of Services<a href="#appendix-A-1.30.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.31">DSCP:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.32">
+          <p id="appendix-A-1.32.1">Differentiated Services Code Point<a href="#appendix-A-1.32.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.33">eCPRI:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.34">
+          <p id="appendix-A-1.34.1">enhanced Common Public Radio Interface<a href="#appendix-A-1.34.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.35">FIB:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.36">
+          <p id="appendix-A-1.36.1">Forwarding Information Base<a href="#appendix-A-1.36.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.37">GPRS:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.38">
+          <p id="appendix-A-1.38.1">Generic Packet Radio Service<a href="#appendix-A-1.38.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.39">gNB:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.40">
+          <p id="appendix-A-1.40.1">gNodeB<a href="#appendix-A-1.40.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.41">GTP:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.42">
+          <p id="appendix-A-1.42.1">GPRS Tunneling Protocol<a href="#appendix-A-1.42.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.43">GTP-U:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.44">
+          <p id="appendix-A-1.44.1">GPRS Tunneling Protocol User plane<a href="#appendix-A-1.44.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.45">IGP:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.46">
+          <p id="appendix-A-1.46.1">Interior Gateway Protocol<a href="#appendix-A-1.46.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.47">L2VPN:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.48">
+          <p id="appendix-A-1.48.1">Layer 2 Virtual Private Network<a href="#appendix-A-1.48.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.49">L3VPN:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.50">
+          <p id="appendix-A-1.50.1">Layer 3 Virtual Private Network<a href="#appendix-A-1.50.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.51">LSP:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.52">
+          <p id="appendix-A-1.52.1">Label Switched Path<a href="#appendix-A-1.52.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.53">MIoT:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.54">
+          <p id="appendix-A-1.54.1">Massive Internet of Things<a href="#appendix-A-1.54.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.55">MPLS:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.56">
+          <p id="appendix-A-1.56.1">Multiprotocol Label Switching<a href="#appendix-A-1.56.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.57">NF:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.58">
+          <p id="appendix-A-1.58.1">Network Function<a href="#appendix-A-1.58.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.59">NRP:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.60">
+          <p id="appendix-A-1.60.1">Network Resource Partition<a href="#appendix-A-1.60.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.61">NSC:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.62">
+          <p id="appendix-A-1.62.1">Network Slice Controller<a href="#appendix-A-1.62.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.63">PE:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.64">
+          <p id="appendix-A-1.64.1">Provider Edge<a href="#appendix-A-1.64.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.65">PIR:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.66">
+          <p id="appendix-A-1.66.1">Peak Information Rate<a href="#appendix-A-1.66.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.67">QoS:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.68">
+          <p id="appendix-A-1.68.1">Quality of Service<a href="#appendix-A-1.68.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.69">RAN:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.70">
+          <p id="appendix-A-1.70.1">Radio Access Network<a href="#appendix-A-1.70.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.71">RIB:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.72">
+          <p id="appendix-A-1.72.1">Routing Information Base<a href="#appendix-A-1.72.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.73">RSVP:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.74">
+          <p id="appendix-A-1.74.1">Resource Reservation Protocol<a href="#appendix-A-1.74.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.75">SD:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.76">
+          <p id="appendix-A-1.76.1">Slice Differentiator<a href="#appendix-A-1.76.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.77">SDP:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.78">
+          <p id="appendix-A-1.78.1">Service Demarcation Point<a href="#appendix-A-1.78.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.79">SLA:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.80">
+          <p id="appendix-A-1.80.1">Service Level Agreement<a href="#appendix-A-1.80.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.81">SLO:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.82">
+          <p id="appendix-A-1.82.1">Service Level Objective<a href="#appendix-A-1.82.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.83">S-NSSAI:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.84">
+          <p id="appendix-A-1.84.1">Single Network Slice Selection Assistance Information<a href="#appendix-A-1.84.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.85">SST:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.86">
+          <p id="appendix-A-1.86.1">Slice/Service Type<a href="#appendix-A-1.86.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.87">SR:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.88">
+          <p id="appendix-A-1.88.1">Segment Routing<a href="#appendix-A-1.88.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.89">SRv6:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.90">
+          <p id="appendix-A-1.90.1">Segment Routing version 6<a href="#appendix-A-1.90.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.91">TC:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.92">
+          <p id="appendix-A-1.92.1">Traffic Class<a href="#appendix-A-1.92.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.93">TE:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.94">
+          <p id="appendix-A-1.94.1">Traffic Engineering<a href="#appendix-A-1.94.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.95">TN:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.96">
+          <p id="appendix-A-1.96.1">Transport Network<a href="#appendix-A-1.96.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.97">UE:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.98">
+          <p id="appendix-A-1.98.1">User Equipment<a href="#appendix-A-1.98.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.99">UP:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.100">
+          <p id="appendix-A-1.100.1">User Plane<a href="#appendix-A-1.100.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.101">UPF:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.102">
+          <p id="appendix-A-1.102.1">User Plane Function<a href="#appendix-A-1.102.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.103">URLLC:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.104">
+          <p id="appendix-A-1.104.1">Ultra Reliable Low Latency Communication<a href="#appendix-A-1.104.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.105">VLAN:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.106">
+          <p id="appendix-A-1.106.1">Virtual Local Area Network<a href="#appendix-A-1.106.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.107">VPN:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.108">
+          <p id="appendix-A-1.108.1">Virtual Private Network<a href="#appendix-A-1.108.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.109">VRF:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.110">
+          <p id="appendix-A-1.110.1">Virtual Routing and Forwarding<a href="#appendix-A-1.110.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-A-1.111">VXLAN:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-A-1.112">
+          <p id="appendix-A-1.112.1">Virtual Extensible Local Area Network<a href="#appendix-A-1.112.1" class="pilcrow">¶</a></p>
+</dd>
+      <dd class="break"></dd>
+</dl>
 </section>
 </div>
 <div id="acknowledgments">
-<section id="appendix-C">
+<section id="appendix-B">
       <h2 id="name-acknowledgments">
-<a href="#appendix-C" class="section-number selfRef">Appendix C. </a><a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
+<a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
       </h2>
-<p id="appendix-C-1">The authors would like to thank Adrian Farrel, Joel Halpern, Tarek
+<p id="appendix-B-1">The authors would like to thank Adrian Farrel, Joel Halpern, Tarek
    Saad, Greg Mirsky, Rüdiger Geib, Nicklous D. Morris,         Daniele Ceccarelli, Bo Wu, Xuesong Geng, and Deborah Brungard for
-   their review of this document and for providing valuable comments.<a href="#appendix-C-1" class="pilcrow">¶</a></p>
-<p id="appendix-C-2">Special thanks to Jie Dong and Adrian Farrel for the detailed and careful reviews.<a href="#appendix-C-2" class="pilcrow">¶</a></p>
-<p id="appendix-C-3">Thanks to Alvaro Retana for the rtg-dir review, Yoshifumi Nishida for
-   the tsv-art review, and Timothy Winters for the int-dir review.<a href="#appendix-C-3" class="pilcrow">¶</a></p>
+   their review of this document and for providing valuable comments.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+<p id="appendix-B-2">Special thanks to Jie Dong and Adrian Farrel for the detailed and careful reviews.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
+<p id="appendix-B-3">Thanks to Alvaro Retana for the rtg-dir review, Yoshifumi Nishida for
+   the tsv-art review, and Timothy Winters for the int-dir review.<a href="#appendix-B-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="contributors">
-<section id="appendix-D">
+<section id="appendix-C">
       <h2 id="name-contributors">
 <a href="#name-contributors" class="section-name selfRef">Contributors</a>
       </h2>
@@ -4698,7 +4561,7 @@ is encapsulated in IP.<a href="#appendix-B.4-2.3.1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
-<section id="appendix-E">
+<section id="appendix-D">
       <h2 id="name-authors-addresses">
 <a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>

@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 10 March 2025                                  Juniper Networks
+Expires: 24 March 2025                                  Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                        6 September 2024
+                                                       20 September 2024
 
 
  A Realization of Network Slices for 5G Networks Using Current IP/MPLS
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 10 March 2025.
+   This Internet-Draft will expire on 24 March 2025.
 
 Copyright Notice
 
@@ -107,12 +107,7 @@ Table of Contents
      12.1.  Normative References
      12.2.  Informative References
    Appendix A.  Acronyms and Abbreviations
-   Appendix B.  An Overview of 5G Networking
-     B.1.  Key Building Blocks
-     B.2.  Core Network (CN)
-     B.3.  Radio Access Network (RAN)
-     B.4.  Transport Network (TN)
-   Appendix C.  Acknowledgments
+   Acknowledgments
    Contributors
    Authors' Addresses
 
@@ -205,10 +200,9 @@ Table of Contents
    The document is also intended to align the mobile and the IETF
    perspectives of slicing from a realization perspective.
 
-   A brief 5G overview is provided in Appendix B for the reader's
-   convenience.  For a definitive description of 3GPP network
-   architectures, the reader should refer to [TS-23.501].  More details
-   can be found in [_5G-Book].
+   For a definitive description of 3GPP network architectures, the
+   reader should refer to [TS-23.501].  More details can be found in
+   [_5G-Book].
 
 2.  Definitions
 
@@ -247,9 +241,9 @@ Table of Contents
 
 3.1.  Scope of the Transport Network
 
-   Appendix B provides an overview of 5G network building blocks: the
-   Radio Access Network (RAN), Core Network (CN), and Transport Network
-   (TN).  The Transport Network is defined by the 3GPP as:
+   The main 5G network building blocks are: the Radio Access Network
+   (RAN), Core Network (CN), and Transport Network (TN).  The Transport
+   Network is defined by the 3GPP as:
 
    |  "part supporting connectivity within and between CN and RAN parts"
    |  (Section 1 of [TS-28.530]).
@@ -589,12 +583,9 @@ Table of Contents
        +-----------+ Orchestration +-|--------------------------+
        |           | (RAN and CN)  | |                          |
        |           +---------------+ |                          |
-       |                             |                          |
-       |    +------------------------|----------------------+   |
-       |    |TN Orchestration        |                      |   |
-       |    |        +------------------------------+       |   |
-       |    |        |               |              |       |   |
-       |    |        v               v              v       |   |
+       |                             v                          |
+       |    +-----------------------------------------------+   |
+       |    |TN Orchestration                               |   |
        |    |+---------------++-----------++---------------+|   |
        |    || Customer Site ||RFC9543 NSC|| Customer Site ||   |
        |    || Orchestration ||           || Orchestration ||   |
@@ -789,21 +780,25 @@ Table of Contents
 3.6.  First 5G Slice versus Subsequent Slices
 
    An operational 5G Network Slice incorporates both 5G control plane
-   and user plane capabilities.  For instance, consider a slice based on
-   split-CU in the RAN, both CU-UP and Centralized Unit Control Plane
-   (CU-CP) need to be deployed along with the associated interfaces E1,
-   F1-c, F1-u, N2, and N3 which are conveyed in the TN.  In this regard,
-   the creation of the "first slice" can be subject to a specific logic
-   that does not apply to subsequent slices.  Let us consider the
-   example depicted in Figure 10 to illustrate this deployment.  In this
-   example, the first 5G slice relies on the deployment of NF-CP and NF-
-   UP functions together with two TN slices for control and user planes
-   (INS-CP and INS-UP1).  Next, the deployment of a second slice relies
-   solely on the instantiation of a UPF (NF-UP2) together with a
-   dedicated user plane TN slice (INS-UP2).  In this example, the
-   control plane of the first 5G slice is also updated to integrate the
-   second slice: the TN slice (INS-CP) and Network Functions (NF-CP) are
-   shared.
+   and user plane capabilities.  For instance, in some deployments, in
+   the case of a slice based on split-CU in the RAN, both CU-UP and
+   Centralized Unit Control Plane (CU-CP) may need to be deployed along
+   with the associated interfaces E1, F1-c, F1-u, N2, and N3 which are
+   conveyed in the TN.  In this regard, the creation of the "first
+   slice" can be subject to a specific logic that does not apply to
+   subsequent slices.  Let us consider the example depicted in Figure 10
+   to illustrate this deployment.  In this example, the first 5G slice
+   relies on the deployment of NF-CP and NF-UP functions together with
+   two TN slices for control and user planes (INS-CP and INS-UP1).
+   Next, in many cases, the deployment of a second slice relies solely
+   on the instantiation of a UPF (NF-UP2) together with a dedicated user
+   plane TN slice (INS-UP2).  In this example, the control plane of the
+   first 5G slice is also updated to integrate the second slice: the TN
+   slice (INS-CP) and Network Functions (NF-CP) are shared.  The model
+   described here in which the control plane is shared among multiple
+   slices is likely to be common, it is not mandatory.  Deployment
+   models with a separate control plane for each slice are also
+   possible.
 
    At the time of writing (2024), Section 6.1.2 of [NG.113] specifies
    that the eMBB slice (SST-1 and no Slice Differentiator (SD)) should
@@ -2417,14 +2412,15 @@ Table of Contents
    bandwidth requirements, due to the creation or modification of a
    slice.  Note that the "reservations" may be maintained by the
    transport controller - it is not necessary (or indeed possible for
-   SR-TE) to reserve bandwidth at the network layer.  The bandwidth
-   requirement acts as a constraint whenever the controller (re)computes
-   a path.  There could be a single mesh of paths between endpoints that
-   carry all of the traffic types, or there could be a small handful of
-   meshes, for example one mesh for low-latency traffic that follows the
-   minimum latency path and another mesh for the other traffic that
-   follows the minimum IGP metric path, as described in Section 5.
-   There would be a many-to-one mapping of slices to paths.
+   current SR-TE technology) to reserve bandwidth at the network layer.
+   The bandwidth requirement acts as a constraint whenever the
+   controller (re)computes a path.  There could be a single mesh of
+   paths between endpoints that carry all of the traffic types, or there
+   could be a small handful of meshes, for example one mesh for low-
+   latency traffic that follows the minimum latency path and another
+   mesh for the other traffic that follows the minimum IGP metric path,
+   as described in Section 5.  There would be a many-to-one mapping of
+   slices to paths.
 
    The bandwidth requirement from DCi to DCj is the sum of the DCi-DCj
    demands of the individual slices.  For example, if only slices "X"
@@ -2727,8 +2723,9 @@ Table of Contents
               and B. Wu, "YANG Data Models for Bearers and 'Attachment
               Circuits'-as-a-Service (ACaaS)", Work in Progress,
               Internet-Draft, draft-ietf-opsawg-teas-attachment-circuit-
-              15, 9 August 2024, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-opsawg-teas-attachment-circuit-15>.
+              16, 10 September 2024,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-
+              teas-attachment-circuit-16>.
 
    [I-D.ietf-teas-5g-network-slice-application]
               Geng, X., Contreras, L. M., Rokui, R., Dong, J., and I.
@@ -2853,12 +2850,6 @@ Table of Contents
               DOI 10.17487/RFC6291, June 2011,
               <https://www.rfc-editor.org/rfc/rfc6291>.
 
-   [RFC6459]  Korhonen, J., Ed., Soininen, J., Patil, B., Savolainen,
-              T., Bajko, G., and K. Iisakkila, "IPv6 in 3rd Generation
-              Partnership Project (3GPP) Evolved Packet System (EPS)",
-              RFC 6459, DOI 10.17487/RFC6459, January 2012,
-              <https://www.rfc-editor.org/rfc/rfc6459>.
-
    [RFC6624]  Kompella, K., Kothari, B., and R. Cherukuri, "Layer 2
               Virtual Private Networks Using BGP for Auto-Discovery and
               Signaling", RFC 6624, DOI 10.17487/RFC6624, May 2012,
@@ -2977,15 +2968,15 @@ Table of Contents
 
    [TS-23.501]
               3GPP, "TS 23.501: System architecture for the 5G System
-              (5GS)", 2021,
+              (5GS)", 2024,
               <https://portal.3gpp.org/desktopmodules/Specifications/
-              SpecificationDetails.aspx?specificationId-3144>.
+              SpecificationDetails.aspx?specificationId=3144>.
 
    [TS-28.530]
-              3GPP, "TS 23.530: Management and orchestration; Concepts,
-              use cases and requirements)", 2023,
+              3GPP, "TS 28.530: Management and orchestration; Concepts,
+              use cases and requirements)", 2024,
               <https://portal.3gpp.org/desktopmodules/Specifications/
-              SpecificationDetails.aspx?specificationId-3273>.
+              SpecificationDetails.aspx?specificationId=3273>.
 
    [_5G-Book] Peterson, L., Sunay, O., and B. Davie, "5G Mobile
               Networks: A Systems Approach", 2022,
@@ -2993,398 +2984,119 @@ Table of Contents
 
 Appendix A.  Acronyms and Abbreviations
 
-   3GPP: 3rd Generation Partnership Project
+   3GPP:  3rd Generation Partnership Project
 
-   5GC: 5G Core
+   5GC:  5G Core
 
-   5QI: 5G QoS Indicator
+   5QI:  5G QoS Indicator
 
-   A2A: Any-to-Any
+   A2A:  Any-to-Any
 
-   AC: Attachment Circuit
+   AC:  Attachment Circuit
 
-   AMF: Access and Mobility Management Function
+   CE:  Customer Edge
 
-   AUSF: Authentication Server Function
+   CIR:  Committed Information Rate
 
-   BBU: Baseband Unit
+   CN:  Core Network
 
-   BH: Backhaul
+   CoS:  Class of Service
 
-   BS: Base Station
+   CP:  Control Plane
 
-   CE: Customer Edge
+   CU:  Centralized Unit
 
-   CIR: Committed Information Rate
+   CU-CP:  Centralized Unit Control Plane
 
-   CN: Core Network
+   CU-UP:  Centralized Unit User Plane
 
-   CoS: Class of Service
+   DC:  Data Center
 
-   CP: Control Plane
+   DDoS:  Distributed Denial of Services
 
-   CU: Centralized Unit
+   DSCP:  Differentiated Services Code Point
 
-   CU-CP: Centralized Unit Control Plane
+   eCPRI:  enhanced Common Public Radio Interface
 
-   CU-UP: Centralized Unit User Plane
+   FIB:  Forwarding Information Base
 
-   DC: Data Center
+   GPRS:  Generic Packet Radio Service
 
-   DDoS: Distributed Denial of Services
+   gNB:  gNodeB
 
-   DN: Data Network
+   GTP:  GPRS Tunneling Protocol
 
-   DSCP: Differentiated Services Code Point
+   GTP-U:  GPRS Tunneling Protocol User plane
 
-   DU: Distributed Unit
+   IGP:  Interior Gateway Protocol
 
-   eCPRI: enhanced Common Public Radio Interface
+   L2VPN:  Layer 2 Virtual Private Network
 
-   FH: Fronthaul
+   L3VPN:  Layer 3 Virtual Private Network
 
-   FIB: Forwarding Information Base
+   LSP:  Label Switched Path
 
-   GPRS: Generic Packet Radio Service
+   MIoT:  Massive Internet of Things
 
-   gNB: gNodeB
+   MPLS:  Multiprotocol Label Switching
 
-   GTP: GPRS Tunneling Protocol
+   NF:  Network Function
 
-   GTP-U: GPRS Tunneling Protocol User plane
+   NRP:  Network Resource Partition
 
-   IGP: Interior Gateway Protocol
+   NSC:  Network Slice Controller
 
-   L2VPN: Layer 2 Virtual Private Network
+   PE:  Provider Edge
 
-   L3VPN: Layer 3 Virtual Private Network
+   PIR:  Peak Information Rate
 
-   LSP: Label Switched Path
+   QoS:  Quality of Service
 
-   MH: Midhaul
+   RAN:  Radio Access Network
 
-   MIoT: Massive Internet of Things
+   RIB:  Routing Information Base
 
-   MPLS: Multiprotocol Label Switching
+   RSVP:  Resource Reservation Protocol
 
-   NF: Network Function
+   SD:  Slice Differentiator
 
-   NRF: Network Function Repository
+   SDP:  Service Demarcation Point
 
-   NRP: Network Resource Partition
+   SLA:  Service Level Agreement
 
-   NSC: Network Slice Controller
+   SLO:  Service Level Objective
 
-   PE: Provider Edge
+   S-NSSAI:  Single Network Slice Selection Assistance Information
 
-   PIR: Peak Information Rate
+   SST:  Slice/Service Type
 
-   QoS: Quality of Service
+   SR:  Segment Routing
 
-   RAN: Radio Access Network
+   SRv6:  Segment Routing version 6
 
-   RIB: Routing Information Base
+   TC:  Traffic Class
 
-   RSVP: Resource Reservation Protocol
+   TE:  Traffic Engineering
 
-   RU: Radio Unit
+   TN:  Transport Network
 
-   SD: Slice Differentiator
+   UE:  User Equipment
 
-   SDP: Service Demarcation Point
+   UP:  User Plane
 
-   SLA: Service Level Agreement
+   UPF:  User Plane Function
 
-   SLO: Service Level Objective
+   URLLC:  Ultra Reliable Low Latency Communication
 
-   SMF: Session Management Function
+   VLAN:  Virtual Local Area Network
 
-   S-NSSAI: Single Network Slice Selection Assistance Information
+   VPN:  Virtual Private Network
 
-   SST: Slice/Service Type
+   VRF:  Virtual Routing and Forwarding
 
-   SR: Segment Routing
+   VXLAN:  Virtual Extensible Local Area Network
 
-   SRv6: Segment Routing version 6
-
-   TC: Traffic Class
-
-   TE: Traffic Engineering
-
-   TN: Transport Network
-
-   UDM: Unified Data Management
-
-   UE: User Equipment
-
-   UP: User Plane
-
-   UPF: User Plane Function
-
-   URLLC: Ultra Reliable Low Latency Communication
-
-   VLAN: Virtual Local Area Network
-
-   VNF: Virtual Network Function
-
-   VPN: Virtual Private Network
-
-   VRF: Virtual Routing and Forwarding
-
-   VXLAN: Virtual Extensible Local Area Network
-
-Appendix B.  An Overview of 5G Networking
-
-   This section provides a brief introduction to 5G mobile networking
-   with a perspective on the Transport Network.  This section does not
-   intend to replace or define 3GPP architecture, instead its objective
-   is to provide an overview for readers that do not have a mobile
-   background.  For more comprehensive information, refer to
-   [TS-23.501].
-
-B.1.  Key Building Blocks
-
-   [TS-23.501] defines the Network Functions (UPF, Access and Mobility
-   Function (AMF), etc.) that compose the 5G System (5GS) Architecture
-   together with related interfaces (e.g., N1 and N2).  This
-   architecture has built-in control and user plane separation, and the
-   control plane leverages a Service- Based Architecture (SBA).
-   Figure 33 outlines an example 5GS architecture with a subset of
-   possible NFs and network interfaces.
-
-       +-----+  +-----+  +-----+    +-----+  +-----+  +-----+
-       |NSSF |  | NEF |  | NRF |    | PCF |  | UDM |  | AF  |
-       +--+--+  +--+--+  +--+--+    +--+--+  +--+--+  +--+--+
-     Nnssf|    Nnef|    Nnrf|      Npcf|    Nudm|        |Naf
-       ---+--------+--+-----+----------+---+----+--------+----
-                 Nausf|    Namf|       Nsmf|
-                   +--+--+  +--+--+     +--+------+
-                   |AUSR |  | AMF |     |   SMF   |
-                   +-----+  +--+--+     +--+------+
-                            /  |           |      \
-     Control Plane      N1 /   |N2         |N4     \N4
-     ------------------------------------------------------------
-     User Plane          /     |           |         \
-                     +---+  +--+--+  N3 +--+--+ N9 +-----+ N6  .---.
-                     |UE +--+(R)AN+-----+ UPF +----+ UPF +----( DN  )
-                     +---+  +-----+     +-----+    +-----+     '---'
-
-          Figure 33: 5GS Architecture and Service-based Interfaces
-
-   Similar to previous versions of 3GPP mobile networks [RFC6459], a 5G
-   mobile network is split into the following four major domains
-   (Figure 34):
-
-   *  UE, MS, MN, and Mobile:
-
-      The terms User Equipment (UE), Mobile Station (MS), Mobile Node
-      (MN), and mobile refer to the devices that are hosts with the
-      ability to obtain Internet connectivity via a 3GPP network.  An MS
-      is comprised of a Terminal Equipment (TE) and a Mobile Terminal
-      (MT).
-
-   *  Radio Access Network (RAN):
-
-      Provides wireless connectivity to UEs.  A RAN is made up of the
-      Antenna that transmits and receives signals to UEs and the Base
-      Station that digitizes the signal and converts the Radio Frequency
-      (RF) data stream to IP packets.
-
-   *  Core Network (CN):
-
-      Controls the CP of the RAN and provides connectivity to the Data
-      Network (e.g., the Internet or a private VPN).  The Core Network
-      hosts dozens of services such as authentication, phone registry,
-      charging, access to Public Switched Telephony Network (PSTN) and
-      handover.
-
-   *  Transport Network (TN):
-
-      Provides connectivity between 5G NFs.  The TN may provide
-      connectivity from the RAN to the CN as well as within the RAN or
-      within the CN.  The traffic generated by NFs is - mostly - based
-      on IP or Ethernet.
-
-       +----------------------------------------------+
-       |             +------------+    +------------+ |
-       | +----+      |            |    |            | |   .-------.
-       | | UE +------+    RAN     |    |     CN     +----(    DN   )
-       | +----+      |            |    |            | |   '-------'
-       |             +------+-----+    +------+-----+ |
-       |                    |                 |       |
-       |              +-----+-----------------+----+  |
-       |              |     Transport Network      |  |
-       |              +----------------------------+  |
-       |                                              |
-       |                    5G System                 |
-       +----------------------------------------------+
-
-        Figure 34: Building Blocks of 5G Architecture (A High-Level
-                              Representation)
-
-B.2.  Core Network (CN)
-
-   The 5G Core Network (5GC) is made up of a set of NFs which fall into
-   two main categories (Figure 35):
-
-   *  5GC User Plane:
-
-      The UPF is the interconnect point between the mobile
-      infrastructure and the Data Network (DN).  It interfaces with the
-      RAN via the N3 interface by encapsulating/ decapsulating the user
-      plane traffic in GTP tunnels (aka GTP-U or Mobile user plane).
-
-   *  5GC Control Plane:
-
-      The 5G control plane is made up of a comprehensive set of NFs.
-      The description of these entities is out of the scope of this
-      document.  The following NFs and interfaces are worth mentioning,
-      since their connectivity may rely on the Transport Network:
-
-      -  the AMF connects with the RAN control plane over the N2
-         interface
-
-      -  the SMF controls the 5GC UPF via the N4 interface
-
-          +---------+    +-------------------------+
-          |   RAN   |    |      5G Core (5GC)      |
-          |         |    |                         |
-          |         |    |   [AUSF  NRF  UDM ...]  |
-          |         |    |         (SBA)           |
-          |         |    |                         |
-          |         | N2 |   +-----+ N11 +-----+   |
-          |    CP -----------+ AMF +-----+ SMF |   |
-          |         |    |   +-----+     +--+--+   |
-          |         |    |                  |      |  Control Plane
-        -----------------------------------------------------------
-          |         |    |                  | N4   |  User Plane
-          |         | N3 |               +--+--+   | N6  .-------.
-          |    UP -----------------------+ UPF +------->(   DN    )
-          |         |    |               +-----+   |     `-------'
-          +---------+    +-------------------------+
-
-                      Figure 35: 5G Core Network (CN)
-
-B.3.  Radio Access Network (RAN)
-
-   The RAN connects cellular wireless devices to a mobile Core Network.
-   The RAN is made up of three components, which form the Radio Base
-   Station:
-
-   *  The Baseband Unit (BBU) provides the interface between the Core
-      Network and the Radio Network.  It connects to the Radio Unit and
-      is responsible for the baseband signal processing to packet.
-
-   *  The Radio Unit (RU) is located close to the Antenna and controlled
-      by the BBU.  It converts the Baseband signal received from the BBU
-      to a Radio frequency signal.
-
-   *  The Antenna converts the electric signal received from the RU to
-      radio waves
-
-   The 5G RAN Base Station is called a gNodeB (gNB).  It connects to the
-   Core Network via the N3 (User Plane) and N2 (Control Plane)
-   interfaces.
-
-   The 5G RAN architecture supports RAN disaggregation in various ways.
-   Notably, the BBU can be split into a DU (Distributed Unit) for
-   digital signal processing and a CU (Centralized Unit) for RAN Layer 3
-   processing.  Furthermore, the CU can be itself split into Control
-   Plane (CU-CP) and User Plane (CU-UP).
-
-   Figure 36 depicts a disaggregated RAN with NFs and interfaces.
-
-                 +---------------------------------+    +-----------+
-                 |                                 | N3 |           |
-     +----+  NR  |                                 +----+  5G Core  |
-     | UE +------+             gNodeB              |    |           |
-     +----+      |                                 +----+   (5GC)   |
-                 |                                 | N2 |           |
-                 +---------------------------------+    +-----------+
-                                 | |
-                                .+ +.
-                                \   /
-                                 \ /
-                 +---------------------------------+    +-----------+
-                 |           +-------------------+ |    |           |
-                 |           |                   | |    |           |
-     +----+  NR  | +----+ F2 |+----+ F1-U +-----+| | N3 |  +-----+  |
-     | UE +--------+ RU +-----+ DU +------+CU-UP+----------+ UPF |  |
-     +----+      | +----+    |+-+--+      +--+--+| |    |  +-----+  |
-                 |           |  |            |E1 | |    |           |
-                 |           |  | F1-C       |   | |    |           |
-                 |           |  |         +--+--+| | N2 |  +-----+  |
-                 |           |  +---------+CU-CP+----------+ AMF |  |
-                 |           |            +-----+| |    |  +-----+  |
-                 |           |     BBU split     | |    |  5G Core  |
-                 |           +-------------------+ |    |           |
-                 |       Disaggregated gNodeB      |    |           |
-                 +---------------------------------+    +-----------+
-
-                       Figure 36: RAN Disaggregation
-
-B.4.  Transport Network (TN)
-
-   The 5G transport architecture defines three main segments for the
-   Transport Network, which are commonly referred to as Fronthaul (FH),
-   Midhaul (MH), and Backhaul (BH) [TR-GSTR-TN5G]:
-
-   *  Fronthaul happens before the BBU processing.  In 5G, this
-      interface is based on eCPRI with Ethernet or IP encapsulation.
-
-   *  Midhaul is optional: this segment is introduced in the BBU split
-      presented in Appendix B.3, where Midhaul network refers to the DU-
-      CU interconnection (i.e., F1 interface).  At this level, all
-      traffic is encapsulated in IP (signaling and user plane).
-
-   *  Backhaul happens after BBU processing.  Therefore, it maps to the
-      interconnection between the RAN and the CN.  All traffic is
-      encapsulated in IP.
-
-   Figure 37 illustrates the different segments of the Transport Network
-   with the relevant NFs.
-
-       +---------------------------------------------------------+
-       |                    Transport Network                    |
-       |                                                         |
-       |    Fronthaul       Midhaul       Backhaul               |
-       |  +-----------+ +------------+ +-----------+             |
-       |  |           | |            | |           |             |
-       +--|-----------|-|------------|-|-----------|-------------+
-        +-+--+      +-+-++         +-+-++        +-+---+     .---.
-        | RU |      | DU |         | CU |        | UPF :----( DN  )
-        +----+      +----+         +----+        +-----+     `---'
-
-                      Figure 37: 5G Transport Segments
-
-   A given part of the transport network can carry several 5G transport
-   segments concurrently, as outlined in Figure 38.  This is because
-   different types of 5G NFs might be placed in the same location (e.g.,
-   the UPF from one slice might be placed in the same location as the
-   CU-UP from another slice).
-
-       +---------+
-       |+----+   | Colocated
-       ||RU-1|   | RU/DU
-       |+-+--+   |
-       |  | FH-1 |
-       |+-+--+   |
-       ||DU-1|   |  +----+         +-----+         .---.
-       |+-+--+   |  |CU-1|         |UPF-1+--------( DN  )
-       +--|------+  +-+-++         +-+---+         `---'
-       +--|-----------|-|------------|----------------------------+
-       |  |    MH-1   | |    BH-1    |          Transport Network |
-       |  +-----------+ +------------+                            |
-       |  +-----------+ +------------+ +-----------+              |
-       |  |    FH-2   | |    MH-2    | |    BH-2   |              |
-       +--|-----------|-|------------|-|-----------|--------------+
-        +-+--+      +-+-++         +-+-++        +-+---+     .---.
-        |RU-2|      |DU-2|         |CU-2|        |UPF-2+----( DN  )
-        +----+      +----+         +----+        +-----+     `---'
-
-                Figure 38: Concurrent 5G Transport Segments
-
-Appendix C.  Acknowledgments
+Acknowledgments
 
    The authors would like to thank Adrian Farrel, Joel Halpern, Tarek
    Saad, Greg Mirsky, Rüdiger Geib, Nicklous D.  Morris, Daniele
