@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-19T00:34:24.143506+00:00",
+  "timestamp": "2024-09-22T00:38:23.758141+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -7095,6 +7095,167 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 206,
+      "id": "PR_kwDOIw9g6c58K0ws",
+      "title": "Update draft-ietf-teas-5g-ns-ip-mpls.md",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/206",
+      "state": "MERGED",
+      "author": "julianL999",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "To address Jie's comments in the mail of 14 September 2024",
+      "createdAt": "2024-09-20T13:27:59Z",
+      "updatedAt": "2024-09-20T16:42:08Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "3c11d6e6baa2f50a10a95904c8abb29753e91034",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "julianL999-patch-1",
+      "headRefOid": "fb10258542a6196a374bccb19cfcd4a3cdd27d14",
+      "closedAt": "2024-09-20T16:27:17Z",
+      "mergedAt": "2024-09-20T16:27:17Z",
+      "mergedBy": "julianL999",
+      "mergeCommit": {
+        "oid": "1d4d33e0cc201b0a25514ea9560a13a86d10b0c2"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c6KLqI1",
+          "commit": {
+            "abbreviatedOid": "fb10258"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "CHANGES_REQUESTED",
+          "body": "Thanks for taking care of this.\r\n\r\nSome minor tweaks, fwiw.",
+          "createdAt": "2024-09-20T13:37:29Z",
+          "updatedAt": "2024-09-20T13:39:02Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\nFor instance, in some deployments, in the case of a slice based on split-CU in the RAN, both CU-UP and Centralized Unit Control Plane (CU-CP) may need to be deployed along with the associated interfaces E1, F1-c, F1-u, N2, and N3 which are conveyed in the TN. In this regard, the creation of the \"first slice\" can be subject to a specific logic that does not apply to subsequent slices. Let us consider the example depicted in {{figure-7}} to illustrate this deployment. In this example, the first 5G slice relies on the deployment of NF-CP and NF-UP functions together with two TN slices for control and user planes (INS-CP and INS-UP1). Next, in many cases, the deployment of a second slice relies solely on the instantiation of a UPF (NF-UP2) together with a dedicated user plane TN slice (INS-UP2). The control plane of the first 5G slice is also updated to integrate the second slice: the TN slice (INS-CP) and Network Functions (NF-CP) are shared. \r\n\r\n> The model described here in which the control plane is shared among multiple slices is likely to be common; it is not mandatory, though. Deployment models with a separate control plane for each slice are also possible.\r\n```",
+              "createdAt": "2024-09-20T13:37:29Z",
+              "updatedAt": "2024-09-20T13:39:02Z"
+            },
+            {
+              "originalPosition": 5,
+              "body": "Avoid redundant \"in this example\", move the note as a separate text to further insist this is an example",
+              "createdAt": "2024-09-20T13:38:08Z",
+              "updatedAt": "2024-09-20T13:39:02Z"
+            },
+            {
+              "originalPosition": 14,
+              "body": "```suggestion\r\n   controller - it is not necessary (or indeed possible for current SR-TE technology per 2024) to\r\n```",
+              "createdAt": "2024-09-20T13:38:20Z",
+              "updatedAt": "2024-09-20T13:39:02Z"
+            },
+            {
+              "originalPosition": 14,
+              "body": "\"current\" may not age well in an RFC.",
+              "createdAt": "2024-09-20T13:38:36Z",
+              "updatedAt": "2024-09-20T13:39:02Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c6KNSMn",
+          "commit": {
+            "abbreviatedOid": "fb10258"
+          },
+          "author": "julianL999",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-20T16:26:06Z",
+          "updatedAt": "2024-09-20T16:26:06Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Looks good",
+              "createdAt": "2024-09-20T16:26:06Z",
+              "updatedAt": "2024-09-20T16:26:06Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOIw9g6c6KNSOG",
+          "commit": {
+            "abbreviatedOid": "fb10258"
+          },
+          "author": "julianL999",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-20T16:26:09Z",
+          "updatedAt": "2024-09-20T16:26:09Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "Looks good, except I would say \"in 2024\" rather than \"per 2024\"",
+              "createdAt": "2024-09-20T16:26:09Z",
+              "updatedAt": "2024-09-20T16:26:09Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 207,
+      "id": "PR_kwDOIw9g6c58MRe2",
+      "title": "missed changes in Julian's merged PR",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/207",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-09-20T16:58:52Z",
+      "updatedAt": "2024-09-20T17:12:49Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "1d4d33e0cc201b0a25514ea9560a13a86d10b0c2",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "patch-julian-PR",
+      "headRefOid": "5fccf0e583652b70f23fdcc0acd4cf84cbf6fbeb",
+      "closedAt": "2024-09-20T17:12:47Z",
+      "mergedAt": "2024-09-20T17:12:47Z",
+      "mergedBy": "julianL999",
+      "mergeCommit": {
+        "oid": "68492eaf7c2fda36054773076a352f35601a118d"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 208,
+      "id": "PR_kwDOIw9g6c58MU-x",
+      "title": "Update draft-ietf-teas-5g-ns-ip-mpls.md",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/208",
+      "state": "CLOSED",
+      "author": "julianL999",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "To address Jie's comments of 14 September 2024, including Med's suggestions",
+      "createdAt": "2024-09-20T17:08:25Z",
+      "updatedAt": "2024-09-20T17:15:29Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "1d4d33e0cc201b0a25514ea9560a13a86d10b0c2",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "julianL999-patch-1",
+      "headRefOid": "709bc5ad3dfd1b31bb75e1cdd43ae80f4042325d",
+      "closedAt": "2024-09-20T17:15:19Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
