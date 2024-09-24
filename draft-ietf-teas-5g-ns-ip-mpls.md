@@ -389,7 +389,7 @@ In subsequent sections of this document, the terms CE and PE are used for both s
 
 The AC is the logical connection that attaches a CE ({{sec-ce}}) to a PE ({{sec-pe}}). A CE is connected to a PE via one or multiple ACs.
 
-This document uses the concept of distributed CE and PE (Sections {{<sec-ce}}) and ({{<sec-pe}}) to consolidate a CE/AC/PE definition that is consistent with the orchestration perimeters ({{sec-orch}}). The CEs and PEs delimit respectively the customer and provider orchestration domains, while an AC interconnects these domains.
+This document uses the concept of distributed CE and PE (Sections {{<sec-ce}} and {{<sec-pe}}) to consolidate a CE/AC/PE definition that is consistent with the orchestration perimeters ({{sec-orch}}). The CEs and PEs delimit respectively the customer and provider orchestration domains, while an AC interconnects these domains.
 
 For consistency with the AC data models terminology (e.g., {{?I-D.ietf-opsawg-teas-attachment-circuit}} and {{?I-D.ietf-opsawg-ntw-attachment-circuit}}), this document assumes that an AC is configured on a "bearer", which represents the underlying connectivity. For example, the bearer is illustrated with "===" in Figures {{<fig-distribute-ce}} and {{<fig-50}}.
 
@@ -434,7 +434,7 @@ The various orchestration depicted in {{figure-orch}} encompass the 3GPP's Netwo
 
 This document focuses on deployments where the Service Demarcation Points (SDPs) are located per Types 3 and 4 of Figure 1 of {{!RFC9543}}. The concept of distributed PE ({{sec-pe}}) assimilates CE-based SDPs defined in {{Section 5.2 of !RFC9543}} (i.e., Types 1 and 2) as SDP Type 3 or 4 in this document.
 
-In reference to the architecture depicted in {{sec-5g-sli-arch}}, the connectivity between NFs can be decomposed into three main segment types that are as follows:
+In reference to the architecture depicted in {{sec-5g-sli-arch}}, the connectivity between NFs can be decomposed into three main segment types:
 
 Customer Site:
 : Either connects NFs located in the same customer site or connects an NF to a CE.
@@ -861,7 +861,7 @@ site, through a provider network. Hence, at the domain (customer site, provider 
 boundaries NEXT_HOP attribute for IPv4/IPv6 labeled unicast needs to be modified to "next-hop self" (nhs),
 which results in new IPv4/IPv6 labeled unicast label allocation. Appropriate label swap
 forwarding entries for IPv4/IPv6 labeled unicast labels are programmed in the data plane.
-On the AC there is no additional 'labeled transport' protocol (i.e., no LDP, RSVP, SR, ...).
+There is no additional 'labeled transport' protocol on the AC (e.g., no LDP, RSVP, and SR).
 
 Packets are transmitted over the AC with the IPv4/IPv6 labeled
 unicast as the top label, with service label deeper in the label stack. In Option C,
