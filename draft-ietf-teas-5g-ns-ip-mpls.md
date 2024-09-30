@@ -131,13 +131,6 @@ informative:
               date: 2022
               target: https://5g.systemsapproach.org/
 
-   TR-GSTR-TN5G:
-              title: "Technical Report GSTR-TN5G"
-              author:
-                org: ITU-T
-              date: 9 February 2018
-              target: https://www.itu.int/dms_pub/itu-t/opb/tut/T-TUT-HOME-2018-PDF-E.pdf
-
    TS-23.501:
               title: "TS 23.501: System architecture for the 5G System (5GS)"
               date: 2024
