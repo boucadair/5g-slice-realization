@@ -175,7 +175,7 @@ Table of Contents
    domain, 5G domains can expose the 5G slices to the transport domain
    by mapping to explicit data plane identifiers (e.g., Layer 2, Layer
    3, or Layer 4).  The realization of the mapping between customer
-   sites and provider networks is refered to as the "hand-off".
+   sites and provider networks is referred to as the "hand-off".
    Section 4 lists a set of hand-off methods for slice mapping purposes.
 
    The realization model described in this document uses a set of
