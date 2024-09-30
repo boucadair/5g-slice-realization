@@ -1366,13 +1366,13 @@ domain by mapping to explicit data plane identifiers (e.g., Layer 2, Layer 3, or
         <h3 id="name-scope-of-the-transport-netw">
 <a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-scope-of-the-transport-netw" class="section-name selfRef">Scope of the Transport Network</a>
         </h3>
-<p id="section-3.1-1">The main 5G network building blocks are: the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN). The Transport Network is defined by the 3GPP as:<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.1-1">The main 5G network building blocks are: the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN). The Transport Network is defined by the 3GPP as (Section 1 of <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span>):<a href="#section-3.1-1" class="pilcrow">¶</a></p>
 <blockquote id="section-3.1-2">
-          <p id="section-3.1-2.1">"part supporting connectivity within and between CN and RAN parts" (Section 1 of <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span>).<a href="#section-3.1-2.1" class="pilcrow">¶</a></p>
+          <p id="section-3.1-2.1">part supporting connectivity within and between CN and RAN parts.<a href="#section-3.1-2.1" class="pilcrow">¶</a></p>
 </blockquote>
 <p id="section-3.1-3">As discussed in Section 4.4.1 of <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span>, the 3GPP management system does not directly control the Transport Network: it is considered as a non-3GPP managed system.<a href="#section-3.1-3" class="pilcrow">¶</a></p>
 <blockquote id="section-3.1-4">
-          <p id="section-3.1-4.1">"The non-3GPP part includes TN parts. The 3GPP management system provides the network slice requirements to the corresponding management systems of those non-3GPP parts, e.g. the TN part supports connectivity within and between CN and AN parts." (Section 4.4.1 of <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span>)<a href="#section-3.1-4.1" class="pilcrow">¶</a></p>
+          <p id="section-3.1-4.1">The non-3GPP part includes TN parts. The 3GPP management system provides the network slice requirements to the corresponding management systems of those non-3GPP parts, e.g. the TN part supports connectivity within and between CN and AN parts.<a href="#section-3.1-4.1" class="pilcrow">¶</a></p>
 </blockquote>
 <p id="section-3.1-5">In practice, the TN may not map to a monolithic architecture and management domain. It is frequently segmented, non-uniform, and managed by different entities. For example, <a href="#fig-1" class="auto internal xref">Figure 2</a> depicts an NF instance that is deployed in an edge data center (DC) connected to an NF located in a Public Cloud via a WAN (e.g., MPLS-VPN service). In this example, the TN can be seen as an abstraction representing an end-to-end connectivity based upon three distinct domains: DC, WAN, and Public Cloud. A model for the Transport Network based on orchestration domains is introduced in <a href="#sec-orch" class="auto internal xref">Section 3.4</a>.<a href="#section-3.1-5" class="pilcrow">¶</a></p>
 <span id="name-an-example-of-transport-net"></span><div id="fig-1">
@@ -1424,12 +1424,12 @@ Slicing (<a href="#sec-tn-slicing" class="auto internal xref">Section 3.2.2</a>)
           </h4>
 <p id="section-3.2.1-1">5G Network Slicing is defined by the 3GPP  <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span> as an approach:<a href="#section-3.2.1-1" class="pilcrow">¶</a></p>
 <blockquote id="section-3.2.1-2">
-            <p id="section-3.2.1-2.1">"where logical networks/partitions are created, with appropriate isolation, resources and optimized topology to serve a purpose or service category (e.g. use case/traffic category, or for MNO internal reasons) or customers (logical system created "on demand")."<a href="#section-3.2.1-2.1" class="pilcrow">¶</a></p>
+            <p id="section-3.2.1-2.1">where logical networks/partitions are created, with appropriate isolation, resources and optimized topology to serve a purpose or service category (e.g. use case/traffic category, or for MNO internal reasons) or customers (logical system created "on demand").<a href="#section-3.2.1-2.1" class="pilcrow">¶</a></p>
 </blockquote>
 <p id="section-3.2.1-3">These resources are from the TN, RAN, CN domains, and the underlying infrastructure.<a href="#section-3.2.1-3" class="pilcrow">¶</a></p>
 <p id="section-3.2.1-4">Section 3.1 of <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span> defines 5G Network Slice as:<a href="#section-3.2.1-4" class="pilcrow">¶</a></p>
 <blockquote id="section-3.2.1-5">
-            <p id="section-3.2.1-5.1">"a logical network that provides specific network capabilities and network characteristics, supporting various service properties for network slice customers."<a href="#section-3.2.1-5.1" class="pilcrow">¶</a></p>
+            <p id="section-3.2.1-5.1">a logical network that provides specific network capabilities and network characteristics, supporting various service properties for network slice customers.<a href="#section-3.2.1-5.1" class="pilcrow">¶</a></p>
 </blockquote>
 </section>
 </div>
@@ -1438,11 +1438,12 @@ Slicing (<a href="#sec-tn-slicing" class="auto internal xref">Section 3.2.2</a>)
           <h4 id="name-transport-network-slicing">
 <a href="#section-3.2.2" class="section-number selfRef">3.2.2. </a><a href="#name-transport-network-slicing" class="section-name selfRef">Transport Network Slicing</a>
           </h4>
-<p id="section-3.2.2-1">The term "TN slice" refers to a slice in the Transport Network domain of the 5G architecture.<a href="#section-3.2.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.2.2-1">The term "TN slice" refers to a slice in the Transport Network domain of the 5G architecture. The following further elaborates on how Transport Network Slicing is
+defined in the context of this document.<a href="#section-3.2.2-1" class="pilcrow">¶</a></p>
 <p id="section-3.2.2-2">The objective of Transport Network Slicing is to isolate,
 guarantee, or prioritize Transport Network resources for Slice Services. Examples of such resources are:
 buffers, link capacity, or even Routing Information Base (RIB) and Forwarding Information Base (FIB).<a href="#section-3.2.2-2" class="pilcrow">¶</a></p>
-<p id="section-3.2.2-3">Transport Network Slicing provides various degrees of sharing of resources between slices. For example, the network capacity can be shared by all slices, usually with a guaranteed minimum per slice, or each individual slice can be allocated dedicated network capacity. Parts of a given network may use the former, while others use the latter. For example, in order to satisfy local engineering guidelines and specific service requirements, shared TN resources could be provided in the backhaul (or midhaul), and dedicated TN resources could be provided in the midhaul (or backhaul). The capacity partitioning strategy is deployment specific.<a href="#section-3.2.2-3" class="pilcrow">¶</a></p>
+<p id="section-3.2.2-3">Transport Network Slicing provides various degrees of sharing of resources between slices (<span><a href="https://rfc-editor.org/rfc/rfc9543#section-8" class="relref">Section 8</a> of [<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>). For example, the network capacity can be shared by all slices, usually with a guaranteed minimum per slice, or each individual slice can be allocated dedicated network capacity. Parts of a given network may use the former, while others use the latter. For example, in order to satisfy local engineering guidelines and specific service requirements, shared TN resources could be provided in the backhaul (or midhaul), and dedicated TN resources could be provided in the midhaul (or backhaul). The capacity partitioning strategy is deployment specific.<a href="#section-3.2.2-3" class="pilcrow">¶</a></p>
 <p id="section-3.2.2-4">There are different components to implement TN slices based upon
 mechanisms such as Virtual Routing and Forwarding instances (VRFs)
 for logical separation, Quality of Service (QoS), and Traffic
@@ -1869,7 +1870,7 @@ For instance, in some deployments, in the case of a slice based on split-CU in t
             <p id="section-3.6-2.1.1">The model described here in which the control plane is shared among multiple slices is likely to be common; it is not mandatory, though. Deployment models with a separate control plane for each slice are also possible.<a href="#section-3.6-2.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-3.6-3">At the time of writing (2024), Section 6.1.2 of <span>[<a href="#NG.113" class="cite xref">NG.113</a>]</span> specifies that the
+<p id="section-3.6-3">Section 6.1.2 of <span>[<a href="#NG.113" class="cite xref">NG.113</a>]</span> specifies that the
    eMBB slice (SST-1 and no Slice Differentiator (SD)) should be supported globally.  This 5G
    slice would be the first slice in any 5G deployment.<a href="#section-3.6-3" class="pilcrow">¶</a></p>
 <span id="name-first-and-subsequent-slice-"></span><div id="_figure-7">
@@ -1990,7 +1991,7 @@ methods used here can range from careful network planning, to
 ensure a more or less equal traffic distribution (i.e., equal cost load
 balancing), to advanced TE techniques, with or
 without bandwidth reservations, to force more consistent load
-distribution even in non-ECMP friendly network topologies. See also <span><a href="https://rfc-editor.org/rfc/rfc9522#section-8" class="relref">Section 8</a> of [<a href="#RFC9522" class="cite xref">RFC9522</a>]</span>).<a href="#section-3.7-2.4.2" class="pilcrow">¶</a></p>
+distribution even in non-ECMP friendly network topologies. See also <span><a href="https://rfc-editor.org/rfc/rfc9522#section-8" class="relref">Section 8</a> of [<a href="#RFC9522" class="cite xref">RFC9522</a>]</span>.<a href="#section-3.7-2.4.2" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <span id="name-resource-allocation-slicing"></span><div id="_figure-high-level-qos">
