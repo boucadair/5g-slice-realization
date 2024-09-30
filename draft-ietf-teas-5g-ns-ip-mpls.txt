@@ -619,11 +619,11 @@ Table of Contents
 
 3.4.2.  Transport Network Segments and Network Slice Instantiation
 
-   This document focuses on deployments where the Service Demarcation
-   Points (SDPs) are located per Types 3 and 4 of Figure 1 of [RFC9543].
-   The concept of distributed PE (Section 3.3.4) assimilates CE-based
-   SDPs defined in Section 5.2 of [RFC9543] (i.e., Types 1 and 2) as SDP
-   Type 3 or 4 in this document.
+   This document focuses on RFC9543 9543 Network Slice deployments where
+   the Service Demarcation Points (SDPs) are located per Types 3 and 4
+   of Figure 1 of [RFC9543].  The concept of distributed PE
+   (Section 3.3.4) assimilates CE-based SDPs defined in Section 5.2 of
+   [RFC9543] (i.e., Types 1 and 2) as SDP Type 3 or 4 in this document.
 
    In reference to the architecture depicted in Section 3.4.1, the
    connectivity between NFs can be decomposed into three main segment
