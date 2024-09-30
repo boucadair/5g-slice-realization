@@ -2040,11 +2040,11 @@ Table of Contents
 
    Figure 27 depicts an example of a simple network with two underlay
    transports, each using a mesh of TE tunnels with or without Path
-   Computation Element (PCE) [RFC5440], and with or without bandwidth
-   reservations.  Section 7 discusses in detail different bandwidth
-   models that can be deployed in the provider network.  However,
-   discussion about how to realize or orchestrate underlay transports is
-   out of scope for this document.
+   Computation Element (PCE) [RFC5440], and with or without per-path
+   bandwidth reservations.  Section 7 discusses in detail different
+   bandwidth models that can be deployed in the provider network.
+   However, discussion about how to realize or orchestrate underlay
+   transports is out of scope for this document.
 
        +---------------+                                    +------+
        |  Ingress PE   |   .------------------------------->| PE-A |
