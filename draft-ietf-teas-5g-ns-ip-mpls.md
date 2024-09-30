@@ -233,15 +233,15 @@ Provider:
 
 ## Scope of the Transport Network {#sec-scope}
 
-The main 5G network building blocks are: the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN). The Transport Network is defined by the 3GPP as:
+The main 5G network building blocks are: the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN). The Transport Network is defined by the 3GPP as (Section 1 of {{TS-28.530}}):
 
 {:quote}
-> "part supporting connectivity within and between CN and RAN parts" (Section 1 of {{TS-28.530}}).
+> part supporting connectivity within and between CN and RAN parts.
 
 As discussed in Section 4.4.1 of {{TS-28.530}}, the 3GPP management system does not directly control the Transport Network: it is considered as a non-3GPP managed system.
 
 {:quote}
-> "The non-3GPP part includes TN parts. The 3GPP management system provides the network slice requirements to the corresponding management systems of those non-3GPP parts, e.g. the TN part supports connectivity within and between CN and AN parts." (Section 4.4.1 of {{TS-28.530}})
+> The non-3GPP part includes TN parts. The 3GPP management system provides the network slice requirements to the corresponding management systems of those non-3GPP parts, e.g. the TN part supports connectivity within and between CN and AN parts.
 
 In practice, the TN may not map to a monolithic architecture and management domain. It is frequently segmented, non-uniform, and managed by different entities. For example, {{fig-1}} depicts an NF instance that is deployed in an edge data center (DC) connected to an NF located in a Public Cloud via a WAN (e.g., MPLS-VPN service). In this example, the TN can be seen as an abstraction representing an end-to-end connectivity based upon three distinct domains: DC, WAN, and Public Cloud. A model for the Transport Network based on orchestration domains is introduced in {{sec-orch}}.
 
@@ -263,24 +263,25 @@ Slicing ({{sec-tn-slicing}}). These descriptions are not intended to be exhausti
 5G Network Slicing is defined by the 3GPP  {{TS-28.530}} as an approach:
 
 {:quote}
-> "where logical networks/partitions are created, with appropriate isolation, resources and optimized topology to serve a purpose or service category (e.g. use case/traffic category, or for MNO internal reasons) or customers (logical system created "on demand")."
+> where logical networks/partitions are created, with appropriate isolation, resources and optimized topology to serve a purpose or service category (e.g. use case/traffic category, or for MNO internal reasons) or customers (logical system created "on demand").
 
 These resources are from the TN, RAN, CN domains, and the underlying infrastructure.
 
 Section 3.1 of {{TS-28.530}} defines 5G Network Slice as:
 
 {:quote}
-> "a logical network that provides specific network capabilities and network characteristics, supporting various service properties for network slice customers."
+> a logical network that provides specific network capabilities and network characteristics, supporting various service properties for network slice customers.
 
 ### Transport Network Slicing {#sec-tn-slicing}
 
-The term "TN slice" refers to a slice in the Transport Network domain of the 5G architecture.
+The term "TN slice" refers to a slice in the Transport Network domain of the 5G architecture. The following further elaborates on how Transport Network Slicing is
+defined in the context of this document.
 
 The objective of Transport Network Slicing is to isolate,
 guarantee, or prioritize Transport Network resources for Slice Services. Examples of such resources are:
 buffers, link capacity, or even Routing Information Base (RIB) and Forwarding Information Base (FIB).
 
-Transport Network Slicing provides various degrees of sharing of resources between slices. For example, the network capacity can be shared by all slices, usually with a guaranteed minimum per slice, or each individual slice can be allocated dedicated network capacity. Parts of a given network may use the former, while others use the latter. For example, in order to satisfy local engineering guidelines and specific service requirements, shared TN resources could be provided in the backhaul (or midhaul), and dedicated TN resources could be provided in the midhaul (or backhaul). The capacity partitioning strategy is deployment specific.
+Transport Network Slicing provides various degrees of sharing of resources between slices ({{Section 8 of ?RFC9543}}). For example, the network capacity can be shared by all slices, usually with a guaranteed minimum per slice, or each individual slice can be allocated dedicated network capacity. Parts of a given network may use the former, while others use the latter. For example, in order to satisfy local engineering guidelines and specific service requirements, shared TN resources could be provided in the backhaul (or midhaul), and dedicated TN resources could be provided in the midhaul (or backhaul). The capacity partitioning strategy is deployment specific.
 
 There are different components to implement TN slices based upon
 mechanisms such as Virtual Routing and Forwarding instances (VRFs)
@@ -501,7 +502,7 @@ For instance, in some deployments, in the case of a slice based on split-CU in t
 
 > The model described here in which the control plane is shared among multiple slices is likely to be common; it is not mandatory, though. Deployment models with a separate control plane for each slice are also possible.
 
-   At the time of writing (2024), Section 6.1.2 of {{NG.113}} specifies that the
+   Section 6.1.2 of {{NG.113}} specifies that the
    eMBB slice (SST-1 and no Slice Differentiator (SD)) should be supported globally.  This 5G
    slice would be the first slice in any 5G deployment.
 
@@ -568,7 +569,7 @@ Overall, policies might be provided by an operator (e.g., to Network Slice Contr
       ensure a more or less equal traffic distribution (i.e., equal cost load
       balancing), to advanced TE techniques, with or
       without bandwidth reservations, to force more consistent load
-      distribution even in non-ECMP friendly network topologies. See also {{Section 8 of ?RFC9522}}).
+      distribution even in non-ECMP friendly network topologies. See also {{Section 8 of ?RFC9522}}.
 
 ~~~~
 {::include ./drawings/high-level-qos.txt}
