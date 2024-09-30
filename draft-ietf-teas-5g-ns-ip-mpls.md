@@ -1448,7 +1448,7 @@ Also, underlay transports may be realized using separate NRPs. However, such an 
    model).
 
    {{figure-23}} depicts an example of a simple network with two underlay transports,
-   each using a mesh of TE tunnels with or without Path Computation Element (PCE) {{?RFC5440}}, and with or without bandwidth
+   each using a mesh of TE tunnels with or without Path Computation Element (PCE) {{?RFC5440}}, and with or without per-path bandwidth
    reservations.
    {{sec-capacity-planning}} discusses in detail different bandwidth
    models that can be deployed in the provider network.  However,
