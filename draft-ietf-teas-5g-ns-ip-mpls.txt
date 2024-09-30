@@ -245,20 +245,18 @@ Table of Contents
 
    The main 5G network building blocks are: the Radio Access Network
    (RAN), Core Network (CN), and Transport Network (TN).  The Transport
-   Network is defined by the 3GPP as:
+   Network is defined by the 3GPP as (Section 1 of [TS-28.530]):
 
-   |  "part supporting connectivity within and between CN and RAN parts"
-   |  (Section 1 of [TS-28.530]).
+   |  part supporting connectivity within and between CN and RAN parts.
 
    As discussed in Section 4.4.1 of [TS-28.530], the 3GPP management
    system does not directly control the Transport Network: it is
    considered as a non-3GPP managed system.
 
-   |  "The non-3GPP part includes TN parts.  The 3GPP management system
+   |  The non-3GPP part includes TN parts.  The 3GPP management system
    |  provides the network slice requirements to the corresponding
    |  management systems of those non-3GPP parts, e.g. the TN part
-   |  supports connectivity within and between CN and AN parts."
-   |  (Section 4.4.1 of [TS-28.530])
+   |  supports connectivity within and between CN and AN parts.
 
    In practice, the TN may not map to a monolithic architecture and
    management domain.  It is frequently segmented, non-uniform, and
@@ -306,25 +304,26 @@ Table of Contents
 
    5G Network Slicing is defined by the 3GPP [TS-28.530] as an approach:
 
-   |  "where logical networks/partitions are created, with appropriate
+   |  where logical networks/partitions are created, with appropriate
    |  isolation, resources and optimized topology to serve a purpose or
    |  service category (e.g. use case/traffic category, or for MNO
    |  internal reasons) or customers (logical system created "on
-   |  demand")."
+   |  demand").
 
    These resources are from the TN, RAN, CN domains, and the underlying
    infrastructure.
 
    Section 3.1 of [TS-28.530] defines 5G Network Slice as:
 
-   |  "a logical network that provides specific network capabilities and
+   |  a logical network that provides specific network capabilities and
    |  network characteristics, supporting various service properties for
-   |  network slice customers."
+   |  network slice customers.
 
 3.2.2.  Transport Network Slicing
 
    The term "TN slice" refers to a slice in the Transport Network domain
-   of the 5G architecture.
+   of the 5G architecture.  The following further elaborates on how
+   Transport Network Slicing is defined in the context of this document.
 
    The objective of Transport Network Slicing is to isolate, guarantee,
    or prioritize Transport Network resources for Slice Services.
@@ -332,15 +331,16 @@ Table of Contents
    Routing Information Base (RIB) and Forwarding Information Base (FIB).
 
    Transport Network Slicing provides various degrees of sharing of
-   resources between slices.  For example, the network capacity can be
-   shared by all slices, usually with a guaranteed minimum per slice, or
-   each individual slice can be allocated dedicated network capacity.
-   Parts of a given network may use the former, while others use the
-   latter.  For example, in order to satisfy local engineering
-   guidelines and specific service requirements, shared TN resources
-   could be provided in the backhaul (or midhaul), and dedicated TN
-   resources could be provided in the midhaul (or backhaul).  The
-   capacity partitioning strategy is deployment specific.
+   resources between slices (Section 8 of [RFC9543]).  For example, the
+   network capacity can be shared by all slices, usually with a
+   guaranteed minimum per slice, or each individual slice can be
+   allocated dedicated network capacity.  Parts of a given network may
+   use the former, while others use the latter.  For example, in order
+   to satisfy local engineering guidelines and specific service
+   requirements, shared TN resources could be provided in the backhaul
+   (or midhaul), and dedicated TN resources could be provided in the
+   midhaul (or backhaul).  The capacity partitioning strategy is
+   deployment specific.
 
    There are different components to implement TN slices based upon
    mechanisms such as Virtual Routing and Forwarding instances (VRFs)
@@ -803,10 +803,9 @@ Table of Contents
       though.  Deployment models with a separate control plane for each
       slice are also possible.
 
-   At the time of writing (2024), Section 6.1.2 of [NG.113] specifies
-   that the eMBB slice (SST-1 and no Slice Differentiator (SD)) should
-   be supported globally.  This 5G slice would be the first slice in any
-   5G deployment.
+   Section 6.1.2 of [NG.113] specifies that the eMBB slice (SST-1 and no
+   Slice Differentiator (SD)) should be supported globally.  This 5G
+   slice would be the first slice in any 5G deployment.
 
      +---------------------------------------------------------------+
      |                  +------------------------------+             |
@@ -925,7 +924,7 @@ Table of Contents
       load balancing), to advanced TE techniques, with or without
       bandwidth reservations, to force more consistent load distribution
       even in non-ECMP friendly network topologies.  See also Section 8
-      of [RFC9522]).
+      of [RFC9522].
 
              ..............................................
             :                   Base NRP                   :
@@ -936,7 +935,7 @@ Table of Contents
  S    |    |     |       +-----+        +-----+       |     |    |
  #    *<---+     |       |  P  |        |  P  |       |     +--->*
  1    |    |     |       |     |        |     |       |     |    |
-== == |    +---->o<----->o<--->o<------>o---->o<----->o<----|    |
+== == |    +---->o<----->o<--->o<------>o---->o<----->o<----+    |
  N    |    |     |       |     |        |     |       |     |    |
  S    *<---+     |       |     |        |     |       |     +--->*
  #    |    |     |       +-----+        +-----+       |     |    |
@@ -2900,11 +2899,6 @@ Table of Contents
    [RFC9522]  Farrel, A., Ed., "Overview and Principles of Internet
               Traffic Engineering", RFC 9522, DOI 10.17487/RFC9522,
               January 2024, <https://www.rfc-editor.org/rfc/rfc9522>.
-
-   [TR-GSTR-TN5G]
-              ITU-T, "Technical Report GSTR-TN5G", February 2018,
-              <https://www.itu.int/dms_pub/itu-t/opb/tut/T-TUT-HOME-
-              2018-PDF-E.pdf>.
 
    [TS-23.501]
               3GPP, "TS 23.501: System architecture for the 5G System
