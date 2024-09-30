@@ -426,7 +426,7 @@ The various orchestration depicted in {{figure-orch}} encompass the 3GPP's Netwo
 
 ### Transport Network Segments and Network Slice Instantiation {#sec-tn-nsi}
 
-This document focuses on deployments where the Service Demarcation Points (SDPs) are located per Types 3 and 4 of Figure 1 of {{!RFC9543}}. The concept of distributed PE ({{sec-pe}}) assimilates CE-based SDPs defined in {{Section 5.2 of !RFC9543}} (i.e., Types 1 and 2) as SDP Type 3 or 4 in this document.
+This document focuses on RFC9543 9543 Network Slice deployments where the Service Demarcation Points (SDPs) are located per Types 3 and 4 of Figure 1 of {{!RFC9543}}. The concept of distributed PE ({{sec-pe}}) assimilates CE-based SDPs defined in {{Section 5.2 of !RFC9543}} (i.e., Types 1 and 2) as SDP Type 3 or 4 in this document.
 
 In reference to the architecture depicted in {{sec-5g-sli-arch}}, the connectivity between NFs can be decomposed into three main segment types:
 
