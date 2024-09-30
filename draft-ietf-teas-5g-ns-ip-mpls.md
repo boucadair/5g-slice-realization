@@ -681,47 +681,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    of any change of S-NSSAI on the IPv6 addressing plans. For example, modifications of the S-NSSAIs in-use will require
    updating the IP addresses used by NFs involved in the associated slices.
 
-### An Example of Local IPv6 Addressing Plan for Network Functions
-
-   Different IPv6 address allocation
-   schemes following the above approach may be used, with one example allocation shown
-   in {{figure-11}}.
-
-~~~
-             NF-specific          Reserved
-        (not slice specific)     for S-NSSAI
-   <----------------------------><--------->
-   +----+----+----+----+----+----+----+----+
-   |xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:ttdd:dddd|
-   +----+----+----+----+----+----+----+----+
-   <------------------128 bits------------->
-
-    tt     - SST (8 bits)
-    dddddd - SD (24 bits)
-~~~
-{: #figure-11 title="An Example of S-NSSAI Embedded into an IPv6 Address" artwork-align="center"}
-
-   In reference to {{figure-11}}, the most significant 96 bits of the IPv6 address
-   are unique to the NF, but do not carry any slice-specific information. The S-NSSAI information is embedded in the least
-   significant 32 bits. The 96-bit part of the address may be structured by the provider, for example, on the
-   geographical location or the DC identification. Refer to {{Section 2.1. of ?RFC9099}} for a discussion on the benefits of structuring an address plan around both services and geographic locations for more structured security policies in a network.
-
-   {{figure-s-nssai-deployment}} uses the example from {{figure-11}} to demonstrate a
-   slicing deployment, where the entire S-NSSAI is embedded into IPv6 addresses used by
-   NFs. Let us consider that "NF-A" has a set of tunnel termination points with unique per-slice IP addresses
-   allocated from 2001:db8:a:0::/96, while "NF-B" uses a set of tunnel termination
-   points with per-slice IP addresses allocated from 2001:db8:b:0::/96. This example shows
-   two slices: "customer A eMBB" (SST-01, SD-00001) and "customer B Massive Internet of Things (MIoT)" (SST-03, SD-00003).
-   For "customer A eMBB" slice, the tunnel IP addresses are auto-derived as the IP addresses {2001:db8:a::100:1, 2001:db8:b::100:1},
-   where {:0100:0001} is used as the last two octets. "customer B MIoT" slice (SST-3,
-   SD-00003) tunnel uses the IP addresses {2001:db8:a::300:3, 2001:db8:b::300:3} and simply
-   adds {:0300:0003} as the last two octets. Leading zeros are not represented in the resulting IPv6 addresses as per {{?RFC5952}}.
-
-~~~~
-{::include ./drawings/S-NSSAI-deployment.txt}
-~~~~
-{: #figure-s-nssai-deployment title="Deployment Example with S-NSSAI Embedded into IPv6 Addresses" artwork-align="center"}
-
+   An Example of local IPv6 addressing plan for NFs is provided in {{sec-v6-ex}}
 
 ##  MPLS Label Hand-off {#sec-mpls-ho}
 
@@ -1951,6 +1911,47 @@ service disruption. Note that such an on-path attacker may make more damage (e.g
 Security considerations specific to each of the technologies and protocols listed in the document are discussed in the specification documents of each of these protocols.
 
 --- back
+
+# An Example of Local IPv6 Addressing Plan for Network Functions {#sec-v6-ex}
+
+   Different IPv6 address allocation
+   schemes following the above approach may be used, with one example allocation shown
+   in {{figure-11}}.
+
+~~~
+             NF-specific          Reserved
+        (not slice specific)     for S-NSSAI
+   <----------------------------><--------->
+   +----+----+----+----+----+----+----+----+
+   |xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:ttdd:dddd|
+   +----+----+----+----+----+----+----+----+
+   <------------------128 bits------------->
+
+    tt     - SST (8 bits)
+    dddddd - SD (24 bits)
+~~~
+{: #figure-11 title="An Example of S-NSSAI Embedded into an IPv6 Address" artwork-align="center"}
+
+   In reference to {{figure-11}}, the most significant 96 bits of the IPv6 address
+   are unique to the NF, but do not carry any slice-specific information. The S-NSSAI information is embedded in the least
+   significant 32 bits. The 96-bit part of the address may be structured by the provider, for example, on the
+   geographical location or the DC identification. Refer to {{Section 2.1. of ?RFC9099}} for a discussion on the benefits of structuring an address plan around both services and geographic locations for more structured security policies in a network.
+
+   {{figure-s-nssai-deployment}} uses the example from {{figure-11}} to demonstrate a
+   slicing deployment, where the entire S-NSSAI is embedded into IPv6 addresses used by
+   NFs. Let us consider that "NF-A" has a set of tunnel termination points with unique per-slice IP addresses
+   allocated from 2001:db8:a:0::/96, while "NF-B" uses a set of tunnel termination
+   points with per-slice IP addresses allocated from 2001:db8:b:0::/96. This example shows
+   two slices: "customer A eMBB" (SST-01, SD-00001) and "customer B Massive Internet of Things (MIoT)" (SST-03, SD-00003).
+   For "customer A eMBB" slice, the tunnel IP addresses are auto-derived as the IP addresses {2001:db8:a::100:1, 2001:db8:b::100:1},
+   where {:0100:0001} is used as the last two octets. "customer B MIoT" slice (SST-3,
+   SD-00003) tunnel uses the IP addresses {2001:db8:a::300:3, 2001:db8:b::300:3} and simply
+   adds {:0300:0003} as the last two octets. Leading zeros are not represented in the resulting IPv6 addresses as per {{?RFC5952}}.
+
+~~~~
+{::include ./drawings/S-NSSAI-deployment.txt}
+~~~~
+{: #figure-s-nssai-deployment title="Deployment Example with S-NSSAI Embedded into IPv6 Addresses" artwork-align="center"}
 
 # Acronyms and Abbreviations {#ext-abbr}
 
