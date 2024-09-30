@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 28 March 2025                                  Juniper Networks
+Expires: 3 April 2025                                   Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                       24 September 2024
+                                                       30 September 2024
 
 
  A Realization of Network Slices for 5G Networks Using Current IP/MPLS
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 28 March 2025.
+   This Internet-Draft will expire on 3 April 2025.
 
 Copyright Notice
 
@@ -106,7 +106,9 @@ Table of Contents
    12. References
      12.1.  Normative References
      12.2.  Informative References
-   Appendix A.  Acronyms and Abbreviations
+   Appendix A.  An Example of Local IPv6 Addressing Plan for Network
+           Functions
+   Appendix B.  Acronyms and Abbreviations
    Acknowledgments
    Contributors
    Authors' Addresses
@@ -210,7 +212,7 @@ Table of Contents
    for the contextualization of some of these terms.
 
    An extended list of abbreviations used in this document is provided
-   in Appendix A.
+   in Appendix B.
 
    "5G Network Slicing" (or "5G Network Slice") refers to "Network
    Slicing" (or "Network Slice") as defined in the 3GPP [TS-28.530].
@@ -1098,71 +1100,8 @@ Table of Contents
    updating the IP addresses used by NFs involved in the associated
    slices.
 
-4.2.1.  An Example of Local IPv6 Addressing Plan for Network Functions
-
-   Different IPv6 address allocation schemes following the above
-   approach may be used, with one example allocation shown in Figure 14.
-
-                            NF-specific          Reserved
-                       (not slice specific)     for S-NSSAI
-                  <----------------------------><--------->
-                  +----+----+----+----+----+----+----+----+
-                  |xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:ttdd:dddd|
-                  +----+----+----+----+----+----+----+----+
-                  <------------------128 bits------------->
-
-                   tt     - SST (8 bits)
-                   dddddd - SD (24 bits)
-
-       Figure 14: An Example of S-NSSAI Embedded into an IPv6 Address
-
-   In reference to Figure 14, the most significant 96 bits of the IPv6
-   address are unique to the NF, but do not carry any slice-specific
-   information.  The S-NSSAI information is embedded in the least
-   significant 32 bits.  The 96-bit part of the address may be
-   structured by the provider, for example, on the geographical location
-   or the DC identification.  Refer to Section 2.1. of [RFC9099] for a
-   discussion on the benefits of structuring an address plan around both
-   services and geographic locations for more structured security
-   policies in a network.
-
-   Figure 15 uses the example from Figure 14 to demonstrate a slicing
-   deployment, where the entire S-NSSAI is embedded into IPv6 addresses
-   used by NFs.  Let us consider that "NF-A" has a set of tunnel
-   termination points with unique per-slice IP addresses allocated from
-   2001:db8:a:0::/96, while "NF-B" uses a set of tunnel termination
-   points with per-slice IP addresses allocated from 2001:db8:b:0::/96.
-   This example shows two slices: "customer A eMBB" (SST-01, SD-00001)
-   and "customer B Massive Internet of Things (MIoT)" (SST-03, SD-
-   00003).  For "customer A eMBB" slice, the tunnel IP addresses are
-   auto-derived as the IP addresses {2001:db8:a::100:1,
-   2001:db8:b::100:1}, where {:0100:0001} is used as the last two
-   octets. "customer B MIoT" slice (SST-3, SD-00003) tunnel uses the IP
-   addresses {2001:db8:a::300:3, 2001:db8:b::300:3} and simply adds
-   {:0300:0003} as the last two octets.  Leading zeros are not
-   represented in the resulting IPv6 addresses as per [RFC5952].
-
-    2001:db8:a::/96 (NF-A)                      2001:db8:b::/96 (NF-B)
-
-    2001:db8:a::100:1/128                2001:db8:b::100:1/128
-        |                                                        |
-        |            + - - - - - - - - +   eMBB (SST=1)          |
-        |            |                 |      |                  |
-   +----v-+       +--+--+ Provider +---+-+    v  +-----+       +-v----+
-   |    o============*================*==========================o    |
-   | NF   +-------+ PE  |          | PE  +-------+L2/L3+.......+   NF |
-   |    o============*================*==========================o    |
-   +----^-+       +--+--+  Network +---+-+    ^  +-----+       +-^----+
-        |            |                 |      |                  |
-        |            + - - - - - - - - + MIoT (SST=3)            |
-        |                                                        |
-    2001:db8:a::300:3/128               2001:db8:b::300:3/128
-
-    o Tunnel (IPsec, GTP-U, etc) termination point
-    * SDP
-
-       Figure 15: Deployment Example with S-NSSAI Embedded into IPv6
-                                 Addresses
+   An Example of local IPv6 addressing plan for NFs is provided in
+   Appendix A
 
 4.3.  MPLS Label Hand-off
 
@@ -1185,7 +1124,7 @@ Table of Contents
       without next-hop change and redistribution of labeled transport
       routes with next-hop change at domain boundaries.
 
-   Figure 16 illustrates the use of service-aware CE (Section 3.3.2) for
+   Figure 14 illustrates the use of service-aware CE (Section 3.3.2) for
    the deployment discussed in Sections 4.3.2 and 4.3.3.
 
           +--------------+                      +--------------+
@@ -1201,7 +1140,7 @@ Table of Contents
           |        | VRF foo  |               +-+--+           |
           +--------+----------+                 +--------------+
 
-            Figure 16: Example of MPLS-based Attachment Circuit
+            Figure 14: Example of MPLS-based Attachment Circuit
 
 4.3.1.  Option A
 
@@ -1213,9 +1152,9 @@ Table of Contents
    In this option, L3VPN service instances are instantiated outside the
    provider network.  These L3VPN service instances are instantiated in
    the customer site which could be, for example, either on the compute
-   that hosts mobile NFs (Figure 17, left hand side) or within the DC/
+   that hosts mobile NFs (Figure 15, left hand side) or within the DC/
    cloud infrastructure itself (e.g., on the top of the rack or leaf
-   switch within cloud IP fabric (Figure 17, right hand side)).  On the
+   switch within cloud IP fabric (Figure 15, right hand side)).  On the
    AC connected to a PE, packets are already MPLS encapsulated (or MPLS-
    in-UDP/MPLS-in-IP encapsulated, if cloud or compute infrastructure
    don't support MPLS encapsulation).  Therefore, the PE uses neither a
@@ -1247,18 +1186,18 @@ Table of Contents
      # Service instances (with unique MPLS labels)
      * SDP
 
-             Figure 17: Example of MPLS Hand-off with Option B
+             Figure 15: Example of MPLS Hand-off with Option B
 
    MPLS labels are allocated dynamically in Option B deployments, where
    at the domain boundaries service prefixes are reflected with next-hop
    self, and a new label is dynamically allocated, as visible in
-   Figure 17 (e.g., labels A, A', and A" for the first depicted slice).
+   Figure 15 (e.g., labels A, A', and A" for the first depicted slice).
    Therefore, for any slice-specific per-hop behavior at the provider
    network edge, the PE needs to determine which label represents which
    slice.  In the BGP control plane, when exchanging service prefixes
    over an AC, each slice might be represented by a unique BGP
    community, so tracking label assignment to the slice might be
-   possible.  For example, in Figure 17, for the slice identified with
+   possible.  For example, in Figure 15, for the slice identified with
    COM-1, the PE advertises a dynamically allocated label A".  Since,
    based on the community, the label to slice association is known, the
    PE can use this dynamically allocated label A" to identify incoming
@@ -1269,7 +1208,7 @@ Table of Contents
    might be with per-prefix granularity.  In the extreme case, each
    prefix can have different community representing a different slice.
    Depending on the business requirements, each slice could be
-   represented by a different service instance as outlined in Figure 17.
+   represented by a different service instance as outlined in Figure 15.
    In that case, the route target extended community (Section 4 of
    [RFC4360]) might be used as slice differentiator.  In other
    deployments, all prefixes (representing different slices) might be
@@ -1295,7 +1234,7 @@ Table of Contents
    attribute.  Additionally, IPv4/IPv6 labeled unicast (SAFI-4) host
    routes, used as NEXT_HOP for service prefixes, are exchanged via
    direct single-hop BGP sessions between adjacent nodes in a customer
-   site and a provider network, as depicted in Figure 18.  As a result,
+   site and a provider network, as depicted in Figure 16.  As a result,
    a node in a customer site performs hierarchical next-hop resolution.
 
         <-------------------------------------------
@@ -1328,7 +1267,7 @@ Table of Contents
       # Service instances (with unique MPLS label)
       * SDP
 
-                   Figure 18: MPLS Hand-off with Option C
+                   Figure 16: MPLS Hand-off with Option C
 
    This architecture requires an end-to-end Label Switched Path (LSP)
    leading from a packet's ingress node inside one customer site to its
@@ -1452,7 +1391,7 @@ Table of Contents
    single QoS queue on transit links in the provider network serves
    multiple slices with similar characteristics.  QoS enforcement on
    transit links is fully coarse-grained (single NRP, sharing resources
-   among all RFC 9543 Network Slices), as displayed in Figure 19.
+   among all RFC 9543 Network Slices), as displayed in Figure 17.
 
       +------------------------------------------------------------+
       +-----------------+         PE                               |
@@ -1492,7 +1431,7 @@ Table of Contents
         (dedicated resources per     (resources shared by multiple
          RFC 9543 Network Slice)       RFC 9543 Network Slices)
 
-           Figure 19: Slice to TN QoS Mapping (5QI-unaware Model)
+           Figure 17: Slice to TN QoS Mapping (5QI-unaware Model)
 
    When the IP traffic is handed over at the SDP from the AC to the
    provider network, the PE encapsulates the traffic into MPLS (if MPLS
@@ -1508,8 +1447,8 @@ Table of Contents
    on TN CoS marking, per-hop behavior for all RFC 9543 Network Slices
    is executed on provider network transit links.  Provider network
    transit routers do not evaluate the original IP header for QoS-
-   related decisions.  This model is outlined in Figure 20 for MPLS
-   encapsulation, and in Figure 21 for SRv6 encapsulation.
+   related decisions.  This model is outlined in Figure 18 for MPLS
+   encapsulation, and in Figure 19 for SRv6 encapsulation.
 
                                               +--------------+
                                               | MPLS Header  |
@@ -1531,7 +1470,7 @@ Table of Contents
              |              |         |/      |              |
              +--------------+ - - - - - - - - +--------------+
 
-                   Figure 20: QoS with MPLS Encapsulation
+                   Figure 18: QoS with MPLS Encapsulation
 
                                               +--------------+
                                               | IPv6 Header  |
@@ -1557,7 +1496,7 @@ Table of Contents
              |              |         |/      |              |
              +--------------+ - - - - - - - - +--------------+
 
-                   Figure 21: QoS with IPv6 Encapsulation
+                   Figure 19: QoS with IPv6 Encapsulation
 
    From a QoS perspective, both options are similar.  However, there is
    one difference between the two options.  The MPLS TC is only 3 bits
@@ -1638,7 +1577,7 @@ Table of Contents
    Inbound provider network edge enforcement model for 5QI-unaware
    model, where all packets belonging to the slice are treated the same
    way in the provider network (no 5Q QoS Class differentiation in the
-   provider) is outlined in Figure 22.
+   provider) is outlined in Figure 20.
 
                                 Slice
                                policer     +---------+
@@ -1675,7 +1614,7 @@ Table of Contents
                                        +---|--+      |
                                            +---------+
 
-       Figure 22: Ingress Slice Admission Control (5QI-unware Model)
+       Figure 20: Ingress Slice Admission Control (5QI-unware Model)
 
 5.2.1.2.  Outbound Edge Resource Control
 
@@ -1705,7 +1644,7 @@ Table of Contents
    analysis of different queuing mechanisms is out of scope for this
    document, but is provided in [RFC7806].
 
-   Figure 23 outlines the outbound provider network edge resource
+   Figure 21 outlines the outbound provider network edge resource
    control model for 5QI-unaware slices.  Each slice is assigned a
    single egress queue.  The sum of slice CIRs, used as the weight in
    weighted queueing model, should not exceed the physical capacity of
@@ -1741,7 +1680,7 @@ Table of Contents
        |     +---|--+- - - - - - - - - - - - - - - - - - - - - - - - - -
        +---------+
 
-     Figure 23: Ingress Slice Admission control (5QI-unaware Model)
+     Figure 21: Ingress Slice Admission control (5QI-unaware Model)
 
 5.2.2.  5QI-aware Model
 
@@ -1749,7 +1688,7 @@ Table of Contents
    represented via the DSCP set by NFs (the architecture scales to
    thousands of 5G slices) is mapped (multiplexed) to up to 8 TN QoS
    Classes used in a provider network transit equipment, as outlined in
-   Figure 24.
+   Figure 22.
 
        +------------------------------------------------------------+
        +-----------------+        PE                                |
@@ -1789,7 +1728,7 @@ Table of Contents
          (dedicated resources per     (resources shared by multiple
           RFC 9543 Network Slice)        RFC 9543 Network Slices)
 
-        Figure 24: Slice 5Q QoS to TN QoS Mapping (5QI-aware Model)
+        Figure 22: Slice 5Q QoS to TN QoS Mapping (5QI-aware Model)
 
    Given that in deployments with a large number of 5G slices, the
    number of potential 5G QoS Classes is much higher than the number of
@@ -1799,11 +1738,11 @@ Table of Contents
    transported in the provider network.  That is, common Per-hop
    Behavior (PHB) [RFC2474] is executed on transit provider network
    routers for all packets grouped together.  An example of this
-   approach is outlined in Figure 25.  A provider may decide to
+   approach is outlined in Figure 23.  A provider may decide to
    implement Diffserv-Intercon PHBs at the boundaries of its network
    domain [RFC8100].
 
-   Note:  The numbers indicated in Figure 25 (S-NSSAI, 5QI, DSCP, queue,
+   Note:  The numbers indicated in Figure 23 (S-NSSAI, 5QI, DSCP, queue,
       etc.) are provided for illustration purposes only and should not
       be considered as deployment guidance.
 
@@ -1837,7 +1776,7 @@ Table of Contents
        +------------------+  | +- - - - -+                        |
                              +------------------------------------+
 
-              Figure 25: Example of 3GPP QoS Mapped to TN QoS
+              Figure 23: Example of 3GPP QoS Mapped to TN QoS
 
    In current SDO progress of 3GPP (Release 17) and O-RAN, the mapping
    of 5QI to DSCP is not expected to be in a per-slice fashion, where
@@ -1882,7 +1821,7 @@ Table of Contents
       prioritized classes.
 
    In the first option, the slice admission control is executed with
-   traffic class granularity, as outlined in Figure 26.  In this model,
+   traffic class granularity, as outlined in Figure 24.  In this model,
    if a premium class doesn't consume all available class capacity, it
    cannot be reused by non-premium (i.e., Best Effort) class.
 
@@ -1920,17 +1859,17 @@ Table of Contents
                                                 +--|---+     |
                                                    +---------+
 
-        Figure 26: Ingress Slice Admission Control (5QI-aware Model)
+        Figure 24: Ingress Slice Admission Control (5QI-aware Model)
 
    The second model combines the advantages of 5QI-unaware model (per
    slice admission control) with the per traffic class admission
-   control, as outlined in Figure 26.  Ingress admission control is at
+   control, as outlined in Figure 24.  Ingress admission control is at
    class granularity for premium classes (CIR only).  Non-premium class
    (i.e., Best Effort) has no separate class admission control policy,
    but it is allowed to use the entire slice capacity, which is
    available at any given moment.  I.e., slice capacity, which is not
    consumed by premium classes.  It is a hierarchical model, as depicted
-   in Figure 27.
+   in Figure 25.
 
                                           Slice
                                          policer   +---------+
@@ -1967,11 +1906,11 @@ Table of Contents
                                             '   +--|---+     |
                                                    +---------+
 
-   Figure 27: Ingress Slice Admission Control (5QI-aware) - Hierarchical
+   Figure 25: Ingress Slice Admission Control (5QI-aware) - Hierarchical
 
 5.2.2.2.  Outbound Edge Resource Control
 
-   Figure 28 outlines the outbound edge resource control model at the
+   Figure 26 outlines the outbound edge resource control model at the
    transport network layer for 5QI-aware slices.  Each slice is assigned
    multiple egress queues.  The sum of queue weights, which are 5Q QoS
    queue CIRs within the slice, should not exceed the CIR of the slice
@@ -2021,18 +1960,18 @@ Table of Contents
       |      ------ - - - - - - - - - - - - - - - - - - - - - - - - - -
       +---------+
 
-           Figure 28: Egress Slice Admission Control (5QI-aware)
+           Figure 26: Egress Slice Admission Control (5QI-aware)
 
 5.3.  Transit Resource Control
 
    Transit resource control is much simpler than Edge resource control
-   in the provider network.  As outlined in Figure 24, at the provider
+   in the provider network.  As outlined in Figure 22, at the provider
    network edge, 5Q QoS Class marking (represented by DSCP related to
    5QI set by mobile network functions in the packets handed off to the
    TN) is mapped to the TN QoS Class.  Based on TN QoS Class, when the
    packet is encapsulated with outer header (MPLS or IPv6), TN QoS Class
    marking (MPLS TC or IPv6 DSCP in outer header, as depicted in Figures
-   20 and 21) is set in the outer header.  PHB in provider network
+   18 and 19) is set in the outer header.  PHB in provider network
    transit routers is based exclusively on that TN QoS Class marking,
    i.e., original 5G QoS Class DSCP is not taken into consideration on
    transit.
@@ -2100,7 +2039,7 @@ Table of Contents
    same slice, can be mapped to different underlay transports (5QI-aware
    model).
 
-   Figure 29 depicts an example of a simple network with two underlay
+   Figure 27 depicts an example of a simple network with two underlay
    transports, each using a mesh of TE tunnels with or without Path
    Computation Element (PCE) [RFC5440], and with or without bandwidth
    reservations.  Section 7 discusses in detail different bandwidth
@@ -2130,9 +2069,9 @@ Table of Contents
         x----->   Tunnels of Underlay Transport A
         o---->>   Tunnels of Underlay Transport B
 
-       Figure 29: Example of Underlay Transport Relying on TE Tunnels
+       Figure 27: Example of Underlay Transport Relying on TE Tunnels
 
-   For illustration purposes, Figure 29 shows only single tunnels per
+   For illustration purposes, Figure 27 shows only single tunnels per
    underlay transport for (ingress PE, egress PE) pair.  However, there
    might be multiple tunnels within a single underlay transport between
    any pair of PEs.
@@ -2145,7 +2084,7 @@ Table of Contents
    therefore the entire slice is subject to the same per-hop behavior.
    Similarly, in 5QI-unaware PE underlay transport mapping model, the
    entire slice is mapped to a single underlay transport, as depicted in
-   Figure 30.
+   Figure 28.
 
                  +-----------------------------------------+
                  |.. .. .. .. .. ..                        |
@@ -2183,7 +2122,7 @@ Table of Contents
                  '.. .. .. .. .. ..                        |
                  +-----------------------------------------+
 
-      Figure 30: Network Slice to PEs Underlay Transport Mapping (5QI-
+      Figure 28: Network Slice to PEs Underlay Transport Mapping (5QI-
                                unaware Model)
 
 6.2.  5QI-aware Model
@@ -2192,7 +2131,7 @@ Table of Contents
    at the granularity of 5G QoS Class.  Given that the potential number
    of underlay transports is limited, packets from multiple 5G QoS
    Classes with similar characteristics are mapped to a common underlay
-   transport, as depicted in Figure 31.
+   transport, as depicted in Figure 29.
 
                  +-------------------------------------------+
                  |.. .. .. .. .. ..                          |
@@ -2230,7 +2169,7 @@ Table of Contents
                  '.. .. .. .. .. ..                          |
                  +-------------------------------------------+
 
-     Figure 31: Network Slice to Underlay Transport Mapping (5QI-aware
+     Figure 29: Network Slice to Underlay Transport Mapping (5QI-aware
                                    Model)
 
 7.  Capacity Planning/Management
@@ -2240,7 +2179,7 @@ Table of Contents
    This section describes the information conveyed by the 5G NSO to the
    NSC with respect to slice bandwidth requirements.
 
-   Figure 32 shows three DCs that contain instances of network
+   Figure 30 shows three DCs that contain instances of network
    functions.  Also shown are PEs that have links to the DCs.  The PEs
    belong to the provider network.  Other details of the provider
    network, such as P-routers and transit links are not shown.  Also
@@ -2280,7 +2219,7 @@ Table of Contents
 
      * SDP, with fine-grained QoS (dedicated resources per RFC 9543 NS)
 
-               Figure 32: An Example of Multi-DC Architecture
+               Figure 30: An Example of Multi-DC Architecture
 
    Let us consider 5G slice "X" that uses some of the network functions
    in the three DCs.  If this slice has latency requirements, the 5G NSO
@@ -2429,7 +2368,7 @@ Table of Contents
    "DC2" is 12 units (8 units for slice "X" (Table 1) and 4 units for
    slice "Y" (Table 2)).  When the 5G NSO requests a new slice, the NSC,
    increments the bandwidth requirement according to the requirements of
-   the new slice.  For example, in Figure 32, suppose a new slice is
+   the new slice.  For example, in Figure 30, suppose a new slice is
    instantiated that needs 0.8 Gbps from "DC1" to "DC2".  The transport
    controller would increase its notion of the bandwidth requirement
    from "DC1" to "DC2" from 12 Gbps to 12.8 Gbps to accommodate the
@@ -2983,7 +2922,74 @@ Table of Contents
               Networks: A Systems Approach", 2022,
               <https://5g.systemsapproach.org/>.
 
-Appendix A.  Acronyms and Abbreviations
+Appendix A.  An Example of Local IPv6 Addressing Plan for Network
+             Functions
+
+   Different IPv6 address allocation schemes following the above
+   approach may be used, with one example allocation shown in Figure 31.
+
+                            NF-specific          Reserved
+                       (not slice specific)     for S-NSSAI
+                  <----------------------------><--------->
+                  +----+----+----+----+----+----+----+----+
+                  |xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:ttdd:dddd|
+                  +----+----+----+----+----+----+----+----+
+                  <------------------128 bits------------->
+
+                   tt     - SST (8 bits)
+                   dddddd - SD (24 bits)
+
+       Figure 31: An Example of S-NSSAI Embedded into an IPv6 Address
+
+   In reference to Figure 31, the most significant 96 bits of the IPv6
+   address are unique to the NF, but do not carry any slice-specific
+   information.  The S-NSSAI information is embedded in the least
+   significant 32 bits.  The 96-bit part of the address may be
+   structured by the provider, for example, on the geographical location
+   or the DC identification.  Refer to Section 2.1. of [RFC9099] for a
+   discussion on the benefits of structuring an address plan around both
+   services and geographic locations for more structured security
+   policies in a network.
+
+   Figure 32 uses the example from Figure 31 to demonstrate a slicing
+   deployment, where the entire S-NSSAI is embedded into IPv6 addresses
+   used by NFs.  Let us consider that "NF-A" has a set of tunnel
+   termination points with unique per-slice IP addresses allocated from
+   2001:db8:a:0::/96, while "NF-B" uses a set of tunnel termination
+   points with per-slice IP addresses allocated from 2001:db8:b:0::/96.
+   This example shows two slices: "customer A eMBB" (SST-01, SD-00001)
+   and "customer B Massive Internet of Things (MIoT)" (SST-03, SD-
+   00003).  For "customer A eMBB" slice, the tunnel IP addresses are
+   auto-derived as the IP addresses {2001:db8:a::100:1,
+   2001:db8:b::100:1}, where {:0100:0001} is used as the last two
+   octets. "customer B MIoT" slice (SST-3, SD-00003) tunnel uses the IP
+   addresses {2001:db8:a::300:3, 2001:db8:b::300:3} and simply adds
+   {:0300:0003} as the last two octets.  Leading zeros are not
+   represented in the resulting IPv6 addresses as per [RFC5952].
+
+    2001:db8:a::/96 (NF-A)                      2001:db8:b::/96 (NF-B)
+
+    2001:db8:a::100:1/128                2001:db8:b::100:1/128
+        |                                                        |
+        |            + - - - - - - - - +   eMBB (SST=1)          |
+        |            |                 |      |                  |
+   +----v-+       +--+--+ Provider +---+-+    v  +-----+       +-v----+
+   |    o============*================*==========================o    |
+   | NF   +-------+ PE  |          | PE  +-------+L2/L3+.......+   NF |
+   |    o============*================*==========================o    |
+   +----^-+       +--+--+  Network +---+-+    ^  +-----+       +-^----+
+        |            |                 |      |                  |
+        |            + - - - - - - - - + MIoT (SST=3)            |
+        |                                                        |
+    2001:db8:a::300:3/128               2001:db8:b::300:3/128
+
+    o Tunnel (IPsec, GTP-U, etc) termination point
+    * SDP
+
+       Figure 32: Deployment Example with S-NSSAI Embedded into IPv6
+                                 Addresses
+
+Appendix B.  Acronyms and Abbreviations
 
    3GPP:  3rd Generation Partnership Project
 

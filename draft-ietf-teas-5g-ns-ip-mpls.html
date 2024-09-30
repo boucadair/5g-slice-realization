@@ -1035,7 +1035,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Szarkowicz, et al.</td>
-<td class="center">Expires 28 March 2025</td>
+<td class="center">Expires 3 April 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1048,12 +1048,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-teas-5g-ns-ip-mpls-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-09-24" class="published">24 September 2024</time>
+<time datetime="2024-09-30" class="published">30 September 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-03-28">28 March 2025</time></dd>
+<dd class="expires"><time datetime="2025-04-03">3 April 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1118,7 +1118,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 28 March 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 3 April 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1253,16 +1253,19 @@ svg :is([fill="white"], [fill^="#fff"]) {
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
-            <p id="section-toc.1-1.13.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-acronyms-and-abbreviations" class="internal xref">Acronyms and Abbreviations</a></p>
+            <p id="section-toc.1-1.13.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-an-example-of-local-ipv6-ad" class="internal xref">An Example of Local IPv6 Addressing Plan for Network Functions</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
-            <p id="section-toc.1-1.14.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+            <p id="section-toc.1-1.14.1"><a href="#appendix-B" class="auto internal xref">Appendix B</a>.  <a href="#name-acronyms-and-abbreviations" class="internal xref">Acronyms and Abbreviations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
-            <p id="section-toc.1-1.15.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
+            <p id="section-toc.1-1.15.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16">
-            <p id="section-toc.1-1.16.1"><a href="#appendix-D" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.16.1"><a href="#appendix-D" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.17">
+            <p id="section-toc.1-1.17.1"><a href="#appendix-E" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1319,7 +1322,7 @@ domain by mapping to explicit data plane identifiers (e.g., Layer 2, Layer 3, or
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-definitions" class="section-name selfRef">Definitions</a>
       </h2>
 <p id="section-2-1">The document uses the terms defined in <span>[<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>. See <a href="#sec-ref-design" class="auto internal xref">Section 3.3</a> for the contextualization of some of these terms.<a href="#section-2-1" class="pilcrow">¶</a></p>
-<p id="section-2-2">An extended list of abbreviations used in this document is provided in <a href="#ext-abbr" class="auto internal xref">Appendix A</a>.<a href="#section-2-2" class="pilcrow">¶</a></p>
+<p id="section-2-2">An extended list of abbreviations used in this document is provided in <a href="#ext-abbr" class="auto internal xref">Appendix B</a>.<a href="#section-2-2" class="pilcrow">¶</a></p>
 <p id="section-2-3">"5G Network Slicing" (or "5G Network Slice") refers to "Network Slicing" (or "Network Slice") as defined in the 3GPP <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span>.<a href="#section-2-3" class="pilcrow">¶</a></p>
 <p id="section-2-4">This document makes use of the following terms:<a href="#section-2-4" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-2-5">
@@ -2171,78 +2174,7 @@ o Tunnel (IPsec, GTP-U, ...) termination point
 <p id="section-4.2-9">However, operators using such mapping methods should be aware of the implications
    of any change of S-NSSAI on the IPv6 addressing plans. For example, modifications of the S-NSSAIs in-use will require
    updating the IP addresses used by NFs involved in the associated slices.<a href="#section-4.2-9" class="pilcrow">¶</a></p>
-<div id="an-example-of-local-ipv6-addressing-plan-for-network-functions">
-<section id="section-4.2.1">
-          <h4 id="name-an-example-of-local-ipv6-ad">
-<a href="#section-4.2.1" class="section-number selfRef">4.2.1. </a><a href="#name-an-example-of-local-ipv6-ad" class="section-name selfRef">An Example of Local IPv6 Addressing Plan for Network Functions</a>
-          </h4>
-<p id="section-4.2.1-1">Different IPv6 address allocation
-   schemes following the above approach may be used, with one example allocation shown
-   in <a href="#_figure-11" class="auto internal xref">Figure 14</a>.<a href="#section-4.2.1-1" class="pilcrow">¶</a></p>
-<span id="name-an-example-of-s-nssai-embed"></span><div id="_figure-11">
-<figure id="figure-14">
-            <div class="alignCenter art-text artwork" id="section-4.2.1-2.1">
-<pre>
-             NF-specific          Reserved
-        (not slice specific)     for S-NSSAI
-   &lt;----------------------------&gt;&lt;---------&gt;
-   +----+----+----+----+----+----+----+----+
-   |xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:ttdd:dddd|
-   +----+----+----+----+----+----+----+----+
-   &lt;------------------128 bits-------------&gt;
-
-    tt     - SST (8 bits)
-    dddddd - SD (24 bits)
-</pre>
-</div>
-<figcaption><a href="#figure-14" class="selfRef">Figure 14</a>:
-<a href="#name-an-example-of-s-nssai-embed" class="selfRef">An Example of S-NSSAI Embedded into an IPv6 Address</a>
-            </figcaption></figure>
-</div>
-<p id="section-4.2.1-3">In reference to <a href="#_figure-11" class="auto internal xref">Figure 14</a>, the most significant 96 bits of the IPv6 address
-   are unique to the NF, but do not carry any slice-specific information. The S-NSSAI information is embedded in the least
-   significant 32 bits. The 96-bit part of the address may be structured by the provider, for example, on the
-   geographical location or the DC identification. Refer to <span><a href="https://rfc-editor.org/rfc/rfc9099#section-2.1." class="relref">Section 2.1.</a> of [<a href="#RFC9099" class="cite xref">RFC9099</a>]</span> for a discussion on the benefits of structuring an address plan around both services and geographic locations for more structured security policies in a network.<a href="#section-4.2.1-3" class="pilcrow">¶</a></p>
-<p id="section-4.2.1-4"><a href="#_figure-s-nssai-deployment" class="auto internal xref">Figure 15</a> uses the example from <a href="#_figure-11" class="auto internal xref">Figure 14</a> to demonstrate a
-   slicing deployment, where the entire S-NSSAI is embedded into IPv6 addresses used by
-   NFs. Let us consider that "NF-A" has a set of tunnel termination points with unique per-slice IP addresses
-   allocated from 2001:db8:a:0::/96, while "NF-B" uses a set of tunnel termination
-   points with per-slice IP addresses allocated from 2001:db8:b:0::/96. This example shows
-   two slices: "customer A eMBB" (SST-01, SD-00001) and "customer B Massive Internet of Things (MIoT)" (SST-03, SD-00003).
-   For "customer A eMBB" slice, the tunnel IP addresses are auto-derived as the IP addresses {2001:db8:a::100:1, 2001:db8:b::100:1},
-   where {:0100:0001} is used as the last two octets. "customer B MIoT" slice (SST-3,
-   SD-00003) tunnel uses the IP addresses {2001:db8:a::300:3, 2001:db8:b::300:3} and simply
-   adds {:0300:0003} as the last two octets. Leading zeros are not represented in the resulting IPv6 addresses as per <span>[<a href="#RFC5952" class="cite xref">RFC5952</a>]</span>.<a href="#section-4.2.1-4" class="pilcrow">¶</a></p>
-<span id="name-deployment-example-with-s-n"></span><div id="_figure-s-nssai-deployment">
-<figure id="figure-15">
-            <div class="alignCenter art-text artwork" id="section-4.2.1-5.1">
-<pre>
- 2001:db8:a::/96 (NF-A)                      2001:db8:b::/96 (NF-B)
-
- 2001:db8:a::100:1/128                2001:db8:b::100:1/128
-     |                                                        |
-     |            + - - - - - - - - +   eMBB (SST=1)          |
-     |            |                 |      |                  |
-+----v-+       +--+--+ Provider +---+-+    v  +-----+       +-v----+
-|    o============*================*==========================o    |
-| NF   +-------+ PE  |          | PE  +-------+L2/L3+.......+   NF |
-|    o============*================*==========================o    |
-+----^-+       +--+--+  Network +---+-+    ^  +-----+       +-^----+
-     |            |                 |      |                  |
-     |            + - - - - - - - - + MIoT (SST=3)            |
-     |                                                        |
- 2001:db8:a::300:3/128               2001:db8:b::300:3/128
-
- o Tunnel (IPsec, GTP-U, etc) termination point
- * SDP
-</pre>
-</div>
-<figcaption><a href="#figure-15" class="selfRef">Figure 15</a>:
-<a href="#name-deployment-example-with-s-n" class="selfRef">Deployment Example with S-NSSAI Embedded into IPv6 Addresses</a>
-            </figcaption></figure>
-</div>
-</section>
-</div>
+<p id="section-4.2-10">An Example of local IPv6 addressing plan for NFs is provided in <a href="#sec-v6-ex" class="auto internal xref">Appendix A</a><a href="#section-4.2-10" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-mpls-ho">
@@ -2278,9 +2210,9 @@ change at domain boundaries.<a href="#section-4.3-3.4.1" class="pilcrow">¶</a><
 </dd>
         <dd class="break"></dd>
 </dl>
-<p id="section-4.3-4"><a href="#_figure-51" class="auto internal xref">Figure 16</a> illustrates the use of service-aware CE (<a href="#sec-ce" class="auto internal xref">Section 3.3.2</a>) for the deployment discussed in Sections <a href="#sec-10b" class="auto internal xref">4.3.2</a> and <a href="#sec-10c" class="auto internal xref">4.3.3</a>.<a href="#section-4.3-4" class="pilcrow">¶</a></p>
+<p id="section-4.3-4"><a href="#_figure-51" class="auto internal xref">Figure 14</a> illustrates the use of service-aware CE (<a href="#sec-ce" class="auto internal xref">Section 3.3.2</a>) for the deployment discussed in Sections <a href="#sec-10b" class="auto internal xref">4.3.2</a> and <a href="#sec-10c" class="auto internal xref">4.3.3</a>.<a href="#section-4.3-4" class="pilcrow">¶</a></p>
 <span id="name-example-of-mpls-based-attac"></span><div id="_figure-51">
-<figure id="figure-16">
+<figure id="figure-14">
           <div class="alignCenter art-text artwork" id="section-4.3-5.1">
 <pre>
 +--------------+                      +--------------+
@@ -2297,7 +2229,7 @@ change at domain boundaries.<a href="#section-4.3-3.4.1" class="pilcrow">¶</a><
 +--------+----------+                 +--------------+
 </pre>
 </div>
-<figcaption><a href="#figure-16" class="selfRef">Figure 16</a>:
+<figcaption><a href="#figure-14" class="selfRef">Figure 14</a>:
 <a href="#name-example-of-mpls-based-attac" class="selfRef">Example of MPLS-based Attachment Circuit</a>
           </figcaption></figure>
 </div>
@@ -2316,16 +2248,16 @@ change at domain boundaries.<a href="#section-4.3-3.4.1" class="pilcrow">¶</a><
           </h4>
 <p id="section-4.3.2-1">In this option, L3VPN service instances are instantiated outside the
    provider network.  These L3VPN service instances
-   are instantiated in the customer site which could be, for example, either on the compute that hosts mobile NFs (<a href="#_figure-mpls-10b-hand-off" class="auto internal xref">Figure 17</a>, left hand side) or within the DC/cloud
+   are instantiated in the customer site which could be, for example, either on the compute that hosts mobile NFs (<a href="#_figure-mpls-10b-hand-off" class="auto internal xref">Figure 15</a>, left hand side) or within the DC/cloud
    infrastructure itself (e.g., on the top of the rack or leaf switch
-   within cloud IP fabric (<a href="#_figure-mpls-10b-hand-off" class="auto internal xref">Figure 17</a>, right hand side)). On the
+   within cloud IP fabric (<a href="#_figure-mpls-10b-hand-off" class="auto internal xref">Figure 15</a>, right hand side)). On the
    AC connected to a PE, packets are already MPLS
    encapsulated (or MPLS-in-UDP/MPLS-in-IP encapsulated, if cloud or compute
    infrastructure don't support MPLS encapsulation). Therefore,
    the PE uses neither a VLAN nor an IP address for slice
    identification at the SDP, but instead uses the MPLS label.<a href="#section-4.3.2-1" class="pilcrow">¶</a></p>
 <span id="name-example-of-mpls-hand-off-wi"></span><div id="_figure-mpls-10b-hand-off">
-<figure id="figure-17">
+<figure id="figure-15">
             <div class="alignCenter art-text artwork" id="section-4.3.2-2.1">
 <pre>
      &lt;------        &lt;------        &lt;------
@@ -2354,19 +2286,19 @@ representing slices              representing slices    slices
   * SDP
 </pre>
 </div>
-<figcaption><a href="#figure-17" class="selfRef">Figure 17</a>:
+<figcaption><a href="#figure-15" class="selfRef">Figure 15</a>:
 <a href="#name-example-of-mpls-hand-off-wi" class="selfRef">Example of MPLS Hand-off with Option B</a>
             </figcaption></figure>
 </div>
 <p id="section-4.3.2-3">MPLS labels are allocated dynamically in Option B
    deployments, where at the domain boundaries service prefixes are
    reflected with next-hop self, and a new label is dynamically allocated,
-   as visible in <a href="#_figure-mpls-10b-hand-off" class="auto internal xref">Figure 17</a> (e.g., labels A, A', and A" for the first depicted slice).  Therefore, for any slice-specific per-hop
+   as visible in <a href="#_figure-mpls-10b-hand-off" class="auto internal xref">Figure 15</a> (e.g., labels A, A', and A" for the first depicted slice).  Therefore, for any slice-specific per-hop
    behavior at the provider network edge, the PE needs to determine
    which label represents which slice.  In the BGP control plane, when
    exchanging service prefixes over an AC, each slice might be represented by a unique BGP community, so
    tracking label assignment to the slice might be possible.  For example, in
-   <a href="#_figure-mpls-10b-hand-off" class="auto internal xref">Figure 17</a>, for the slice identified with COM-1, the PE advertises a
+   <a href="#_figure-mpls-10b-hand-off" class="auto internal xref">Figure 15</a>, for the slice identified with COM-1, the PE advertises a
    dynamically allocated label A". Since, based on the community, the
    label to slice association is known, the PE can use this dynamically
    allocated label A" to identify incoming packets as belonging to "slice 1"
@@ -2375,7 +2307,7 @@ representing slices              representing slices    slices
    might be with per-prefix granularity.  In the extreme case, each prefix can have
    different community representing a different slice.  Depending on the
    business requirements, each slice could be represented by a different
-   service instance as outlined in <a href="#_figure-mpls-10b-hand-off" class="auto internal xref">Figure 17</a>.  In that case, the route
+   service instance as outlined in <a href="#_figure-mpls-10b-hand-off" class="auto internal xref">Figure 15</a>.  In that case, the route
    target extended community (<span><a href="https://rfc-editor.org/rfc/rfc4360#section-4" class="relref">Section 4</a> of [<a href="#RFC4360" class="cite xref">RFC4360</a>]</span>) might be used as slice differentiator.  In
    other deployments, all prefixes (representing different slices)
    might be handled by a single 'mobile' service instance, and some other
@@ -2402,10 +2334,10 @@ for service prefixes.<a href="#section-4.3.3-1" class="pilcrow">¶</a></p>
 between customer sites, without changing the NEXT_HOP BGP attribute.
 Additionally, IPv4/IPv6 labeled unicast (SAFI-4) host routes, used as NEXT_HOP
 for service prefixes, are exchanged via direct single-hop BGP sessions between
-adjacent nodes in a customer site and a provider network, as depicted in <a href="#_figure-mpls-10c-hand-off" class="auto internal xref">Figure 18</a>.
+adjacent nodes in a customer site and a provider network, as depicted in <a href="#_figure-mpls-10c-hand-off" class="auto internal xref">Figure 16</a>.
 As a result, a node in a customer site performs hierarchical next-hop resolution.<a href="#section-4.3.3-2" class="pilcrow">¶</a></p>
 <span id="name-mpls-hand-off-with-option-c"></span><div id="_figure-mpls-10c-hand-off">
-<figure id="figure-18">
+<figure id="figure-16">
             <div class="alignCenter art-text artwork" id="section-4.3.3-3.1">
 <pre>
      &lt;-------------------------------------------
@@ -2439,7 +2371,7 @@ representing slices              representing slices    slices
    * SDP
 </pre>
 </div>
-<figcaption><a href="#figure-18" class="selfRef">Figure 18</a>:
+<figcaption><a href="#figure-16" class="selfRef">Figure 16</a>:
 <a href="#name-mpls-hand-off-with-option-c" class="selfRef">MPLS Hand-off with Option C</a>
             </figcaption></figure>
 </div>
@@ -2572,9 +2504,9 @@ ranges for each slice, and use these ranges for slice identification purposes on
    Network Slices) increases, a single QoS queue on transit links in the provider network serves
    multiple slices with similar characteristics.  QoS enforcement on
    transit links is fully coarse-grained (single NRP, sharing resources among
-   all RFC 9543 Network Slices), as displayed in <a href="#_figure-QoS-5QI-unaware" class="auto internal xref">Figure 19</a>.<a href="#section-5.2.1-1" class="pilcrow">¶</a></p>
+   all RFC 9543 Network Slices), as displayed in <a href="#_figure-QoS-5QI-unaware" class="auto internal xref">Figure 17</a>.<a href="#section-5.2.1-1" class="pilcrow">¶</a></p>
 <span id="name-slice-to-tn-qos-mapping-5qi"></span><div id="_figure-QoS-5QI-unaware">
-<figure id="figure-19">
+<figure id="figure-17">
             <div class="alignCenter art-text artwork" id="section-5.2.1-2.1">
 <pre>
 +------------------------------------------------------------+
@@ -2616,7 +2548,7 @@ Fine-grained QoS enforcement   Coarse-grained QoS enforcement
    RFC 9543 Network Slice)       RFC 9543 Network Slices)
 </pre>
 </div>
-<figcaption><a href="#figure-19" class="selfRef">Figure 19</a>:
+<figcaption><a href="#figure-17" class="selfRef">Figure 17</a>:
 <a href="#name-slice-to-tn-qos-mapping-5qi" class="selfRef">Slice to TN QoS Mapping (5QI-unaware Model)</a>
             </figcaption></figure>
 </div>
@@ -2632,10 +2564,10 @@ Fine-grained QoS enforcement   Coarse-grained QoS enforcement
    marking, per-hop behavior for all RFC 9543 Network Slices is executed on
    provider network transit links.  Provider network transit routers do not evaluate the original IP
    header for QoS-related decisions.  This model is outlined in
-   <a href="#_figure-15" class="auto internal xref">Figure 20</a> for MPLS encapsulation, and in <a href="#_figure-16" class="auto internal xref">Figure 21</a> for SRv6
+   <a href="#_figure-15" class="auto internal xref">Figure 18</a> for MPLS encapsulation, and in <a href="#_figure-16" class="auto internal xref">Figure 19</a> for SRv6
    encapsulation.<a href="#section-5.2.1-4" class="pilcrow">¶</a></p>
 <span id="name-qos-with-mpls-encapsulation"></span><div id="_figure-15">
-<figure id="figure-20">
+<figure id="figure-18">
             <div class="alignCenter art-text artwork" id="section-5.2.1-5.1">
 <pre>
                                  +--------------+
@@ -2659,12 +2591,12 @@ Fine-grained QoS enforcement   Coarse-grained QoS enforcement
 +--------------+ - - - - - - - - +--------------+
 </pre>
 </div>
-<figcaption><a href="#figure-20" class="selfRef">Figure 20</a>:
+<figcaption><a href="#figure-18" class="selfRef">Figure 18</a>:
 <a href="#name-qos-with-mpls-encapsulation" class="selfRef">QoS with MPLS Encapsulation</a>
             </figcaption></figure>
 </div>
 <span id="name-qos-with-ipv6-encapsulation"></span><div id="_figure-16">
-<figure id="figure-21">
+<figure id="figure-19">
             <div class="alignCenter art-text artwork" id="section-5.2.1-6.1">
 <pre>
                                  +--------------+
@@ -2692,7 +2624,7 @@ Fine-grained QoS enforcement   Coarse-grained QoS enforcement
 +--------------+ - - - - - - - - +--------------+
 </pre>
 </div>
-<figcaption><a href="#figure-21" class="selfRef">Figure 21</a>:
+<figcaption><a href="#figure-19" class="selfRef">Figure 19</a>:
 <a href="#name-qos-with-ipv6-encapsulation" class="selfRef">QoS with IPv6 Encapsulation</a>
             </figcaption></figure>
 </div>
@@ -2783,9 +2715,9 @@ congestion (yellow), or hard dropping the traffic (red).<a href="#section-5.2.1.
 <p id="section-5.2.1.1-6">Inbound provider network edge enforcement model for 5QI-unaware model, where all packets
    belonging to the slice are treated the same way in the provider network (no
    5Q QoS Class differentiation in the provider) is outlined in
-   <a href="#_figure-17" class="auto internal xref">Figure 22</a>.<a href="#section-5.2.1.1-6" class="pilcrow">¶</a></p>
+   <a href="#_figure-17" class="auto internal xref">Figure 20</a>.<a href="#section-5.2.1.1-6" class="pilcrow">¶</a></p>
 <span id="name-ingress-slice-admission-con"></span><div id="_figure-17">
-<figure id="figure-22">
+<figure id="figure-20">
               <div class="alignCenter art-text artwork" id="section-5.2.1.1-7.1">
 <pre>
             Slice
@@ -2824,7 +2756,7 @@ congestion (yellow), or hard dropping the traffic (red).<a href="#section-5.2.1.
                        +---------+
 </pre>
 </div>
-<figcaption><a href="#figure-22" class="selfRef">Figure 22</a>:
+<figcaption><a href="#figure-20" class="selfRef">Figure 20</a>:
 <a href="#name-ingress-slice-admission-con" class="selfRef">Ingress Slice Admission Control (5QI-unware Model)</a>
               </figcaption></figure>
 </div>
@@ -2862,7 +2794,7 @@ outbound direction at the provider network edge links.<a href="#section-5.2.1.2-
    with optional shapers (per slice).  A detailed analysis of different
    queuing mechanisms is out of scope for this document, but is provided
    in <span>[<a href="#RFC7806" class="cite xref">RFC7806</a>]</span>.<a href="#section-5.2.1.2-3" class="pilcrow">¶</a></p>
-<p id="section-5.2.1.2-4"><a href="#_figure-18" class="auto internal xref">Figure 23</a> outlines the outbound provider network edge resource control model
+<p id="section-5.2.1.2-4"><a href="#_figure-18" class="auto internal xref">Figure 21</a> outlines the outbound provider network edge resource control model
    for 5QI-unaware slices.  Each slice is
    assigned a single egress queue.  The sum of slice CIRs, used as the
    weight in weighted queueing model, should not exceed the physical
@@ -2870,7 +2802,7 @@ outbound direction at the provider network edge links.<a href="#section-5.2.1.2-
    should be rejected by the NSC, unless an already established slice with
    lower priority, if such exists, is preempted.<a href="#section-5.2.1.2-4" class="pilcrow">¶</a></p>
 <span id="name-ingress-slice-admission-cont"></span><div id="_figure-18">
-<figure id="figure-23">
+<figure id="figure-21">
               <div class="alignCenter art-text artwork" id="section-5.2.1.2-5.1">
 <pre>
       +---------+        QoS output queues
@@ -2902,7 +2834,7 @@ outbound direction at the provider network edge links.<a href="#section-5.2.1.2-
       +---------+
 </pre>
 </div>
-<figcaption><a href="#figure-23" class="selfRef">Figure 23</a>:
+<figcaption><a href="#figure-21" class="selfRef">Figure 21</a>:
 <a href="#name-ingress-slice-admission-cont" class="selfRef">Ingress Slice Admission control (5QI-unaware Model)</a>
               </figcaption></figure>
 </div>
@@ -2918,9 +2850,9 @@ outbound direction at the provider network edge links.<a href="#section-5.2.1.2-
 <p id="section-5.2.2-1">In the 5QI-aware model, potentially a large number of 5G QoS Classes, represented via the DSCP set by NFs
    (the architecture scales to thousands of 5G slices) is mapped
    (multiplexed) to up to 8 TN QoS Classes used in a provider network transit
-   equipment, as outlined in <a href="#_figure-QoS-5QI-aware" class="auto internal xref">Figure 24</a>.<a href="#section-5.2.2-1" class="pilcrow">¶</a></p>
+   equipment, as outlined in <a href="#_figure-QoS-5QI-aware" class="auto internal xref">Figure 22</a>.<a href="#section-5.2.2-1" class="pilcrow">¶</a></p>
 <span id="name-slice-5q-qos-to-tn-qos-mapp"></span><div id="_figure-QoS-5QI-aware">
-<figure id="figure-24">
+<figure id="figure-22">
             <div class="alignCenter art-text artwork" id="section-5.2.2-2.1">
 <pre>
   +------------------------------------------------------------+
@@ -2962,7 +2894,7 @@ S ||  +----------+ ||  |           |+------------------------+ |
      RFC 9543 Network Slice)        RFC 9543 Network Slices)
 </pre>
 </div>
-<figcaption><a href="#figure-24" class="selfRef">Figure 24</a>:
+<figcaption><a href="#figure-22" class="selfRef">Figure 22</a>:
 <a href="#name-slice-5q-qos-to-tn-qos-mapp" class="selfRef">Slice 5Q QoS to TN QoS Mapping (5QI-aware Model)</a>
             </figcaption></figure>
 </div>
@@ -2973,17 +2905,17 @@ S ||  +----------+ ||  |           |+------------------------+ |
    would be grouped with common operator-defined TN logic and mapped to a same TN QoS Class when transported in the
    provider network.  That is, common Per-hop Behavior (PHB) <span>[<a href="#RFC2474" class="cite xref">RFC2474</a>]</span> is executed on
    transit provider network routers for all packets grouped together. An example of this
-   approach is outlined in <a href="#_figure-QoS-5QI-mapping-example" class="auto internal xref">Figure 25</a>. A provider may decide
+   approach is outlined in <a href="#_figure-QoS-5QI-mapping-example" class="auto internal xref">Figure 23</a>. A provider may decide
    to implement Diffserv-Intercon PHBs at the boundaries of its network domain <span>[<a href="#RFC8100" class="cite xref">RFC8100</a>]</span>.<a href="#section-5.2.2-3" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-5.2.2-4">
             <dt id="section-5.2.2-4.1">Note:</dt>
             <dd style="margin-left: 1.5em" id="section-5.2.2-4.2">
-              <p id="section-5.2.2-4.2.1">The numbers indicated in <a href="#_figure-QoS-5QI-mapping-example" class="auto internal xref">Figure 25</a> (S-NSSAI, 5QI, DSCP, queue, etc.) are provided for illustration purposes only and should not be considered as deployment guidance.<a href="#section-5.2.2-4.2.1" class="pilcrow">¶</a></p>
+              <p id="section-5.2.2-4.2.1">The numbers indicated in <a href="#_figure-QoS-5QI-mapping-example" class="auto internal xref">Figure 23</a> (S-NSSAI, 5QI, DSCP, queue, etc.) are provided for illustration purposes only and should not be considered as deployment guidance.<a href="#section-5.2.2-4.2.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 </dl>
 <span id="name-example-of-3gpp-qos-mapped-"></span><div id="_figure-QoS-5QI-mapping-example">
-<figure id="figure-25">
+<figure id="figure-23">
             <div class="alignCenter art-text artwork" id="section-5.2.2-5.1">
 <pre>
                       +-------------  PE  -----------------+
@@ -3017,7 +2949,7 @@ S ||  +----------+ ||  |           |+------------------------+ |
                       +------------------------------------+
 </pre>
 </div>
-<figcaption><a href="#figure-25" class="selfRef">Figure 25</a>:
+<figcaption><a href="#figure-23" class="selfRef">Figure 23</a>:
 <a href="#name-example-of-3gpp-qos-mapped-" class="selfRef">Example of 3GPP QoS Mapped to TN QoS</a>
             </figcaption></figure>
 </div>
@@ -3064,11 +2996,11 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 <p id="section-5.2.2.1-4">In the first option, the slice admission control is executed with
-   traffic class granularity, as outlined in <a href="#_figure-20" class="auto internal xref">Figure 26</a>.  In this model,
+   traffic class granularity, as outlined in <a href="#_figure-20" class="auto internal xref">Figure 24</a>.  In this model,
    if a premium class doesn't consume all available class capacity, it
    cannot be reused by non-premium (i.e., Best Effort) class.<a href="#section-5.2.2.1-4" class="pilcrow">¶</a></p>
 <span id="name-ingress-slice-admission-contr"></span><div id="_figure-20">
-<figure id="figure-26">
+<figure id="figure-24">
               <div class="alignCenter art-text artwork" id="section-5.2.2.1-5.1">
 <pre>
                      Class             +---------+
@@ -3106,21 +3038,21 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
                                        +---------+
 </pre>
 </div>
-<figcaption><a href="#figure-26" class="selfRef">Figure 26</a>:
+<figcaption><a href="#figure-24" class="selfRef">Figure 24</a>:
 <a href="#name-ingress-slice-admission-contr" class="selfRef">Ingress Slice Admission Control (5QI-aware Model)</a>
               </figcaption></figure>
 </div>
 <p id="section-5.2.2.1-6">The second model combines the advantages of 5QI-unaware model (per
    slice admission control) with the per traffic class admission
-   control, as outlined in <a href="#_figure-20" class="auto internal xref">Figure 26</a>.  Ingress admission control is at
+   control, as outlined in <a href="#_figure-20" class="auto internal xref">Figure 24</a>.  Ingress admission control is at
    class granularity for premium classes (CIR only).  Non-premium class
    (i.e.,  Best Effort) has no separate class admission control policy,
    but it is allowed to use the entire slice capacity, which is available at
    any given moment.  I.e., slice capacity, which is not consumed by
    premium classes.  It is a hierarchical model, as depicted in
-   <a href="#_figure-21" class="auto internal xref">Figure 27</a>.<a href="#section-5.2.2.1-6" class="pilcrow">¶</a></p>
+   <a href="#_figure-21" class="auto internal xref">Figure 25</a>.<a href="#section-5.2.2.1-6" class="pilcrow">¶</a></p>
 <span id="name-ingress-slice-admission-contro"></span><div id="_figure-21">
-<figure id="figure-27">
+<figure id="figure-25">
               <div class="alignCenter art-text artwork" id="section-5.2.2.1-7.1">
 <pre>
                               Slice
@@ -3159,7 +3091,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
                                        +---------+
 </pre>
 </div>
-<figcaption><a href="#figure-27" class="selfRef">Figure 27</a>:
+<figcaption><a href="#figure-25" class="selfRef">Figure 25</a>:
 <a href="#name-ingress-slice-admission-contro" class="selfRef">Ingress Slice Admission Control (5QI-aware) - Hierarchical</a>
               </figcaption></figure>
 </div>
@@ -3170,14 +3102,14 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
             <h5 id="name-outbound-edge-resource-contr">
 <a href="#section-5.2.2.2" class="section-number selfRef">5.2.2.2. </a><a href="#name-outbound-edge-resource-contr" class="section-name selfRef">Outbound Edge Resource Control</a>
             </h5>
-<p id="section-5.2.2.2-1"><a href="#_figure-22" class="auto internal xref">Figure 28</a> outlines the outbound edge resource control model at the
+<p id="section-5.2.2.2-1"><a href="#_figure-22" class="auto internal xref">Figure 26</a> outlines the outbound edge resource control model at the
    transport network layer for 5QI-aware slices.  Each slice is assigned
    multiple egress queues.  The sum of queue weights, which are 5Q QoS
    queue CIRs within the slice, should not exceed the CIR of the slice
    itself.  And, similarly to the 5QI-aware model, the sum of slice CIRs
    should not exceed the physical capacity of the AC.<a href="#section-5.2.2.2-1" class="pilcrow">¶</a></p>
 <span id="name-egress-slice-admission-cont"></span><div id="_figure-22">
-<figure id="figure-28">
+<figure id="figure-26">
               <div class="alignCenter art-text artwork" id="section-5.2.2.2-2.1">
 <pre>
    +---------+        QoS output queues
@@ -3224,7 +3156,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    +---------+
 </pre>
 </div>
-<figcaption><a href="#figure-28" class="selfRef">Figure 28</a>:
+<figcaption><a href="#figure-26" class="selfRef">Figure 26</a>:
 <a href="#name-egress-slice-admission-cont" class="selfRef">Egress Slice Admission Control (5QI-aware)</a>
               </figcaption></figure>
 </div>
@@ -3240,12 +3172,12 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
 <a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-transit-resource-control" class="section-name selfRef">Transit Resource Control</a>
         </h3>
 <p id="section-5.3-1">Transit resource control is much simpler than Edge resource control in the provider network.
-   As outlined in <a href="#_figure-QoS-5QI-aware" class="auto internal xref">Figure 24</a>, at the provider network edge, 5Q QoS Class marking
+   As outlined in <a href="#_figure-QoS-5QI-aware" class="auto internal xref">Figure 22</a>, at the provider network edge, 5Q QoS Class marking
    (represented by DSCP related to 5QI set by mobile network functions
    in the packets handed off to the TN) is mapped to the TN QoS Class.
    Based on TN QoS Class, when the packet is encapsulated with outer
    header (MPLS or IPv6), TN QoS Class marking (MPLS TC or IPv6 DSCP in
-   outer header, as depicted in Figures <a href="#_figure-15" class="auto internal xref">20</a> and <a href="#_figure-16" class="auto internal xref">21</a>) is set in the
+   outer header, as depicted in Figures <a href="#_figure-15" class="auto internal xref">18</a> and <a href="#_figure-16" class="auto internal xref">19</a>) is set in the
    outer header.  PHB in provider network transit routers is based exclusively on that TN QoS
    Class marking, i.e., original 5G QoS Class DSCP is not taken into
    consideration on transit.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
@@ -3293,7 +3225,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    flows with different 5G QoS Classes, even from same
    slice, can be mapped to different underlay transports (5QI-aware
    model).<a href="#section-6-7" class="pilcrow">¶</a></p>
-<p id="section-6-8"><a href="#_figure-23" class="auto internal xref">Figure 29</a> depicts an example of a simple network with two underlay transports,
+<p id="section-6-8"><a href="#_figure-23" class="auto internal xref">Figure 27</a> depicts an example of a simple network with two underlay transports,
    each using a mesh of TE tunnels with or without Path Computation Element (PCE) <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>, and with or without bandwidth
    reservations.
    <a href="#sec-capacity-planning" class="auto internal xref">Section 7</a> discusses in detail different bandwidth
@@ -3301,7 +3233,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    discussion about how to realize or orchestrate underlay transports is
    out of scope for this document.<a href="#section-6-8" class="pilcrow">¶</a></p>
 <span id="name-example-of-underlay-transpo"></span><div id="_figure-23">
-<figure id="figure-29">
+<figure id="figure-27">
         <div class="alignCenter art-text artwork" id="section-6-9.1">
 <pre>
 +---------------+                                    +------+
@@ -3327,11 +3259,11 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
  o----&gt;&gt;   Tunnels of Underlay Transport B
 </pre>
 </div>
-<figcaption><a href="#figure-29" class="selfRef">Figure 29</a>:
+<figcaption><a href="#figure-27" class="selfRef">Figure 27</a>:
 <a href="#name-example-of-underlay-transpo" class="selfRef">Example of Underlay Transport Relying on TE Tunnels</a>
         </figcaption></figure>
 </div>
-<p id="section-6-10">For illustration purposes, <a href="#_figure-23" class="auto internal xref">Figure 29</a> shows only single
+<p id="section-6-10">For illustration purposes, <a href="#_figure-23" class="auto internal xref">Figure 27</a> shows only single
    tunnels per underlay transport for (ingress PE, egress PE) pair. However, there might be multiple tunnels within a single underlay transport
    between any pair of PEs.<a href="#section-6-10" class="pilcrow">¶</a></p>
 <div id="qi-unaware-model">
@@ -3345,9 +3277,9 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    therefore the entire slice is subject to the same per-hop behavior.
    Similarly, in 5QI-unaware PE underlay transport mapping model, the entire
    slice is mapped to a single underlay transport, as depicted in
-   <a href="#_figure-24" class="auto internal xref">Figure 30</a>.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
+   <a href="#_figure-24" class="auto internal xref">Figure 28</a>.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
 <span id="name-network-slice-to-pes-underl"></span><div id="_figure-24">
-<figure id="figure-30">
+<figure id="figure-28">
           <div class="alignCenter art-text artwork" id="section-6.1-2.1">
 <pre>
    +-----------------------------------------+
@@ -3387,7 +3319,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    +-----------------------------------------+
 </pre>
 </div>
-<figcaption><a href="#figure-30" class="selfRef">Figure 30</a>:
+<figcaption><a href="#figure-28" class="selfRef">Figure 28</a>:
 <a href="#name-network-slice-to-pes-underl" class="selfRef">Network Slice to PEs Underlay Transport Mapping (5QI-unaware Model)</a>
           </figcaption></figure>
 </div>
@@ -3402,9 +3334,9 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    the granularity of 5G QoS Class.  Given that the potential number of
    underlay transports is limited, packets from multiple 5G QoS Classes
    with similar characteristics are mapped to a common underlay transport,
-   as depicted in <a href="#_figure-25" class="auto internal xref">Figure 31</a>.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
+   as depicted in <a href="#_figure-25" class="auto internal xref">Figure 29</a>.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
 <span id="name-network-slice-to-underlay-t"></span><div id="_figure-25">
-<figure id="figure-31">
+<figure id="figure-29">
           <div class="alignCenter art-text artwork" id="section-6.2-2.1">
 <pre>
      +-------------------------------------------+
@@ -3444,7 +3376,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
      +-------------------------------------------+
 </pre>
 </div>
-<figcaption><a href="#figure-31" class="selfRef">Figure 31</a>:
+<figcaption><a href="#figure-29" class="selfRef">Figure 29</a>:
 <a href="#name-network-slice-to-underlay-t" class="selfRef">Network Slice to Underlay Transport Mapping (5QI-aware Model)</a>
           </figcaption></figure>
 </div>
@@ -3464,7 +3396,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
         </h3>
 <p id="section-7.1-1">This section describes the information conveyed by the 5G NSO to the
    NSC with respect to slice bandwidth requirements.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
-<p id="section-7.1-2"><a href="#_figure-multi-DC" class="auto internal xref">Figure 32</a> shows three DCs that contain instances of network
+<p id="section-7.1-2"><a href="#_figure-multi-DC" class="auto internal xref">Figure 30</a> shows three DCs that contain instances of network
    functions.  Also shown are PEs that have links to the DCs.  The PEs
    belong to the provider network.  Other details of the provider
    network, such as P-routers and transit links are not shown.  Also
@@ -3476,7 +3408,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    aware of the provider network infrastructure and the links between the PEs
    and the DCs, but is not aware of the individual network functions at customer sites.<a href="#section-7.1-3" class="pilcrow">¶</a></p>
 <span id="name-an-example-of-multi-dc-arch"></span><div id="_figure-multi-DC">
-<figure id="figure-32">
+<figure id="figure-30">
           <div class="alignCenter art-text artwork" id="section-7.1-4.1">
 <pre>
 + - - - - DC 1- - - -+   + - - - - - - - - +   + - - - - DC 2- - - -+
@@ -3506,7 +3438,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
   * SDP, with fine-grained QoS (dedicated resources per RFC 9543 NS)
 </pre>
 </div>
-<figcaption><a href="#figure-32" class="selfRef">Figure 32</a>:
+<figcaption><a href="#figure-30" class="selfRef">Figure 30</a>:
 <a href="#name-an-example-of-multi-dc-arch" class="selfRef">An Example of Multi-DC Architecture</a>
           </figcaption></figure>
 </div>
@@ -3683,7 +3615,7 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    is 12 units (8 units for slice "X" (<a href="#_table-x" class="auto internal xref">Table 1</a>) and 4 units for slice "Y" (<a href="#_table-y" class="auto internal xref">Table 2</a>)).  When the
    5G NSO requests a new slice, the NSC,
    increments the bandwidth requirement according to the requirements of
-   the new slice.  For example, in <a href="#_figure-multi-DC" class="auto internal xref">Figure 32</a>, suppose a new slice is
+   the new slice.  For example, in <a href="#_figure-multi-DC" class="auto internal xref">Figure 30</a>, suppose a new slice is
    instantiated that needs 0.8 Gbps from "DC1" to "DC2".  The transport
    controller would increase its notion of the bandwidth requirement
    from "DC1" to "DC2" from 12 Gbps to 12.8 Gbps to accommodate the
@@ -4182,310 +4114,382 @@ service disruption. Note that such an on-path attacker may make more damage (e.g
 </div>
 </section>
 </div>
-<div id="ext-abbr">
+<div id="sec-v6-ex">
 <section id="appendix-A">
-      <h2 id="name-acronyms-and-abbreviations">
-<a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-acronyms-and-abbreviations" class="section-name selfRef">Acronyms and Abbreviations</a>
+      <h2 id="name-an-example-of-local-ipv6-ad">
+<a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-an-example-of-local-ipv6-ad" class="section-name selfRef">An Example of Local IPv6 Addressing Plan for Network Functions</a>
       </h2>
-<span class="break"></span><dl class="dlParallel" id="appendix-A-1">
-        <dt id="appendix-A-1.1">3GPP:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.2">
-          <p id="appendix-A-1.2.1">3rd Generation Partnership Project<a href="#appendix-A-1.2.1" class="pilcrow">¶</a></p>
+<p id="appendix-A-1">Different IPv6 address allocation
+   schemes following the above approach may be used, with one example allocation shown
+   in <a href="#_figure-11" class="auto internal xref">Figure 31</a>.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<span id="name-an-example-of-s-nssai-embed"></span><div id="_figure-11">
+<figure id="figure-31">
+        <div class="alignCenter art-text artwork" id="appendix-A-2.1">
+<pre>
+             NF-specific          Reserved
+        (not slice specific)     for S-NSSAI
+   &lt;----------------------------&gt;&lt;---------&gt;
+   +----+----+----+----+----+----+----+----+
+   |xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:ttdd:dddd|
+   +----+----+----+----+----+----+----+----+
+   &lt;------------------128 bits-------------&gt;
+
+    tt     - SST (8 bits)
+    dddddd - SD (24 bits)
+</pre>
+</div>
+<figcaption><a href="#figure-31" class="selfRef">Figure 31</a>:
+<a href="#name-an-example-of-s-nssai-embed" class="selfRef">An Example of S-NSSAI Embedded into an IPv6 Address</a>
+        </figcaption></figure>
+</div>
+<p id="appendix-A-3">In reference to <a href="#_figure-11" class="auto internal xref">Figure 31</a>, the most significant 96 bits of the IPv6 address
+   are unique to the NF, but do not carry any slice-specific information. The S-NSSAI information is embedded in the least
+   significant 32 bits. The 96-bit part of the address may be structured by the provider, for example, on the
+   geographical location or the DC identification. Refer to <span><a href="https://rfc-editor.org/rfc/rfc9099#section-2.1." class="relref">Section 2.1.</a> of [<a href="#RFC9099" class="cite xref">RFC9099</a>]</span> for a discussion on the benefits of structuring an address plan around both services and geographic locations for more structured security policies in a network.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+<p id="appendix-A-4"><a href="#_figure-s-nssai-deployment" class="auto internal xref">Figure 32</a> uses the example from <a href="#_figure-11" class="auto internal xref">Figure 31</a> to demonstrate a
+   slicing deployment, where the entire S-NSSAI is embedded into IPv6 addresses used by
+   NFs. Let us consider that "NF-A" has a set of tunnel termination points with unique per-slice IP addresses
+   allocated from 2001:db8:a:0::/96, while "NF-B" uses a set of tunnel termination
+   points with per-slice IP addresses allocated from 2001:db8:b:0::/96. This example shows
+   two slices: "customer A eMBB" (SST-01, SD-00001) and "customer B Massive Internet of Things (MIoT)" (SST-03, SD-00003).
+   For "customer A eMBB" slice, the tunnel IP addresses are auto-derived as the IP addresses {2001:db8:a::100:1, 2001:db8:b::100:1},
+   where {:0100:0001} is used as the last two octets. "customer B MIoT" slice (SST-3,
+   SD-00003) tunnel uses the IP addresses {2001:db8:a::300:3, 2001:db8:b::300:3} and simply
+   adds {:0300:0003} as the last two octets. Leading zeros are not represented in the resulting IPv6 addresses as per <span>[<a href="#RFC5952" class="cite xref">RFC5952</a>]</span>.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
+<span id="name-deployment-example-with-s-n"></span><div id="_figure-s-nssai-deployment">
+<figure id="figure-32">
+        <div class="alignCenter art-text artwork" id="appendix-A-5.1">
+<pre>
+ 2001:db8:a::/96 (NF-A)                      2001:db8:b::/96 (NF-B)
+
+ 2001:db8:a::100:1/128                2001:db8:b::100:1/128
+     |                                                        |
+     |            + - - - - - - - - +   eMBB (SST=1)          |
+     |            |                 |      |                  |
++----v-+       +--+--+ Provider +---+-+    v  +-----+       +-v----+
+|    o============*================*==========================o    |
+| NF   +-------+ PE  |          | PE  +-------+L2/L3+.......+   NF |
+|    o============*================*==========================o    |
++----^-+       +--+--+  Network +---+-+    ^  +-----+       +-^----+
+     |            |                 |      |                  |
+     |            + - - - - - - - - + MIoT (SST=3)            |
+     |                                                        |
+ 2001:db8:a::300:3/128               2001:db8:b::300:3/128
+
+ o Tunnel (IPsec, GTP-U, etc) termination point
+ * SDP
+</pre>
+</div>
+<figcaption><a href="#figure-32" class="selfRef">Figure 32</a>:
+<a href="#name-deployment-example-with-s-n" class="selfRef">Deployment Example with S-NSSAI Embedded into IPv6 Addresses</a>
+        </figcaption></figure>
+</div>
+</section>
+</div>
+<div id="ext-abbr">
+<section id="appendix-B">
+      <h2 id="name-acronyms-and-abbreviations">
+<a href="#appendix-B" class="section-number selfRef">Appendix B. </a><a href="#name-acronyms-and-abbreviations" class="section-name selfRef">Acronyms and Abbreviations</a>
+      </h2>
+<span class="break"></span><dl class="dlParallel" id="appendix-B-1">
+        <dt id="appendix-B-1.1">3GPP:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.2">
+          <p id="appendix-B-1.2.1">3rd Generation Partnership Project<a href="#appendix-B-1.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.3">5GC:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.4">
-          <p id="appendix-A-1.4.1">5G Core<a href="#appendix-A-1.4.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.3">5GC:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.4">
+          <p id="appendix-B-1.4.1">5G Core<a href="#appendix-B-1.4.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.5">5QI:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.6">
-          <p id="appendix-A-1.6.1">5G QoS Indicator<a href="#appendix-A-1.6.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.5">5QI:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.6">
+          <p id="appendix-B-1.6.1">5G QoS Indicator<a href="#appendix-B-1.6.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.7">A2A:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.8">
-          <p id="appendix-A-1.8.1">Any-to-Any<a href="#appendix-A-1.8.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.7">A2A:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.8">
+          <p id="appendix-B-1.8.1">Any-to-Any<a href="#appendix-B-1.8.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.9">AC:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.10">
-          <p id="appendix-A-1.10.1">Attachment Circuit<a href="#appendix-A-1.10.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.9">AC:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.10">
+          <p id="appendix-B-1.10.1">Attachment Circuit<a href="#appendix-B-1.10.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.11">CE:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.12">
-          <p id="appendix-A-1.12.1">Customer Edge<a href="#appendix-A-1.12.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.11">CE:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.12">
+          <p id="appendix-B-1.12.1">Customer Edge<a href="#appendix-B-1.12.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.13">CIR:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.14">
-          <p id="appendix-A-1.14.1">Committed Information Rate<a href="#appendix-A-1.14.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.13">CIR:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.14">
+          <p id="appendix-B-1.14.1">Committed Information Rate<a href="#appendix-B-1.14.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.15">CN:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.16">
-          <p id="appendix-A-1.16.1">Core Network<a href="#appendix-A-1.16.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.15">CN:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.16">
+          <p id="appendix-B-1.16.1">Core Network<a href="#appendix-B-1.16.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.17">CoS:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.18">
-          <p id="appendix-A-1.18.1">Class of Service<a href="#appendix-A-1.18.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.17">CoS:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.18">
+          <p id="appendix-B-1.18.1">Class of Service<a href="#appendix-B-1.18.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.19">CP:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.20">
-          <p id="appendix-A-1.20.1">Control Plane<a href="#appendix-A-1.20.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.19">CP:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.20">
+          <p id="appendix-B-1.20.1">Control Plane<a href="#appendix-B-1.20.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.21">CU:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.22">
-          <p id="appendix-A-1.22.1">Centralized Unit<a href="#appendix-A-1.22.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.21">CU:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.22">
+          <p id="appendix-B-1.22.1">Centralized Unit<a href="#appendix-B-1.22.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.23">CU-CP:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.24">
-          <p id="appendix-A-1.24.1">Centralized Unit Control Plane<a href="#appendix-A-1.24.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.23">CU-CP:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.24">
+          <p id="appendix-B-1.24.1">Centralized Unit Control Plane<a href="#appendix-B-1.24.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.25">CU-UP:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.26">
-          <p id="appendix-A-1.26.1">Centralized Unit User Plane<a href="#appendix-A-1.26.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.25">CU-UP:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.26">
+          <p id="appendix-B-1.26.1">Centralized Unit User Plane<a href="#appendix-B-1.26.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.27">DC:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.28">
-          <p id="appendix-A-1.28.1">Data Center<a href="#appendix-A-1.28.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.27">DC:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.28">
+          <p id="appendix-B-1.28.1">Data Center<a href="#appendix-B-1.28.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.29">DDoS:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.30">
-          <p id="appendix-A-1.30.1">Distributed Denial of Services<a href="#appendix-A-1.30.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.29">DDoS:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.30">
+          <p id="appendix-B-1.30.1">Distributed Denial of Services<a href="#appendix-B-1.30.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.31">DSCP:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.32">
-          <p id="appendix-A-1.32.1">Differentiated Services Code Point<a href="#appendix-A-1.32.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.31">DSCP:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.32">
+          <p id="appendix-B-1.32.1">Differentiated Services Code Point<a href="#appendix-B-1.32.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.33">eCPRI:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.34">
-          <p id="appendix-A-1.34.1">enhanced Common Public Radio Interface<a href="#appendix-A-1.34.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.33">eCPRI:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.34">
+          <p id="appendix-B-1.34.1">enhanced Common Public Radio Interface<a href="#appendix-B-1.34.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.35">FIB:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.36">
-          <p id="appendix-A-1.36.1">Forwarding Information Base<a href="#appendix-A-1.36.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.35">FIB:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.36">
+          <p id="appendix-B-1.36.1">Forwarding Information Base<a href="#appendix-B-1.36.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.37">GPRS:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.38">
-          <p id="appendix-A-1.38.1">Generic Packet Radio Service<a href="#appendix-A-1.38.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.37">GPRS:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.38">
+          <p id="appendix-B-1.38.1">Generic Packet Radio Service<a href="#appendix-B-1.38.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.39">gNB:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.40">
-          <p id="appendix-A-1.40.1">gNodeB<a href="#appendix-A-1.40.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.39">gNB:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.40">
+          <p id="appendix-B-1.40.1">gNodeB<a href="#appendix-B-1.40.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.41">GTP:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.42">
-          <p id="appendix-A-1.42.1">GPRS Tunneling Protocol<a href="#appendix-A-1.42.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.41">GTP:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.42">
+          <p id="appendix-B-1.42.1">GPRS Tunneling Protocol<a href="#appendix-B-1.42.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.43">GTP-U:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.44">
-          <p id="appendix-A-1.44.1">GPRS Tunneling Protocol User plane<a href="#appendix-A-1.44.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.43">GTP-U:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.44">
+          <p id="appendix-B-1.44.1">GPRS Tunneling Protocol User plane<a href="#appendix-B-1.44.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.45">IGP:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.46">
-          <p id="appendix-A-1.46.1">Interior Gateway Protocol<a href="#appendix-A-1.46.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.45">IGP:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.46">
+          <p id="appendix-B-1.46.1">Interior Gateway Protocol<a href="#appendix-B-1.46.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.47">L2VPN:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.48">
-          <p id="appendix-A-1.48.1">Layer 2 Virtual Private Network<a href="#appendix-A-1.48.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.47">L2VPN:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.48">
+          <p id="appendix-B-1.48.1">Layer 2 Virtual Private Network<a href="#appendix-B-1.48.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.49">L3VPN:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.50">
-          <p id="appendix-A-1.50.1">Layer 3 Virtual Private Network<a href="#appendix-A-1.50.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.49">L3VPN:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.50">
+          <p id="appendix-B-1.50.1">Layer 3 Virtual Private Network<a href="#appendix-B-1.50.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.51">LSP:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.52">
-          <p id="appendix-A-1.52.1">Label Switched Path<a href="#appendix-A-1.52.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.51">LSP:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.52">
+          <p id="appendix-B-1.52.1">Label Switched Path<a href="#appendix-B-1.52.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.53">MIoT:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.54">
-          <p id="appendix-A-1.54.1">Massive Internet of Things<a href="#appendix-A-1.54.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.53">MIoT:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.54">
+          <p id="appendix-B-1.54.1">Massive Internet of Things<a href="#appendix-B-1.54.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.55">MPLS:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.56">
-          <p id="appendix-A-1.56.1">Multiprotocol Label Switching<a href="#appendix-A-1.56.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.55">MPLS:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.56">
+          <p id="appendix-B-1.56.1">Multiprotocol Label Switching<a href="#appendix-B-1.56.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.57">NF:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.58">
-          <p id="appendix-A-1.58.1">Network Function<a href="#appendix-A-1.58.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.57">NF:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.58">
+          <p id="appendix-B-1.58.1">Network Function<a href="#appendix-B-1.58.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.59">NRP:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.60">
-          <p id="appendix-A-1.60.1">Network Resource Partition<a href="#appendix-A-1.60.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.59">NRP:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.60">
+          <p id="appendix-B-1.60.1">Network Resource Partition<a href="#appendix-B-1.60.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.61">NSC:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.62">
-          <p id="appendix-A-1.62.1">Network Slice Controller<a href="#appendix-A-1.62.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.61">NSC:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.62">
+          <p id="appendix-B-1.62.1">Network Slice Controller<a href="#appendix-B-1.62.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.63">PE:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.64">
-          <p id="appendix-A-1.64.1">Provider Edge<a href="#appendix-A-1.64.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.63">PE:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.64">
+          <p id="appendix-B-1.64.1">Provider Edge<a href="#appendix-B-1.64.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.65">PIR:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.66">
-          <p id="appendix-A-1.66.1">Peak Information Rate<a href="#appendix-A-1.66.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.65">PIR:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.66">
+          <p id="appendix-B-1.66.1">Peak Information Rate<a href="#appendix-B-1.66.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.67">QoS:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.68">
-          <p id="appendix-A-1.68.1">Quality of Service<a href="#appendix-A-1.68.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.67">QoS:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.68">
+          <p id="appendix-B-1.68.1">Quality of Service<a href="#appendix-B-1.68.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.69">RAN:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.70">
-          <p id="appendix-A-1.70.1">Radio Access Network<a href="#appendix-A-1.70.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.69">RAN:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.70">
+          <p id="appendix-B-1.70.1">Radio Access Network<a href="#appendix-B-1.70.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.71">RIB:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.72">
-          <p id="appendix-A-1.72.1">Routing Information Base<a href="#appendix-A-1.72.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.71">RIB:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.72">
+          <p id="appendix-B-1.72.1">Routing Information Base<a href="#appendix-B-1.72.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.73">RSVP:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.74">
-          <p id="appendix-A-1.74.1">Resource Reservation Protocol<a href="#appendix-A-1.74.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.73">RSVP:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.74">
+          <p id="appendix-B-1.74.1">Resource Reservation Protocol<a href="#appendix-B-1.74.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.75">SD:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.76">
-          <p id="appendix-A-1.76.1">Slice Differentiator<a href="#appendix-A-1.76.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.75">SD:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.76">
+          <p id="appendix-B-1.76.1">Slice Differentiator<a href="#appendix-B-1.76.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.77">SDP:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.78">
-          <p id="appendix-A-1.78.1">Service Demarcation Point<a href="#appendix-A-1.78.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.77">SDP:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.78">
+          <p id="appendix-B-1.78.1">Service Demarcation Point<a href="#appendix-B-1.78.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.79">SLA:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.80">
-          <p id="appendix-A-1.80.1">Service Level Agreement<a href="#appendix-A-1.80.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.79">SLA:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.80">
+          <p id="appendix-B-1.80.1">Service Level Agreement<a href="#appendix-B-1.80.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.81">SLO:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.82">
-          <p id="appendix-A-1.82.1">Service Level Objective<a href="#appendix-A-1.82.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.81">SLO:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.82">
+          <p id="appendix-B-1.82.1">Service Level Objective<a href="#appendix-B-1.82.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.83">S-NSSAI:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.84">
-          <p id="appendix-A-1.84.1">Single Network Slice Selection Assistance Information<a href="#appendix-A-1.84.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.83">S-NSSAI:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.84">
+          <p id="appendix-B-1.84.1">Single Network Slice Selection Assistance Information<a href="#appendix-B-1.84.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.85">SST:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.86">
-          <p id="appendix-A-1.86.1">Slice/Service Type<a href="#appendix-A-1.86.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.85">SST:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.86">
+          <p id="appendix-B-1.86.1">Slice/Service Type<a href="#appendix-B-1.86.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.87">SR:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.88">
-          <p id="appendix-A-1.88.1">Segment Routing<a href="#appendix-A-1.88.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.87">SR:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.88">
+          <p id="appendix-B-1.88.1">Segment Routing<a href="#appendix-B-1.88.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.89">SRv6:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.90">
-          <p id="appendix-A-1.90.1">Segment Routing version 6<a href="#appendix-A-1.90.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.89">SRv6:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.90">
+          <p id="appendix-B-1.90.1">Segment Routing version 6<a href="#appendix-B-1.90.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.91">TC:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.92">
-          <p id="appendix-A-1.92.1">Traffic Class<a href="#appendix-A-1.92.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.91">TC:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.92">
+          <p id="appendix-B-1.92.1">Traffic Class<a href="#appendix-B-1.92.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.93">TE:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.94">
-          <p id="appendix-A-1.94.1">Traffic Engineering<a href="#appendix-A-1.94.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.93">TE:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.94">
+          <p id="appendix-B-1.94.1">Traffic Engineering<a href="#appendix-B-1.94.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.95">TN:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.96">
-          <p id="appendix-A-1.96.1">Transport Network<a href="#appendix-A-1.96.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.95">TN:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.96">
+          <p id="appendix-B-1.96.1">Transport Network<a href="#appendix-B-1.96.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.97">UE:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.98">
-          <p id="appendix-A-1.98.1">User Equipment<a href="#appendix-A-1.98.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.97">UE:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.98">
+          <p id="appendix-B-1.98.1">User Equipment<a href="#appendix-B-1.98.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.99">UP:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.100">
-          <p id="appendix-A-1.100.1">User Plane<a href="#appendix-A-1.100.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.99">UP:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.100">
+          <p id="appendix-B-1.100.1">User Plane<a href="#appendix-B-1.100.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.101">UPF:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.102">
-          <p id="appendix-A-1.102.1">User Plane Function<a href="#appendix-A-1.102.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.101">UPF:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.102">
+          <p id="appendix-B-1.102.1">User Plane Function<a href="#appendix-B-1.102.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.103">URLLC:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.104">
-          <p id="appendix-A-1.104.1">Ultra Reliable Low Latency Communication<a href="#appendix-A-1.104.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.103">URLLC:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.104">
+          <p id="appendix-B-1.104.1">Ultra Reliable Low Latency Communication<a href="#appendix-B-1.104.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.105">VLAN:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.106">
-          <p id="appendix-A-1.106.1">Virtual Local Area Network<a href="#appendix-A-1.106.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.105">VLAN:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.106">
+          <p id="appendix-B-1.106.1">Virtual Local Area Network<a href="#appendix-B-1.106.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.107">VPN:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.108">
-          <p id="appendix-A-1.108.1">Virtual Private Network<a href="#appendix-A-1.108.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.107">VPN:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.108">
+          <p id="appendix-B-1.108.1">Virtual Private Network<a href="#appendix-B-1.108.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.109">VRF:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.110">
-          <p id="appendix-A-1.110.1">Virtual Routing and Forwarding<a href="#appendix-A-1.110.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.109">VRF:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.110">
+          <p id="appendix-B-1.110.1">Virtual Routing and Forwarding<a href="#appendix-B-1.110.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-A-1.111">VXLAN:</dt>
-        <dd style="margin-left: 1.5em" id="appendix-A-1.112">
-          <p id="appendix-A-1.112.1">Virtual Extensible Local Area Network<a href="#appendix-A-1.112.1" class="pilcrow">¶</a></p>
+<dt id="appendix-B-1.111">VXLAN:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.112">
+          <p id="appendix-B-1.112.1">Virtual Extensible Local Area Network<a href="#appendix-B-1.112.1" class="pilcrow">¶</a></p>
 </dd>
       <dd class="break"></dd>
 </dl>
 </section>
 </div>
 <div id="acknowledgments">
-<section id="appendix-B">
+<section id="appendix-C">
       <h2 id="name-acknowledgments">
 <a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
       </h2>
-<p id="appendix-B-1">The authors would like to thank Adrian Farrel, Joel Halpern, Tarek
+<p id="appendix-C-1">The authors would like to thank Adrian Farrel, Joel Halpern, Tarek
    Saad, Greg Mirsky, Rüdiger Geib, Nicklous D. Morris,         Daniele Ceccarelli, Bo Wu, Xuesong Geng, and Deborah Brungard for
-   their review of this document and for providing valuable comments.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
-<p id="appendix-B-2">Special thanks to Jie Dong and Adrian Farrel for the detailed and careful reviews.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
-<p id="appendix-B-3">Thanks to Alvaro Retana for the rtg-dir review, Yoshifumi Nishida for
-   the tsv-art review, and Timothy Winters for the int-dir review.<a href="#appendix-B-3" class="pilcrow">¶</a></p>
+   their review of this document and for providing valuable comments.<a href="#appendix-C-1" class="pilcrow">¶</a></p>
+<p id="appendix-C-2">Special thanks to Jie Dong and Adrian Farrel for the detailed and careful reviews.<a href="#appendix-C-2" class="pilcrow">¶</a></p>
+<p id="appendix-C-3">Thanks to Alvaro Retana for the rtg-dir review, Yoshifumi Nishida for
+   the tsv-art review, and Timothy Winters for the int-dir review.<a href="#appendix-C-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="contributors">
-<section id="appendix-C">
+<section id="appendix-D">
       <h2 id="name-contributors">
 <a href="#name-contributors" class="section-name selfRef">Contributors</a>
       </h2>
@@ -4566,7 +4570,7 @@ service disruption. Note that such an on-path attacker may make more damage (e.g
 </section>
 </div>
 <div id="authors-addresses">
-<section id="appendix-D">
+<section id="appendix-E">
       <h2 id="name-authors-addresses">
 <a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>
