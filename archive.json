@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-29T00:39:21.137101+00:00",
+  "timestamp": "2024-10-01T00:39:43.463385+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -7254,6 +7254,90 @@
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 209,
+      "id": "PR_kwDOIw9g6c59EZu-",
+      "title": "move the detailed IPv6 example to an appendix",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/209",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-09-30T06:55:12Z",
+      "updatedAt": "2024-09-30T12:33:43Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "34ad5c42c0cdb56787a264ddf677934c0364b444",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "v6-ex-as-appendix",
+      "headRefOid": "1897a67a243827ef03570d39d36914d7cda0dbd8",
+      "closedAt": "2024-09-30T12:33:42Z",
+      "mergedAt": "2024-09-30T12:33:42Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "7d664bd502c50ce3d609020ec5c2353412a65a9c"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 210,
+      "id": "PR_kwDOIw9g6c59Efba",
+      "title": "handoff clarification",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/210",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-09-30T07:08:43Z",
+      "updatedAt": "2024-09-30T12:33:56Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "34ad5c42c0cdb56787a264ddf677934c0364b444",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "handoff-clarification",
+      "headRefOid": "7d2da1380c937e2d7350e539e1bea7e614d8d5a7",
+      "closedAt": "2024-09-30T12:33:54Z",
+      "mergedAt": "2024-09-30T12:33:54Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "b37a8619bcbdc22d2c66850646bb54af80844c38"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 211,
+      "id": "PR_kwDOIw9g6c59GgGj",
+      "title": "fix 'TR-GSTR-TN5G' ref",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/211",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-09-30T11:21:00Z",
+      "updatedAt": "2024-09-30T12:34:11Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "34ad5c42c0cdb56787a264ddf677934c0364b444",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "fix-'TR-GSTR-TN5G'-ref",
+      "headRefOid": "2ee518dd1e8f4ecceaa3e51985aaf738e38983e5",
+      "closedAt": "2024-09-30T12:34:10Z",
+      "mergedAt": "2024-09-30T12:34:10Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "287e152fecdb1393e6566d782bd74f28b90a76c9"
+      },
       "comments": [],
       "reviews": []
     }
