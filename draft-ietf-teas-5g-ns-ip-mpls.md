@@ -209,7 +209,7 @@ For a definitive description of 3GPP network architectures, the reader should re
 
 # Definitions
 
-The document uses the terms defined in {{!RFC9543}}. Specifically, the use of "Customer" and "Provider" is consistent with {{!RFC9543}} with the folloiwng contextualization ({{sec-ref-design}}):
+The document uses the terms defined in {{!RFC9543}}. Specifically, the use of "Customer" and "Provider" is consistent with {{!RFC9543}} but with the following contextualization ({{sec-ref-design}}):
 
 Customer:
 : An entity that is responsible for managing and orchestrating the end-to-end 5G Mobile Network, notably the Radio Access Network (RAN) and Core Network (CN).
