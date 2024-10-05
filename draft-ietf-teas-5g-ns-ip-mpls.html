@@ -1321,42 +1321,44 @@ domain by mapping to explicit data plane identifiers (e.g., Layer 2, Layer 3, or
       <h2 id="name-definitions">
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-definitions" class="section-name selfRef">Definitions</a>
       </h2>
-<p id="section-2-1">The document uses the terms defined in <span>[<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>. See <a href="#sec-ref-design" class="auto internal xref">Section 3.3</a> for the contextualization of some of these terms.<a href="#section-2-1" class="pilcrow">¶</a></p>
-<p id="section-2-2">An extended list of abbreviations used in this document is provided in <a href="#ext-abbr" class="auto internal xref">Appendix B</a>.<a href="#section-2-2" class="pilcrow">¶</a></p>
-<p id="section-2-3">"5G Network Slicing" (or "5G Network Slice") refers to "Network Slicing" (or "Network Slice") as defined in the 3GPP <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span>.<a href="#section-2-3" class="pilcrow">¶</a></p>
-<p id="section-2-4">This document makes use of the following terms:<a href="#section-2-4" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlParallel" id="section-2-5">
-        <dt id="section-2-5.1">Customer:</dt>
-        <dd style="margin-left: 1.5em" id="section-2-5.2">
-          <p id="section-2-5.2.1">An entity that is responsible for managing and orchestrating the end-to-end 5G Mobile Network, notably the Radio Access Network (RAN) and Core Network (CN).<a href="#section-2-5.2.1" class="pilcrow">¶</a></p>
+<p id="section-2-1">The document uses the terms defined in <span>[<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>. Specifically, the use of "Customer" and "Provider" is consistent with <span>[<a href="#RFC9543" class="cite xref">RFC9543</a>]</span> with the folloiwng contextualization (<a href="#sec-ref-design" class="auto internal xref">Section 3.3</a>):<a href="#section-2-1" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-2-2">
+        <dt id="section-2-2.1">Customer:</dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.2">
+          <p id="section-2-2.2.1">An entity that is responsible for managing and orchestrating the end-to-end 5G Mobile Network, notably the Radio Access Network (RAN) and Core Network (CN).<a href="#section-2-2.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-2-5.3"></dt>
-        <dd style="margin-left: 1.5em" id="section-2-5.4">
-          <p id="section-2-5.4.1">This entity is distinct from the customer of a 5G Network Slice Service.<a href="#section-2-5.4.1" class="pilcrow">¶</a></p>
+<dt id="section-2-2.3"></dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.4">
+          <p id="section-2-2.4.1">This entity is distinct from the customer of a 5G Network Slice Service.<a href="#section-2-2.4.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-2-5.5">Customer site:</dt>
-        <dd style="margin-left: 1.5em" id="section-2-5.6">
-          <p id="section-2-5.6.1">A customer manages and deploys 5G NFs (e.g., gNodeB (gNB) and 5G Core (5GC)) in customer sites. A customer site can be either a physical or a virtual location.<a href="#section-2-5.6.1" class="pilcrow">¶</a></p>
+<dt id="section-2-2.5">Provider:</dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.6">
+          <p id="section-2-2.6.1">An entity responsible for interconnecting customer sites.<a href="#section-2-2.6.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-2-5.7"></dt>
-        <dd style="margin-left: 1.5em" id="section-2-5.8">
-          <p id="section-2-5.8.1">Examples of customer sites are a customer private locations (Point of Presence (PoP), Data Center (DC)), a Virtual Private Cloud (VPC), or servers hosted within the provider network or colocation service.<a href="#section-2-5.8.1" class="pilcrow">¶</a></p>
-</dd>
-        <dd class="break"></dd>
-<dt id="section-2-5.9">Provider:</dt>
-        <dd style="margin-left: 1.5em" id="section-2-5.10">
-          <p id="section-2-5.10.1">An entity responsible for interconnecting customer sites.<a href="#section-2-5.10.1" class="pilcrow">¶</a></p>
-</dd>
-        <dd class="break"></dd>
-<dt id="section-2-5.11"></dt>
-        <dd style="margin-left: 1.5em" id="section-2-5.12">
-          <p id="section-2-5.12.1">A provider orchestrates and manages a provider network.<a href="#section-2-5.12.1" class="pilcrow">¶</a></p>
+<dt id="section-2-2.7"></dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.8">
+          <p id="section-2-2.8.1">A provider orchestrates and manages a provider network.<a href="#section-2-2.8.1" class="pilcrow">¶</a></p>
 </dd>
       <dd class="break"></dd>
 </dl>
+<p id="section-2-3">This document makes use of the following term:<a href="#section-2-3" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-2-4">
+        <dt id="section-2-4.1">Customer site:</dt>
+        <dd style="margin-left: 1.5em" id="section-2-4.2">
+          <p id="section-2-4.2.1">A customer manages and deploys 5G NFs (e.g., gNodeB (gNB) and 5G Core (5GC)) in customer sites. A customer site can be either a physical or a virtual location.<a href="#section-2-4.2.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-4.3"></dt>
+        <dd style="margin-left: 1.5em" id="section-2-4.4">
+          <p id="section-2-4.4.1">Examples of customer sites are a customer private locations (Point of Presence (PoP), Data Center (DC)), a Virtual Private Cloud (VPC), or servers hosted within the provider network or colocation service.<a href="#section-2-4.4.1" class="pilcrow">¶</a></p>
+</dd>
+      <dd class="break"></dd>
+</dl>
+<p id="section-2-5">An extended list of abbreviations used in this document is provided in <a href="#ext-abbr" class="auto internal xref">Appendix B</a>.<a href="#section-2-5" class="pilcrow">¶</a></p>
+<p id="section-2-6">"5G Network Slicing" (or "5G Network Slice") refers to "Network Slicing" (or "Network Slice") as defined in the 3GPP <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span>.<a href="#section-2-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-5g">

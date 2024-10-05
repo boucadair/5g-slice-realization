@@ -208,16 +208,9 @@ Table of Contents
 
 2.  Definitions
 
-   The document uses the terms defined in [RFC9543].  See Section 3.3
-   for the contextualization of some of these terms.
-
-   An extended list of abbreviations used in this document is provided
-   in Appendix B.
-
-   "5G Network Slicing" (or "5G Network Slice") refers to "Network
-   Slicing" (or "Network Slice") as defined in the 3GPP [TS-28.530].
-
-   This document makes use of the following terms:
+   The document uses the terms defined in [RFC9543].  Specifically, the
+   use of "Customer" and "Provider" is consistent with [RFC9543] with
+   the folloiwng contextualization (Section 3.3):
 
    Customer:  An entity that is responsible for managing and
       orchestrating the end-to-end 5G Mobile Network, notably the Radio
@@ -225,6 +218,12 @@ Table of Contents
 
       This entity is distinct from the customer of a 5G Network Slice
       Service.
+
+   Provider:  An entity responsible for interconnecting customer sites.
+
+      A provider orchestrates and manages a provider network.
+
+   This document makes use of the following term:
 
    Customer site:  A customer manages and deploys 5G NFs (e.g., gNodeB
       (gNB) and 5G Core (5GC)) in customer sites.  A customer site can
@@ -235,9 +234,11 @@ Table of Contents
       (VPC), or servers hosted within the provider network or colocation
       service.
 
-   Provider:  An entity responsible for interconnecting customer sites.
+   An extended list of abbreviations used in this document is provided
+   in Appendix B.
 
-      A provider orchestrates and manages a provider network.
+   "5G Network Slicing" (or "5G Network Slice") refers to "Network
+   Slicing" (or "Network Slice") as defined in the 3GPP [TS-28.530].
 
 3.  5G Network Slicing Integration in Transport Networks
 
