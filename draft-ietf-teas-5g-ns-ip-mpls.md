@@ -275,7 +275,8 @@ Section 3.1 of {{TS-28.530}} defines 5G Network Slice as:
 ### Transport Network Slicing {#sec-tn-slicing}
 
 The term "TN slice" refers to a slice in the Transport Network domain of the 5G architecture. The following further elaborates on how Transport Network Slicing is
-defined in the context of this document.
+defined in the context of this document. It draws on the 3GPP definitions
+of Transport Network and Network Slicing as described in {{TS-28.530}}.
 
 The objective of Transport Network Slicing is to isolate,
 guarantee, or prioritize Transport Network resources for Slice Services. Examples of such resources are:
@@ -426,7 +427,7 @@ The various orchestration depicted in {{figure-orch}} encompass the 3GPP's Netwo
 
 ### Transport Network Segments and Network Slice Instantiation {#sec-tn-nsi}
 
-This document focuses on RFC9543 9543 Network Slice deployments where the Service Demarcation Points (SDPs) are located per Types 3 and 4 of Figure 1 of {{!RFC9543}}. The concept of distributed PE ({{sec-pe}}) assimilates CE-based SDPs defined in {{Section 5.2 of !RFC9543}} (i.e., Types 1 and 2) as SDP Type 3 or 4 in this document.
+This document focuses on RFC9543 Network Slice deployments where the Service Demarcation Points (SDPs) are located per Types 3 and 4 of Figure 1 of {{!RFC9543}}. The concept of distributed PE ({{sec-pe}}) assimilates CE-based SDPs defined in {{Section 5.2 of !RFC9543}} (i.e., Types 1 and 2) as SDP Type 3 or 4 in this document.
 
 In reference to the architecture depicted in {{sec-5g-sli-arch}}, the connectivity between NFs can be decomposed into three main segment types:
 
@@ -815,7 +816,7 @@ site, through a provider network. Hence, at the domain (customer site, provider 
 boundaries NEXT_HOP attribute for IPv4/IPv6 labeled unicast needs to be modified to "next-hop self" (nhs),
 which results in new IPv4/IPv6 labeled unicast label allocation. Appropriate label swap
 forwarding entries for IPv4/IPv6 labeled unicast labels are programmed in the data plane.
-There is no additional 'labeled transport' protocol on the AC (e.g., no LDP, RSVP, and SR).
+There is no additional 'labeled transport' protocol on the AC (e.g., no LDP, RSVP, or SR).
 
 Packets are transmitted over the AC with the IPv4/IPv6 labeled
 unicast as the top label, with service label deeper in the label stack. In Option C,
