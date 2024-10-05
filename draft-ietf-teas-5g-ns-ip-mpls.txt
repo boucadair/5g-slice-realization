@@ -209,8 +209,8 @@ Table of Contents
 2.  Definitions
 
    The document uses the terms defined in [RFC9543].  Specifically, the
-   use of "Customer" and "Provider" is consistent with [RFC9543] with
-   the folloiwng contextualization (Section 3.3):
+   use of "Customer" and "Provider" is consistent with [RFC9543] but
+   with the following contextualization (Section 3.3):
 
    Customer:  An entity that is responsible for managing and
       orchestrating the end-to-end 5G Mobile Network, notably the Radio
