@@ -741,7 +741,7 @@ Table of Contents
                   |           Transport Network        |
                   +------------------------------------+
 
-        Figure 8: 1 (5G Slice) to N (RFC 9543 Network Slice) Mapping
+               Figure 8: 1 (5G Slice) to N (TN Slice) Mapping
 
                       +-------------+
                       |  Edge Cloud |
@@ -766,7 +766,7 @@ Table of Contents
                       |      Transport Network       |
                       +------------------------------+
 
-        Figure 9: N (5G Slice) to 1 (RFC 9543 Network Slice) Mapping
+               Figure 9: N (5G Slice) to 1 (TN Slice) Mapping
 
    Note that the actual realization of the mapping depends on several
    factors, such as the actual business cases, the NF vendor
