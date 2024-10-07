@@ -441,7 +441,7 @@ Attachment Circuit:
 provisioned with consistent data plane and control plane information (VLAN-
 IDs, IP addresses/subnets, BGP  Autonomous System (AS) Number, etc.). Hence, the realization of this
 interconnection is technology-specific and requires coordination between the Customer Site Orchestration and an NSC. Automating the provisioning and management of the AC is thus key to automate the overall service provisioning. Aligned with {{?RFC8969}}, this document assumes that this coordination is based upon standard YANG data models and APIs.
-: The provisioning of a Network Slice may rely on new or existing ACs.
+: The provisioning of a RFC9543 Network Slice may rely on new or existing ACs.
 : {{figure-4}} is a basic example of a Layer 3 CE-PE link realization
 with shared network resources (such as VLAN-IDs and IP prefixes) which
 are passed between Orchestrators via a dedicated interface, e.g., the Network Slice Service Model (NSSM) {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}} or the Attachment Circuit-as-a-Service (ACaaS) {{?I-D.ietf-opsawg-teas-attachment-circuit}}.
