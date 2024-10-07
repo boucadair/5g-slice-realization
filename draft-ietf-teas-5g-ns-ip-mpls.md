@@ -508,7 +508,7 @@ For instance, in some deployments, in the case of a slice based on split-CU in t
 ~~~
 {: #figure-7 title="First and Subsequent Slice Deployment" artwork-align="center"}
 
-TN slice mapping policies can be enforced by an operator (e.g., to a TN Orchestration or 5G NSO) to instruct whether existing TN slices can be reused for handling a new slice service creation request. Providing such a policy is meant to better automate the realization of 5G slices and minimize the realization delay that might be induced by extra cycles to seek for operator validation.
+TN slice mapping policies can be enforced by an operator (e.g., provided to a TN Orchestration or 5G NSO) to instruct whether existing TN slices can be reused for handling a new slice service creation request. Providing such a policy is meant to better automate the realization of 5G slices and minimize the realization delay that might be induced by extra cycles to seek for operator validation.
 
 ##  Overview of the Transport Network Realization Model {#sec-over-rea-model}
 
