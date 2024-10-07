@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 8 April 2025                                   Juniper Networks
+Expires: 10 April 2025                                  Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                          5 October 2024
+                                                          7 October 2024
 
 
  A Realization of Network Slices for 5G Networks Using Current IP/MPLS
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 April 2025.
+   This Internet-Draft will expire on 10 April 2025.
 
 Copyright Notice
 
@@ -209,8 +209,8 @@ Table of Contents
 2.  Definitions
 
    The document uses the terms defined in [RFC9543].  Specifically, the
-   use of "Customer" and "Provider" is consistent with [RFC9543] but
-   with the following contextualization (Section 3.3):
+   use of "Customer" is consistent with [RFC9543] but with the following
+   contextualization (see also Section 3.3):
 
    Customer:  An entity that is responsible for managing and
       orchestrating the end-to-end 5G Mobile Network, notably the Radio
@@ -219,26 +219,23 @@ Table of Contents
       This entity is distinct from the customer of a 5G Network Slice
       Service.
 
-   Provider:  An entity responsible for interconnecting customer sites.
-
-      A provider orchestrates and manages a provider network.
-
    This document makes use of the following term:
 
    Customer site:  A customer manages and deploys 5G NFs (e.g., gNodeB
       (gNB) and 5G Core (5GC)) in customer sites.  A customer site can
-      be either a physical or a virtual location.
+      be either a physical or a virtual location.  A provider is
+      responsible for interconnecting customer sites.
 
       Examples of customer sites are a customer private locations (Point
       of Presence (PoP), Data Center (DC)), a Virtual Private Cloud
       (VPC), or servers hosted within the provider network or colocation
       service.
 
-   An extended list of abbreviations used in this document is provided
-   in Appendix B.
-
    "5G Network Slicing" (or "5G Network Slice") refers to "Network
    Slicing" (or "Network Slice") as defined in the 3GPP [TS-28.530].
+
+   An extended list of abbreviations used in this document is provided
+   in Appendix B.
 
 3.  5G Network Slicing Integration in Transport Networks
 

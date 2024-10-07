@@ -1035,7 +1035,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Szarkowicz, et al.</td>
-<td class="center">Expires 8 April 2025</td>
+<td class="center">Expires 10 April 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1048,12 +1048,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-teas-5g-ns-ip-mpls-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-10-05" class="published">5 October 2024</time>
+<time datetime="2024-10-07" class="published">7 October 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-04-08">8 April 2025</time></dd>
+<dd class="expires"><time datetime="2025-04-10">10 April 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1118,7 +1118,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 8 April 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 10 April 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1321,7 +1321,7 @@ domain by mapping to explicit data plane identifiers (e.g., Layer 2, Layer 3, or
       <h2 id="name-definitions">
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-definitions" class="section-name selfRef">Definitions</a>
       </h2>
-<p id="section-2-1">The document uses the terms defined in <span>[<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>. Specifically, the use of "Customer" and "Provider" is consistent with <span>[<a href="#RFC9543" class="cite xref">RFC9543</a>]</span> but with the following contextualization (<a href="#sec-ref-design" class="auto internal xref">Section 3.3</a>):<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-1">The document uses the terms defined in <span>[<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>. Specifically, the use of "Customer" is consistent with <span>[<a href="#RFC9543" class="cite xref">RFC9543</a>]</span> but with the following contextualization (see also <a href="#sec-ref-design" class="auto internal xref">Section 3.3</a>):<a href="#section-2-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-2-2">
         <dt id="section-2-2.1">Customer:</dt>
         <dd style="margin-left: 1.5em" id="section-2-2.2">
@@ -1332,23 +1332,13 @@ domain by mapping to explicit data plane identifiers (e.g., Layer 2, Layer 3, or
         <dd style="margin-left: 1.5em" id="section-2-2.4">
           <p id="section-2-2.4.1">This entity is distinct from the customer of a 5G Network Slice Service.<a href="#section-2-2.4.1" class="pilcrow">¶</a></p>
 </dd>
-        <dd class="break"></dd>
-<dt id="section-2-2.5">Provider:</dt>
-        <dd style="margin-left: 1.5em" id="section-2-2.6">
-          <p id="section-2-2.6.1">An entity responsible for interconnecting customer sites.<a href="#section-2-2.6.1" class="pilcrow">¶</a></p>
-</dd>
-        <dd class="break"></dd>
-<dt id="section-2-2.7"></dt>
-        <dd style="margin-left: 1.5em" id="section-2-2.8">
-          <p id="section-2-2.8.1">A provider orchestrates and manages a provider network.<a href="#section-2-2.8.1" class="pilcrow">¶</a></p>
-</dd>
       <dd class="break"></dd>
 </dl>
 <p id="section-2-3">This document makes use of the following term:<a href="#section-2-3" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-2-4">
         <dt id="section-2-4.1">Customer site:</dt>
         <dd style="margin-left: 1.5em" id="section-2-4.2">
-          <p id="section-2-4.2.1">A customer manages and deploys 5G NFs (e.g., gNodeB (gNB) and 5G Core (5GC)) in customer sites. A customer site can be either a physical or a virtual location.<a href="#section-2-4.2.1" class="pilcrow">¶</a></p>
+          <p id="section-2-4.2.1">A customer manages and deploys 5G NFs (e.g., gNodeB (gNB) and 5G Core (5GC)) in customer sites. A customer site can be either a physical or a virtual location. A provider is responsible for interconnecting customer sites.<a href="#section-2-4.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 <dt id="section-2-4.3"></dt>
@@ -1357,8 +1347,8 @@ domain by mapping to explicit data plane identifiers (e.g., Layer 2, Layer 3, or
 </dd>
       <dd class="break"></dd>
 </dl>
-<p id="section-2-5">An extended list of abbreviations used in this document is provided in <a href="#ext-abbr" class="auto internal xref">Appendix B</a>.<a href="#section-2-5" class="pilcrow">¶</a></p>
-<p id="section-2-6">"5G Network Slicing" (or "5G Network Slice") refers to "Network Slicing" (or "Network Slice") as defined in the 3GPP <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span>.<a href="#section-2-6" class="pilcrow">¶</a></p>
+<p id="section-2-5">"5G Network Slicing" (or "5G Network Slice") refers to "Network Slicing" (or "Network Slice") as defined in the 3GPP <span>[<a href="#TS-28.530" class="cite xref">TS-28.530</a>]</span>.<a href="#section-2-5" class="pilcrow">¶</a></p>
+<p id="section-2-6">An extended list of abbreviations used in this document is provided in <a href="#ext-abbr" class="auto internal xref">Appendix B</a>.<a href="#section-2-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-5g">
