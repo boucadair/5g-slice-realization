@@ -659,8 +659,8 @@ Table of Contents
       this coordination is based upon standard YANG data models and
       APIs.
 
-      The provisioning of a Network Slice may rely on new or existing
-      ACs.
+      The provisioning of a RFC9543 Network Slice may rely on new or
+      existing ACs.
 
       Figure 7 is a basic example of a Layer 3 CE-PE link realization
       with shared network resources (such as VLAN-IDs and IP prefixes)
