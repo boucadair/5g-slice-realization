@@ -478,12 +478,12 @@ A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For inst
 ~~~
 {::include ./drawings/1-to-n-mapping.txt}
 ~~~
-{: #figure-5 title="1 (5G Slice) to N (RFC 9543 Network Slice) Mapping" artwork-align="center"}
+{: #figure-5 title="1 (5G Slice) to N (TN Slice) Mapping" artwork-align="center"}
 
 ~~~
 {::include ./drawings/n-to-1-mapping.txt}
 ~~~
-{: #figure-6 title="N (5G Slice) to 1 (RFC 9543 Network Slice) Mapping" artwork-align="center"}
+{: #figure-6 title="N (5G Slice) to 1 (TN Slice) Mapping" artwork-align="center"}
 
    Note that the actual realization of the mapping depends on several
    factors, such as the actual business cases, the NF vendor
