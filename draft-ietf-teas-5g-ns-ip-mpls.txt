@@ -791,11 +791,11 @@ Table of Contents
    subsequent slices.  Let us consider the example depicted in Figure 10
    to illustrate this deployment.  In this example, the first 5G slice
    relies on the deployment of NF-CP and NF-UP functions together with
-   two TN slices for control and user planes (INS-CP and INS-UP1).
+   two TN slices for control and user planes (TNS-CP and TNS-UP1).
    Next, in many cases, the deployment of a second slice relies solely
    on the instantiation of a UPF (NF-UP2) together with a dedicated user
-   plane TN slice (INS-UP2).  The control plane of the first 5G slice is
-   also updated to integrate the second slice: the TN slice (INS-CP) and
+   plane TN slice (TNS-UP2).  The control plane of the first 5G slice is
+   also updated to integrate the second slice: the TN slice (TNS-CP) and
    Network Functions (NF-CP) are shared.
 
       The model described here in which the control plane is shared
