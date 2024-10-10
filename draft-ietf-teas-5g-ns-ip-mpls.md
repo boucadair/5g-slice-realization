@@ -221,6 +221,9 @@ Customer site:
 : A customer manages and deploys 5G NFs (e.g., gNodeB (gNB) and 5G Core (5GC)) in customer sites. A customer site can be either a physical or a virtual location. A provider is responsible for interconnecting customer sites.
 : Examples of customer sites are a customer private locations (Point of Presence (PoP), Data Center (DC)), a Virtual Private Cloud (VPC), or servers hosted within the provider network or colocation service.
 
+Resource Control:
+: In the context of this document, resource control is used mainly to refer to buffer management and relevant Quality of Service (QoS) functions.
+
 "5G Network Slicing" (or "5G Network Slice") refers to "Network Slicing" (or "Network Slice") as defined in the 3GPP {{TS-28.530}}.
 
 An extended list of abbreviations used in this document is provided in {{ext-abbr}}.
@@ -282,7 +285,7 @@ Transport Network Slicing provides various degrees of sharing of resources betwe
 
 There are different components to implement TN slices based upon
 mechanisms such as Virtual Routing and Forwarding instances (VRFs)
-for logical separation, Quality of Service (QoS), and Traffic
+for logical separation, QoS, and Traffic
 Engineering (TE). Whether all or a subset of these components are enabled is a deployment choice.
 
 ## Transport Network Reference Design {#sec-ref-design}
