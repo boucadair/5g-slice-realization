@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 10 April 2025                                  Juniper Networks
+Expires: 13 April 2025                                  Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                          7 October 2024
+                                                         10 October 2024
 
 
  A Realization of Network Slices for 5G Networks Using Current IP/MPLS
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 10 April 2025.
+   This Internet-Draft will expire on 13 April 2025.
 
 Copyright Notice
 
@@ -231,6 +231,10 @@ Table of Contents
       (VPC), or servers hosted within the provider network or colocation
       service.
 
+   Resource Control:  In the context of this document, resource control
+      is used mainly to refer to buffer management and relevant Quality
+      of Service (QoS) functions.
+
    "5G Network Slicing" (or "5G Network Slice") refers to "Network
    Slicing" (or "Network Slice") as defined in the 3GPP [TS-28.530].
 
@@ -344,9 +348,9 @@ Table of Contents
 
    There are different components to implement TN slices based upon
    mechanisms such as Virtual Routing and Forwarding instances (VRFs)
-   for logical separation, Quality of Service (QoS), and Traffic
-   Engineering (TE).  Whether all or a subset of these components are
-   enabled is a deployment choice.
+   for logical separation, QoS, and Traffic Engineering (TE).  Whether
+   all or a subset of these components are enabled is a deployment
+   choice.
 
 3.3.  Transport Network Reference Design
 
