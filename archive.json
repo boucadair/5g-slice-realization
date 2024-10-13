@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-10T00:35:16.634414+00:00",
+  "timestamp": "2024-10-13T00:38:43.627094+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -7337,6 +7337,34 @@
       "mergedBy": "boucadair",
       "mergeCommit": {
         "oid": "287e152fecdb1393e6566d782bd74f28b90a76c9"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 212,
+      "id": "PR_kwDOIw9g6c5-WLqA",
+      "title": "consistent use of capacity planning/management",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/212",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-10-11T13:51:44Z",
+      "updatedAt": "2024-10-11T15:00:43Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "ff178413d5dd4300ac8974c5993728a48b794ddb",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "boucadair-patch-1",
+      "headRefOid": "2c783d83d1450dbee26aed3000b77918c7065a8a",
+      "closedAt": "2024-10-11T15:00:40Z",
+      "mergedAt": "2024-10-11T15:00:40Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "a5a200ee1ba5f1f4825c1e3ebac61206bd9160b3"
       },
       "comments": [],
       "reviews": []
