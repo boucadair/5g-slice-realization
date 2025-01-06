@@ -576,7 +576,7 @@ TN slice mapping policies can be enforced by an operator (e.g., provided to a TN
 ~~~~
 {: #figure-high-level-qos title="Resource Allocation Slicing Model with a Single NRP" artwork-align="center"}
 
-P nodes shown in {{figure-high-level-qos}} are routers that do no interface with customer devices. See {{Section 5.3.1 of ?RFC4026}}.
+P nodes shown in {{figure-high-level-qos}} are routers that do not interface with customer devices. See {{Section 5.3.1 of ?RFC4026}}.
 
 This document does not describe in detail how to manage an L2VPN or L3VPN, as this is already well-documented. For example, the reader may refer to {{?RFC4176}} and {{?RFC6136}} for such details.
 
@@ -1064,8 +1064,8 @@ ranges for each slice, and use these ranges for slice identification purposes on
       {{?RFC2698}}, is more 'customer friendly' as it doesn't impose
       outbound peak-rate shaping requirements on customer edge (CE)
       devices. 2r3c meters in general give greater flexibility for provider network edge
-      enforcement regarding accepting the traffic (green), de-
-      prioritizing and potentially dropping the traffic on transit during
+      enforcement regarding accepting the traffic (green),
+      de-prioritizing and potentially dropping the traffic on transit during
       congestion (yellow), or hard dropping the traffic (red).
 
    Inbound provider network edge enforcement model for 5QI-unaware model, where all packets
