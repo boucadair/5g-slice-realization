@@ -173,7 +173,7 @@ informative:
 
 --- abstract
 
-Slicing is a feature that was introduced by the 3rd Generation Partnership Project (3GPP) in mobile networks. Realization of 5G slicing implies requirements for all mobile domains, including the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN).
+Network slicing is a feature that was introduced by the 3rd Generation Partnership Project (3GPP) in mobile networks. Realization of 5G slicing implies requirements for all mobile domains, including the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN).
 
 This document describes a Network Slice realization model for IP/MPLS networks with a focus on the Transport Network fulfilling 5G slicing connectivity service objectives. The realization model reuses many building blocks currently commonly used in service provider networks.
 
@@ -290,7 +290,7 @@ Engineering (TE). Whether all or a subset of these components are enabled is a d
 
 ## Transport Network Reference Design {#sec-ref-design}
 
-{{fig-tn-arch}} depicts the reference design used in this document for modelling the Transport Network based on management perimeters (Customer vs. Provider).
+{{fig-tn-arch}} depicts the reference design used in this document for modeling the Transport Network based on management perimeters (Customer vs. Provider).
 
 ~~~~
 {::include ./drawings/pe-ce-ac.txt}
@@ -640,7 +640,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    * Use a deterministic algorithm to map S-NSAAI to an IP subnet, prefix, or pools. For example, adaptations to the algorithm defined in {{?RFC7422}} may be considered.
 
    Mapping S-NSSAIs to IP addresses makes IP addresses an identifier for slice-related
-   policy enfocement in the Transport Network (e.g., Differentiated Services,
+   policy enforcement in the Transport Network (e.g., Differentiated Services,
    traffic steering, bandwidth allocation, security policies, or monitoring).
 
    One example of the IP hand-off realization is the arrangement, where the slices in the TN
@@ -1119,7 +1119,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
    outbound provider network edge resource control are:
 
    *  Slices use both CIR and PIR parameters, and provider network edge links
-      (ACs) are dimensioned to fulfil the aggregate of
+      (ACs) are dimensioned to fulfill the aggregate of
       slice CIRs.  If at any given time, some slices send the traffic
       above CIR, congestion in outbound direction on the provider network edge
       link (AC) might happen.  Therefore, fine-grained resource control to
@@ -1796,7 +1796,7 @@ Also, underlay transports may be realized using separate NRPs. However, such an 
    NSC can use telemetry-driven automatic congestion
    avoidance.  In this approach, when the actual traffic volume in the
    data plane on given link exceeds a threshold, the controller, knowing
-   how much actual data plane traffic is currently travelling along each
+   how much actual data plane traffic is currently traveling along each
    RSVP or SR-TE path, can tune the paths of one or more paths using the
    link such that they avoid that link. This approach is similar to that described in {{Section 4.3.1 of ?RFC9522}}.
 
@@ -2128,3 +2128,5 @@ Security considerations specific to each of the technologies and protocols liste
 
    Thanks to Alvaro Retana for the rtg-dir review, Yoshifumi Nishida for
    the tsv-art review, and Timothy Winters for the int-dir review.
+
+   Thanks to Jim Guichard for the AD review.
