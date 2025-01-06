@@ -963,7 +963,7 @@ Table of Contents
 
     Figure 11: Resource Allocation Slicing Model with a Single NRP
 
-   P nodes shown in Figure 11 are routers that do no interface with
+   P nodes shown in Figure 11 are routers that do not interface with
    customer devices.  See Section 5.3.1 of [RFC4026].
 
    This document does not describe in detail how to manage an L2VPN or
@@ -1579,7 +1579,7 @@ Table of Contents
       outbound peak-rate shaping requirements on customer edge (CE)
       devices. 2r3c meters in general give greater flexibility for
       provider network edge enforcement regarding accepting the traffic
-      (green), de- prioritizing and potentially dropping the traffic on
+      (green), de-prioritizing and potentially dropping the traffic on
       transit during congestion (yellow), or hard dropping the traffic
       (red).
 
