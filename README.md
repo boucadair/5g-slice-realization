@@ -1,11 +1,11 @@
 # A Realization of IETF Network Slices for 5G Networks Using Current IP/MPLS Technologies
 
-This is the working area for the individual Internet-Draft, "A Realization of IETF Network Slices for 5G Networks Using Current IP/MPLS Technologies".
+This is the working area for the [IETF TEAS WG](https://datatracker.ietf.org/wg/teas/about/) Internet-Draft, "A Realization of IETF Network Slices for 5G Networks Using Current IP/MPLS Technologies".
 
 * [Editor's Copy](https://boucadair.github.io/5g-slice-realization/#go.draft-ietf-teas-5g-ns-ip-mpls.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-ietf-teas-5g-ns-ip-mpls)
-* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-ietf-teas-5g-ns-ip-mpls)
-* [Compare Editor's Copy to Individual Draft](https://boucadair.github.io/5g-slice-realization/)
+* [Published WG Draft](https://datatracker.ietf.org/doc/html/draft-ietf-teas-5g-ns-ip-mpls)
+* [Compare Editor's Copy to Published WG Document](https://boucadair.github.io/5g-slice-realization/)
 
 
 ## Contributing
