@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 14 April 2025                                  Juniper Networks
+Expires: 10 July 2025                                   Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                         11 October 2024
+                                                          6 January 2025
 
 
  A Realization of Network Slices for 5G Networks Using Current IP/MPLS
@@ -19,11 +19,11 @@ Expires: 14 April 2025                                  Juniper Networks
 
 Abstract
 
-   Slicing is a feature that was introduced by the 3rd Generation
-   Partnership Project (3GPP) in mobile networks.  Realization of 5G
-   slicing implies requirements for all mobile domains, including the
-   Radio Access Network (RAN), Core Network (CN), and Transport Network
-   (TN).
+   Network slicing is a feature that was introduced by the 3rd
+   Generation Partnership Project (3GPP) in mobile networks.
+   Realization of 5G slicing implies requirements for all mobile
+   domains, including the Radio Access Network (RAN), Core Network (CN),
+   and Transport Network (TN).
 
    This document describes a Network Slice realization model for IP/MPLS
    networks with a focus on the Transport Network fulfilling 5G slicing
@@ -57,11 +57,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 14 April 2025.
+   This Internet-Draft will expire on 10 July 2025.
 
 Copyright Notice
 
-   Copyright (c) 2024 IETF Trust and the persons identified as the
+   Copyright (c) 2025 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -356,7 +356,7 @@ Table of Contents
 3.3.  Transport Network Reference Design
 
    Figure 3 depicts the reference design used in this document for
-   modelling the Transport Network based on management perimeters
+   modeling the Transport Network based on management perimeters
    (Customer vs. Provider).
 
       Customer                 Provider                     Customer
@@ -1052,7 +1052,7 @@ Table of Contents
       defined in [RFC7422] may be considered.
 
    Mapping S-NSSAIs to IP addresses makes IP addresses an identifier for
-   slice-related policy enfocement in the Transport Network (e.g.,
+   slice-related policy enforcement in the Transport Network (e.g.,
    Differentiated Services, traffic steering, bandwidth allocation,
    security policies, or monitoring).
 
@@ -1634,11 +1634,11 @@ Table of Contents
    network edge resource control are:
 
    *  Slices use both CIR and PIR parameters, and provider network edge
-      links (ACs) are dimensioned to fulfil the aggregate of slice CIRs.
-      If at any given time, some slices send the traffic above CIR,
-      congestion in outbound direction on the provider network edge link
-      (AC) might happen.  Therefore, fine-grained resource control to
-      guarantee at least CIR for each slice is required.
+      links (ACs) are dimensioned to fulfill the aggregate of slice
+      CIRs.  If at any given time, some slices send the traffic above
+      CIR, congestion in outbound direction on the provider network edge
+      link (AC) might happen.  Therefore, fine-grained resource control
+      to guarantee at least CIR for each slice is required.
 
    *  Any-to-Any (A2A) connectivity constructs are deployed, again
       resulting in potential congestion in outbound direction on the
@@ -2435,7 +2435,7 @@ Table of Contents
    use telemetry-driven automatic congestion avoidance.  In this
    approach, when the actual traffic volume in the data plane on given
    link exceeds a threshold, the controller, knowing how much actual
-   data plane traffic is currently travelling along each RSVP or SR-TE
+   data plane traffic is currently traveling along each RSVP or SR-TE
    path, can tune the paths of one or more paths using the link such
    that they avoid that link.  This approach is similar to that
    described in Section 4.3.1 of [RFC9522].
@@ -2655,26 +2655,26 @@ Table of Contents
               Contreras, L. M., Bykov, I., and K. G. Szarkowicz, "5QI to
               DiffServ DSCP Mapping Example for Enforcement of 5G End-
               to-End Network Slice QoS", Work in Progress, Internet-
-              Draft, draft-cbs-teas-5qi-to-dscp-mapping-02, 8 July 2024,
-              <https://datatracker.ietf.org/doc/html/draft-cbs-teas-5qi-
-              to-dscp-mapping-02>.
+              Draft, draft-cbs-teas-5qi-to-dscp-mapping-03, 21 October
+              2024, <https://datatracker.ietf.org/doc/html/draft-cbs-
+              teas-5qi-to-dscp-mapping-03>.
 
    [I-D.ietf-opsawg-ntw-attachment-circuit]
               Boucadair, M., Roberts, R., de Dios, O. G., Barguil, S.,
               and B. Wu, "A Network YANG Data Model for Attachment
               Circuits", Work in Progress, Internet-Draft, draft-ietf-
-              opsawg-ntw-attachment-circuit-13, 5 September 2024,
+              opsawg-ntw-attachment-circuit-14, 7 November 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-
-              ntw-attachment-circuit-13>.
+              ntw-attachment-circuit-14>.
 
    [I-D.ietf-opsawg-teas-attachment-circuit]
               Boucadair, M., Roberts, R., de Dios, O. G., Barguil, S.,
               and B. Wu, "YANG Data Models for Bearers and 'Attachment
               Circuits'-as-a-Service (ACaaS)", Work in Progress,
               Internet-Draft, draft-ietf-opsawg-teas-attachment-circuit-
-              17, 10 October 2024,
+              18, 7 November 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-
-              teas-attachment-circuit-17>.
+              teas-attachment-circuit-18>.
 
    [I-D.ietf-teas-5g-network-slice-application]
               Geng, X., Contreras, L. M., Rokui, R., Dong, J., and I.
@@ -2688,18 +2688,17 @@ Table of Contents
               Wu, B., Dhody, D., Rokui, R., Saad, T., and J. Mullooly,
               "A YANG Data Model for the RFC 9543 Network Slice
               Service", Work in Progress, Internet-Draft, draft-ietf-
-              teas-ietf-network-slice-nbi-yang-16, 28 August 2024,
+              teas-ietf-network-slice-nbi-yang-17, 20 December 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-teas-
-              ietf-network-slice-nbi-yang-16>.
+              ietf-network-slice-nbi-yang-17>.
 
    [I-D.ietf-teas-ns-controller-models]
-              Contreras, L. M., Rokui, R., Tantsura, J., Wu, B., Liu,
-              X., Dhody, D., and S. Belotti, "IETF Network Slice
-              Controller and its associated data models", Work in
-              Progress, Internet-Draft, draft-ietf-teas-ns-controller-
-              models-02, 8 July 2024,
+              Contreras, L. M., Rokui, R., Tantsura, J., Wu, B., and X.
+              Liu, "IETF Network Slice Controller and its Associated
+              Data Models", Work in Progress, Internet-Draft, draft-
+              ietf-teas-ns-controller-models-03, 21 October 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-
-              controller-models-02>.
+              controller-models-03>.
 
    [IEEE802.1AE]
               IEEE, "802.1AE: MAC Security (MACsec)", n.d.,
@@ -3119,6 +3118,8 @@ Acknowledgments
 
    Thanks to Alvaro Retana for the rtg-dir review, Yoshifumi Nishida for
    the tsv-art review, and Timothy Winters for the int-dir review.
+
+   Thanks to Jim Guichard for the AD review.
 
 Contributors
 
