@@ -63,7 +63,7 @@ author:
    city: Madrid
    country: Spain
    email: luismiguel.contrerasmurillo@telefonica.com
-   uri:   http://lmcontreras.com/
+   uri:   https://lmcontreras.com/
 
 
 contributor:
@@ -119,7 +119,7 @@ contributor:
 normative:
 
 informative:
-   5G-Book:
+   Book-5G:
               title: "5G Mobile Networks: A Systems Approach"
               author:
                 -
@@ -169,7 +169,7 @@ informative:
               title: "Common Public Radio Interface: eCPRI Interface Specification"
               author:
                 org: Common Public Radio Interface
-              target: http://www.cpri.info/downloads/eCPRI_v_2.0_2019_05_10c.pdf
+              target: https://www.cpri.info/downloads/eCPRI_v_2.0_2019_05_10c.pdf
 
 --- abstract
 
@@ -188,7 +188,7 @@ This document focuses on network slicing for 5G networks, covering the connectiv
 This work is compatible with the framework defined in {{!RFC9543}} which describes network slicing in the context of networks built from IETF technologies. Specifically, this document describes an approach to how RFC 9543 Network Slices are realized within provider networks and how such slices are stitched to Transport Network resources in a customer site in the context of Transport Network Slices ({{fig-end-to-end}}).
 Concretely, the realization of an RFC 9543 Network Slice (i.e., connectivity with performance commitments) involves the provider network and partially the AC (the PE-side of the AC). This document assumes that the customer site infrastructure is over-provisioned and involves short distances (low latency) where basic QoS/scheduling logic is sufficient to comply with the Service Level Objectives (SLOs).
 
-~~~~
+~~~~ aasvg
 {::include ./drawings/tn-sections.txt}
 ~~~~
 {: #fig-end-to-end title="Transport Network Slice &  RFC 9543 Network Slice Scopes" artwork-align="center"}
@@ -205,7 +205,7 @@ This realization model uses a single Network Resource Partition (NRP) ({{Section
 
 Although this document focuses on 5G, the realizations are not fundamentally constrained by the 5G use case. The document is not intended to be a BCP and does not claim to specify mandatory mechanisms to realize network slices. Rather, a key goal of the document is to provide pragmatic implementation approaches by leveraging existing readily-available, widely-deployed techniques. The document is also intended to align the mobile and the IETF perspectives of slicing from a realization perspective.
 
-For a definitive description of 3GPP network architectures, the reader should refer to {{TS-23.501}}. More  details can be found in {{5G-Book}}.
+For a definitive description of 3GPP network architectures, the reader should refer to {{TS-23.501}}. More  details can be found in {{Book-5G}}.
 
 # Definitions
 
@@ -404,7 +404,7 @@ This section introduces a global framework for the orchestration of a 5G end-to-
 
 This framework is consistent with the management coordination example shown in Figure 4.7.1 of {{TS-28.530}}.
 
-In reference to {{figure-orch}}, a 5G End-to-End Network Slice Orchestrator (5G NSO) is responsible for orchestrating 5G Network Slices end-to-end. The details of the 5G NSO are out of the scope of this document. The realization of the 5G Network Slices spans RAN, CN, and TN. As mentioned in {{sec-scope}}, the RAN and CN are under the responsibility of the 3GPP Management System, while the TN is not. The orchestration of the TN is split into two sub-domains in conformance with the reference design in {{sec-ref-design}}:
+In reference to {{figure-orch}}, a 5G End-to-End Network Slice Orchestrator (5G NSO) is responsible for orchestrating 5G Network Slices end-to-end. The details of the 5G NSO are out of the scope of this document. The realization of the 5G Network Slices spans RAN, CN, and TN. As mentioned in {{sec-scope}}, the RAN and CN are under the responsibility of the 3GPP Management System, while the TN is not. The orchestration of the TN is split into two subdomains in conformance with the reference design in {{sec-ref-design}}:
 
 Provider Network Orchestration domain:
 : As defined in {{!RFC9543}}, the provider relies on a Network Slice Controller (NSC) to manage and orchestrate RFC 9543 Network Slices in the provider network. This framework permits to manage connectivity together with SLOs.
@@ -716,9 +716,9 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
 
    In this option, L3VPN service instances are instantiated outside the
    provider network.  These L3VPN service instances
-   are instantiated in the customer site which could be, for example, either on the compute that hosts mobile NFs ({{figure-mpls-10b-hand-off}}, left hand side) or within the DC/cloud
+   are instantiated in the customer site which could be, for example, either on the compute that hosts mobile NFs ({{figure-mpls-10b-hand-off}}, left-hand side) or within the DC/cloud
    infrastructure itself (e.g., on the top of the rack or leaf switch
-   within cloud IP fabric ({{figure-mpls-10b-hand-off}}, right hand side)). On the
+   within cloud IP fabric ({{figure-mpls-10b-hand-off}}, right-hand side)). On the
    AC connected to a PE, packets are already MPLS
    encapsulated (or MPLS-in-UDP/MPLS-in-IP encapsulated, if cloud or compute
    infrastructure don't support MPLS encapsulation). Therefore,
@@ -827,7 +827,7 @@ of the number of slices in the customer site, the number of forwarding entries
 on a PE is considerably reduced.
 
 For any slice-specific per-hop behavior at the provider network edge, as described
-in details in {{sec-over-rea-model}}, the PE need to determine which label in the packet
+in details in {{sec-over-rea-model}}, the PE needs to determine which label in the packet
 represents which slice. This can be achieved, for example, by allocating non-overlapping service label
 ranges for each slice, and use these ranges for slice identification purposes on PE.
 
@@ -849,7 +849,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
    5QI applies to the RAN domain, it is not visible to the
    provider network.  Therefore, if 5QI-aware treatment is desired in the provider
    network as well, 5G network functions might set DSCP with a value
-   representing 5QI so that differentiated treatment can implemented in the provider network
+   representing 5QI so that differentiated treatment can be implemented in the provider network
    as well.  Based on these DSCP values, at SDP of each provider network segment
    used to construct transport for given 5G slice, very granular QoS
    enforcement might be implemented.
@@ -913,7 +913,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
    at SDP are ignored.  In the provider network, there is no QoS
    differentiation at the 5G QoS Class level.  The entire RFC 9543 Network
    Slice is mapped to a single TN QoS Class, and, therefore, to a single
-   QoS queue on the routers in the provider network.  With a small number of
+   QoS queue on the routers in the provider network.  With a few number of
    deployed 5G slices (for example, only two 5G slices: eMBB and MIoT),
    it is possible to dedicate a separate QoS queue for each slice on
    transit routers in the provider network.  However, with the introduction of private/enterprises
@@ -1109,7 +1109,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
                    +---|--+      |
                        +---------+
 ~~~
-{: #figure-17 title="Ingress Slice Admission Control (5QI-unware Model)" artwork-align="center"}
+{: #figure-17 title="Ingress Slice Admission Control (5QI-unaware Model)" artwork-align="center"}
 
 ####  Outbound Edge Resource Control
 
@@ -1225,7 +1225,7 @@ to TN QoS Classes may be rather common.
    original IP header is used at the PE for fine-grained per slice and
    per 5G QoS Class inbound/outbound enforcement on the AC.
 
-   In the 5QI-aware model, compared to the 5QI-unware model, provider network edge resources are controlled in an even more
+   In the 5QI-aware model, compared to the 5QI-unaware model, provider network edge resources are controlled in an even more
    granular, fine-grained manner, with dedicated resource allocation for
    each RFC 9543 Network Slice and dedicated resource allocation for number
    of traffic classes (most commonly up 4 or 8 traffic classes,
@@ -1234,7 +1234,7 @@ to TN QoS Classes may be rather common.
 
 ####  Inbound Edge Resource Control
 
-   Compared to the 5QI-unware model, admission control (traffic
+   Compared to the 5QI-unaware model, admission control (traffic
    conditioning) in the 5QI-aware model is more granular, as it enforces
    not only per slice capacity constraints, but may as well enforce the
    constraints per 5G QoS Class within each slice.
@@ -1486,7 +1486,7 @@ Also, underlay transports may be realized using separate NRPs. However, such an 
 
 ##  5QI-unaware Model
 
-   As discussed in {{sec-5QI-unaware}}, in the 5QI-unware model, the provider network
+   As discussed in {{sec-5QI-unaware}}, in the 5QI-unaware model, the provider network
    doesn't take into account 5G QoS during execution of per-hop
    behavior.  The entire slice is mapped to single TN QoS Class,
    therefore the entire slice is subject to the same per-hop behavior.
@@ -1860,7 +1860,7 @@ Also, underlay transports may be realized using separate NRPs. However, such an 
 
 # Scalability Implications {#sec-sca-impli}
 
-The mapping between 5G slice to TN slices (see {{sec-mapping}}) is a design choice of service operators that may be a function of, e.g., the number of instantiated slices, requested services, or local engineering capabilities and guidelines. However, operators should carefully consider means to ease slice migration strategies. For example, a provider may initially adopt a 1-to-1 mapping if it has to instantiate just a few Network Slices and accommodate the need of only a few customers. That provider may decide to move to a N-to-1 mapping for aggregation/scalability purposes if sustained increased slice demand is observed.
+The mapping between 5G slice to TN slices (see {{sec-mapping}}) is a design choice of service operators that may be a function of, e.g., the number of instantiated slices, requested services, or local engineering capabilities and guidelines. However, operators should carefully consider means to ease slice migration strategies. For example, a provider may initially adopt a 1-to-1 mapping if it has to instantiate just a few Network Slices and accommodate the need of only a few customers. That provider may decide to move to an N-to-1 mapping for aggregation/scalability purposes if sustained increased slice demand is observed.
 
 Putting in place adequate automation means to realize Network Slices (including the adjustment of Slice Services to Network Slices mapping) would ease slice migration operations.
 
@@ -2127,6 +2127,6 @@ Security considerations specific to each of the technologies and protocols liste
    Special thanks to Jie Dong and Adrian Farrel for the detailed and careful reviews.
 
    Thanks to Alvaro Retana for the rtg-dir review, Yoshifumi Nishida for
-   the tsv-art review, and Timothy Winters for the int-dir review.
+   the tsv-art review, Timothy Winters for the int-dir review, and Lars Eggert for the genart review.
 
    Thanks to Jim Guichard for the AD review.
