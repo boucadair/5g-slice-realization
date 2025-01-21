@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 10 July 2025                                   Juniper Networks
+Expires: 25 July 2025                                   Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                          6 January 2025
+                                                         21 January 2025
 
 
  A Realization of Network Slices for 5G Networks Using Current IP/MPLS
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 10 July 2025.
+   This Internet-Draft will expire on 25 July 2025.
 
 Copyright Notice
 
@@ -180,15 +180,16 @@ Table of Contents
    provider networks is referred to as the "hand-off".  Section 4 lists
    a set of hand-off methods for slice mapping purposes.
 
-   The realization model described in this document uses a set of
-   building blocks commonly used in service provider networks.
-   Concretely, the model uses (1) Layer 2 Virtual Private Network
-   (L2VPN) [RFC4664] and/or Layer 3 Virtual Private Network (L3VPN)
-   [RFC4364] service instances for logical separation, (2) fine-grained
-   resource control at the Provider Edges (PEs), (3) coarse-grained
-   resource control within the provider network, and (4) capacity
-   planning/management.  More details are provided in Sections 3.7, 5,
-   6, and 7.
+   Unlike approaches that require new protocol extensions (e.g.,
+   [I-D.ietf-teas-ns-ip-mpls]), the realization model described in this
+   document uses a set of building blocks commonly used in service
+   provider networks.  Concretely, the model uses (1) Layer 2 Virtual
+   Private Network (L2VPN) [RFC4664] and/or Layer 3 Virtual Private
+   Network (L3VPN) [RFC4364] service instances for logical separation,
+   (2) fine-grained resource control at the Provider Edges (PEs), (3)
+   coarse-grained resource control within the provider network, and (4)
+   capacity planning/management.  More details are provided in Sections
+   3.7, 5, 6, and 7.
 
    This realization model uses a single Network Resource Partition (NRP)
    (Section 7.1 of [RFC9543]).  The applicability to multiple NRPs is
@@ -205,7 +206,7 @@ Table of Contents
 
    For a definitive description of 3GPP network architectures, the
    reader should refer to [TS-23.501].  More details can be found in
-   [_5G-Book].
+   [Book-5G].
 
 2.  Definitions
 
@@ -561,7 +562,7 @@ Table of Contents
    document.  The realization of the 5G Network Slices spans RAN, CN,
    and TN.  As mentioned in Section 3.1, the RAN and CN are under the
    responsibility of the 3GPP Management System, while the TN is not.
-   The orchestration of the TN is split into two sub-domains in
+   The orchestration of the TN is split into two subdomains in
    conformance with the reference design in Section 3.3:
 
    Provider Network Orchestration domain:  As defined in [RFC9543], the
@@ -1161,9 +1162,9 @@ Table of Contents
    In this option, L3VPN service instances are instantiated outside the
    provider network.  These L3VPN service instances are instantiated in
    the customer site which could be, for example, either on the compute
-   that hosts mobile NFs (Figure 15, left hand side) or within the DC/
+   that hosts mobile NFs (Figure 15, left-hand side) or within the DC/
    cloud infrastructure itself (e.g., on the top of the rack or leaf
-   switch within cloud IP fabric (Figure 15, right hand side)).  On the
+   switch within cloud IP fabric (Figure 15, right-hand side)).  On the
    AC connected to a PE, packets are already MPLS encapsulated (or MPLS-
    in-UDP/MPLS-in-IP encapsulated, if cloud or compute infrastructure
    don't support MPLS encapsulation).  Therefore, the PE uses neither a
@@ -1301,7 +1302,7 @@ Table of Contents
    reduced.
 
    For any slice-specific per-hop behavior at the provider network edge,
-   as described in details in Section 3.7, the PE need to determine
+   as described in details in Section 3.7, the PE needs to determine
    which label in the packet represents which slice.  This can be
    achieved, for example, by allocating non-overlapping service label
    ranges for each slice, and use these ranges for slice identification
@@ -1326,7 +1327,7 @@ Table of Contents
    Given that 5QI applies to the RAN domain, it is not visible to the
    provider network.  Therefore, if 5QI-aware treatment is desired in
    the provider network as well, 5G network functions might set DSCP
-   with a value representing 5QI so that differentiated treatment can
+   with a value representing 5QI so that differentiated treatment can be
    implemented in the provider network as well.  Based on these DSCP
    values, at SDP of each provider network segment used to construct
    transport for given 5G slice, very granular QoS enforcement might be
@@ -1392,7 +1393,7 @@ Table of Contents
    differentiation at the 5G QoS Class level.  The entire RFC 9543
    Network Slice is mapped to a single TN QoS Class, and, therefore, to
    a single QoS queue on the routers in the provider network.  With a
-   small number of deployed 5G slices (for example, only two 5G slices:
+   few number of deployed 5G slices (for example, only two 5G slices:
    eMBB and MIoT), it is possible to dedicate a separate QoS queue for
    each slice on transit routers in the provider network.  However, with
    the introduction of private/enterprises slices, as the number of 5G
@@ -1623,7 +1624,7 @@ Table of Contents
                                        +---|--+      |
                                            +---------+
 
-       Figure 20: Ingress Slice Admission Control (5QI-unware Model)
+       Figure 20: Ingress Slice Admission Control (5QI-unaware Model)
 
 5.2.1.2.  Outbound Edge Resource Control
 
@@ -1803,7 +1804,7 @@ Table of Contents
    the PE for fine-grained per slice and per 5G QoS Class inbound/
    outbound enforcement on the AC.
 
-   In the 5QI-aware model, compared to the 5QI-unware model, provider
+   In the 5QI-aware model, compared to the 5QI-unaware model, provider
    network edge resources are controlled in an even more granular, fine-
    grained manner, with dedicated resource allocation for each RFC 9543
    Network Slice and dedicated resource allocation for number of traffic
@@ -1813,7 +1814,7 @@ Table of Contents
 
 5.2.2.1.  Inbound Edge Resource Control
 
-   Compared to the 5QI-unware model, admission control (traffic
+   Compared to the 5QI-unaware model, admission control (traffic
    conditioning) in the 5QI-aware model is more granular, as it enforces
    not only per slice capacity constraints, but may as well enforce the
    constraints per 5G QoS Class within each slice.
@@ -2087,7 +2088,7 @@ Table of Contents
 
 6.1.  5QI-unaware Model
 
-   As discussed in Section 5.2.1, in the 5QI-unware model, the provider
+   As discussed in Section 5.2.1, in the 5QI-unaware model, the provider
    network doesn't take into account 5G QoS during execution of per-hop
    behavior.  The entire slice is mapped to single TN QoS Class,
    therefore the entire slice is subject to the same per-hop behavior.
@@ -2518,7 +2519,7 @@ Table of Contents
    carefully consider means to ease slice migration strategies.  For
    example, a provider may initially adopt a 1-to-1 mapping if it has to
    instantiate just a few Network Slices and accommodate the need of
-   only a few customers.  That provider may decide to move to a N-to-1
+   only a few customers.  That provider may decide to move to an N-to-1
    mapping for aggregation/scalability purposes if sustained increased
    slice demand is observed.
 
@@ -2646,9 +2647,13 @@ Table of Contents
 
 12.2.  Informative References
 
+   [Book-5G]  Peterson, L., Sunay, O., and B. Davie, "5G Mobile
+              Networks: A Systems Approach", 2022,
+              <https://5g.systemsapproach.org/>.
+
    [ECPRI]    Common Public Radio Interface, "Common Public Radio
               Interface: eCPRI Interface Specification", n.d.,
-              <http://www.cpri.info/downloads/
+              <https://www.cpri.info/downloads/
               eCPRI_v_2.0_2019_05_10c.pdf>.
 
    [I-D.cbs-teas-5qi-to-dscp-mapping]
@@ -2663,18 +2668,18 @@ Table of Contents
               Boucadair, M., Roberts, R., de Dios, O. G., Barguil, S.,
               and B. Wu, "A Network YANG Data Model for Attachment
               Circuits", Work in Progress, Internet-Draft, draft-ietf-
-              opsawg-ntw-attachment-circuit-14, 7 November 2024,
+              opsawg-ntw-attachment-circuit-15, 9 January 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-
-              ntw-attachment-circuit-14>.
+              ntw-attachment-circuit-15>.
 
    [I-D.ietf-opsawg-teas-attachment-circuit]
               Boucadair, M., Roberts, R., de Dios, O. G., Barguil, S.,
               and B. Wu, "YANG Data Models for Bearers and 'Attachment
               Circuits'-as-a-Service (ACaaS)", Work in Progress,
               Internet-Draft, draft-ietf-opsawg-teas-attachment-circuit-
-              18, 7 November 2024,
+              19, 9 January 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-
-              teas-attachment-circuit-18>.
+              teas-attachment-circuit-19>.
 
    [I-D.ietf-teas-5g-network-slice-application]
               Geng, X., Contreras, L. M., Rokui, R., Dong, J., and I.
@@ -2688,9 +2693,9 @@ Table of Contents
               Wu, B., Dhody, D., Rokui, R., Saad, T., and J. Mullooly,
               "A YANG Data Model for the RFC 9543 Network Slice
               Service", Work in Progress, Internet-Draft, draft-ietf-
-              teas-ietf-network-slice-nbi-yang-17, 20 December 2024,
+              teas-ietf-network-slice-nbi-yang-18, 21 January 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-teas-
-              ietf-network-slice-nbi-yang-17>.
+              ietf-network-slice-nbi-yang-18>.
 
    [I-D.ietf-teas-ns-controller-models]
               Contreras, L. M., Rokui, R., Tantsura, J., Wu, B., and X.
@@ -2699,6 +2704,15 @@ Table of Contents
               ietf-teas-ns-controller-models-03, 21 October 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-
               controller-models-03>.
+
+   [I-D.ietf-teas-ns-ip-mpls]
+              Saad, T., Beeram, V. P., Dong, J., Wen, B., Ceccarelli,
+              D., Halpern, J. M., Peng, S., Chen, R., Liu, X.,
+              Contreras, L. M., Rokui, R., and L. Jalil, "Realizing
+              Network Slices in IP/MPLS Networks", Work in Progress,
+              Internet-Draft, draft-ietf-teas-ns-ip-mpls-04, 28 May
+              2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
+              teas-ns-ip-mpls-04>.
 
    [IEEE802.1AE]
               IEEE, "802.1AE: MAC Security (MACsec)", n.d.,
@@ -2921,10 +2935,6 @@ Table of Contents
               <https://portal.3gpp.org/desktopmodules/Specifications/
               SpecificationDetails.aspx?specificationId=3273>.
 
-   [_5G-Book] Peterson, L., Sunay, O., and B. Davie, "5G Mobile
-              Networks: A Systems Approach", 2022,
-              <https://5g.systemsapproach.org/>.
-
 Appendix A.  An Example of Local IPv6 Addressing Plan for Network
              Functions
 
@@ -2986,7 +2996,7 @@ Appendix A.  An Example of Local IPv6 Addressing Plan for Network
         |                                                        |
     2001:db8:a::300:3/128               2001:db8:b::300:3/128
 
-    o Tunnel (IPsec, GTP-U, etc) termination point
+    o Tunnel (IPsec, GTP-U, etc.) termination point
     * SDP
 
        Figure 32: Deployment Example with S-NSSAI Embedded into IPv6
@@ -3117,7 +3127,8 @@ Acknowledgments
    careful reviews.
 
    Thanks to Alvaro Retana for the rtg-dir review, Yoshifumi Nishida for
-   the tsv-art review, and Timothy Winters for the int-dir review.
+   the tsv-art review, Timothy Winters for the int-dir review, and Lars
+   Eggert for the genart review.
 
    Thanks to Jim Guichard for the AD review.
 
@@ -3206,4 +3217,4 @@ Authors' Addresses
    Madrid
    Spain
    Email: luismiguel.contrerasmurillo@telefonica.com
-   URI:   http://lmcontreras.com/
+   URI:   https://lmcontreras.com/
