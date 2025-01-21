@@ -1912,7 +1912,7 @@ Security considerations specific to each of the technologies and protocols liste
    schemes following the above approach may be used, with one example allocation shown
    in {{figure-11}}.
 
-~~~
+~~~ aasvg
              NF-specific          Reserved
         (not slice specific)     for S-NSSAI
    <----------------------------><--------->
@@ -1942,7 +1942,7 @@ Security considerations specific to each of the technologies and protocols liste
    SD-00003) tunnel uses the IP addresses {2001:db8:a::300:3, 2001:db8:b::300:3} and simply
    adds {:0300:0003} as the last two octets. Leading zeros are not represented in the resulting IPv6 addresses as per {{?RFC5952}}.
 
-~~~~
+~~~~ aasvg
 {::include ./drawings/S-NSSAI-deployment.txt}
 ~~~~
 {: #figure-s-nssai-deployment title="Deployment Example with S-NSSAI Embedded into IPv6 Addresses" artwork-align="center"}
