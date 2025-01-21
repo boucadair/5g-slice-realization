@@ -188,7 +188,7 @@ This document focuses on network slicing for 5G networks, covering the connectiv
 This work is compatible with the framework defined in {{!RFC9543}} which describes network slicing in the context of networks built from IETF technologies. Specifically, this document describes an approach to how RFC 9543 Network Slices are realized within provider networks and how such slices are stitched to Transport Network resources in a customer site in the context of Transport Network Slices ({{fig-end-to-end}}).
 Concretely, the realization of an RFC 9543 Network Slice (i.e., connectivity with performance commitments) involves the provider network and partially the AC (the PE-side of the AC). This document assumes that the customer site infrastructure is over-provisioned and involves short distances (low latency) where basic QoS/scheduling logic is sufficient to comply with the Service Level Objectives (SLOs).
 
-~~~~
+~~~~ aasvg
 {::include ./drawings/tn-sections.txt}
 ~~~~
 {: #fig-end-to-end title="Transport Network Slice &  RFC 9543 Network Slice Scopes" artwork-align="center"}
@@ -244,7 +244,7 @@ As discussed in Section 4.4.1 of {{TS-28.530}}, the 3GPP management system does 
 
 In practice, the TN may not map to a monolithic architecture and management domain. It is frequently segmented, non-uniform, and managed by different entities. For example, {{fig-1}} depicts an NF instance that is deployed in an edge data center (DC) connected to an NF located in a Public Cloud via a WAN (e.g., MPLS-VPN service). In this example, the TN can be seen as an abstraction representing an end-to-end connectivity based upon three distinct domains: DC, WAN, and Public Cloud. A model for the Transport Network based on orchestration domains is introduced in {{sec-orch}}.
 
-~~~~
+~~~~ aasvg
 {::include ./drawings/TN-abstraction.txt}
 ~~~~
 {: #fig-1 title="An Example of Transport Network Decomposition" artwork-align="center"}
@@ -292,7 +292,7 @@ Engineering (TE). Whether all or a subset of these components are enabled is a d
 
 {{fig-tn-arch}} depicts the reference design used in this document for modeling the Transport Network based on management perimeters (Customer vs. Provider).
 
-~~~~
+~~~~ aasvg
 {::include ./drawings/pe-ce-ac.txt}
 ~~~~
 {: #fig-tn-arch title="Reference Design with Customer Site and Provider Network" artwork-align="center"}
@@ -315,7 +315,7 @@ A CE is typically managed by the customer, but it can also be co-managed with th
 
 This document generalizes the definition of a CE with the introduction of "Distributed CE"; that is, the logical connectivity is realized by configuring multiple devices in the customer domain. The CE function is distributed. An example of distributed CE is the realization of an interconnection using a L3VPN service based on a distributed CE composed of a switch (Layer 2) and a router (Layer 3) ({{fig-distribute-ce}}). Another example of distributed CE is shown in {{fig-50}}.
 
-~~~~
+~~~~ aasvg
 +--------------+                    +--------------+
 |   Customer   |                    |   Provider   |
 |     Site     |                    |    Network   |
@@ -345,7 +345,7 @@ This document generalizes the PE definition with the introduction of "Distribute
 
 An example of a distributed PE is the "Managed CE service". For example, a provider delivers VPN services using CEs and PEs which are both managed by the provider (case (i) in {{fig-50}}). The managed CE can also be a Data Center Gateway as depicted in the example (ii) of {{fig-50}}. A provider-managed CE may attach to CEs of multiple customers. However, this device is part of the provider network.
 
-~~~~
+~~~~ aasvg
 +--------------+                    +--------------+
 |   Customer   |                    |   Provider   |
 |     Site     |                    |    Network   |
@@ -416,7 +416,7 @@ A TN slice relies upon resources that can involve both the provider and customer
 
 A TN slice might be considered as a variant of horizontal composition of Network Slices mentioned in Appendix A.6 of {{!RFC9543}}.
 
-~~~~
+~~~~ aasvg
 {::include ./drawings/tn-orchestration.txt}
 ~~~~
 {: #figure-orch title="5G End-to-End Slice Orchestration with TN" artwork-align="center"}
@@ -449,7 +449,7 @@ interconnection is technology-specific and requires coordination between the Cus
 with shared network resources (such as VLAN-IDs and IP prefixes) which
 are passed between Orchestrators via a dedicated interface, e.g., the Network Slice Service Model (NSSM) {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}} or the Attachment Circuit-as-a-Service (ACaaS) {{?I-D.ietf-opsawg-teas-attachment-circuit}}.
 
-~~~~
+~~~~ aasvg
 {::include ./drawings/ac-api-synch.txt}
 ~~~~
 {: #figure-4 title="Coordination of Transport Network Resources for the AC Provisioning" artwork-align="center"}
@@ -478,12 +478,12 @@ A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For inst
 
       In practice, for operational and scaling reasons, typically M to N would be used, with M >> N.
 
-~~~
+~~~ aasvg
 {::include ./drawings/1-to-n-mapping.txt}
 ~~~
 {: #figure-5 title="1 (5G Slice) to N (TN Slice) Mapping" artwork-align="center"}
 
-~~~
+~~~ aasvg
 {::include ./drawings/n-to-1-mapping.txt}
 ~~~
 {: #figure-6 title="N (5G Slice) to 1 (TN Slice) Mapping" artwork-align="center"}
@@ -506,7 +506,7 @@ For instance, in some deployments, in the case of a slice based on split-CU in t
    eMBB slice (SST-1 and no Slice Differentiator (SD)) should be supported globally.  This 5G
    slice would be the first slice in any 5G deployment.
 
-~~~
+~~~ aasvg
 {::include ./drawings/1st-slice.txt}
 ~~~
 {: #figure-7 title="First and Subsequent Slice Deployment" artwork-align="center"}
@@ -571,7 +571,7 @@ TN slice mapping policies can be enforced by an operator (e.g., provided to a TN
       without bandwidth reservations, to force more consistent load
       distribution even in non-ECMP friendly network topologies. See also {{Section 8 of ?RFC9522}}.
 
-~~~~
+~~~~ aasvg
 {::include ./drawings/high-level-qos.txt}
 ~~~~
 {: #figure-high-level-qos title="Resource Allocation Slicing Model with a Single NRP" artwork-align="center"}
@@ -602,7 +602,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    requirements between NFs that belong to a 5G slice, is represented at an SDP
    by a VLAN ID (or double VLAN IDs, commonly known as QinQ), as depicted in {{figure-vlan-hand-off}}.
 
-~~~~
+~~~~ aasvg
 {::include ./drawings/vlan-hand-off.txt}
 ~~~~
 {: #figure-vlan-hand-off title="Example of 5G Slice with VLAN Hand-off Providing End-to-End Connectivity" artwork-align="center"}
@@ -651,7 +651,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    an NF that serves multiple slices, for example, a shared DU) is deployed, multiple
    tunnels from shared NF are established, each tunnel representing a single slice.
 
-~~~~
+~~~~ aasvg
 {::include ./drawings/ip-hand-off.txt}
 ~~~~
 {: #figure-ip-hand-off title="Example of 5G Slice with IP Hand-off Providing End-to-End Connectivity" artwork-align="center"}
@@ -703,7 +703,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
 
 {{figure-51}} illustrates the use of service-aware CE ({{sec-ce}}) for the deployment discussed in Sections {{<sec-10b}} and {{<sec-10c}}.
 
-~~~~
+~~~~ aasvg
 {::include ./drawings/mpls-ac.txt}
 ~~~~
 {: #figure-51 title="Example of MPLS-based Attachment Circuit" artwork-align="center"}
@@ -725,7 +725,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    the PE uses neither a VLAN nor an IP address for slice
    identification at the SDP, but instead uses the MPLS label.
 
-~~~~
+~~~~ aasvg
 {::include ./drawings/mpls-10b-hand-off.txt}
 ~~~~
 {: #figure-mpls-10b-hand-off title="Example of MPLS Hand-off with Option B" artwork-align="center"}
@@ -776,7 +776,7 @@ for service prefixes, are exchanged via direct single-hop BGP sessions between
 adjacent nodes in a customer site and a provider network, as depicted in {{figure-mpls-10c-hand-off}}.
 As a result, a node in a customer site performs hierarchical next-hop resolution.
 
-~~~~
+~~~~ aasvg
      <-------------------------------------------
              BGP VPN
                COM=1, L=A, NEXT_HOP=CS2
@@ -923,7 +923,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
    transit links is fully coarse-grained (single NRP, sharing resources among
    all RFC 9543 Network Slices), as displayed in {{figure-QoS-5QI-unaware}}.
 
-~~~~
+~~~~ aasvg
 {::include ./drawings/QoS-5QI-unaware.txt}
 ~~~~
 {: #figure-QoS-5QI-unaware title="Slice to TN QoS Mapping (5QI-unaware Model)" artwork-align="center"}
@@ -944,7 +944,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
    {{figure-15}} for MPLS encapsulation, and in {{figure-16}} for SRv6
    encapsulation.
 
-~~~
+~~~ aasvg
                                  +--------------+
                                  | MPLS Header  |
                                  +-----+-----+  |
@@ -967,7 +967,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
 ~~~
 {: #figure-15 title="QoS with MPLS Encapsulation" artwork-align="center"}
 
-~~~
+~~~ aasvg
                                  +--------------+
                                  | IPv6 Header  |
                                  |      +-------+
@@ -1073,7 +1073,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
    5Q QoS Class differentiation in the provider) is outlined in
    {{figure-17}}.
 
-~~~
+~~~ aasvg
             Slice
            policer     +---------+
               |    +---|--+      |
@@ -1146,7 +1146,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
    should be rejected by the NSC, unless an already established slice with
    lower priority, if such exists, is preempted.
 
-~~~
+~~~ aasvg
       +---------+        QoS output queues
       |     +---|--+- - - - - - - - - - - - - - - - - - - - - - - - - -
       |     | S    |                            \|/
@@ -1185,7 +1185,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
    equipment, as outlined in {{figure-QoS-5QI-aware}}.
 
 
-~~~~
+~~~~ aasvg
 {::include ./drawings/QoS-5QI-aware.txt}
 ~~~~
 {: #figure-QoS-5QI-aware title="Slice 5Q QoS to TN QoS Mapping (5QI-aware Model)" artwork-align="center"}
@@ -1205,7 +1205,7 @@ Note:
 : The numbers indicated in {{figure-QoS-5QI-mapping-example}} (S-NSSAI, 5QI, DSCP, queue, etc.) are provided for illustration purposes only and should not be considered as deployment guidance.
 
 
-~~~~
+~~~~ aasvg
 {::include ./drawings/QoS-5QI-mapping-example.txt}
 ~~~~
 {: #figure-QoS-5QI-mapping-example title="Example of 3GPP QoS Mapped to TN QoS" artwork-align="center"}
@@ -1255,7 +1255,7 @@ to TN QoS Classes may be rather common.
    if a premium class doesn't consume all available class capacity, it
    cannot be reused by non-premium (i.e., Best Effort) class.
 
-~~~
+~~~ aasvg
                      Class             +---------+
                     policer         +--|---+     |
                                     |      |     |
@@ -1302,7 +1302,7 @@ to TN QoS Classes may be rather common.
    premium classes.  It is a hierarchical model, as depicted in
    {{figure-21}}.
 
-~~~
+~~~ aasvg
                               Slice
                              policer   +---------+
                    Class        .   +--|---+     |
@@ -1349,7 +1349,7 @@ to TN QoS Classes may be rather common.
    itself.  And, similarly to the 5QI-aware model, the sum of slice CIRs
    should not exceed the physical capacity of the AC.
 
-~~~
+~~~ aasvg
    +---------+        QoS output queues
    |      ------ - - - - - - - - - - - - - - - - - - - - - - - - - -
    |     |   |.-|--------------------------. \|/
@@ -1455,7 +1455,7 @@ Also, underlay transports may be realized using separate NRPs. However, such an 
    discussion about how to realize or orchestrate underlay transports is
    out of scope for this document.
 
-~~~
+~~~ aasvg
 +---------------+                                    +------+
 |  Ingress PE   |   .------------------------------->| PE-A |
 |               |   |   .-------------------------->>|      |
@@ -1494,7 +1494,7 @@ Also, underlay transports may be realized using separate NRPs. However, such an 
    slice is mapped to a single underlay transport, as depicted in
    {{figure-24}}.
 
-~~~
+~~~ aasvg
    +-----------------------------------------+
    |.. .. .. .. .. ..                        |
    :        AC       :      PE               |
@@ -1541,7 +1541,7 @@ Also, underlay transports may be realized using separate NRPs. However, such an 
    with similar characteristics are mapped to a common underlay transport,
    as depicted in {{figure-25}}.
 
-~~~
+~~~ aasvg
      +-------------------------------------------+
      |.. .. .. .. .. ..                          |
      :        AC       :      PE                 |
@@ -1600,7 +1600,7 @@ Also, underlay transports may be realized using separate NRPs. However, such an 
    aware of the provider network infrastructure and the links between the PEs
    and the DCs, but is not aware of the individual network functions at customer sites.
 
-~~~~
+~~~~ aasvg
 {::include ./drawings/multi-DC.txt}
 ~~~~
 {: #figure-multi-DC title="An Example of Multi-DC Architecture" artwork-align="center"}
