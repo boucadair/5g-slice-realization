@@ -180,15 +180,16 @@ Table of Contents
    provider networks is referred to as the "hand-off".  Section 4 lists
    a set of hand-off methods for slice mapping purposes.
 
-   The realization model described in this document uses a set of
-   building blocks commonly used in service provider networks.
-   Concretely, the model uses (1) Layer 2 Virtual Private Network
-   (L2VPN) [RFC4664] and/or Layer 3 Virtual Private Network (L3VPN)
-   [RFC4364] service instances for logical separation, (2) fine-grained
-   resource control at the Provider Edges (PEs), (3) coarse-grained
-   resource control within the provider network, and (4) capacity
-   planning/management.  More details are provided in Sections 3.7, 5,
-   6, and 7.
+   Unlike approaches that require new protocol extensions (e.g.,
+   [I-D.ietf-teas-ns-ip-mpls]), the realization model described in this
+   document uses a set of building blocks commonly used in service
+   provider networks.  Concretely, the model uses (1) Layer 2 Virtual
+   Private Network (L2VPN) [RFC4664] and/or Layer 3 Virtual Private
+   Network (L3VPN) [RFC4364] service instances for logical separation,
+   (2) fine-grained resource control at the Provider Edges (PEs), (3)
+   coarse-grained resource control within the provider network, and (4)
+   capacity planning/management.  More details are provided in Sections
+   3.7, 5, 6, and 7.
 
    This realization model uses a single Network Resource Partition (NRP)
    (Section 7.1 of [RFC9543]).  The applicability to multiple NRPs is
@@ -2692,9 +2693,9 @@ Table of Contents
               Wu, B., Dhody, D., Rokui, R., Saad, T., and J. Mullooly,
               "A YANG Data Model for the RFC 9543 Network Slice
               Service", Work in Progress, Internet-Draft, draft-ietf-
-              teas-ietf-network-slice-nbi-yang-17, 20 December 2024,
+              teas-ietf-network-slice-nbi-yang-18, 21 January 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-teas-
-              ietf-network-slice-nbi-yang-17>.
+              ietf-network-slice-nbi-yang-18>.
 
    [I-D.ietf-teas-ns-controller-models]
               Contreras, L. M., Rokui, R., Tantsura, J., Wu, B., and X.
@@ -2703,6 +2704,15 @@ Table of Contents
               ietf-teas-ns-controller-models-03, 21 October 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-
               controller-models-03>.
+
+   [I-D.ietf-teas-ns-ip-mpls]
+              Saad, T., Beeram, V. P., Dong, J., Wen, B., Ceccarelli,
+              D., Halpern, J. M., Peng, S., Chen, R., Liu, X.,
+              Contreras, L. M., Rokui, R., and L. Jalil, "Realizing
+              Network Slices in IP/MPLS Networks", Work in Progress,
+              Internet-Draft, draft-ietf-teas-ns-ip-mpls-04, 28 May
+              2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
+              teas-ns-ip-mpls-04>.
 
    [IEEE802.1AE]
               IEEE, "802.1AE: MAC Security (MACsec)", n.d.,
