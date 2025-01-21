@@ -2986,7 +2986,7 @@ Appendix A.  An Example of Local IPv6 Addressing Plan for Network
         |                                                        |
     2001:db8:a::300:3/128               2001:db8:b::300:3/128
 
-    o Tunnel (IPsec, GTP-U, etc) termination point
+    o Tunnel (IPsec, GTP-U, etc.) termination point
     * SDP
 
        Figure 32: Deployment Example with S-NSSAI Embedded into IPv6
