@@ -1353,7 +1353,7 @@ to TN QoS Classes may be rather common.
    itself.  And, similarly to the 5QI-aware model, the sum of slice CIRs
    should not exceed the physical capacity of the AC.
 
-~~~ aasvg
+~~~
    +---------+        QoS output queues
    |      ------ - - - - - - - - - - - - - - - - - - - - - - - - - -
    |     |   |.-|--------------------------. \|/
@@ -1604,7 +1604,7 @@ Also, underlay transports may be realized using separate NRPs. However, such an 
    aware of the provider network infrastructure and the links between the PEs
    and the DCs, but is not aware of the individual network functions at customer sites.
 
-~~~~
+~~~~ aasvg
 {::include ./drawings/multi-DC.txt}
 ~~~~
 {: #figure-multi-DC title="An Example of Multi-DC Architecture" artwork-align="center"}
