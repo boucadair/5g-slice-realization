@@ -1,4 +1,4 @@
-                                        Tunnels representing slices                                                                     
+                                        Tunnels representing slices
                  +------------------+                   |        
                  |                  |                   |           
 +------+       +-+---+ Provider +---+-+       +-----+   |   +------+
