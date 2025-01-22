@@ -1309,8 +1309,8 @@ to TN QoS Classes may be rather common.
 ~~~ aasvg
                               Slice
                              policer   +---------+
-                   Class        .   +--|---+     |
-                  policer      ; :  |      |     |
+                   Class            +--|---+     |
+                  policer      .-.  |      |     |
 5Q-QoS-A: CIR-1A ----<>--------|-|--|--> S |     |
 5Q-QoS-B: CIR-1B ----<>--------|-|--|--> l |     |
 5Q-QoS-C: CIR-1C ----<>--------|-|--|--> i |     |
@@ -1318,9 +1318,9 @@ to TN QoS Classes may be rather common.
                                | |  |    e |     |
    BE CIR/PIR-1D --------------|-|--|-->   |  A  |
                                | |  |    1 |  t  |
-                               : ;  |      |  t  |
-                                .    ------   a  |
-                               ; :  |      |  c  |
+                               '-'  |      |  t  |
+                                     ------   a  |
+                               .-.  |      |  c  |
 5Q-QoS-A: CIR-2A ----<>--------|-|--|--> S |  h  |
 5Q-QoS-B: CIR-2B ----<>--------|-|--|--> l |  m  |
 5Q-QoS-C: CIR-2C ----<>--------|-|--|--> i |  e  |
@@ -1328,9 +1328,9 @@ to TN QoS Classes may be rather common.
                                | |  |    e |  t  |
    BE CIR/PIR-2D --------------|-|--|-->   |     |
                                | |  |    2 |  C  |
-                               : ;  |      |  i  |
-                                .    ------   r  |
-                               ; :  |      |  c  |
+                               '-'  |      |  i  |
+                                     ------   r  |
+                               .-.  |      |  c  |
 5Q-QoS-A: CIR-3A ----<>--------|-|--|--> S |  u  |
 5Q-QoS-B: CIR-3B ----<>--------|-|--|--> l |  i  |
 5Q-QoS-C: CIR-3C ----<>---- ---|-|--|--> i |  t  |
@@ -1338,8 +1338,8 @@ to TN QoS Classes may be rather common.
                                | |  |    e |     |
    BE CIR/PIR-3D --------------|-|--|-->   |     |
                                | |  |    3 |     |
-                               : ;  |      |     |
-                                '   +--|---+     |
+                               '-'  |      |     |
+                                    +--|---+     |
                                        +---------+
 ~~~
 {: #figure-21 title="Ingress Slice Admission Control (5QI-aware) - Hierarchical" artwork-align="center"}
@@ -1357,16 +1357,16 @@ to TN QoS Classes may be rather common.
    +---------+        QoS output queues
    |     +---|---+ - - - - - - - - - - - - - - - - - - - - - - - - -
    |     |    .--|--------------------------. \|/
----|-----|---|-> 5Q-QoS-A: w-5Q-QoS-A-CIR    | |
+---|-----|---|--> 5Q-QoS-A: w-5Q-QoS-A-CIR   | |
    |     | S  '-----------------------------'  |
    |     | l  .-----------------------------.  |
----|-----|-i-|-> 5Q-QoS-B: w-5Q-QoS-B-CIR    | |
+---|-----|-i-|--> 5Q-QoS-B: w-5Q-QoS-B-CIR   | |
    |     | c  '-----------------------------'  |  weight-Slice-1-CIR
    |     | e  .-----------------------------.  | shaping-Slice-1-PIR
----|-----|---|-> 5Q-QoS-C: w-5Q-QoS-C-CIR    | |
+---|-----|---|--> 5Q-QoS-C: w-5Q-QoS-C-CIR   | |
    |     | 1  '-----------------------------'  |
    |     |    .-----------------------------.  |
----|-----|---|-> Best Effort (remainder)     | |
+---|-----|---|--> Best Effort (remainder)    | |
    |     |    '--|--------------------------' /|\
    |  A  +-------+ - - - - - - - - - - - - - - - - - - - - - - - - -
    |  t  |    .--|--------------------------. \|/
