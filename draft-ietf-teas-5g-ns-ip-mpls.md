@@ -1173,7 +1173,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
       |  u  | i     |                             |
       |  i  | c     |                             |  weight-Slice-3-CIR
       |  t  | e  .--|--------------------------.  | shaping-Slice-3-PIR
-   ---|-----|---|->                             | |
+   ---|-----|---|-->                            | |
       |     | 3  '--|--------------------------' /|\
       |     +-------+ - - - - - - - - - - - - - - - - - - - - - - - - -
       |         |
