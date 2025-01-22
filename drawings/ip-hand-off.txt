@@ -11,5 +11,5 @@
                  |                  |                               
                  +------------------+
                                                                     
-o Tunnel (IPsec, GTP-U, ...) termination point          
+o Tunnel (IPsec, GTP-U, etc.) termination point          
 * SDP
