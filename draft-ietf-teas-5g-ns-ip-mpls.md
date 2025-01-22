@@ -1151,35 +1151,35 @@ ranges for each slice, and use these ranges for slice identification purposes on
 ~~~ aasvg
       +---------+        QoS output queues
       |         |
-      |     +---|--+ - - - - - - - - - - - - - - - - - - - - - - - - -
-      |     | S    |                            \|/
-      |     | l    |                             |
-      |     | i    |                             |
-      |  A  | c    |                             |  weight-Slice-1-CIR
-      |  t  | e +--|--------------------------+  | shaping-Slice-1-PIR
-   ---|--t--|--->                             |  |
-      |  a  | 1 +--|--------------------------+ /|\
+      |     +-------+ - - - - - - - - - - - - - - - - - - - - - - - - -
+      |     | S     |                            \|/
+      |     | l     |                             |
+      |     | i     |                             |
+      |  A  | c     |                             |  weight-Slice-1-CIR
+      |  t  | e  .--|--------------------------.  | shaping-Slice-1-PIR
+   ---|--t--|---|-->                            | |
+      |  a  | 1  '--|--------------------------' /|\
       |  c   ------ - - - - - - - - - - - - - - - - - - - - - - - - - -
-      |  h  | S    |                            \|/
-      |  m  | l    |                             |
-      |  e  | i    |                             |
-      |  n  | c    |                             |  weight-Slice-2-CIR
-      |  t  | e +--|--------------------------+  | shaping-Slice-2-PIR
-   ---|-----|--->                             |  |
-      |  C  | 2 +--|--------------------------+ /|\
+      |  h  | S     |                            \|/
+      |  m  | l     |                             |
+      |  e  | i     |                             |
+      |  n  | c     |                             |  weight-Slice-2-CIR
+      |  t  | e  .--|--------------------------.  | shaping-Slice-2-PIR
+   ---|-----|---|-->                            | |
+      |  C  | 2  '--|--------------------------' /|\
       |  i   ------ - - - - - - - - - - - - - - - - - - - - - - - - - -
-      |  r  | S    |                            \|/
-      |  c  | l    |                             |
-      |  u  | i    |                             |
-      |  i  | c    |                             |  weight-Slice-3-CIR
-      |  t  | e +--|--------------------------+  | shaping-Slice-3-PIR
-   ---|-----|--->                             |  |
-      |     | 3 +--|--------------------------+ /|\
-      |     +---|--+ - - - - - - - - - - - - - - - - - - - - - - - - -
+      |  r  | S     |                            \|/
+      |  c  | l     |                             |
+      |  u  | i     |                             |
+      |  i  | c     |                             |  weight-Slice-3-CIR
+      |  t  | e  .--|--------------------------.  | shaping-Slice-3-PIR
+   ---|-----|---|->                             | |
+      |     | 3  '--|--------------------------' /|\
+      |     +-------+ - - - - - - - - - - - - - - - - - - - - - - - - -
       |         |
       +---------+
 ~~~
-{: #figure-18 title="Ingress Slice Admission control (5QI-unaware Model)" artwork-align="center"}
+{: #figure-18 title="Ingress Slice Admission control (5QI-unaware Model) - Output" artwork-align="center"}
 
 ###  5QI-aware Model
 
