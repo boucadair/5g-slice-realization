@@ -925,7 +925,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
    transit links is fully coarse-grained (single NRP, sharing resources among
    all RFC 9543 Network Slices), as displayed in {{figure-QoS-5QI-unaware}}.
 
-~~~~
+~~~~ aasvg
 {::include ./drawings/QoS-5QI-unaware.txt}
 ~~~~
 {: #figure-QoS-5QI-unaware title="Slice to TN QoS Mapping (5QI-unaware Model)" artwork-align="center"}
