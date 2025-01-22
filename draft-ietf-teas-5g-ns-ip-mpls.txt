@@ -679,12 +679,12 @@ Table of Contents
       Circuit-as-a-Service (ACaaS)
       [I-D.ietf-opsawg-teas-attachment-circuit].
 
-          +---------------+                   +------------------+
+           .-------------.                     .----------------.
           |               |                   |   RFC9543 NSC    |
           | Customer Site |                   |                  |
           | Orchestration |    IETF APIs/DM   |(Provider Network |
           |               |<----------------->|  Orchestration)  |
-          +---------------+                   +------------------+
+           '-------------'                     '----------------'
                         |                        |
                         |                        |
         +---------------|-+                    +-|---------------+
