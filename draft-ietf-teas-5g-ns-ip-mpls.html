@@ -5162,44 +5162,170 @@ prioritized classes.<a href="#section-5.2.2.1-3.2.1" class="pilcrow">¶</a></p>
    <a href="#_figure-24" class="auto internal xref">Figure 28</a>.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
 <span id="name-network-slice-to-pes-underl"></span><div id="_figure-24">
 <figure id="figure-28">
-          <div class="alignCenter art-text artwork" id="section-6.1-2.1">
-<pre>
-   +-----------------------------------------+
-   |.. .. .. .. .. ..                        |
-   :        AC       :      PE               |
-   :+---------------+:                       |
-   :|  SDP          |:                       |
-   :|  +----------+ |:                       |
-   :|  |     NS 1 +----------+               |
-   :|  +----------+ |:       |               |
-   :+---------------+:       |               |
-   :+---------------+:       |   +---------+ |
-   :|  SDP          |:       |   |         | |
-   :|  +----------+ |:       |   |Underlay | |
-   :|  |     NS 2 +------+   +---&gt;Transport| |
-   :|  +----------+ |:   |   |   |    A    | |
-   :+---------------+:   |   |   |         | |
-   :+---------------+:   |   |   +---------+ |
-   :|  SDP          |:   |   |               |
-   :|  +----------+ |:   |   |               |
-   :|   |     NS 3 +-----+   |               |
-   :|  +----------+ |:   |   |   +---------+ |
-   :+---------------+:   |   |   |         | |
-   :+---------------+:   |   |   |Underlay | |
-   :|  SDP          |:   +-------&gt;Transport| |
-   :|  +----------+ |:   |   |   |    B    | |
-   :|  |     NS 4 +------+   |   |         | |
-   :|  +----------+ |:       |   +---------+ |
-   :+---------------+:       |               |
-   :+---------------+:       |               |
-   :|  SDP          |:       |               |
-   :|  +----------+ |:       |               |
-   :|  |     NS 5 +----------+               |
-   :|  +----------+ |:                       |
-   :+---------------+:                       |
-   '.. .. .. .. .. ..                        |
-   +-----------------------------------------+
-</pre>
+          <div id="section-6.1-2.1">
+            <div class="alignCenter art-svg artwork" id="section-6.1-2.1.1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="608" width="368" viewBox="0 0 368 608" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+                <path d="M 8,32 L 8,48" fill="none" stroke="black"></path>
+                <path d="M 24,80 L 24,544" fill="none" stroke="black"></path>
+                <path d="M 48,112 L 48,144" fill="none" stroke="black"></path>
+                <path d="M 48,208 L 48,240" fill="none" stroke="black"></path>
+                <path d="M 48,304 L 48,336" fill="none" stroke="black"></path>
+                <path d="M 48,400 L 48,432" fill="none" stroke="black"></path>
+                <path d="M 48,496 L 48,528" fill="none" stroke="black"></path>
+                <path d="M 136,112 L 136,144" fill="none" stroke="black"></path>
+                <path d="M 136,208 L 136,240" fill="none" stroke="black"></path>
+                <path d="M 136,304 L 136,336" fill="none" stroke="black"></path>
+                <path d="M 136,400 L 136,432" fill="none" stroke="black"></path>
+                <path d="M 136,496 L 136,528" fill="none" stroke="black"></path>
+                <path d="M 152,80 L 152,120" fill="none" stroke="black"></path>
+                <path d="M 152,136 L 152,216" fill="none" stroke="black"></path>
+                <path d="M 152,232 L 152,312" fill="none" stroke="black"></path>
+                <path d="M 152,328 L 152,408" fill="none" stroke="black"></path>
+                <path d="M 152,424 L 152,504" fill="none" stroke="black"></path>
+                <path d="M 152,520 L 152,544" fill="none" stroke="black"></path>
+                <path d="M 200,224 L 200,416" fill="none" stroke="black"></path>
+                <path d="M 232,128 L 232,376" fill="none" stroke="black"></path>
+                <path d="M 232,392 L 232,512" fill="none" stroke="black"></path>
+                <path d="M 264,176 L 264,208" fill="none" stroke="black"></path>
+                <path d="M 264,240 L 264,272" fill="none" stroke="black"></path>
+                <path d="M 264,336 L 264,368" fill="none" stroke="black"></path>
+                <path d="M 264,400 L 264,432" fill="none" stroke="black"></path>
+                <path d="M 344,176 L 344,272" fill="none" stroke="black"></path>
+                <path d="M 344,336 L 344,432" fill="none" stroke="black"></path>
+                <path d="M 360,32 L 360,576" fill="none" stroke="black"></path>
+                <path d="M 8,32 L 360,32" fill="none" stroke="black"></path>
+                <path d="M 24,80 L 152,80" fill="none" stroke="black"></path>
+                <path d="M 48,112 L 136,112" fill="none" stroke="black"></path>
+                <path d="M 136,128 L 232,128" fill="none" stroke="black"></path>
+                <path d="M 48,144 L 136,144" fill="none" stroke="black"></path>
+                <path d="M 24,160 L 152,160" fill="none" stroke="black"></path>
+                <path d="M 24,176 L 152,176" fill="none" stroke="black"></path>
+                <path d="M 264,176 L 344,176" fill="none" stroke="black"></path>
+                <path d="M 48,208 L 136,208" fill="none" stroke="black"></path>
+                <path d="M 136,224 L 200,224" fill="none" stroke="black"></path>
+                <path d="M 232,224 L 264,224" fill="none" stroke="black"></path>
+                <path d="M 48,240 L 136,240" fill="none" stroke="black"></path>
+                <path d="M 24,256 L 152,256" fill="none" stroke="black"></path>
+                <path d="M 24,272 L 152,272" fill="none" stroke="black"></path>
+                <path d="M 264,272 L 344,272" fill="none" stroke="black"></path>
+                <path d="M 48,304 L 136,304" fill="none" stroke="black"></path>
+                <path d="M 136,320 L 200,320" fill="none" stroke="black"></path>
+                <path d="M 48,336 L 136,336" fill="none" stroke="black"></path>
+                <path d="M 264,336 L 344,336" fill="none" stroke="black"></path>
+                <path d="M 24,352 L 152,352" fill="none" stroke="black"></path>
+                <path d="M 24,368 L 152,368" fill="none" stroke="black"></path>
+                <path d="M 200,384 L 264,384" fill="none" stroke="black"></path>
+                <path d="M 48,400 L 136,400" fill="none" stroke="black"></path>
+                <path d="M 136,416 L 200,416" fill="none" stroke="black"></path>
+                <path d="M 48,432 L 136,432" fill="none" stroke="black"></path>
+                <path d="M 264,432 L 344,432" fill="none" stroke="black"></path>
+                <path d="M 24,448 L 152,448" fill="none" stroke="black"></path>
+                <path d="M 24,464 L 152,464" fill="none" stroke="black"></path>
+                <path d="M 48,496 L 136,496" fill="none" stroke="black"></path>
+                <path d="M 136,512 L 232,512" fill="none" stroke="black"></path>
+                <path d="M 48,528 L 136,528" fill="none" stroke="black"></path>
+                <path d="M 24,544 L 152,544" fill="none" stroke="black"></path>
+                <path d="M 8,576 L 360,576" fill="none" stroke="black"></path>
+                <polygon class="arrowhead" points="272,384 260,378.4 260,389.6" fill="black" transform="rotate(0,264,384)"></polygon>
+                <polygon class="arrowhead" points="272,224 260,218.4 260,229.6" fill="black" transform="rotate(0,264,224)"></polygon>
+                <g class="text">
+                  <text x="20" y="52">..</text>
+                  <text x="44" y="52">..</text>
+                  <text x="68" y="52">..</text>
+                  <text x="92" y="52">..</text>
+                  <text x="116" y="52">..</text>
+                  <text x="140" y="52">..</text>
+                  <text x="160" y="52">.</text>
+                  <text x="8" y="68">:</text>
+                  <text x="84" y="68">AC</text>
+                  <text x="168" y="68">:</text>
+                  <text x="228" y="68">PE</text>
+                  <text x="8" y="84">:</text>
+                  <text x="168" y="84">:</text>
+                  <text x="8" y="100">:</text>
+                  <text x="56" y="100">SDP</text>
+                  <text x="168" y="100">:</text>
+                  <text x="8" y="116">:</text>
+                  <text x="168" y="116">:</text>
+                  <text x="8" y="132">:</text>
+                  <text x="100" y="132">NS</text>
+                  <text x="120" y="132">1</text>
+                  <text x="8" y="148">:</text>
+                  <text x="168" y="148">:</text>
+                  <text x="8" y="164">:</text>
+                  <text x="168" y="164">:</text>
+                  <text x="8" y="180">:</text>
+                  <text x="168" y="180">:</text>
+                  <text x="8" y="196">:</text>
+                  <text x="56" y="196">SDP</text>
+                  <text x="168" y="196">:</text>
+                  <text x="8" y="212">:</text>
+                  <text x="168" y="212">:</text>
+                  <text x="300" y="212">Underlay</text>
+                  <text x="8" y="228">:</text>
+                  <text x="100" y="228">NS</text>
+                  <text x="120" y="228">2</text>
+                  <text x="304" y="228">Transport</text>
+                  <text x="8" y="244">:</text>
+                  <text x="168" y="244">:</text>
+                  <text x="304" y="244">A</text>
+                  <text x="8" y="260">:</text>
+                  <text x="168" y="260">:</text>
+                  <text x="8" y="276">:</text>
+                  <text x="168" y="276">:</text>
+                  <text x="8" y="292">:</text>
+                  <text x="56" y="292">SDP</text>
+                  <text x="168" y="292">:</text>
+                  <text x="8" y="308">:</text>
+                  <text x="168" y="308">:</text>
+                  <text x="8" y="324">:</text>
+                  <text x="100" y="324">NS</text>
+                  <text x="120" y="324">3</text>
+                  <text x="8" y="340">:</text>
+                  <text x="168" y="340">:</text>
+                  <text x="8" y="356">:</text>
+                  <text x="168" y="356">:</text>
+                  <text x="8" y="372">:</text>
+                  <text x="168" y="372">:</text>
+                  <text x="300" y="372">Underlay</text>
+                  <text x="8" y="388">:</text>
+                  <text x="56" y="388">SDP</text>
+                  <text x="168" y="388">:</text>
+                  <text x="304" y="388">Transport</text>
+                  <text x="8" y="404">:</text>
+                  <text x="168" y="404">:</text>
+                  <text x="304" y="404">B</text>
+                  <text x="8" y="420">:</text>
+                  <text x="100" y="420">NS</text>
+                  <text x="120" y="420">4</text>
+                  <text x="8" y="436">:</text>
+                  <text x="168" y="436">:</text>
+                  <text x="8" y="452">:</text>
+                  <text x="168" y="452">:</text>
+                  <text x="8" y="468">:</text>
+                  <text x="168" y="468">:</text>
+                  <text x="8" y="484">:</text>
+                  <text x="56" y="484">SDP</text>
+                  <text x="168" y="484">:</text>
+                  <text x="8" y="500">:</text>
+                  <text x="168" y="500">:</text>
+                  <text x="8" y="516">:</text>
+                  <text x="100" y="516">NS</text>
+                  <text x="120" y="516">5</text>
+                  <text x="8" y="532">:</text>
+                  <text x="168" y="532">:</text>
+                  <text x="8" y="548">:</text>
+                  <text x="168" y="548">:</text>
+                  <text x="16" y="564">'..</text>
+                  <text x="44" y="564">..</text>
+                  <text x="68" y="564">..</text>
+                  <text x="92" y="564">..</text>
+                  <text x="116" y="564">..</text>
+                  <text x="140" y="564">..</text>
+                  <text x="164" y="564">.'</text>
+                </g>
+              </svg><a href="#section-6.1-2.1.1" class="pilcrow">¶</a>
+</div>
 </div>
 <figcaption><a href="#figure-28" class="selfRef">Figure 28</a>:
 <a href="#name-network-slice-to-pes-underl" class="selfRef">Network Slice to PEs Underlay Transport Mapping (5QI-unaware Model)</a>
@@ -6349,249 +6475,259 @@ service disruption. Note that such an on-path attacker may make more damage (e.g
           <p id="appendix-B-1.14.1">Committed Information Rate<a href="#appendix-B-1.14.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.15">CN:</dt>
+<dt id="appendix-B-1.15">CS:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.16">
-          <p id="appendix-B-1.16.1">Core Network<a href="#appendix-B-1.16.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.16.1">Customer Site<a href="#appendix-B-1.16.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.17">CoS:</dt>
+<dt id="appendix-B-1.17">CN:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.18">
-          <p id="appendix-B-1.18.1">Class of Service<a href="#appendix-B-1.18.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.18.1">Core Network<a href="#appendix-B-1.18.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.19">CP:</dt>
+<dt id="appendix-B-1.19">CoS:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.20">
-          <p id="appendix-B-1.20.1">Control Plane<a href="#appendix-B-1.20.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.20.1">Class of Service<a href="#appendix-B-1.20.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.21">CU:</dt>
+<dt id="appendix-B-1.21">CP:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.22">
-          <p id="appendix-B-1.22.1">Centralized Unit<a href="#appendix-B-1.22.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.22.1">Control Plane<a href="#appendix-B-1.22.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.23">CU-CP:</dt>
+<dt id="appendix-B-1.23">CU:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.24">
-          <p id="appendix-B-1.24.1">Centralized Unit Control Plane<a href="#appendix-B-1.24.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.24.1">Centralized Unit<a href="#appendix-B-1.24.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.25">CU-UP:</dt>
+<dt id="appendix-B-1.25">CU-CP:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.26">
-          <p id="appendix-B-1.26.1">Centralized Unit User Plane<a href="#appendix-B-1.26.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.26.1">Centralized Unit Control Plane<a href="#appendix-B-1.26.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.27">DC:</dt>
+<dt id="appendix-B-1.27">CU-UP:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.28">
-          <p id="appendix-B-1.28.1">Data Center<a href="#appendix-B-1.28.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.28.1">Centralized Unit User Plane<a href="#appendix-B-1.28.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.29">DDoS:</dt>
+<dt id="appendix-B-1.29">DC:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.30">
-          <p id="appendix-B-1.30.1">Distributed Denial of Services<a href="#appendix-B-1.30.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.30.1">Data Center<a href="#appendix-B-1.30.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.31">DSCP:</dt>
+<dt id="appendix-B-1.31">DDoS:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.32">
-          <p id="appendix-B-1.32.1">Differentiated Services Code Point<a href="#appendix-B-1.32.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.32.1">Distributed Denial of Services<a href="#appendix-B-1.32.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.33">eCPRI:</dt>
+<dt id="appendix-B-1.33">DSCP:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.34">
-          <p id="appendix-B-1.34.1">enhanced Common Public Radio Interface<a href="#appendix-B-1.34.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.34.1">Differentiated Services Code Point<a href="#appendix-B-1.34.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.35">FIB:</dt>
+<dt id="appendix-B-1.35">eCPRI:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.36">
-          <p id="appendix-B-1.36.1">Forwarding Information Base<a href="#appendix-B-1.36.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.36.1">enhanced Common Public Radio Interface<a href="#appendix-B-1.36.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.37">GPRS:</dt>
+<dt id="appendix-B-1.37">FIB:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.38">
-          <p id="appendix-B-1.38.1">Generic Packet Radio Service<a href="#appendix-B-1.38.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.38.1">Forwarding Information Base<a href="#appendix-B-1.38.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.39">gNB:</dt>
+<dt id="appendix-B-1.39">GPRS:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.40">
-          <p id="appendix-B-1.40.1">gNodeB<a href="#appendix-B-1.40.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.40.1">Generic Packet Radio Service<a href="#appendix-B-1.40.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.41">GTP:</dt>
+<dt id="appendix-B-1.41">gNB:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.42">
-          <p id="appendix-B-1.42.1">GPRS Tunneling Protocol<a href="#appendix-B-1.42.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.42.1">gNodeB<a href="#appendix-B-1.42.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.43">GTP-U:</dt>
+<dt id="appendix-B-1.43">GTP:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.44">
-          <p id="appendix-B-1.44.1">GPRS Tunneling Protocol User plane<a href="#appendix-B-1.44.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.44.1">GPRS Tunneling Protocol<a href="#appendix-B-1.44.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.45">IGP:</dt>
+<dt id="appendix-B-1.45">GTP-U:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.46">
-          <p id="appendix-B-1.46.1">Interior Gateway Protocol<a href="#appendix-B-1.46.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.46.1">GPRS Tunneling Protocol User plane<a href="#appendix-B-1.46.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.47">L2VPN:</dt>
+<dt id="appendix-B-1.47">IGP:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.48">
-          <p id="appendix-B-1.48.1">Layer 2 Virtual Private Network<a href="#appendix-B-1.48.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.48.1">Interior Gateway Protocol<a href="#appendix-B-1.48.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.49">L3VPN:</dt>
+<dt id="appendix-B-1.49">L2VPN:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.50">
-          <p id="appendix-B-1.50.1">Layer 3 Virtual Private Network<a href="#appendix-B-1.50.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.50.1">Layer 2 Virtual Private Network<a href="#appendix-B-1.50.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.51">LSP:</dt>
+<dt id="appendix-B-1.51">L3VPN:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.52">
-          <p id="appendix-B-1.52.1">Label Switched Path<a href="#appendix-B-1.52.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.52.1">Layer 3 Virtual Private Network<a href="#appendix-B-1.52.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.53">MIoT:</dt>
+<dt id="appendix-B-1.53">LSP:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.54">
-          <p id="appendix-B-1.54.1">Massive Internet of Things<a href="#appendix-B-1.54.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.54.1">Label Switched Path<a href="#appendix-B-1.54.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.55">MPLS:</dt>
+<dt id="appendix-B-1.55">MIoT:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.56">
-          <p id="appendix-B-1.56.1">Multiprotocol Label Switching<a href="#appendix-B-1.56.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.56.1">Massive Internet of Things<a href="#appendix-B-1.56.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.57">NF:</dt>
+<dt id="appendix-B-1.57">MPLS:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.58">
-          <p id="appendix-B-1.58.1">Network Function<a href="#appendix-B-1.58.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.58.1">Multiprotocol Label Switching<a href="#appendix-B-1.58.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.59">NRP:</dt>
+<dt id="appendix-B-1.59">NF:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.60">
-          <p id="appendix-B-1.60.1">Network Resource Partition<a href="#appendix-B-1.60.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.60.1">Network Function<a href="#appendix-B-1.60.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.61">NSC:</dt>
+<dt id="appendix-B-1.61">NS:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.62">
-          <p id="appendix-B-1.62.1">Network Slice Controller<a href="#appendix-B-1.62.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.62.1">Network Slice<a href="#appendix-B-1.62.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.63">PE:</dt>
+<dt id="appendix-B-1.63">NRP:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.64">
-          <p id="appendix-B-1.64.1">Provider Edge<a href="#appendix-B-1.64.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.64.1">Network Resource Partition<a href="#appendix-B-1.64.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.65">PIR:</dt>
+<dt id="appendix-B-1.65">NSC:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.66">
-          <p id="appendix-B-1.66.1">Peak Information Rate<a href="#appendix-B-1.66.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.66.1">Network Slice Controller<a href="#appendix-B-1.66.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.67">QoS:</dt>
+<dt id="appendix-B-1.67">PE:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.68">
-          <p id="appendix-B-1.68.1">Quality of Service<a href="#appendix-B-1.68.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.68.1">Provider Edge<a href="#appendix-B-1.68.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.69">RAN:</dt>
+<dt id="appendix-B-1.69">PIR:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.70">
-          <p id="appendix-B-1.70.1">Radio Access Network<a href="#appendix-B-1.70.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.70.1">Peak Information Rate<a href="#appendix-B-1.70.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.71">RIB:</dt>
+<dt id="appendix-B-1.71">QoS:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.72">
-          <p id="appendix-B-1.72.1">Routing Information Base<a href="#appendix-B-1.72.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.72.1">Quality of Service<a href="#appendix-B-1.72.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.73">RSVP:</dt>
+<dt id="appendix-B-1.73">RAN:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.74">
-          <p id="appendix-B-1.74.1">Resource Reservation Protocol<a href="#appendix-B-1.74.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.74.1">Radio Access Network<a href="#appendix-B-1.74.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.75">SD:</dt>
+<dt id="appendix-B-1.75">RIB:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.76">
-          <p id="appendix-B-1.76.1">Slice Differentiator<a href="#appendix-B-1.76.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.76.1">Routing Information Base<a href="#appendix-B-1.76.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.77">SDP:</dt>
+<dt id="appendix-B-1.77">RSVP:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.78">
-          <p id="appendix-B-1.78.1">Service Demarcation Point<a href="#appendix-B-1.78.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.78.1">Resource Reservation Protocol<a href="#appendix-B-1.78.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.79">SLA:</dt>
+<dt id="appendix-B-1.79">SD:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.80">
-          <p id="appendix-B-1.80.1">Service Level Agreement<a href="#appendix-B-1.80.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.80.1">Slice Differentiator<a href="#appendix-B-1.80.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.81">SLO:</dt>
+<dt id="appendix-B-1.81">SDP:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.82">
-          <p id="appendix-B-1.82.1">Service Level Objective<a href="#appendix-B-1.82.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.82.1">Service Demarcation Point<a href="#appendix-B-1.82.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.83">S-NSSAI:</dt>
+<dt id="appendix-B-1.83">SLA:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.84">
-          <p id="appendix-B-1.84.1">Single Network Slice Selection Assistance Information<a href="#appendix-B-1.84.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.84.1">Service Level Agreement<a href="#appendix-B-1.84.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.85">SST:</dt>
+<dt id="appendix-B-1.85">SLO:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.86">
-          <p id="appendix-B-1.86.1">Slice/Service Type<a href="#appendix-B-1.86.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.86.1">Service Level Objective<a href="#appendix-B-1.86.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.87">SR:</dt>
+<dt id="appendix-B-1.87">S-NSSAI:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.88">
-          <p id="appendix-B-1.88.1">Segment Routing<a href="#appendix-B-1.88.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.88.1">Single Network Slice Selection Assistance Information<a href="#appendix-B-1.88.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.89">SRv6:</dt>
+<dt id="appendix-B-1.89">SST:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.90">
-          <p id="appendix-B-1.90.1">Segment Routing version 6<a href="#appendix-B-1.90.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.90.1">Slice/Service Type<a href="#appendix-B-1.90.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.91">TC:</dt>
+<dt id="appendix-B-1.91">SR:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.92">
-          <p id="appendix-B-1.92.1">Traffic Class<a href="#appendix-B-1.92.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.92.1">Segment Routing<a href="#appendix-B-1.92.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.93">TE:</dt>
+<dt id="appendix-B-1.93">SRv6:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.94">
-          <p id="appendix-B-1.94.1">Traffic Engineering<a href="#appendix-B-1.94.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.94.1">Segment Routing version 6<a href="#appendix-B-1.94.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.95">TN:</dt>
+<dt id="appendix-B-1.95">TC:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.96">
-          <p id="appendix-B-1.96.1">Transport Network<a href="#appendix-B-1.96.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.96.1">Traffic Class<a href="#appendix-B-1.96.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.97">UE:</dt>
+<dt id="appendix-B-1.97">TE:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.98">
-          <p id="appendix-B-1.98.1">User Equipment<a href="#appendix-B-1.98.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.98.1">Traffic Engineering<a href="#appendix-B-1.98.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.99">UP:</dt>
+<dt id="appendix-B-1.99">TN:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.100">
-          <p id="appendix-B-1.100.1">User Plane<a href="#appendix-B-1.100.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.100.1">Transport Network<a href="#appendix-B-1.100.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.101">UPF:</dt>
+<dt id="appendix-B-1.101">UE:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.102">
-          <p id="appendix-B-1.102.1">User Plane Function<a href="#appendix-B-1.102.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.102.1">User Equipment<a href="#appendix-B-1.102.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.103">URLLC:</dt>
+<dt id="appendix-B-1.103">UP:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.104">
-          <p id="appendix-B-1.104.1">Ultra Reliable Low Latency Communication<a href="#appendix-B-1.104.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.104.1">User Plane<a href="#appendix-B-1.104.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.105">VLAN:</dt>
+<dt id="appendix-B-1.105">UPF:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.106">
-          <p id="appendix-B-1.106.1">Virtual Local Area Network<a href="#appendix-B-1.106.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.106.1">User Plane Function<a href="#appendix-B-1.106.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.107">VPN:</dt>
+<dt id="appendix-B-1.107">URLLC:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.108">
-          <p id="appendix-B-1.108.1">Virtual Private Network<a href="#appendix-B-1.108.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.108.1">Ultra Reliable Low Latency Communication<a href="#appendix-B-1.108.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.109">VRF:</dt>
+<dt id="appendix-B-1.109">VLAN:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.110">
-          <p id="appendix-B-1.110.1">Virtual Routing and Forwarding<a href="#appendix-B-1.110.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.110.1">Virtual Local Area Network<a href="#appendix-B-1.110.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="appendix-B-1.111">VXLAN:</dt>
+<dt id="appendix-B-1.111">VPN:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-1.112">
-          <p id="appendix-B-1.112.1">Virtual Extensible Local Area Network<a href="#appendix-B-1.112.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-1.112.1">Virtual Private Network<a href="#appendix-B-1.112.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-B-1.113">VRF:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.114">
+          <p id="appendix-B-1.114.1">Virtual Routing and Forwarding<a href="#appendix-B-1.114.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="appendix-B-1.115">VXLAN:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-1.116">
+          <p id="appendix-B-1.116.1">Virtual Extensible Local Area Network<a href="#appendix-B-1.116.1" class="pilcrow">¶</a></p>
 </dd>
       <dd class="break"></dd>
 </dl>
