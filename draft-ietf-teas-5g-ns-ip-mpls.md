@@ -1520,7 +1520,7 @@ Also, underlay transports may be realized using separate NRPs. However, such an 
    : |  +----------+ | :   |   |   +---------+ |
    : '--------------'  :   |   |   |         | |
    :  .--------------. :   |   |   |Underlay | |
-   : |  SDP          | :   +------->Transport| |
+   : |  SDP          | :   +---)--->Transport| |
    : |  +----------+ | :   |   |   |    B    | |
    : |  |     NS 4 +-------+   |   |         | |
    : |  +----------+ | :       |   +---------+ |
@@ -1557,10 +1557,10 @@ Also, underlay transports may be realized using separate NRPs. However, such an 
    4 : | | 5G QoS B  +-------+                     |
    3 : |  '---------'  | :   |         +---------+ |
      : |  .---------.  | :   |         |         | |
-   N : | | 5G QoS C  +------------+    |Underlay | |
-   S : |  '---------'  | :   +--------->Transport| |
+   N : | | 5G QoS C  +-------)----+    |Underlay | |
+   S : |  '---------'  | :   +----(---->Transport| |
      : |  .---------.  | :   |    |    |    A    | |
-   1 : | | 5G QoS D  +------------+    |         | |
+   1 : | | 5G QoS D  +-------)----+    |         | |
      : |  '---------'  | :   |    |    +---------+ |
      : '--------------'  :   |    |                |
    R :  .--------------. :   |    |                |
