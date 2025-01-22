@@ -1459,14 +1459,14 @@ Also, underlay transports may be realized using separate NRPs. However, such an 
    discussion about how to realize or orchestrate underlay transports is
    out of scope for this document.
 
-~~~
+~~~ aasvg
 +---------------+                                    +------+
 |  Ingress PE   |   .------------------------------->| PE-A |
 |               |   |   .-------------------------->>|      |
 |  +---------+  |   |   '---------------------.      +------+
 |  |         x------'   .---------------------'
-|  |Underlay x--------------------------------.      +------+
-|  |Transportx-------------.                  '----->| PE-B |
+|  |Underlay x----------|---------------------.      +------+
+|  |Transportx----------|--.                  '----->| PE-B |
 |  |   A     x-------.  |  |  .---.   .---.   .---->>|      |
 |  +---------+  |    |  |  |  |   |   |   |   |      +------+
 |               |    |  |  |  |   '---'   '---'
@@ -1479,8 +1479,6 @@ Also, underlay transports may be realized using separate NRPs. However, such an 
 |               |  | | | | | | | | | '-------------->| PE-D |
 +---------------+  '-' '-' '-' '-' '--------------->>|      |
                                                      +------+
- x----->   Tunnels of Underlay Transport A
- o---->>   Tunnels of Underlay Transport B
 ~~~
 {: #figure-23 title="Example of Underlay Transport Relying on TE Tunnels" artwork-align="center"}
 
