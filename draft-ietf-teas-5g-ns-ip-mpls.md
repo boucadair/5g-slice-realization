@@ -1189,7 +1189,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
    equipment, as outlined in {{figure-QoS-5QI-aware}}.
 
 
-~~~~
+~~~~ aasvg
 {::include ./drawings/QoS-5QI-aware.txt}
 ~~~~
 {: #figure-QoS-5QI-aware title="Slice 5Q QoS to TN QoS Mapping (5QI-aware Model)" artwork-align="center"}
@@ -1209,7 +1209,7 @@ Note:
 : The numbers indicated in {{figure-QoS-5QI-mapping-example}} (S-NSSAI, 5QI, DSCP, queue, etc.) are provided for illustration purposes only and should not be considered as deployment guidance.
 
 
-~~~~
+~~~~ aasvg
 {::include ./drawings/QoS-5QI-mapping-example.txt}
 ~~~~
 {: #figure-QoS-5QI-mapping-example title="Example of 3GPP QoS Mapped to TN QoS" artwork-align="center"}
