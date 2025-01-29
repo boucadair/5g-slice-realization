@@ -193,7 +193,7 @@ The realization of an RFC 9543 Network Slice (i.e., connectivity with performanc
 ~~~~
 {: #fig-end-to-end title="Transport Network Slice &  RFC 9543 Network Slice Scopes" artwork-align="center"}
 
-This document focuses on RFC9543 Network Slice deployments where the Service Demarcation Points (SDPs) are located per Types 3 and 4 of Figure 1 of {{!RFC9543}}
+This document focuses on RFC9543 Network Slice deployments where the Service Demarcation Points (SDPs) are located per Types 3 and 4 of Figure 1 of {{!RFC9543}}.
 
 The realization approach described in this document is typically triggered by Network Slice Service requests. How a Network Slice Service request is placed for realization, including how it is derived from a 5G Slice Service request, is out of scope. Mapping considerations between 3GPP and IETF Network Slice Service (e.g., mapping of service parameters) are discussed, e.g., in {{?I-D.ietf-teas-5g-network-slice-application}}.
 
