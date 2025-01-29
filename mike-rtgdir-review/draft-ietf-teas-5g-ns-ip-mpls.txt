@@ -301,8 +301,8 @@ Table of Contents
 
 3.2.  5G Network Slicing versus Transport Network Slicing
 
-   Network slicing has different meanings in the 3GPP mobile and
-   transport worlds.  This difference can be seen from the descriptions
+   Network slicing has a different meaning in the 3GPP mobile world and
+   transport world.  This difference can be seen from the descriptions
    below that set out the objectives of 5G Network Slicing
    (Section 3.2.1) and Transport Network Slicing (Section 3.2.2).  These
    descriptions are not intended to be exhaustive.
