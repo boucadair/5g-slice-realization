@@ -164,7 +164,7 @@ Table of Contents
 
    This document focuses on RFC9543 Network Slice deployments where the
    Service Demarcation Points (SDPs) are located per Types 3 and 4 of
-   Figure 1 of [RFC9543]
+   Figure 1 of [RFC9543].
 
    The realization approach described in this document is typically
    triggered by Network Slice Service requests.  How a Network Slice
