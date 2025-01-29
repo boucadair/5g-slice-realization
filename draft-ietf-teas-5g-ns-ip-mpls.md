@@ -254,7 +254,7 @@ In practice, the TN may not map to a monolithic architecture and management doma
 
 ##  5G Network Slicing versus Transport Network Slicing {#sec-5gtn}
 
-Network slicing has different meanings in the 3GPP mobile and transport worlds.
+Network slicing has a different meaning in the 3GPP mobile world and transport world.
 This difference can be seen from the descriptions below that set out
 the objectives of 5G Network Slicing ({{sec-5g-slicing}}) and Transport Network
 Slicing ({{sec-tn-slicing}}). These descriptions are not intended to be exhaustive.
