@@ -186,12 +186,14 @@ This document describes a Network Slice realization model for IP/MPLS networks w
 This document focuses on network slicing for 5G networks, covering the connectivity between Network Functions (NFs) across multiple domains such as edge clouds, data centers, and the Wide Area Network (WAN). The document describes a Network Slice realization approach that fulfills 5G slicing requirements by using existing IP/MPLS technologies to optimally control connectivity Service Level Agreements (SLAs) offered for 5G slices. To that aim, this document describes the scope of the Transport Network in 5G architectures ({{sec-scope}}), disambiguates 5G Network Slicing versus Transport Network Slicing ({{sec-5gtn}}), draws the perimeter of the various orchestration domains to realize slices ({{sec-orch}}), and identifies the required coordination between these orchestration domains for adequate setup of Attachment Circuits (ACs) ({{sec-tn-nsi}}).
 
 This work is compatible with the framework defined in {{!RFC9543}} which describes network slicing in the context of networks built from IETF technologies. Specifically, this document describes an approach to how RFC 9543 Network Slices are realized within provider networks and how such slices are stitched to Transport Network resources in a customer site in the context of Transport Network Slices ({{fig-end-to-end}}).
-Concretely, the realization of an RFC 9543 Network Slice (i.e., connectivity with performance commitments) involves the provider network and partially the AC (the PE-side of the AC). This document assumes that the customer site infrastructure is over-provisioned and involves short distances (low latency) where basic QoS/scheduling logic is sufficient to comply with the Service Level Objectives (SLOs).
+The realization of an RFC 9543 Network Slice (i.e., connectivity with performance commitments) involves the provider network and partially the AC (the PE-side of the AC). This document assumes that the customer site infrastructure is over-provisioned and involves short distances (low latency) where basic QoS/scheduling logic is sufficient to comply with the Service Level Objectives (SLOs).
 
 ~~~~ aasvg
 {::include ./drawings/tn-sections.txt}
 ~~~~
 {: #fig-end-to-end title="Transport Network Slice &  RFC 9543 Network Slice Scopes" artwork-align="center"}
+
+This document focuses on RFC9543 Network Slice deployments where the Service Demarcation Points (SDPs) are located per Types 3 and 4 of Figure 1 of {{!RFC9543}}
 
 The realization approach described in this document is typically triggered by Network Slice Service requests. How a Network Slice Service request is placed for realization, including how it is derived from a 5G Slice Service request, is out of scope. Mapping considerations between 3GPP and IETF Network Slice Service (e.g., mapping of service parameters) are discussed, e.g., in {{?I-D.ietf-teas-5g-network-slice-application}}.
 
@@ -199,7 +201,7 @@ The 5G control plane uses the Single Network Slice Selection Assistance Informat
 identification {{TS-23.501}}. Because S-NSSAIs are not visible to the transport domain, 5G domains can expose the 5G slices to the transport
 domain by mapping to explicit data plane identifiers (e.g., Layer 2, Layer 3, or Layer 4). Passing information between customer sites and provider networks is referred to as the "hand-off". {{sec-handoff-domains}} lists a set of hand-off methods for slice mapping purposes.
 
-Unlike approaches that require new protocol extensions (e.g., {{?I-D.ietf-teas-ns-ip-mpls}}), the realization model described in this document uses a set of building blocks commonly used in service provider networks. Concretely, the model uses (1) Layer 2 Virtual Private Network (L2VPN) {{?RFC4664}} and/or Layer 3 Virtual Private Network (L3VPN) {{?RFC4364}} service instances for logical separation, (2) fine-grained resource control at the Provider Edges (PEs), (3) coarse-grained resource control within the provider network, and (4) capacity planning/management. More details are provided in Sections {{<sec-over-rea-model}}, {{<sec-qos-map}}, {{<transport-plane-mapping-models}}, and {{<sec-capacity-planning}}.
+Unlike approaches that require new protocol extensions (e.g., {{?I-D.ietf-teas-ns-ip-mpls}}), the realization model described in this document uses a set of building blocks commonly used in service provider networks. The model uses (1) Layer 2 Virtual Private Network (L2VPN) {{?RFC4664}} and/or Layer 3 Virtual Private Network (L3VPN) {{?RFC4364}} service instances for logical separation, (2) fine-grained resource control at the Provider Edges (PEs), (3) coarse-grained resource control within the provider network, and (4) capacity planning/management. More details are provided in Sections {{<sec-over-rea-model}}, {{<sec-qos-map}}, {{<transport-plane-mapping-models}}, and {{<sec-capacity-planning}}.
 
 This realization model uses a single Network Resource Partition (NRP) ({{Section 7.1 of !RFC9543}}). The applicability to multiple NRPs is out of scope.
 
@@ -252,8 +254,8 @@ In practice, the TN may not map to a monolithic architecture and management doma
 
 ##  5G Network Slicing versus Transport Network Slicing {#sec-5gtn}
 
-Network slicing has a different meaning in the 3GPP mobile world and transport
-world. This difference can be seen from the descriptions below that set out
+Network slicing has different meanings in the 3GPP mobile and transport worlds.
+This difference can be seen from the descriptions below that set out
 the objectives of 5G Network Slicing ({{sec-5g-slicing}}) and Transport Network
 Slicing ({{sec-tn-slicing}}). These descriptions are not intended to be exhaustive.
 
@@ -409,7 +411,7 @@ This framework is consistent with the management coordination example shown in F
 In reference to {{figure-orch}}, a 5G End-to-End Network Slice Orchestrator (5G NSO) is responsible for orchestrating 5G Network Slices end-to-end. The details of the 5G NSO are out of the scope of this document. The realization of the 5G Network Slices spans RAN, CN, and TN. As mentioned in {{sec-scope}}, the RAN and CN are under the responsibility of the 3GPP Management System, while the TN is not. The orchestration of the TN is split into two subdomains in conformance with the reference design in {{sec-ref-design}}:
 
 Provider Network Orchestration domain:
-: As defined in {{!RFC9543}}, the provider relies on a Network Slice Controller (NSC) to manage and orchestrate RFC 9543 Network Slices in the provider network. This framework permits to manage connectivity together with SLOs.
+: As defined in {{!RFC9543}}, the provider relies on a Network Slice Controller (NSC) to manage and orchestrate RFC 9543 Network Slices in the provider network. This framework allows for managing connectivity with SLOs.
 
 Customer Site Orchestration domain:
 : The Orchestration of TN elements of the customer sites relies upon a variety of  controllers (e.g., Fabric Manager, Element Management System, or Virtualized Infrastructure Manager (VIM)).
@@ -428,7 +430,7 @@ The various orchestration depicted in {{figure-orch}} encompass the 3GPP's Netwo
 
 ### Transport Network Segments and Network Slice Instantiation {#sec-tn-nsi}
 
-This document focuses on RFC9543 Network Slice deployments where the Service Demarcation Points (SDPs) are located per Types 3 and 4 of Figure 1 of {{!RFC9543}}. The concept of distributed PE ({{sec-pe}}) assimilates CE-based SDPs defined in {{Section 5.2 of !RFC9543}} (i.e., Types 1 and 2) as SDP Type 3 or 4 in this document.
+The concept of distributed PE ({{sec-pe}}) assimilates CE-based SDPs defined in {{Section 5.2 of !RFC9543}} (i.e., Types 1 and 2) as SDP Type 3 or 4 in this document.
 
 In reference to the architecture depicted in {{sec-5g-sli-arch}}, the connectivity between NFs can be decomposed into three main segment types:
 
@@ -466,10 +468,10 @@ A single 5G Network Slice can be mapped to multiple TN slices (1 to N). For inst
    * M to 1:
       Multiple 5G Network Slices may rely upon the same TN slice.  In such a case, the Service Level Agreement (SLA) differentiation of slices
       would be entirely controlled at the 5G control plane, for example, with
-      appropriate placement strategies: this use case is represented in
+      appropriate placement strategies: this use case is illustrated in
       {{figure-6}}, where a User Plane Function (UPF) for the Ultra Reliable Low Latency Communication (URLLC) slice is
-      instantiated at the edge cloud close to the gNB Centralized Unit User Plane (CU-UP) for
-      better latency/jitter control, while the 5G control plane and the UPF
+      instantiated at the edge cloud, close to the gNB Centralized Unit User Plane (CU-UP), to improve
+      latency and jitter control. The 5G control plane and the UPF
       for eMBB slice are instantiated in the regional cloud.
 
    * M to N:
@@ -502,7 +504,7 @@ Mapping approaches that preserve the 5G slice identification in the TN (e.g., {{
 An operational 5G Network Slice incorporates both 5G control plane and user plane capabilities.
 For instance, in some deployments, in the case of a slice based on split-CU in the RAN, both CU-UP and Centralized Unit Control Plane (CU-CP) may need to be deployed along with the associated interfaces E1, F1-c, F1-u, N2, and N3 which are conveyed in the TN. In this regard, the creation of the "first slice" can be subject to a specific logic that does not apply to subsequent slices. Let us consider the example depicted in {{figure-7}} to illustrate this deployment. In this example, the first 5G slice relies on the deployment of NF-CP and NF-UP functions together with two TN slices for control and user planes (TNS-CP and TNS-UP1). Next, in many cases, the deployment of a second slice relies solely on the instantiation of a UPF (NF-UP2) together with a dedicated user plane TN slice (TNS-UP2). The control plane of the first 5G slice is also updated to integrate the second slice: the TN slice (TNS-CP) and Network Functions (NF-CP) are shared.
 
-> The model described here in which the control plane is shared among multiple slices is likely to be common; it is not mandatory, though. Deployment models with a separate control plane for each slice are also possible.
+> The model described here, in which the control plane is shared among multiple slices, is likely to be common; it is not mandatory, though. Deployment models with a separate control plane for each slice are also possible.
 
    Section 6.1.2 of {{NG.113}} specifies that the
    eMBB slice (SST-1 and no Slice Differentiator (SD)) should be supported globally.  This 5G
@@ -671,7 +673,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    S-NSSAI, which makes an IP to Slice mapping table unnecessary.
 
    The S-NSSAI/IPv6 mapping is a local IPv6 address allocation method to NFs not disclosed to on-path nodes. IP forwarding is not altered by this method and is
-   still achieved following BCP 198 {{!RFC7608}}. Concretely, intermediary TN nodes are not required to associate any additional semantic with IPv6 address.
+   still achieved following BCP 198 {{!RFC7608}}. Intermediary TN nodes are not required to associate any additional semantic with IPv6 address.
 
    However, operators using such mapping methods should be aware of the implications
    of any change of S-NSSAI on the IPv6 addressing plans. For example, modifications of the S-NSSAIs in-use will require
@@ -805,7 +807,7 @@ representing slices              representing slices    slices
 | CS1|            |      Network  |          | L2/L3    CS2        |
 +----+            +---------------+          +---------------------+
 
-   x Logical interface represented by a VLAN on s physical interface
+   x Logical interface represented by a VLAN on a physical interface
    # Service instances (with unique MPLS label)
    * SDP
 ~~~~
@@ -2135,7 +2137,7 @@ Security considerations specific to each of the technologies and protocols liste
 
    Special thanks to Jie Dong and Adrian Farrel for the detailed and careful reviews.
 
-   Thanks to Alvaro Retana for the rtg-dir review, Yoshifumi Nishida for
+   Thanks to Alvaro Retana and Mike McBride for the rtg-dir reviews, Yoshifumi Nishida for
    the tsv-art review, Timothy Winters for the int-dir review, and Lars Eggert for the genart review.
 
    Thanks to Jim Guichard for the AD review.
