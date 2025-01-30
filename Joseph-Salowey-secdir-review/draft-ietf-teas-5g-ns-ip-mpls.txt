@@ -2596,10 +2596,10 @@ Table of Contents
 
    Data Confidentiality and Integrity of an IETF Network Slice:  As desc
       ribed in Section 5.1.2.1 of [RFC9543], the customer might request
-      a Service Level Expectation (SLE) that mandates encryption.  As
-      described in Section 6, this can be achieved, e.g., by mapping the
-      traffic to an underlay transport that uses only MACsec-encrypted
-      links.
+      a Service Level Expectation (SLE) that mandates encryption.
+
+      This can be achieved, e.g., by mapping the traffic to an underlay
+      transport (Section 6) that uses only MACsec-encrypted links.
 
    In order to avoid the need for a mapping table to associate source/
    destination IP addresses and slices' specific S-NSSAIs, Section 4.2
