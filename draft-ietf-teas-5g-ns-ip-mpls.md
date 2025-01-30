@@ -1894,7 +1894,8 @@ Specific isolation criteria:
 : Adequate admission control policies, for example policers as described in {{sec-inbound-edge-resource-control}}, should be configured in the edge of the provider network to control access to specific slice resources. This prevents the possibility of one slice consuming resources at the expense of other slices. Likewise, access to classification and mapping tables have to be controlled to prevent misbehaviors (an unauthorized entity may modify the table to bind traffic to a random slice, redirect the traffic, etc.). Network devices have to check that a required access privilege is provided before granting access to specific data or performing specific actions.
 
 Data Confidentiality and Integrity of an IETF Network Slice:
-: As described in {{Section 5.1.2.1 of !RFC9543}}, the customer might request a Service Level Expectation (SLE) that mandates encryption. As described in {{transport-plane-mapping-models}}, this can be achieved, e.g., by mapping the traffic to an underlay transport that uses only MACsec-encrypted links.
+: As described in {{Section 5.1.2.1 of !RFC9543}}, the customer might request a Service Level Expectation (SLE) that mandates encryption.
+: This can be achieved, e.g., by mapping the traffic to an underlay transport ({{transport-plane-mapping-models}}) that uses only MACsec-encrypted links.
 
 In order to avoid the need for a mapping table to associate source/destination IP
 addresses and slices' specific S-NSSAIs, {{sec-ip-hof}} describes an approach where some or all S-NSSAI bits
