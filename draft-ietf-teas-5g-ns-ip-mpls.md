@@ -309,6 +309,8 @@ NFs may be hosted on a CE, directly connected to a CE, or be located multiple IP
 
 The orchestration of the TN within a customer site involves a set of controllers for automation purposes (e.g., Network Functions Virtualization Infrastructure (NFVI), Container Network Interface (CNI), Fabric Managers, or Public Cloud APIs). It is out of scope to document how these controllers are implemented.
 
+In some contexts, the connectivity between NFs that belong to the same site can be via the provider network.
+
 ### Customer Edge (CE) {#sec-ce}
 
 A CE is a function that provides logical connectivity of a customer site ({{sec-cs}}) to the provider network ({{sec-pn}}). The logical connectivity is enforced at Layer 2 and/or Layer 3 and is denominated an Attachment Circuit (AC) ({{sec-ac}}). Examples of CEs include TN components (e.g., router, switch, and firewalls) and also 5G NFs (i.e., an element of the 5G domain such as Centralized Unit (CU), Distributed Unit (DU), or User Plane Function (UPF)).
