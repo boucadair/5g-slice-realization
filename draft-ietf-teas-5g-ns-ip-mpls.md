@@ -1906,7 +1906,7 @@ who has access to the mapping configuration may infer the slices to which belong
 alter these bits which may lead to steering the packet via a distinct network slice, and thus lead to
 service disruption. Note that such an on-path attacker may make more damage (e.g., randomly drop packets).
 
-Security considerations specific to each of the technologies and protocols listed in the document are discussed in the specification documents of each of these protocols.
+Security considerations specific to each of the technologies and protocols listed in the document are discussed in the specification documents of each of these protocols. In particular, readers should refer to the "Security Framework for Provider-Provisioned Virtual Private Networks (PPVPNs)" {{?RFC4111}} or the "Applicability Statement for BGP/MPLS IP Virtual Private Networks (VPNs)" ({{Section 6 of ?RFC4365}}) for a comprehensive discussion about security considerations related to VPN technologies (including authentication and encryption between PEs, use of IPsec tunnels that terminate within the customer sites to protect user data, prevention of illegitimate traffic from entering a VPN instance, etc.).
 
 --- back
 
