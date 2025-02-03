@@ -1879,26 +1879,23 @@ The realization model described in the document inherits the scalability propert
 
 {{Section 10 of !RFC9543}} discusses generic security considerations that are applicable to network slicing, with a focus on the following considerations:
 
+Conformance to security constraints:
+:  Specific security requests, such as not routing traffic through a particular geographical region can be met by mapping the traffic to an underlay transport ({{transport-plane-mapping-models}}) that avoids that region.
 
- * Conformance to security constraints:
+NSC authentication:
+: Per {{!RFC9543}}, this is about underlay networks need to be protected against attacks from an adversary NSC as this could destabilize overall network operations. The interaction between an NSC and the underly network is used to pass service provisioning requests following a set of YANG modules that are designed to be accessed via YANG-based management protocols, such as
+NETCONF {{?RFC6241}} and RESTCONF {{?RFC8040}}. These protocols have to
+use a secure transport layer (e.g., SSH {{?RFC4252}}, TLS {{?RFC8446}}, and
+QUIC {{?RFC9000}}) and have to use mutual authentication.
+: The NETCONF access control model {{!RFC8341}} provides the means to restrict access for particular NETCONF or RESTCONF users to a preconfigured subset of all available NETCONF or RESTCONF protocol operations and content.
+: Readers may refer to documents that describe NSC realization such as {{?I-D.ietf-teas-ns-controller-models}}.
 
-      Specific security requests, such as not routing traffic through a particular geographical region can be met by mapping the traffic to an underlay transport that avoids that region.
+Specific isolation criteria:
+: Adequate admission control policies, for example policers as described in {{sec-inbound-edge-resource-control}}, should be configured in the edge of the provider network to control access to specific slice resources. This prevents the possibility of one slice consuming resources at the expense of other slices. Likewise, access to classification and mapping tables have to be controlled to prevent misbehaviors (an unauthorized entity may modify the table to bind traffic to a random slice, redirect the traffic, etc.). Network devices have to check that a required access privilege is provided before granting access to specific data or performing specific actions.
 
- * IETF NSC authentication:
-
-      This is out of the scope for this document. It should be addressed in documents that describe IETF NSC realization (e.g., {{?I-D.ietf-teas-ns-controller-models}}).
-
- * Specific isolation criteria:
-
-      Adequate admission control policies, for example policers as described in {{sec-inbound-edge-resource-control}}, should be configured in the edge of the provider network to control access to specific slice resources. This prevents the possibility of one slice consuming resources at the expense of other slices. Likewise, access to classification and mapping tables have to be controlled to prevent misbehaviors (an unauthorized entity may modify the table to bind traffic to a random slice, redirect the traffic, etc.). Network devices have to check that a required access privilege is provided before granting access to specific data or performing specific actions.
-
- * Data Confidentiality and Integrity of an IETF Network Slice:
-
-     As described in {{Section 5.1.2.1 of !RFC9543}}, the customer might request an SLE that mandates encryption. As described in {{transport-plane-mapping-models}}, this can be achieved, e.g., by mapping the traffic to an underlay transport that uses only MACsec-encrypted links.
-
-Many of the YANG modules cited in this document define schema for data that is designed to be accessed via network management protocols such as NETCONF {{!RFC6241}} or RESTCONF {{!RFC8040}}. The lowest NETCONF layer is the secure transport layer, and the mandatory-to-implement secure transport is Secure Shell (SSH) {{!RFC6242}}. The lowest RESTCONF layer is HTTPS, and the mandatory-to-implement secure transport is TLS {{!RFC8446}}.
-
-The NETCONF access control model {{!RFC8341}} provides the means to restrict access for particular NETCONF or RESTCONF users to a preconfigured subset of all available NETCONF or RESTCONF protocol operations and content.
+Data Confidentiality and Integrity of an IETF Network Slice:
+: As described in {{Section 5.1.2.1 of !RFC9543}}, the customer might request a Service Level Expectation (SLE) that mandates encryption.
+: This can be achieved, e.g., by mapping the traffic to an underlay transport ({{transport-plane-mapping-models}}) that uses only MACsec-encrypted links.
 
 In order to avoid the need for a mapping table to associate source/destination IP
 addresses and slices' specific S-NSSAIs, {{sec-ip-hof}} describes an approach where some or all S-NSSAI bits
@@ -2138,6 +2135,7 @@ Security considerations specific to each of the technologies and protocols liste
    Special thanks to Jie Dong and Adrian Farrel for the detailed and careful reviews.
 
    Thanks to Alvaro Retana and Mike McBride for the rtg-dir reviews, Yoshifumi Nishida for
-   the tsv-art review, Timothy Winters for the int-dir review, and Lars Eggert for the genart review.
+   the tsv-art review, Timothy Winters for the int-dir review, Lars Eggert for the genart review,
+   and Joseph Salowey for the secdir review.
 
    Thanks to Jim Guichard for the AD review.
