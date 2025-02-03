@@ -2620,12 +2620,14 @@ Table of Contents
    refer to the "Security Framework for Provider-Provisioned Virtual
    Private Networks (PPVPNs)" [RFC4111], the "Applicability Statement
    for BGP/MPLS IP Virtual Private Networks (VPNs)" (Section 6 of
-   [RFC4365]), or the "Analysis of the Security of BGP/MPLS IP Virtual
+   [RFC4365]), and the "Analysis of the Security of BGP/MPLS IP Virtual
    Private Networks (VPNs)" [RFC4381] for a comprehensive discussion
    about security considerations related to VPN technologies (including
    authentication and encryption between PEs, use of IPsec tunnels that
    terminate within the customer sites to protect user data, prevention
-   of illegitimate traffic from entering a VPN instance, etc.).
+   of illegitimate traffic from entering a VPN instance, etc.).  Also,
+   readers may refer to Section 9 of [RFC9522] for a discussion about
+   security considerations related to TE mechanisms.
 
 12.  References
 
