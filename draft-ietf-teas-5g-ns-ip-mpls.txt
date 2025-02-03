@@ -2618,13 +2618,14 @@ Table of Contents
    protocols listed in the document are discussed in the specification
    documents of each of these protocols.  In particular, readers should
    refer to the "Security Framework for Provider-Provisioned Virtual
-   Private Networks (PPVPNs)" [RFC4111] or the "Applicability Statement
+   Private Networks (PPVPNs)" [RFC4111], the "Applicability Statement
    for BGP/MPLS IP Virtual Private Networks (VPNs)" (Section 6 of
-   [RFC4365]) for a comprehensive discussion about security
-   considerations related to VPN technologies (including authentication
-   and encryption between PEs, use of IPsec tunnels that terminate
-   within the customer sites to protect user data, prevention of
-   illegitimate traffic from entering a VPN instance, etc.).
+   [RFC4365]), or the "Analysis of the Security of BGP/MPLS IP Virtual
+   Private Networks (VPNs)" [RFC4381] for a comprehensive discussion
+   about security considerations related to VPN technologies (including
+   authentication and encryption between PEs, use of IPsec tunnels that
+   terminate within the customer sites to protect user data, prevention
+   of illegitimate traffic from entering a VPN instance, etc.).
 
 12.  References
 
@@ -2789,6 +2790,11 @@ Table of Contents
               Virtual Private Networks (VPNs)", RFC 4365,
               DOI 10.17487/RFC4365, February 2006,
               <https://www.rfc-editor.org/rfc/rfc4365>.
+
+   [RFC4381]  Behringer, M., "Analysis of the Security of BGP/MPLS IP
+              Virtual Private Networks (VPNs)", RFC 4381,
+              DOI 10.17487/RFC4381, February 2006,
+              <https://www.rfc-editor.org/rfc/rfc4381>.
 
    [RFC4664]  Andersson, L., Ed. and E. Rosen, Ed., "Framework for Layer
               2 Virtual Private Networks (L2VPNs)", RFC 4664,
