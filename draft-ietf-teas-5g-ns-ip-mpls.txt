@@ -145,8 +145,8 @@ Table of Contents
           |------------------TN Slice------------------|
 
                             RFC 9543 Network Slice
-                            +-----SDP Type 3----+
-                            |  +- SDP Type 4-+  |
+                            .-----SDP Type 3----.
+                            |  .- SDP Type 4-.  |
                             |  |             |  |
                             v  v             v  v
       +------------+          +---------------+         +------------+
