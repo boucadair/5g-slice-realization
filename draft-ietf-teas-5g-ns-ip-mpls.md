@@ -307,6 +307,8 @@ On top of 5G NFs, a customer may manage additional TN elements (e.g., servers, r
 
 NFs may be hosted on a CE, directly connected to a CE, or be located multiple IP hops from a CE.
 
+In some contexts, the connectivity between NFs that belong to the same site can be via achieved the provider network.
+
 The orchestration of the TN within a customer site involves a set of controllers for automation purposes (e.g., Network Functions Virtualization Infrastructure (NFVI), Container Network Interface (CNI), Fabric Managers, or Public Cloud APIs). It is out of scope to document how these controllers are implemented.
 
 ### Customer Edge (CE) {#sec-ce}
