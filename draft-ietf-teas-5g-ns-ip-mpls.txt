@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 3 August 2025                                  Juniper Networks
+Expires: 7 August 2025                                  Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                         30 January 2025
+                                                         3 February 2025
 
 
  A Realization of Network Slices for 5G Networks Using Current IP/MPLS
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 August 2025.
+   This Internet-Draft will expire on 7 August 2025.
 
 Copyright Notice
 
@@ -2558,51 +2558,48 @@ Table of Contents
    that are applicable to network slicing, with a focus on the following
    considerations:
 
-   *  Conformance to security constraints:
+   Conformance to security constraints:  Specific security requests,
+      such as not routing traffic through a particular geographical
+      region can be met by mapping the traffic to an underlay transport
+      (Section 6) that avoids that region.
 
-      Specific security requests, such as not routing traffic through a
-      particular geographical region can be met by mapping the traffic
-      to an underlay transport that avoids that region.
+   NSC authentication:  Per [RFC9543], this is about underlay networks
+      need to be protected against attacks from an adversary NSC as this
+      could destabilize overall network operations.  The interaction
+      between an NSC and the underly network is used to pass service
+      provisioning requests following a set of YANG modules that are
+      designed to be accessed via YANG-based management protocols, such
+      as NETCONF [RFC6241] and RESTCONF [RFC8040].  These protocols have
+      to use a secure transport layer (e.g., SSH [RFC4252], TLS
+      [RFC8446], and QUIC [RFC9000]) and have to use mutual
+      authentication.
 
-   *  IETF NSC authentication:
+      The NETCONF access control model [RFC8341] provides the means to
+      restrict access for particular NETCONF or RESTCONF users to a
+      preconfigured subset of all available NETCONF or RESTCONF protocol
+      operations and content.
 
-      This is out of the scope for this document.  It should be
-      addressed in documents that describe IETF NSC realization (e.g.,
-      [I-D.ietf-teas-ns-controller-models]).
+      Readers may refer to documents that describe NSC realization such
+      as [I-D.ietf-teas-ns-controller-models].
 
-   *  Specific isolation criteria:
+   Specific isolation criteria:  Adequate admission control policies,
+      for example policers as described in Section 5.2.1.1, should be
+      configured in the edge of the provider network to control access
+      to specific slice resources.  This prevents the possibility of one
+      slice consuming resources at the expense of other slices.
+      Likewise, access to classification and mapping tables have to be
+      controlled to prevent misbehaviors (an unauthorized entity may
+      modify the table to bind traffic to a random slice, redirect the
+      traffic, etc.).  Network devices have to check that a required
+      access privilege is provided before granting access to specific
+      data or performing specific actions.
 
-      Adequate admission control policies, for example policers as
-      described in Section 5.2.1.1, should be configured in the edge of
-      the provider network to control access to specific slice
-      resources.  This prevents the possibility of one slice consuming
-      resources at the expense of other slices.  Likewise, access to
-      classification and mapping tables have to be controlled to prevent
-      misbehaviors (an unauthorized entity may modify the table to bind
-      traffic to a random slice, redirect the traffic, etc.).  Network
-      devices have to check that a required access privilege is provided
-      before granting access to specific data or performing specific
-      actions.
+   Data Confidentiality and Integrity of an IETF Network Slice:  As desc
+      ribed in Section 5.1.2.1 of [RFC9543], the customer might request
+      a Service Level Expectation (SLE) that mandates encryption.
 
-   *  Data Confidentiality and Integrity of an IETF Network Slice:
-
-      As described in Section 5.1.2.1 of [RFC9543], the customer might
-      request an SLE that mandates encryption.  As described in
-      Section 6, this can be achieved, e.g., by mapping the traffic to
-      an underlay transport that uses only MACsec-encrypted links.
-
-   Many of the YANG modules cited in this document define schema for
-   data that is designed to be accessed via network management protocols
-   such as NETCONF [RFC6241] or RESTCONF [RFC8040].  The lowest NETCONF
-   layer is the secure transport layer, and the mandatory-to-implement
-   secure transport is Secure Shell (SSH) [RFC6242].  The lowest
-   RESTCONF layer is HTTPS, and the mandatory-to-implement secure
-   transport is TLS [RFC8446].
-
-   The NETCONF access control model [RFC8341] provides the means to
-   restrict access for particular NETCONF or RESTCONF users to a
-   preconfigured subset of all available NETCONF or RESTCONF protocol
-   operations and content.
+      This can be achieved, e.g., by mapping the traffic to an underlay
+      transport (Section 6) that uses only MACsec-encrypted links.
 
    In order to avoid the need for a mapping table to associate source/
    destination IP addresses and slices' specific S-NSSAIs, Section 4.2
@@ -2626,32 +2623,15 @@ Table of Contents
               Networks (VPNs)", RFC 4364, DOI 10.17487/RFC4364, February
               2006, <https://www.rfc-editor.org/rfc/rfc4364>.
 
-   [RFC6241]  Enns, R., Ed., Bjorklund, M., Ed., Schoenwaelder, J., Ed.,
-              and A. Bierman, Ed., "Network Configuration Protocol
-              (NETCONF)", RFC 6241, DOI 10.17487/RFC6241, June 2011,
-              <https://www.rfc-editor.org/rfc/rfc6241>.
-
-   [RFC6242]  Wasserman, M., "Using the NETCONF Protocol over Secure
-              Shell (SSH)", RFC 6242, DOI 10.17487/RFC6242, June 2011,
-              <https://www.rfc-editor.org/rfc/rfc6242>.
-
    [RFC7608]  Boucadair, M., Petrescu, A., and F. Baker, "IPv6 Prefix
               Length Recommendation for Forwarding", BCP 198, RFC 7608,
               DOI 10.17487/RFC7608, July 2015,
               <https://www.rfc-editor.org/rfc/rfc7608>.
 
-   [RFC8040]  Bierman, A., Bjorklund, M., and K. Watsen, "RESTCONF
-              Protocol", RFC 8040, DOI 10.17487/RFC8040, January 2017,
-              <https://www.rfc-editor.org/rfc/rfc8040>.
-
    [RFC8341]  Bierman, A. and M. Bjorklund, "Network Configuration
               Access Control Model", STD 91, RFC 8341,
               DOI 10.17487/RFC8341, March 2018,
               <https://www.rfc-editor.org/rfc/rfc8341>.
-
-   [RFC8446]  Rescorla, E., "The Transport Layer Security (TLS) Protocol
-              Version 1.3", RFC 8446, DOI 10.17487/RFC8446, August 2018,
-              <https://www.rfc-editor.org/rfc/rfc8446>.
 
    [RFC9543]  Farrel, A., Ed., Drake, J., Ed., Rokui, R., Homma, S.,
               Makhijani, K., Contreras, L., and J. Tantsura, "A
@@ -2781,6 +2761,10 @@ Table of Contents
               DOI 10.17487/RFC4176, October 2005,
               <https://www.rfc-editor.org/rfc/rfc4176>.
 
+   [RFC4252]  Ylonen, T. and C. Lonvick, Ed., "The Secure Shell (SSH)
+              Authentication Protocol", RFC 4252, DOI 10.17487/RFC4252,
+              January 2006, <https://www.rfc-editor.org/rfc/rfc4252>.
+
    [RFC4360]  Sangli, S., Tappan, D., and Y. Rekhter, "BGP Extended
               Communities Attribute", RFC 4360, DOI 10.17487/RFC4360,
               February 2006, <https://www.rfc-editor.org/rfc/rfc4360>.
@@ -2820,6 +2804,11 @@ Table of Contents
               DOI 10.17487/RFC6136, March 2011,
               <https://www.rfc-editor.org/rfc/rfc6136>.
 
+   [RFC6241]  Enns, R., Ed., Bjorklund, M., Ed., Schoenwaelder, J., Ed.,
+              and A. Bierman, Ed., "Network Configuration Protocol
+              (NETCONF)", RFC 6241, DOI 10.17487/RFC6241, June 2011,
+              <https://www.rfc-editor.org/rfc/rfc6241>.
+
    [RFC6291]  Andersson, L., van Helvoort, H., Bonica, R., Romascanu,
               D., and S. Mansfield, "Guidelines for the Use of the "OAM"
               Acronym in the IETF", BCP 161, RFC 6291,
@@ -2856,6 +2845,10 @@ Table of Contents
               RFC 7806, DOI 10.17487/RFC7806, April 2016,
               <https://www.rfc-editor.org/rfc/rfc7806>.
 
+   [RFC8040]  Bierman, A., Bjorklund, M., and K. Watsen, "RESTCONF
+              Protocol", RFC 8040, DOI 10.17487/RFC8040, January 2017,
+              <https://www.rfc-editor.org/rfc/rfc8040>.
+
    [RFC8100]  Geib, R., Ed. and D. Black, "Diffserv-Interconnection
               Classes and Practice", RFC 8100, DOI 10.17487/RFC8100,
               March 2017, <https://www.rfc-editor.org/rfc/rfc8100>.
@@ -2870,6 +2863,10 @@ Table of Contents
               Networking (SPRING) Networks", RFC 8355,
               DOI 10.17487/RFC8355, March 2018,
               <https://www.rfc-editor.org/rfc/rfc8355>.
+
+   [RFC8446]  Rescorla, E., "The Transport Layer Security (TLS) Protocol
+              Version 1.3", RFC 8446, DOI 10.17487/RFC8446, August 2018,
+              <https://www.rfc-editor.org/rfc/rfc8446>.
 
    [RFC8466]  Wen, B., Fioccola, G., Ed., Xie, C., and L. Jalil, "A YANG
               Data Model for Layer 2 Virtual Private Network (L2VPN)
@@ -2890,6 +2887,11 @@ Table of Contents
               (SRv6) Network Programming", RFC 8986,
               DOI 10.17487/RFC8986, February 2021,
               <https://www.rfc-editor.org/rfc/rfc8986>.
+
+   [RFC9000]  Iyengar, J., Ed. and M. Thomson, Ed., "QUIC: A UDP-Based
+              Multiplexed and Secure Transport", RFC 9000,
+              DOI 10.17487/RFC9000, May 2021,
+              <https://www.rfc-editor.org/rfc/rfc9000>.
 
    [RFC9099]  Vyncke, É., Chittimaneni, K., Kaeo, M., and E. Rey,
               "Operational Security Considerations for IPv6 Networks",
@@ -3148,7 +3150,8 @@ Acknowledgments
 
    Thanks to Alvaro Retana and Mike McBride for the rtg-dir reviews,
    Yoshifumi Nishida for the tsv-art review, Timothy Winters for the
-   int-dir review, and Lars Eggert for the genart review.
+   int-dir review, Lars Eggert for the genart review, and Joseph Salowey
+   for the secdir review.
 
    Thanks to Jim Guichard for the AD review.
 

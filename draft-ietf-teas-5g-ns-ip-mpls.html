@@ -14,13 +14,13 @@
        Network slicing is a feature that was introduced by the 3rd Generation Partnership Project (3GPP) in mobile networks. Realization of 5G slicing implies requirements for all mobile domains, including the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN). 
        This document describes a Network Slice realization model for IP/MPLS networks with a focus on the Transport Network fulfilling 5G slicing connectivity service objectives. The realization model reuses many building blocks currently commonly used in service provider networks. 
     " name="description">
-<meta content="xml2rfc 3.25.0" name="generator">
+<meta content="xml2rfc 3.26.0" name="generator">
 <meta content="L3VPN" name="keyword">
 <meta content="L2VPN" name="keyword">
 <meta content="Slice Service" name="keyword">
 <meta content="draft-ietf-teas-5g-ns-ip-mpls-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.25.0
+  xml2rfc 3.26.0
     Python 3.12.8
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
@@ -1051,11 +1051,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Implementing 5G Transport Slices</td>
-<td class="right">January 2025</td>
+<td class="right">February 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Szarkowicz, et al.</td>
-<td class="center">Expires 3 August 2025</td>
+<td class="center">Expires 7 August 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1068,12 +1068,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-teas-5g-ns-ip-mpls-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-01-30" class="published">30 January 2025</time>
+<time datetime="2025-02-03" class="published">3 February 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-08-03">3 August 2025</time></dd>
+<dd class="expires"><time datetime="2025-08-07">7 August 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1138,7 +1138,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 3 August 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 7 August 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -7091,37 +7091,53 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
 <a href="#section-11" class="section-number selfRef">11. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
 <p id="section-11-1"><span><a href="https://rfc-editor.org/rfc/rfc9543#section-10" class="relref">Section 10</a> of [<a href="#RFC9543" class="cite xref">RFC9543</a>]</span> discusses generic security considerations that are applicable to network slicing, with a focus on the following considerations:<a href="#section-11-1" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-11-2.1">
-          <p id="section-11-2.1.1">Conformance to security constraints:<a href="#section-11-2.1.1" class="pilcrow">¶</a></p>
-<p id="section-11-2.1.2">
-Specific security requests, such as not routing traffic through a particular geographical region can be met by mapping the traffic to an underlay transport that avoids that region.<a href="#section-11-2.1.2" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="section-11-2.2">
-          <p id="section-11-2.2.1">IETF NSC authentication:<a href="#section-11-2.2.1" class="pilcrow">¶</a></p>
-<p id="section-11-2.2.2">
-This is out of the scope for this document. It should be addressed in documents that describe IETF NSC realization (e.g., <span>[<a href="#I-D.ietf-teas-ns-controller-models" class="cite xref">I-D.ietf-teas-ns-controller-models</a>]</span>).<a href="#section-11-2.2.2" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="section-11-2.3">
-          <p id="section-11-2.3.1">Specific isolation criteria:<a href="#section-11-2.3.1" class="pilcrow">¶</a></p>
-<p id="section-11-2.3.2">
-Adequate admission control policies, for example policers as described in <a href="#sec-inbound-edge-resource-control" class="auto internal xref">Section 5.2.1.1</a>, should be configured in the edge of the provider network to control access to specific slice resources. This prevents the possibility of one slice consuming resources at the expense of other slices. Likewise, access to classification and mapping tables have to be controlled to prevent misbehaviors (an unauthorized entity may modify the table to bind traffic to a random slice, redirect the traffic, etc.). Network devices have to check that a required access privilege is provided before granting access to specific data or performing specific actions.<a href="#section-11-2.3.2" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="section-11-2.4">
-          <p id="section-11-2.4.1">Data Confidentiality and Integrity of an IETF Network Slice:<a href="#section-11-2.4.1" class="pilcrow">¶</a></p>
-<p id="section-11-2.4.2">
-As described in <span><a href="https://rfc-editor.org/rfc/rfc9543#section-5.1.2.1" class="relref">Section 5.1.2.1</a> of [<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>, the customer might request an SLE that mandates encryption. As described in <a href="#transport-plane-mapping-models" class="auto internal xref">Section 6</a>, this can be achieved, e.g., by mapping the traffic to an underlay transport that uses only MACsec-encrypted links.<a href="#section-11-2.4.2" class="pilcrow">¶</a></p>
-</li>
-      </ul>
-<p id="section-11-3">Many of the YANG modules cited in this document define schema for data that is designed to be accessed via network management protocols such as NETCONF <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> or RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>. The lowest NETCONF layer is the secure transport layer, and the mandatory-to-implement secure transport is Secure Shell (SSH) <span>[<a href="#RFC6242" class="cite xref">RFC6242</a>]</span>. The lowest RESTCONF layer is HTTPS, and the mandatory-to-implement secure transport is TLS <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>.<a href="#section-11-3" class="pilcrow">¶</a></p>
-<p id="section-11-4">The NETCONF access control model <span>[<a href="#RFC8341" class="cite xref">RFC8341</a>]</span> provides the means to restrict access for particular NETCONF or RESTCONF users to a preconfigured subset of all available NETCONF or RESTCONF protocol operations and content.<a href="#section-11-4" class="pilcrow">¶</a></p>
-<p id="section-11-5">In order to avoid the need for a mapping table to associate source/destination IP
+<span class="break"></span><dl class="dlParallel" id="section-11-2">
+        <dt id="section-11-2.1">Conformance to security constraints:</dt>
+        <dd style="margin-left: 1.5em" id="section-11-2.2">
+          <p id="section-11-2.2.1">Specific security requests, such as not routing traffic through a particular geographical region can be met by mapping the traffic to an underlay transport (<a href="#transport-plane-mapping-models" class="auto internal xref">Section 6</a>) that avoids that region.<a href="#section-11-2.2.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-11-2.3">NSC authentication:</dt>
+        <dd style="margin-left: 1.5em" id="section-11-2.4">
+          <p id="section-11-2.4.1">Per <span>[<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>, this is about underlay networks need to be protected against attacks from an adversary NSC as this could destabilize overall network operations. The interaction between an NSC and the underly network is used to pass service provisioning requests following a set of YANG modules that are designed to be accessed via YANG-based management protocols, such as
+NETCONF <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> and RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>. These protocols have to
+use a secure transport layer (e.g., SSH <span>[<a href="#RFC4252" class="cite xref">RFC4252</a>]</span>, TLS <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>, and
+QUIC <span>[<a href="#RFC9000" class="cite xref">RFC9000</a>]</span>) and have to use mutual authentication.<a href="#section-11-2.4.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-11-2.5"></dt>
+        <dd style="margin-left: 1.5em" id="section-11-2.6">
+          <p id="section-11-2.6.1">The NETCONF access control model <span>[<a href="#RFC8341" class="cite xref">RFC8341</a>]</span> provides the means to restrict access for particular NETCONF or RESTCONF users to a preconfigured subset of all available NETCONF or RESTCONF protocol operations and content.<a href="#section-11-2.6.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-11-2.7"></dt>
+        <dd style="margin-left: 1.5em" id="section-11-2.8">
+          <p id="section-11-2.8.1">Readers may refer to documents that describe NSC realization such as <span>[<a href="#I-D.ietf-teas-ns-controller-models" class="cite xref">I-D.ietf-teas-ns-controller-models</a>]</span>.<a href="#section-11-2.8.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-11-2.9">Specific isolation criteria:</dt>
+        <dd style="margin-left: 1.5em" id="section-11-2.10">
+          <p id="section-11-2.10.1">Adequate admission control policies, for example policers as described in <a href="#sec-inbound-edge-resource-control" class="auto internal xref">Section 5.2.1.1</a>, should be configured in the edge of the provider network to control access to specific slice resources. This prevents the possibility of one slice consuming resources at the expense of other slices. Likewise, access to classification and mapping tables have to be controlled to prevent misbehaviors (an unauthorized entity may modify the table to bind traffic to a random slice, redirect the traffic, etc.). Network devices have to check that a required access privilege is provided before granting access to specific data or performing specific actions.<a href="#section-11-2.10.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-11-2.11">Data Confidentiality and Integrity of an IETF Network Slice:</dt>
+        <dd style="margin-left: 1.5em" id="section-11-2.12">
+          <p id="section-11-2.12.1">As described in <span><a href="https://rfc-editor.org/rfc/rfc9543#section-5.1.2.1" class="relref">Section 5.1.2.1</a> of [<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>, the customer might request a Service Level Expectation (SLE) that mandates encryption.<a href="#section-11-2.12.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-11-2.13"></dt>
+        <dd style="margin-left: 1.5em" id="section-11-2.14">
+          <p id="section-11-2.14.1">This can be achieved, e.g., by mapping the traffic to an underlay transport (<a href="#transport-plane-mapping-models" class="auto internal xref">Section 6</a>) that uses only MACsec-encrypted links.<a href="#section-11-2.14.1" class="pilcrow">¶</a></p>
+</dd>
+      <dd class="break"></dd>
+</dl>
+<p id="section-11-3">In order to avoid the need for a mapping table to associate source/destination IP
 addresses and slices' specific S-NSSAIs, <a href="#sec-ip-hof" class="auto internal xref">Section 4.2</a> describes an approach where some or all S-NSSAI bits
 are embedded in an IPv6 address using an algorithm approach. An attacker from within the transport network
 who has access to the mapping configuration may infer the slices to which belong a packet. It may also
 alter these bits which may lead to steering the packet via a distinct network slice, and thus lead to
-service disruption. Note that such an on-path attacker may make more damage (e.g., randomly drop packets).<a href="#section-11-5" class="pilcrow">¶</a></p>
-<p id="section-11-6">Security considerations specific to each of the technologies and protocols listed in the document are discussed in the specification documents of each of these protocols.<a href="#section-11-6" class="pilcrow">¶</a></p>
+service disruption. Note that such an on-path attacker may make more damage (e.g., randomly drop packets).<a href="#section-11-3" class="pilcrow">¶</a></p>
+<p id="section-11-4">Security considerations specific to each of the technologies and protocols listed in the document are discussed in the specification documents of each of these protocols.<a href="#section-11-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-combined-references">
@@ -7139,29 +7155,13 @@ service disruption. Note that such an on-path attacker may make more damage (e.g
         <dd>
 <span class="refAuthor">Rosen, E.</span> and <span class="refAuthor">Y. Rekhter</span>, <span class="refTitle">"BGP/MPLS IP Virtual Private Networks (VPNs)"</span>, <span class="seriesInfo">RFC 4364</span>, <span class="seriesInfo">DOI 10.17487/RFC4364</span>, <time datetime="2006-02" class="refDate">February 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4364">https://www.rfc-editor.org/rfc/rfc4364</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="RFC6241">[RFC6241]</dt>
-        <dd>
-<span class="refAuthor">Enns, R., Ed.</span>, <span class="refAuthor">Bjorklund, M., Ed.</span>, <span class="refAuthor">Schoenwaelder, J., Ed.</span>, and <span class="refAuthor">A. Bierman, Ed.</span>, <span class="refTitle">"Network Configuration Protocol (NETCONF)"</span>, <span class="seriesInfo">RFC 6241</span>, <span class="seriesInfo">DOI 10.17487/RFC6241</span>, <time datetime="2011-06" class="refDate">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6241">https://www.rfc-editor.org/rfc/rfc6241</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC6242">[RFC6242]</dt>
-        <dd>
-<span class="refAuthor">Wasserman, M.</span>, <span class="refTitle">"Using the NETCONF Protocol over Secure Shell (SSH)"</span>, <span class="seriesInfo">RFC 6242</span>, <span class="seriesInfo">DOI 10.17487/RFC6242</span>, <time datetime="2011-06" class="refDate">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6242">https://www.rfc-editor.org/rfc/rfc6242</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="RFC7608">[RFC7608]</dt>
         <dd>
 <span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Petrescu, A.</span>, and <span class="refAuthor">F. Baker</span>, <span class="refTitle">"IPv6 Prefix Length Recommendation for Forwarding"</span>, <span class="seriesInfo">BCP 198</span>, <span class="seriesInfo">RFC 7608</span>, <span class="seriesInfo">DOI 10.17487/RFC7608</span>, <time datetime="2015-07" class="refDate">July 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7608">https://www.rfc-editor.org/rfc/rfc7608</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="RFC8040">[RFC8040]</dt>
-        <dd>
-<span class="refAuthor">Bierman, A.</span>, <span class="refAuthor">Bjorklund, M.</span>, and <span class="refAuthor">K. Watsen</span>, <span class="refTitle">"RESTCONF Protocol"</span>, <span class="seriesInfo">RFC 8040</span>, <span class="seriesInfo">DOI 10.17487/RFC8040</span>, <time datetime="2017-01" class="refDate">January 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8040">https://www.rfc-editor.org/rfc/rfc8040</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="RFC8341">[RFC8341]</dt>
         <dd>
 <span class="refAuthor">Bierman, A.</span> and <span class="refAuthor">M. Bjorklund</span>, <span class="refTitle">"Network Configuration Access Control Model"</span>, <span class="seriesInfo">STD 91</span>, <span class="seriesInfo">RFC 8341</span>, <span class="seriesInfo">DOI 10.17487/RFC8341</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8341">https://www.rfc-editor.org/rfc/rfc8341</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC8446">[RFC8446]</dt>
-        <dd>
-<span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 8446</span>, <span class="seriesInfo">DOI 10.17487/RFC8446</span>, <time datetime="2018-08" class="refDate">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8446">https://www.rfc-editor.org/rfc/rfc8446</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9543">[RFC9543]</dt>
       <dd>
@@ -7256,6 +7256,10 @@ service disruption. Note that such an on-path attacker may make more damage (e.g
         <dd>
 <span class="refAuthor">El Mghazli, Y., Ed.</span>, <span class="refAuthor">Nadeau, T.</span>, <span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Chan, K.</span>, and <span class="refAuthor">A. Gonguet</span>, <span class="refTitle">"Framework for Layer 3 Virtual Private Networks (L3VPN) Operations and Management"</span>, <span class="seriesInfo">RFC 4176</span>, <span class="seriesInfo">DOI 10.17487/RFC4176</span>, <time datetime="2005-10" class="refDate">October 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4176">https://www.rfc-editor.org/rfc/rfc4176</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC4252">[RFC4252]</dt>
+        <dd>
+<span class="refAuthor">Ylonen, T.</span> and <span class="refAuthor">C. Lonvick, Ed.</span>, <span class="refTitle">"The Secure Shell (SSH) Authentication Protocol"</span>, <span class="seriesInfo">RFC 4252</span>, <span class="seriesInfo">DOI 10.17487/RFC4252</span>, <time datetime="2006-01" class="refDate">January 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4252">https://www.rfc-editor.org/rfc/rfc4252</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC4360">[RFC4360]</dt>
         <dd>
 <span class="refAuthor">Sangli, S.</span>, <span class="refAuthor">Tappan, D.</span>, and <span class="refAuthor">Y. Rekhter</span>, <span class="refTitle">"BGP Extended Communities Attribute"</span>, <span class="seriesInfo">RFC 4360</span>, <span class="seriesInfo">DOI 10.17487/RFC4360</span>, <time datetime="2006-02" class="refDate">February 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4360">https://www.rfc-editor.org/rfc/rfc4360</a>&gt;</span>. </dd>
@@ -7288,6 +7292,10 @@ service disruption. Note that such an on-path attacker may make more damage (e.g
         <dd>
 <span class="refAuthor">Sajassi, A., Ed.</span> and <span class="refAuthor">D. Mohan, Ed.</span>, <span class="refTitle">"Layer 2 Virtual Private Network (L2VPN) Operations, Administration, and Maintenance (OAM) Requirements and Framework"</span>, <span class="seriesInfo">RFC 6136</span>, <span class="seriesInfo">DOI 10.17487/RFC6136</span>, <time datetime="2011-03" class="refDate">March 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6136">https://www.rfc-editor.org/rfc/rfc6136</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC6241">[RFC6241]</dt>
+        <dd>
+<span class="refAuthor">Enns, R., Ed.</span>, <span class="refAuthor">Bjorklund, M., Ed.</span>, <span class="refAuthor">Schoenwaelder, J., Ed.</span>, and <span class="refAuthor">A. Bierman, Ed.</span>, <span class="refTitle">"Network Configuration Protocol (NETCONF)"</span>, <span class="seriesInfo">RFC 6241</span>, <span class="seriesInfo">DOI 10.17487/RFC6241</span>, <time datetime="2011-06" class="refDate">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6241">https://www.rfc-editor.org/rfc/rfc6241</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC6291">[RFC6291]</dt>
         <dd>
 <span class="refAuthor">Andersson, L.</span>, <span class="refAuthor">van Helvoort, H.</span>, <span class="refAuthor">Bonica, R.</span>, <span class="refAuthor">Romascanu, D.</span>, and <span class="refAuthor">S. Mansfield</span>, <span class="refTitle">"Guidelines for the Use of the "OAM" Acronym in the IETF"</span>, <span class="seriesInfo">BCP 161</span>, <span class="seriesInfo">RFC 6291</span>, <span class="seriesInfo">DOI 10.17487/RFC6291</span>, <time datetime="2011-06" class="refDate">June 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6291">https://www.rfc-editor.org/rfc/rfc6291</a>&gt;</span>. </dd>
@@ -7316,6 +7324,10 @@ service disruption. Note that such an on-path attacker may make more damage (e.g
         <dd>
 <span class="refAuthor">Baker, F.</span> and <span class="refAuthor">R. Pan</span>, <span class="refTitle">"On Queuing, Marking, and Dropping"</span>, <span class="seriesInfo">RFC 7806</span>, <span class="seriesInfo">DOI 10.17487/RFC7806</span>, <time datetime="2016-04" class="refDate">April 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7806">https://www.rfc-editor.org/rfc/rfc7806</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC8040">[RFC8040]</dt>
+        <dd>
+<span class="refAuthor">Bierman, A.</span>, <span class="refAuthor">Bjorklund, M.</span>, and <span class="refAuthor">K. Watsen</span>, <span class="refTitle">"RESTCONF Protocol"</span>, <span class="seriesInfo">RFC 8040</span>, <span class="seriesInfo">DOI 10.17487/RFC8040</span>, <time datetime="2017-01" class="refDate">January 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8040">https://www.rfc-editor.org/rfc/rfc8040</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC8100">[RFC8100]</dt>
         <dd>
 <span class="refAuthor">Geib, R., Ed.</span> and <span class="refAuthor">D. Black</span>, <span class="refTitle">"Diffserv-Interconnection Classes and Practice"</span>, <span class="seriesInfo">RFC 8100</span>, <span class="seriesInfo">DOI 10.17487/RFC8100</span>, <time datetime="2017-03" class="refDate">March 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8100">https://www.rfc-editor.org/rfc/rfc8100</a>&gt;</span>. </dd>
@@ -7327,6 +7339,10 @@ service disruption. Note that such an on-path attacker may make more damage (e.g
 <dt id="RFC8355">[RFC8355]</dt>
         <dd>
 <span class="refAuthor">Filsfils, C., Ed.</span>, <span class="refAuthor">Previdi, S., Ed.</span>, <span class="refAuthor">Decraene, B.</span>, and <span class="refAuthor">R. Shakir</span>, <span class="refTitle">"Resiliency Use Cases in Source Packet Routing in Networking (SPRING) Networks"</span>, <span class="seriesInfo">RFC 8355</span>, <span class="seriesInfo">DOI 10.17487/RFC8355</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8355">https://www.rfc-editor.org/rfc/rfc8355</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8446">[RFC8446]</dt>
+        <dd>
+<span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 8446</span>, <span class="seriesInfo">DOI 10.17487/RFC8446</span>, <time datetime="2018-08" class="refDate">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8446">https://www.rfc-editor.org/rfc/rfc8446</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8466">[RFC8466]</dt>
         <dd>
@@ -7343,6 +7359,10 @@ service disruption. Note that such an on-path attacker may make more damage (e.g
 <dt id="RFC8986">[RFC8986]</dt>
         <dd>
 <span class="refAuthor">Filsfils, C., Ed.</span>, <span class="refAuthor">Camarillo, P., Ed.</span>, <span class="refAuthor">Leddy, J.</span>, <span class="refAuthor">Voyer, D.</span>, <span class="refAuthor">Matsushima, S.</span>, and <span class="refAuthor">Z. Li</span>, <span class="refTitle">"Segment Routing over IPv6 (SRv6) Network Programming"</span>, <span class="seriesInfo">RFC 8986</span>, <span class="seriesInfo">DOI 10.17487/RFC8986</span>, <time datetime="2021-02" class="refDate">February 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8986">https://www.rfc-editor.org/rfc/rfc8986</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9000">[RFC9000]</dt>
+        <dd>
+<span class="refAuthor">Iyengar, J., Ed.</span> and <span class="refAuthor">M. Thomson, Ed.</span>, <span class="refTitle">"QUIC: A UDP-Based Multiplexed and Secure Transport"</span>, <span class="seriesInfo">RFC 9000</span>, <span class="seriesInfo">DOI 10.17487/RFC9000</span>, <time datetime="2021-05" class="refDate">May 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9000">https://www.rfc-editor.org/rfc/rfc9000</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9099">[RFC9099]</dt>
         <dd>
@@ -7904,7 +7924,8 @@ service disruption. Note that such an on-path attacker may make more damage (e.g
    their review of this document and for providing valuable comments.<a href="#appendix-C-1" class="pilcrow">¶</a></p>
 <p id="appendix-C-2">Special thanks to Jie Dong and Adrian Farrel for the detailed and careful reviews.<a href="#appendix-C-2" class="pilcrow">¶</a></p>
 <p id="appendix-C-3">Thanks to Alvaro Retana and Mike McBride for the rtg-dir reviews, Yoshifumi Nishida for
-   the tsv-art review, Timothy Winters for the int-dir review, and Lars Eggert for the genart review.<a href="#appendix-C-3" class="pilcrow">¶</a></p>
+   the tsv-art review, Timothy Winters for the int-dir review, Lars Eggert for the genart review,
+   and Joseph Salowey for the secdir review.<a href="#appendix-C-3" class="pilcrow">¶</a></p>
 <p id="appendix-C-4">Thanks to Jim Guichard for the AD review.<a href="#appendix-C-4" class="pilcrow">¶</a></p>
 </section>
 </div>
