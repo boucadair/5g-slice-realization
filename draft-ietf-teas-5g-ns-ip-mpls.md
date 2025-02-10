@@ -217,7 +217,7 @@ Customer:
 : An entity that is responsible for managing and orchestrating the end-to-end 5G Mobile Network, notably the Radio Access Network (RAN) and Core Network (CN).
 : This entity is distinct from the customer of a 5G Network Slice Service.
 
-This document makes use of the following term:
+This document makes use of the following terms:
 
 Customer site:
 : A customer manages and deploys 5G NFs (e.g., gNodeB (gNB) and 5G Core (5GC)) in customer sites. A customer site can be either a physical or a virtual location. A provider is responsible for interconnecting customer sites.
@@ -301,7 +301,7 @@ Engineering (TE). Whether all or a subset of these components are enabled is a d
 
 The description of the main components shown in {{fig-tn-arch}} is provided in the following subsections.
 
-### Customer Site {#sec-cs}
+### Customer Site (CS) {#sec-cs}
 
 On top of 5G NFs, a customer may manage additional TN elements (e.g., servers, routers, and switches) within a customer site.
 
@@ -871,7 +871,7 @@ ranges for each slice, and use these ranges for slice identification purposes on
    In this document, this layer of QoS is referred to as '5G QoS
    Class' ('5G QoS' in short) or '5G DSCP'.
 
-### TN QoS Layer
+### Transport Network (TN) QoS Layer
 
    Control of the TN resources on provider network transit links, as well as traffic
    scheduling/prioritization on provider network transit links, is based on a flat
@@ -2138,6 +2138,6 @@ Security considerations specific to each of the technologies and protocols liste
 
    Thanks to Alvaro Retana and Mike McBride for the rtg-dir reviews, Yoshifumi Nishida for
    the tsv-art review, Timothy Winters for the int-dir review, Lars Eggert for the genart review,
-   and Joseph Salowey for the secdir review.
+   Joseph Salowey for the secdir review, and Tim Wicinski for the opsdir review.
 
    Thanks to Jim Guichard for the AD review.
