@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 10 July 2025                                   Juniper Networks
+Expires: 14 August 2025                                 Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                          6 January 2025
+                                                        10 February 2025
 
 
  A Realization of Network Slices for 5G Networks Using Current IP/MPLS
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 10 July 2025.
+   This Internet-Draft will expire on 14 August 2025.
 
 Copyright Notice
 
@@ -135,33 +135,36 @@ Table of Contents
    how RFC 9543 Network Slices are realized within provider networks and
    how such slices are stitched to Transport Network resources in a
    customer site in the context of Transport Network Slices (Figure 1).
-   Concretely, the realization of an RFC 9543 Network Slice (i.e.,
-   connectivity with performance commitments) involves the provider
-   network and partially the AC (the PE-side of the AC).  This document
-   assumes that the customer site infrastructure is over-provisioned and
-   involves short distances (low latency) where basic QoS/scheduling
-   logic is sufficient to comply with the Service Level Objectives
-   (SLOs).
+   The realization of an RFC 9543 Network Slice (i.e., connectivity with
+   performance commitments) involves the provider network and partially
+   the AC (the PE-side of the AC).  This document assumes that the
+   customer site infrastructure is over-provisioned and involves short
+   distances (low latency) where basic QoS/scheduling logic is
+   sufficient to comply with the Service Level Objectives (SLOs).
 
           |------------------TN Slice------------------|
 
                             RFC 9543 Network Slice
-                            +-----SDP Type 3----+
-                            |  +- SDP Type 4-+  |
+                            .-----SDP Type 3----.
+                            |  .- SDP Type 4-.  |
                             |  |             |  |
                             v  v             v  v
       +------------+          +---------------+         +------------+
       |  Customer  |          |    Provider   |         |  Customer  |
       |   Site 1   |          |    Network    |         |   Site 2   |
       |            |        +-+--+          +-+--+      |            |
-      |+---+    +--+-+  AC  |    |          |    | AC +-+-+          |
-      ||NF +....+ CE +------+ PE |          | PE +----+NF |          |
-      |+---+    +--+-+      |    |          |    |    +-+-+          |
+      | +---+   +--+-+  AC  |    |          |    | AC +-+-+          |
+      | |NF +...+ CE +------+ PE |          | PE +----+NF |          |
+      | +---+   +--+-+      |    |          |    |    +-+-+          |
       |            |        +-+--+          +-+--+      |            |
       |            |          |               |         |            |
       +------------+          +---------------+         +------------+
 
      Figure 1: Transport Network Slice & RFC 9543 Network Slice Scopes
+
+   This document focuses on RFC9543 Network Slice deployments where the
+   Service Demarcation Points (SDPs) are located per Types 3 and 4 of
+   Figure 1 of [RFC9543].
 
    The realization approach described in this document is typically
    triggered by Network Slice Service requests.  How a Network Slice
@@ -180,15 +183,16 @@ Table of Contents
    provider networks is referred to as the "hand-off".  Section 4 lists
    a set of hand-off methods for slice mapping purposes.
 
-   The realization model described in this document uses a set of
-   building blocks commonly used in service provider networks.
-   Concretely, the model uses (1) Layer 2 Virtual Private Network
-   (L2VPN) [RFC4664] and/or Layer 3 Virtual Private Network (L3VPN)
-   [RFC4364] service instances for logical separation, (2) fine-grained
-   resource control at the Provider Edges (PEs), (3) coarse-grained
-   resource control within the provider network, and (4) capacity
-   planning/management.  More details are provided in Sections 3.7, 5,
-   6, and 7.
+   Unlike approaches that require new protocol extensions (e.g.,
+   [I-D.ietf-teas-ns-ip-mpls]), the realization model described in this
+   document uses a set of building blocks commonly used in service
+   provider networks.  The model uses (1) Layer 2 Virtual Private
+   Network (L2VPN) [RFC4664] and/or Layer 3 Virtual Private Network
+   (L3VPN) [RFC4364] service instances for logical separation, (2) fine-
+   grained resource control at the Provider Edges (PEs), (3) coarse-
+   grained resource control within the provider network, and (4)
+   capacity planning/management.  More details are provided in Sections
+   3.7, 5, 6, and 7.
 
    This realization model uses a single Network Resource Partition (NRP)
    (Section 7.1 of [RFC9543]).  The applicability to multiple NRPs is
@@ -205,7 +209,7 @@ Table of Contents
 
    For a definitive description of 3GPP network architectures, the
    reader should refer to [TS-23.501].  More details can be found in
-   [_5G-Book].
+   [Book-5G].
 
 2.  Definitions
 
@@ -220,7 +224,7 @@ Table of Contents
       This entity is distinct from the customer of a 5G Network Slice
       Service.
 
-   This document makes use of the following term:
+   This document makes use of the following terms:
 
    Customer site:  A customer manages and deploys 5G NFs (e.g., gNodeB
       (gNB) and 5G Core (5GC)) in customer sites.  A customer site can
@@ -281,17 +285,17 @@ Table of Contents
              +--+  +--+---------------+------------+--+  +--+
                       |               |            |
                       v               v            v
-              +-- Data Center -+  +-MPLS VPN-+   +-Public-+
-              |                |  | Backbone |   |  Cloud |
-              |.-----. .-----. | +--+      +--+ +--+      |
-              |'-----' '-----' | |PE|      |PE| |GW|      |
-              |.-. .-. .-. .-. | +--+      +--+ +--+      |
-              |'-' '-' '-' '-' |  |          |   |        |
-              |                | +--+      +--+  |        |
-              |                | |PE|      |PE|  |        |
-              |                | +--+      +--+  |        |
-              |                |  |          |   |        |
-              +----------------+  +----------+   +--------+
+             +-- Data Center --+  +-MPLS VPN-+   +-Public-+
+             |                 |  | Backbone |   |  Cloud |
+             | +----+  +----+  | +--+      +--+ +--+      |
+             | '----'  '----'  | |PE|      |PE| |GW|      |
+             | .-. .-. .-. .-. | +--+      +--+ +--+      |
+             | '-' '-' '-' '-' |  |          |   |        |
+             |                 | +--+      +--+  |        |
+             |                 | |PE|      |PE|  |        |
+             |                 | +--+      +--+  |        |
+             |                 |  |          |   |        |
+             +-----------------+  +----------+   +--------+
 
           Figure 2: An Example of Transport Network Decomposition
 
@@ -362,15 +366,16 @@ Table of Contents
       Customer                 Provider                     Customer
    Orchestration            Orchestration                 Orchestration
       Domain                   Domain                       Domain
+
 +----------------+      +---------------------+       +----------------+
 |    Customer    |      |  Provider Network   |       |    Customer    |
 |      Site 1    |      |                     |       |      Site 2    |
-|          +----+|      |+----+         +----+|       |+----+          |
-|+--+      |    ||  AC  ||    |         |    ||  AC   || NF |          |
-||NF|......| CE +--------+ PE |         | PE +---------+(CE)|          |
-|+--+      |    ||      ||    |         |    ||       ||    |          |
-|          +----+|      |+----+         +----+|       |+----+          |
-|                |      |                     |       |                |
+|         +----+ |      | +----+       +----+ |       | +----+         |
+| +--+    |    | |  AC  | |    |       |    | |  AC   | |    |         |
+| |NF|....| CE +----------+ PE |       | PE +-----------+ NF |         |
+| +--+    |    | |      | |    |       |    | |       | |    |         |
+|         +----+ |      | +----+       +----+ |       | +----+         |
+|                |      |                     |       |  (CE)          |
 +----------------+      +---------------------+       +----------------+
 
      <-----------------Transport Network--------------->
@@ -380,13 +385,16 @@ Table of Contents
    The description of the main components shown in Figure 3 is provided
    in the following subsections.
 
-3.3.1.  Customer Site
+3.3.1.  Customer Site (CS)
 
    On top of 5G NFs, a customer may manage additional TN elements (e.g.,
    servers, routers, and switches) within a customer site.
 
    NFs may be hosted on a CE, directly connected to a CE, or be located
    multiple IP hops from a CE.
+
+   In some contexts, the connectivity between NFs that belong to the
+   same site can be via achieved the provider network.
 
    The orchestration of the TN within a customer site involves a set of
    controllers for automation purposes (e.g., Network Functions
@@ -424,13 +432,15 @@ Table of Contents
            +--------------+                    +--------------+
            |   Customer   |                    |   Provider   |
            |     Site     |                    |    Network   |
-           |.................                  |              |
-           ||+-----+ +----+ |               +----+            |
-           |||     | |    ==================     |            |
-           |||     +------------AC---------+ PE  |            |
-           ||| RTR | | SW ==================     |            |
-           ||+-----+ +----+ |               +----+            |
-           |'..Distributed..'                  |              |
+           | +---------------+                 |              |
+           | |               |                 |              |
+           | | +---+  +----+ |              +----+            |
+           | | |   |  |    ==================    |            |
+           | | |   +------------AC----------+ PE |            |
+           | | |RTR|  | SW ==================    |            |
+           | | +---+  +----+ |              +----+            |
+           | |               |                 |              |
+           | +--Distributed--+                 |              |
            |       CE     |                    |              |
            +--------------+                    +--------------+
 
@@ -476,13 +486,13 @@ Table of Contents
            +--------------+                    +--------------+
            |   Customer   |                    |   Provider   |
            |     Site     |                    |    Network   |
-           |              |                .................  |
-           |          +----+               |+----+   +----+|  |
-           |          |    ==================Mngd|   |    ||  |
-           |          | CE +--------AC------+ CE +---+ PE ||  |
-           |          |    ==================    |   |    ||  |
-           |          +----+               |+----+   +----+|  |
-           |              |                '..Distributed..'  |
+           |              |               +-----------------+ |
+           |          +----+              | +----+   +----+ | |
+           |          |    ==================Mngd|   |    | | |
+           |          | CE +--------AC------+ CE +---+ PE | | |
+           |          |    ==================    |   |    | | |
+           |          +----+              | +----+   +----+ | |
+           |              |               +---Distributed---+ |
            |              |                    |  PE          |
            +--------------+                    +--------------+
                              (i) Distributed PE
@@ -490,13 +500,13 @@ Table of Contents
            +--------------+                    +--------------+
            |   Customer   |                    |   Provider   |
            |     Site     |                    |    Network   |
-           |  ..................           .................. |
-           |  |    IP Fabric   |           |+----+   +----+ | |
-           |  |.-----. .-----. ============== DC |   |    | | |
-           |  |'-----' '-----' +-----AC-----+ GW +---+ PE | | |
-           |  |.-. .-. .-. .-. ==============    |   |    | | |
-           |  |'-' '-' '-' '-' |           |+----+   +----+ | |
-           |  '...Distributed..'           '...Distributed..' |
+           |  +-----------------+         +-----------------+ |
+           |  |    IP Fabric    |         | +----+   +----+ | |
+           |  |  +----+ +----+  ============= DC |   |    | | |
+           |  |  '----' '----'  +-----AC----+ GW +---+ PE | | |
+           |  | .-. .-. .-. .-. =============    |   |    | | |
+           |  | '-' '-' '-' '-' |         | +----+   +----+ | |
+           |  +---Distributed---+         +---Distributed---+ |
            |          CE  |                    |  PE          |
            |              |                    |              |
            +--Data Center-+                    +--------------+
@@ -561,13 +571,13 @@ Table of Contents
    document.  The realization of the 5G Network Slices spans RAN, CN,
    and TN.  As mentioned in Section 3.1, the RAN and CN are under the
    responsibility of the 3GPP Management System, while the TN is not.
-   The orchestration of the TN is split into two sub-domains in
+   The orchestration of the TN is split into two subdomains in
    conformance with the reference design in Section 3.3:
 
    Provider Network Orchestration domain:  As defined in [RFC9543], the
       provider relies on a Network Slice Controller (NSC) to manage and
       orchestrate RFC 9543 Network Slices in the provider network.  This
-      framework permits to manage connectivity together with SLOs.
+      framework allows for managing connectivity with SLOs.
 
    Customer Site Orchestration domain:  The Orchestration of TN elements
       of the customer sites relies upon a variety of controllers (e.g.,
@@ -580,33 +590,33 @@ Table of Contents
    A TN slice might be considered as a variant of horizontal composition
    of Network Slices mentioned in Appendix A.6 of [RFC9543].
 
-                              +-----------+
+                               .---------.
                               |  5G NSO   |
-                              +--+---+----+
+                               '-+---+---'
                                  |   |
                                  v   |
-                   +---------------+ |
+                    .-------------.  |
                    | 3GPP domains  | |
-       +-----------+ Orchestration +-|--------------------------+
-       |           | (RAN and CN)  | |                          |
-       |           +---------------+ |                          |
-       |                             v                          |
-       |    +-----------------------------------------------+   |
-       |    |TN Orchestration                               |   |
-       |    |+---------------++-----------++---------------+|   |
-       |    || Customer Site ||RFC9543 NSC|| Customer Site ||   |
-       |    || Orchestration ||           || Orchestration ||   |
-       |    |+---------------++-----------++---------------+|   |
-       |    +---|-------------------|---------------------|-+   |
-       |        |                   |                     |     |
-       |        |                   |                     |     |
-       |        v                   v                     v     |
-     +-|-----------+         +-----------------+         +------|---+
-     | |           |         |    Provider     |         |      |   |
-     | v           |       +----+  Network  +----+      +----+  |   |
-     |+--+     +----+   AC |    |           |    |  AC  | NF |<-+   |
-     ||NF+.....+ CE +------+ PE |           | PE +------+(CE)|      |
-     |+--+     +----+      |    |           |    |      +----+      |
+        .----------+ Orchestration +-)---------------------------.
+        |          | (RAN and CN)  | |                           |
+        |           '-------------'  |                           |
+        |                            v                           |
+        |   .-----------------------------------------------.    |
+        |  | TN Orchestration                                |   |
+        |  | +--------------+ +-----------+ +--------------+ |   |
+        |  | |Customer Site | |RFC9543 NSC| |Customer Site | |   |
+        |  | |Orchestration | |           | |Orchestration | |   |
+        |  | +--------------+ +-----------+ +--------------+ |   |
+        |   '---|-------------------|---------------------|-'    |
+        |       |                   |                     |      |
+        |       |                   |                     |      |
+        |       v                   v                     v      |
+     +--|----------+         +-----------------+         +-------|--+
+     |  |          |         |    Provider     |         |       |  |
+     |  v          |       +----+  Network  +----+      +-----+  |  |
+     | +--+    +----+   AC |    |           |    |  AC  | NF  |<-+  |
+     | |NF+....+ CE +------+ PE |           | PE +------+ (CE)|     |
+     | +--+    +----+      |    |           |    |      +-----+     |
      |             |       +----+           +----+       |          |
      |  Customer   |         |                 |         | Customer |
      |    Site     |         |                 |         |   Site   |
@@ -624,11 +634,9 @@ Table of Contents
 
 3.4.2.  Transport Network Segments and Network Slice Instantiation
 
-   This document focuses on RFC9543 Network Slice deployments where the
-   Service Demarcation Points (SDPs) are located per Types 3 and 4 of
-   Figure 1 of [RFC9543].  The concept of distributed PE (Section 3.3.4)
-   assimilates CE-based SDPs defined in Section 5.2 of [RFC9543] (i.e.,
-   Types 1 and 2) as SDP Type 3 or 4 in this document.
+   The concept of distributed PE (Section 3.3.4) assimilates CE-based
+   SDPs defined in Section 5.2 of [RFC9543] (i.e., Types 1 and 2) as SDP
+   Type 3 or 4 in this document.
 
    In reference to the architecture depicted in Section 3.4.1, the
    connectivity between NFs can be decomposed into three main segment
@@ -675,19 +683,19 @@ Table of Contents
       Circuit-as-a-Service (ACaaS)
       [I-D.ietf-opsawg-teas-attachment-circuit].
 
-          +---------------+                   +------------------+
+           .-------------.                     .----------------.
           |               |                   |   RFC9543 NSC    |
           | Customer Site |                   |                  |
           | Orchestration |    IETF APIs/DM   |(Provider Network |
           |               |<----------------->|  Orchestration)  |
-          +---------------+                   +------------------+
+           '-------------'                     '----------------'
                         |                        |
                         |                        |
         +---------------|-+                    +-|---------------+
         |               v |                    | v               |
-        | +--+      +--+.1|    192.0.2.0/31    |.0+--+           |
-        | |NF+......+CE+--------------------------+PE|           |
-        | +--+      +--+  |      VLAN 100      |  +--+           |
+        | +--+     +--+ .1|    192.0.2.0/31    |.0+--+           |
+        | |NF+.....+CE+---------------------------+PE|           |
+        | +--+     +--+   |      VLAN 100      |  +--+           |
         |    Customer     |                    |     Provider    |
         |      Site       |                    |     Network     |
         +-----------------+                    +-----------------+
@@ -714,11 +722,11 @@ Table of Contents
       slice.  In such a case, the Service Level Agreement (SLA)
       differentiation of slices would be entirely controlled at the 5G
       control plane, for example, with appropriate placement strategies:
-      this use case is represented in Figure 9, where a User Plane
+      this use case is illustrated in Figure 9, where a User Plane
       Function (UPF) for the Ultra Reliable Low Latency Communication
-      (URLLC) slice is instantiated at the edge cloud close to the gNB
-      Centralized Unit User Plane (CU-UP) for better latency/jitter
-      control, while the 5G control plane and the UPF for eMBB slice are
+      (URLLC) slice is instantiated at the edge cloud, close to the gNB
+      Centralized Unit User Plane (CU-UP), to improve latency and jitter
+      control.  The 5G control plane and the UPF for eMBB slice are
       instantiated in the regional cloud.
 
    *  M to N: The 5G to TN slice mapping combines both approaches with a
@@ -734,13 +742,13 @@ Table of Contents
      +---------------------------------------------------------------+
      |                        5G Slice eMBB                          |
      |            +------------------------------------+             |
-     | +-----+ N3 | +---------------------------------+|  N3 +-----+ |
-     | |CU-UP+------+         TN Slice UP_eMBB        +------+ UPF | |
-     | +-----+    | +---------------------------------+|     +-----+ |
+     | +-----+ N3 | +--------------------------------+ |  N3 +-----+ |
+     | |CU-UP+------+         TN Slice UP_eMBB       +-------+ UPF | |
+     | +-----+    | +--------------------------------+ |     +-----+ |
      |            |                                    |             |
-     | +-----+ N2 | +---------------------------------+|  N2 +-----+ |
-     | |CU-CP+------+            TN Slice CP          +------+ AMF | |
-     | +-----+    | +---------------------------------+|     +-----+ |
+     | +-----+ N2 | +--------------------------------+ |  N2 +-----+ |
+     | |CU-CP+------+            TN Slice CP         +-------+ AMF | |
+     | +-----+    | +--------------------------------+ |     +-----+ |
      +------------|------------------------------------|-------------+
                   |                                    |
                   |           Transport Network        |
@@ -750,22 +758,24 @@ Table of Contents
 
                       +-------------+
                       |  Edge Cloud |
-                      |             |
                       | +---------+ |
                       | |UPF_URLLC| |
                       | +-----+---+ |
+                      |       |     |
                       +-------|-----+
+                              |
     +---------------+ +-------|----------------------+
+    |               | |       |                      |
     |   Cell Site   | | +-----+--------------------+ | +--------------+
-    |               | | |                            | |   Regional   |
+    |               | | |                          | | |   Regional   |
     | +-----------+ | | |                          | | |     Cloud    |
-    | |CU-UP_URLLC+-----+                          | | | +-----------+|
+    | |CU-UP_URLLC+-----+                          | | | +----------+ |
     | +-----------+ | | |       TN Slice ALL       +-----+  5GC CP  | |
-    |               | | |                          | | | +-----------+|
+    |               | | |                          | | | +----------+ |
     | +-----------+ | | |                          | | |              |
-    | |CU-UP_eMBB +-----+                          | | | +-----------+
+    | |CU-UP_eMBB +-----+                          | | | +----------+ |
     | +-----------+ | | |                          +-----+ UPF_eMBB | |
-    +---------------+ | |                          | | | +-----------+|
+    +---------------+ | |                          | | | +----------+ |
                       | +--------------------------+ | |              |
                       |                              | +--------------+
                       |      Transport Network       |
@@ -803,10 +813,10 @@ Table of Contents
    also updated to integrate the second slice: the TN slice (TNS-CP) and
    Network Functions (NF-CP) are shared.
 
-      The model described here in which the control plane is shared
-      among multiple slices is likely to be common; it is not mandatory,
-      though.  Deployment models with a separate control plane for each
-      slice are also possible.
+      The model described here, in which the control plane is shared
+      among multiple slices, is likely to be common; it is not
+      mandatory, though.  Deployment models with a separate control
+      plane for each slice are also possible.
 
    Section 6.1.2 of [NG.113] specifies that the eMBB slice (SST-1 and no
    Slice Differentiator (SD)) should be supported globally.  This 5G
@@ -839,7 +849,7 @@ Table of Contents
      |     +-----+    | +--------------------------+ |    +-----+    |
      |     |NF-CP+------+   CP TN Slice (TNS-CP)   +------+NF-CP|    |
      |     +-----+    | +--------------------------+ |    +-----+    |
-     |     (SHARED)   |           (SHARED)           |    (SHARED)   |
+     |      SHARED    |           (SHARED)           |     SHARED    |
      |                |                              |               |
      |     +-----+    | +--------------------------+ |    +-----+    |
      |     |NF-UP+------+  UP TN Slice (TNS-UP1)   +------+NF-UP|    |
@@ -996,10 +1006,12 @@ Table of Contents
 
               |     +------------------+     |             |
               |     |                  |     |             |
-   +------+   v   +-+---+ Provider +---+-+   v   +-----+   v   +------+
+   +------+   |   +-+---+ Provider +---+-+   |   +-----+   |   +------+
+   |      |   v   |     |          |     |   v   |     |   v   |      |
    |      +-------+*    |          |    *+-------+     +.......+      |
    | NF   +-------+* PE |          | PE *+-------+L2/L3+.......+   NF |
    |      +-------+*    |          |    *+-------+     +.......+      |
+   |      |       |     |          |     |       |     |       |      |
    +------+   AC  +-+---+  Network +---+-+   AC  +-----+       +------+
                     |                  |
                     +------------------+
@@ -1069,15 +1081,17 @@ Table of Contents
                                            Tunnels representing slices
                     +------------------+                   |
                     |                  |                   |
-   +------+       +--+--+ Provider +---+-+       +-----+   v   +------+
+   +------+       +-+---+ Provider +---+-+       +-----+   |   +------+
+   |      |       |     |          |     |       |     |   v   |      |
    |    o============*================*==========================o    |
    | NF   +-------+ PE  |          | PE  +-------+L2/L3+.......+   NF |
    |    o============*================*==========================o    |
+   |      |       |     |          |     |       |     |       |      |
    +------+  AC   +-+---+  Network +---+-+  AC   +-----+       +------+
                     |                  |
                     +------------------+
 
-   o Tunnel (IPsec, GTP-U, ...) termination point
+   o Tunnel (IPsec, GTP-U, etc.) termination point
    * SDP
 
     Figure 13: Example of 5G Slice with IP Hand-off Providing End-to-End
@@ -1100,8 +1114,8 @@ Table of Contents
    The S-NSSAI/IPv6 mapping is a local IPv6 address allocation method to
    NFs not disclosed to on-path nodes.  IP forwarding is not altered by
    this method and is still achieved following BCP 198 [RFC7608].
-   Concretely, intermediary TN nodes are not required to associate any
-   additional semantic with IPv6 address.
+   Intermediary TN nodes are not required to associate any additional
+   semantic with IPv6 address.
 
    However, operators using such mapping methods should be aware of the
    implications of any change of S-NSSAI on the IPv6 addressing plans.
@@ -1161,9 +1175,9 @@ Table of Contents
    In this option, L3VPN service instances are instantiated outside the
    provider network.  These L3VPN service instances are instantiated in
    the customer site which could be, for example, either on the compute
-   that hosts mobile NFs (Figure 15, left hand side) or within the DC/
+   that hosts mobile NFs (Figure 15, left-hand side) or within the DC/
    cloud infrastructure itself (e.g., on the top of the rack or leaf
-   switch within cloud IP fabric (Figure 15, right hand side)).  On the
+   switch within cloud IP fabric (Figure 15, right-hand side)).  On the
    AC connected to a PE, packets are already MPLS encapsulated (or MPLS-
    in-UDP/MPLS-in-IP encapsulated, if cloud or compute infrastructure
    don't support MPLS encapsulation).  Therefore, the PE uses neither a
@@ -1180,15 +1194,15 @@ Table of Contents
                                                            VLANs
    service instances                service instances  representing
    representing slices              representing slices    slices
-         |                                       |         |
-   +---+ |           +--------------+           +|---------|----------+
-   |   | |           |     Provider |           ||         |          |
-   |+--+-v-+       +-+---+       +--+--+      +-+v----+    v  +------+|
-   ||    # |       |*    |       |    *|      |  #<><>x.......x      ||
-   || NF # +-------+* PE |       | PE *+------+  #<><>x.......x   NF ||
-   ||    # |   AC  |*    |       |    *|   AC |  #<><>x.......x      ||
-   |+---+--+       +-+---+       +---+-+      +-+-----+       +------+|
-   | CS1|            |      Network  |          | L2/L3    CS2        |
+          |                                       |        |
+   +---+  |          +--------------+           +-|--------|----------+
+   |   |  |          |     Provider |           | |        |          |
+   | +-+--v-+      +-+---+       +--+--+      +-+-v----+   v  +-----+ |
+   | |    # |      |*    |       |    *|      |   #<><>x......x     | |
+   | | NF # +------+* PE |       | PE *+------+   #<><>x......x  NF | |
+   | |    # |   AC |*    |       |    *|   AC |   #<><>x......x     | |
+   | +--+---+      +-+---+       +---+-+      +-+------+      +-----+ |
+   | CS1|            |    Network    |          | L2/L3    CS2        |
    +----+            +---------------+          +---------------------+
 
      x Logical interface represented by a VLAN on a physical interface
@@ -1261,18 +1275,18 @@ Table of Contents
                                                            VLANs
    service instances                service instances  representing
    representing slices              representing slices    slices
-         |                                       |         |
-   +---+ |           +--------------+           +|---------|----------+
-   |   | |           |     Provider |           ||         |          |
-   |+--+-v-+       +-+---+       +--+--+      +-+v----+    v  +------+|
-   ||    # |       |*    |       |    *|      |  #<><>x.......x      ||
-   || NF # +-------+* PE |       | PE *+------+  #<><>x.......x   NF ||
-   ||    # |   AC  |*    |       |    *|   AC |  #<><>x.......x      ||
-   |+---+--+       +-+---+       +---+-+      +-+-----+       +------+|
+         |                                        |        |
+   +---+ |           +--------------+           +-|--------|----------+
+   |   | |           |     Provider |           | |        |          |
+   | +-+-v-+       +-+---+       +--+--+      +-+-v----+   v  +-----+ |
+   | |   # |       |*    |       |    *|      |   #<><>x......x     | |
+   | |NF # +-------+* PE |       | PE *+------+   #<><>x......x  NF | |
+   | |   # |   AC  |*    |       |    *|   AC |   #<><>x......x     | |
+   | +--+--+       +-+---+       +---+-+      +-+------+      +-----+ |
    | CS1|            |      Network  |          | L2/L3    CS2        |
    +----+            +---------------+          +---------------------+
 
-      x Logical interface represented by a VLAN on s physical interface
+      x Logical interface represented by a VLAN on a physical interface
       # Service instances (with unique MPLS label)
       * SDP
 
@@ -1301,7 +1315,7 @@ Table of Contents
    reduced.
 
    For any slice-specific per-hop behavior at the provider network edge,
-   as described in details in Section 3.7, the PE need to determine
+   as described in details in Section 3.7, the PE needs to determine
    which label in the packet represents which slice.  This can be
    achieved, for example, by allocating non-overlapping service label
    ranges for each slice, and use these ranges for slice identification
@@ -1326,7 +1340,7 @@ Table of Contents
    Given that 5QI applies to the RAN domain, it is not visible to the
    provider network.  Therefore, if 5QI-aware treatment is desired in
    the provider network as well, 5G network functions might set DSCP
-   with a value representing 5QI so that differentiated treatment can
+   with a value representing 5QI so that differentiated treatment can be
    implemented in the provider network as well.  Based on these DSCP
    values, at SDP of each provider network segment used to construct
    transport for given 5G slice, very granular QoS enforcement might be
@@ -1343,7 +1357,7 @@ Table of Contents
    In this document, this layer of QoS is referred to as '5G QoS Class'
    ('5G QoS' in short) or '5G DSCP'.
 
-5.1.2.  TN QoS Layer
+5.1.2.  Transport Network (TN) QoS Layer
 
    Control of the TN resources on provider network transit links, as
    well as traffic scheduling/prioritization on provider network transit
@@ -1392,7 +1406,7 @@ Table of Contents
    differentiation at the 5G QoS Class level.  The entire RFC 9543
    Network Slice is mapped to a single TN QoS Class, and, therefore, to
    a single QoS queue on the routers in the provider network.  With a
-   small number of deployed 5G slices (for example, only two 5G slices:
+   few number of deployed 5G slices (for example, only two 5G slices:
    eMBB and MIoT), it is possible to dedicate a separate QoS queue for
    each slice on transit routers in the provider network.  However, with
    the introduction of private/enterprises slices, as the number of 5G
@@ -1402,43 +1416,43 @@ Table of Contents
    transit links is fully coarse-grained (single NRP, sharing resources
    among all RFC 9543 Network Slices), as displayed in Figure 17.
 
-      +------------------------------------------------------------+
-      +-----------------+         PE                               |
-      |+ - - - - - - - +|                                          |
-      ||  SDP          ||              +---------------------------+
-      ||  +----------+ ||              |       Transit link        |
-      ||  |     NS 1 +------------+    |+------------------------+ |
-      ||  +----------+ ||         |----->     TN QoS Class 1     | |
-      |+ - - - - - - - +|         |    |+------------------------+ |
-      |+ - - - - - - - +|         |    |+------------------------+ |
-      ||  SDP          ||         |    ||     TN QoS Class 2     | |
-      ||  +----------+ ||         |    |+------------------------+ |
-      |   |     NS 2 +--------+   |    |+------------------------+ |
-      ||  +----------+ ||     |   |    ||     TN QoS Class 3     | |
-      |+ - - - - - - - +|     |   |    |+------------------------+ |
-      |+ - - - - - - - +|     |   |    |+------------------------+ |
-      ||  SDP          ||     +--------->     TN QoS Class 4     | |
-      ||  +----------+ ||         |    |+------------------------+ |
-      ||  |     NS 3 +------------+    |+------------------------+ |
-      ||  +----------+ ||     +--------->     TN QoS Class 5     | |
-      |+ - - - - - - - +|     |        |+------------------------+ |
-      |+ - - - - - - - +|     |        |+------------------------+ |
-      ||  SDP          ||     |        ||     TN QoS Class 6     | |
-      ||  +----------+ ||     |        |+------------------------+ |
-      ||  |     NS 4 +--------+        |+------------------------+ |
-      ||  +----------+ ||     |        ||     TN QoS Class 7     | |
-      |+ - - - - - - - +|     |        |+------------------------+ |
-      |+ - - - - - - - +|     |        |+------------------------+ |
-      ||  SDP          ||     |        ||     TN QoS Class 8     | |
-      ||  +----------+ ||     |        |+------------------------+ |
-      ||  |     NS 5 +--------+        |     Max 8 TN Classes      |
-      ||  +----------+ ||              +---------------------------+
-      |+ - - - - - - - +|                                          |
-      +-----------------+                                          |
-      +------------------------------------------------------------+
-      Fine-grained QoS enforcement   Coarse-grained QoS enforcement
-        (dedicated resources per     (resources shared by multiple
-         RFC 9543 Network Slice)       RFC 9543 Network Slices)
+    +----------------------------------------------------------------+
+    +-------------------.         PE                                 |
+    |  .--------------+ |                                            |
+    | |  SDP          | |             .------------------------------+
+    | |  +----------+ | |             |        Transit link          |
+    | |  |     NS 1 +-------------+   |  .------------------------.  |
+    | |  +----------+ | |         +-----|-->    TN QoS Class 1     | |
+    | '--------------'  |         |   |  '------------------------'  |
+    |  .--------------+ |         |   |  .------------------------.  |
+    | |  SDP          | |         |   | |     TN QoS Class 2       | |
+    | |  +----------+ | |         |   |  '------------------------'  |
+    | |  |     NS 2 +---------+   |   |  .------------------------.  |
+    | |  +----------+ | |     |   |   | |     TN QoS Class 3       | |
+    | '--------------'  |     |   |   |  '------------------------'  |
+    |  .--------------+ |     |   |   |  .------------------------.  |
+    | |  SDP          | |     +---)-----|-->  TN QoS Class 4       | |
+    | |  +----------+ | |         |   |  '------------------------'  |
+    | |  |     NS 3 +-------------+   |  .------------------------.  |
+    | |  +----------+ | |     +---------|-->  TN QoS Class 5       | |
+    | '--------------'  |     |       |  '------------------------'  |
+    |  .--------------+ |     |       |  .------------------------.  |
+    | |  SDP          | |     |       | |     TN QoS Class 6       | |
+    | |  +----------+ | |     |       |  '------------------------'  |
+    | |  |     NS 4 +---------+       |  .------------------------.  |
+    | |  +----------+ | |     |       | |     TN QoS Class 7       | |
+    | '--------------'  |     |       |  '------------------------'  |
+    |  .--------------+ |     |       |  .------------------------.  |
+    | |  SDP          | |     |       | |     TN QoS Class 8       | |
+    | |  +----------+ | |     |       |  '------------------------'  |
+    | |  |     NS 5 +---------+       |      Max 8 TN Classes        |
+    | |  +----------+ | |             '------------------------------+
+    | '--------------'  |                                            |
+    +-------------------'                                            |
+    +----------------------------------------------------------------+
+    Fine-grained QoS enforcement   Coarse-grained QoS enforcement
+      (dedicated resources per     (resources shared by multiple
+       RFC 9543 Network Slice)       RFC 9543 Network Slices)
 
            Figure 17: Slice to TN QoS Mapping (5QI-unaware Model)
 
@@ -1623,7 +1637,7 @@ Table of Contents
                                        +---|--+      |
                                            +---------+
 
-       Figure 20: Ingress Slice Admission Control (5QI-unware Model)
+       Figure 20: Ingress Slice Admission Control (5QI-unaware Model)
 
 5.2.1.2.  Outbound Edge Resource Control
 
@@ -1662,34 +1676,37 @@ Table of Contents
    exists, is preempted.
 
        +---------+        QoS output queues
-       |     +---|--+- - - - - - - - - - - - - - - - - - - - - - - - - -
-       |     | S    |                            \|/
-       |     | l    |                             |
-       |     | i    |                             |
-       |  A  | c    |                             |  weight-Slice-1-CIR
-       |  t  | e  +-|--------------------------+  | shaping-Slice-1-PIR
-    ---|--t--|---->                            |  |
-       |  a  | 1  +-|--------------------------+ /|\
+       |         |
+       |     +-------+ - - - - - - - - - - - - - - - - - - - - - - - - -
+       |     | S     |                            \|/
+       |     | l     |                             |
+       |     | i     |                             |
+       |  A  | c     |                             |  weight-Slice-1-CIR
+       |  t  | e  .--|--------------------------.  | shaping-Slice-1-PIR
+    ---|--t--|---|-->                            | |
+       |  a  | 1  '--|--------------------------' /|\
        |  c   ------ - - - - - - - - - - - - - - - - - - - - - - - - - -
-       |  h  | S    |                            \|/
-       |  m  | l    |                             |
-       |  e  | i    |                             |
-       |  n  | c    |                             |  weight-Slice-2-CIR
-       |  t  | e  +-|--------------------------+  | shaping-Slice-2-PIR
-    ---|-----|---->                            |  |
-       |  C  | 2  +-|--------------------------+ /|\
+       |  h  | S     |                            \|/
+       |  m  | l     |                             |
+       |  e  | i     |                             |
+       |  n  | c     |                             |  weight-Slice-2-CIR
+       |  t  | e  .--|--------------------------.  | shaping-Slice-2-PIR
+    ---|-----|---|-->                            | |
+       |  C  | 2  '--|--------------------------' /|\
        |  i   ------ - - - - - - - - - - - - - - - - - - - - - - - - - -
-       |  r  | S    |                            \|/
-       |  c  | l    |                             |
-       |  u  | i    |                             |
-       |  i  | c    |                             |  weight-Slice-3-CIR
-       |  t  | e  +-|--------------------------+  | shaping-Slice-3-PIR
-    ---|-----|---->                            |  |
-       |     | 3  +-|--------------------------+ /|\
-       |     +---|--+- - - - - - - - - - - - - - - - - - - - - - - - - -
+       |  r  | S     |                            \|/
+       |  c  | l     |                             |
+       |  u  | i     |                             |
+       |  i  | c     |                             |  weight-Slice-3-CIR
+       |  t  | e  .--|--------------------------.  | shaping-Slice-3-PIR
+    ---|-----|---|-->                            | |
+       |     | 3  '--|--------------------------' /|\
+       |     +-------+ - - - - - - - - - - - - - - - - - - - - - - - - -
+       |         |
        +---------+
 
-     Figure 21: Ingress Slice Admission control (5QI-unaware Model)
+    Figure 21: Ingress Slice Admission control (5QI-unaware Model) -
+                                 Output
 
 5.2.2.  5QI-aware Model
 
@@ -1699,43 +1716,43 @@ Table of Contents
    Classes used in a provider network transit equipment, as outlined in
    Figure 22.
 
-       +------------------------------------------------------------+
-       +-----------------+        PE                                |
-       |+ - - - - - - - +|                                          |
-     R ||  SDP          ||              +---------------------------+
-     F ||  +----------+ ||              |       Transit link        |
-     C ||  |5G DSCP A +---------------+ |+------------------------+ |
-     9 ||  +----------+ ||            +-->     TN QoS Class 1     | |
-     5 ||  +----------+ ||            | |+------------------------+ |
-     4 ||  |5G DSCP B +-----------+   | |+------------------------+ |
-     3 ||  +----------+ ||        |   | ||     TN QoS Class 2     | |
-       ||  +----------+ ||        |   | |+------------------------+ |
-     N ||  |5G DSCP C +--------+  |   | |+------------------------+ |
-     S ||  +----------+ ||     |  |   | ||     TN QoS Class 3     | |
-       ||  +----------+  |     |  |   | |+------------------------+ |
-     1 ||  |5G DSCP D +-----+  |  |   | |+------------------------+ |
-       ||  +----------+  |  |  |  +------>     TN QoS Class 4     | |
-       |+ - - - - - - - +|  |  |  |   | |+------------------------+ |
-     R |+ - - - - - - - +|  |  |  |   | |+------------------------+ |
-     F ||  +----------+  |  |  +--------->     TN QoS Class 5     | |
-     C ||  |5G DSCP A +-----|--|--|---+ |+------------------------+ |
-     9 ||  +----------+ ||  |  |  |     |+------------------------+ |
-     5 ||  +----------+ ||  |  |  |     ||     TN QoS Class 6     | |
-     4 ||  |5G DSCP E +-----|--|--+     |+------------------------+ |
-     3 ||  +----------+ ||  |  |        |+------------------------+ |
-       ||  +----------+ ||  |  |        ||     TN QoS Class 7     | |
-     N ||  |5G DSCP F +-----|--+        |+------------------------+ |
-     S ||  +----------+ ||  |           |+------------------------+ |
-       ||  +----------+ ||  +------------>     TN QoS Class 8     | |
-     2 ||  |5G DSCP G +-----+           |+------------------------+ |
-       ||  +----------+ ||              |     Max 8 TN Classes      |
-       ||  SDP          ||              +---------------------------+
-       |+ - - - - - - - +|                                          |
-       +-----------------+                                          |
-       +------------------------------------------------------------+
-       Fine-grained QoS enforcement   Coarse-grained QoS enforcement
-         (dedicated resources per     (resources shared by multiple
-          RFC 9543 Network Slice)        RFC 9543 Network Slices)
+      +---------------------------------------------------------------+
+      +-------------------+        PE                                 |
+      |  .--------------+ |                                           |
+    R | |  SDP          | |             +-----------------------------+
+    F | |  .---------.  | |             |       Transit link          |
+    C | | | 5G DSCP A +---------------+ |  .-----------------------.  |
+    9 | |  '---------'  | |           +---|-->  TN QoS Class 1      | |
+    5 | |  .---------.  | |           | |  '-----------------------'  |
+    4 | | | 5G DSCP B +------------+  | |  .-----------------------.  |
+    3 | |  '---------'  | |        |  | | |     TN QoS Class 2      | |
+      | |  .---------.  | |        |  | |  '-----------------------'  |
+    N | | | 5G DSCP C +---------+  |  | |  .-----------------------.  |
+    S | |  '---------'  | |     |  |  | | |     TN QoS Class 3      | |
+      | |  .---------.  | |     |  |  | |  '-----------------------'  |
+    1 | | | 5G DSCP D +------+  |  |  | |  .-----------------------.  |
+      | |  '---------'  | |  |  |  +--)---|-->  TN QoS Class 4      | |
+      | '--------------'  |  |  |  |  | |  '-----------------------'  |
+    R |  .--------------+ |  |  |  |  | |  .-----------------------.  |
+    F | |  .---------.  | |  |  +--)--|---|-->  TN QoS Class 5      | |
+    C | | | 5G DSCP A +------)--|--|--+ |  '-----------------------'  |
+    9 | |  '---------'  | |  |  |  |    |  .-----------------------.  |
+    5 | |  .---------.  | |  |  |  |    | |     TN QoS Class 6      | |
+    4 | | | 5G DSCP E +------)--)--+    |  '-----------------------'  |
+    3 | |  '---------'  | |  |  |       |  .-----------------------.  |
+      | |  .---------.  | |  |  |       | |     TN QoS Class 7      | |
+    N | | | 5G DSCP F +------)--+       |  '-----------------------'  |
+    S | |  '---------'  | |  |          |  .-----------------------.  |
+      | |  .---------.  | |  +------------|-->  TN QoS Class 8      | |
+    2 | | | 5G DSCP G +------+          |  '-----------------------'  |
+      | |  '---------'  | |             |      Max 8 TN Classes       |
+      | |  SDP          | |             +-----------------------------+
+      | '--------------'  |                                           |
+      +-------------------+                                           |
+      +---------------------------------------------------------------+
+      Fine-grained QoS enforcement   Coarse-grained QoS enforcement
+        (dedicated resources per     (resources shared by multiple
+         RFC 9543 Network Slice)        RFC 9543 Network Slices)
 
         Figure 22: Slice 5Q QoS to TN QoS Mapping (5QI-aware Model)
 
@@ -1755,35 +1772,35 @@ Table of Contents
       etc.) are provided for illustration purposes only and should not
       be considered as deployment guidance.
 
-                             +-------------  PE  -----------------+
-       +------ NF-A ------+  |                                    |
-       |                  |  | + - - - - +                        |
-       | 3GPP S-NSSAI 100 |  | |   SDP   |                        |
-       |.------. .-------.|  | |.-------.|                        |
-       ||5QI=1 +->DSCP=46+------>DSCP=46+---+                     |
-       |'------' '-------'|  | |'-------'|  |                     |
-       |.------. .-------.|  | |.-------.|  |                     |
-       ||5QI=65+->DSCP=46+------>DSCP=46+|--+                     |
-       |'------' '-------'|  | |'-------'|  |                     |
-       |.------. .-------.|  | |.-------.|  |                     |
-       ||5QI=7 +->DSCP=10+------>DSCP=10------+  .--------------. |
-       |'------' '-------'|  | |'-------'|  | |  |TN QoS Class 5| |
-       +------------------+  | +- - - - -+  +-|-->   Queue 5    | |
-                             |              | |  '--------------' |
-       +------ NF-B ------+  |              | |                   |
-       |                  |  | + - - - - +  | |                   |
-       | 3GPP S-NSSAI 200 |  | |   SDP   |  | |                   |
-       |.------. .-------.|  | |.-------.|  | |                   |
-       ||5QI=1 +->DSCP=46+------>DSCP=46+---+ |  .--------------. |
-       |'------' '-------'|  | |'-------'|  | |  |TN QoS Class 1| |
-       |.------. .-------.|  | |.-------.|  | +-->   Queue 1    | |
-       ||5QI=65+->DSCP=46+------>DSCP=46+|--+ |  '--------------' |
-       |'------' '-------'|  | |'-------'|    |                   |
-       |.------. .-------.|  | |.-------.|    |                   |
-       ||5QI=7 +->DSCP=10+------>DSCP=10+-----+                   |
-       |'------' '-------'|  | |'-------'|                        |
-       +------------------+  | +- - - - -+                        |
-                             +------------------------------------+
+                             +---------------  PE  -----------------+
+     +------ NF-A ---------+ |                                      |
+     |                     | |  .----------+                        |
+     | 3GPP S-NSSAI 100    | | |   SDP     |                        |
+      | .------. .-------. | | | .-------. |                        |
+     | |5QI=1 +->DSCP=46  +------>DSCP=46 +---+                     |
+     |  '------' '-------' | | | '-------' |  |                     |
+     |  .------. .-------. | | | .-------. |  |                     |
+     | |5QI=65+->DSCP=46  +------>DSCP=46 +---+                     |
+     |  '------' '-------' | | | '-------' |  |                     |
+     |  .------. .-------. | | | .-------. |  |                     |
+     | |5QI=7 +->DSCP=10  +------>DSCP=10 +---)-+   .------------.  |
+     |  '------' '-------' | | | '-------' |  | |  |TN QoS Class 5| |
+     +---------------------+ | '----------'   +-)-->   Queue 5    | |
+                             |                | |   '------------'  |
+     +------- NF-B --------+ |                | |                   |
+     |                     | |  .----------+  | |                   |
+     | 3GPP S-NSSAI 200    | | |   SDP     |  | |                   |
+     |  .------. .-------. | | | .-------. |  | |                   |
+     | |5QI=1 +->DSCP=46  +------>DSCP=46 +---+ |   .------------.  |
+     |  '------' '-------' | | | '-------' |  | |  |TN QoS Class 1| |
+     |  .------. .-------. | | | .-------. |  | +-->   Queue 1    | |
+     | |5QI=65+->DSCP=46  +------>DSCP=46 +---+ |   '------------'  |
+     |  '------' '-------' | | | '-------' |    |                   |
+     |  .------. .-------. | | | .-------. |    |                   |
+     | |5QI=7 +->DSCP=10  +------>DSCP=10 +-----+                   |
+     |  '------' '-------' | | | '-------' |                        |
+     +---------------------+ | '----------'                         |
+                             +--------------------------------------+
 
               Figure 23: Example of 3GPP QoS Mapped to TN QoS
 
@@ -1803,7 +1820,7 @@ Table of Contents
    the PE for fine-grained per slice and per 5G QoS Class inbound/
    outbound enforcement on the AC.
 
-   In the 5QI-aware model, compared to the 5QI-unware model, provider
+   In the 5QI-aware model, compared to the 5QI-unaware model, provider
    network edge resources are controlled in an even more granular, fine-
    grained manner, with dedicated resource allocation for each RFC 9543
    Network Slice and dedicated resource allocation for number of traffic
@@ -1813,7 +1830,7 @@ Table of Contents
 
 5.2.2.1.  Inbound Edge Resource Control
 
-   Compared to the 5QI-unware model, admission control (traffic
+   Compared to the 5QI-unaware model, admission control (traffic
    conditioning) in the 5QI-aware model is more granular, as it enforces
    not only per slice capacity constraints, but may as well enforce the
    constraints per 5G QoS Class within each slice.
@@ -1847,22 +1864,22 @@ Table of Contents
                                                 |      |  t  |
                                                  ------   a  |
                                                 |      |  c  |
-            5Q-QoS-A: CIR-2A ------<>-----------|->  S |  h  |
-            5Q-QoS-B: CIR-2B ------<>-----------|->  l |  m  |
-            5Q-QoS-C: CIR-2C ------<>-----------|->  i |  e  |
+            5Q-QoS-A: CIR-2A ------<>-----------|--> S |  h  |
+            5Q-QoS-B: CIR-2B ------<>-----------|--> l |  m  |
+            5Q-QoS-C: CIR-2C ------<>-----------|--> i |  e  |
                                                 |    c |  n  |
                                                 |    e |  t  |
-               BE CIR/PIR-2D ------<>-----------|->    |     |
+               BE CIR/PIR-2D ------<>-----------|-->   |     |
                                                 |    2 |  C  |
                                                 |      |  i  |
                                                  ------   r  |
                                                 |      |  c  |
-            5Q-QoS-A: CIR-3A ------<>-----------|->  S |  u  |
-            5Q-QoS-B: CIR-3B ------<>-----------|->  l |  i  |
-            5Q-QoS-C: CIR-3C ------<>-----------|->  i |  t  |
+            5Q-QoS-A: CIR-3A ------<>-----------|--> S |  u  |
+            5Q-QoS-B: CIR-3B ------<>-----------|--> l |  i  |
+            5Q-QoS-C: CIR-3C ------<>-----------|--> i |  t  |
                                                 |    c |     |
                                                 |    e |     |
-               BE CIR/PIR-3D-------<>-----------|->    |     |
+               BE CIR/PIR-3D-------<>-----------|-->   |     |
                                                 |    3 |     |
                                                 |      |     |
                                                 +--|---+     |
@@ -1882,8 +1899,8 @@ Table of Contents
 
                                           Slice
                                          policer   +---------+
-                               Class        .   +--|---+     |
-                              policer      ; :  |      |     |
+                               Class            +--|---+     |
+                              policer      .-.  |      |     |
             5Q-QoS-A: CIR-1A ----<>--------|-|--|--> S |     |
             5Q-QoS-B: CIR-1B ----<>--------|-|--|--> l |     |
             5Q-QoS-C: CIR-1C ----<>--------|-|--|--> i |     |
@@ -1891,9 +1908,9 @@ Table of Contents
                                            | |  |    e |     |
                BE CIR/PIR-1D --------------|-|--|-->   |  A  |
                                            | |  |    1 |  t  |
-                                           : ;  |      |  t  |
-                                            .    ------   a  |
-                                           ; :  |      |  c  |
+                                           '-'  |      |  t  |
+                                                 ------   a  |
+                                           .-.  |      |  c  |
             5Q-QoS-A: CIR-2A ----<>--------|-|--|--> S |  h  |
             5Q-QoS-B: CIR-2B ----<>--------|-|--|--> l |  m  |
             5Q-QoS-C: CIR-2C ----<>--------|-|--|--> i |  e  |
@@ -1901,9 +1918,9 @@ Table of Contents
                                            | |  |    e |  t  |
                BE CIR/PIR-2D --------------|-|--|-->   |     |
                                            | |  |    2 |  C  |
-                                           : ;  |      |  i  |
-                                            .    ------   r  |
-                                           ; :  |      |  c  |
+                                           '-'  |      |  i  |
+                                                 ------   r  |
+                                           .-.  |      |  c  |
             5Q-QoS-A: CIR-3A ----<>--------|-|--|--> S |  u  |
             5Q-QoS-B: CIR-3B ----<>--------|-|--|--> l |  i  |
             5Q-QoS-C: CIR-3C ----<>---- ---|-|--|--> i |  t  |
@@ -1911,8 +1928,8 @@ Table of Contents
                                            | |  |    e |     |
                BE CIR/PIR-3D --------------|-|--|-->   |     |
                                            | |  |    3 |     |
-                                           : ;  |      |     |
-                                            '   +--|---+     |
+                                           '-'  |      |     |
+                                                +--|---+     |
                                                    +---------+
 
    Figure 25: Ingress Slice Admission Control (5QI-aware) - Hierarchical
@@ -1927,46 +1944,43 @@ Table of Contents
    should not exceed the physical capacity of the AC.
 
       +---------+        QoS output queues
-      |      ------ - - - - - - - - - - - - - - - - - - - - - - - - - -
-      |     |   |.-|--------------------------. \|/
-   ---|-----|----> 5Q-QoS-A: w-5Q-QoS-A-CIR   |  |
-      |     | S |'-|--------------------------'  |
-      |     | l |.-|--------------------------.  |
-   ---|-----|-i--> 5Q-QoS-B: w-5Q-QoS-B-CIR   |  |
-      |     | c |'-|--------------------------'  |  weight-Slice-1-CIR
-      |     | e |.-|--------------------------.  | shaping-Slice-1-PIR
-   ---|-----|----> 5Q-QoS-C: w-5Q-QoS-C-CIR   |  |
-      |     | 1 |'-|--------------------------'  |
-      |     |   |.-|--------------------------.  |
-   ---|-----|----> Best Effort (remainder)    |  |
-      |     |   |'-|--------------------------' /|\
-      |  A   ------ - - - - - - - - - - - - - - - - - - - - - - - - - -
-      |  t  |   |.-|--------------------------. \|/
-      |  t  |   ||                            |  |
-      |  a  |   |'-|--------------------------'  |
-      |  c  | S |.-|--------------------------.  |
-      |  h  | l ||                            |  |
-      |  m  | i |'-|--------------------------'  |  weight-Slice-2-CIR
-      |  e  | c |.-|--------------------------.  | shaping-Slice-2-PIR
-      |  n  | e ||                            |  |
-      |  t  |   |'-|--------------------------'  |
-      |     | 2 |.-|--------------------------.  |
-      |  C  |   ||                            |  |
-      |  i  |   |'-|--------------------------' /|\
-      |  r   ------ - - - - - - - - - - - - - - - - - - - - - - - - - -
-      |  c  |   |.-|--------------------------. \|/
-      |  u  |   ||                            |  |
-      |  i  | S |'-|--------------------------'  |
-      |  t  | l |.-|--------------------------.  |
-      |     | i ||                            |  |
-      |     | c |'-|--------------------------'  |  weight-Slice-3-CIR
-      |     | e |.-|--------------------------+  | shaping-Slice-3-PIR
-      |     |   ||                            |  |
-      |     | 3 |'-|--------------------------'  |
-      |     |   |.-|--------------------------.  |
-      |     |   ||                            |  |
-      |     |   |'-|--------------------------' /|\
-      |      ------ - - - - - - - - - - - - - - - - - - - - - - - - - -
+      |     +---|---+ - - - - - - - - - - - - - - - - - - - - - - - - -
+      |     |    .--|--------------------------. \|/
+   ---|-----|---|--> 5Q-QoS-A: w-5Q-QoS-A-CIR   | |
+      |     | S  '-----------------------------'  |
+      |     | l  .-----------------------------.  |
+   ---|-----|-i-|--> 5Q-QoS-B: w-5Q-QoS-B-CIR   | |
+      |     | c  '-----------------------------'  |  weight-Slice-1-CIR
+      |     | e  .-----------------------------.  | shaping-Slice-1-PIR
+   ---|-----|---|--> 5Q-QoS-C: w-5Q-QoS-C-CIR   | |
+      |     | 1  '-----------------------------'  |
+      |     |    .-----------------------------.  |
+   ---|-----|---|--> Best Effort (remainder)    | |
+      |     |    '--|--------------------------' /|\
+      |  A  +-------+ - - - - - - - - - - - - - - - - - - - - - - - - -
+      |  t  |    .--|--------------------------. \|/
+      |  t  |   |                               | |
+      |  a  |    '-----------------------------'  |
+      |  c  | S     |                             |
+      |  h  | l     |
+      |  m  | i     ...                           |  weight-Slice-2-CIR
+      |  e  | c     |                             | shaping-Slice-2-PIR
+      |  n  | e  .-----------------------------.  |
+      |  t  |   |                               | |
+      |     | 2  '-----------------------------' /|\
+      |  C  +-------+ - - - - - - - - - - - - - - - - - - - - - - - - -
+      |  i  |       |                            \|/
+      |  r  +    .-----------------------------.  |
+      |  c  |   |                               | |
+      |  u  |    '-----------------------------'  |
+      |  i  | S     |                             |
+      |  t  | l     |                             |
+      |     | i     ...                           |  weight-Slice-3-CIR
+      |     | c     |                             | shaping-Slice-3-PIR
+      |     | e  .-----------------------------.  |
+      |     |   |                               | |
+      |     | 3  '-----------------------------'  /|\
+      |     +---|---+ - - - - - - - - - - - - - - - - - - - - - - - - -
       +---------+
 
            Figure 26: Egress Slice Admission Control (5QI-aware)
@@ -2057,26 +2071,28 @@ Table of Contents
    transports is out of scope for this document.
 
        +---------------+                                    +------+
-       |  Ingress PE   |   .------------------------------->| PE-A |
-       |               |   |   .-------------------------->>|      |
-       |  +---------+  |   |   '---------------------.      +------+
-       |  |         x------'   .---------------------'
-       |  |Underlay x--------------------------------.      +------+
-       |  |Transportx-------------.                  '----->| PE-B |
-       |  |   A     x-------.  |  |  .---.   .---.   .---->>|      |
-       |  +---------+  |    |  |  |  |   |   |   |   |      +------+
-       |               |    |  |  |  |   '---'   '---'
-       |  +---------+  |    |  |  |  |                      +------+
-       |  |         o-------|--'  '------------------------>| PE-C |
-       |  |Underlay o-------|--------'               .---->>|      |
-       |  |Transporto-------|-----------------.      |      +------+
-       |  |   B     o-----. '---------------. |      |
-       |  +---------+  |  | .-. .-. .-. .-. | '------'      +------+
-       |               |  | | | | | | | | | '-------------->| PE-D |
-       +---------------+  '-' '-' '-' '-' '--------------->>|      |
+       |  Ingress PE   |   +------------------------------->| PE-A |
+       |               |   |   +-------------------------->>|      |
+       |               |   |   |                            +------+
+       | +----------+  |   |   +---------------------+
+       | |          |  |   |                         |
+       | |          x------+   +---------------------+
+       | |Underlay  x----------|-------------+              +------+
+       | |Transport x----------)--+          +------------->| PE-B |
+       | |    A     x-------+  |  |  +---+         +------>>|      |
+       | +----------+  |    |  |  |  |   |         |        +------+
+       |               |    |  |  |  |   +---------+
+       | +----------+  |    |  |  |  |
+       | |          |  |    |  |  |  |                      +------+
+       | |          o-------)--+  +--)--------------------->| PE-C |
+       | |Underlay  o-------|--------+               +---->>|      |
+       | |Transport o-------|-----------------+      |      +------+
+       | |   B      o-----+ +---------------+ |      |
+       | |          |  |  |                 | |      |
+       | +----------+  |  |   +---+   +---+ | +------+      +------+
+       |               |  |   |   |   |   | +-------------->| PE-D |
+       +---------------+  +---+   +---+   +--------------->>|      |
                                                             +------+
-        x----->   Tunnels of Underlay Transport A
-        o---->>   Tunnels of Underlay Transport B
 
        Figure 27: Example of Underlay Transport Relying on TE Tunnels
 
@@ -2087,7 +2103,7 @@ Table of Contents
 
 6.1.  5QI-unaware Model
 
-   As discussed in Section 5.2.1, in the 5QI-unware model, the provider
+   As discussed in Section 5.2.1, in the 5QI-unaware model, the provider
    network doesn't take into account 5G QoS during execution of per-hop
    behavior.  The entire slice is mapped to single TN QoS Class,
    therefore the entire slice is subject to the same per-hop behavior.
@@ -2095,41 +2111,41 @@ Table of Contents
    entire slice is mapped to a single underlay transport, as depicted in
    Figure 28.
 
-                 +-----------------------------------------+
-                 |.. .. .. .. .. ..                        |
-                 :        AC       :      PE               |
-                 :+---------------+:                       |
-                 :|  SDP          |:                       |
-                 :|  +----------+ |:                       |
-                 :|  |     NS 1 +----------+               |
-                 :|  +----------+ |:       |               |
-                 :+---------------+:       |               |
-                 :+---------------+:       |   +---------+ |
-                 :|  SDP          |:       |   |         | |
-                 :|  +----------+ |:       |   |Underlay | |
-                 :|  |     NS 2 +------+   +--->Transport| |
-                 :|  +----------+ |:   |   |   |    A    | |
-                 :+---------------+:   |   |   |         | |
-                 :+---------------+:   |   |   +---------+ |
-                 :|  SDP          |:   |   |               |
-                 :|  +----------+ |:   |   |               |
-                 :|   |     NS 3 +-----+   |               |
-                 :|  +----------+ |:   |   |   +---------+ |
-                 :+---------------+:   |   |   |         | |
-                 :+---------------+:   |   |   |Underlay | |
-                 :|  SDP          |:   +------->Transport| |
-                 :|  +----------+ |:   |   |   |    B    | |
-                 :|  |     NS 4 +------+   |   |         | |
-                 :|  +----------+ |:       |   +---------+ |
-                 :+---------------+:       |               |
-                 :+---------------+:       |               |
-                 :|  SDP          |:       |               |
-                 :|  +----------+ |:       |               |
-                 :|  |     NS 5 +----------+               |
-                 :|  +----------+ |:                       |
-                 :+---------------+:                       |
-                 '.. .. .. .. .. ..                        |
-                 +-----------------------------------------+
+                +-------------------------------------------+
+                |.. .. .. .. .. .. .                        |
+                :        AC         :      PE               |
+                :  .--------------. :                       |
+                : |  SDP          | :                       |
+                : |  +----------+ | :                       |
+                : |  |     NS 1 +-----------+               |
+                : |  +----------+ | :       |               |
+                : '--------------'  :       |               |
+                :  .--------------. :       |   +---------+ |
+                : |  SDP          | :       |   |         | |
+                : |  +----------+ | :       |   |Underlay | |
+                : |  |     NS 2 +-------+   +--->Transport| |
+                : |  +----------+ | :   |   |   |    A    | |
+                : '--------------'  :   |   |   |         | |
+                :  .--------------. :   |   |   +---------+ |
+                : |  SDP          | :   |   |               |
+                : |  +----------+ | :   |   |               |
+                : |  |     NS 3 +-------+   |               |
+                : |  +----------+ | :   |   |   +---------+ |
+                : '--------------'  :   |   |   |         | |
+                :  .--------------. :   |   |   |Underlay | |
+                : |  SDP          | :   +---)--->Transport| |
+                : |  +----------+ | :   |   |   |    B    | |
+                : |  |     NS 4 +-------+   |   |         | |
+                : |  +----------+ | :       |   +---------+ |
+                : '--------------'  :       |               |
+                :  .--------------. :       |               |
+                : |  SDP          | :       |               |
+                : |  +----------+ | :       |               |
+                : |  |     NS 5 +-----------+               |
+                : |  +----------+ | :                       |
+                : '--------------'  :                       |
+                '.. .. .. .. .. .. .'                       |
+                +-------------------------------------------+
 
       Figure 28: Network Slice to PEs Underlay Transport Mapping (5QI-
                                unaware Model)
@@ -2142,41 +2158,41 @@ Table of Contents
    Classes with similar characteristics are mapped to a common underlay
    transport, as depicted in Figure 29.
 
-                 +-------------------------------------------+
-                 |.. .. .. .. .. ..                          |
-                 :        AC       :      PE                 |
-                 :+---------------+:                         |
-               R :|  SDP          |:                         |
-               F :|  +----------+ |:                         |
-               C :|  | 5G QoS A +------+                     |
-               9 :|  +----------+ |:   |                     |
-               5 :|  +----------+ |:   |                     |
-               4 :|  | 5G QoS B +------+                     |
-               3 :|  +----------+ |:   |         +---------+ |
-                 :|  +----------+ |:   |         |         | |
-               N :|  | 5G QoS C +-----------+    |Underlay | |
-               S :|  +----------+ |:   +--------->Transport| |
-                 :|  +----------+ |:   |    |    |    A    | |
-               1 :|  | 5G QoS D +-----------+    |         | |
-                 :|  +----------+ |:   |    |    +---------+ |
-                 :+---------------+:   |    |                |
-               R :+---------------+:   |    |                |
-               F :|  +----------+ |:   |    |                |
-               C :|  | 5G QoS A +------+    |    +---------+ |
-               9 :|  +----------+ |:   |    |    |         | |
-               5 :|  +----------+ |:   |    |    |Underlay | |
-               4 :|  | 5G QoS E +------+    +---->Transport| |
-               3 :|  +----------+ |:        |    |    B    | |
-                 :|  +----------+ |:        |    |         | |
-               N :|  | 5G QoS F +-----------+    +---------+ |
-               S :|  +----------+ |:        |                |
-                 :|  +----------+ |:        |                |
-               2 :|  | 5G QoS G +-----------+                |
-                 :|  +----------+ |:                         |
-                 :|  SDP          |:                         |
-                 :+---------------+:                         |
-                 '.. .. .. .. .. ..                          |
-                 +-------------------------------------------+
+                +---------------------------------------------+
+                |.. .. .. .. .. .. .                          |
+                :        AC         :      PE                 |
+                :  .--------------. :                         |
+              R : |  SDP          | :                         |
+              F : |  .---------.  | :                         |
+              C : | | 5G QoS A  +-------+                     |
+              9 : |  '---------'  | :   |                     |
+              5 : |  .---------.  | :   |                     |
+              4 : | | 5G QoS B  +-------+                     |
+              3 : |  '---------'  | :   |         +---------+ |
+                : |  .---------.  | :   |         |         | |
+              N : | | 5G QoS C  +-------)----+    |Underlay | |
+              S : |  '---------'  | :   +----)---->Transport| |
+                : |  .---------.  | :   |    |    |    A    | |
+              1 : | | 5G QoS D  +-------)----+    |         | |
+                : |  '---------'  | :   |    |    +---------+ |
+                : '--------------'  :   |    |                |
+              R :  .--------------. :   |    |                |
+              F : |  .---------.  | :   |    |                |
+              C : | | 5G QoS A  +-------+    |    +---------+ |
+              9 : |  '---------'  | :   |    |    |         | |
+              5 : |  .---------.  | :   |    |    |Underlay | |
+              4 : | | 5G QoS E  +-------+    +---->Transport| |
+              3 : |  '---------'  | :        |    |    B    | |
+                : |  .---------.  | :        |    |         | |
+              N : | | 5G QoS F  +------------+    +---------+ |
+              S : |  '---------'  | :        |                |
+                : |  .---------.  | :        |                |
+              2 : | | 5G QoS G  +------------+                |
+                : |  '---------'  | :                         |
+                : |  SDP          | :                         |
+                : '--------------'  :                         |
+                '.. .. .. .. .. .. '                          |
+                +---------------------------------------------+
 
      Figure 29: Network Slice to Underlay Transport Mapping (5QI-aware
                                    Model)
@@ -2202,29 +2218,31 @@ Table of Contents
    DCs, but is not aware of the individual network functions at customer
    sites.
 
-   + - - - - DC 1- - - -+   + - - - - - - - - +   + - - - - DC 2- - - -+
-   | +------+           |  +----+         +----+  |           +------+ |
-   | | NF1A |           +--*PE1A|         |PE2A*--+           | NF2A | |
-   | +------+           |  +----+         +----+  |           +------+ |
-   | +------+           |   |                 |   |           +------+ |
-   | | NF1B |           |   |                 |   |           | NF2B | |
-   | +------+           |   |                 |   |           +------+ |
-   | +------+           |  +----+         +----+  |           +------+ |
-   | | NF1C |           +--*PE1B|         |PE2B*--+           | NF2C | |
-   | +------+           |  +----+         +----+  |           +------+ |
-   + - - - - - - - - - -+   |    Provider     |   + - - - - - - - - - -+
+   +-------- DC 1-------+   +-----------------+   +-------- DC 2-------+
+   |                    |   |                 |   |                    |
+   | +------+           |  +----+         +----+  |   +------+         |
+   | | NF1A |           +--*PE1A|         |PE2A*--+   | NF2A |         |
+   | +------+           |  +----+         +----+  |   +------+         |
+   |    +------+        |   |                 |   |      +------+      |
+   |    | NF1B |        |   |                 |   |      | NF2B |      |
+   |    +------+        |   |                 |   |      +------+      |
+   |      +------+      |  +----+         +----+  |           +------+ |
+   |      | NF1C |      +--*PE1B|         |PE2B*--+           | NF2C | |
+   |      +------+      |  +----+         +----+  |           +------+ |
+   +--------------------+   |    Provider     |   +--------------------+
                             |                 |
-                            |     Network     |   + - - - - DC 3- - - -+
-                            |             +----+  |           +------+ |
-                            |             |PE3A*--+           | NF3A | |
-                            |             +----+  |           +------+ |
-                            |                 |   |           +------+ |
-                            |                 |   |           | NF3B | |
-                            |                 |   |           +------+ |
+                            |     Network     |   +--------DC 3--------+
+                            |             +----+  |   +------+         |
+                            |             |PE3A*--+   | NF3A |         |
+                            |             +----+  |   +------+         |
+                            |                 |   |       +------+     |
+                            |                 |   |       | NF3B |     |
+                            |                 |   |       +------+     |
                             |             +----+  |           +------+ |
                             |             |PE3B*--+           | NF3C | |
                             |             +----+  |           +------+ |
-                            + - - - - - - - - +   + - - - - - - - - - -+
+                            |                 |   |                    |
+                            +-----------------+   +--------------------+
 
      * SDP, with fine-grained QoS (dedicated resources per RFC 9543 NS)
 
@@ -2518,7 +2536,7 @@ Table of Contents
    carefully consider means to ease slice migration strategies.  For
    example, a provider may initially adopt a 1-to-1 mapping if it has to
    instantiate just a few Network Slices and accommodate the need of
-   only a few customers.  That provider may decide to move to a N-to-1
+   only a few customers.  That provider may decide to move to an N-to-1
    mapping for aggregation/scalability purposes if sustained increased
    slice demand is observed.
 
@@ -2543,51 +2561,48 @@ Table of Contents
    that are applicable to network slicing, with a focus on the following
    considerations:
 
-   *  Conformance to security constraints:
+   Conformance to security constraints:  Specific security requests,
+      such as not routing traffic through a particular geographical
+      region can be met by mapping the traffic to an underlay transport
+      (Section 6) that avoids that region.
 
-      Specific security requests, such as not routing traffic through a
-      particular geographical region can be met by mapping the traffic
-      to an underlay transport that avoids that region.
+   NSC authentication:  Per [RFC9543], this is about underlay networks
+      need to be protected against attacks from an adversary NSC as this
+      could destabilize overall network operations.  The interaction
+      between an NSC and the underly network is used to pass service
+      provisioning requests following a set of YANG modules that are
+      designed to be accessed via YANG-based management protocols, such
+      as NETCONF [RFC6241] and RESTCONF [RFC8040].  These protocols have
+      to use a secure transport layer (e.g., SSH [RFC4252], TLS
+      [RFC8446], and QUIC [RFC9000]) and have to use mutual
+      authentication.
 
-   *  IETF NSC authentication:
+      The NETCONF access control model [RFC8341] provides the means to
+      restrict access for particular NETCONF or RESTCONF users to a
+      preconfigured subset of all available NETCONF or RESTCONF protocol
+      operations and content.
 
-      This is out of the scope for this document.  It should be
-      addressed in documents that describe IETF NSC realization (e.g.,
-      [I-D.ietf-teas-ns-controller-models]).
+      Readers may refer to documents that describe NSC realization such
+      as [I-D.ietf-teas-ns-controller-models].
 
-   *  Specific isolation criteria:
+   Specific isolation criteria:  Adequate admission control policies,
+      for example policers as described in Section 5.2.1.1, should be
+      configured in the edge of the provider network to control access
+      to specific slice resources.  This prevents the possibility of one
+      slice consuming resources at the expense of other slices.
+      Likewise, access to classification and mapping tables have to be
+      controlled to prevent misbehaviors (an unauthorized entity may
+      modify the table to bind traffic to a random slice, redirect the
+      traffic, etc.).  Network devices have to check that a required
+      access privilege is provided before granting access to specific
+      data or performing specific actions.
 
-      Adequate admission control policies, for example policers as
-      described in Section 5.2.1.1, should be configured in the edge of
-      the provider network to control access to specific slice
-      resources.  This prevents the possibility of one slice consuming
-      resources at the expense of other slices.  Likewise, access to
-      classification and mapping tables have to be controlled to prevent
-      misbehaviors (an unauthorized entity may modify the table to bind
-      traffic to a random slice, redirect the traffic, etc.).  Network
-      devices have to check that a required access privilege is provided
-      before granting access to specific data or performing specific
-      actions.
+   Data Confidentiality and Integrity of an IETF Network Slice:  As desc
+      ribed in Section 5.1.2.1 of [RFC9543], the customer might request
+      a Service Level Expectation (SLE) that mandates encryption.
 
-   *  Data Confidentiality and Integrity of an IETF Network Slice:
-
-      As described in Section 5.1.2.1 of [RFC9543], the customer might
-      request an SLE that mandates encryption.  As described in
-      Section 6, this can be achieved, e.g., by mapping the traffic to
-      an underlay transport that uses only MACsec-encrypted links.
-
-   Many of the YANG modules cited in this document define schema for
-   data that is designed to be accessed via network management protocols
-   such as NETCONF [RFC6241] or RESTCONF [RFC8040].  The lowest NETCONF
-   layer is the secure transport layer, and the mandatory-to-implement
-   secure transport is Secure Shell (SSH) [RFC6242].  The lowest
-   RESTCONF layer is HTTPS, and the mandatory-to-implement secure
-   transport is TLS [RFC8446].
-
-   The NETCONF access control model [RFC8341] provides the means to
-   restrict access for particular NETCONF or RESTCONF users to a
-   preconfigured subset of all available NETCONF or RESTCONF protocol
-   operations and content.
+      This can be achieved, e.g., by mapping the traffic to an underlay
+      transport (Section 6) that uses only MACsec-encrypted links.
 
    In order to avoid the need for a mapping table to associate source/
    destination IP addresses and slices' specific S-NSSAIs, Section 4.2
@@ -2601,7 +2616,18 @@ Table of Contents
 
    Security considerations specific to each of the technologies and
    protocols listed in the document are discussed in the specification
-   documents of each of these protocols.
+   documents of each of these protocols.  In particular, readers should
+   refer to the "Security Framework for Provider-Provisioned Virtual
+   Private Networks (PPVPNs)" [RFC4111], the "Applicability Statement
+   for BGP/MPLS IP Virtual Private Networks (VPNs)" (Section 6 of
+   [RFC4365]), and the "Analysis of the Security of BGP/MPLS IP Virtual
+   Private Networks (VPNs)" [RFC4381] for a comprehensive discussion
+   about security considerations related to VPN technologies (including
+   authentication and encryption between PEs, use of IPsec tunnels that
+   terminate within the customer sites to protect user data, prevention
+   of illegitimate traffic from entering a VPN instance, etc.).  Also,
+   readers may refer to Section 9 of [RFC9522] for a discussion about
+   security considerations related to TE mechanisms.
 
 12.  References
 
@@ -2611,32 +2637,15 @@ Table of Contents
               Networks (VPNs)", RFC 4364, DOI 10.17487/RFC4364, February
               2006, <https://www.rfc-editor.org/rfc/rfc4364>.
 
-   [RFC6241]  Enns, R., Ed., Bjorklund, M., Ed., Schoenwaelder, J., Ed.,
-              and A. Bierman, Ed., "Network Configuration Protocol
-              (NETCONF)", RFC 6241, DOI 10.17487/RFC6241, June 2011,
-              <https://www.rfc-editor.org/rfc/rfc6241>.
-
-   [RFC6242]  Wasserman, M., "Using the NETCONF Protocol over Secure
-              Shell (SSH)", RFC 6242, DOI 10.17487/RFC6242, June 2011,
-              <https://www.rfc-editor.org/rfc/rfc6242>.
-
    [RFC7608]  Boucadair, M., Petrescu, A., and F. Baker, "IPv6 Prefix
               Length Recommendation for Forwarding", BCP 198, RFC 7608,
               DOI 10.17487/RFC7608, July 2015,
               <https://www.rfc-editor.org/rfc/rfc7608>.
 
-   [RFC8040]  Bierman, A., Bjorklund, M., and K. Watsen, "RESTCONF
-              Protocol", RFC 8040, DOI 10.17487/RFC8040, January 2017,
-              <https://www.rfc-editor.org/rfc/rfc8040>.
-
    [RFC8341]  Bierman, A. and M. Bjorklund, "Network Configuration
               Access Control Model", STD 91, RFC 8341,
               DOI 10.17487/RFC8341, March 2018,
               <https://www.rfc-editor.org/rfc/rfc8341>.
-
-   [RFC8446]  Rescorla, E., "The Transport Layer Security (TLS) Protocol
-              Version 1.3", RFC 8446, DOI 10.17487/RFC8446, August 2018,
-              <https://www.rfc-editor.org/rfc/rfc8446>.
 
    [RFC9543]  Farrel, A., Ed., Drake, J., Ed., Rokui, R., Homma, S.,
               Makhijani, K., Contreras, L., and J. Tantsura, "A
@@ -2646,9 +2655,13 @@ Table of Contents
 
 12.2.  Informative References
 
+   [Book-5G]  Peterson, L., Sunay, O., and B. Davie, "5G Mobile
+              Networks: A Systems Approach", 2022,
+              <https://5g.systemsapproach.org/>.
+
    [ECPRI]    Common Public Radio Interface, "Common Public Radio
               Interface: eCPRI Interface Specification", n.d.,
-              <http://www.cpri.info/downloads/
+              <https://www.cpri.info/downloads/
               eCPRI_v_2.0_2019_05_10c.pdf>.
 
    [I-D.cbs-teas-5qi-to-dscp-mapping]
@@ -2663,18 +2676,18 @@ Table of Contents
               Boucadair, M., Roberts, R., de Dios, O. G., Barguil, S.,
               and B. Wu, "A Network YANG Data Model for Attachment
               Circuits", Work in Progress, Internet-Draft, draft-ietf-
-              opsawg-ntw-attachment-circuit-14, 7 November 2024,
+              opsawg-ntw-attachment-circuit-16, 23 January 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-
-              ntw-attachment-circuit-14>.
+              ntw-attachment-circuit-16>.
 
    [I-D.ietf-opsawg-teas-attachment-circuit]
               Boucadair, M., Roberts, R., de Dios, O. G., Barguil, S.,
               and B. Wu, "YANG Data Models for Bearers and 'Attachment
               Circuits'-as-a-Service (ACaaS)", Work in Progress,
               Internet-Draft, draft-ietf-opsawg-teas-attachment-circuit-
-              18, 7 November 2024,
+              20, 23 January 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-
-              teas-attachment-circuit-18>.
+              teas-attachment-circuit-20>.
 
    [I-D.ietf-teas-5g-network-slice-application]
               Geng, X., Contreras, L. M., Rokui, R., Dong, J., and I.
@@ -2688,9 +2701,9 @@ Table of Contents
               Wu, B., Dhody, D., Rokui, R., Saad, T., and J. Mullooly,
               "A YANG Data Model for the RFC 9543 Network Slice
               Service", Work in Progress, Internet-Draft, draft-ietf-
-              teas-ietf-network-slice-nbi-yang-17, 20 December 2024,
+              teas-ietf-network-slice-nbi-yang-22, 8 February 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-teas-
-              ietf-network-slice-nbi-yang-17>.
+              ietf-network-slice-nbi-yang-22>.
 
    [I-D.ietf-teas-ns-controller-models]
               Contreras, L. M., Rokui, R., Tantsura, J., Wu, B., and X.
@@ -2699,6 +2712,15 @@ Table of Contents
               ietf-teas-ns-controller-models-03, 21 October 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-
               controller-models-03>.
+
+   [I-D.ietf-teas-ns-ip-mpls]
+              Saad, T., Beeram, V. P., Dong, J., Wen, B., Ceccarelli,
+              D., Halpern, J. M., Peng, S., Chen, R., Liu, X.,
+              Contreras, L. M., Rokui, R., and L. Jalil, "Realizing
+              Network Slices in IP/MPLS Networks", Work in Progress,
+              Internet-Draft, draft-ietf-teas-ns-ip-mpls-04, 28 May
+              2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
+              teas-ns-ip-mpls-04>.
 
    [IEEE802.1AE]
               IEEE, "802.1AE: MAC Security (MACsec)", n.d.,
@@ -2742,6 +2764,11 @@ Table of Contents
               DOI 10.17487/RFC4026, March 2005,
               <https://www.rfc-editor.org/rfc/rfc4026>.
 
+   [RFC4111]  Fang, L., Ed., "Security Framework for Provider-
+              Provisioned Virtual Private Networks (PPVPNs)", RFC 4111,
+              DOI 10.17487/RFC4111, July 2005,
+              <https://www.rfc-editor.org/rfc/rfc4111>.
+
    [RFC4115]  Aboul-Magd, O. and S. Rabie, "A Differentiated Service
               Two-Rate, Three-Color Marker with Efficient Handling of
               in-Profile Traffic", RFC 4115, DOI 10.17487/RFC4115, July
@@ -2753,6 +2780,10 @@ Table of Contents
               DOI 10.17487/RFC4176, October 2005,
               <https://www.rfc-editor.org/rfc/rfc4176>.
 
+   [RFC4252]  Ylonen, T. and C. Lonvick, Ed., "The Secure Shell (SSH)
+              Authentication Protocol", RFC 4252, DOI 10.17487/RFC4252,
+              January 2006, <https://www.rfc-editor.org/rfc/rfc4252>.
+
    [RFC4360]  Sangli, S., Tappan, D., and Y. Rekhter, "BGP Extended
               Communities Attribute", RFC 4360, DOI 10.17487/RFC4360,
               February 2006, <https://www.rfc-editor.org/rfc/rfc4360>.
@@ -2761,6 +2792,11 @@ Table of Contents
               Virtual Private Networks (VPNs)", RFC 4365,
               DOI 10.17487/RFC4365, February 2006,
               <https://www.rfc-editor.org/rfc/rfc4365>.
+
+   [RFC4381]  Behringer, M., "Analysis of the Security of BGP/MPLS IP
+              Virtual Private Networks (VPNs)", RFC 4381,
+              DOI 10.17487/RFC4381, February 2006,
+              <https://www.rfc-editor.org/rfc/rfc4381>.
 
    [RFC4664]  Andersson, L., Ed. and E. Rosen, Ed., "Framework for Layer
               2 Virtual Private Networks (L2VPNs)", RFC 4664,
@@ -2791,6 +2827,11 @@ Table of Contents
               Maintenance (OAM) Requirements and Framework", RFC 6136,
               DOI 10.17487/RFC6136, March 2011,
               <https://www.rfc-editor.org/rfc/rfc6136>.
+
+   [RFC6241]  Enns, R., Ed., Bjorklund, M., Ed., Schoenwaelder, J., Ed.,
+              and A. Bierman, Ed., "Network Configuration Protocol
+              (NETCONF)", RFC 6241, DOI 10.17487/RFC6241, June 2011,
+              <https://www.rfc-editor.org/rfc/rfc6241>.
 
    [RFC6291]  Andersson, L., van Helvoort, H., Bonica, R., Romascanu,
               D., and S. Mansfield, "Guidelines for the Use of the "OAM"
@@ -2828,6 +2869,10 @@ Table of Contents
               RFC 7806, DOI 10.17487/RFC7806, April 2016,
               <https://www.rfc-editor.org/rfc/rfc7806>.
 
+   [RFC8040]  Bierman, A., Bjorklund, M., and K. Watsen, "RESTCONF
+              Protocol", RFC 8040, DOI 10.17487/RFC8040, January 2017,
+              <https://www.rfc-editor.org/rfc/rfc8040>.
+
    [RFC8100]  Geib, R., Ed. and D. Black, "Diffserv-Interconnection
               Classes and Practice", RFC 8100, DOI 10.17487/RFC8100,
               March 2017, <https://www.rfc-editor.org/rfc/rfc8100>.
@@ -2842,6 +2887,10 @@ Table of Contents
               Networking (SPRING) Networks", RFC 8355,
               DOI 10.17487/RFC8355, March 2018,
               <https://www.rfc-editor.org/rfc/rfc8355>.
+
+   [RFC8446]  Rescorla, E., "The Transport Layer Security (TLS) Protocol
+              Version 1.3", RFC 8446, DOI 10.17487/RFC8446, August 2018,
+              <https://www.rfc-editor.org/rfc/rfc8446>.
 
    [RFC8466]  Wen, B., Fioccola, G., Ed., Xie, C., and L. Jalil, "A YANG
               Data Model for Layer 2 Virtual Private Network (L2VPN)
@@ -2862,6 +2911,11 @@ Table of Contents
               (SRv6) Network Programming", RFC 8986,
               DOI 10.17487/RFC8986, February 2021,
               <https://www.rfc-editor.org/rfc/rfc8986>.
+
+   [RFC9000]  Iyengar, J., Ed. and M. Thomson, Ed., "QUIC: A UDP-Based
+              Multiplexed and Secure Transport", RFC 9000,
+              DOI 10.17487/RFC9000, May 2021,
+              <https://www.rfc-editor.org/rfc/rfc9000>.
 
    [RFC9099]  Vyncke, É., Chittimaneni, K., Kaeo, M., and E. Rey,
               "Operational Security Considerations for IPv6 Networks",
@@ -2921,10 +2975,6 @@ Table of Contents
               <https://portal.3gpp.org/desktopmodules/Specifications/
               SpecificationDetails.aspx?specificationId=3273>.
 
-   [_5G-Book] Peterson, L., Sunay, O., and B. Davie, "5G Mobile
-              Networks: A Systems Approach", 2022,
-              <https://5g.systemsapproach.org/>.
-
 Appendix A.  An Example of Local IPv6 Addressing Plan for Network
              Functions
 
@@ -2976,17 +3026,19 @@ Appendix A.  An Example of Local IPv6 Addressing Plan for Network
         |                                                        |
         |            + - - - - - - - - +   eMBB (SST=1)          |
         |            |                 |      |                  |
-   +----v-+       +--+--+ Provider +---+-+    v  +-----+       +-v----+
+   +----v-+       +--+--+ Provider +---+-+    |  +-----+       +-v----+
+   |      |       |     |          |     |    v  |     |       |      |
    |    o============*================*==========================o    |
    | NF   +-------+ PE  |          | PE  +-------+L2/L3+.......+   NF |
    |    o============*================*==========================o    |
+   |      |       |     |          |     |    v  |     |       |      |
    +----^-+       +--+--+  Network +---+-+    ^  +-----+       +-^----+
         |            |                 |      |                  |
         |            + - - - - - - - - + MIoT (SST=3)            |
         |                                                        |
     2001:db8:a::300:3/128               2001:db8:b::300:3/128
 
-    o Tunnel (IPsec, GTP-U, etc) termination point
+    o Tunnel (IPsec, GTP-U, etc.) termination point
     * SDP
 
        Figure 32: Deployment Example with S-NSSAI Embedded into IPv6
@@ -3007,6 +3059,8 @@ Appendix B.  Acronyms and Abbreviations
    CE:  Customer Edge
 
    CIR:  Committed Information Rate
+
+   CS:  Customer Site
 
    CN:  Core Network
 
@@ -3051,6 +3105,8 @@ Appendix B.  Acronyms and Abbreviations
    MPLS:  Multiprotocol Label Switching
 
    NF:  Network Function
+
+   NS:  Network Slice
 
    NRP:  Network Resource Partition
 
@@ -3116,8 +3172,10 @@ Acknowledgments
    Special thanks to Jie Dong and Adrian Farrel for the detailed and
    careful reviews.
 
-   Thanks to Alvaro Retana for the rtg-dir review, Yoshifumi Nishida for
-   the tsv-art review, and Timothy Winters for the int-dir review.
+   Thanks to Alvaro Retana and Mike McBride for the rtg-dir reviews,
+   Yoshifumi Nishida for the tsv-art review, Timothy Winters for the
+   int-dir review, Lars Eggert for the genart review, Joseph Salowey for
+   the secdir review, and Tim Wicinski for the opsdir review.
 
    Thanks to Jim Guichard for the AD review.
 
@@ -3206,4 +3264,4 @@ Authors' Addresses
    Madrid
    Spain
    Email: luismiguel.contrerasmurillo@telefonica.com
-   URI:   http://lmcontreras.com/
+   URI:   https://lmcontreras.com/
