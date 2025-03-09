@@ -592,7 +592,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    identification. The S-NSSAI is not visible to the transport domain.
    So instead, 5G network functions can expose the 5G slices to the transport
    domain by mapping to explicit Layer 2 or Layer 3 identifiers, such as VLAN-IDs, IP
-   addresses, or Differentiated Services Code Point (DSCP) values. The following sections list few hand-off methods for slice mapping
+   addresses, or Differentiated Services Code Point (DSCP) values. The following sections list a few hand-off methods for slice mapping
    between customer sites and provider networks.
 
    More details about the mapping between 3GPP and RFC 9543 Network Slices is provided in {{?I-D.ietf-teas-5g-network-slice-application}}.
@@ -2141,3 +2141,5 @@ Security considerations specific to each of the technologies and protocols liste
    and Joseph Salowey for the secdir review.
 
    Thanks to Jim Guichard for the AD review.
+
+   Thanks to Erik Kline for the IESG review.
