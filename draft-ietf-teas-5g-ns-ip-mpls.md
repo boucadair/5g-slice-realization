@@ -535,6 +535,16 @@ TN slice mapping policies can be enforced by an operator (e.g., provided to a TN
       are encapsulated/decapsulated at the nodes hosting service instances) providing clean discrimination between 5G QoS and TN
       QoS, as explained in {{sec-qos-map}}.
 
+      Note that a variety of L2VPN mechanisms can be considered for slice realization. A non-comprehensive list is provided below:
+
+         + Virtual Private LAN Service (VPLS) {{?RFC4761] {{?RFC4762}}
+         + Virtual Private Wire Service (VPWS) ({{?Section 3.1.1 of RFC4664}})
+         + Various flavors of EVPNs:
+             -  VPWS EVPN {{?RFC8214}},
+             -  Provider Backbone Bridging Combined with Ethernet VPNs (PBB-EVPNs) {{?RFC7623}},
+             -  EVPN over MPLS {{?RFC7432}}, and
+             -  EVPN over Virtual Extensible LAN (VXLAN) {{?RFC8365}}.
+
       The use of VPNs for realizing Network Slices is briefly described in Appendix A.4 of {{!RFC9543}}.
 
    *  Fine-grained resource control at the PE:
@@ -643,6 +653,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    * S-NSSAI to a pool of IP addresses for global TN deployment
    * S-NSSAI to a subset of bits of an IP address
    * S-NSSAI to a DSCP value
+   * S-NSSAI to IPv6 Segment IDs (SIDs) {{?RFC8986}}
    * Use a deterministic algorithm to map S-NSAAI to an IP subnet, prefix, or pools. For example, adaptations to the algorithm defined in {{?RFC7422}} may be considered.
 
    Mapping S-NSSAIs to IP addresses makes IP addresses an identifier for slice-related
