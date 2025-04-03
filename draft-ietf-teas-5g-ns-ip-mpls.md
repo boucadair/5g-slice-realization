@@ -183,7 +183,7 @@ This document describes a Network Slice realization model for IP/MPLS networks w
 
 #  Introduction
 
-This document focuses on network slicing for 5G networks, covering the connectivity between Network Functions (NFs) across multiple domains such as edge clouds, data centers, and the Wide Area Network (WAN). The document describes a Network Slice realization approach that fulfills 5G slicing requirements by using existing IP/MPLS technologies (per 2025) to optimally control connectivity Service Level Agreements (SLAs) offered for 5G slices. To that aim, this document describes the scope of the Transport Network in 5G architectures ({{sec-scope}}), disambiguates 5G Network Slicing versus Transport Network Slicing ({{sec-5gtn}}), draws the perimeter of the various orchestration domains to realize slices ({{sec-orch}}), and identifies the required coordination between these orchestration domains for adequate setup of Attachment Circuits (ACs) ({{sec-tn-nsi}}).
+This document focuses on network slicing for 5G networks, covering the connectivity between Network Functions (NFs) across multiple domains such as edge clouds, data centers, and the Wide Area Network (WAN). The document describes a Network Slice realization approach that fulfills 5G slicing requirements by using existing IP/MPLS technologies (at the time of publication of this document) to optimally control connectivity Service Level Agreements (SLAs) offered for 5G slices. To that aim, this document describes the scope of the Transport Network in 5G architectures ({{sec-scope}}), disambiguates 5G Network Slicing versus Transport Network Slicing ({{sec-5gtn}}), draws the perimeter of the various orchestration domains to realize slices ({{sec-orch}}), and identifies the required coordination between these orchestration domains for adequate setup of Attachment Circuits (ACs) ({{sec-tn-nsi}}).
 
 This work is compatible with the framework defined in {{!RFC9543}} which describes network slicing in the context of networks built from IETF technologies. Specifically, this document describes an approach to how RFC 9543 Network Slices are realized within provider networks and how such slices are stitched to Transport Network resources in a customer site in the context of Transport Network Slices ({{fig-end-to-end}}).
 The realization of an RFC 9543 Network Slice (i.e., connectivity with performance commitments) involves the provider network and partially the AC (the PE-side of the AC). This document assumes that the customer site infrastructure is over-provisioned and involves short distances (low latency) where basic QoS/scheduling logic is sufficient to comply with the Service Level Objectives (SLOs).
@@ -201,7 +201,7 @@ The 5G control plane uses the Single Network Slice Selection Assistance Informat
 identification {{TS-23.501}}. Because S-NSSAIs are not visible to the transport domain, 5G domains can expose the 5G slices to the transport
 domain by mapping to explicit data plane identifiers (e.g., Layer 2, Layer 3, or Layer 4). Passing information between customer sites and provider networks is referred to as the "hand-off". {{sec-handoff-domains}} lists a set of hand-off methods for slice mapping purposes.
 
-Unlike approaches that require new protocol extensions (e.g., {{?I-D.ietf-teas-ns-ip-mpls}}), the realization model described in this document uses a set of building blocks commonly used in service provider networks (per 2025). The model uses (1) Layer 2 Virtual Private Network (L2VPN) {{?RFC4664}} and/or Layer 3 Virtual Private Network (L3VPN) {{?RFC4364}} service instances for logical separation, (2) fine-grained resource control at the Provider Edges (PEs), (3) coarse-grained resource control within the provider network, and (4) capacity planning/management. More details are provided in Sections {{<sec-over-rea-model}}, {{<sec-qos-map}}, {{<transport-plane-mapping-models}}, and {{<sec-capacity-planning}}.
+Unlike approaches that require new protocol extensions (e.g., {{?I-D.ietf-teas-ns-ip-mpls}}), the realization model described in this document uses a set of building blocks commonly used in service provider networks (at the time of publication of this document). The model uses (1) Layer 2 Virtual Private Network (L2VPN) {{?RFC4664}} and/or Layer 3 Virtual Private Network (L3VPN) {{?RFC4364}} service instances for logical separation, (2) fine-grained resource control at the Provider Edges (PEs), (3) coarse-grained resource control within the provider network, and (4) capacity planning/management. More details are provided in Sections {{<sec-over-rea-model}}, {{<sec-qos-map}}, {{<transport-plane-mapping-models}}, and {{<sec-capacity-planning}}.
 
 This realization model uses a single Network Resource Partition (NRP) ({{Section 7.1 of !RFC9543}}). The applicability to multiple NRPs is out of scope.
 
@@ -535,6 +535,16 @@ TN slice mapping policies can be enforced by an operator (e.g., provided to a TN
       are encapsulated/decapsulated at the nodes hosting service instances) providing clean discrimination between 5G QoS and TN
       QoS, as explained in {{sec-qos-map}}.
 
+      Note that a variety of L2VPN mechanisms can be considered for slice realization. A non-comprehensive list is provided below:
+
+         + Virtual Private LAN Service (VPLS) {{?RFC4761}} {{?RFC4762}}
+         + Virtual Private Wire Service (VPWS) ({{Section 3.1.1 of ?RFC4664}})
+         + Various flavors of EVPNs:
+             -  VPWS EVPN {{?RFC8214}},
+             -  Provider Backbone Bridging Combined with Ethernet VPNs (PBB-EVPNs) {{?RFC7623}},
+             -  EVPN over MPLS {{?RFC7432}}, and
+             -  EVPN over Virtual Extensible LAN (VXLAN) {{?RFC8365}}.
+
       The use of VPNs for realizing Network Slices is briefly described in Appendix A.4 of {{!RFC9543}}.
 
    *  Fine-grained resource control at the PE:
@@ -643,6 +653,7 @@ This document does not describe in detail how to manage an L2VPN or L3VPN, as th
    * S-NSSAI to a pool of IP addresses for global TN deployment
    * S-NSSAI to a subset of bits of an IP address
    * S-NSSAI to a DSCP value
+   * S-NSSAI to SRv6 Locators or Segment Identifiers (SIDs) {{?RFC8986}}
    * Use a deterministic algorithm to map S-NSAAI to an IP subnet, prefix, or pools. For example, adaptations to the algorithm defined in {{?RFC7422}} may be considered.
 
    Mapping S-NSSAIs to IP addresses makes IP addresses an identifier for slice-related
@@ -1886,9 +1897,9 @@ Conformance to security constraints:
 
 NSC authentication:
 : Per {{!RFC9543}}, this is about underlay networks need to be protected against attacks from an adversary NSC as this could destabilize overall network operations. The interaction between an NSC and the underly network is used to pass service provisioning requests following a set of YANG modules that are designed to be accessed via YANG-based management protocols, such as
-NETCONF {{?RFC6241}} and RESTCONF {{?RFC8040}}. These protocols have to
+NETCONF {{?RFC6241}} and RESTCONF {{?RFC8040}}. These YANG-based management protocols (1) have to
 use a secure transport layer (e.g., SSH {{?RFC4252}}, TLS {{?RFC8446}}, and
-QUIC {{?RFC9000}}) and have to use mutual authentication.
+QUIC {{?RFC9000}}) and (2) have to use mutual authentication.
 : The NETCONF access control model {{!RFC8341}} provides the means to restrict access for particular NETCONF or RESTCONF users to a preconfigured subset of all available NETCONF or RESTCONF protocol operations and content.
 : Readers may refer to documents that describe NSC realization such as {{?I-D.ietf-teas-ns-controller-models}}.
 
@@ -1904,7 +1915,7 @@ addresses and slices' specific S-NSSAIs, {{sec-ip-hof}} describes an approach wh
 are embedded in an IPv6 address using an algorithm approach. An attacker from within the transport network
 who has access to the mapping configuration may infer the slices to which belong a packet. It may also
 alter these bits which may lead to steering the packet via a distinct network slice, and thus lead to
-service disruption. Note that such an on-path attacker may make more damage (e.g., randomly drop packets).
+service disruption. Note that such an attacker from within the transport network may inflict more damage (e.g., randomly drop packets).
 
 Security considerations specific to each of the technologies and protocols listed in the document are discussed in the specification documents of each of these protocols. In particular, readers should refer to the "Security Framework for Provider-Provisioned Virtual Private Networks (PPVPNs)" {{?RFC4111}}, the "Applicability Statement for BGP/MPLS IP Virtual Private Networks (VPNs)" ({{Section 6 of ?RFC4365}}), and the "Analysis of the Security of BGP/MPLS IP Virtual Private Networks (VPNs)" {{?RFC4381}} for a comprehensive discussion about security considerations related to VPN technologies (including authentication and encryption between PEs, use of IPsec tunnels that terminate within the customer sites to protect user data, prevention of illegitimate traffic from entering a VPN instance, etc.). Also, readers may refer to {{Section 9 of ?RFC9522}} for a discussion about security considerations related to TE mechanisms.
 
