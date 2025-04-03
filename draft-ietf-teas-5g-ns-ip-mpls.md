@@ -2142,4 +2142,4 @@ Security considerations specific to each of the technologies and protocols liste
 
    Thanks to Jim Guichard for the AD review.
 
-   Thanks to Erik Kline and Ketan Talaulikar for the IESG review.
+   Thanks to Erik Kline, Ketan Talaulikar, and Deb Cooley for the IESG review.
