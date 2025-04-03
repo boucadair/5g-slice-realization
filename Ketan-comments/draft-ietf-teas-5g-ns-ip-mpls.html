@@ -7132,9 +7132,9 @@ For example, <span>[<a href="#I-D.ietf-teas-ietf-network-slice-nbi-yang" class="
 <dt id="section-11-2.3">NSC authentication:</dt>
         <dd style="margin-left: 1.5em" id="section-11-2.4">
           <p id="section-11-2.4.1">Per <span>[<a href="#RFC9543" class="cite xref">RFC9543</a>]</span>, this is about underlay networks need to be protected against attacks from an adversary NSC as this could destabilize overall network operations. The interaction between an NSC and the underly network is used to pass service provisioning requests following a set of YANG modules that are designed to be accessed via YANG-based management protocols, such as
-NETCONF <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> and RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>. These protocols have to
+NETCONF <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> and RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>. These YANG-based management protocols (1) have to
 use a secure transport layer (e.g., SSH <span>[<a href="#RFC4252" class="cite xref">RFC4252</a>]</span>, TLS <span>[<a href="#RFC8446" class="cite xref">RFC8446</a>]</span>, and
-QUIC <span>[<a href="#RFC9000" class="cite xref">RFC9000</a>]</span>) and have to use mutual authentication.<a href="#section-11-2.4.1" class="pilcrow">¶</a></p>
+QUIC <span>[<a href="#RFC9000" class="cite xref">RFC9000</a>]</span>) and (2) have to use mutual authentication.<a href="#section-11-2.4.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 <dt id="section-11-2.5"></dt>
@@ -7168,7 +7168,7 @@ addresses and slices' specific S-NSSAIs, <a href="#sec-ip-hof" class="auto inter
 are embedded in an IPv6 address using an algorithm approach. An attacker from within the transport network
 who has access to the mapping configuration may infer the slices to which belong a packet. It may also
 alter these bits which may lead to steering the packet via a distinct network slice, and thus lead to
-service disruption. Note that such an on-path attacker may make more damage (e.g., randomly drop packets).<a href="#section-11-3" class="pilcrow">¶</a></p>
+service disruption. Note that such an attacker from within the transport network may inflict more damage (e.g., randomly drop packets).<a href="#section-11-3" class="pilcrow">¶</a></p>
 <p id="section-11-4">Security considerations specific to each of the technologies and protocols listed in the document are discussed in the specification documents of each of these protocols. In particular, readers should refer to the "Security Framework for Provider-Provisioned Virtual Private Networks (PPVPNs)" <span>[<a href="#RFC4111" class="cite xref">RFC4111</a>]</span>, the "Applicability Statement for BGP/MPLS IP Virtual Private Networks (VPNs)" (<span><a href="https://rfc-editor.org/rfc/rfc4365#section-6" class="relref">Section 6</a> of [<a href="#RFC4365" class="cite xref">RFC4365</a>]</span>), and the "Analysis of the Security of BGP/MPLS IP Virtual Private Networks (VPNs)" <span>[<a href="#RFC4381" class="cite xref">RFC4381</a>]</span> for a comprehensive discussion about security considerations related to VPN technologies (including authentication and encryption between PEs, use of IPsec tunnels that terminate within the customer sites to protect user data, prevention of illegitimate traffic from entering a VPN instance, etc.). Also, readers may refer to <span><a href="https://rfc-editor.org/rfc/rfc9522#section-9" class="relref">Section 9</a> of [<a href="#RFC9522" class="cite xref">RFC9522</a>]</span> for a discussion about security considerations related to TE mechanisms.<a href="#section-11-4" class="pilcrow">¶</a></p>
 </section>
 </div>

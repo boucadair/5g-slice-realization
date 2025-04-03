@@ -2594,10 +2594,10 @@ Table of Contents
       between an NSC and the underly network is used to pass service
       provisioning requests following a set of YANG modules that are
       designed to be accessed via YANG-based management protocols, such
-      as NETCONF [RFC6241] and RESTCONF [RFC8040].  These protocols have
-      to use a secure transport layer (e.g., SSH [RFC4252], TLS
-      [RFC8446], and QUIC [RFC9000]) and have to use mutual
-      authentication.
+      as NETCONF [RFC6241] and RESTCONF [RFC8040].  These YANG-based
+      management protocols (1) have to use a secure transport layer
+      (e.g., SSH [RFC4252], TLS [RFC8446], and QUIC [RFC9000]) and (2)
+      have to use mutual authentication.
 
       The NETCONF access control model [RFC8341] provides the means to
       restrict access for particular NETCONF or RESTCONF users to a
@@ -2633,8 +2633,9 @@ Table of Contents
    the transport network who has access to the mapping configuration may
    infer the slices to which belong a packet.  It may also alter these
    bits which may lead to steering the packet via a distinct network
-   slice, and thus lead to service disruption.  Note that such an on-
-   path attacker may make more damage (e.g., randomly drop packets).
+   slice, and thus lead to service disruption.  Note that such an
+   attacker from within the transport network may inflict more damage
+   (e.g., randomly drop packets).
 
    Security considerations specific to each of the technologies and
    protocols listed in the document are discussed in the specification
