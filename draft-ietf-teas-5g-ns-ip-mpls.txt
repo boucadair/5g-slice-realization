@@ -120,15 +120,15 @@ Table of Contents
    domains such as edge clouds, data centers, and the Wide Area Network
    (WAN).  The document describes a Network Slice realization approach
    that fulfills 5G slicing requirements by using existing IP/MPLS
-   technologies (per 2025) to optimally control connectivity Service
-   Level Agreements (SLAs) offered for 5G slices.  To that aim, this
-   document describes the scope of the Transport Network in 5G
-   architectures (Section 3.1), disambiguates 5G Network Slicing versus
-   Transport Network Slicing (Section 3.2), draws the perimeter of the
-   various orchestration domains to realize slices (Section 3.4), and
-   identifies the required coordination between these orchestration
-   domains for adequate setup of Attachment Circuits (ACs)
-   (Section 3.4.2).
+   technologies (at the time of publication of this document) to
+   optimally control connectivity Service Level Agreements (SLAs)
+   offered for 5G slices.  To that aim, this document describes the
+   scope of the Transport Network in 5G architectures (Section 3.1),
+   disambiguates 5G Network Slicing versus Transport Network Slicing
+   (Section 3.2), draws the perimeter of the various orchestration
+   domains to realize slices (Section 3.4), and identifies the required
+   coordination between these orchestration domains for adequate setup
+   of Attachment Circuits (ACs) (Section 3.4.2).
 
    This work is compatible with the framework defined in [RFC9543] which
    describes network slicing in the context of networks built from IETF
@@ -187,13 +187,13 @@ Table of Contents
    Unlike approaches that require new protocol extensions (e.g.,
    [I-D.ietf-teas-ns-ip-mpls]), the realization model described in this
    document uses a set of building blocks commonly used in service
-   provider networks (per 2025).  The model uses (1) Layer 2 Virtual
-   Private Network (L2VPN) [RFC4664] and/or Layer 3 Virtual Private
-   Network (L3VPN) [RFC4364] service instances for logical separation,
-   (2) fine-grained resource control at the Provider Edges (PEs), (3)
-   coarse-grained resource control within the provider network, and (4)
-   capacity planning/management.  More details are provided in Sections
-   3.7, 5, 6, and 7.
+   provider networks (at the time of publication of this document).  The
+   model uses (1) Layer 2 Virtual Private Network (L2VPN) [RFC4664] and/
+   or Layer 3 Virtual Private Network (L3VPN) [RFC4364] service
+   instances for logical separation, (2) fine-grained resource control
+   at the Provider Edges (PEs), (3) coarse-grained resource control
+   within the provider network, and (4) capacity planning/management.
+   More details are provided in Sections 3.7, 5, 6, and 7.
 
    This realization model uses a single Network Resource Partition (NRP)
    (Section 7.1 of [RFC9543]).  The applicability to multiple NRPs is
@@ -899,6 +899,25 @@ Table of Contents
       instances) providing clean discrimination between 5G QoS and TN
       QoS, as explained in Section 5.
 
+      Note that a variety of L2VPN mechanisms can be considered for
+      slice realization.  A non-comprehensive list is provided below:
+
+      -  Virtual Private LAN Service (VPLS) [RFC4761] [RFC4762]
+
+      -  Virtual Private Wire Service (VPWS) (Section 3.1.1 of
+         [RFC4664])
+
+      -  Various flavors of EVPNs:
+
+         o  VPWS EVPN [RFC8214],
+
+         o  Provider Backbone Bridging Combined with Ethernet VPNs (PBB-
+            EVPNs) [RFC7623],
+
+         o  EVPN over MPLS [RFC7432], and
+
+         o  EVPN over Virtual Extensible LAN (VXLAN) [RFC8365].
+
       The use of VPNs for realizing Network Slices is briefly described
       in Appendix A.4 of [RFC9543].
 
@@ -1059,6 +1078,8 @@ Table of Contents
    *  S-NSSAI to a subset of bits of an IP address
 
    *  S-NSSAI to a DSCP value
+
+   *  S-NSSAI to SRv6 Locators or Segment Identifiers (SIDs) [RFC8986]
 
    *  Use a deterministic algorithm to map S-NSAAI to an IP subnet,
       prefix, or pools.  For example, adaptations to the algorithm
@@ -2573,10 +2594,10 @@ Table of Contents
       between an NSC and the underly network is used to pass service
       provisioning requests following a set of YANG modules that are
       designed to be accessed via YANG-based management protocols, such
-      as NETCONF [RFC6241] and RESTCONF [RFC8040].  These protocols have
-      to use a secure transport layer (e.g., SSH [RFC4252], TLS
-      [RFC8446], and QUIC [RFC9000]) and have to use mutual
-      authentication.
+      as NETCONF [RFC6241] and RESTCONF [RFC8040].  These YANG-based
+      management protocols (1) have to use a secure transport layer
+      (e.g., SSH [RFC4252], TLS [RFC8446], and QUIC [RFC9000]) and (2)
+      have to use mutual authentication.
 
       The NETCONF access control model [RFC8341] provides the means to
       restrict access for particular NETCONF or RESTCONF users to a
@@ -2612,8 +2633,9 @@ Table of Contents
    the transport network who has access to the mapping configuration may
    infer the slices to which belong a packet.  It may also alter these
    bits which may lead to steering the packet via a distinct network
-   slice, and thus lead to service disruption.  Note that such an on-
-   path attacker may make more damage (e.g., randomly drop packets).
+   slice, and thus lead to service disruption.  Note that such an
+   attacker from within the transport network may inflict more damage
+   (e.g., randomly drop packets).
 
    Security considerations specific to each of the technologies and
    protocols listed in the document are discussed in the specification
@@ -2802,6 +2824,16 @@ Table of Contents
               DOI 10.17487/RFC4664, September 2006,
               <https://www.rfc-editor.org/rfc/rfc4664>.
 
+   [RFC4761]  Kompella, K., Ed. and Y. Rekhter, Ed., "Virtual Private
+              LAN Service (VPLS) Using BGP for Auto-Discovery and
+              Signaling", RFC 4761, DOI 10.17487/RFC4761, January 2007,
+              <https://www.rfc-editor.org/rfc/rfc4761>.
+
+   [RFC4762]  Lasserre, M., Ed. and V. Kompella, Ed., "Virtual Private
+              LAN Service (VPLS) Using Label Distribution Protocol (LDP)
+              Signaling", RFC 4762, DOI 10.17487/RFC4762, January 2007,
+              <https://www.rfc-editor.org/rfc/rfc4762>.
+
    [RFC5286]  Atlas, A., Ed. and A. Zinin, Ed., "Basic Specification for
               IP Fast Reroute: Loop-Free Alternates", RFC 5286,
               DOI 10.17487/RFC5286, September 2008,
@@ -2855,10 +2887,20 @@ Table of Contents
               DOI 10.17487/RFC7422, December 2014,
               <https://www.rfc-editor.org/rfc/rfc7422>.
 
+   [RFC7432]  Sajassi, A., Ed., Aggarwal, R., Bitar, N., Isaac, A.,
+              Uttaro, J., Drake, J., and W. Henderickx, "BGP MPLS-Based
+              Ethernet VPN", RFC 7432, DOI 10.17487/RFC7432, February
+              2015, <https://www.rfc-editor.org/rfc/rfc7432>.
+
    [RFC7510]  Xu, X., Sheth, N., Yong, L., Callon, R., and D. Black,
               "Encapsulating MPLS in UDP", RFC 7510,
               DOI 10.17487/RFC7510, April 2015,
               <https://www.rfc-editor.org/rfc/rfc7510>.
+
+   [RFC7623]  Sajassi, A., Ed., Salam, S., Bitar, N., Isaac, A., and W.
+              Henderickx, "Provider Backbone Bridging Combined with
+              Ethernet VPN (PBB-EVPN)", RFC 7623, DOI 10.17487/RFC7623,
+              September 2015, <https://www.rfc-editor.org/rfc/rfc7623>.
 
    [RFC7799]  Morton, A., "Active and Passive Metrics and Methods (with
               Hybrid Types In-Between)", RFC 7799, DOI 10.17487/RFC7799,
@@ -2876,6 +2918,11 @@ Table of Contents
               Classes and Practice", RFC 8100, DOI 10.17487/RFC8100,
               March 2017, <https://www.rfc-editor.org/rfc/rfc8100>.
 
+   [RFC8214]  Boutros, S., Sajassi, A., Salam, S., Drake, J., and J.
+              Rabadan, "Virtual Private Wire Service Support in Ethernet
+              VPN", RFC 8214, DOI 10.17487/RFC8214, August 2017,
+              <https://www.rfc-editor.org/rfc/rfc8214>.
+
    [RFC8299]  Wu, Q., Ed., Litkowski, S., Tomotaki, L., and K. Ogaki,
               "YANG Data Model for L3VPN Service Delivery", RFC 8299,
               DOI 10.17487/RFC8299, January 2018,
@@ -2886,6 +2933,12 @@ Table of Contents
               Networking (SPRING) Networks", RFC 8355,
               DOI 10.17487/RFC8355, March 2018,
               <https://www.rfc-editor.org/rfc/rfc8355>.
+
+   [RFC8365]  Sajassi, A., Ed., Drake, J., Ed., Bitar, N., Shekhar, R.,
+              Uttaro, J., and W. Henderickx, "A Network Virtualization
+              Overlay Solution Using Ethernet VPN (EVPN)", RFC 8365,
+              DOI 10.17487/RFC8365, March 2018,
+              <https://www.rfc-editor.org/rfc/rfc8365>.
 
    [RFC8446]  Rescorla, E., "The Transport Layer Security (TLS) Protocol
               Version 1.3", RFC 8446, DOI 10.17487/RFC8446, August 2018,
