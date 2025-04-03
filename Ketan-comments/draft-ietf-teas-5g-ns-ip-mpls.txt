@@ -120,15 +120,15 @@ Table of Contents
    domains such as edge clouds, data centers, and the Wide Area Network
    (WAN).  The document describes a Network Slice realization approach
    that fulfills 5G slicing requirements by using existing IP/MPLS
-   technologies (per 2025) to optimally control connectivity Service
-   Level Agreements (SLAs) offered for 5G slices.  To that aim, this
-   document describes the scope of the Transport Network in 5G
-   architectures (Section 3.1), disambiguates 5G Network Slicing versus
-   Transport Network Slicing (Section 3.2), draws the perimeter of the
-   various orchestration domains to realize slices (Section 3.4), and
-   identifies the required coordination between these orchestration
-   domains for adequate setup of Attachment Circuits (ACs)
-   (Section 3.4.2).
+   technologies (at the time of publication of this document) to
+   optimally control connectivity Service Level Agreements (SLAs)
+   offered for 5G slices.  To that aim, this document describes the
+   scope of the Transport Network in 5G architectures (Section 3.1),
+   disambiguates 5G Network Slicing versus Transport Network Slicing
+   (Section 3.2), draws the perimeter of the various orchestration
+   domains to realize slices (Section 3.4), and identifies the required
+   coordination between these orchestration domains for adequate setup
+   of Attachment Circuits (ACs) (Section 3.4.2).
 
    This work is compatible with the framework defined in [RFC9543] which
    describes network slicing in the context of networks built from IETF
@@ -187,13 +187,13 @@ Table of Contents
    Unlike approaches that require new protocol extensions (e.g.,
    [I-D.ietf-teas-ns-ip-mpls]), the realization model described in this
    document uses a set of building blocks commonly used in service
-   provider networks (per 2025).  The model uses (1) Layer 2 Virtual
-   Private Network (L2VPN) [RFC4664] and/or Layer 3 Virtual Private
-   Network (L3VPN) [RFC4364] service instances for logical separation,
-   (2) fine-grained resource control at the Provider Edges (PEs), (3)
-   coarse-grained resource control within the provider network, and (4)
-   capacity planning/management.  More details are provided in Sections
-   3.7, 5, 6, and 7.
+   provider networks (at the time of publication of this document).  The
+   model uses (1) Layer 2 Virtual Private Network (L2VPN) [RFC4664] and/
+   or Layer 3 Virtual Private Network (L3VPN) [RFC4364] service
+   instances for logical separation, (2) fine-grained resource control
+   at the Provider Edges (PEs), (3) coarse-grained resource control
+   within the provider network, and (4) capacity planning/management.
+   More details are provided in Sections 3.7, 5, 6, and 7.
 
    This realization model uses a single Network Resource Partition (NRP)
    (Section 7.1 of [RFC9543]).  The applicability to multiple NRPs is
@@ -1079,7 +1079,7 @@ Table of Contents
 
    *  S-NSSAI to a DSCP value
 
-   *  S-NSSAI to IPv6 Segment IDs (SIDs) [RFC8986]
+   *  S-NSSAI to SRv6 Locators or Segment Identifiers (SIDs) [RFC8986]
 
    *  Use a deterministic algorithm to map S-NSAAI to an IP subnet,
       prefix, or pools.  For example, adaptations to the algorithm
