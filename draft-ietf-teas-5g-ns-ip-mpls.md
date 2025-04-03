@@ -537,7 +537,7 @@ TN slice mapping policies can be enforced by an operator (e.g., provided to a TN
 
       Note that a variety of L2VPN mechanisms can be considered for slice realization. A non-comprehensive list is provided below:
 
-         + Virtual Private LAN Service (VPLS) {{?RFC4761] {{?RFC4762}}
+         + Virtual Private LAN Service (VPLS) {{?RFC4761}} {{?RFC4762}}
          + Virtual Private Wire Service (VPWS) ({{?Section 3.1.1 of RFC4664}})
          + Various flavors of EVPNs:
              -  VPWS EVPN {{?RFC8214}},
