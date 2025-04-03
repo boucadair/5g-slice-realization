@@ -225,7 +225,7 @@ Table of Contents
       This entity is distinct from the customer of a 5G Network Slice
       Service.
 
-   This document makes use of the following term:
+   This document makes use of the following terms:
 
    Customer site:  A customer manages and deploys 5G NFs (e.g., gNodeB
       (gNB) and 5G Core (5GC)) in customer sites.  A customer site can
@@ -386,7 +386,7 @@ Table of Contents
    The description of the main components shown in Figure 3 is provided
    in the following subsections.
 
-3.3.1.  Customer Site
+3.3.1.  Customer Site (CS)
 
    On top of 5G NFs, a customer may manage additional TN elements (e.g.,
    servers, routers, and switches) within a customer site.
@@ -1358,7 +1358,7 @@ Table of Contents
    In this document, this layer of QoS is referred to as '5G QoS Class'
    ('5G QoS' in short) or '5G DSCP'.
 
-5.1.2.  TN QoS Layer
+5.1.2.  Transport Network (TN) QoS Layer
 
    Control of the TN resources on provider network transit links, as
    well as traffic scheduling/prioritization on provider network transit
@@ -3173,8 +3173,8 @@ Acknowledgments
 
    Thanks to Alvaro Retana and Mike McBride for the rtg-dir reviews,
    Yoshifumi Nishida for the tsv-art review, Timothy Winters for the
-   int-dir review, Lars Eggert for the genart review, and Joseph Salowey
-   for the secdir review.
+   int-dir review, Lars Eggert for the genart review, Joseph Salowey for
+   the secdir review, and Tim Wicinski for the opsdir review.
 
    Thanks to Jim Guichard for the AD review.
 
