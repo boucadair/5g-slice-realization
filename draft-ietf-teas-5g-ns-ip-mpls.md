@@ -1897,9 +1897,9 @@ Conformance to security constraints:
 
 NSC authentication:
 : Per {{!RFC9543}}, this is about underlay networks need to be protected against attacks from an adversary NSC as this could destabilize overall network operations. The interaction between an NSC and the underly network is used to pass service provisioning requests following a set of YANG modules that are designed to be accessed via YANG-based management protocols, such as
-NETCONF {{?RFC6241}} and RESTCONF {{?RFC8040}}. These protocols have to
+NETCONF {{?RFC6241}} and RESTCONF {{?RFC8040}}. These YANG-based management protocols (1) have to
 use a secure transport layer (e.g., SSH {{?RFC4252}}, TLS {{?RFC8446}}, and
-QUIC {{?RFC9000}}) and have to use mutual authentication.
+QUIC {{?RFC9000}}) and (2) have to use mutual authentication.
 : The NETCONF access control model {{!RFC8341}} provides the means to restrict access for particular NETCONF or RESTCONF users to a preconfigured subset of all available NETCONF or RESTCONF protocol operations and content.
 : Readers may refer to documents that describe NSC realization such as {{?I-D.ietf-teas-ns-controller-models}}.
 
@@ -1915,7 +1915,7 @@ addresses and slices' specific S-NSSAIs, {{sec-ip-hof}} describes an approach wh
 are embedded in an IPv6 address using an algorithm approach. An attacker from within the transport network
 who has access to the mapping configuration may infer the slices to which belong a packet. It may also
 alter these bits which may lead to steering the packet via a distinct network slice, and thus lead to
-service disruption. Note that such an on-path attacker may make more damage (e.g., randomly drop packets).
+service disruption. Note that such an attacker from within the transport network may inflict more damage (e.g., randomly drop packets).
 
 Security considerations specific to each of the technologies and protocols listed in the document are discussed in the specification documents of each of these protocols. In particular, readers should refer to the "Security Framework for Provider-Provisioned Virtual Private Networks (PPVPNs)" {{?RFC4111}}, the "Applicability Statement for BGP/MPLS IP Virtual Private Networks (VPNs)" ({{Section 6 of ?RFC4365}}), and the "Analysis of the Security of BGP/MPLS IP Virtual Private Networks (VPNs)" {{?RFC4381}} for a comprehensive discussion about security considerations related to VPN technologies (including authentication and encryption between PEs, use of IPsec tunnels that terminate within the customer sites to protect user data, prevention of illegitimate traffic from entering a VPN instance, etc.). Also, readers may refer to {{Section 9 of ?RFC9522}} for a discussion about security considerations related to TE mechanisms.
 
