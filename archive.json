@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-04-01T00:45:10.143602+00:00",
+  "timestamp": "2025-04-06T00:42:35.722988+00:00",
   "repo": "boucadair/5g-slice-realization",
   "labels": [
     {
@@ -7584,26 +7584,77 @@
       "id": "PR_kwDOIw9g6c6Kpb_V",
       "title": "Tim's review-opsdir",
       "url": "https://github.com/boucadair/5g-slice-realization/pull/221",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "boucadair",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2025-02-10T13:51:59Z",
-      "updatedAt": "2025-02-10T13:51:59Z",
+      "updatedAt": "2025-04-03T04:29:21Z",
       "baseRepository": "boucadair/5g-slice-realization",
       "baseRefName": "main",
       "baseRefOid": "3938427a670cfd4f2abb9b23957e653122f6df88",
       "headRepository": "boucadair/5g-slice-realization",
       "headRefName": "tim-opsdir-review",
       "headRefOid": "8618b51fd8f6d8f7b05a6347c9c020fdd63cba88",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-04-03T04:29:20Z",
+      "mergedAt": "2025-04-03T04:29:20Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "e402bf8c2ffdf92d2aa8b10dc82cbe483ebe50ca"
+      },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 222,
+      "id": "PR_kwDOIw9g6c6RNl_N",
+      "title": "Ketan comments",
+      "url": "https://github.com/boucadair/5g-slice-realization/pull/222",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-04-03T08:09:04Z",
+      "updatedAt": "2025-04-03T13:23:45Z",
+      "baseRepository": "boucadair/5g-slice-realization",
+      "baseRefName": "main",
+      "baseRefOid": "306c2126e557dfce2029cc9f5031bf38820cf85c",
+      "headRepository": "boucadair/5g-slice-realization",
+      "headRefName": "Ketan-comments",
+      "headRefOid": "30d901082172ecfdc75930694d5b1b6f22c0f575",
+      "closedAt": "2025-04-03T13:23:44Z",
+      "mergedAt": "2025-04-03T13:23:44Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "c5d2b6ffb2a3d7db0d89baacfa75d33227bb098f"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOIw9g6c6jQHcN",
+          "commit": {
+            "abbreviatedOid": "f80e712"
+          },
+          "author": "boucadair",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-04-03T08:12:35Z",
+          "updatedAt": "2025-04-03T08:12:36Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "```suggestion\r\n         + Virtual Private Wire Service (VPWS) ({{Section 3.1.1 of ?RFC4664}})\r\n```",
+              "createdAt": "2025-04-03T08:12:36Z",
+              "updatedAt": "2025-04-03T08:12:36Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
