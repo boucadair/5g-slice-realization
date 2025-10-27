@@ -18,7 +18,7 @@
    |  a  |    '-----------------------------'  |
    |  c  | S     |                             |
    |  h  | l     |
-   |  m  | i     ...                           |  weight-Slice-2-CIR
+   |  m  | i     |         ...                 |  weight-Slice-2-CIR
    |  e  | c     |                             | shaping-Slice-2-PIR
    |  n  | e  .-----------------------------.  |
    |  t  |   |                               | |
@@ -30,7 +30,7 @@
    |  u  |    '-----------------------------'  |
    |  i  | S     |                             |
    |  t  | l     |                             |
-   |     | i     ...                           |  weight-Slice-3-CIR
+   |     | i     |         ...                 |  weight-Slice-3-CIR
    |     | c     |                             | shaping-Slice-3-PIR
    |     | e  .-----------------------------.  |
    |     |   |                               | |
