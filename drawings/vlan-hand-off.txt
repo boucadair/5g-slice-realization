@@ -4,13 +4,13 @@ VLANs representing slices           VLANs representing slices
            |    |                   |     |             |           
 +------+   |  +-+----+ Provider +---+--+  |   +-----+   |   +------+
 |      |   v  |      |          |      |  v   |     |   v   |      |        
-|      +------+ *    |          |    * +------+     +.......+      |
-| NF   +------+ * PE |          | PE * +------+L2/L3+.......+   NF |
-|      +------+ *    |          |    * +------+     +.......+      |
+|      x------x *    |          |    * x------x     x.......x      |
+| NF   x------x * PE |          | PE * x------xL2/L3x.......x   NF |
+|      x------x *    |          |    * x------x     x.......x      |
 |      |      |      |          |      |      |     |       |      |  
 +------+  AC  +--+---+  Network +---+--+  AC  +-----+       +------+
                  |                  |                               
                  +------------------+
                                                                      
- + Logical interface represented by a VLAN on a physical interface
+ x Logical interface represented by a VLAN on a physical interface
  * SDP
