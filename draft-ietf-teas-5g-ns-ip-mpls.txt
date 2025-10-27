@@ -1282,18 +1282,18 @@ Table of Contents
    site and a provider network, as depicted in Figure 16.  As a result,
    a node in a customer site performs hierarchical next-hop resolution.
 
-        <-------------------------------------------
+        <----------------------------------------
                 BGP VPN
                   COM=1, L=A, NEXT_HOP=CS2
                   COM=2, L=B, NEXT_HOP=CS2
                   COM=3, L=C, NEXT_HOP=CS2
-        <------------------------------------------>
+        <--------------------------------------->
 
          <------        <------        <------
          BGP LU         BGP LU         BGP LU
            CS2, L=X"      CS2, L=X'      CS2, L=X
-        <-------------><------------><------------->
-                   nhs  nhs      nhs  nhs
+        <-----------><--------------><---------->
+                 nhs  nhs        nhs  nhs
                                                            VLANs
    service instances                service instances  representing
    representing slices              representing slices    slices
@@ -1301,9 +1301,9 @@ Table of Contents
    +---+ |           +--------------+           +-|--------|----------+
    |   | |           |     Provider |           | |        |          |
    | +-+-v-+       +-+---+       +--+--+      +-+-v----+   v  +-----+ |
-   | |   # |       |*    |       |    *|      |   #<><>x......x     | |
-   | |NF # +-------+* PE |       | PE *+------+   #<><>x......x  NF | |
-   | |   # |   AC  |*    |       |    *|   AC |   #<><>x......x     | |
+   | |   # |       | *   |       |   * |      |   #<><>x......x     | |
+   | |NF # +-------+ * PE|       |PE * +------+   #<><>x......x  NF | |
+   | |   # |   AC  | *   |       |   * |   AC |   #<><>x......x     | |
    | +--+--+       +-+---+       +---+-+      +-+------+      +-----+ |
    | CS1|            |      Network  |          | L2/L3    CS2        |
    +----+            +---------------+          +---------------------+
