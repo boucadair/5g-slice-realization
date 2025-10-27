@@ -1024,8 +1024,8 @@ Table of Contents
 
    VLANs representing slices           VLANs representing slices
 
-              |     +------------------+     |             |
-              |     |                  |     |             |
+              |    +-------------------+     |             |
+              |    |                   |     |             |
    +------+   |  +-+----+ Provider +---+--+  |   +-----+   |   +------+
    |      |   v  |      |          |      |  v   |     |   v   |      |
    |      +------+ *    |          |    * +------+     +.......+      |
