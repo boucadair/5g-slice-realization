@@ -1206,12 +1206,12 @@ Table of Contents
    VLAN nor an IP address for slice identification at the SDP, but
    instead uses the MPLS label.
 
-        <------        <------        <------
+        <------      <------        <------
         BGP VPN        BGP VPN        BGP VPN
           COM=1, L=A"    COM=1, L=A'    COM=1, L=A
           COM=2, L=B"    COM=2, L=B'    COM=2, L=B
           COM=3, L=C"    COM=3, L=C'    COM=3, L=C
-        <-------------><------------><------------->
+        <-----------><-------------><------------>
                   nhs  nhs      nhs  nhs
                                                            VLANs
    service instances                service instances  representing
