@@ -14,25 +14,24 @@
        Network slicing is a feature that was introduced by the 3rd Generation Partnership Project (3GPP) in mobile networks. Realization of 5G slicing implies requirements for all mobile domains, including the Radio Access Network (RAN), Core Network (CN), and Transport Network (TN). 
        This document describes a Network Slice realization model for IP/MPLS networks with a focus on the Transport Network fulfilling 5G slicing connectivity service objectives. The realization model reuses many building blocks currently commonly used in service provider networks. 
     " name="description">
-<meta content="xml2rfc 3.28.1" name="generator">
+<meta content="xml2rfc 3.31.0" name="generator">
 <meta content="L3VPN" name="keyword">
 <meta content="L2VPN" name="keyword">
 <meta content="Slice Service" name="keyword">
 <meta content="draft-ietf-teas-5g-ns-ip-mpls-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.28.1
-    Python 3.12.9
+  xml2rfc 3.31.0
+    Python 3.12.12
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
     Jinja2 3.1.6
-    lxml 5.3.0
-    platformdirs 4.3.7
+    lxml 5.3.1
+    platformdirs 4.5.0
     pycountry 24.6.1
     PyYAML 6.0.2
-    requests 2.32.3
-    setuptools 70.3.0
-    wcwidth 0.2.13
+    requests 2.32.5
+    wcwidth 0.2.14
 -->
 <link href="draft-ietf-teas-5g-ns-ip-mpls.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1051,11 +1050,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Implementing 5G Transport Slices</td>
-<td class="right">April 2025</td>
+<td class="right">October 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Szarkowicz, et al.</td>
-<td class="center">Expires 5 October 2025</td>
+<td class="center">Expires 30 April 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1068,12 +1067,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-teas-5g-ns-ip-mpls-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-04-03" class="published">3 April 2025</time>
+<time datetime="2025-10-27" class="published">27 October 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-10-05">5 October 2025</time></dd>
+<dd class="expires"><time datetime="2026-04-30">30 April 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1138,7 +1137,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 5 October 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 30 April 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -3035,12 +3034,12 @@ distribution even in non-ECMP friendly network topologies. See also <span><a hre
                 <path d="M 264,96 L 312,96" fill="none" stroke="black"></path>
                 <path d="M 376,96 L 424,96" fill="none" stroke="black"></path>
                 <path d="M 488,96 L 544,96" fill="none" stroke="black"></path>
-                <path d="M 64,128 L 120,128" fill="none" stroke="black"></path>
-                <path d="M 320,128 L 376,128" fill="none" stroke="black"></path>
-                <path d="M 64,144 L 120,144" fill="none" stroke="black"></path>
-                <path d="M 320,144 L 376,144" fill="none" stroke="black"></path>
-                <path d="M 64,160 L 120,160" fill="none" stroke="black"></path>
-                <path d="M 320,160 L 376,160" fill="none" stroke="black"></path>
+                <path d="M 64,128 L 128,128" fill="none" stroke="black"></path>
+                <path d="M 312,128 L 376,128" fill="none" stroke="black"></path>
+                <path d="M 64,144 L 128,144" fill="none" stroke="black"></path>
+                <path d="M 312,144 L 376,144" fill="none" stroke="black"></path>
+                <path d="M 64,160 L 128,160" fill="none" stroke="black"></path>
+                <path d="M 312,160 L 376,160" fill="none" stroke="black"></path>
                 <path d="M 8,192 L 64,192" fill="none" stroke="black"></path>
                 <path d="M 128,192 L 176,192" fill="none" stroke="black"></path>
                 <path d="M 264,192 L 312,192" fill="none" stroke="black"></path>
@@ -3051,12 +3050,11 @@ distribution even in non-ECMP friendly network topologies. See also <span><a hre
                 <polygon class="arrowhead" points="352,120 340,114.4 340,125.6" fill="black" transform="rotate(90,344,120)"></polygon>
                 <polygon class="arrowhead" points="104,120 92,114.4 92,125.6" fill="black" transform="rotate(90,96,120)"></polygon>
                 <circle cx="16" cy="272" r="6" class="closeddot" fill="black"></circle>
-                <circle cx="136" cy="128" r="6" class="closeddot" fill="black"></circle>
-                <circle cx="136" cy="144" r="6" class="closeddot" fill="black"></circle>
-                <circle cx="136" cy="160" r="6" class="closeddot" fill="black"></circle>
-                <circle cx="304" cy="128" r="6" class="closeddot" fill="black"></circle>
-                <circle cx="304" cy="144" r="6" class="closeddot" fill="black"></circle>
-                <circle cx="304" cy="160" r="6" class="closeddot" fill="black"></circle>
+                <circle cx="144" cy="128" r="6" class="closeddot" fill="black"></circle>
+                <circle cx="144" cy="144" r="6" class="closeddot" fill="black"></circle>
+                <circle cx="144" cy="160" r="6" class="closeddot" fill="black"></circle>
+                <circle cx="296" cy="128" r="6" class="closeddot" fill="black"></circle>
+                <circle cx="296" cy="144" r="6" class="closeddot" fill="black"></circle>
                 <g class="text">
                   <text x="24" y="36">VLANs</text>
                   <text x="100" y="36">representing</text>
@@ -3067,12 +3065,13 @@ distribution even in non-ECMP friendly network topologies. See also <span><a hre
                   <text x="220" y="100">Provider</text>
                   <text x="456" y="132">.......</text>
                   <text x="28" y="148">NF</text>
-                  <text x="156" y="148">PE</text>
-                  <text x="284" y="148">PE</text>
                   <text x="400" y="148">L2/L3</text>
                   <text x="456" y="148">.......</text>
                   <text x="524" y="148">NF</text>
+                  <text x="296" y="164">*</text>
                   <text x="456" y="164">.......</text>
+                  <text x="156" y="180">PE</text>
+                  <text x="292" y="180">PE</text>
                   <text x="100" y="196">AC</text>
                   <text x="224" y="196">Network</text>
                   <text x="348" y="196">AC</text>
@@ -7218,7 +7217,7 @@ service disruption. Note that such an attacker from within the transport network
 <dd class="break"></dd>
 <dt id="I-D.cbs-teas-5qi-to-dscp-mapping">[I-D.cbs-teas-5qi-to-dscp-mapping]</dt>
         <dd>
-<span class="refAuthor">Contreras, L. M.</span>, <span class="refAuthor">Bykov, I.</span>, and <span class="refAuthor">K. G. Szarkowicz</span>, <span class="refTitle">"5QI to DiffServ DSCP Mapping Example for Enforcement of 5G End-to-End Network Slice QoS"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-cbs-teas-5qi-to-dscp-mapping-03</span>, <time datetime="2024-10-21" class="refDate">21 October 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-cbs-teas-5qi-to-dscp-mapping-03">https://datatracker.ietf.org/doc/html/draft-cbs-teas-5qi-to-dscp-mapping-03</a>&gt;</span>. </dd>
+<span class="refAuthor">Contreras, L. M.</span>, <span class="refAuthor">Bykov, I.</span>, and <span class="refAuthor">K. G. Szarkowicz</span>, <span class="refTitle">"5QI to DiffServ DSCP Mapping Example for Enforcement of 5G End-to-End Network Slice QoS"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-cbs-teas-5qi-to-dscp-mapping-05</span>, <time datetime="2025-10-20" class="refDate">20 October 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-cbs-teas-5qi-to-dscp-mapping-05">https://datatracker.ietf.org/doc/html/draft-cbs-teas-5qi-to-dscp-mapping-05</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-opsawg-ntw-attachment-circuit">[I-D.ietf-opsawg-ntw-attachment-circuit]</dt>
         <dd>
@@ -7230,19 +7229,19 @@ service disruption. Note that such an attacker from within the transport network
 <dd class="break"></dd>
 <dt id="I-D.ietf-teas-5g-network-slice-application">[I-D.ietf-teas-5g-network-slice-application]</dt>
         <dd>
-<span class="refAuthor">Geng, X.</span>, <span class="refAuthor">Contreras, L. M.</span>, <span class="refAuthor">Rokui, R.</span>, <span class="refAuthor">Dong, J.</span>, and <span class="refAuthor">I. Bykov</span>, <span class="refTitle">"IETF Network Slice Application in 3GPP 5G End-to-End Network Slice"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-5g-network-slice-application-04</span>, <time datetime="2025-03-03" class="refDate">3 March 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-5g-network-slice-application-04">https://datatracker.ietf.org/doc/html/draft-ietf-teas-5g-network-slice-application-04</a>&gt;</span>. </dd>
+<span class="refAuthor">Geng, X.</span>, <span class="refAuthor">Contreras, L. M.</span>, <span class="refAuthor">Rokui, R.</span>, <span class="refAuthor">Dong, J.</span>, and <span class="refAuthor">I. Bykov</span>, <span class="refTitle">"IETF Network Slice Application in 3GPP 5G End-to-End Network Slice"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-5g-network-slice-application-05</span>, <time datetime="2025-07-07" class="refDate">7 July 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-5g-network-slice-application-05">https://datatracker.ietf.org/doc/html/draft-ietf-teas-5g-network-slice-application-05</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-teas-ietf-network-slice-nbi-yang">[I-D.ietf-teas-ietf-network-slice-nbi-yang]</dt>
         <dd>
-<span class="refAuthor">Wu, B.</span>, <span class="refAuthor">Dhody, D.</span>, <span class="refAuthor">Rokui, R.</span>, <span class="refAuthor">Saad, T.</span>, and <span class="refAuthor">J. Mullooly</span>, <span class="refTitle">"A YANG Data Model for the RFC 9543 Network Slice Service"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-ietf-network-slice-nbi-yang-22</span>, <time datetime="2025-02-08" class="refDate">8 February 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slice-nbi-yang-22">https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slice-nbi-yang-22</a>&gt;</span>. </dd>
+<span class="refAuthor">Wu, B.</span>, <span class="refAuthor">Dhody, D.</span>, <span class="refAuthor">Rokui, R.</span>, <span class="refAuthor">Saad, T.</span>, and <span class="refAuthor">J. Mullooly</span>, <span class="refTitle">"A YANG Data Model for the RFC 9543 Network Slice Service"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-ietf-network-slice-nbi-yang-25</span>, <time datetime="2025-05-09" class="refDate">9 May 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slice-nbi-yang-25">https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slice-nbi-yang-25</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-teas-ns-controller-models">[I-D.ietf-teas-ns-controller-models]</dt>
         <dd>
-<span class="refAuthor">Contreras, L. M.</span>, <span class="refAuthor">Rokui, R.</span>, <span class="refAuthor">Tantsura, J.</span>, <span class="refAuthor">Wu, B.</span>, and <span class="refAuthor">X. Liu</span>, <span class="refTitle">"IETF Network Slice Controller and its Associated Data Models"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-ns-controller-models-04</span>, <time datetime="2025-03-03" class="refDate">3 March 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-controller-models-04">https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-controller-models-04</a>&gt;</span>. </dd>
+<span class="refAuthor">Contreras, L. M.</span>, <span class="refAuthor">Rokui, R.</span>, <span class="refAuthor">Tantsura, J.</span>, <span class="refAuthor">Wu, B.</span>, and <span class="refAuthor">X. Liu</span>, <span class="refTitle">"IETF Network Slice Controller and its Associated Data Models"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-ns-controller-models-06</span>, <time datetime="2025-10-20" class="refDate">20 October 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-controller-models-06">https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-controller-models-06</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-teas-ns-ip-mpls">[I-D.ietf-teas-ns-ip-mpls]</dt>
         <dd>
-<span class="refAuthor">Saad, T.</span>, <span class="refAuthor">Beeram, V. P.</span>, <span class="refAuthor">Dong, J.</span>, <span class="refAuthor">Halpern, J. M.</span>, and <span class="refAuthor">S. Peng</span>, <span class="refTitle">"Realizing Network Slices in IP/MPLS Networks"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-ns-ip-mpls-05</span>, <time datetime="2025-03-02" class="refDate">2 March 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-ip-mpls-05">https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-ip-mpls-05</a>&gt;</span>. </dd>
+<span class="refAuthor">Saad, T.</span>, <span class="refAuthor">Beeram, V. P.</span>, <span class="refAuthor">Dong, J.</span>, <span class="refAuthor">Halpern, J. M.</span>, and <span class="refAuthor">S. Peng</span>, <span class="refTitle">"Realizing Network Slices in IP/MPLS Networks"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-ns-ip-mpls-06</span>, <time datetime="2025-10-20" class="refDate">20 October 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-ip-mpls-06">https://datatracker.ietf.org/doc/html/draft-ietf-teas-ns-ip-mpls-06</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="IEEE802.1AE">[IEEE802.1AE]</dt>
         <dd>
