@@ -12,5 +12,5 @@ VLANs representing slices           VLANs representing slices
                  |                  |                               
                  +------------------+
                                                                      
- x Logical interface represented by a VLAN on a physical interface
- * SDP
+ 'x' Logical interface represented by a VLAN on a physical interface
+ '*' SDP
