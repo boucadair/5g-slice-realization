@@ -1037,8 +1037,8 @@ Table of Contents
                     |                  |
                     +------------------+
 
-    x Logical interface represented by a VLAN on a physical interface
-    * SDP
+    'x' Logical interface represented by a VLAN on a physical interface
+    '*' SDP
 
       Figure 12: Example of 5G Slice with VLAN Hand-off Providing End-
                             to-End Connectivity
