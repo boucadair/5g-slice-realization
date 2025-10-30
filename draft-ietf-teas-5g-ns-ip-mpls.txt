@@ -5,12 +5,12 @@
 TEAS                                               K. G. Szarkowicz, Ed.
 Internet-Draft                                           R. Roberts, Ed.
 Intended status: Informational                                  J. Lucek
-Expires: 30 April 2026                                  Juniper Networks
+Expires: 3 May 2026                                     Juniper Networks
                                                        M. Boucadair, Ed.
                                                                   Orange
                                                          L. M. Contreras
                                                               Telefonica
-                                                         27 October 2025
+                                                         30 October 2025
 
 
  A Realization of Network Slices for 5G Networks Using Current IP/MPLS
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 30 April 2026.
+   This Internet-Draft will expire on 3 May 2026.
 
 Copyright Notice
 
@@ -143,7 +143,7 @@ Table of Contents
    distances (low latency) where basic QoS/scheduling logic is
    sufficient to comply with the Service Level Objectives (SLOs).
 
-          |------------------TN Slice------------------|
+          |------------Transport Network Slice---------|
 
                             RFC 9543 Network Slice
                             .-----SDP Type 3----.
