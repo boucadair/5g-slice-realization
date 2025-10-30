@@ -603,7 +603,7 @@ Table of Contents
         |           '-------------'  |                           |
         |                            v                           |
         |   .-----------------------------------------------.    |
-        |  | TN Orchestration                                |   |
+        |  | Transport Network Orchestration                 |   |
         |  | +--------------+ +-----------+ +--------------+ |   |
         |  | |Customer Site | |RFC9543 NSC| |Customer Site | |   |
         |  | |Orchestration | |           | |Orchestration | |   |
@@ -625,7 +625,7 @@ Table of Contents
                                    RFC 9543
                            |-----Network Slice---|
 
-         |--------------------TN Slice-------------------|
+         |-------------Transport Network Slice-----------|
 
             Figure 6: 5G End-to-End Slice Orchestration with TN
 
