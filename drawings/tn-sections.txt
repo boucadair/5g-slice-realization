@@ -1,4 +1,4 @@
-      |------------------TN Slice------------------|
+      |------------Transport Network Slice---------|
 
                         RFC 9543 Network Slice
                         .-----SDP Type 3----.
