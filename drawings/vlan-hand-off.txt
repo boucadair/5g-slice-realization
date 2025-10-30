@@ -13,7 +13,7 @@ VLANs representing slices           VLANs representing slices
                  +------------------+
                                                       
    x Logical interface represented by a VLAN on a physical interface
-   # Service instances (with unique MPLS label)
+
    * SDP
 
    x Logical interface represented by a VLAN on a physical interface
