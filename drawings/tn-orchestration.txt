@@ -10,7 +10,7 @@
    |           '-------------'  |                           |    
    |                            v                           |    
    |   .-----------------------------------------------.    |    
-   |  | TN Orchestration                                |   |      
+   |  | Transport Network Orchestration                 |   |      
    |  | +--------------+ +-----------+ +--------------+ |   |    
    |  | |Customer Site | |RFC9543 NSC| |Customer Site | |   |    
    |  | |Orchestration | |           | |Orchestration | |   |    
@@ -31,5 +31,5 @@
 +-------------+         +-----------------+         +----------+
                               RFC 9543                          
                       |-----Network Slice---|                  
-                                                                
-    |--------------------TN Slice-------------------|
+
+    |-------------Transport Network Slice-----------|
