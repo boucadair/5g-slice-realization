@@ -7,6 +7,10 @@ This is the working area for the [IETF TEAS WG](https://datatracker.ietf.org/wg/
 * [Published WG Draft](https://datatracker.ietf.org/doc/html/draft-ietf-teas-5g-ns-ip-mpls)
 * [Compare Editor's Copy to Published WG Document](https://boucadair.github.io/5g-slice-realization/)
 
+# Published RFC (November 2025)
+
+[RFC 9889](https://datatracker.ietf.org/doc/rfc9889/): A Realization of Network Slices for 5G Networks Using Current IP/MPLS Technologies
+
 
 ## Contributing
 
